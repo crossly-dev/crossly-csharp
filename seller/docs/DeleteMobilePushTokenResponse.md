@@ -1,0 +1,11 @@
+# net.crossly.Model.DeleteMobilePushTokenResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Ok** | **bool** |  | 
+**Removed** | **decimal** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

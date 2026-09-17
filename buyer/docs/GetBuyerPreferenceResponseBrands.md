@@ -1,0 +1,11 @@
+# net.crossly.buyer.Model.GetBuyerPreferenceResponseBrands
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Brand** | **string** |  | 
+**Looks** | **decimal** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
