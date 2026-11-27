@@ -86,7 +86,7 @@ jobs:
         run: node codegen/scripts/generate-sdks.mjs --lang csharp
       - name: assemble and scan
         run: node codegen/ci/assemble.mjs
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '8.0.x'
       - name: build seller
