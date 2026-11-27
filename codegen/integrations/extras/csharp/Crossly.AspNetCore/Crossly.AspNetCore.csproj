@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Crossly.AspNetCore: webhook verification as ASP.NET Core middleware and a minimal-API endpoint filter. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Crossly.AspNetCore</AssemblyName>
+    <RootNamespace>Crossly.AspNetCore</RootNamespace>
+    <PackageId>Crossly.AspNetCore</PackageId>
+    <Version>0.0.0-dev</Version>
+    <Authors>Crossly</Authors>
+    <Company>Crossly</Company>
+    <Product>Crossly .NET SDK</Product>
+    <Description>Verify Crossly webhook signatures in ASP.NET Core: middleware for a path, or an endpoint filter for a minimal API.</Description>
+    <PackageTags>crossly;webhooks;aspnetcore;middleware</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/crossly-dev/crossly-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/crossly-dev/crossly-csharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="../Crossly.Core/Crossly.Core.csproj" />
+  </ItemGroup>
+</Project>

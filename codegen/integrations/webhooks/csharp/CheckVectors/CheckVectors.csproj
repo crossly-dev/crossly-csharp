@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Runs ../../test-vectors.json against the port (run from the port folder with dotnet run, project CheckVectors). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../CrosslyWebhooks.cs" Link="CrosslyWebhooks.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Crossly.Core: what the seller (Crossly) and buyer (Crossly.Buyer) packages share, in ONE assembly so an app
+    that references both sees each type once: the webhook verifier (compiled from the conformance-tested port in
+    codegen/integrations/webhooks/csharp/), CrosslyException and auto-pagination. Versioned with the clients
+    (dotnet pack -p:Version=...).
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Crossly.Core</AssemblyName>
+    <RootNamespace>Crossly</RootNamespace>
+    <PackageId>Crossly.Core</PackageId>
+    <Version>0.0.0-dev</Version>
+    <Authors>Crossly</Authors>
+    <Company>Crossly</Company>
+    <Product>Crossly .NET SDK</Product>
+    <Description>Shared by the Crossly .NET SDKs (Crossly, Crossly.Buyer): the webhook signature verifier, CrosslyException and auto-pagination.</Description>
+    <PackageTags>crossly;webhooks;sdk</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/crossly-dev/crossly-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/crossly-dev/crossly-csharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../webhooks/csharp/CrosslyWebhooks.cs" Link="CrosslyWebhooks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The generated clients pin 13.0.1; a higher floor here would be an NU1605 downgrade error there. -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+  </ItemGroup>
+</Project>

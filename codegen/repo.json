@@ -1,0 +1,13 @@
+{
+  "lang": "csharp",
+  "vendor": [
+    {
+      "from": "extras/csharp/CrosslyClient.cs",
+      "to": "seller/src/net.crossly/CrosslyClient.cs"
+    },
+    {
+      "from": "extras/csharp/CrosslyBuyerClient.cs",
+      "to": "buyer/src/net.crossly.buyer/CrosslyBuyerClient.cs"
+    }
+  ]
+}

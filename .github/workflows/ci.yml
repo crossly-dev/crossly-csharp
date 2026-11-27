@@ -1,0 +1,35 @@
+# Build, test and package on every push (any branch) and pull request.
+#
+# Managed by tools/sdk-repo/seed.mjs in the Crossly monorepo: edits here are overwritten on the next seed.
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '8.0.x'
+      - name: build seller
+        run: bash codegen/ci/check.sh csharp seller
+      - name: build buyer
+        run: bash codegen/ci/check.sh csharp buyer
+      - name: webhook conformance vectors
+        working-directory: codegen/integrations/webhooks/csharp
+        run: dotnet run --project CheckVectors -c Release
+      - name: package
+        run: |
+          bash codegen/integrations/extras/csharp/package.sh
