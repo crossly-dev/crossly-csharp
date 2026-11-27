@@ -131,7 +131,13 @@ namespace net.crossly.Model
             /// Enum FigureVinyl for value: figure_vinyl
             /// </summary>
             [EnumMember(Value = "figure_vinyl")]
-            FigureVinyl = 16
+            FigureVinyl = 16,
+
+            /// <summary>
+            /// Enum TradingCards for value: trading_cards
+            /// </summary>
+            [EnumMember(Value = "trading_cards")]
+            TradingCards = 17
 
         }
 
@@ -154,16 +160,16 @@ namespace net.crossly.Model
             Standard = 1,
 
             /// <summary>
-            /// Enum Luxury for value: luxury
-            /// </summary>
-            [EnumMember(Value = "luxury")]
-            Luxury = 2,
-
-            /// <summary>
             /// Enum Premium for value: premium
             /// </summary>
             [EnumMember(Value = "premium")]
-            Premium = 3
+            Premium = 2,
+
+            /// <summary>
+            /// Enum Luxury for value: luxury
+            /// </summary>
+            [EnumMember(Value = "luxury")]
+            Luxury = 3
 
         }
 

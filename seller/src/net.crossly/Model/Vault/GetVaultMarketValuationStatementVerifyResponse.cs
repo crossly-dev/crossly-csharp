@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum PurposeEnum
         {
             /// <summary>
-            /// Enum Insurance for value: insurance
-            /// </summary>
-            [EnumMember(Value = "insurance")]
-            Insurance = 1,
-
-            /// <summary>
             /// Enum Appraisal for value: appraisal
             /// </summary>
             [EnumMember(Value = "appraisal")]
-            Appraisal = 2
+            Appraisal = 1,
+
+            /// <summary>
+            /// Enum Insurance for value: insurance
+            /// </summary>
+            [EnumMember(Value = "insurance")]
+            Insurance = 2
 
         }
 
@@ -64,10 +64,10 @@ namespace net.crossly.Model
         public enum VerdictEnum
         {
             /// <summary>
-            /// Enum Valid for value: valid
+            /// Enum Mismatch for value: mismatch
             /// </summary>
-            [EnumMember(Value = "valid")]
-            Valid = 1,
+            [EnumMember(Value = "mismatch")]
+            Mismatch = 1,
 
             /// <summary>
             /// Enum Altered for value: altered
@@ -76,10 +76,10 @@ namespace net.crossly.Model
             Altered = 2,
 
             /// <summary>
-            /// Enum Mismatch for value: mismatch
+            /// Enum Valid for value: valid
             /// </summary>
-            [EnumMember(Value = "mismatch")]
-            Mismatch = 3
+            [EnumMember(Value = "valid")]
+            Valid = 3
 
         }
 

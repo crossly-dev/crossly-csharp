@@ -43,7 +43,8 @@ namespace net.crossly.buyer.Model
         /// <param name="clientSecret">clientSecret.</param>
         /// <param name="totalCents">totalCents (required).</param>
         /// <param name="needsApproval">needsApproval (required).</param>
-        public CreateBuyerCatalogListingRentalResponseData(string rentalId = default(string), string clientSecret = default(string), decimal totalCents = default(decimal), bool needsApproval = default(bool))
+        /// <param name="quote">quote (required).</param>
+        public CreateBuyerCatalogListingRentalResponseData(string rentalId = default(string), string clientSecret = default(string), decimal totalCents = default(decimal), bool needsApproval = default(bool), CreateBuyerCatalogListingRentalResponseDataQuote quote = default(CreateBuyerCatalogListingRentalResponseDataQuote))
         {
             // to ensure "rentalId" is required (not null)
             if (rentalId == null) {
@@ -52,6 +53,11 @@ namespace net.crossly.buyer.Model
             this.RentalId = rentalId;
             this.TotalCents = totalCents;
             this.NeedsApproval = needsApproval;
+            // to ensure "quote" is required (not null)
+            if (quote == null) {
+                throw new ArgumentNullException("quote is a required property for CreateBuyerCatalogListingRentalResponseData and cannot be null");
+            }
+            this.Quote = quote;
             this.ClientSecret = clientSecret;
         }
 
@@ -80,6 +86,12 @@ namespace net.crossly.buyer.Model
         public bool NeedsApproval { get; set; }
 
         /// <summary>
+        /// Gets or Sets Quote
+        /// </summary>
+        [DataMember(Name = "quote", IsRequired = true, EmitDefaultValue = false)]
+        public CreateBuyerCatalogListingRentalResponseDataQuote Quote { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -91,6 +103,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
             sb.Append("  NeedsApproval: ").Append(NeedsApproval).Append("\n");
+            sb.Append("  Quote: ").Append(Quote).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -143,6 +156,11 @@ namespace net.crossly.buyer.Model
                 (
                     this.NeedsApproval == input.NeedsApproval ||
                     this.NeedsApproval.Equals(input.NeedsApproval)
+                ) && 
+                (
+                    this.Quote == input.Quote ||
+                    (this.Quote != null &&
+                    this.Quote.Equals(input.Quote))
                 );
         }
 
@@ -165,6 +183,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.NeedsApproval.GetHashCode();
+                if (this.Quote != null)
+                {
+                    hashCode = (hashCode * 59) + this.Quote.GetHashCode();
+                }
                 return hashCode;
             }
         }

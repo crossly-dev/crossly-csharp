@@ -70,7 +70,7 @@ namespace net.crossly.Model
         /// <param name="role">role (required).</param>
         /// <param name="scopes">scopes (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
-        /// <param name="acceptUrl">acceptUrl (required).</param>
+        /// <param name="acceptUrl">acceptUrl.</param>
         public CreateTeamInviteResponse(string id = default(string), string inviteeEmail = default(string), RoleEnum role = default(RoleEnum), List<string> scopes = default(List<string>), string expiresAt = default(string), string acceptUrl = default(string))
         {
             // to ensure "id" is required (not null)
@@ -94,10 +94,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("expiresAt is a required property for CreateTeamInviteResponse and cannot be null");
             }
             this.ExpiresAt = expiresAt;
-            // to ensure "acceptUrl" is required (not null)
-            if (acceptUrl == null) {
-                throw new ArgumentNullException("acceptUrl is a required property for CreateTeamInviteResponse and cannot be null");
-            }
             this.AcceptUrl = acceptUrl;
         }
 
@@ -128,7 +124,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets AcceptUrl
         /// </summary>
-        [DataMember(Name = "acceptUrl", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "acceptUrl", EmitDefaultValue = true)]
         public string AcceptUrl { get; set; }
 
         /// <summary>

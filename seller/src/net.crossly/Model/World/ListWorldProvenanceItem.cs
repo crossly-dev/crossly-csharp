@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Auction for value: auction
-            /// </summary>
-            [EnumMember(Value = "auction")]
-            Auction = 1,
-
-            /// <summary>
             /// Enum Window for value: window
             /// </summary>
             [EnumMember(Value = "window")]
-            Window = 2,
+            Window = 1,
 
             /// <summary>
-            /// Enum Agent for value: agent
+            /// Enum Auction for value: auction
             /// </summary>
-            [EnumMember(Value = "agent")]
-            Agent = 3,
+            [EnumMember(Value = "auction")]
+            Auction = 2,
 
             /// <summary>
             /// Enum Room for value: room
             /// </summary>
             [EnumMember(Value = "room")]
-            Room = 4,
+            Room = 3,
+
+            /// <summary>
+            /// Enum Agent for value: agent
+            /// </summary>
+            [EnumMember(Value = "agent")]
+            Agent = 4,
 
             /// <summary>
             /// Enum Stall for value: stall

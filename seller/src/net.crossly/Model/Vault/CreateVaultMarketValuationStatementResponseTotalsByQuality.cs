@@ -40,16 +40,21 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateVaultMarketValuationStatementResponseTotalsByQuality" /> class.
         /// </summary>
         /// <param name="none">none (required).</param>
+        /// <param name="c">c (required).</param>
         /// <param name="a">a (required).</param>
         /// <param name="b">b (required).</param>
-        /// <param name="c">c (required).</param>
-        public CreateVaultMarketValuationStatementResponseTotalsByQuality(UnitsCents none = default(UnitsCents), UnitsCents a = default(UnitsCents), UnitsCents b = default(UnitsCents), UnitsCents c = default(UnitsCents))
+        public CreateVaultMarketValuationStatementResponseTotalsByQuality(UnitsCents none = default(UnitsCents), UnitsCents c = default(UnitsCents), UnitsCents a = default(UnitsCents), UnitsCents b = default(UnitsCents))
         {
             // to ensure "none" is required (not null)
             if (none == null) {
                 throw new ArgumentNullException("none is a required property for CreateVaultMarketValuationStatementResponseTotalsByQuality and cannot be null");
             }
             this.None = none;
+            // to ensure "c" is required (not null)
+            if (c == null) {
+                throw new ArgumentNullException("c is a required property for CreateVaultMarketValuationStatementResponseTotalsByQuality and cannot be null");
+            }
+            this.C = c;
             // to ensure "a" is required (not null)
             if (a == null) {
                 throw new ArgumentNullException("a is a required property for CreateVaultMarketValuationStatementResponseTotalsByQuality and cannot be null");
@@ -60,11 +65,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("b is a required property for CreateVaultMarketValuationStatementResponseTotalsByQuality and cannot be null");
             }
             this.B = b;
-            // to ensure "c" is required (not null)
-            if (c == null) {
-                throw new ArgumentNullException("c is a required property for CreateVaultMarketValuationStatementResponseTotalsByQuality and cannot be null");
-            }
-            this.C = c;
         }
 
         /// <summary>
@@ -72,6 +72,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "none", IsRequired = true, EmitDefaultValue = false)]
         public UnitsCents None { get; set; }
+
+        /// <summary>
+        /// Gets or Sets C
+        /// </summary>
+        [DataMember(Name = "C", IsRequired = true, EmitDefaultValue = false)]
+        public UnitsCents C { get; set; }
 
         /// <summary>
         /// Gets or Sets A
@@ -86,12 +92,6 @@ namespace net.crossly.Model
         public UnitsCents B { get; set; }
 
         /// <summary>
-        /// Gets or Sets C
-        /// </summary>
-        [DataMember(Name = "C", IsRequired = true, EmitDefaultValue = false)]
-        public UnitsCents C { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,9 +100,9 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateVaultMarketValuationStatementResponseTotalsByQuality {\n");
             sb.Append("  None: ").Append(None).Append("\n");
+            sb.Append("  C: ").Append(C).Append("\n");
             sb.Append("  A: ").Append(A).Append("\n");
             sb.Append("  B: ").Append(B).Append("\n");
-            sb.Append("  C: ").Append(C).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,6 +144,11 @@ namespace net.crossly.Model
                     this.None.Equals(input.None))
                 ) && 
                 (
+                    this.C == input.C ||
+                    (this.C != null &&
+                    this.C.Equals(input.C))
+                ) && 
+                (
                     this.A == input.A ||
                     (this.A != null &&
                     this.A.Equals(input.A))
@@ -152,11 +157,6 @@ namespace net.crossly.Model
                     this.B == input.B ||
                     (this.B != null &&
                     this.B.Equals(input.B))
-                ) && 
-                (
-                    this.C == input.C ||
-                    (this.C != null &&
-                    this.C.Equals(input.C))
                 );
         }
 
@@ -173,6 +173,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.None.GetHashCode();
                 }
+                if (this.C != null)
+                {
+                    hashCode = (hashCode * 59) + this.C.GetHashCode();
+                }
                 if (this.A != null)
                 {
                     hashCode = (hashCode * 59) + this.A.GetHashCode();
@@ -180,10 +184,6 @@ namespace net.crossly.Model
                 if (this.B != null)
                 {
                     hashCode = (hashCode * 59) + this.B.GetHashCode();
-                }
-                if (this.C != null)
-                {
-                    hashCode = (hashCode * 59) + this.C.GetHashCode();
                 }
                 return hashCode;
             }

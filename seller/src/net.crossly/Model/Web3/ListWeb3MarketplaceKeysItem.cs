@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum MarketplaceEnum
         {
             /// <summary>
-            /// Enum Opensea for value: opensea
+            /// Enum Rarible for value: rarible
             /// </summary>
-            [EnumMember(Value = "opensea")]
-            Opensea = 1,
-
-            /// <summary>
-            /// Enum Tensor for value: tensor
-            /// </summary>
-            [EnumMember(Value = "tensor")]
-            Tensor = 2,
+            [EnumMember(Value = "rarible")]
+            Rarible = 1,
 
             /// <summary>
             /// Enum MagicEden for value: magic_eden
             /// </summary>
             [EnumMember(Value = "magic_eden")]
-            MagicEden = 3,
+            MagicEden = 2,
 
             /// <summary>
-            /// Enum Rarible for value: rarible
+            /// Enum Tensor for value: tensor
             /// </summary>
-            [EnumMember(Value = "rarible")]
-            Rarible = 4
+            [EnumMember(Value = "tensor")]
+            Tensor = 3,
+
+            /// <summary>
+            /// Enum Opensea for value: opensea
+            /// </summary>
+            [EnumMember(Value = "opensea")]
+            Opensea = 4
 
         }
 

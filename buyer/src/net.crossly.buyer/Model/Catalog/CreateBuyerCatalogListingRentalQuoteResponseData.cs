@@ -32,6 +32,32 @@ namespace net.crossly.buyer.Model
     public partial class CreateBuyerCatalogListingRentalQuoteResponseData : IEquatable<CreateBuyerCatalogListingRentalQuoteResponseData>, IValidatableObject
     {
         /// <summary>
+        /// Defines Fulfilment
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum FulfilmentEnum
+        {
+            /// <summary>
+            /// Enum Ship for value: ship
+            /// </summary>
+            [EnumMember(Value = "ship")]
+            Ship = 1,
+
+            /// <summary>
+            /// Enum Pickup for value: pickup
+            /// </summary>
+            [EnumMember(Value = "pickup")]
+            Pickup = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Fulfilment
+        /// </summary>
+        [DataMember(Name = "fulfilment", IsRequired = true, EmitDefaultValue = false)]
+        public FulfilmentEnum Fulfilment { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCatalogListingRentalQuoteResponseData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,16 +65,38 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCatalogListingRentalQuoteResponseData" /> class.
         /// </summary>
+        /// <param name="fulfilment">fulfilment (required).</param>
+        /// <param name="shippingCents">shippingCents.</param>
+        /// <param name="totalCents">totalCents.</param>
+        /// <param name="needsApproval">needsApproval (required).</param>
+        /// <param name="cancellation">cancellation (required).</param>
+        /// <param name="buyout">buyout (required).</param>
+        /// <param name="problem">problem.</param>
         /// <param name="startDate">startDate (required).</param>
         /// <param name="endDate">endDate (required).</param>
         /// <param name="days">days (required).</param>
-        /// <param name="problem">problem.</param>
-        /// <param name="rentCents">rentCents (required).</param>
+        /// <param name="unit">The unit the booking would hold (null when none is free)..</param>
+        /// <param name="lines">lines (required).</param>
+        /// <param name="rentCents">Rent after discounts. (required).</param>
+        /// <param name="cleaningFeeCents">cleaningFeeCents (required).</param>
+        /// <param name="damageWaiverCents">damageWaiverCents (required).</param>
         /// <param name="depositCents">depositCents (required).</param>
-        /// <param name="shippingCents">shippingCents.</param>
-        /// <param name="totalCents">totalCents.</param>
-        public CreateBuyerCatalogListingRentalQuoteResponseData(string startDate = default(string), string endDate = default(string), decimal days = default(decimal), string problem = default(string), decimal rentCents = default(decimal), decimal depositCents = default(decimal), decimal? shippingCents = default(decimal?), decimal? totalCents = default(decimal?))
+        /// <param name="depositNote">Why the deposit is 0 or lowered, when it is..</param>
+        /// <param name="chargeableCents">Everything but shipping and the deposit: what the seller&#39;s fee is taken on. (required).</param>
+        public CreateBuyerCatalogListingRentalQuoteResponseData(FulfilmentEnum fulfilment = default(FulfilmentEnum), decimal? shippingCents = default(decimal?), decimal? totalCents = default(decimal?), bool needsApproval = default(bool), CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation = default(CreateBuyerCatalogListingRentalQuoteResponseDataCancellation), CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout = default(CreateBuyerCatalogListingRentalQuoteResponseDataBuyout), string problem = default(string), string startDate = default(string), string endDate = default(string), decimal days = default(decimal), decimal? unit = default(decimal?), List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> lines = default(List<CreateBuyerCatalogListingRentalQuoteResponseDataLines>), decimal rentCents = default(decimal), decimal cleaningFeeCents = default(decimal), decimal damageWaiverCents = default(decimal), decimal depositCents = default(decimal), string depositNote = default(string), decimal chargeableCents = default(decimal))
         {
+            this.Fulfilment = fulfilment;
+            this.NeedsApproval = needsApproval;
+            // to ensure "cancellation" is required (not null)
+            if (cancellation == null) {
+                throw new ArgumentNullException("cancellation is a required property for CreateBuyerCatalogListingRentalQuoteResponseData and cannot be null");
+            }
+            this.Cancellation = cancellation;
+            // to ensure "buyout" is required (not null)
+            if (buyout == null) {
+                throw new ArgumentNullException("buyout is a required property for CreateBuyerCatalogListingRentalQuoteResponseData and cannot be null");
+            }
+            this.Buyout = buyout;
             // to ensure "startDate" is required (not null)
             if (startDate == null) {
                 throw new ArgumentNullException("startDate is a required property for CreateBuyerCatalogListingRentalQuoteResponseData and cannot be null");
@@ -60,12 +108,58 @@ namespace net.crossly.buyer.Model
             }
             this.EndDate = endDate;
             this.Days = days;
+            // to ensure "lines" is required (not null)
+            if (lines == null) {
+                throw new ArgumentNullException("lines is a required property for CreateBuyerCatalogListingRentalQuoteResponseData and cannot be null");
+            }
+            this.Lines = lines;
             this.RentCents = rentCents;
+            this.CleaningFeeCents = cleaningFeeCents;
+            this.DamageWaiverCents = damageWaiverCents;
             this.DepositCents = depositCents;
-            this.Problem = problem;
+            this.ChargeableCents = chargeableCents;
             this.ShippingCents = shippingCents;
             this.TotalCents = totalCents;
+            this.Problem = problem;
+            this.Unit = unit;
+            this.DepositNote = depositNote;
         }
+
+        /// <summary>
+        /// Gets or Sets ShippingCents
+        /// </summary>
+        [DataMember(Name = "shippingCents", EmitDefaultValue = true)]
+        public decimal? ShippingCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalCents
+        /// </summary>
+        [DataMember(Name = "totalCents", EmitDefaultValue = true)]
+        public decimal? TotalCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NeedsApproval
+        /// </summary>
+        [DataMember(Name = "needsApproval", IsRequired = true, EmitDefaultValue = true)]
+        public bool NeedsApproval { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cancellation
+        /// </summary>
+        [DataMember(Name = "cancellation", IsRequired = true, EmitDefaultValue = false)]
+        public CreateBuyerCatalogListingRentalQuoteResponseDataCancellation Cancellation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Buyout
+        /// </summary>
+        [DataMember(Name = "buyout", IsRequired = true, EmitDefaultValue = false)]
+        public CreateBuyerCatalogListingRentalQuoteResponseDataBuyout Buyout { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Problem
+        /// </summary>
+        [DataMember(Name = "problem", EmitDefaultValue = true)]
+        public string Problem { get; set; }
 
         /// <summary>
         /// Gets or Sets StartDate
@@ -86,16 +180,36 @@ namespace net.crossly.buyer.Model
         public decimal Days { get; set; }
 
         /// <summary>
-        /// Gets or Sets Problem
+        /// The unit the booking would hold (null when none is free).
         /// </summary>
-        [DataMember(Name = "problem", EmitDefaultValue = true)]
-        public string Problem { get; set; }
+        /// <value>The unit the booking would hold (null when none is free).</value>
+        [DataMember(Name = "unit", EmitDefaultValue = true)]
+        public decimal? Unit { get; set; }
 
         /// <summary>
-        /// Gets or Sets RentCents
+        /// Gets or Sets Lines
         /// </summary>
+        [DataMember(Name = "lines", IsRequired = true, EmitDefaultValue = false)]
+        public List<CreateBuyerCatalogListingRentalQuoteResponseDataLines> Lines { get; set; }
+
+        /// <summary>
+        /// Rent after discounts.
+        /// </summary>
+        /// <value>Rent after discounts.</value>
         [DataMember(Name = "rentCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal RentCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CleaningFeeCents
+        /// </summary>
+        [DataMember(Name = "cleaningFeeCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CleaningFeeCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DamageWaiverCents
+        /// </summary>
+        [DataMember(Name = "damageWaiverCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal DamageWaiverCents { get; set; }
 
         /// <summary>
         /// Gets or Sets DepositCents
@@ -104,16 +218,18 @@ namespace net.crossly.buyer.Model
         public decimal DepositCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingCents
+        /// Why the deposit is 0 or lowered, when it is.
         /// </summary>
-        [DataMember(Name = "shippingCents", EmitDefaultValue = true)]
-        public decimal? ShippingCents { get; set; }
+        /// <value>Why the deposit is 0 or lowered, when it is.</value>
+        [DataMember(Name = "depositNote", EmitDefaultValue = true)]
+        public string DepositNote { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalCents
+        /// Everything but shipping and the deposit: what the seller&#39;s fee is taken on.
         /// </summary>
-        [DataMember(Name = "totalCents", EmitDefaultValue = true)]
-        public decimal? TotalCents { get; set; }
+        /// <value>Everything but shipping and the deposit: what the seller&#39;s fee is taken on.</value>
+        [DataMember(Name = "chargeableCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ChargeableCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,14 +239,24 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerCatalogListingRentalQuoteResponseData {\n");
+            sb.Append("  Fulfilment: ").Append(Fulfilment).Append("\n");
+            sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
+            sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
+            sb.Append("  NeedsApproval: ").Append(NeedsApproval).Append("\n");
+            sb.Append("  Cancellation: ").Append(Cancellation).Append("\n");
+            sb.Append("  Buyout: ").Append(Buyout).Append("\n");
+            sb.Append("  Problem: ").Append(Problem).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
-            sb.Append("  Problem: ").Append(Problem).Append("\n");
+            sb.Append("  Unit: ").Append(Unit).Append("\n");
+            sb.Append("  Lines: ").Append(Lines).Append("\n");
             sb.Append("  RentCents: ").Append(RentCents).Append("\n");
+            sb.Append("  CleaningFeeCents: ").Append(CleaningFeeCents).Append("\n");
+            sb.Append("  DamageWaiverCents: ").Append(DamageWaiverCents).Append("\n");
             sb.Append("  DepositCents: ").Append(DepositCents).Append("\n");
-            sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
-            sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
+            sb.Append("  DepositNote: ").Append(DepositNote).Append("\n");
+            sb.Append("  ChargeableCents: ").Append(ChargeableCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +293,39 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Fulfilment == input.Fulfilment ||
+                    this.Fulfilment.Equals(input.Fulfilment)
+                ) && 
+                (
+                    this.ShippingCents == input.ShippingCents ||
+                    (this.ShippingCents != null &&
+                    this.ShippingCents.Equals(input.ShippingCents))
+                ) && 
+                (
+                    this.TotalCents == input.TotalCents ||
+                    (this.TotalCents != null &&
+                    this.TotalCents.Equals(input.TotalCents))
+                ) && 
+                (
+                    this.NeedsApproval == input.NeedsApproval ||
+                    this.NeedsApproval.Equals(input.NeedsApproval)
+                ) && 
+                (
+                    this.Cancellation == input.Cancellation ||
+                    (this.Cancellation != null &&
+                    this.Cancellation.Equals(input.Cancellation))
+                ) && 
+                (
+                    this.Buyout == input.Buyout ||
+                    (this.Buyout != null &&
+                    this.Buyout.Equals(input.Buyout))
+                ) && 
+                (
+                    this.Problem == input.Problem ||
+                    (this.Problem != null &&
+                    this.Problem.Equals(input.Problem))
+                ) && 
+                (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
@@ -181,27 +340,40 @@ namespace net.crossly.buyer.Model
                     this.Days.Equals(input.Days)
                 ) && 
                 (
-                    this.Problem == input.Problem ||
-                    (this.Problem != null &&
-                    this.Problem.Equals(input.Problem))
+                    this.Unit == input.Unit ||
+                    (this.Unit != null &&
+                    this.Unit.Equals(input.Unit))
+                ) && 
+                (
+                    this.Lines == input.Lines ||
+                    this.Lines != null &&
+                    input.Lines != null &&
+                    this.Lines.SequenceEqual(input.Lines)
                 ) && 
                 (
                     this.RentCents == input.RentCents ||
                     this.RentCents.Equals(input.RentCents)
                 ) && 
                 (
+                    this.CleaningFeeCents == input.CleaningFeeCents ||
+                    this.CleaningFeeCents.Equals(input.CleaningFeeCents)
+                ) && 
+                (
+                    this.DamageWaiverCents == input.DamageWaiverCents ||
+                    this.DamageWaiverCents.Equals(input.DamageWaiverCents)
+                ) && 
+                (
                     this.DepositCents == input.DepositCents ||
                     this.DepositCents.Equals(input.DepositCents)
                 ) && 
                 (
-                    this.ShippingCents == input.ShippingCents ||
-                    (this.ShippingCents != null &&
-                    this.ShippingCents.Equals(input.ShippingCents))
+                    this.DepositNote == input.DepositNote ||
+                    (this.DepositNote != null &&
+                    this.DepositNote.Equals(input.DepositNote))
                 ) && 
                 (
-                    this.TotalCents == input.TotalCents ||
-                    (this.TotalCents != null &&
-                    this.TotalCents.Equals(input.TotalCents))
+                    this.ChargeableCents == input.ChargeableCents ||
+                    this.ChargeableCents.Equals(input.ChargeableCents)
                 );
         }
 
@@ -214,6 +386,28 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Fulfilment.GetHashCode();
+                if (this.ShippingCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
+                }
+                if (this.TotalCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NeedsApproval.GetHashCode();
+                if (this.Cancellation != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cancellation.GetHashCode();
+                }
+                if (this.Buyout != null)
+                {
+                    hashCode = (hashCode * 59) + this.Buyout.GetHashCode();
+                }
+                if (this.Problem != null)
+                {
+                    hashCode = (hashCode * 59) + this.Problem.GetHashCode();
+                }
                 if (this.StartDate != null)
                 {
                     hashCode = (hashCode * 59) + this.StartDate.GetHashCode();
@@ -223,20 +417,23 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.EndDate.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Days.GetHashCode();
-                if (this.Problem != null)
+                if (this.Unit != null)
                 {
-                    hashCode = (hashCode * 59) + this.Problem.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Unit.GetHashCode();
+                }
+                if (this.Lines != null)
+                {
+                    hashCode = (hashCode * 59) + this.Lines.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RentCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.CleaningFeeCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.DamageWaiverCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
-                if (this.ShippingCents != null)
+                if (this.DepositNote != null)
                 {
-                    hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DepositNote.GetHashCode();
                 }
-                if (this.TotalCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.ChargeableCents.GetHashCode();
                 return hashCode;
             }
         }

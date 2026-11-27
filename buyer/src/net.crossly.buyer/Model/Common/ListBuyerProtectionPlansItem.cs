@@ -40,29 +40,24 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerProtectionPlansItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="purchaseId">purchaseId.</param>
         /// <param name="status">status (required).</param>
         /// <param name="title">title (required).</param>
-        /// <param name="purchaseId">purchaseId.</param>
+        /// <param name="termMonths">termMonths.</param>
+        /// <param name="coverage">coverage.</param>
         /// <param name="termsUrl">termsUrl.</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="refundCents">refundCents.</param>
-        /// <param name="termMonths">termMonths.</param>
-        /// <param name="coverage">coverage.</param>
         /// <param name="contractId">contractId.</param>
         /// <param name="itemTitle">itemTitle.</param>
-        public ListBuyerProtectionPlansItem(string id = default(string), string createdAt = default(string), string status = default(string), string title = default(string), string purchaseId = default(string), string termsUrl = default(string), decimal priceCents = default(decimal), decimal? refundCents = default(decimal?), decimal? termMonths = default(decimal?), string coverage = default(string), string contractId = default(string), string itemTitle = default(string))
+        /// <param name="createdAt">createdAt (required).</param>
+        public ListBuyerProtectionPlansItem(string id = default(string), string purchaseId = default(string), string status = default(string), string title = default(string), decimal? termMonths = default(decimal?), string coverage = default(string), string termsUrl = default(string), decimal priceCents = default(decimal), decimal? refundCents = default(decimal?), string contractId = default(string), string itemTitle = default(string), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerProtectionPlansItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerProtectionPlansItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for ListBuyerProtectionPlansItem and cannot be null");
@@ -74,11 +69,16 @@ namespace net.crossly.buyer.Model
             }
             this.Title = title;
             this.PriceCents = priceCents;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerProtectionPlansItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             this.PurchaseId = purchaseId;
-            this.TermsUrl = termsUrl;
-            this.RefundCents = refundCents;
             this.TermMonths = termMonths;
             this.Coverage = coverage;
+            this.TermsUrl = termsUrl;
+            this.RefundCents = refundCents;
             this.ContractId = contractId;
             this.ItemTitle = itemTitle;
         }
@@ -90,10 +90,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets PurchaseId
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
+        [DataMember(Name = "purchaseId", EmitDefaultValue = true)]
+        public string PurchaseId { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -108,10 +108,16 @@ namespace net.crossly.buyer.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets PurchaseId
+        /// Gets or Sets TermMonths
         /// </summary>
-        [DataMember(Name = "purchaseId", EmitDefaultValue = true)]
-        public string PurchaseId { get; set; }
+        [DataMember(Name = "termMonths", EmitDefaultValue = true)]
+        public decimal? TermMonths { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Coverage
+        /// </summary>
+        [DataMember(Name = "coverage", EmitDefaultValue = true)]
+        public string Coverage { get; set; }
 
         /// <summary>
         /// Gets or Sets TermsUrl
@@ -132,18 +138,6 @@ namespace net.crossly.buyer.Model
         public decimal? RefundCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets TermMonths
-        /// </summary>
-        [DataMember(Name = "termMonths", EmitDefaultValue = true)]
-        public decimal? TermMonths { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Coverage
-        /// </summary>
-        [DataMember(Name = "coverage", EmitDefaultValue = true)]
-        public string Coverage { get; set; }
-
-        /// <summary>
         /// Gets or Sets ContractId
         /// </summary>
         [DataMember(Name = "contractId", EmitDefaultValue = true)]
@@ -156,6 +150,12 @@ namespace net.crossly.buyer.Model
         public string ItemTitle { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -164,17 +164,17 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerProtectionPlansItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
+            sb.Append("  TermMonths: ").Append(TermMonths).Append("\n");
+            sb.Append("  Coverage: ").Append(Coverage).Append("\n");
             sb.Append("  TermsUrl: ").Append(TermsUrl).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  RefundCents: ").Append(RefundCents).Append("\n");
-            sb.Append("  TermMonths: ").Append(TermMonths).Append("\n");
-            sb.Append("  Coverage: ").Append(Coverage).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,9 +216,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.PurchaseId == input.PurchaseId ||
+                    (this.PurchaseId != null &&
+                    this.PurchaseId.Equals(input.PurchaseId))
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -231,9 +231,14 @@ namespace net.crossly.buyer.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.PurchaseId == input.PurchaseId ||
-                    (this.PurchaseId != null &&
-                    this.PurchaseId.Equals(input.PurchaseId))
+                    this.TermMonths == input.TermMonths ||
+                    (this.TermMonths != null &&
+                    this.TermMonths.Equals(input.TermMonths))
+                ) && 
+                (
+                    this.Coverage == input.Coverage ||
+                    (this.Coverage != null &&
+                    this.Coverage.Equals(input.Coverage))
                 ) && 
                 (
                     this.TermsUrl == input.TermsUrl ||
@@ -250,16 +255,6 @@ namespace net.crossly.buyer.Model
                     this.RefundCents.Equals(input.RefundCents))
                 ) && 
                 (
-                    this.TermMonths == input.TermMonths ||
-                    (this.TermMonths != null &&
-                    this.TermMonths.Equals(input.TermMonths))
-                ) && 
-                (
-                    this.Coverage == input.Coverage ||
-                    (this.Coverage != null &&
-                    this.Coverage.Equals(input.Coverage))
-                ) && 
-                (
                     this.ContractId == input.ContractId ||
                     (this.ContractId != null &&
                     this.ContractId.Equals(input.ContractId))
@@ -268,6 +263,11 @@ namespace net.crossly.buyer.Model
                     this.ItemTitle == input.ItemTitle ||
                     (this.ItemTitle != null &&
                     this.ItemTitle.Equals(input.ItemTitle))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 );
         }
 
@@ -284,9 +284,9 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
+                if (this.PurchaseId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
                 }
                 if (this.Status != null)
                 {
@@ -296,9 +296,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.PurchaseId != null)
+                if (this.TermMonths != null)
                 {
-                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TermMonths.GetHashCode();
+                }
+                if (this.Coverage != null)
+                {
+                    hashCode = (hashCode * 59) + this.Coverage.GetHashCode();
                 }
                 if (this.TermsUrl != null)
                 {
@@ -309,14 +313,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.RefundCents.GetHashCode();
                 }
-                if (this.TermMonths != null)
-                {
-                    hashCode = (hashCode * 59) + this.TermMonths.GetHashCode();
-                }
-                if (this.Coverage != null)
-                {
-                    hashCode = (hashCode * 59) + this.Coverage.GetHashCode();
-                }
                 if (this.ContractId != null)
                 {
                     hashCode = (hashCode * 59) + this.ContractId.GetHashCode();
@@ -324,6 +320,10 @@ namespace net.crossly.buyer.Model
                 if (this.ItemTitle != null)
                 {
                     hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 return hashCode;
             }

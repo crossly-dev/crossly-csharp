@@ -38,16 +38,16 @@ namespace net.crossly.buyer.Model
         public enum NsEnum
         {
             /// <summary>
-            /// Enum StyleCode for value: style_code
-            /// </summary>
-            [EnumMember(Value = "style_code")]
-            StyleCode = 1,
-
-            /// <summary>
             /// Enum Gtin for value: gtin
             /// </summary>
             [EnumMember(Value = "gtin")]
-            Gtin = 2,
+            Gtin = 1,
+
+            /// <summary>
+            /// Enum StyleCode for value: style_code
+            /// </summary>
+            [EnumMember(Value = "style_code")]
+            StyleCode = 2,
 
             /// <summary>
             /// Enum LegoSet for value: lego_set
@@ -89,16 +89,16 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerScanResponseIdentifier" /> class.
         /// </summary>
-        /// <param name="value">value (required).</param>
         /// <param name="ns">ns (required).</param>
-        public CreateBuyerScanResponseIdentifier(string value = default(string), NsEnum ns = default(NsEnum))
+        /// <param name="value">value (required).</param>
+        public CreateBuyerScanResponseIdentifier(NsEnum ns = default(NsEnum), string value = default(string))
         {
+            this.Ns = ns;
             // to ensure "value" is required (not null)
             if (value == null) {
                 throw new ArgumentNullException("value is a required property for CreateBuyerScanResponseIdentifier and cannot be null");
             }
             this.Value = value;
-            this.Ns = ns;
         }
 
         /// <summary>
@@ -115,8 +115,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerScanResponseIdentifier {\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Ns: ").Append(Ns).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -153,13 +153,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Ns == input.Ns ||
+                    this.Ns.Equals(input.Ns)
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
-                ) && 
-                (
-                    this.Ns == input.Ns ||
-                    this.Ns.Equals(input.Ns)
                 );
         }
 
@@ -172,11 +172,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Ns.GetHashCode();
                 if (this.Value != null)
                 {
                     hashCode = (hashCode * 59) + this.Value.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ns.GetHashCode();
                 return hashCode;
             }
         }

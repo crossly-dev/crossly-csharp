@@ -41,8 +41,9 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="listingSlug">listingSlug (required).</param>
         /// <param name="quantity">quantity (default to 1).</param>
+        /// <param name="listingVariantId">The option (variants[].id) on a listing with options..</param>
         /// <param name="via">Where in Crossly World it was added, e.g. room:&lt;publicSlug&gt;..</param>
-        public CreateBuyerCartItemRequest(string listingSlug = default(string), int quantity = 1, string via = default(string))
+        public CreateBuyerCartItemRequest(string listingSlug = default(string), int quantity = 1, string listingVariantId = default(string), string via = default(string))
         {
             // to ensure "listingSlug" is required (not null)
             if (listingSlug == null) {
@@ -50,6 +51,7 @@ namespace net.crossly.buyer.Model
             }
             this.ListingSlug = listingSlug;
             this.Quantity = quantity;
+            this.ListingVariantId = listingVariantId;
             this.Via = via;
         }
 
@@ -64,6 +66,13 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// The option (variants[].id) on a listing with options.
+        /// </summary>
+        /// <value>The option (variants[].id) on a listing with options.</value>
+        [DataMember(Name = "listingVariantId", EmitDefaultValue = false)]
+        public string ListingVariantId { get; set; }
 
         /// <summary>
         /// Where in Crossly World it was added, e.g. room:&lt;publicSlug&gt;.
@@ -82,6 +91,7 @@ namespace net.crossly.buyer.Model
             sb.Append("class CreateBuyerCartItemRequest {\n");
             sb.Append("  ListingSlug: ").Append(ListingSlug).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  ListingVariantId: ").Append(ListingVariantId).Append("\n");
             sb.Append("  Via: ").Append(Via).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -128,6 +138,11 @@ namespace net.crossly.buyer.Model
                     this.Quantity.Equals(input.Quantity)
                 ) && 
                 (
+                    this.ListingVariantId == input.ListingVariantId ||
+                    (this.ListingVariantId != null &&
+                    this.ListingVariantId.Equals(input.ListingVariantId))
+                ) && 
+                (
                     this.Via == input.Via ||
                     (this.Via != null &&
                     this.Via.Equals(input.Via))
@@ -148,6 +163,10 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.ListingSlug.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                if (this.ListingVariantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingVariantId.GetHashCode();
+                }
                 if (this.Via != null)
                 {
                     hashCode = (hashCode * 59) + this.Via.GetHashCode();

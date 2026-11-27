@@ -44,76 +44,76 @@ namespace net.crossly.Model
         Brand = 2,
 
         /// <summary>
-        /// Enum Sku for value: sku
-        /// </summary>
-        [EnumMember(Value = "sku")]
-        Sku = 3,
-
-        /// <summary>
-        /// Enum Condition for value: condition
-        /// </summary>
-        [EnumMember(Value = "condition")]
-        Condition = 4,
-
-        /// <summary>
-        /// Enum Size for value: size
-        /// </summary>
-        [EnumMember(Value = "size")]
-        Size = 5,
-
-        /// <summary>
-        /// Enum Material for value: material
-        /// </summary>
-        [EnumMember(Value = "material")]
-        Material = 6,
-
-        /// <summary>
-        /// Enum Style for value: style
-        /// </summary>
-        [EnumMember(Value = "style")]
-        Style = 7,
-
-        /// <summary>
-        /// Enum Color for value: color
-        /// </summary>
-        [EnumMember(Value = "color")]
-        Color = 8,
-
-        /// <summary>
-        /// Enum Price for value: price
-        /// </summary>
-        [EnumMember(Value = "price")]
-        Price = 9,
-
-        /// <summary>
         /// Enum Category for value: category
         /// </summary>
         [EnumMember(Value = "category")]
-        Category = 10,
-
-        /// <summary>
-        /// Enum Year for value: year
-        /// </summary>
-        [EnumMember(Value = "year")]
-        Year = 11,
-
-        /// <summary>
-        /// Enum Model for value: model
-        /// </summary>
-        [EnumMember(Value = "model")]
-        Model = 12,
-
-        /// <summary>
-        /// Enum ItemName for value: item_name
-        /// </summary>
-        [EnumMember(Value = "item_name")]
-        ItemName = 13,
+        Category = 3,
 
         /// <summary>
         /// Enum Month for value: month
         /// </summary>
         [EnumMember(Value = "month")]
-        Month = 14
+        Month = 4,
+
+        /// <summary>
+        /// Enum Sku for value: sku
+        /// </summary>
+        [EnumMember(Value = "sku")]
+        Sku = 5,
+
+        /// <summary>
+        /// Enum Condition for value: condition
+        /// </summary>
+        [EnumMember(Value = "condition")]
+        Condition = 6,
+
+        /// <summary>
+        /// Enum Size for value: size
+        /// </summary>
+        [EnumMember(Value = "size")]
+        Size = 7,
+
+        /// <summary>
+        /// Enum Material for value: material
+        /// </summary>
+        [EnumMember(Value = "material")]
+        Material = 8,
+
+        /// <summary>
+        /// Enum Style for value: style
+        /// </summary>
+        [EnumMember(Value = "style")]
+        Style = 9,
+
+        /// <summary>
+        /// Enum Color for value: color
+        /// </summary>
+        [EnumMember(Value = "color")]
+        Color = 10,
+
+        /// <summary>
+        /// Enum Price for value: price
+        /// </summary>
+        [EnumMember(Value = "price")]
+        Price = 11,
+
+        /// <summary>
+        /// Enum Year for value: year
+        /// </summary>
+        [EnumMember(Value = "year")]
+        Year = 12,
+
+        /// <summary>
+        /// Enum Model for value: model
+        /// </summary>
+        [EnumMember(Value = "model")]
+        Model = 13,
+
+        /// <summary>
+        /// Enum ItemName for value: item_name
+        /// </summary>
+        [EnumMember(Value = "item_name")]
+        ItemName = 14
 
     }
 

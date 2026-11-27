@@ -41,19 +41,19 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="acquiredAt">acquiredAt (required).</param>
-        /// <param name="retiredAt">retiredAt.</param>
-        /// <param name="merchantId">merchantId (required).</param>
         /// <param name="cosmeticId">cosmeticId (required).</param>
+        /// <param name="merchantId">merchantId (required).</param>
+        /// <param name="retiredAt">retiredAt.</param>
         /// <param name="subjectId">subjectId (required).</param>
-        /// <param name="ledgerId">ledgerId.</param>
-        /// <param name="editionNumber">editionNumber.</param>
         /// <param name="acquiredVia">acquiredVia (required).</param>
         /// <param name="bound">bound (required).</param>
         /// <param name="paidCents">paidCents.</param>
+        /// <param name="ledgerId">ledgerId.</param>
+        /// <param name="editionNumber">editionNumber.</param>
         /// <param name="paymentRef">paymentRef.</param>
         /// <param name="retiredReason">retiredReason.</param>
         /// <param name="requestRef">requestRef.</param>
-        public CreateCosmCosmeticBuyCbxResponseDataOwnership(string id = default(string), DateTime acquiredAt = default(DateTime), DateTime? retiredAt = default(DateTime?), string merchantId = default(string), string cosmeticId = default(string), string subjectId = default(string), string ledgerId = default(string), decimal? editionNumber = default(decimal?), string acquiredVia = default(string), bool bound = default(bool), decimal? paidCents = default(decimal?), string paymentRef = default(string), string retiredReason = default(string), string requestRef = default(string))
+        public CreateCosmCosmeticBuyCbxResponseDataOwnership(string id = default(string), DateTime acquiredAt = default(DateTime), string cosmeticId = default(string), string merchantId = default(string), DateTime? retiredAt = default(DateTime?), string subjectId = default(string), string acquiredVia = default(string), bool bound = default(bool), decimal? paidCents = default(decimal?), string ledgerId = default(string), decimal? editionNumber = default(decimal?), string paymentRef = default(string), string retiredReason = default(string), string requestRef = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -61,16 +61,16 @@ namespace net.crossly.Model
             }
             this.Id = id;
             this.AcquiredAt = acquiredAt;
-            // to ensure "merchantId" is required (not null)
-            if (merchantId == null) {
-                throw new ArgumentNullException("merchantId is a required property for CreateCosmCosmeticBuyCbxResponseDataOwnership and cannot be null");
-            }
-            this.MerchantId = merchantId;
             // to ensure "cosmeticId" is required (not null)
             if (cosmeticId == null) {
                 throw new ArgumentNullException("cosmeticId is a required property for CreateCosmCosmeticBuyCbxResponseDataOwnership and cannot be null");
             }
             this.CosmeticId = cosmeticId;
+            // to ensure "merchantId" is required (not null)
+            if (merchantId == null) {
+                throw new ArgumentNullException("merchantId is a required property for CreateCosmCosmeticBuyCbxResponseDataOwnership and cannot be null");
+            }
+            this.MerchantId = merchantId;
             // to ensure "subjectId" is required (not null)
             if (subjectId == null) {
                 throw new ArgumentNullException("subjectId is a required property for CreateCosmCosmeticBuyCbxResponseDataOwnership and cannot be null");
@@ -83,9 +83,9 @@ namespace net.crossly.Model
             this.AcquiredVia = acquiredVia;
             this.Bound = bound;
             this.RetiredAt = retiredAt;
+            this.PaidCents = paidCents;
             this.LedgerId = ledgerId;
             this.EditionNumber = editionNumber;
-            this.PaidCents = paidCents;
             this.PaymentRef = paymentRef;
             this.RetiredReason = retiredReason;
             this.RequestRef = requestRef;
@@ -104,10 +104,10 @@ namespace net.crossly.Model
         public DateTime AcquiredAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets RetiredAt
+        /// Gets or Sets CosmeticId
         /// </summary>
-        [DataMember(Name = "retiredAt", EmitDefaultValue = true)]
-        public DateTime? RetiredAt { get; set; }
+        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
+        public string CosmeticId { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantId
@@ -116,28 +116,16 @@ namespace net.crossly.Model
         public string MerchantId { get; set; }
 
         /// <summary>
-        /// Gets or Sets CosmeticId
+        /// Gets or Sets RetiredAt
         /// </summary>
-        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
-        public string CosmeticId { get; set; }
+        [DataMember(Name = "retiredAt", EmitDefaultValue = true)]
+        public DateTime? RetiredAt { get; set; }
 
         /// <summary>
         /// Gets or Sets SubjectId
         /// </summary>
         [DataMember(Name = "subjectId", IsRequired = true, EmitDefaultValue = false)]
         public string SubjectId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LedgerId
-        /// </summary>
-        [DataMember(Name = "ledgerId", EmitDefaultValue = true)]
-        public string LedgerId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EditionNumber
-        /// </summary>
-        [DataMember(Name = "editionNumber", EmitDefaultValue = true)]
-        public decimal? EditionNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets AcquiredVia
@@ -156,6 +144,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "paidCents", EmitDefaultValue = true)]
         public decimal? PaidCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LedgerId
+        /// </summary>
+        [DataMember(Name = "ledgerId", EmitDefaultValue = true)]
+        public string LedgerId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EditionNumber
+        /// </summary>
+        [DataMember(Name = "editionNumber", EmitDefaultValue = true)]
+        public decimal? EditionNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentRef
@@ -185,15 +185,15 @@ namespace net.crossly.Model
             sb.Append("class CreateCosmCosmeticBuyCbxResponseDataOwnership {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AcquiredAt: ").Append(AcquiredAt).Append("\n");
-            sb.Append("  RetiredAt: ").Append(RetiredAt).Append("\n");
-            sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
+            sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
+            sb.Append("  RetiredAt: ").Append(RetiredAt).Append("\n");
             sb.Append("  SubjectId: ").Append(SubjectId).Append("\n");
-            sb.Append("  LedgerId: ").Append(LedgerId).Append("\n");
-            sb.Append("  EditionNumber: ").Append(EditionNumber).Append("\n");
             sb.Append("  AcquiredVia: ").Append(AcquiredVia).Append("\n");
             sb.Append("  Bound: ").Append(Bound).Append("\n");
             sb.Append("  PaidCents: ").Append(PaidCents).Append("\n");
+            sb.Append("  LedgerId: ").Append(LedgerId).Append("\n");
+            sb.Append("  EditionNumber: ").Append(EditionNumber).Append("\n");
             sb.Append("  PaymentRef: ").Append(PaymentRef).Append("\n");
             sb.Append("  RetiredReason: ").Append(RetiredReason).Append("\n");
             sb.Append("  RequestRef: ").Append(RequestRef).Append("\n");
@@ -243,9 +243,9 @@ namespace net.crossly.Model
                     this.AcquiredAt.Equals(input.AcquiredAt))
                 ) && 
                 (
-                    this.RetiredAt == input.RetiredAt ||
-                    (this.RetiredAt != null &&
-                    this.RetiredAt.Equals(input.RetiredAt))
+                    this.CosmeticId == input.CosmeticId ||
+                    (this.CosmeticId != null &&
+                    this.CosmeticId.Equals(input.CosmeticId))
                 ) && 
                 (
                     this.MerchantId == input.MerchantId ||
@@ -253,24 +253,14 @@ namespace net.crossly.Model
                     this.MerchantId.Equals(input.MerchantId))
                 ) && 
                 (
-                    this.CosmeticId == input.CosmeticId ||
-                    (this.CosmeticId != null &&
-                    this.CosmeticId.Equals(input.CosmeticId))
+                    this.RetiredAt == input.RetiredAt ||
+                    (this.RetiredAt != null &&
+                    this.RetiredAt.Equals(input.RetiredAt))
                 ) && 
                 (
                     this.SubjectId == input.SubjectId ||
                     (this.SubjectId != null &&
                     this.SubjectId.Equals(input.SubjectId))
-                ) && 
-                (
-                    this.LedgerId == input.LedgerId ||
-                    (this.LedgerId != null &&
-                    this.LedgerId.Equals(input.LedgerId))
-                ) && 
-                (
-                    this.EditionNumber == input.EditionNumber ||
-                    (this.EditionNumber != null &&
-                    this.EditionNumber.Equals(input.EditionNumber))
                 ) && 
                 (
                     this.AcquiredVia == input.AcquiredVia ||
@@ -285,6 +275,16 @@ namespace net.crossly.Model
                     this.PaidCents == input.PaidCents ||
                     (this.PaidCents != null &&
                     this.PaidCents.Equals(input.PaidCents))
+                ) && 
+                (
+                    this.LedgerId == input.LedgerId ||
+                    (this.LedgerId != null &&
+                    this.LedgerId.Equals(input.LedgerId))
+                ) && 
+                (
+                    this.EditionNumber == input.EditionNumber ||
+                    (this.EditionNumber != null &&
+                    this.EditionNumber.Equals(input.EditionNumber))
                 ) && 
                 (
                     this.PaymentRef == input.PaymentRef ||
@@ -320,29 +320,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.AcquiredAt.GetHashCode();
                 }
-                if (this.RetiredAt != null)
+                if (this.CosmeticId != null)
                 {
-                    hashCode = (hashCode * 59) + this.RetiredAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
                 }
                 if (this.MerchantId != null)
                 {
                     hashCode = (hashCode * 59) + this.MerchantId.GetHashCode();
                 }
-                if (this.CosmeticId != null)
+                if (this.RetiredAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RetiredAt.GetHashCode();
                 }
                 if (this.SubjectId != null)
                 {
                     hashCode = (hashCode * 59) + this.SubjectId.GetHashCode();
-                }
-                if (this.LedgerId != null)
-                {
-                    hashCode = (hashCode * 59) + this.LedgerId.GetHashCode();
-                }
-                if (this.EditionNumber != null)
-                {
-                    hashCode = (hashCode * 59) + this.EditionNumber.GetHashCode();
                 }
                 if (this.AcquiredVia != null)
                 {
@@ -352,6 +344,14 @@ namespace net.crossly.Model
                 if (this.PaidCents != null)
                 {
                     hashCode = (hashCode * 59) + this.PaidCents.GetHashCode();
+                }
+                if (this.LedgerId != null)
+                {
+                    hashCode = (hashCode * 59) + this.LedgerId.GetHashCode();
+                }
+                if (this.EditionNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.EditionNumber.GetHashCode();
                 }
                 if (this.PaymentRef != null)
                 {

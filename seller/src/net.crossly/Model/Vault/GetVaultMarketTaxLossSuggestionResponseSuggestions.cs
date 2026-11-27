@@ -44,22 +44,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 
@@ -77,16 +77,16 @@ namespace net.crossly.Model
         public enum TermEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2
 
         }
 

@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Platform = 1,
 
             /// <summary>
-            /// Enum Street for value: street
-            /// </summary>
-            [EnumMember(Value = "street")]
-            Street = 2,
-
-            /// <summary>
             /// Enum Plot for value: plot
             /// </summary>
             [EnumMember(Value = "plot")]
-            Plot = 3
+            Plot = 2,
+
+            /// <summary>
+            /// Enum Street for value: street
+            /// </summary>
+            [EnumMember(Value = "street")]
+            Street = 3
 
         }
 

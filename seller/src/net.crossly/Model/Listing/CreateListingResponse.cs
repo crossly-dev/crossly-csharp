@@ -40,10 +40,13 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateListingResponse" /> class.
         /// </summary>
         /// <param name="listing">listing (required).</param>
-        /// <param name="jobs">jobs (required).</param>
-        /// <param name="skipped">skipped (required).</param>
+        /// <param name="jobs">One dispatched crosspost job per accepted platform. (required).</param>
+        /// <param name="skipped">Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \&quot;Add a weight before listing\&quot;, ...). The listing itself was created. (required).</param>
         /// <param name="bulkJobId">bulkJobId.</param>
-        public CreateListingResponse(IdResponse listing = default(IdResponse), List<CreateListingResponseJobs> jobs = default(List<CreateListingResponseJobs>), List<CreateListingResponseSkipped> skipped = default(List<CreateListingResponseSkipped>), string bulkJobId = default(string))
+        /// <param name="clientReferenceId">clientReferenceId.</param>
+        /// <param name="existing">existing.</param>
+        /// <param name="warnings">Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored..</param>
+        public CreateListingResponse(IdResponse listing = default(IdResponse), List<CreateListingResponseJobs> jobs = default(List<CreateListingResponseJobs>), List<CreateListingResponseSkipped> skipped = default(List<CreateListingResponseSkipped>), string bulkJobId = default(string), string clientReferenceId = default(string), bool? existing = default(bool?), List<CreateListingResponseWarnings> warnings = default(List<CreateListingResponseWarnings>))
         {
             // to ensure "listing" is required (not null)
             if (listing == null) {
@@ -61,6 +64,9 @@ namespace net.crossly.Model
             }
             this.Skipped = skipped;
             this.BulkJobId = bulkJobId;
+            this.ClientReferenceId = clientReferenceId;
+            this.Existing = existing;
+            this.Warnings = warnings;
         }
 
         /// <summary>
@@ -70,14 +76,16 @@ namespace net.crossly.Model
         public IdResponse Listing { get; set; }
 
         /// <summary>
-        /// Gets or Sets Jobs
+        /// One dispatched crosspost job per accepted platform.
         /// </summary>
+        /// <value>One dispatched crosspost job per accepted platform.</value>
         [DataMember(Name = "jobs", IsRequired = true, EmitDefaultValue = false)]
         public List<CreateListingResponseJobs> Jobs { get; set; }
 
         /// <summary>
-        /// Gets or Sets Skipped
+        /// Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \&quot;Add a weight before listing\&quot;, ...). The listing itself was created.
         /// </summary>
+        /// <value>Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \&quot;Add a weight before listing\&quot;, ...). The listing itself was created.</value>
         [DataMember(Name = "skipped", IsRequired = true, EmitDefaultValue = false)]
         public List<CreateListingResponseSkipped> Skipped { get; set; }
 
@@ -86,6 +94,25 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bulkJobId", EmitDefaultValue = true)]
         public string BulkJobId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientReferenceId
+        /// </summary>
+        [DataMember(Name = "clientReferenceId", EmitDefaultValue = true)]
+        public string ClientReferenceId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Existing
+        /// </summary>
+        [DataMember(Name = "existing", EmitDefaultValue = true)]
+        public bool? Existing { get; set; }
+
+        /// <summary>
+        /// Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.
+        /// </summary>
+        /// <value>Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.</value>
+        [DataMember(Name = "warnings", EmitDefaultValue = true)]
+        public List<CreateListingResponseWarnings> Warnings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,6 +126,9 @@ namespace net.crossly.Model
             sb.Append("  Jobs: ").Append(Jobs).Append("\n");
             sb.Append("  Skipped: ").Append(Skipped).Append("\n");
             sb.Append("  BulkJobId: ").Append(BulkJobId).Append("\n");
+            sb.Append("  ClientReferenceId: ").Append(ClientReferenceId).Append("\n");
+            sb.Append("  Existing: ").Append(Existing).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +185,22 @@ namespace net.crossly.Model
                     this.BulkJobId == input.BulkJobId ||
                     (this.BulkJobId != null &&
                     this.BulkJobId.Equals(input.BulkJobId))
+                ) && 
+                (
+                    this.ClientReferenceId == input.ClientReferenceId ||
+                    (this.ClientReferenceId != null &&
+                    this.ClientReferenceId.Equals(input.ClientReferenceId))
+                ) && 
+                (
+                    this.Existing == input.Existing ||
+                    (this.Existing != null &&
+                    this.Existing.Equals(input.Existing))
+                ) && 
+                (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
                 );
         }
 
@@ -182,6 +228,18 @@ namespace net.crossly.Model
                 if (this.BulkJobId != null)
                 {
                     hashCode = (hashCode * 59) + this.BulkJobId.GetHashCode();
+                }
+                if (this.ClientReferenceId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientReferenceId.GetHashCode();
+                }
+                if (this.Existing != null)
+                {
+                    hashCode = (hashCode * 59) + this.Existing.GetHashCode();
+                }
+                if (this.Warnings != null)
+                {
+                    hashCode = (hashCode * 59) + this.Warnings.GetHashCode();
                 }
                 return hashCode;
             }

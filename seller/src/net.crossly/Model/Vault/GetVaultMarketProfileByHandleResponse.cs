@@ -51,7 +51,7 @@ namespace net.crossly.Model
         /// <param name="displayName">displayName (required).</param>
         /// <param name="avatarUrl">avatarUrl.</param>
         /// <param name="profileUrl">profileUrl (required).</param>
-        public GetVaultMarketProfileByHandleResponse(string handle = default(string), bool moved = default(bool), string publicSince = default(string), decimal markets = default(decimal), List<GetVaultMarketProfileByHandleResponseOneOfHoldings> holdings = default(List<GetVaultMarketProfileByHandleResponseOneOfHoldings>), decimal followers = default(decimal), bool following = default(bool), bool isMe = default(bool), List<ListVaultMarketFeedItem> recentBuys = default(List<ListVaultMarketFeedItem>), string displayName = default(string), Object avatarUrl = default(Object), Object profileUrl = default(Object))
+        public GetVaultMarketProfileByHandleResponse(string handle = default(string), bool moved = default(bool), string publicSince = default(string), decimal markets = default(decimal), List<GetVaultMarketProfileByHandleResponseOneOfHoldings> holdings = default(List<GetVaultMarketProfileByHandleResponseOneOfHoldings>), decimal followers = default(decimal), bool following = default(bool), bool isMe = default(bool), List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> recentBuys = default(List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys>), string displayName = default(string), Object avatarUrl = default(Object), Object profileUrl = default(Object))
         {
             // to ensure "handle" is required (not null)
             if (handle == null) {
@@ -139,7 +139,7 @@ namespace net.crossly.Model
         /// Gets or Sets RecentBuys
         /// </summary>
         [DataMember(Name = "recentBuys", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListVaultMarketFeedItem> RecentBuys { get; set; }
+        public List<GetVaultMarketProfileByHandleResponseOneOfRecentBuys> RecentBuys { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayName

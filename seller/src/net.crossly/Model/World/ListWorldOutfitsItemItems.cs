@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Receipt = 1,
 
             /// <summary>
-            /// Enum Cosmetic for value: cosmetic
-            /// </summary>
-            [EnumMember(Value = "cosmetic")]
-            Cosmetic = 2,
-
-            /// <summary>
             /// Enum Stock for value: stock
             /// </summary>
             [EnumMember(Value = "stock")]
-            Stock = 3
+            Stock = 2,
+
+            /// <summary>
+            /// Enum Cosmetic for value: cosmetic
+            /// </summary>
+            [EnumMember(Value = "cosmetic")]
+            Cosmetic = 3
 
         }
 

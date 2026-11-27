@@ -71,12 +71,12 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCartQuoteResponseData" /> class.
         /// </summary>
-        /// <param name="currency">currency (required).</param>
         /// <param name="kind">kind (required).</param>
-        /// <param name="taxCents">taxCents (required).</param>
-        /// <param name="shippingCents">shippingCents (required).</param>
-        /// <param name="totalCents">totalCents (required).</param>
         /// <param name="itemsTotalCents">itemsTotalCents (required).</param>
+        /// <param name="shippingCents">shippingCents (required).</param>
+        /// <param name="taxCents">taxCents (required).</param>
+        /// <param name="totalCents">totalCents (required).</param>
+        /// <param name="currency">currency (required).</param>
         /// <param name="pickupCartItemIds">Lines being collected in person, so a summary can name what ships free. (required).</param>
         /// <param name="taxComplete">False means there is no saved delivery address, so &#x60;taxCents&#x60; is a floor rather than a final figure — not that tax is zero. (required).</param>
         /// <param name="dutiesCents">Import duties + taxes + fees for parcels crossing a border, charged now when dutiesStatus is &#39;included&#39;..</param>
@@ -85,22 +85,22 @@ namespace net.crossly.buyer.Model
         /// <param name="shippingOptions">Per seller user id: every shipping service the buyer could pick (Standard, Expedited, an international service), priced as it would be charged. Optional so an older inner checkout still parses..</param>
         /// <param name="shippingServiceBySeller">Per seller user id: the service this quote charged..</param>
         /// <param name="shippingDestinationCountry">shippingDestinationCountry.</param>
-        public CreateBuyerCartQuoteResponseData(string currency = default(string), string kind = default(string), decimal taxCents = default(decimal), decimal shippingCents = default(decimal), decimal totalCents = default(decimal), decimal itemsTotalCents = default(decimal), List<string> pickupCartItemIds = default(List<string>), bool taxComplete = default(bool), decimal? dutiesCents = default(decimal?), DutiesStatusEnum? dutiesStatus = default(DutiesStatusEnum?), string dutiesNotice = default(string), Dictionary<string, Object> shippingOptions = default(Dictionary<string, Object>), Dictionary<string, Object> shippingServiceBySeller = default(Dictionary<string, Object>), string shippingDestinationCountry = default(string))
+        public CreateBuyerCartQuoteResponseData(string kind = default(string), decimal itemsTotalCents = default(decimal), decimal shippingCents = default(decimal), decimal taxCents = default(decimal), decimal totalCents = default(decimal), string currency = default(string), List<string> pickupCartItemIds = default(List<string>), bool taxComplete = default(bool), decimal? dutiesCents = default(decimal?), DutiesStatusEnum? dutiesStatus = default(DutiesStatusEnum?), string dutiesNotice = default(string), Dictionary<string, Object> shippingOptions = default(Dictionary<string, Object>), Dictionary<string, Object> shippingServiceBySeller = default(Dictionary<string, Object>), string shippingDestinationCountry = default(string))
         {
-            // to ensure "currency" is required (not null)
-            if (currency == null) {
-                throw new ArgumentNullException("currency is a required property for CreateBuyerCartQuoteResponseData and cannot be null");
-            }
-            this.Currency = currency;
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for CreateBuyerCartQuoteResponseData and cannot be null");
             }
             this.Kind = kind;
-            this.TaxCents = taxCents;
-            this.ShippingCents = shippingCents;
-            this.TotalCents = totalCents;
             this.ItemsTotalCents = itemsTotalCents;
+            this.ShippingCents = shippingCents;
+            this.TaxCents = taxCents;
+            this.TotalCents = totalCents;
+            // to ensure "currency" is required (not null)
+            if (currency == null) {
+                throw new ArgumentNullException("currency is a required property for CreateBuyerCartQuoteResponseData and cannot be null");
+            }
+            this.Currency = currency;
             // to ensure "pickupCartItemIds" is required (not null)
             if (pickupCartItemIds == null) {
                 throw new ArgumentNullException("pickupCartItemIds is a required property for CreateBuyerCartQuoteResponseData and cannot be null");
@@ -116,22 +116,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = false)]
-        public string Currency { get; set; }
-
-        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxCents
+        /// Gets or Sets ItemsTotalCents
         /// </summary>
-        [DataMember(Name = "taxCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal TaxCents { get; set; }
+        [DataMember(Name = "itemsTotalCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ItemsTotalCents { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingCents
@@ -140,16 +134,22 @@ namespace net.crossly.buyer.Model
         public decimal ShippingCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets TaxCents
+        /// </summary>
+        [DataMember(Name = "taxCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal TaxCents { get; set; }
+
+        /// <summary>
         /// Gets or Sets TotalCents
         /// </summary>
         [DataMember(Name = "totalCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal TotalCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets ItemsTotalCents
+        /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name = "itemsTotalCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal ItemsTotalCents { get; set; }
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = false)]
+        public string Currency { get; set; }
 
         /// <summary>
         /// Lines being collected in person, so a summary can name what ships free.
@@ -207,12 +207,12 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerCartQuoteResponseData {\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  TaxCents: ").Append(TaxCents).Append("\n");
-            sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
-            sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
             sb.Append("  ItemsTotalCents: ").Append(ItemsTotalCents).Append("\n");
+            sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
+            sb.Append("  TaxCents: ").Append(TaxCents).Append("\n");
+            sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  PickupCartItemIds: ").Append(PickupCartItemIds).Append("\n");
             sb.Append("  TaxComplete: ").Append(TaxComplete).Append("\n");
             sb.Append("  DutiesCents: ").Append(DutiesCents).Append("\n");
@@ -257,30 +257,30 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
-                ) && 
-                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
                 ) && 
                 (
-                    this.TaxCents == input.TaxCents ||
-                    this.TaxCents.Equals(input.TaxCents)
+                    this.ItemsTotalCents == input.ItemsTotalCents ||
+                    this.ItemsTotalCents.Equals(input.ItemsTotalCents)
                 ) && 
                 (
                     this.ShippingCents == input.ShippingCents ||
                     this.ShippingCents.Equals(input.ShippingCents)
                 ) && 
                 (
+                    this.TaxCents == input.TaxCents ||
+                    this.TaxCents.Equals(input.TaxCents)
+                ) && 
+                (
                     this.TotalCents == input.TotalCents ||
                     this.TotalCents.Equals(input.TotalCents)
                 ) && 
                 (
-                    this.ItemsTotalCents == input.ItemsTotalCents ||
-                    this.ItemsTotalCents.Equals(input.ItemsTotalCents)
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 ) && 
                 (
                     this.PickupCartItemIds == input.PickupCartItemIds ||
@@ -334,18 +334,18 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
-                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TaxCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemsTotalCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.TaxCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
                 if (this.PickupCartItemIds != null)
                 {
                     hashCode = (hashCode * 59) + this.PickupCartItemIds.GetHashCode();

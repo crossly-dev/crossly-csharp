@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum StateEnum
         {
             /// <summary>
-            /// Enum Awaiting for value: awaiting
+            /// Enum Declined for value: declined
             /// </summary>
-            [EnumMember(Value = "awaiting")]
-            Awaiting = 1,
+            [EnumMember(Value = "declined")]
+            Declined = 1,
 
             /// <summary>
             /// Enum Submitted for value: submitted
@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Submitted = 2,
 
             /// <summary>
-            /// Enum Declined for value: declined
-            /// </summary>
-            [EnumMember(Value = "declined")]
-            Declined = 3,
-
-            /// <summary>
             /// Enum NotRequested for value: not_requested
             /// </summary>
             [EnumMember(Value = "not_requested")]
-            NotRequested = 4,
+            NotRequested = 3,
+
+            /// <summary>
+            /// Enum Awaiting for value: awaiting
+            /// </summary>
+            [EnumMember(Value = "awaiting")]
+            Awaiting = 4,
 
             /// <summary>
             /// Enum WindowClosed for value: window_closed

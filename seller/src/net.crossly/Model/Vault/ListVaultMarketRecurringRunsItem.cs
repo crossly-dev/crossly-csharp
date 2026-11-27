@@ -44,14 +44,14 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="reason">reason.</param>
         /// <param name="orderId">orderId.</param>
+        /// <param name="reason">reason.</param>
         /// <param name="markCents">markCents.</param>
         /// <param name="limitCents">limitCents.</param>
         /// <param name="filledCents">filledCents.</param>
         /// <param name="scheduleId">scheduleId (required).</param>
         /// <param name="usedBackup">usedBackup (required).</param>
-        public ListVaultMarketRecurringRunsItem(string dueAt = default(string), string createdAt = default(string), string id = default(string), string userId = default(string), string status = default(string), string reason = default(string), string orderId = default(string), decimal? markCents = default(decimal?), decimal? limitCents = default(decimal?), decimal? filledCents = default(decimal?), string scheduleId = default(string), bool usedBackup = default(bool))
+        public ListVaultMarketRecurringRunsItem(string dueAt = default(string), string createdAt = default(string), string id = default(string), string userId = default(string), string status = default(string), string orderId = default(string), string reason = default(string), decimal? markCents = default(decimal?), decimal? limitCents = default(decimal?), decimal? filledCents = default(decimal?), string scheduleId = default(string), bool usedBackup = default(bool))
         {
             // to ensure "dueAt" is required (not null)
             if (dueAt == null) {
@@ -84,8 +84,8 @@ namespace net.crossly.Model
             }
             this.ScheduleId = scheduleId;
             this.UsedBackup = usedBackup;
-            this.Reason = reason;
             this.OrderId = orderId;
+            this.Reason = reason;
             this.MarkCents = markCents;
             this.LimitCents = limitCents;
             this.FilledCents = filledCents;
@@ -122,16 +122,16 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Reason
-        /// </summary>
-        [DataMember(Name = "reason", EmitDefaultValue = true)]
-        public string Reason { get; set; }
-
-        /// <summary>
         /// Gets or Sets OrderId
         /// </summary>
         [DataMember(Name = "orderId", EmitDefaultValue = true)]
         public string OrderId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Reason
+        /// </summary>
+        [DataMember(Name = "reason", EmitDefaultValue = true)]
+        public string Reason { get; set; }
 
         /// <summary>
         /// Gets or Sets MarkCents
@@ -176,8 +176,8 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  MarkCents: ").Append(MarkCents).Append("\n");
             sb.Append("  LimitCents: ").Append(LimitCents).Append("\n");
             sb.Append("  FilledCents: ").Append(FilledCents).Append("\n");
@@ -244,14 +244,14 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.Reason == input.Reason ||
-                    (this.Reason != null &&
-                    this.Reason.Equals(input.Reason))
-                ) && 
-                (
                     this.OrderId == input.OrderId ||
                     (this.OrderId != null &&
                     this.OrderId.Equals(input.OrderId))
+                ) && 
+                (
+                    this.Reason == input.Reason ||
+                    (this.Reason != null &&
+                    this.Reason.Equals(input.Reason))
                 ) && 
                 (
                     this.MarkCents == input.MarkCents ||
@@ -308,13 +308,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.Reason != null)
-                {
-                    hashCode = (hashCode * 59) + this.Reason.GetHashCode();
-                }
                 if (this.OrderId != null)
                 {
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
+                if (this.Reason != null)
+                {
+                    hashCode = (hashCode * 59) + this.Reason.GetHashCode();
                 }
                 if (this.MarkCents != null)
                 {

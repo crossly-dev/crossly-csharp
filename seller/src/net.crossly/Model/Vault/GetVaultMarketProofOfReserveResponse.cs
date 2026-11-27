@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="history">history (required).</param>
         /// <param name="anchoring">anchoring (required).</param>
         /// <param name="method">method (required).</param>
-        public GetVaultMarketProofOfReserveResponse(GetVaultMarketProofOfReserveResponseLatest latest = default(GetVaultMarketProofOfReserveResponseLatest), List<GetVaultMarketProofOfReserveByDayResponse> history = default(List<GetVaultMarketProofOfReserveByDayResponse>), GetVaultMarketProofOfReserveResponseAnchoring anchoring = default(GetVaultMarketProofOfReserveResponseAnchoring), GetVaultMarketProofOfReserveResponseMethod method = default(GetVaultMarketProofOfReserveResponseMethod))
+        public GetVaultMarketProofOfReserveResponse(GetVaultMarketProofOfReserveResponseLatest latest = default(GetVaultMarketProofOfReserveResponseLatest), List<GetVaultMarketProofOfReserveResponseHistory> history = default(List<GetVaultMarketProofOfReserveResponseHistory>), GetVaultMarketProofOfReserveResponseAnchoring anchoring = default(GetVaultMarketProofOfReserveResponseAnchoring), GetVaultMarketProofOfReserveResponseMethod method = default(GetVaultMarketProofOfReserveResponseMethod))
         {
             // to ensure "history" is required (not null)
             if (history == null) {
@@ -73,7 +73,7 @@ namespace net.crossly.Model
         /// Gets or Sets History
         /// </summary>
         [DataMember(Name = "history", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetVaultMarketProofOfReserveByDayResponse> History { get; set; }
+        public List<GetVaultMarketProofOfReserveResponseHistory> History { get; set; }
 
         /// <summary>
         /// Gets or Sets Anchoring

@@ -39,73 +39,43 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerPurchaseLiveMomentResponseData" /> class.
         /// </summary>
-        /// <param name="status">status (required).</param>
-        /// <param name="title">title (required).</param>
-        /// <param name="soldAt">soldAt (required).</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
-        /// <param name="replayUrl">replayUrl.</param>
         /// <param name="streamId">streamId (required).</param>
+        /// <param name="title">title (required).</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="replayUrl">replayUrl.</param>
         /// <param name="offsetSeconds">offsetSeconds (required).</param>
-        public GetBuyerPurchaseLiveMomentResponseData(string status = default(string), string title = default(string), string soldAt = default(string), string sellerUserId = default(string), string replayUrl = default(string), string streamId = default(string), decimal offsetSeconds = default(decimal))
+        /// <param name="soldAt">soldAt (required).</param>
+        public GetBuyerPurchaseLiveMomentResponseData(string streamId = default(string), string title = default(string), string sellerUserId = default(string), string status = default(string), string replayUrl = default(string), decimal offsetSeconds = default(decimal), string soldAt = default(string))
         {
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
-            }
-            this.Title = title;
-            // to ensure "soldAt" is required (not null)
-            if (soldAt == null) {
-                throw new ArgumentNullException("soldAt is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
-            }
-            this.SoldAt = soldAt;
-            // to ensure "sellerUserId" is required (not null)
-            if (sellerUserId == null) {
-                throw new ArgumentNullException("sellerUserId is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
-            }
-            this.SellerUserId = sellerUserId;
             // to ensure "streamId" is required (not null)
             if (streamId == null) {
                 throw new ArgumentNullException("streamId is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
             }
             this.StreamId = streamId;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
+            }
+            this.Title = title;
+            // to ensure "sellerUserId" is required (not null)
+            if (sellerUserId == null) {
+                throw new ArgumentNullException("sellerUserId is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
+            }
+            this.SellerUserId = sellerUserId;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
+            }
+            this.Status = status;
             this.OffsetSeconds = offsetSeconds;
+            // to ensure "soldAt" is required (not null)
+            if (soldAt == null) {
+                throw new ArgumentNullException("soldAt is a required property for GetBuyerPurchaseLiveMomentResponseData and cannot be null");
+            }
+            this.SoldAt = soldAt;
             this.ReplayUrl = replayUrl;
         }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SoldAt
-        /// </summary>
-        [DataMember(Name = "soldAt", IsRequired = true, EmitDefaultValue = false)]
-        public string SoldAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReplayUrl
-        /// </summary>
-        [DataMember(Name = "replayUrl", EmitDefaultValue = true)]
-        public string ReplayUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets StreamId
@@ -114,10 +84,40 @@ namespace net.crossly.buyer.Model
         public string StreamId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReplayUrl
+        /// </summary>
+        [DataMember(Name = "replayUrl", EmitDefaultValue = true)]
+        public string ReplayUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets OffsetSeconds
         /// </summary>
         [DataMember(Name = "offsetSeconds", IsRequired = true, EmitDefaultValue = false)]
         public decimal OffsetSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SoldAt
+        /// </summary>
+        [DataMember(Name = "soldAt", IsRequired = true, EmitDefaultValue = false)]
+        public string SoldAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,13 +127,13 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPurchaseLiveMomentResponseData {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
-            sb.Append("  ReplayUrl: ").Append(ReplayUrl).Append("\n");
             sb.Append("  StreamId: ").Append(StreamId).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  ReplayUrl: ").Append(ReplayUrl).Append("\n");
             sb.Append("  OffsetSeconds: ").Append(OffsetSeconds).Append("\n");
+            sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,9 +170,9 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.StreamId == input.StreamId ||
+                    (this.StreamId != null &&
+                    this.StreamId.Equals(input.StreamId))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -180,14 +180,14 @@ namespace net.crossly.buyer.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.SoldAt == input.SoldAt ||
-                    (this.SoldAt != null &&
-                    this.SoldAt.Equals(input.SoldAt))
-                ) && 
-                (
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.ReplayUrl == input.ReplayUrl ||
@@ -195,13 +195,13 @@ namespace net.crossly.buyer.Model
                     this.ReplayUrl.Equals(input.ReplayUrl))
                 ) && 
                 (
-                    this.StreamId == input.StreamId ||
-                    (this.StreamId != null &&
-                    this.StreamId.Equals(input.StreamId))
-                ) && 
-                (
                     this.OffsetSeconds == input.OffsetSeconds ||
                     this.OffsetSeconds.Equals(input.OffsetSeconds)
+                ) && 
+                (
+                    this.SoldAt == input.SoldAt ||
+                    (this.SoldAt != null &&
+                    this.SoldAt.Equals(input.SoldAt))
                 );
         }
 
@@ -214,31 +214,31 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Status != null)
+                if (this.StreamId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.StreamId.GetHashCode();
                 }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.SoldAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.SoldAt.GetHashCode();
-                }
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.ReplayUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ReplayUrl.GetHashCode();
                 }
-                if (this.StreamId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StreamId.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.OffsetSeconds.GetHashCode();
+                if (this.SoldAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.SoldAt.GetHashCode();
+                }
                 return hashCode;
             }
         }

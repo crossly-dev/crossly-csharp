@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ReleaseDecisionEnum
         {
             /// <summary>
-            /// Enum Review for value: review
-            /// </summary>
-            [EnumMember(Value = "review")]
-            Review = 1,
-
-            /// <summary>
             /// Enum Release for value: release
             /// </summary>
             [EnumMember(Value = "release")]
-            Release = 2,
+            Release = 1,
+
+            /// <summary>
+            /// Enum Review for value: review
+            /// </summary>
+            [EnumMember(Value = "review")]
+            Review = 2,
 
             /// <summary>
             /// Enum Refuse for value: refuse

@@ -40,50 +40,50 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerGiftSentItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="url">url (required).</param>
-        /// <param name="openedAt">openedAt.</param>
-        /// <param name="revealedAt">revealedAt.</param>
-        /// <param name="recipientEmail">recipientEmail (required).</param>
         /// <param name="recipientName">recipientName (required).</param>
+        /// <param name="recipientEmail">recipientEmail (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="teaserSentAt">teaserSentAt.</param>
+        /// <param name="revealedAt">revealedAt.</param>
+        /// <param name="openedAt">openedAt.</param>
         /// <param name="thanksMessage">thanksMessage.</param>
-        public ListBuyerGiftSentItem(string id = default(string), string createdAt = default(string), string status = default(string), string url = default(string), string openedAt = default(string), string revealedAt = default(string), string recipientEmail = default(string), string recipientName = default(string), string teaserSentAt = default(string), string thanksMessage = default(string))
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="url">url (required).</param>
+        public ListBuyerGiftSentItem(string id = default(string), string recipientName = default(string), string recipientEmail = default(string), string status = default(string), string teaserSentAt = default(string), string revealedAt = default(string), string openedAt = default(string), string thanksMessage = default(string), string createdAt = default(string), string url = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerGiftSentItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerGiftSentItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerGiftSentItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "url" is required (not null)
-            if (url == null) {
-                throw new ArgumentNullException("url is a required property for ListBuyerGiftSentItem and cannot be null");
-            }
-            this.Url = url;
-            // to ensure "recipientEmail" is required (not null)
-            if (recipientEmail == null) {
-                throw new ArgumentNullException("recipientEmail is a required property for ListBuyerGiftSentItem and cannot be null");
-            }
-            this.RecipientEmail = recipientEmail;
             // to ensure "recipientName" is required (not null)
             if (recipientName == null) {
                 throw new ArgumentNullException("recipientName is a required property for ListBuyerGiftSentItem and cannot be null");
             }
             this.RecipientName = recipientName;
-            this.OpenedAt = openedAt;
-            this.RevealedAt = revealedAt;
+            // to ensure "recipientEmail" is required (not null)
+            if (recipientEmail == null) {
+                throw new ArgumentNullException("recipientEmail is a required property for ListBuyerGiftSentItem and cannot be null");
+            }
+            this.RecipientEmail = recipientEmail;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerGiftSentItem and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerGiftSentItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "url" is required (not null)
+            if (url == null) {
+                throw new ArgumentNullException("url is a required property for ListBuyerGiftSentItem and cannot be null");
+            }
+            this.Url = url;
             this.TeaserSentAt = teaserSentAt;
+            this.RevealedAt = revealedAt;
+            this.OpenedAt = openedAt;
             this.ThanksMessage = thanksMessage;
         }
 
@@ -94,34 +94,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets RecipientName
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Url
-        /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OpenedAt
-        /// </summary>
-        [DataMember(Name = "openedAt", EmitDefaultValue = true)]
-        public string OpenedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RevealedAt
-        /// </summary>
-        [DataMember(Name = "revealedAt", EmitDefaultValue = true)]
-        public string RevealedAt { get; set; }
+        [DataMember(Name = "recipientName", IsRequired = true, EmitDefaultValue = false)]
+        public string RecipientName { get; set; }
 
         /// <summary>
         /// Gets or Sets RecipientEmail
@@ -130,10 +106,10 @@ namespace net.crossly.buyer.Model
         public string RecipientEmail { get; set; }
 
         /// <summary>
-        /// Gets or Sets RecipientName
+        /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "recipientName", IsRequired = true, EmitDefaultValue = false)]
-        public string RecipientName { get; set; }
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets TeaserSentAt
@@ -142,10 +118,34 @@ namespace net.crossly.buyer.Model
         public string TeaserSentAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets RevealedAt
+        /// </summary>
+        [DataMember(Name = "revealedAt", EmitDefaultValue = true)]
+        public string RevealedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OpenedAt
+        /// </summary>
+        [DataMember(Name = "openedAt", EmitDefaultValue = true)]
+        public string OpenedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets ThanksMessage
         /// </summary>
         [DataMember(Name = "thanksMessage", EmitDefaultValue = true)]
         public string ThanksMessage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Url
+        /// </summary>
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
+        public string Url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -156,15 +156,15 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerGiftSentItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
-            sb.Append("  RevealedAt: ").Append(RevealedAt).Append("\n");
-            sb.Append("  RecipientEmail: ").Append(RecipientEmail).Append("\n");
             sb.Append("  RecipientName: ").Append(RecipientName).Append("\n");
+            sb.Append("  RecipientEmail: ").Append(RecipientEmail).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  TeaserSentAt: ").Append(TeaserSentAt).Append("\n");
+            sb.Append("  RevealedAt: ").Append(RevealedAt).Append("\n");
+            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
             sb.Append("  ThanksMessage: ").Append(ThanksMessage).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -206,29 +206,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
-                    this.OpenedAt == input.OpenedAt ||
-                    (this.OpenedAt != null &&
-                    this.OpenedAt.Equals(input.OpenedAt))
-                ) && 
-                (
-                    this.RevealedAt == input.RevealedAt ||
-                    (this.RevealedAt != null &&
-                    this.RevealedAt.Equals(input.RevealedAt))
+                    this.RecipientName == input.RecipientName ||
+                    (this.RecipientName != null &&
+                    this.RecipientName.Equals(input.RecipientName))
                 ) && 
                 (
                     this.RecipientEmail == input.RecipientEmail ||
@@ -236,9 +216,9 @@ namespace net.crossly.buyer.Model
                     this.RecipientEmail.Equals(input.RecipientEmail))
                 ) && 
                 (
-                    this.RecipientName == input.RecipientName ||
-                    (this.RecipientName != null &&
-                    this.RecipientName.Equals(input.RecipientName))
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.TeaserSentAt == input.TeaserSentAt ||
@@ -246,9 +226,29 @@ namespace net.crossly.buyer.Model
                     this.TeaserSentAt.Equals(input.TeaserSentAt))
                 ) && 
                 (
+                    this.RevealedAt == input.RevealedAt ||
+                    (this.RevealedAt != null &&
+                    this.RevealedAt.Equals(input.RevealedAt))
+                ) && 
+                (
+                    this.OpenedAt == input.OpenedAt ||
+                    (this.OpenedAt != null &&
+                    this.OpenedAt.Equals(input.OpenedAt))
+                ) && 
+                (
                     this.ThanksMessage == input.ThanksMessage ||
                     (this.ThanksMessage != null &&
                     this.ThanksMessage.Equals(input.ThanksMessage))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.Url == input.Url ||
+                    (this.Url != null &&
+                    this.Url.Equals(input.Url))
                 );
         }
 
@@ -265,41 +265,41 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
+                if (this.RecipientName != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Url != null)
-                {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
-                }
-                if (this.OpenedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
-                }
-                if (this.RevealedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RevealedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RecipientName.GetHashCode();
                 }
                 if (this.RecipientEmail != null)
                 {
                     hashCode = (hashCode * 59) + this.RecipientEmail.GetHashCode();
                 }
-                if (this.RecipientName != null)
+                if (this.Status != null)
                 {
-                    hashCode = (hashCode * 59) + this.RecipientName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.TeaserSentAt != null)
                 {
                     hashCode = (hashCode * 59) + this.TeaserSentAt.GetHashCode();
                 }
+                if (this.RevealedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.RevealedAt.GetHashCode();
+                }
+                if (this.OpenedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
+                }
                 if (this.ThanksMessage != null)
                 {
                     hashCode = (hashCode * 59) + this.ThanksMessage.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.Url != null)
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
                 return hashCode;
             }

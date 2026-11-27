@@ -42,17 +42,13 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="count">count (required).</param>
         /// <param name="revenue">revenue (required).</param>
-        public GetAnalyticDashboardResponseSalesByPlatform(string platform = default(string), string count = default(string), decimal revenue = default(decimal))
+        public GetAnalyticDashboardResponseSalesByPlatform(string platform = default(string), decimal count = default(decimal), decimal revenue = default(decimal))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for GetAnalyticDashboardResponseSalesByPlatform and cannot be null");
             }
             this.Platform = platform;
-            // to ensure "count" is required (not null)
-            if (count == null) {
-                throw new ArgumentNullException("count is a required property for GetAnalyticDashboardResponseSalesByPlatform and cannot be null");
-            }
             this.Count = count;
             this.Revenue = revenue;
         }
@@ -67,7 +63,7 @@ namespace net.crossly.Model
         /// Gets or Sets Count
         /// </summary>
         [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = false)]
-        public string Count { get; set; }
+        public decimal Count { get; set; }
 
         /// <summary>
         /// Gets or Sets Revenue
@@ -128,8 +124,7 @@ namespace net.crossly.Model
                 ) && 
                 (
                     this.Count == input.Count ||
-                    (this.Count != null &&
-                    this.Count.Equals(input.Count))
+                    this.Count.Equals(input.Count)
                 ) && 
                 (
                     this.Revenue == input.Revenue ||
@@ -150,10 +145,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.Count != null)
-                {
-                    hashCode = (hashCode * 59) + this.Count.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Count.GetHashCode();
                 hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
                 return hashCode;
             }

@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ReasonEnum
         {
             /// <summary>
-            /// Enum TooMany for value: too_many
-            /// </summary>
-            [EnumMember(Value = "too_many")]
-            TooMany = 1,
-
-            /// <summary>
             /// Enum NoPrice for value: no_price
             /// </summary>
             [EnumMember(Value = "no_price")]
-            NoPrice = 2,
+            NoPrice = 1,
+
+            /// <summary>
+            /// Enum TooMany for value: too_many
+            /// </summary>
+            [EnumMember(Value = "too_many")]
+            TooMany = 2,
 
             /// <summary>
             /// Enum OverBudget for value: over_budget

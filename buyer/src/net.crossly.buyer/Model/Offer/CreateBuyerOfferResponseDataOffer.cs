@@ -40,23 +40,18 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="CreateBuyerOfferResponseDataOffer" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
         /// <param name="amountCents">amountCents (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="message">message.</param>
-        public CreateBuyerOfferResponseDataOffer(string id = default(string), string status = default(string), string platformListingId = default(string), string buyerUserId = default(string), decimal amountCents = default(decimal), string message = default(string))
+        public CreateBuyerOfferResponseDataOffer(string id = default(string), string platformListingId = default(string), string buyerUserId = default(string), decimal amountCents = default(decimal), string status = default(string), string message = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for CreateBuyerOfferResponseDataOffer and cannot be null");
             }
             this.Id = id;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for CreateBuyerOfferResponseDataOffer and cannot be null");
-            }
-            this.Status = status;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for CreateBuyerOfferResponseDataOffer and cannot be null");
@@ -68,6 +63,11 @@ namespace net.crossly.buyer.Model
             }
             this.BuyerUserId = buyerUserId;
             this.AmountCents = amountCents;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for CreateBuyerOfferResponseDataOffer and cannot be null");
+            }
+            this.Status = status;
             this.Message = message;
         }
 
@@ -76,12 +76,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -102,6 +96,12 @@ namespace net.crossly.buyer.Model
         public decimal AmountCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets Message
         /// </summary>
         [DataMember(Name = "message", EmitDefaultValue = true)]
@@ -116,10 +116,10 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerOfferResponseDataOffer {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -162,11 +162,6 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
@@ -179,6 +174,11 @@ namespace net.crossly.buyer.Model
                 (
                     this.AmountCents == input.AmountCents ||
                     this.AmountCents.Equals(input.AmountCents)
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.Message == input.Message ||
@@ -200,10 +200,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
@@ -213,6 +209,10 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 if (this.Message != null)
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();

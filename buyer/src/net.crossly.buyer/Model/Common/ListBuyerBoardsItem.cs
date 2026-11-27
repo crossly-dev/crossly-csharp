@@ -40,36 +40,36 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerBoardsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="isPublic">isPublic (required).</param>
-        /// <param name="itemCount">itemCount (required).</param>
         /// <param name="title">title (required).</param>
+        /// <param name="isPublic">isPublic (required).</param>
         /// <param name="shareToken">shareToken (required).</param>
         /// <param name="coverUrl">coverUrl.</param>
-        public ListBuyerBoardsItem(string id = default(string), string updatedAt = default(string), bool isPublic = default(bool), decimal itemCount = default(decimal), string title = default(string), string shareToken = default(string), string coverUrl = default(string))
+        /// <param name="itemCount">itemCount (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
+        public ListBuyerBoardsItem(string id = default(string), string title = default(string), bool isPublic = default(bool), string shareToken = default(string), string coverUrl = default(string), decimal itemCount = default(decimal), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerBoardsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null) {
-                throw new ArgumentNullException("updatedAt is a required property for ListBuyerBoardsItem and cannot be null");
-            }
-            this.UpdatedAt = updatedAt;
-            this.IsPublic = isPublic;
-            this.ItemCount = itemCount;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for ListBuyerBoardsItem and cannot be null");
             }
             this.Title = title;
+            this.IsPublic = isPublic;
             // to ensure "shareToken" is required (not null)
             if (shareToken == null) {
                 throw new ArgumentNullException("shareToken is a required property for ListBuyerBoardsItem and cannot be null");
             }
             this.ShareToken = shareToken;
+            this.ItemCount = itemCount;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null) {
+                throw new ArgumentNullException("updatedAt is a required property for ListBuyerBoardsItem and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
             this.CoverUrl = coverUrl;
         }
 
@@ -80,28 +80,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets UpdatedAt
+        /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
-        public string UpdatedAt { get; set; }
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets IsPublic
         /// </summary>
         [DataMember(Name = "isPublic", IsRequired = true, EmitDefaultValue = true)]
         public bool IsPublic { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ItemCount
-        /// </summary>
-        [DataMember(Name = "itemCount", IsRequired = true, EmitDefaultValue = false)]
-        public decimal ItemCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareToken
@@ -116,6 +104,18 @@ namespace net.crossly.buyer.Model
         public string CoverUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets ItemCount
+        /// </summary>
+        [DataMember(Name = "itemCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ItemCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -124,12 +124,12 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerBoardsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  IsPublic: ").Append(IsPublic).Append("\n");
-            sb.Append("  ItemCount: ").Append(ItemCount).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  IsPublic: ").Append(IsPublic).Append("\n");
             sb.Append("  ShareToken: ").Append(ShareToken).Append("\n");
             sb.Append("  CoverUrl: ").Append(CoverUrl).Append("\n");
+            sb.Append("  ItemCount: ").Append(ItemCount).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,22 +171,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.IsPublic == input.IsPublic ||
                     this.IsPublic.Equals(input.IsPublic)
-                ) && 
-                (
-                    this.ItemCount == input.ItemCount ||
-                    this.ItemCount.Equals(input.ItemCount)
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.ShareToken == input.ShareToken ||
@@ -197,6 +188,15 @@ namespace net.crossly.buyer.Model
                     this.CoverUrl == input.CoverUrl ||
                     (this.CoverUrl != null &&
                     this.CoverUrl.Equals(input.CoverUrl))
+                ) && 
+                (
+                    this.ItemCount == input.ItemCount ||
+                    this.ItemCount.Equals(input.ItemCount)
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
                 );
         }
 
@@ -213,16 +213,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.UpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsPublic.GetHashCode();
-                hashCode = (hashCode * 59) + this.ItemCount.GetHashCode();
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsPublic.GetHashCode();
                 if (this.ShareToken != null)
                 {
                     hashCode = (hashCode * 59) + this.ShareToken.GetHashCode();
@@ -230,6 +225,11 @@ namespace net.crossly.buyer.Model
                 if (this.CoverUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CoverUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ItemCount.GetHashCode();
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 return hashCode;
             }

@@ -43,11 +43,11 @@ namespace net.crossly.Model
         /// <param name="dataType">&#39;STRING&#39; | &#39;NUMBER&#39; | &#39;DATE&#39; — eBay&#39;s dataType per aspect. (required).</param>
         /// <param name="enumValues">enumValues.</param>
         /// <param name="required">required (required).</param>
-        /// <param name="cardinality">Cardinality — SINGLE_VALUE / MULTIPLE_VALUES. (required).</param>
         /// <param name="variesByAspect">variesByAspect.</param>
         /// <param name="maxLength">Helpful for client validation — max length when supplied..</param>
+        /// <param name="cardinality">Cardinality — SINGLE_VALUE / MULTIPLE_VALUES. (required).</param>
         /// <param name="selectionOnly">selectionOnly (required).</param>
-        public GetTaxonomyCategoryAspectResponseAspects(string name = default(string), string dataType = default(string), List<string> enumValues = default(List<string>), bool required = default(bool), string cardinality = default(string), bool? variesByAspect = default(bool?), decimal? maxLength = default(decimal?), bool selectionOnly = default(bool))
+        public GetTaxonomyCategoryAspectResponseAspects(string name = default(string), string dataType = default(string), List<string> enumValues = default(List<string>), bool required = default(bool), bool? variesByAspect = default(bool?), decimal? maxLength = default(decimal?), string cardinality = default(string), bool selectionOnly = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -97,13 +97,6 @@ namespace net.crossly.Model
         public bool Required { get; set; }
 
         /// <summary>
-        /// Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
-        /// </summary>
-        /// <value>Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.</value>
-        [DataMember(Name = "cardinality", IsRequired = true, EmitDefaultValue = false)]
-        public string Cardinality { get; set; }
-
-        /// <summary>
         /// Gets or Sets VariesByAspect
         /// </summary>
         [DataMember(Name = "variesByAspect", EmitDefaultValue = true)]
@@ -115,6 +108,13 @@ namespace net.crossly.Model
         /// <value>Helpful for client validation — max length when supplied.</value>
         [DataMember(Name = "maxLength", EmitDefaultValue = true)]
         public decimal? MaxLength { get; set; }
+
+        /// <summary>
+        /// Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
+        /// </summary>
+        /// <value>Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.</value>
+        [DataMember(Name = "cardinality", IsRequired = true, EmitDefaultValue = false)]
+        public string Cardinality { get; set; }
 
         /// <summary>
         /// Gets or Sets SelectionOnly
@@ -134,9 +134,9 @@ namespace net.crossly.Model
             sb.Append("  DataType: ").Append(DataType).Append("\n");
             sb.Append("  EnumValues: ").Append(EnumValues).Append("\n");
             sb.Append("  Required: ").Append(Required).Append("\n");
-            sb.Append("  Cardinality: ").Append(Cardinality).Append("\n");
             sb.Append("  VariesByAspect: ").Append(VariesByAspect).Append("\n");
             sb.Append("  MaxLength: ").Append(MaxLength).Append("\n");
+            sb.Append("  Cardinality: ").Append(Cardinality).Append("\n");
             sb.Append("  SelectionOnly: ").Append(SelectionOnly).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -194,11 +194,6 @@ namespace net.crossly.Model
                     this.Required.Equals(input.Required)
                 ) && 
                 (
-                    this.Cardinality == input.Cardinality ||
-                    (this.Cardinality != null &&
-                    this.Cardinality.Equals(input.Cardinality))
-                ) && 
-                (
                     this.VariesByAspect == input.VariesByAspect ||
                     (this.VariesByAspect != null &&
                     this.VariesByAspect.Equals(input.VariesByAspect))
@@ -207,6 +202,11 @@ namespace net.crossly.Model
                     this.MaxLength == input.MaxLength ||
                     (this.MaxLength != null &&
                     this.MaxLength.Equals(input.MaxLength))
+                ) && 
+                (
+                    this.Cardinality == input.Cardinality ||
+                    (this.Cardinality != null &&
+                    this.Cardinality.Equals(input.Cardinality))
                 ) && 
                 (
                     this.SelectionOnly == input.SelectionOnly ||
@@ -236,10 +236,6 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.EnumValues.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Required.GetHashCode();
-                if (this.Cardinality != null)
-                {
-                    hashCode = (hashCode * 59) + this.Cardinality.GetHashCode();
-                }
                 if (this.VariesByAspect != null)
                 {
                     hashCode = (hashCode * 59) + this.VariesByAspect.GetHashCode();
@@ -247,6 +243,10 @@ namespace net.crossly.Model
                 if (this.MaxLength != null)
                 {
                     hashCode = (hashCode * 59) + this.MaxLength.GetHashCode();
+                }
+                if (this.Cardinality != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cardinality.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SelectionOnly.GetHashCode();
                 return hashCode;

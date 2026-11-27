@@ -27,6 +27,76 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <returns>CreateMagicAutoDecisionUndoResponse</returns>
+        CreateMagicAutoDecisionUndoResponse CreateMagicAutoDecisionUndo(Guid decisionId);
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoDecisionUndoResponse</returns>
+        ApiResponse<CreateMagicAutoDecisionUndoResponse> CreateMagicAutoDecisionUndoWithHttpInfo(Guid decisionId);
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateMagicAutoItemResponse</returns>
+        CreateMagicAutoItemResponse CreateMagicAutoItem();
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateMagicAutoItemResponse</returns>
+        ApiResponse<CreateMagicAutoItemResponse> CreateMagicAutoItemWithHttpInfo();
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>CreateMagicAutoRunResponse</returns>
+        CreateMagicAutoRunResponse CreateMagicAutoRun(Guid runId);
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoRunResponse</returns>
+        ApiResponse<CreateMagicAutoRunResponse> CreateMagicAutoRunWithHttpInfo(Guid runId);
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>CreateMagicAutoRunSwipeResponse</returns>
+        CreateMagicAutoRunSwipeResponse CreateMagicAutoRunSwipe(Guid runId);
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoRunSwipeResponse</returns>
+        ApiResponse<CreateMagicAutoRunSwipeResponse> CreateMagicAutoRunSwipeWithHttpInfo(Guid runId);
+        /// <summary>
         /// Run a Magic List image scan.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -61,6 +131,25 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateMagicScanSynthesizeResponse</returns>
         ApiResponse<CreateMagicScanSynthesizeResponse> CreateMagicScanSynthesizeWithHttpInfo(Guid runId);
         /// <summary>
+        /// The seller’s Magic List automated-matching mode.
+        /// </summary>
+        /// <remarks>
+        /// mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetMagicAutoSettingResponse</returns>
+        GetMagicAutoSettingResponse GetMagicAutoSetting();
+
+        /// <summary>
+        /// The seller’s Magic List automated-matching mode.
+        /// </summary>
+        /// <remarks>
+        /// mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetMagicAutoSettingResponse</returns>
+        ApiResponse<GetMagicAutoSettingResponse> GetMagicAutoSettingWithHttpInfo();
+        /// <summary>
         /// Get a synthesized Magic List draft.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -79,6 +168,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetMagicDraftResponse</returns>
         ApiResponse<GetMagicDraftResponse> GetMagicDraftWithHttpInfo(Guid draftId);
         /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ListMagicAutoRunDecisionsResponse</returns>
+        ListMagicAutoRunDecisionsResponse ListMagicAutoRunDecisions(Guid runId);
+
+        /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of ListMagicAutoRunDecisionsResponse</returns>
+        ApiResponse<ListMagicAutoRunDecisionsResponse> ListMagicAutoRunDecisionsWithHttpInfo(Guid runId);
+        /// <summary>
         /// Recent Magic List scans for this seller.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -94,6 +201,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListMagicRecentResponse</returns>
         ApiResponse<ListMagicRecentResponse> ListMagicRecentWithHttpInfo();
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <returns>GetMagicAutoSettingResponse</returns>
+        GetMagicAutoSettingResponse UpdateMagicAutoSetting(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest);
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <returns>ApiResponse of GetMagicAutoSettingResponse</returns>
+        ApiResponse<GetMagicAutoSettingResponse> UpdateMagicAutoSettingWithHttpInfo(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest);
         #endregion Synchronous Operations
     }
 
@@ -103,6 +228,96 @@ namespace net.crossly.Api
     public interface IMagicApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoDecisionUndoResponse</returns>
+        System.Threading.Tasks.Task<CreateMagicAutoDecisionUndoResponse> CreateMagicAutoDecisionUndoAsync(Guid decisionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoDecisionUndoResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateMagicAutoDecisionUndoResponse>> CreateMagicAutoDecisionUndoWithHttpInfoAsync(Guid decisionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoItemResponse</returns>
+        System.Threading.Tasks.Task<CreateMagicAutoItemResponse> CreateMagicAutoItemAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoItemResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateMagicAutoItemResponse>> CreateMagicAutoItemWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoRunResponse</returns>
+        System.Threading.Tasks.Task<CreateMagicAutoRunResponse> CreateMagicAutoRunAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoRunResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateMagicAutoRunResponse>> CreateMagicAutoRunWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoRunSwipeResponse</returns>
+        System.Threading.Tasks.Task<CreateMagicAutoRunSwipeResponse> CreateMagicAutoRunSwipeAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoRunSwipeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateMagicAutoRunSwipeResponse>> CreateMagicAutoRunSwipeWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run a Magic List image scan.
         /// </summary>
@@ -148,6 +363,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateMagicScanSynthesizeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateMagicScanSynthesizeResponse>> CreateMagicScanSynthesizeWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// The seller’s Magic List automated-matching mode.
+        /// </summary>
+        /// <remarks>
+        /// mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMagicAutoSettingResponse</returns>
+        System.Threading.Tasks.Task<GetMagicAutoSettingResponse> GetMagicAutoSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The seller’s Magic List automated-matching mode.
+        /// </summary>
+        /// <remarks>
+        /// mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMagicAutoSettingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetMagicAutoSettingResponse>> GetMagicAutoSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Get a synthesized Magic List draft.
         /// </summary>
         /// <remarks>
@@ -171,6 +407,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetMagicDraftResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetMagicDraftResponse>> GetMagicDraftWithHttpInfoAsync(Guid draftId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListMagicAutoRunDecisionsResponse</returns>
+        System.Threading.Tasks.Task<ListMagicAutoRunDecisionsResponse> ListMagicAutoRunDecisionsAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListMagicAutoRunDecisionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListMagicAutoRunDecisionsResponse>> ListMagicAutoRunDecisionsWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Recent Magic List scans for this seller.
         /// </summary>
         /// <remarks>
@@ -191,6 +450,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMagicRecentResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListMagicRecentResponse>> ListMagicRecentWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMagicAutoSettingResponse</returns>
+        System.Threading.Tasks.Task<GetMagicAutoSettingResponse> UpdateMagicAutoSettingAsync(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMagicAutoSettingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetMagicAutoSettingResponse>> UpdateMagicAutoSettingWithHttpInfoAsync(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -309,6 +591,536 @@ namespace net.crossly.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <returns>CreateMagicAutoDecisionUndoResponse</returns>
+        public CreateMagicAutoDecisionUndoResponse CreateMagicAutoDecisionUndo(Guid decisionId)
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoDecisionUndoResponse> localVarResponse = CreateMagicAutoDecisionUndoWithHttpInfo(decisionId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoDecisionUndoResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateMagicAutoDecisionUndoResponse> CreateMagicAutoDecisionUndoWithHttpInfo(Guid decisionId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("decisionId", net.crossly.Client.ClientUtils.ParameterToString(decisionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateMagicAutoDecisionUndoResponse>("/v1/magic/auto/decisions/{decisionId}/undo", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoDecisionUndo", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoDecisionUndoResponse</returns>
+        public async System.Threading.Tasks.Task<CreateMagicAutoDecisionUndoResponse> CreateMagicAutoDecisionUndoAsync(Guid decisionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoDecisionUndoResponse> localVarResponse = await CreateMagicAutoDecisionUndoWithHttpInfoAsync(decisionId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Undo an automated Magic List decision, deleting its unpublished draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="decisionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoDecisionUndoResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMagicAutoDecisionUndoResponse>> CreateMagicAutoDecisionUndoWithHttpInfoAsync(Guid decisionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("decisionId", net.crossly.Client.ClientUtils.ParameterToString(decisionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateMagicAutoDecisionUndoResponse>("/v1/magic/auto/decisions/{decisionId}/undo", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoDecisionUndo", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateMagicAutoItemResponse</returns>
+        public CreateMagicAutoItemResponse CreateMagicAutoItem()
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoItemResponse> localVarResponse = CreateMagicAutoItemWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateMagicAutoItemResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateMagicAutoItemResponse> CreateMagicAutoItemWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateMagicAutoItemResponse>("/v1/magic/auto/items", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoItemResponse</returns>
+        public async System.Threading.Tasks.Task<CreateMagicAutoItemResponse> CreateMagicAutoItemAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoItemResponse> localVarResponse = await CreateMagicAutoItemWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Scan one item and match it automatically (drafts only, never publishes). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoItemResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMagicAutoItemResponse>> CreateMagicAutoItemWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateMagicAutoItemResponse>("/v1/magic/auto/items", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>CreateMagicAutoRunResponse</returns>
+        public CreateMagicAutoRunResponse CreateMagicAutoRun(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoRunResponse> localVarResponse = CreateMagicAutoRunWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoRunResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateMagicAutoRunResponse> CreateMagicAutoRunWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateMagicAutoRunResponse>("/v1/magic/auto/runs/{runId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoRunResponse</returns>
+        public async System.Threading.Tasks.Task<CreateMagicAutoRunResponse> CreateMagicAutoRunAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoRunResponse> localVarResponse = await CreateMagicAutoRunWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Score a Magic List run automatically; a confident match in auto mode becomes a draft. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoRunResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMagicAutoRunResponse>> CreateMagicAutoRunWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateMagicAutoRunResponse>("/v1/magic/auto/runs/{runId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>CreateMagicAutoRunSwipeResponse</returns>
+        public CreateMagicAutoRunSwipeResponse CreateMagicAutoRunSwipe(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoRunSwipeResponse> localVarResponse = CreateMagicAutoRunSwipeWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of CreateMagicAutoRunSwipeResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateMagicAutoRunSwipeResponse> CreateMagicAutoRunSwipeWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateMagicAutoRunSwipeResponse>("/v1/magic/auto/runs/{runId}/swipes", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoRunSwipe", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateMagicAutoRunSwipeResponse</returns>
+        public async System.Threading.Tasks.Task<CreateMagicAutoRunSwipeResponse> CreateMagicAutoRunSwipeAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateMagicAutoRunSwipeResponse> localVarResponse = await CreateMagicAutoRunSwipeWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record a seller swipe session (kept and rejected match keys) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateMagicAutoRunSwipeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMagicAutoRunSwipeResponse>> CreateMagicAutoRunSwipeWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateMagicAutoRunSwipeResponse>("/v1/magic/auto/runs/{runId}/swipes", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateMagicAutoRunSwipe", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -574,6 +1386,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// The seller’s Magic List automated-matching mode. mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetMagicAutoSettingResponse</returns>
+        public GetMagicAutoSettingResponse GetMagicAutoSetting()
+        {
+            net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> localVarResponse = GetMagicAutoSettingWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The seller’s Magic List automated-matching mode. mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetMagicAutoSettingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> GetMagicAutoSettingWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetMagicAutoSettingResponse>("/v1/magic/auto/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMagicAutoSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The seller’s Magic List automated-matching mode. mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMagicAutoSettingResponse</returns>
+        public async System.Threading.Tasks.Task<GetMagicAutoSettingResponse> GetMagicAutoSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> localVarResponse = await GetMagicAutoSettingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The seller’s Magic List automated-matching mode. mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMagicAutoSettingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse>> GetMagicAutoSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetMagicAutoSettingResponse>("/v1/magic/auto/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMagicAutoSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get a synthesized Magic List draft. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -708,6 +1648,140 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ListMagicAutoRunDecisionsResponse</returns>
+        public ListMagicAutoRunDecisionsResponse ListMagicAutoRunDecisions(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<ListMagicAutoRunDecisionsResponse> localVarResponse = ListMagicAutoRunDecisionsWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <returns>ApiResponse of ListMagicAutoRunDecisionsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListMagicAutoRunDecisionsResponse> ListMagicAutoRunDecisionsWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListMagicAutoRunDecisionsResponse>("/v1/magic/auto/runs/{runId}/decisions", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListMagicAutoRunDecisions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListMagicAutoRunDecisionsResponse</returns>
+        public async System.Threading.Tasks.Task<ListMagicAutoRunDecisionsResponse> ListMagicAutoRunDecisionsAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListMagicAutoRunDecisionsResponse> localVarResponse = await ListMagicAutoRunDecisionsWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every match decision round (automated and seller) for a Magic List run. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListMagicAutoRunDecisionsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMagicAutoRunDecisionsResponse>> ListMagicAutoRunDecisionsWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListMagicAutoRunDecisionsResponse>("/v1/magic/auto/runs/{runId}/decisions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListMagicAutoRunDecisions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Recent Magic List scans for this seller. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -826,6 +1900,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListMagicRecent", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <returns>GetMagicAutoSettingResponse</returns>
+        public GetMagicAutoSettingResponse UpdateMagicAutoSetting(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest)
+        {
+            net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> localVarResponse = UpdateMagicAutoSettingWithHttpInfo(updateMagicAutoSettingRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <returns>ApiResponse of GetMagicAutoSettingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> UpdateMagicAutoSettingWithHttpInfo(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest)
+        {
+            // verify the required parameter 'updateMagicAutoSettingRequest' is set
+            if (updateMagicAutoSettingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateMagicAutoSettingRequest' when calling MagicApi->UpdateMagicAutoSetting");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateMagicAutoSettingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetMagicAutoSettingResponse>("/v1/magic/auto/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateMagicAutoSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMagicAutoSettingResponse</returns>
+        public async System.Threading.Tasks.Task<GetMagicAutoSettingResponse> UpdateMagicAutoSettingAsync(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse> localVarResponse = await UpdateMagicAutoSettingWithHttpInfoAsync(updateMagicAutoSettingRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set the Magic List automated-matching mode (off | auto | review_all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMagicAutoSettingRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMagicAutoSettingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetMagicAutoSettingResponse>> UpdateMagicAutoSettingWithHttpInfoAsync(UpdateMagicAutoSettingRequest updateMagicAutoSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateMagicAutoSettingRequest' is set
+            if (updateMagicAutoSettingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateMagicAutoSettingRequest' when calling MagicApi->UpdateMagicAutoSetting");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateMagicAutoSettingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetMagicAutoSettingResponse>("/v1/magic/auto/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateMagicAutoSetting", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

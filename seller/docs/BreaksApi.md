@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 <a name="createbreakcancel"></a>
 # **CreateBreakCancel**
-> CreateBreakCancelResponse CreateBreakCancel (string id)
+> UpdateGroupBuyResponse CreateBreakCancel (string id)
 
 Cancel a break before any spot is paid for; after that, refund those orders instead (409).
 
@@ -118,7 +118,7 @@ namespace Example
             try
             {
                 // Cancel a break before any spot is paid for; after that, refund those orders instead (409).
-                CreateBreakCancelResponse result = apiInstance.CreateBreakCancel(id);
+                UpdateGroupBuyResponse result = apiInstance.CreateBreakCancel(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 <a name="createbreakopened"></a>
 # **CreateBreakOpened**
-> CreateBreakCancelResponse CreateBreakOpened (string id)
+> UpdateGroupBuyResponse CreateBreakOpened (string id)
 
 Mark the product opened on stream.
 
@@ -274,7 +274,7 @@ namespace Example
             try
             {
                 // Mark the product opened on stream.
-                CreateBreakCancelResponse result = apiInstance.CreateBreakOpened(id);
+                UpdateGroupBuyResponse result = apiInstance.CreateBreakOpened(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="createbreakspothit"></a>
 # **CreateBreakSpotHit**
-> CreateBreakCancelResponse CreateBreakSpotHit (string id, string spotId)
+> UpdateGroupBuyResponse CreateBreakSpotHit (string id, string spotId)
 
 Record what a spot pulled.
 
@@ -353,7 +353,7 @@ namespace Example
             try
             {
                 // Record what a spot pulled.
-                CreateBreakCancelResponse result = apiInstance.CreateBreakSpotHit(id, spotId);
+                UpdateGroupBuyResponse result = apiInstance.CreateBreakSpotHit(id, spotId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 

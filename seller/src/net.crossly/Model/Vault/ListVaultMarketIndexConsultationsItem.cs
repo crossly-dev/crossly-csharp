@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Closed = 2,
 
             /// <summary>
-            /// Enum Adopted for value: adopted
-            /// </summary>
-            [EnumMember(Value = "adopted")]
-            Adopted = 3,
-
-            /// <summary>
             /// Enum Withdrawn for value: withdrawn
             /// </summary>
             [EnumMember(Value = "withdrawn")]
-            Withdrawn = 4
+            Withdrawn = 3,
+
+            /// <summary>
+            /// Enum Adopted for value: adopted
+            /// </summary>
+            [EnumMember(Value = "adopted")]
+            Adopted = 4
 
         }
 

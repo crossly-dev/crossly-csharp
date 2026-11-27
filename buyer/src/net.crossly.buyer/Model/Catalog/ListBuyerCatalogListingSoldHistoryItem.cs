@@ -39,19 +39,26 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerCatalogListingSoldHistoryItem" /> class.
         /// </summary>
+        /// <param name="priceCents">Per-unit item price the buyer paid, in cents — excludes shipping and tax. (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="soldAt">soldAt (required).</param>
-        /// <param name="priceCents">Per-unit item price the buyer paid, in cents — excludes shipping and tax. (required).</param>
-        public ListBuyerCatalogListingSoldHistoryItem(decimal quantity = default(decimal), string soldAt = default(string), decimal priceCents = default(decimal))
+        public ListBuyerCatalogListingSoldHistoryItem(decimal priceCents = default(decimal), decimal quantity = default(decimal), string soldAt = default(string))
         {
+            this.PriceCents = priceCents;
             this.Quantity = quantity;
             // to ensure "soldAt" is required (not null)
             if (soldAt == null) {
                 throw new ArgumentNullException("soldAt is a required property for ListBuyerCatalogListingSoldHistoryItem and cannot be null");
             }
             this.SoldAt = soldAt;
-            this.PriceCents = priceCents;
         }
+
+        /// <summary>
+        /// Per-unit item price the buyer paid, in cents — excludes shipping and tax.
+        /// </summary>
+        /// <value>Per-unit item price the buyer paid, in cents — excludes shipping and tax.</value>
+        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -66,13 +73,6 @@ namespace net.crossly.buyer.Model
         public string SoldAt { get; set; }
 
         /// <summary>
-        /// Per-unit item price the buyer paid, in cents — excludes shipping and tax.
-        /// </summary>
-        /// <value>Per-unit item price the buyer paid, in cents — excludes shipping and tax.</value>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal PriceCents { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,9 +80,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerCatalogListingSoldHistoryItem {\n");
+            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
-            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +119,10 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.PriceCents == input.PriceCents ||
+                    this.PriceCents.Equals(input.PriceCents)
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 ) && 
@@ -126,10 +130,6 @@ namespace net.crossly.buyer.Model
                     this.SoldAt == input.SoldAt ||
                     (this.SoldAt != null &&
                     this.SoldAt.Equals(input.SoldAt))
-                ) && 
-                (
-                    this.PriceCents == input.PriceCents ||
-                    this.PriceCents.Equals(input.PriceCents)
                 );
         }
 
@@ -142,12 +142,12 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.SoldAt != null)
                 {
                     hashCode = (hashCode * 59) + this.SoldAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 return hashCode;
             }
         }

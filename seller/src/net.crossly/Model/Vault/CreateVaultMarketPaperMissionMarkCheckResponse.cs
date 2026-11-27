@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum AnswerEnum
         {
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 1,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 1,
+            A = 2,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 2,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 3
+            B = 3
 
         }
 
@@ -70,22 +70,22 @@ namespace net.crossly.Model
         public enum QualityEnum
         {
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 1,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 1,
+            A = 2,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 2,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 3
+            B = 3
 
         }
 

@@ -39,35 +39,35 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCollectionSetResponseDataPieces" /> class.
         /// </summary>
-        /// <param name="number">number (required).</param>
+        /// <param name="skuId">skuId (required).</param>
         /// <param name="title">title (required).</param>
         /// <param name="imageUrl">imageUrl.</param>
-        /// <param name="skuId">skuId (required).</param>
-        /// <param name="bestAskCents">bestAskCents.</param>
+        /// <param name="number">number (required).</param>
         /// <param name="owned">owned (required).</param>
-        public GetBuyerCollectionSetResponseDataPieces(decimal number = default(decimal), string title = default(string), string imageUrl = default(string), string skuId = default(string), decimal? bestAskCents = default(decimal?), bool owned = default(bool))
+        /// <param name="bestAskCents">bestAskCents.</param>
+        public GetBuyerCollectionSetResponseDataPieces(string skuId = default(string), string title = default(string), string imageUrl = default(string), decimal number = default(decimal), bool owned = default(bool), decimal? bestAskCents = default(decimal?))
         {
-            this.Number = number;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for GetBuyerCollectionSetResponseDataPieces and cannot be null");
-            }
-            this.Title = title;
             // to ensure "skuId" is required (not null)
             if (skuId == null) {
                 throw new ArgumentNullException("skuId is a required property for GetBuyerCollectionSetResponseDataPieces and cannot be null");
             }
             this.SkuId = skuId;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for GetBuyerCollectionSetResponseDataPieces and cannot be null");
+            }
+            this.Title = title;
+            this.Number = number;
             this.Owned = owned;
             this.ImageUrl = imageUrl;
             this.BestAskCents = bestAskCents;
         }
 
         /// <summary>
-        /// Gets or Sets Number
+        /// Gets or Sets SkuId
         /// </summary>
-        [DataMember(Name = "number", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Number { get; set; }
+        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
+        public string SkuId { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -82,22 +82,22 @@ namespace net.crossly.buyer.Model
         public string ImageUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets SkuId
+        /// Gets or Sets Number
         /// </summary>
-        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
-        public string SkuId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BestAskCents
-        /// </summary>
-        [DataMember(Name = "bestAskCents", EmitDefaultValue = true)]
-        public decimal? BestAskCents { get; set; }
+        [DataMember(Name = "number", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Number { get; set; }
 
         /// <summary>
         /// Gets or Sets Owned
         /// </summary>
         [DataMember(Name = "owned", IsRequired = true, EmitDefaultValue = true)]
         public bool Owned { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BestAskCents
+        /// </summary>
+        [DataMember(Name = "bestAskCents", EmitDefaultValue = true)]
+        public decimal? BestAskCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,12 +107,12 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionSetResponseDataPieces {\n");
-            sb.Append("  Number: ").Append(Number).Append("\n");
+            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
-            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
-            sb.Append("  BestAskCents: ").Append(BestAskCents).Append("\n");
+            sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("  Owned: ").Append(Owned).Append("\n");
+            sb.Append("  BestAskCents: ").Append(BestAskCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -149,8 +149,9 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Number == input.Number ||
-                    this.Number.Equals(input.Number)
+                    this.SkuId == input.SkuId ||
+                    (this.SkuId != null &&
+                    this.SkuId.Equals(input.SkuId))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -163,18 +164,17 @@ namespace net.crossly.buyer.Model
                     this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
-                    this.SkuId == input.SkuId ||
-                    (this.SkuId != null &&
-                    this.SkuId.Equals(input.SkuId))
+                    this.Number == input.Number ||
+                    this.Number.Equals(input.Number)
+                ) && 
+                (
+                    this.Owned == input.Owned ||
+                    this.Owned.Equals(input.Owned)
                 ) && 
                 (
                     this.BestAskCents == input.BestAskCents ||
                     (this.BestAskCents != null &&
                     this.BestAskCents.Equals(input.BestAskCents))
-                ) && 
-                (
-                    this.Owned == input.Owned ||
-                    this.Owned.Equals(input.Owned)
                 );
         }
 
@@ -187,7 +187,10 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Number.GetHashCode();
+                if (this.SkuId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
+                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -196,15 +199,12 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
-                if (this.SkuId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Number.GetHashCode();
+                hashCode = (hashCode * 59) + this.Owned.GetHashCode();
                 if (this.BestAskCents != null)
                 {
                     hashCode = (hashCode * 59) + this.BestAskCents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Owned.GetHashCode();
                 return hashCode;
             }
         }

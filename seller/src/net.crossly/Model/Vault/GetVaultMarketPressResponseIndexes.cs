@@ -56,22 +56,22 @@ namespace net.crossly.Model
             Category = 3,
 
             /// <summary>
+            /// Enum Segment for value: segment
+            /// </summary>
+            [EnumMember(Value = "segment")]
+            Segment = 4,
+
+            /// <summary>
             /// Enum Curated for value: curated
             /// </summary>
             [EnumMember(Value = "curated")]
-            Curated = 4,
+            Curated = 5,
 
             /// <summary>
             /// Enum Composite for value: composite
             /// </summary>
             [EnumMember(Value = "composite")]
-            Composite = 5,
-
-            /// <summary>
-            /// Enum Segment for value: segment
-            /// </summary>
-            [EnumMember(Value = "segment")]
-            Segment = 6
+            Composite = 6
 
         }
 
@@ -132,22 +132,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 

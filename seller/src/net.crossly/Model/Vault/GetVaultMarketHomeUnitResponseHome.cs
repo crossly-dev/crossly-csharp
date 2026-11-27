@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Open = 1,
 
             /// <summary>
-            /// Enum Locked for value: locked
-            /// </summary>
-            [EnumMember(Value = "locked")]
-            Locked = 2,
-
-            /// <summary>
             /// Enum Friends for value: friends
             /// </summary>
             [EnumMember(Value = "friends")]
-            Friends = 3
+            Friends = 2,
+
+            /// <summary>
+            /// Enum Locked for value: locked
+            /// </summary>
+            [EnumMember(Value = "locked")]
+            Locked = 3
 
         }
 

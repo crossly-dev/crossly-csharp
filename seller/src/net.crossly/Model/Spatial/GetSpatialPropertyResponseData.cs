@@ -42,7 +42,7 @@ namespace net.crossly.Model
         /// <param name="enabled">enabled (required).</param>
         /// <param name="deeds">deeds (required).</param>
         /// <param name="tenancies">tenancies (required).</param>
-        public GetSpatialPropertyResponseData(bool enabled = default(bool), List<GetSpatialPropertyResponseDataDeeds> deeds = default(List<GetSpatialPropertyResponseDataDeeds>), List<CreateSpatialPropertyDeedLeaseResponseData> tenancies = default(List<CreateSpatialPropertyDeedLeaseResponseData>))
+        public GetSpatialPropertyResponseData(bool enabled = default(bool), List<GetSpatialPropertyResponseDataDeeds> deeds = default(List<GetSpatialPropertyResponseDataDeeds>), List<GetSpatialPropertyResponseDataTenancies> tenancies = default(List<GetSpatialPropertyResponseDataTenancies>))
         {
             this.Enabled = enabled;
             // to ensure "deeds" is required (not null)
@@ -73,7 +73,7 @@ namespace net.crossly.Model
         /// Gets or Sets Tenancies
         /// </summary>
         [DataMember(Name = "tenancies", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateSpatialPropertyDeedLeaseResponseData> Tenancies { get; set; }
+        public List<GetSpatialPropertyResponseDataTenancies> Tenancies { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

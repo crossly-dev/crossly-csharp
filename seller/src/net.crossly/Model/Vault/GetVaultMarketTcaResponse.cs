@@ -44,8 +44,9 @@ namespace net.crossly.Model
         /// <param name="to">to (required).</param>
         /// <param name="summary">summary (required).</param>
         /// <param name="items">items (required).</param>
+        /// <param name="options">options (required).</param>
         /// <param name="note">note (required).</param>
-        public GetVaultMarketTcaResponse(AccountIdLabel account = default(AccountIdLabel), string from = default(string), string to = default(string), GetVaultMarketTcaResponseSummary summary = default(GetVaultMarketTcaResponseSummary), List<GetVaultMarketTcaResponseItems> items = default(List<GetVaultMarketTcaResponseItems>), string note = default(string))
+        public GetVaultMarketTcaResponse(AccountIdLabel account = default(AccountIdLabel), string from = default(string), string to = default(string), GetVaultMarketTcaResponseSummary summary = default(GetVaultMarketTcaResponseSummary), List<GetVaultMarketTcaResponseItems> items = default(List<GetVaultMarketTcaResponseItems>), GetVaultMarketTcaResponseOptions options = default(GetVaultMarketTcaResponseOptions), string note = default(string))
         {
             // to ensure "account" is required (not null)
             if (account == null) {
@@ -72,6 +73,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("items is a required property for GetVaultMarketTcaResponse and cannot be null");
             }
             this.Items = items;
+            // to ensure "options" is required (not null)
+            if (options == null) {
+                throw new ArgumentNullException("options is a required property for GetVaultMarketTcaResponse and cannot be null");
+            }
+            this.Options = options;
             // to ensure "note" is required (not null)
             if (note == null) {
                 throw new ArgumentNullException("note is a required property for GetVaultMarketTcaResponse and cannot be null");
@@ -110,6 +116,12 @@ namespace net.crossly.Model
         public List<GetVaultMarketTcaResponseItems> Items { get; set; }
 
         /// <summary>
+        /// Gets or Sets Options
+        /// </summary>
+        [DataMember(Name = "options", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketTcaResponseOptions Options { get; set; }
+
+        /// <summary>
         /// Gets or Sets Note
         /// </summary>
         [DataMember(Name = "note", IsRequired = true, EmitDefaultValue = false)]
@@ -128,6 +140,7 @@ namespace net.crossly.Model
             sb.Append("  To: ").Append(To).Append("\n");
             sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -191,6 +204,11 @@ namespace net.crossly.Model
                     this.Items.SequenceEqual(input.Items)
                 ) && 
                 (
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
+                ) && 
+                (
                     this.Note == input.Note ||
                     (this.Note != null &&
                     this.Note.Equals(input.Note))
@@ -225,6 +243,10 @@ namespace net.crossly.Model
                 if (this.Items != null)
                 {
                     hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
                 }
                 if (this.Note != null)
                 {

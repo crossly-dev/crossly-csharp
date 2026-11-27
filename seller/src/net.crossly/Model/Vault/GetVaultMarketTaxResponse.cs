@@ -47,8 +47,11 @@ namespace net.crossly.Model
         /// <param name="giftsOut">giftsOut (required).</param>
         /// <param name="income">income (required).</param>
         /// <param name="positions">positions (required).</param>
+        /// <param name="options">options.</param>
         /// <param name="notes">notes (required).</param>
-        public GetVaultMarketTaxResponse(GetVaultMarketTaxResponseFiles files = default(GetVaultMarketTaxResponseFiles), decimal year = default(decimal), GetVaultMarketTaxResponseTotals totals = default(GetVaultMarketTaxResponseTotals), List<GetVaultMarketTaxResponseSales> sales = default(List<GetVaultMarketTaxResponseSales>), List<GetVaultMarketTaxResponsePurchases> purchases = default(List<GetVaultMarketTaxResponsePurchases>), List<GetVaultMarketTaxResponseGiftsOut> giftsOut = default(List<GetVaultMarketTaxResponseGiftsOut>), GetVaultMarketTaxResponseIncome income = default(GetVaultMarketTaxResponseIncome), List<GetVaultMarketTaxResponsePositions> positions = default(List<GetVaultMarketTaxResponsePositions>), List<string> notes = default(List<string>))
+        /// <param name="shares">shares.</param>
+        /// <param name="predictions">predictions.</param>
+        public GetVaultMarketTaxResponse(GetVaultMarketTaxResponseFiles files = default(GetVaultMarketTaxResponseFiles), decimal year = default(decimal), GetVaultMarketTaxResponseTotals totals = default(GetVaultMarketTaxResponseTotals), List<GetVaultMarketTaxResponseSales> sales = default(List<GetVaultMarketTaxResponseSales>), List<GetVaultMarketTaxResponsePurchases> purchases = default(List<GetVaultMarketTaxResponsePurchases>), List<GetVaultMarketTaxResponseGiftsOut> giftsOut = default(List<GetVaultMarketTaxResponseGiftsOut>), GetVaultMarketTaxResponseIncome income = default(GetVaultMarketTaxResponseIncome), List<GetVaultMarketTaxResponsePositions> positions = default(List<GetVaultMarketTaxResponsePositions>), GetVaultMarketTaxResponseOptions options = default(GetVaultMarketTaxResponseOptions), List<string> notes = default(List<string>), GetVaultMarketTaxResponseShares shares = default(GetVaultMarketTaxResponseShares), GetVaultMarketTaxResponsePredictions predictions = default(GetVaultMarketTaxResponsePredictions))
         {
             // to ensure "files" is required (not null)
             if (files == null) {
@@ -91,6 +94,9 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("notes is a required property for GetVaultMarketTaxResponse and cannot be null");
             }
             this.Notes = notes;
+            this.Options = options;
+            this.Shares = shares;
+            this.Predictions = predictions;
         }
 
         /// <summary>
@@ -142,10 +148,28 @@ namespace net.crossly.Model
         public List<GetVaultMarketTaxResponsePositions> Positions { get; set; }
 
         /// <summary>
+        /// Gets or Sets Options
+        /// </summary>
+        [DataMember(Name = "options", EmitDefaultValue = true)]
+        public GetVaultMarketTaxResponseOptions Options { get; set; }
+
+        /// <summary>
         /// Gets or Sets Notes
         /// </summary>
         [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Notes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Shares
+        /// </summary>
+        [DataMember(Name = "shares", EmitDefaultValue = true)]
+        public GetVaultMarketTaxResponseShares Shares { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Predictions
+        /// </summary>
+        [DataMember(Name = "predictions", EmitDefaultValue = true)]
+        public GetVaultMarketTaxResponsePredictions Predictions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,7 +187,10 @@ namespace net.crossly.Model
             sb.Append("  GiftsOut: ").Append(GiftsOut).Append("\n");
             sb.Append("  Income: ").Append(Income).Append("\n");
             sb.Append("  Positions: ").Append(Positions).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  Shares: ").Append(Shares).Append("\n");
+            sb.Append("  Predictions: ").Append(Predictions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -243,10 +270,25 @@ namespace net.crossly.Model
                     this.Positions.SequenceEqual(input.Positions)
                 ) && 
                 (
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
+                ) && 
+                (
                     this.Notes == input.Notes ||
                     this.Notes != null &&
                     input.Notes != null &&
                     this.Notes.SequenceEqual(input.Notes)
+                ) && 
+                (
+                    this.Shares == input.Shares ||
+                    (this.Shares != null &&
+                    this.Shares.Equals(input.Shares))
+                ) && 
+                (
+                    this.Predictions == input.Predictions ||
+                    (this.Predictions != null &&
+                    this.Predictions.Equals(input.Predictions))
                 );
         }
 
@@ -288,9 +330,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Positions.GetHashCode();
                 }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
+                }
                 if (this.Notes != null)
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                }
+                if (this.Shares != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shares.GetHashCode();
+                }
+                if (this.Predictions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Predictions.GetHashCode();
                 }
                 return hashCode;
             }

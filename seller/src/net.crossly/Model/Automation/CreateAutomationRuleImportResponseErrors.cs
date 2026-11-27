@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="name">name (required).</param>
         /// <param name="errors">errors (required).</param>
-        public CreateAutomationRuleImportResponseErrors(string name = default(string), List<Dictionary<string, Object>> errors = default(List<Dictionary<string, Object>>))
+        public CreateAutomationRuleImportResponseErrors(string name = default(string), List<Object> errors = default(List<Object>))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -65,7 +65,7 @@ namespace net.crossly.Model
         /// Gets or Sets Errors
         /// </summary>
         [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = false)]
-        public List<Dictionary<string, Object>> Errors { get; set; }
+        public List<Object> Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

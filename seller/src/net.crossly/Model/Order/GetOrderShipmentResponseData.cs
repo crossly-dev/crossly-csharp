@@ -43,16 +43,17 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="source">source (required).</param>
-        /// <param name="orderId">orderId (required).</param>
         /// <param name="carrier">carrier.</param>
         /// <param name="service">service.</param>
         /// <param name="trackingNumber">trackingNumber.</param>
-        /// <param name="voidedAt">voidedAt.</param>
+        /// <param name="orderId">orderId (required).</param>
         /// <param name="labelCostCents">labelCostCents.</param>
         /// <param name="labelUrl">labelUrl.</param>
+        /// <param name="labelQrUrl">labelQrUrl.</param>
         /// <param name="shippoShipmentId">shippoShipmentId.</param>
         /// <param name="trackingRegisteredAt">trackingRegisteredAt.</param>
-        public GetOrderShipmentResponseData(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string source = default(string), string orderId = default(string), string carrier = default(string), string service = default(string), string trackingNumber = default(string), DateTime? voidedAt = default(DateTime?), decimal? labelCostCents = default(decimal?), string labelUrl = default(string), string shippoShipmentId = default(string), DateTime? trackingRegisteredAt = default(DateTime?))
+        /// <param name="voidedAt">voidedAt.</param>
+        public GetOrderShipmentResponseData(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string source = default(string), string carrier = default(string), string service = default(string), string trackingNumber = default(string), string orderId = default(string), decimal? labelCostCents = default(decimal?), string labelUrl = default(string), string labelQrUrl = default(string), string shippoShipmentId = default(string), DateTime? trackingRegisteredAt = default(DateTime?), DateTime? voidedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -78,11 +79,12 @@ namespace net.crossly.Model
             this.Carrier = carrier;
             this.Service = service;
             this.TrackingNumber = trackingNumber;
-            this.VoidedAt = voidedAt;
             this.LabelCostCents = labelCostCents;
             this.LabelUrl = labelUrl;
+            this.LabelQrUrl = labelQrUrl;
             this.ShippoShipmentId = shippoShipmentId;
             this.TrackingRegisteredAt = trackingRegisteredAt;
+            this.VoidedAt = voidedAt;
         }
 
         /// <summary>
@@ -110,12 +112,6 @@ namespace net.crossly.Model
         public string Source { get; set; }
 
         /// <summary>
-        /// Gets or Sets OrderId
-        /// </summary>
-        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = false)]
-        public string OrderId { get; set; }
-
-        /// <summary>
         /// Gets or Sets Carrier
         /// </summary>
         [DataMember(Name = "carrier", EmitDefaultValue = true)]
@@ -134,10 +130,10 @@ namespace net.crossly.Model
         public string TrackingNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets VoidedAt
+        /// Gets or Sets OrderId
         /// </summary>
-        [DataMember(Name = "voidedAt", EmitDefaultValue = true)]
-        public DateTime? VoidedAt { get; set; }
+        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = false)]
+        public string OrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelCostCents
@@ -152,6 +148,12 @@ namespace net.crossly.Model
         public string LabelUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets LabelQrUrl
+        /// </summary>
+        [DataMember(Name = "labelQrUrl", EmitDefaultValue = true)]
+        public string LabelQrUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets ShippoShipmentId
         /// </summary>
         [DataMember(Name = "shippoShipmentId", EmitDefaultValue = true)]
@@ -162,6 +164,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "trackingRegisteredAt", EmitDefaultValue = true)]
         public DateTime? TrackingRegisteredAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VoidedAt
+        /// </summary>
+        [DataMember(Name = "voidedAt", EmitDefaultValue = true)]
+        public DateTime? VoidedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -175,15 +183,16 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  Service: ").Append(Service).Append("\n");
             sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
-            sb.Append("  VoidedAt: ").Append(VoidedAt).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  LabelCostCents: ").Append(LabelCostCents).Append("\n");
             sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
+            sb.Append("  LabelQrUrl: ").Append(LabelQrUrl).Append("\n");
             sb.Append("  ShippoShipmentId: ").Append(ShippoShipmentId).Append("\n");
             sb.Append("  TrackingRegisteredAt: ").Append(TrackingRegisteredAt).Append("\n");
+            sb.Append("  VoidedAt: ").Append(VoidedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -240,11 +249,6 @@ namespace net.crossly.Model
                     this.Source.Equals(input.Source))
                 ) && 
                 (
-                    this.OrderId == input.OrderId ||
-                    (this.OrderId != null &&
-                    this.OrderId.Equals(input.OrderId))
-                ) && 
-                (
                     this.Carrier == input.Carrier ||
                     (this.Carrier != null &&
                     this.Carrier.Equals(input.Carrier))
@@ -260,9 +264,9 @@ namespace net.crossly.Model
                     this.TrackingNumber.Equals(input.TrackingNumber))
                 ) && 
                 (
-                    this.VoidedAt == input.VoidedAt ||
-                    (this.VoidedAt != null &&
-                    this.VoidedAt.Equals(input.VoidedAt))
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
                     this.LabelCostCents == input.LabelCostCents ||
@@ -275,6 +279,11 @@ namespace net.crossly.Model
                     this.LabelUrl.Equals(input.LabelUrl))
                 ) && 
                 (
+                    this.LabelQrUrl == input.LabelQrUrl ||
+                    (this.LabelQrUrl != null &&
+                    this.LabelQrUrl.Equals(input.LabelQrUrl))
+                ) && 
+                (
                     this.ShippoShipmentId == input.ShippoShipmentId ||
                     (this.ShippoShipmentId != null &&
                     this.ShippoShipmentId.Equals(input.ShippoShipmentId))
@@ -283,6 +292,11 @@ namespace net.crossly.Model
                     this.TrackingRegisteredAt == input.TrackingRegisteredAt ||
                     (this.TrackingRegisteredAt != null &&
                     this.TrackingRegisteredAt.Equals(input.TrackingRegisteredAt))
+                ) && 
+                (
+                    this.VoidedAt == input.VoidedAt ||
+                    (this.VoidedAt != null &&
+                    this.VoidedAt.Equals(input.VoidedAt))
                 );
         }
 
@@ -311,10 +325,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
                 }
-                if (this.OrderId != null)
-                {
-                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
-                }
                 if (this.Carrier != null)
                 {
                     hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
@@ -327,9 +337,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
                 }
-                if (this.VoidedAt != null)
+                if (this.OrderId != null)
                 {
-                    hashCode = (hashCode * 59) + this.VoidedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
                 if (this.LabelCostCents != null)
                 {
@@ -339,6 +349,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
                 }
+                if (this.LabelQrUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LabelQrUrl.GetHashCode();
+                }
                 if (this.ShippoShipmentId != null)
                 {
                     hashCode = (hashCode * 59) + this.ShippoShipmentId.GetHashCode();
@@ -346,6 +360,10 @@ namespace net.crossly.Model
                 if (this.TrackingRegisteredAt != null)
                 {
                     hashCode = (hashCode * 59) + this.TrackingRegisteredAt.GetHashCode();
+                }
+                if (this.VoidedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.VoidedAt.GetHashCode();
                 }
                 return hashCode;
             }

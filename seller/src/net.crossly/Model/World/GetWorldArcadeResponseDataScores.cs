@@ -39,22 +39,22 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum Record for value: record
+            /// </summary>
+            [EnumMember(Value = "record")]
+            Record = 1,
+
+            /// <summary>
             /// Enum Top for value: top
             /// </summary>
             [EnumMember(Value = "top")]
-            Top = 1,
+            Top = 2,
 
             /// <summary>
             /// Enum Leaderboard for value: leaderboard
             /// </summary>
             [EnumMember(Value = "leaderboard")]
-            Leaderboard = 2,
-
-            /// <summary>
-            /// Enum Record for value: record
-            /// </summary>
-            [EnumMember(Value = "record")]
-            Record = 3
+            Leaderboard = 3
 
         }
 

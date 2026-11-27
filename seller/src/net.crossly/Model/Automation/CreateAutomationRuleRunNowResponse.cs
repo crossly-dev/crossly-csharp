@@ -40,10 +40,14 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateAutomationRuleRunNowResponse" /> class.
         /// </summary>
         /// <param name="success">success (required).</param>
-        /// <param name="jobId">jobId.</param>
+        /// <param name="jobId">jobId (required).</param>
         public CreateAutomationRuleRunNowResponse(bool success = default(bool), string jobId = default(string))
         {
             this.Success = success;
+            // to ensure "jobId" is required (not null)
+            if (jobId == null) {
+                throw new ArgumentNullException("jobId is a required property for CreateAutomationRuleRunNowResponse and cannot be null");
+            }
             this.JobId = jobId;
         }
 
@@ -56,7 +60,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets JobId
         /// </summary>
-        [DataMember(Name = "jobId", EmitDefaultValue = true)]
+        [DataMember(Name = "jobId", IsRequired = true, EmitDefaultValue = false)]
         public string JobId { get; set; }
 
         /// <summary>

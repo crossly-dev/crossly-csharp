@@ -117,7 +117,8 @@ namespace net.crossly.Model
         /// <param name="parts">parts (required).</param>
         /// <param name="reasons">reasons (required).</param>
         /// <param name="marketPath">Where the market lives on the web (the buyer-side market page). (required).</param>
-        public GetVaultMarketVaultSuggestionItemResponseSuggestion(string inventoryItemId = default(string), string title = default(string), string imageUrl = default(string), decimal unitsToSend = default(decimal), string bookKey = default(string), string variantId = default(string), string condition = default(string), string gradeKey = default(string), GetVaultMarketVaultSuggestionItemResponseSuggestionMarket market = default(GetVaultMarketVaultSuggestionItemResponseSuggestionMarket), GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit instantExit = default(GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit), decimal? listPriceCents = default(decimal?), decimal? exitVsListBps = default(decimal?), ExitBasisEnum? exitBasis = default(ExitBasisEnum?), decimal? daysListed = default(decimal?), GetVaultMarketVaultSuggestionItemResponseSuggestionVaultFee vaultFee = default(GetVaultMarketVaultSuggestionItemResponseSuggestionVaultFee), decimal score = default(decimal), StrengthEnum strength = default(StrengthEnum), GetVaultMarketVaultSuggestionItemResponseSuggestionParts parts = default(GetVaultMarketVaultSuggestionItemResponseSuggestionParts), List<string> reasons = default(List<string>), string marketPath = default(string))
+        /// <param name="fractionalize">fractionalize.</param>
+        public GetVaultMarketVaultSuggestionItemResponseSuggestion(string inventoryItemId = default(string), string title = default(string), string imageUrl = default(string), decimal unitsToSend = default(decimal), string bookKey = default(string), string variantId = default(string), string condition = default(string), string gradeKey = default(string), GetVaultMarketVaultSuggestionItemResponseSuggestionMarket market = default(GetVaultMarketVaultSuggestionItemResponseSuggestionMarket), GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit instantExit = default(GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit), decimal? listPriceCents = default(decimal?), decimal? exitVsListBps = default(decimal?), ExitBasisEnum? exitBasis = default(ExitBasisEnum?), decimal? daysListed = default(decimal?), GetVaultMarketVaultSuggestionItemResponseSuggestionVaultFee vaultFee = default(GetVaultMarketVaultSuggestionItemResponseSuggestionVaultFee), decimal score = default(decimal), StrengthEnum strength = default(StrengthEnum), GetVaultMarketVaultSuggestionItemResponseSuggestionParts parts = default(GetVaultMarketVaultSuggestionItemResponseSuggestionParts), List<string> reasons = default(List<string>), string marketPath = default(string), GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize fractionalize = default(GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize))
         {
             // to ensure "inventoryItemId" is required (not null)
             if (inventoryItemId == null) {
@@ -179,6 +180,7 @@ namespace net.crossly.Model
             this.ExitVsListBps = exitVsListBps;
             this.ExitBasis = exitBasis;
             this.DaysListed = daysListed;
+            this.Fractionalize = fractionalize;
         }
 
         /// <summary>
@@ -293,6 +295,12 @@ namespace net.crossly.Model
         public string MarketPath { get; set; }
 
         /// <summary>
+        /// Gets or Sets Fractionalize
+        /// </summary>
+        [DataMember(Name = "fractionalize", EmitDefaultValue = true)]
+        public GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize Fractionalize { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -320,6 +328,7 @@ namespace net.crossly.Model
             sb.Append("  Parts: ").Append(Parts).Append("\n");
             sb.Append("  Reasons: ").Append(Reasons).Append("\n");
             sb.Append("  MarketPath: ").Append(MarketPath).Append("\n");
+            sb.Append("  Fractionalize: ").Append(Fractionalize).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -451,6 +460,11 @@ namespace net.crossly.Model
                     this.MarketPath == input.MarketPath ||
                     (this.MarketPath != null &&
                     this.MarketPath.Equals(input.MarketPath))
+                ) && 
+                (
+                    this.Fractionalize == input.Fractionalize ||
+                    (this.Fractionalize != null &&
+                    this.Fractionalize.Equals(input.Fractionalize))
                 );
         }
 
@@ -530,6 +544,10 @@ namespace net.crossly.Model
                 if (this.MarketPath != null)
                 {
                     hashCode = (hashCode * 59) + this.MarketPath.GetHashCode();
+                }
+                if (this.Fractionalize != null)
+                {
+                    hashCode = (hashCode * 59) + this.Fractionalize.GetHashCode();
                 }
                 return hashCode;
             }

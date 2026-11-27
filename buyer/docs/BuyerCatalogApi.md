@@ -956,11 +956,11 @@ Name | Type | Description  | Notes
 
 <a name="getbuyercataloglistingshipping"></a>
 # **GetBuyerCatalogListingShipping**
-> GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping (string slug, string zip = null, string country = null, int? quantity = null)
+> GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping (string slug, string zip = null, string state = null, string country = null, int? quantity = null)
 
 Shipping services and prices to a destination.
 
-Lists every shipping service the seller offers to `country` (default: the seller’s own country) with its price for `quantity` units and its delivery window in business days (handling included). `zip` is required for a domestic quote. `shipsToCountry: false` means the seller does not ship there. Pass a service `id` as `shippingServiceId` to POST /api/v1/buyer/checkout, or in `shippingServiceBySeller` to POST /api/v1/buyer/cart/quote.
+Lists every shipping service the seller offers to `country` (default: the seller’s own country) with its price for `quantity` units and its delivery window in business days (handling included). `zip` is required for a domestic quote; `state` is optional. `shipsToCountry: false` means the seller does not ship there (`noShipMessage` says why); `partial: true` means a ZIP or postcode could change the answer. Pass a service `id` as `shippingServiceId` to POST /api/v1/buyer/checkout, or in `shippingServiceBySeller` to POST /api/v1/buyer/cart/quote. A seller on \"buyer pays: calculated\" prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry `carrier` and `carrierService`, and `calculatedAtCheckout: true` means a ZIP is needed first.
 
 ### Example
 ```csharp
@@ -984,13 +984,14 @@ namespace Example
             var apiInstance = new BuyerCatalogApi(config);
             var slug = "slug_example";  // string | 
             var zip = "zip_example";  // string |  (optional) 
+            var state = "state_example";  // string |  (optional) 
             var country = "country_example";  // string |  (optional) 
             var quantity = 56;  // int? |  (optional) 
 
             try
             {
                 // Shipping services and prices to a destination.
-                GetBuyerCatalogListingShippingResponse result = apiInstance.GetBuyerCatalogListingShipping(slug, zip, country, quantity);
+                GetBuyerCatalogListingShippingResponse result = apiInstance.GetBuyerCatalogListingShipping(slug, zip, state, country, quantity);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1010,6 +1011,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
  **zip** | **string**|  | [optional] 
+ **state** | **string**|  | [optional] 
  **country** | **string**|  | [optional] 
  **quantity** | **int?**|  | [optional] 
 

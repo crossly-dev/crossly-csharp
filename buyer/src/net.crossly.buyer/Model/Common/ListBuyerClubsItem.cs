@@ -39,25 +39,25 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerClubsItem" /> class.
         /// </summary>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="description">description.</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
-        /// <param name="member">member.</param>
         /// <param name="tiers">tiers (required).</param>
+        /// <param name="member">member.</param>
         /// <param name="sellerName">sellerName (required).</param>
         /// <param name="sellerHandle">sellerHandle.</param>
-        public ListBuyerClubsItem(string name = default(string), string description = default(string), string sellerUserId = default(string), CreateBuyerSellerClubJoinResponseDataMember member = default(CreateBuyerSellerClubJoinResponseDataMember), List<CreateBuyerSellerClubJoinResponseDataTiers> tiers = default(List<CreateBuyerSellerClubJoinResponseDataTiers>), string sellerName = default(string), string sellerHandle = default(string))
+        public ListBuyerClubsItem(string sellerUserId = default(string), string name = default(string), string description = default(string), List<CreateBuyerSellerClubJoinResponseDataTiers> tiers = default(List<CreateBuyerSellerClubJoinResponseDataTiers>), CreateBuyerSellerClubJoinResponseDataMember member = default(CreateBuyerSellerClubJoinResponseDataMember), string sellerName = default(string), string sellerHandle = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for ListBuyerClubsItem and cannot be null");
-            }
-            this.Name = name;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
                 throw new ArgumentNullException("sellerUserId is a required property for ListBuyerClubsItem and cannot be null");
             }
             this.SellerUserId = sellerUserId;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for ListBuyerClubsItem and cannot be null");
+            }
+            this.Name = name;
             // to ensure "tiers" is required (not null)
             if (tiers == null) {
                 throw new ArgumentNullException("tiers is a required property for ListBuyerClubsItem and cannot be null");
@@ -74,6 +74,12 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
@@ -86,22 +92,16 @@ namespace net.crossly.buyer.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerUserId
+        /// Gets or Sets Tiers
         /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
+        [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
+        public List<CreateBuyerSellerClubJoinResponseDataTiers> Tiers { get; set; }
 
         /// <summary>
         /// Gets or Sets Member
         /// </summary>
         [DataMember(Name = "member", EmitDefaultValue = true)]
         public CreateBuyerSellerClubJoinResponseDataMember Member { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tiers
-        /// </summary>
-        [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateBuyerSellerClubJoinResponseDataTiers> Tiers { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerName
@@ -123,11 +123,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerClubsItem {\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
-            sb.Append("  Member: ").Append(Member).Append("\n");
             sb.Append("  Tiers: ").Append(Tiers).Append("\n");
+            sb.Append("  Member: ").Append(Member).Append("\n");
             sb.Append("  SellerName: ").Append(SellerName).Append("\n");
             sb.Append("  SellerHandle: ").Append(SellerHandle).Append("\n");
             sb.Append("}\n");
@@ -166,6 +166,11 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -176,20 +181,15 @@ namespace net.crossly.buyer.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
+                    this.Tiers == input.Tiers ||
+                    this.Tiers != null &&
+                    input.Tiers != null &&
+                    this.Tiers.SequenceEqual(input.Tiers)
                 ) && 
                 (
                     this.Member == input.Member ||
                     (this.Member != null &&
                     this.Member.Equals(input.Member))
-                ) && 
-                (
-                    this.Tiers == input.Tiers ||
-                    this.Tiers != null &&
-                    input.Tiers != null &&
-                    this.Tiers.SequenceEqual(input.Tiers)
                 ) && 
                 (
                     this.SellerName == input.SellerName ||
@@ -212,6 +212,10 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -220,17 +224,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
-                if (this.SellerUserId != null)
+                if (this.Tiers != null)
                 {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Tiers.GetHashCode();
                 }
                 if (this.Member != null)
                 {
                     hashCode = (hashCode * 59) + this.Member.GetHashCode();
-                }
-                if (this.Tiers != null)
-                {
-                    hashCode = (hashCode * 59) + this.Tiers.GetHashCode();
                 }
                 if (this.SellerName != null)
                 {

@@ -94,12 +94,12 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="amount">amount (required).</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="note">note.</param>
         /// <param name="place">place (required).</param>
         /// <param name="contestId">contestId (required).</param>
-        /// <param name="amount">amount (required).</param>
-        public GetWorldContestMineResponseDataPrizes(string id = default(string), string _ref = default(string), DateTime createdAt = default(DateTime), string userId = default(string), StatusEnum status = default(StatusEnum), string kind = default(string), string note = default(string), decimal place = default(decimal), string contestId = default(string), decimal amount = default(decimal))
+        public GetWorldContestMineResponseDataPrizes(string id = default(string), string _ref = default(string), DateTime createdAt = default(DateTime), string userId = default(string), StatusEnum status = default(StatusEnum), decimal amount = default(decimal), string kind = default(string), string note = default(string), decimal place = default(decimal), string contestId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -113,6 +113,7 @@ namespace net.crossly.Model
             }
             this.UserId = userId;
             this.Status = status;
+            this.Amount = amount;
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for GetWorldContestMineResponseDataPrizes and cannot be null");
@@ -124,7 +125,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("contestId is a required property for GetWorldContestMineResponseDataPrizes and cannot be null");
             }
             this.ContestId = contestId;
-            this.Amount = amount;
             this.Ref = _ref;
             this.Note = note;
         }
@@ -154,6 +154,12 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Amount
+        /// </summary>
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Amount { get; set; }
+
+        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
@@ -178,12 +184,6 @@ namespace net.crossly.Model
         public string ContestId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Amount
-        /// </summary>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -196,11 +196,11 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  Place: ").Append(Place).Append("\n");
             sb.Append("  ContestId: ").Append(ContestId).Append("\n");
-            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -261,6 +261,10 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.Amount == input.Amount ||
+                    this.Amount.Equals(input.Amount)
+                ) && 
+                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
@@ -278,10 +282,6 @@ namespace net.crossly.Model
                     this.ContestId == input.ContestId ||
                     (this.ContestId != null &&
                     this.ContestId.Equals(input.ContestId))
-                ) && 
-                (
-                    this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
                 );
         }
 
@@ -311,6 +311,7 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
@@ -324,7 +325,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ContestId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 return hashCode;
             }
         }

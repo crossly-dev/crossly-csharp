@@ -41,15 +41,15 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="videoUrl">videoUrl.</param>
         /// <param name="status">status (required).</param>
+        /// <param name="videoUrl">videoUrl.</param>
         /// <param name="platformListingId">platformListingId (required).</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="note">note.</param>
         /// <param name="answeredAt">answeredAt.</param>
         /// <param name="sellerNote">sellerNote.</param>
-        public CreateBuyerCatalogListingVideoRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), string videoUrl = default(string), string status = default(string), string platformListingId = default(string), string sellerUserId = default(string), string buyerUserId = default(string), string note = default(string), DateTime? answeredAt = default(DateTime?), string sellerNote = default(string))
+        public CreateBuyerCatalogListingVideoRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string videoUrl = default(string), string platformListingId = default(string), string buyerUserId = default(string), string sellerUserId = default(string), string note = default(string), DateTime? answeredAt = default(DateTime?), string sellerNote = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -67,16 +67,16 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("platformListingId is a required property for CreateBuyerCatalogListingVideoRequestResponseData and cannot be null");
             }
             this.PlatformListingId = platformListingId;
-            // to ensure "sellerUserId" is required (not null)
-            if (sellerUserId == null) {
-                throw new ArgumentNullException("sellerUserId is a required property for CreateBuyerCatalogListingVideoRequestResponseData and cannot be null");
-            }
-            this.SellerUserId = sellerUserId;
             // to ensure "buyerUserId" is required (not null)
             if (buyerUserId == null) {
                 throw new ArgumentNullException("buyerUserId is a required property for CreateBuyerCatalogListingVideoRequestResponseData and cannot be null");
             }
             this.BuyerUserId = buyerUserId;
+            // to ensure "sellerUserId" is required (not null)
+            if (sellerUserId == null) {
+                throw new ArgumentNullException("sellerUserId is a required property for CreateBuyerCatalogListingVideoRequestResponseData and cannot be null");
+            }
+            this.SellerUserId = sellerUserId;
             this.VideoUrl = videoUrl;
             this.Note = note;
             this.AnsweredAt = answeredAt;
@@ -96,16 +96,16 @@ namespace net.crossly.buyer.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets VideoUrl
-        /// </summary>
-        [DataMember(Name = "videoUrl", EmitDefaultValue = true)]
-        public string VideoUrl { get; set; }
-
-        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VideoUrl
+        /// </summary>
+        [DataMember(Name = "videoUrl", EmitDefaultValue = true)]
+        public string VideoUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -114,16 +114,16 @@ namespace net.crossly.buyer.Model
         public string PlatformListingId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
-
-        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string BuyerUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets Note
@@ -153,11 +153,11 @@ namespace net.crossly.buyer.Model
             sb.Append("class CreateBuyerCatalogListingVideoRequestResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  VideoUrl: ").Append(VideoUrl).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  VideoUrl: ").Append(VideoUrl).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  AnsweredAt: ").Append(AnsweredAt).Append("\n");
             sb.Append("  SellerNote: ").Append(SellerNote).Append("\n");
@@ -207,14 +207,14 @@ namespace net.crossly.buyer.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
-                    this.VideoUrl == input.VideoUrl ||
-                    (this.VideoUrl != null &&
-                    this.VideoUrl.Equals(input.VideoUrl))
-                ) && 
-                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.VideoUrl == input.VideoUrl ||
+                    (this.VideoUrl != null &&
+                    this.VideoUrl.Equals(input.VideoUrl))
                 ) && 
                 (
                     this.PlatformListingId == input.PlatformListingId ||
@@ -222,14 +222,14 @@ namespace net.crossly.buyer.Model
                     this.PlatformListingId.Equals(input.PlatformListingId))
                 ) && 
                 (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
+                ) && 
+                (
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.Note == input.Note ||
@@ -265,25 +265,25 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                if (this.VideoUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.VideoUrl.GetHashCode();
-                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.VideoUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.VideoUrl.GetHashCode();
                 }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
                 }
-                if (this.SellerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
+                }
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 if (this.Note != null)
                 {

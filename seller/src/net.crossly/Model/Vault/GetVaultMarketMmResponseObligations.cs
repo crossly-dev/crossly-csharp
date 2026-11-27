@@ -44,10 +44,10 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="day">day (required).</param>
         /// <param name="reasons">reasons.</param>
+        /// <param name="program">program (required).</param>
         /// <param name="tier">tier.</param>
         /// <param name="bookKey">bookKey (required).</param>
         /// <param name="level">level.</param>
-        /// <param name="program">program (required).</param>
         /// <param name="samples">samples (required).</param>
         /// <param name="inSpread">inSpread (required).</param>
         /// <param name="inHalfSpread">inHalfSpread (required).</param>
@@ -57,7 +57,7 @@ namespace net.crossly.Model
         /// <param name="rfqAnsweredFast">rfqAnsweredFast (required).</param>
         /// <param name="met">met.</param>
         /// <param name="coverageBps">coverageBps.</param>
-        public GetVaultMarketMmResponseObligations(decimal? coveragePct = default(decimal?), DateTime updatedAt = default(DateTime), string userId = default(string), string day = default(string), List<string> reasons = default(List<string>), string tier = default(string), string bookKey = default(string), string level = default(string), string program = default(string), decimal samples = default(decimal), decimal inSpread = default(decimal), decimal inHalfSpread = default(decimal), decimal callsTotal = default(decimal), decimal callsJoined = default(decimal), decimal rfqInvited = default(decimal), decimal rfqAnsweredFast = default(decimal), bool? met = default(bool?), decimal? coverageBps = default(decimal?))
+        public GetVaultMarketMmResponseObligations(decimal? coveragePct = default(decimal?), DateTime updatedAt = default(DateTime), string userId = default(string), string day = default(string), List<string> reasons = default(List<string>), string program = default(string), string tier = default(string), string bookKey = default(string), string level = default(string), decimal samples = default(decimal), decimal inSpread = default(decimal), decimal inHalfSpread = default(decimal), decimal callsTotal = default(decimal), decimal callsJoined = default(decimal), decimal rfqInvited = default(decimal), decimal rfqAnsweredFast = default(decimal), bool? met = default(bool?), decimal? coverageBps = default(decimal?))
         {
             this.UpdatedAt = updatedAt;
             // to ensure "userId" is required (not null)
@@ -70,16 +70,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("day is a required property for GetVaultMarketMmResponseObligations and cannot be null");
             }
             this.Day = day;
-            // to ensure "bookKey" is required (not null)
-            if (bookKey == null) {
-                throw new ArgumentNullException("bookKey is a required property for GetVaultMarketMmResponseObligations and cannot be null");
-            }
-            this.BookKey = bookKey;
             // to ensure "program" is required (not null)
             if (program == null) {
                 throw new ArgumentNullException("program is a required property for GetVaultMarketMmResponseObligations and cannot be null");
             }
             this.Program = program;
+            // to ensure "bookKey" is required (not null)
+            if (bookKey == null) {
+                throw new ArgumentNullException("bookKey is a required property for GetVaultMarketMmResponseObligations and cannot be null");
+            }
+            this.BookKey = bookKey;
             this.Samples = samples;
             this.InSpread = inSpread;
             this.InHalfSpread = inHalfSpread;
@@ -126,6 +126,12 @@ namespace net.crossly.Model
         public List<string> Reasons { get; set; }
 
         /// <summary>
+        /// Gets or Sets Program
+        /// </summary>
+        [DataMember(Name = "program", IsRequired = true, EmitDefaultValue = false)]
+        public string Program { get; set; }
+
+        /// <summary>
         /// Gets or Sets Tier
         /// </summary>
         [DataMember(Name = "tier", EmitDefaultValue = true)]
@@ -142,12 +148,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "level", EmitDefaultValue = true)]
         public string Level { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Program
-        /// </summary>
-        [DataMember(Name = "program", IsRequired = true, EmitDefaultValue = false)]
-        public string Program { get; set; }
 
         /// <summary>
         /// Gets or Sets Samples
@@ -216,10 +216,10 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Day: ").Append(Day).Append("\n");
             sb.Append("  Reasons: ").Append(Reasons).Append("\n");
+            sb.Append("  Program: ").Append(Program).Append("\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
             sb.Append("  BookKey: ").Append(BookKey).Append("\n");
             sb.Append("  Level: ").Append(Level).Append("\n");
-            sb.Append("  Program: ").Append(Program).Append("\n");
             sb.Append("  Samples: ").Append(Samples).Append("\n");
             sb.Append("  InSpread: ").Append(InSpread).Append("\n");
             sb.Append("  InHalfSpread: ").Append(InHalfSpread).Append("\n");
@@ -291,6 +291,11 @@ namespace net.crossly.Model
                     this.Reasons.SequenceEqual(input.Reasons)
                 ) && 
                 (
+                    this.Program == input.Program ||
+                    (this.Program != null &&
+                    this.Program.Equals(input.Program))
+                ) && 
+                (
                     this.Tier == input.Tier ||
                     (this.Tier != null &&
                     this.Tier.Equals(input.Tier))
@@ -304,11 +309,6 @@ namespace net.crossly.Model
                     this.Level == input.Level ||
                     (this.Level != null &&
                     this.Level.Equals(input.Level))
-                ) && 
-                (
-                    this.Program == input.Program ||
-                    (this.Program != null &&
-                    this.Program.Equals(input.Program))
                 ) && 
                 (
                     this.Samples == input.Samples ||
@@ -379,6 +379,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Reasons.GetHashCode();
                 }
+                if (this.Program != null)
+                {
+                    hashCode = (hashCode * 59) + this.Program.GetHashCode();
+                }
                 if (this.Tier != null)
                 {
                     hashCode = (hashCode * 59) + this.Tier.GetHashCode();
@@ -390,10 +394,6 @@ namespace net.crossly.Model
                 if (this.Level != null)
                 {
                     hashCode = (hashCode * 59) + this.Level.GetHashCode();
-                }
-                if (this.Program != null)
-                {
-                    hashCode = (hashCode * 59) + this.Program.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Samples.GetHashCode();
                 hashCode = (hashCode * 59) + this.InSpread.GetHashCode();

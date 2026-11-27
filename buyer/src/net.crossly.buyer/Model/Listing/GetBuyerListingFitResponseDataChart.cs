@@ -40,25 +40,25 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerListingFitResponseDataChart" /> class.
         /// </summary>
         /// <param name="kind">kind (required).</param>
-        /// <param name="rows">rows (required).</param>
         /// <param name="kindLabel">kindLabel (required).</param>
-        public GetBuyerListingFitResponseDataChart(string kind = default(string), List<GetBuyerListingFitResponseDataChartRows> rows = default(List<GetBuyerListingFitResponseDataChartRows>), string kindLabel = default(string))
+        /// <param name="rows">rows (required).</param>
+        public GetBuyerListingFitResponseDataChart(string kind = default(string), string kindLabel = default(string), List<GetBuyerListingFitResponseDataChartRows> rows = default(List<GetBuyerListingFitResponseDataChartRows>))
         {
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for GetBuyerListingFitResponseDataChart and cannot be null");
             }
             this.Kind = kind;
-            // to ensure "rows" is required (not null)
-            if (rows == null) {
-                throw new ArgumentNullException("rows is a required property for GetBuyerListingFitResponseDataChart and cannot be null");
-            }
-            this.Rows = rows;
             // to ensure "kindLabel" is required (not null)
             if (kindLabel == null) {
                 throw new ArgumentNullException("kindLabel is a required property for GetBuyerListingFitResponseDataChart and cannot be null");
             }
             this.KindLabel = kindLabel;
+            // to ensure "rows" is required (not null)
+            if (rows == null) {
+                throw new ArgumentNullException("rows is a required property for GetBuyerListingFitResponseDataChart and cannot be null");
+            }
+            this.Rows = rows;
         }
 
         /// <summary>
@@ -68,16 +68,16 @@ namespace net.crossly.buyer.Model
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets Rows
-        /// </summary>
-        [DataMember(Name = "rows", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetBuyerListingFitResponseDataChartRows> Rows { get; set; }
-
-        /// <summary>
         /// Gets or Sets KindLabel
         /// </summary>
         [DataMember(Name = "kindLabel", IsRequired = true, EmitDefaultValue = false)]
         public string KindLabel { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Rows
+        /// </summary>
+        [DataMember(Name = "rows", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetBuyerListingFitResponseDataChartRows> Rows { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,8 +88,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingFitResponseDataChart {\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  Rows: ").Append(Rows).Append("\n");
             sb.Append("  KindLabel: ").Append(KindLabel).Append("\n");
+            sb.Append("  Rows: ").Append(Rows).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,15 +131,15 @@ namespace net.crossly.buyer.Model
                     this.Kind.Equals(input.Kind))
                 ) && 
                 (
+                    this.KindLabel == input.KindLabel ||
+                    (this.KindLabel != null &&
+                    this.KindLabel.Equals(input.KindLabel))
+                ) && 
+                (
                     this.Rows == input.Rows ||
                     this.Rows != null &&
                     input.Rows != null &&
                     this.Rows.SequenceEqual(input.Rows)
-                ) && 
-                (
-                    this.KindLabel == input.KindLabel ||
-                    (this.KindLabel != null &&
-                    this.KindLabel.Equals(input.KindLabel))
                 );
         }
 
@@ -156,13 +156,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
-                if (this.Rows != null)
-                {
-                    hashCode = (hashCode * 59) + this.Rows.GetHashCode();
-                }
                 if (this.KindLabel != null)
                 {
                     hashCode = (hashCode * 59) + this.KindLabel.GetHashCode();
+                }
+                if (this.Rows != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rows.GetHashCode();
                 }
                 return hashCode;
             }

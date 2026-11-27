@@ -43,14 +43,14 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="platform">platform.</param>
-        /// <param name="type">type (required).</param>
-        /// <param name="orderId">orderId.</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
+        /// <param name="orderId">orderId.</param>
+        /// <param name="type">type (required).</param>
         /// <param name="delta">delta.</param>
         /// <param name="quantityBefore">quantityBefore.</param>
         /// <param name="quantityAfter">quantityAfter.</param>
         /// <param name="saleId">saleId.</param>
-        public ListInventoryActivityItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string type = default(string), string orderId = default(string), string inventoryItemId = default(string), decimal? delta = default(decimal?), decimal? quantityBefore = default(decimal?), decimal? quantityAfter = default(decimal?), string saleId = default(string))
+        public ListInventoryActivityItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string inventoryItemId = default(string), string orderId = default(string), string type = default(string), decimal? delta = default(decimal?), decimal? quantityBefore = default(decimal?), decimal? quantityAfter = default(decimal?), string saleId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -69,8 +69,8 @@ namespace net.crossly.Model
             }
             this.Type = type;
             this.Platform = platform;
-            this.OrderId = orderId;
             this.InventoryItemId = inventoryItemId;
+            this.OrderId = orderId;
             this.Delta = delta;
             this.QuantityBefore = quantityBefore;
             this.QuantityAfter = quantityAfter;
@@ -102,10 +102,10 @@ namespace net.crossly.Model
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets InventoryItemId
         /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
-        public string Type { get; set; }
+        [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
+        public string InventoryItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderId
@@ -114,10 +114,10 @@ namespace net.crossly.Model
         public string OrderId { get; set; }
 
         /// <summary>
-        /// Gets or Sets InventoryItemId
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
-        public string InventoryItemId { get; set; }
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Delta
@@ -155,9 +155,9 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Delta: ").Append(Delta).Append("\n");
             sb.Append("  QuantityBefore: ").Append(QuantityBefore).Append("\n");
             sb.Append("  QuantityAfter: ").Append(QuantityAfter).Append("\n");
@@ -218,9 +218,9 @@ namespace net.crossly.Model
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.InventoryItemId == input.InventoryItemId ||
+                    (this.InventoryItemId != null &&
+                    this.InventoryItemId.Equals(input.InventoryItemId))
                 ) && 
                 (
                     this.OrderId == input.OrderId ||
@@ -228,9 +228,9 @@ namespace net.crossly.Model
                     this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
-                    this.InventoryItemId == input.InventoryItemId ||
-                    (this.InventoryItemId != null &&
-                    this.InventoryItemId.Equals(input.InventoryItemId))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
                     this.Delta == input.Delta ||
@@ -279,17 +279,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.Type != null)
+                if (this.InventoryItemId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                    hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
                 }
                 if (this.OrderId != null)
                 {
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
-                if (this.InventoryItemId != null)
+                if (this.Type != null)
                 {
-                    hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 if (this.Delta != null)
                 {

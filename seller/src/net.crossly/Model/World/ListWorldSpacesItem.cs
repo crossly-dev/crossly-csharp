@@ -38,34 +38,34 @@ namespace net.crossly.Model
         public enum VenueEnum
         {
             /// <summary>
+            /// Enum Stage for value: stage
+            /// </summary>
+            [EnumMember(Value = "stage")]
+            Stage = 1,
+
+            /// <summary>
             /// Enum Gallery for value: gallery
             /// </summary>
             [EnumMember(Value = "gallery")]
-            Gallery = 1,
+            Gallery = 2,
 
             /// <summary>
             /// Enum CardClub for value: card_club
             /// </summary>
             [EnumMember(Value = "card_club")]
-            CardClub = 2,
+            CardClub = 3,
 
             /// <summary>
             /// Enum SneakerMeet for value: sneaker_meet
             /// </summary>
             [EnumMember(Value = "sneaker_meet")]
-            SneakerMeet = 3,
+            SneakerMeet = 4,
 
             /// <summary>
             /// Enum VintageMarket for value: vintage_market
             /// </summary>
             [EnumMember(Value = "vintage_market")]
-            VintageMarket = 4,
-
-            /// <summary>
-            /// Enum Stage for value: stage
-            /// </summary>
-            [EnumMember(Value = "stage")]
-            Stage = 5,
+            VintageMarket = 5,
 
             /// <summary>
             /// Enum Clubhouse for value: clubhouse

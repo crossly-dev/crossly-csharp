@@ -42,33 +42,23 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="sales">sales (required).</param>
         /// <param name="grossCents">grossCents (required).</param>
-        /// <param name="avgDaysToSale">avgDaysToSale (required).</param>
-        /// <param name="avgSaleCents">avgSaleCents (required).</param>
+        /// <param name="avgDaysToSale">avgDaysToSale.</param>
+        /// <param name="avgSaleCents">avgSaleCents.</param>
         /// <param name="netCents">netCents (required).</param>
-        public ListInsightByPlatformItem(string platform = default(string), string sales = default(string), string grossCents = default(string), decimal avgDaysToSale = default(decimal), decimal avgSaleCents = default(decimal), string netCents = default(string))
+        /// <param name="netProfitCents">netProfitCents.</param>
+        public ListInsightByPlatformItem(string platform = default(string), decimal sales = default(decimal), decimal grossCents = default(decimal), decimal? avgDaysToSale = default(decimal?), decimal? avgSaleCents = default(decimal?), decimal netCents = default(decimal), decimal? netProfitCents = default(decimal?))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for ListInsightByPlatformItem and cannot be null");
             }
             this.Platform = platform;
-            // to ensure "sales" is required (not null)
-            if (sales == null) {
-                throw new ArgumentNullException("sales is a required property for ListInsightByPlatformItem and cannot be null");
-            }
             this.Sales = sales;
-            // to ensure "grossCents" is required (not null)
-            if (grossCents == null) {
-                throw new ArgumentNullException("grossCents is a required property for ListInsightByPlatformItem and cannot be null");
-            }
             this.GrossCents = grossCents;
+            this.NetCents = netCents;
             this.AvgDaysToSale = avgDaysToSale;
             this.AvgSaleCents = avgSaleCents;
-            // to ensure "netCents" is required (not null)
-            if (netCents == null) {
-                throw new ArgumentNullException("netCents is a required property for ListInsightByPlatformItem and cannot be null");
-            }
-            this.NetCents = netCents;
+            this.NetProfitCents = netProfitCents;
         }
 
         /// <summary>
@@ -81,31 +71,37 @@ namespace net.crossly.Model
         /// Gets or Sets Sales
         /// </summary>
         [DataMember(Name = "sales", IsRequired = true, EmitDefaultValue = false)]
-        public string Sales { get; set; }
+        public decimal Sales { get; set; }
 
         /// <summary>
         /// Gets or Sets GrossCents
         /// </summary>
         [DataMember(Name = "gross_cents", IsRequired = true, EmitDefaultValue = false)]
-        public string GrossCents { get; set; }
+        public decimal GrossCents { get; set; }
 
         /// <summary>
         /// Gets or Sets AvgDaysToSale
         /// </summary>
-        [DataMember(Name = "avg_days_to_sale", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AvgDaysToSale { get; set; }
+        [DataMember(Name = "avg_days_to_sale", EmitDefaultValue = true)]
+        public decimal? AvgDaysToSale { get; set; }
 
         /// <summary>
         /// Gets or Sets AvgSaleCents
         /// </summary>
-        [DataMember(Name = "avg_sale_cents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AvgSaleCents { get; set; }
+        [DataMember(Name = "avg_sale_cents", EmitDefaultValue = true)]
+        public decimal? AvgSaleCents { get; set; }
 
         /// <summary>
         /// Gets or Sets NetCents
         /// </summary>
         [DataMember(Name = "net_cents", IsRequired = true, EmitDefaultValue = false)]
-        public string NetCents { get; set; }
+        public decimal NetCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetProfitCents
+        /// </summary>
+        [DataMember(Name = "net_profit_cents", EmitDefaultValue = true)]
+        public decimal? NetProfitCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -121,6 +117,7 @@ namespace net.crossly.Model
             sb.Append("  AvgDaysToSale: ").Append(AvgDaysToSale).Append("\n");
             sb.Append("  AvgSaleCents: ").Append(AvgSaleCents).Append("\n");
             sb.Append("  NetCents: ").Append(NetCents).Append("\n");
+            sb.Append("  NetProfitCents: ").Append(NetProfitCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,26 +160,30 @@ namespace net.crossly.Model
                 ) && 
                 (
                     this.Sales == input.Sales ||
-                    (this.Sales != null &&
-                    this.Sales.Equals(input.Sales))
+                    this.Sales.Equals(input.Sales)
                 ) && 
                 (
                     this.GrossCents == input.GrossCents ||
-                    (this.GrossCents != null &&
-                    this.GrossCents.Equals(input.GrossCents))
+                    this.GrossCents.Equals(input.GrossCents)
                 ) && 
                 (
                     this.AvgDaysToSale == input.AvgDaysToSale ||
-                    this.AvgDaysToSale.Equals(input.AvgDaysToSale)
+                    (this.AvgDaysToSale != null &&
+                    this.AvgDaysToSale.Equals(input.AvgDaysToSale))
                 ) && 
                 (
                     this.AvgSaleCents == input.AvgSaleCents ||
-                    this.AvgSaleCents.Equals(input.AvgSaleCents)
+                    (this.AvgSaleCents != null &&
+                    this.AvgSaleCents.Equals(input.AvgSaleCents))
                 ) && 
                 (
                     this.NetCents == input.NetCents ||
-                    (this.NetCents != null &&
-                    this.NetCents.Equals(input.NetCents))
+                    this.NetCents.Equals(input.NetCents)
+                ) && 
+                (
+                    this.NetProfitCents == input.NetProfitCents ||
+                    (this.NetProfitCents != null &&
+                    this.NetProfitCents.Equals(input.NetProfitCents))
                 );
         }
 
@@ -199,19 +200,20 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.Sales != null)
+                hashCode = (hashCode * 59) + this.Sales.GetHashCode();
+                hashCode = (hashCode * 59) + this.GrossCents.GetHashCode();
+                if (this.AvgDaysToSale != null)
                 {
-                    hashCode = (hashCode * 59) + this.Sales.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AvgDaysToSale.GetHashCode();
                 }
-                if (this.GrossCents != null)
+                if (this.AvgSaleCents != null)
                 {
-                    hashCode = (hashCode * 59) + this.GrossCents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AvgSaleCents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AvgDaysToSale.GetHashCode();
-                hashCode = (hashCode * 59) + this.AvgSaleCents.GetHashCode();
-                if (this.NetCents != null)
+                hashCode = (hashCode * 59) + this.NetCents.GetHashCode();
+                if (this.NetProfitCents != null)
                 {
-                    hashCode = (hashCode * 59) + this.NetCents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NetProfitCents.GetHashCode();
                 }
                 return hashCode;
             }

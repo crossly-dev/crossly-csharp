@@ -32,6 +32,38 @@ namespace net.crossly.Model
     public partial class GetAnalyticTimeseryResponse : IEquatable<GetAnalyticTimeseryResponse>, IValidatableObject
     {
         /// <summary>
+        /// Defines Granularity
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum GranularityEnum
+        {
+            /// <summary>
+            /// Enum Day for value: day
+            /// </summary>
+            [EnumMember(Value = "day")]
+            Day = 1,
+
+            /// <summary>
+            /// Enum Week for value: week
+            /// </summary>
+            [EnumMember(Value = "week")]
+            Week = 2,
+
+            /// <summary>
+            /// Enum Month for value: month
+            /// </summary>
+            [EnumMember(Value = "month")]
+            Month = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Granularity
+        /// </summary>
+        [DataMember(Name = "granularity", IsRequired = true, EmitDefaultValue = false)]
+        public GranularityEnum Granularity { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetAnalyticTimeseryResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -40,10 +72,12 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetAnalyticTimeseryResponse" /> class.
         /// </summary>
         /// <param name="days">days (required).</param>
+        /// <param name="granularity">granularity (required).</param>
         /// <param name="series">series (required).</param>
-        public GetAnalyticTimeseryResponse(decimal days = default(decimal), List<GetAnalyticTimeseryResponseSeries> series = default(List<GetAnalyticTimeseryResponseSeries>))
+        public GetAnalyticTimeseryResponse(decimal days = default(decimal), GranularityEnum granularity = default(GranularityEnum), List<GetAnalyticTimeseryResponseSeries> series = default(List<GetAnalyticTimeseryResponseSeries>))
         {
             this.Days = days;
+            this.Granularity = granularity;
             // to ensure "series" is required (not null)
             if (series == null) {
                 throw new ArgumentNullException("series is a required property for GetAnalyticTimeseryResponse and cannot be null");
@@ -72,6 +106,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAnalyticTimeseryResponse {\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
+            sb.Append("  Granularity: ").Append(Granularity).Append("\n");
             sb.Append("  Series: ").Append(Series).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -113,6 +148,10 @@ namespace net.crossly.Model
                     this.Days.Equals(input.Days)
                 ) && 
                 (
+                    this.Granularity == input.Granularity ||
+                    this.Granularity.Equals(input.Granularity)
+                ) && 
+                (
                     this.Series == input.Series ||
                     this.Series != null &&
                     input.Series != null &&
@@ -130,6 +169,7 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Days.GetHashCode();
+                hashCode = (hashCode * 59) + this.Granularity.GetHashCode();
                 if (this.Series != null)
                 {
                     hashCode = (hashCode * 59) + this.Series.GetHashCode();

@@ -44,40 +44,40 @@ namespace net.crossly.Model
             Stored = 1,
 
             /// <summary>
-            /// Enum Listed for value: listed
-            /// </summary>
-            [EnumMember(Value = "listed")]
-            Listed = 2,
-
-            /// <summary>
-            /// Enum Inbound for value: inbound
-            /// </summary>
-            [EnumMember(Value = "inbound")]
-            Inbound = 3,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 4,
+            Cancelled = 2,
 
             /// <summary>
-            /// Enum SoldOnBook for value: sold_on_book
+            /// Enum Listed for value: listed
             /// </summary>
-            [EnumMember(Value = "sold_on_book")]
-            SoldOnBook = 5,
-
-            /// <summary>
-            /// Enum ChannelSold for value: channel_sold
-            /// </summary>
-            [EnumMember(Value = "channel_sold")]
-            ChannelSold = 6,
+            [EnumMember(Value = "listed")]
+            Listed = 3,
 
             /// <summary>
             /// Enum Shipped for value: shipped
             /// </summary>
             [EnumMember(Value = "shipped")]
-            Shipped = 7
+            Shipped = 4,
+
+            /// <summary>
+            /// Enum Inbound for value: inbound
+            /// </summary>
+            [EnumMember(Value = "inbound")]
+            Inbound = 5,
+
+            /// <summary>
+            /// Enum SoldOnBook for value: sold_on_book
+            /// </summary>
+            [EnumMember(Value = "sold_on_book")]
+            SoldOnBook = 6,
+
+            /// <summary>
+            /// Enum ChannelSold for value: channel_sold
+            /// </summary>
+            [EnumMember(Value = "channel_sold")]
+            ChannelSold = 7
 
         }
 
@@ -96,6 +96,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListVaultMarketSupplyDepositsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="vaultItemId">vaultItemId (required).</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
         /// <param name="batchId">batchId.</param>
@@ -116,7 +117,7 @@ namespace net.crossly.Model
         /// <param name="outboundTracking">outboundTracking.</param>
         /// <param name="exit">exit.</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListVaultMarketSupplyDepositsItem(string id = default(string), string vaultItemId = default(string), string inventoryItemId = default(string), string batchId = default(string), string partnerId = default(string), string bookKey = default(string), StatusEnum status = default(StatusEnum), string unitStatus = default(string), bool lendEnabled = default(bool), string name = default(string), string imageUrl = default(string), string variantLabel = default(string), decimal? autoListBps = default(decimal?), bool lendWhenIdle = default(bool), string setupNote = default(string), string setUpAt = default(string), string channelPlatform = default(string), string channelSoldAt = default(string), string outboundTracking = default(string), ListVaultMarketSupplyDepositsItemExit exit = default(ListVaultMarketSupplyDepositsItemExit), string createdAt = default(string))
+        public ListVaultMarketSupplyDepositsItem(string id = default(string), string storefrontId = default(string), string vaultItemId = default(string), string inventoryItemId = default(string), string batchId = default(string), string partnerId = default(string), string bookKey = default(string), StatusEnum status = default(StatusEnum), string unitStatus = default(string), bool lendEnabled = default(bool), string name = default(string), string imageUrl = default(string), string variantLabel = default(string), decimal? autoListBps = default(decimal?), bool lendWhenIdle = default(bool), string setupNote = default(string), string setUpAt = default(string), string channelPlatform = default(string), string channelSoldAt = default(string), string outboundTracking = default(string), ListVaultMarketSupplyDepositsItemExit exit = default(ListVaultMarketSupplyDepositsItemExit), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -146,6 +147,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("createdAt is a required property for ListVaultMarketSupplyDepositsItem and cannot be null");
             }
             this.CreatedAt = createdAt;
+            this.StorefrontId = storefrontId;
             this.InventoryItemId = inventoryItemId;
             this.BatchId = batchId;
             this.PartnerId = partnerId;
@@ -166,6 +168,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets VaultItemId
@@ -290,6 +298,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListVaultMarketSupplyDepositsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  VaultItemId: ").Append(VaultItemId).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  BatchId: ").Append(BatchId).Append("\n");
@@ -349,6 +358,11 @@ namespace net.crossly.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.VaultItemId == input.VaultItemId ||
@@ -461,6 +475,10 @@ namespace net.crossly.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.VaultItemId != null)
                 {

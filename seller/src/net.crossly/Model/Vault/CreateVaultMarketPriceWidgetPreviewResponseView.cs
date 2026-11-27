@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Mark for value: mark
-            /// </summary>
-            [EnumMember(Value = "mark")]
-            Mark = 1,
-
-            /// <summary>
             /// Enum Index for value: index
             /// </summary>
             [EnumMember(Value = "index")]
-            Index = 2
+            Index = 1,
+
+            /// <summary>
+            /// Enum Mark for value: mark
+            /// </summary>
+            [EnumMember(Value = "mark")]
+            Mark = 2
 
         }
 
@@ -70,22 +70,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 

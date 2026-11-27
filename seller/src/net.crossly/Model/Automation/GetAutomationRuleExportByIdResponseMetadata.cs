@@ -34,21 +34,21 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAutomationRuleExportByIdResponseMetadata" /> class.
         /// </summary>
-        /// <param name="tags">tags.</param>
-        /// <param name="sourceUrl">sourceUrl.</param>
         /// <param name="author">author.</param>
-        public GetAutomationRuleExportByIdResponseMetadata(List<string> tags = default(List<string>), string sourceUrl = default(string), string author = default(string))
+        /// <param name="sourceUrl">sourceUrl.</param>
+        /// <param name="tags">tags.</param>
+        public GetAutomationRuleExportByIdResponseMetadata(string author = default(string), string sourceUrl = default(string), List<string> tags = default(List<string>))
         {
-            this.Tags = tags;
-            this.SourceUrl = sourceUrl;
             this.Author = author;
+            this.SourceUrl = sourceUrl;
+            this.Tags = tags;
         }
 
         /// <summary>
-        /// Gets or Sets Tags
+        /// Gets or Sets Author
         /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = true)]
-        public List<string> Tags { get; set; }
+        [DataMember(Name = "author", EmitDefaultValue = true)]
+        public string Author { get; set; }
 
         /// <summary>
         /// Gets or Sets SourceUrl
@@ -57,10 +57,10 @@ namespace net.crossly.Model
         public string SourceUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets Author
+        /// Gets or Sets Tags
         /// </summary>
-        [DataMember(Name = "author", EmitDefaultValue = true)]
-        public string Author { get; set; }
+        [DataMember(Name = "tags", EmitDefaultValue = true)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,9 +70,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAutomationRuleExportByIdResponseMetadata {\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  SourceUrl: ").Append(SourceUrl).Append("\n");
             sb.Append("  Author: ").Append(Author).Append("\n");
+            sb.Append("  SourceUrl: ").Append(SourceUrl).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,10 +109,9 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Tags == input.Tags ||
-                    this.Tags != null &&
-                    input.Tags != null &&
-                    this.Tags.SequenceEqual(input.Tags)
+                    this.Author == input.Author ||
+                    (this.Author != null &&
+                    this.Author.Equals(input.Author))
                 ) && 
                 (
                     this.SourceUrl == input.SourceUrl ||
@@ -120,9 +119,10 @@ namespace net.crossly.Model
                     this.SourceUrl.Equals(input.SourceUrl))
                 ) && 
                 (
-                    this.Author == input.Author ||
-                    (this.Author != null &&
-                    this.Author.Equals(input.Author))
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -135,17 +135,17 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Tags != null)
+                if (this.Author != null)
                 {
-                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Author.GetHashCode();
                 }
                 if (this.SourceUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.SourceUrl.GetHashCode();
                 }
-                if (this.Author != null)
+                if (this.Tags != null)
                 {
-                    hashCode = (hashCode * 59) + this.Author.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
                 return hashCode;
             }

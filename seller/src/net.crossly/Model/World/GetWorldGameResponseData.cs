@@ -116,7 +116,7 @@ namespace net.crossly.Model
         /// <param name="fits">fits.</param>
         /// <param name="piece">piece (required).</param>
         /// <param name="author">author.</param>
-        public GetWorldGameResponseData(AverageCount stars = default(AverageCount), decimal? myStars = default(decimal?), List<GetWorldGameResponseDataStore> store = default(List<GetWorldGameResponseDataStore>), string id = default(string), string slug = default(string), string name = default(string), string version = default(string), string description = default(string), ModeEnum mode = default(ModeEnum), GetWorldGameResponseDataPlayers players = default(GetWorldGameResponseDataPlayers), List<GetWorldGameResponseDataPlacesItem> places = default(List<GetWorldGameResponseDataPlacesItem>), RatingEnum rating = default(RatingEnum), GetWorldGameLeaderboardResponseDataScoring scoring = default(GetWorldGameLeaderboardResponseDataScoring), GetWorldGameResponseDataContests contests = default(GetWorldGameResponseDataContests), List<GetWorldGameResponseDataRewards> rewards = default(List<GetWorldGameResponseDataRewards>), string thumbnail = default(string), Dictionary<string, Object> fits = default(Dictionary<string, Object>), GetWorldGameResponseDataPiece piece = default(GetWorldGameResponseDataPiece), string author = default(string))
+        public GetWorldGameResponseData(AverageCount stars = default(AverageCount), decimal? myStars = default(decimal?), List<GetWorldGameResponseDataStore> store = default(List<GetWorldGameResponseDataStore>), string id = default(string), string slug = default(string), string name = default(string), string version = default(string), string description = default(string), ModeEnum mode = default(ModeEnum), MinMax players = default(MinMax), List<GetWorldGameResponseDataPlacesItem> places = default(List<GetWorldGameResponseDataPlacesItem>), RatingEnum rating = default(RatingEnum), GetWorldGameLeaderboardResponseDataScoring scoring = default(GetWorldGameLeaderboardResponseDataScoring), GetWorldGameResponseDataContests contests = default(GetWorldGameResponseDataContests), List<GetWorldGameResponseDataRewards> rewards = default(List<GetWorldGameResponseDataRewards>), string thumbnail = default(string), Dictionary<string, Object> fits = default(Dictionary<string, Object>), GetWorldGameResponseDataPiece piece = default(GetWorldGameResponseDataPiece), string author = default(string))
         {
             // to ensure "stars" is required (not null)
             if (stars == null) {
@@ -235,7 +235,7 @@ namespace net.crossly.Model
         /// Gets or Sets Players
         /// </summary>
         [DataMember(Name = "players", IsRequired = true, EmitDefaultValue = false)]
-        public GetWorldGameResponseDataPlayers Players { get; set; }
+        public MinMax Players { get; set; }
 
         /// <summary>
         /// Gets or Sets Places

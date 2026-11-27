@@ -44,11 +44,11 @@ namespace net.crossly.Model
         /// <param name="quantity">quantity.</param>
         /// <param name="orderId">orderId (required).</param>
         /// <param name="kind">kind (required).</param>
-        /// <param name="seq">seq (required).</param>
-        /// <param name="detail">detail.</param>
         /// <param name="priceCents">priceCents.</param>
         /// <param name="tradeId">tradeId.</param>
-        public ListVaultMarketProEventsItem(DateTime createdAt = default(DateTime), string userId = default(string), decimal? quantity = default(decimal?), string orderId = default(string), string kind = default(string), decimal seq = default(decimal), Dictionary<string, Object> detail = default(Dictionary<string, Object>), decimal? priceCents = default(decimal?), string tradeId = default(string))
+        /// <param name="detail">detail.</param>
+        /// <param name="seq">seq (required).</param>
+        public ListVaultMarketProEventsItem(DateTime createdAt = default(DateTime), string userId = default(string), decimal? quantity = default(decimal?), string orderId = default(string), string kind = default(string), decimal? priceCents = default(decimal?), string tradeId = default(string), Dictionary<string, Object> detail = default(Dictionary<string, Object>), decimal seq = default(decimal))
         {
             this.CreatedAt = createdAt;
             // to ensure "userId" is required (not null)
@@ -68,9 +68,9 @@ namespace net.crossly.Model
             this.Kind = kind;
             this.Seq = seq;
             this.Quantity = quantity;
-            this.Detail = detail;
             this.PriceCents = priceCents;
             this.TradeId = tradeId;
+            this.Detail = detail;
         }
 
         /// <summary>
@@ -104,18 +104,6 @@ namespace net.crossly.Model
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets Seq
-        /// </summary>
-        [DataMember(Name = "seq", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Seq { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Detail
-        /// </summary>
-        [DataMember(Name = "detail", EmitDefaultValue = true)]
-        public Dictionary<string, Object> Detail { get; set; }
-
-        /// <summary>
         /// Gets or Sets PriceCents
         /// </summary>
         [DataMember(Name = "priceCents", EmitDefaultValue = true)]
@@ -126,6 +114,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "tradeId", EmitDefaultValue = true)]
         public string TradeId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Detail
+        /// </summary>
+        [DataMember(Name = "detail", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Detail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Seq
+        /// </summary>
+        [DataMember(Name = "seq", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Seq { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,10 +140,10 @@ namespace net.crossly.Model
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  Seq: ").Append(Seq).Append("\n");
-            sb.Append("  Detail: ").Append(Detail).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  TradeId: ").Append(TradeId).Append("\n");
+            sb.Append("  Detail: ").Append(Detail).Append("\n");
+            sb.Append("  Seq: ").Append(Seq).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,16 +205,6 @@ namespace net.crossly.Model
                     this.Kind.Equals(input.Kind))
                 ) && 
                 (
-                    this.Seq == input.Seq ||
-                    this.Seq.Equals(input.Seq)
-                ) && 
-                (
-                    this.Detail == input.Detail ||
-                    this.Detail != null &&
-                    input.Detail != null &&
-                    this.Detail.SequenceEqual(input.Detail)
-                ) && 
-                (
                     this.PriceCents == input.PriceCents ||
                     (this.PriceCents != null &&
                     this.PriceCents.Equals(input.PriceCents))
@@ -223,6 +213,16 @@ namespace net.crossly.Model
                     this.TradeId == input.TradeId ||
                     (this.TradeId != null &&
                     this.TradeId.Equals(input.TradeId))
+                ) && 
+                (
+                    this.Detail == input.Detail ||
+                    this.Detail != null &&
+                    input.Detail != null &&
+                    this.Detail.SequenceEqual(input.Detail)
+                ) && 
+                (
+                    this.Seq == input.Seq ||
+                    this.Seq.Equals(input.Seq)
                 );
         }
 
@@ -255,11 +255,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Seq.GetHashCode();
-                if (this.Detail != null)
-                {
-                    hashCode = (hashCode * 59) + this.Detail.GetHashCode();
-                }
                 if (this.PriceCents != null)
                 {
                     hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
@@ -268,6 +263,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.TradeId.GetHashCode();
                 }
+                if (this.Detail != null)
+                {
+                    hashCode = (hashCode * 59) + this.Detail.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Seq.GetHashCode();
                 return hashCode;
             }
         }

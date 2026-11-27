@@ -39,15 +39,23 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateListingResponse" /> class.
         /// </summary>
+        /// <param name="warnings">warnings.</param>
         /// <param name="jobs">jobs (required).</param>
-        public UpdateListingResponse(List<UpdateListingResponseJobs> jobs = default(List<UpdateListingResponseJobs>))
+        public UpdateListingResponse(List<CreateListingResponseWarnings> warnings = default(List<CreateListingResponseWarnings>), List<UpdateListingResponseJobs> jobs = default(List<UpdateListingResponseJobs>))
         {
             // to ensure "jobs" is required (not null)
             if (jobs == null) {
                 throw new ArgumentNullException("jobs is a required property for UpdateListingResponse and cannot be null");
             }
             this.Jobs = jobs;
+            this.Warnings = warnings;
         }
+
+        /// <summary>
+        /// Gets or Sets Warnings
+        /// </summary>
+        [DataMember(Name = "warnings", EmitDefaultValue = true)]
+        public List<CreateListingResponseWarnings> Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets Jobs
@@ -63,6 +71,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateListingResponse {\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  Jobs: ").Append(Jobs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -100,6 +109,12 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
+                ) && 
+                (
                     this.Jobs == input.Jobs ||
                     this.Jobs != null &&
                     input.Jobs != null &&
@@ -116,6 +131,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Warnings != null)
+                {
+                    hashCode = (hashCode * 59) + this.Warnings.GetHashCode();
+                }
                 if (this.Jobs != null)
                 {
                     hashCode = (hashCode * 59) + this.Jobs.GetHashCode();

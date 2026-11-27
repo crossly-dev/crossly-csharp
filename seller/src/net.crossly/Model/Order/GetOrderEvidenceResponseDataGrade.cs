@@ -44,16 +44,16 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
-            /// Enum Strong for value: strong
-            /// </summary>
-            [EnumMember(Value = "strong")]
-            Strong = 2,
-
-            /// <summary>
             /// Enum Basic for value: basic
             /// </summary>
             [EnumMember(Value = "basic")]
-            Basic = 3,
+            Basic = 2,
+
+            /// <summary>
+            /// Enum Strong for value: strong
+            /// </summary>
+            [EnumMember(Value = "strong")]
+            Strong = 3,
 
             /// <summary>
             /// Enum Conclusive for value: conclusive

@@ -50,10 +50,10 @@ namespace net.crossly.Model
             Card = 2,
 
             /// <summary>
-            /// Enum Tensor for value: tensor
+            /// Enum Rarible for value: rarible
             /// </summary>
-            [EnumMember(Value = "tensor")]
-            Tensor = 3,
+            [EnumMember(Value = "rarible")]
+            Rarible = 3,
 
             /// <summary>
             /// Enum MagicEden for value: magic_eden
@@ -62,10 +62,10 @@ namespace net.crossly.Model
             MagicEden = 4,
 
             /// <summary>
-            /// Enum Rarible for value: rarible
+            /// Enum Tensor for value: tensor
             /// </summary>
-            [EnumMember(Value = "rarible")]
-            Rarible = 5
+            [EnumMember(Value = "tensor")]
+            Tensor = 5
 
         }
 

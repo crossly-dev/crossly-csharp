@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Completed for value: completed
+            /// </summary>
+            [EnumMember(Value = "completed")]
+            Completed = 1,
+
+            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 1,
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Ended for value: ended
             /// </summary>
             [EnumMember(Value = "ended")]
-            Ended = 2,
+            Ended = 3,
 
             /// <summary>
             /// Enum Working for value: working
             /// </summary>
             [EnumMember(Value = "working")]
-            Working = 3,
-
-            /// <summary>
-            /// Enum Completed for value: completed
-            /// </summary>
-            [EnumMember(Value = "completed")]
-            Completed = 4
+            Working = 4
 
         }
 

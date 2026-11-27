@@ -70,44 +70,6 @@ namespace net.crossly.Model
         [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = false)]
         public EmailEnum Email { get; set; }
         /// <summary>
-        /// Defines Webhook
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum WebhookEnum
-        {
-            /// <summary>
-            /// Enum Unavailable for value: unavailable
-            /// </summary>
-            [EnumMember(Value = "unavailable")]
-            Unavailable = 1,
-
-            /// <summary>
-            /// Enum Off for value: off
-            /// </summary>
-            [EnumMember(Value = "off")]
-            Off = 2,
-
-            /// <summary>
-            /// Enum Send for value: send
-            /// </summary>
-            [EnumMember(Value = "send")]
-            Send = 3,
-
-            /// <summary>
-            /// Enum Quiet for value: quiet
-            /// </summary>
-            [EnumMember(Value = "quiet")]
-            Quiet = 4
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Webhook
-        /// </summary>
-        [DataMember(Name = "webhook", IsRequired = true, EmitDefaultValue = false)]
-        public WebhookEnum Webhook { get; set; }
-        /// <summary>
         /// Defines Push
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -145,6 +107,44 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "push", IsRequired = true, EmitDefaultValue = false)]
         public PushEnum Push { get; set; }
+        /// <summary>
+        /// Defines Webhook
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum WebhookEnum
+        {
+            /// <summary>
+            /// Enum Unavailable for value: unavailable
+            /// </summary>
+            [EnumMember(Value = "unavailable")]
+            Unavailable = 1,
+
+            /// <summary>
+            /// Enum Off for value: off
+            /// </summary>
+            [EnumMember(Value = "off")]
+            Off = 2,
+
+            /// <summary>
+            /// Enum Send for value: send
+            /// </summary>
+            [EnumMember(Value = "send")]
+            Send = 3,
+
+            /// <summary>
+            /// Enum Quiet for value: quiet
+            /// </summary>
+            [EnumMember(Value = "quiet")]
+            Quiet = 4
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Webhook
+        /// </summary>
+        [DataMember(Name = "webhook", IsRequired = true, EmitDefaultValue = false)]
+        public WebhookEnum Webhook { get; set; }
         /// <summary>
         /// Defines Telegram
         /// </summary>
@@ -230,15 +230,15 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateVaultMarketAlertPrefTestResponsePlan" /> class.
         /// </summary>
         /// <param name="email">email (required).</param>
-        /// <param name="webhook">webhook (required).</param>
         /// <param name="push">push (required).</param>
+        /// <param name="webhook">webhook (required).</param>
         /// <param name="telegram">telegram (required).</param>
         /// <param name="terminal">terminal (required).</param>
-        public CreateVaultMarketAlertPrefTestResponsePlan(EmailEnum email = default(EmailEnum), WebhookEnum webhook = default(WebhookEnum), PushEnum push = default(PushEnum), TelegramEnum telegram = default(TelegramEnum), TerminalEnum terminal = default(TerminalEnum))
+        public CreateVaultMarketAlertPrefTestResponsePlan(EmailEnum email = default(EmailEnum), PushEnum push = default(PushEnum), WebhookEnum webhook = default(WebhookEnum), TelegramEnum telegram = default(TelegramEnum), TerminalEnum terminal = default(TerminalEnum))
         {
             this.Email = email;
-            this.Webhook = webhook;
             this.Push = push;
+            this.Webhook = webhook;
             this.Telegram = telegram;
             this.Terminal = terminal;
         }
@@ -252,8 +252,8 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateVaultMarketAlertPrefTestResponsePlan {\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  Webhook: ").Append(Webhook).Append("\n");
             sb.Append("  Push: ").Append(Push).Append("\n");
+            sb.Append("  Webhook: ").Append(Webhook).Append("\n");
             sb.Append("  Telegram: ").Append(Telegram).Append("\n");
             sb.Append("  Terminal: ").Append(Terminal).Append("\n");
             sb.Append("}\n");
@@ -296,12 +296,12 @@ namespace net.crossly.Model
                     this.Email.Equals(input.Email)
                 ) && 
                 (
-                    this.Webhook == input.Webhook ||
-                    this.Webhook.Equals(input.Webhook)
-                ) && 
-                (
                     this.Push == input.Push ||
                     this.Push.Equals(input.Push)
+                ) && 
+                (
+                    this.Webhook == input.Webhook ||
+                    this.Webhook.Equals(input.Webhook)
                 ) && 
                 (
                     this.Telegram == input.Telegram ||
@@ -323,8 +323,8 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Email.GetHashCode();
-                hashCode = (hashCode * 59) + this.Webhook.GetHashCode();
                 hashCode = (hashCode * 59) + this.Push.GetHashCode();
+                hashCode = (hashCode * 59) + this.Webhook.GetHashCode();
                 hashCode = (hashCode * 59) + this.Telegram.GetHashCode();
                 hashCode = (hashCode * 59) + this.Terminal.GetHashCode();
                 return hashCode;

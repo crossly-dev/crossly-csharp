@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Pending = 1,
 
             /// <summary>
-            /// Enum Filled for value: filled
-            /// </summary>
-            [EnumMember(Value = "filled")]
-            Filled = 2,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 3,
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 4,
+            Rejected = 3,
+
+            /// <summary>
+            /// Enum Filled for value: filled
+            /// </summary>
+            [EnumMember(Value = "filled")]
+            Filled = 4,
 
             /// <summary>
             /// Enum Working for value: working

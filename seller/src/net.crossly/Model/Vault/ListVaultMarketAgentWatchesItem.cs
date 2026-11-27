@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum MetricEnum
         {
             /// <summary>
-            /// Enum Mark for value: mark
-            /// </summary>
-            [EnumMember(Value = "mark")]
-            Mark = 1,
-
-            /// <summary>
             /// Enum Ask for value: ask
             /// </summary>
             [EnumMember(Value = "ask")]
-            Ask = 2,
-
-            /// <summary>
-            /// Enum Bid for value: bid
-            /// </summary>
-            [EnumMember(Value = "bid")]
-            Bid = 3,
+            Ask = 1,
 
             /// <summary>
             /// Enum Last for value: last
             /// </summary>
             [EnumMember(Value = "last")]
-            Last = 4
+            Last = 2,
+
+            /// <summary>
+            /// Enum Mark for value: mark
+            /// </summary>
+            [EnumMember(Value = "mark")]
+            Mark = 3,
+
+            /// <summary>
+            /// Enum Bid for value: bid
+            /// </summary>
+            [EnumMember(Value = "bid")]
+            Bid = 4
 
         }
 

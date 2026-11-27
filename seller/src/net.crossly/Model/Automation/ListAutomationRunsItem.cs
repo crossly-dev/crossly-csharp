@@ -40,22 +40,23 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListAutomationRunsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="ruleId">ruleId.</param>
+        /// <param name="chainId">chainId.</param>
         /// <param name="status">status (required).</param>
+        /// <param name="actionType">actionType (required).</param>
+        /// <param name="summary">summary (required).</param>
         /// <param name="errorMessage">errorMessage.</param>
         /// <param name="durationMs">durationMs.</param>
-        /// <param name="ruleId">ruleId.</param>
-        /// <param name="actionType">actionType (required).</param>
-        /// <param name="chainId">chainId.</param>
-        public ListAutomationRunsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string errorMessage = default(string), decimal? durationMs = default(decimal?), string ruleId = default(string), string actionType = default(string), string chainId = default(string))
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="workflowRunId">Set for runs of the converted workflow..</param>
+        public ListAutomationRunsItem(string id = default(string), string userId = default(string), string ruleId = default(string), string chainId = default(string), string status = default(string), string actionType = default(string), Dictionary<string, Object> summary = default(Dictionary<string, Object>), string errorMessage = default(string), decimal? durationMs = default(decimal?), DateTime createdAt = default(DateTime), string workflowRunId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListAutomationRunsItem and cannot be null");
             }
             this.Id = id;
-            this.CreatedAt = createdAt;
             // to ensure "userId" is required (not null)
             if (userId == null) {
                 throw new ArgumentNullException("userId is a required property for ListAutomationRunsItem and cannot be null");
@@ -71,10 +72,17 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("actionType is a required property for ListAutomationRunsItem and cannot be null");
             }
             this.ActionType = actionType;
-            this.ErrorMessage = errorMessage;
-            this.DurationMs = durationMs;
+            // to ensure "summary" is required (not null)
+            if (summary == null) {
+                throw new ArgumentNullException("summary is a required property for ListAutomationRunsItem and cannot be null");
+            }
+            this.Summary = summary;
+            this.CreatedAt = createdAt;
             this.RuleId = ruleId;
             this.ChainId = chainId;
+            this.ErrorMessage = errorMessage;
+            this.DurationMs = durationMs;
+            this.WorkflowRunId = workflowRunId;
         }
 
         /// <summary>
@@ -84,22 +92,40 @@ namespace net.crossly.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets UserId
         /// </summary>
         [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets RuleId
+        /// </summary>
+        [DataMember(Name = "ruleId", EmitDefaultValue = true)]
+        public string RuleId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ChainId
+        /// </summary>
+        [DataMember(Name = "chainId", EmitDefaultValue = true)]
+        public string ChainId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ActionType
+        /// </summary>
+        [DataMember(Name = "actionType", IsRequired = true, EmitDefaultValue = false)]
+        public string ActionType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Summary
+        /// </summary>
+        [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Summary { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrorMessage
@@ -114,22 +140,17 @@ namespace net.crossly.Model
         public decimal? DurationMs { get; set; }
 
         /// <summary>
-        /// Gets or Sets RuleId
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "ruleId", EmitDefaultValue = true)]
-        public string RuleId { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets ActionType
+        /// Set for runs of the converted workflow.
         /// </summary>
-        [DataMember(Name = "actionType", IsRequired = true, EmitDefaultValue = false)]
-        public string ActionType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChainId
-        /// </summary>
-        [DataMember(Name = "chainId", EmitDefaultValue = true)]
-        public string ChainId { get; set; }
+        /// <value>Set for runs of the converted workflow.</value>
+        [DataMember(Name = "workflowRunId", EmitDefaultValue = true)]
+        public string WorkflowRunId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,14 +161,16 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListAutomationRunsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  RuleId: ").Append(RuleId).Append("\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  ActionType: ").Append(ActionType).Append("\n");
+            sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("  DurationMs: ").Append(DurationMs).Append("\n");
-            sb.Append("  RuleId: ").Append(RuleId).Append("\n");
-            sb.Append("  ActionType: ").Append(ActionType).Append("\n");
-            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  WorkflowRunId: ").Append(WorkflowRunId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -189,19 +212,35 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.RuleId == input.RuleId ||
+                    (this.RuleId != null &&
+                    this.RuleId.Equals(input.RuleId))
+                ) && 
+                (
+                    this.ChainId == input.ChainId ||
+                    (this.ChainId != null &&
+                    this.ChainId.Equals(input.ChainId))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.ActionType == input.ActionType ||
+                    (this.ActionType != null &&
+                    this.ActionType.Equals(input.ActionType))
+                ) && 
+                (
+                    this.Summary == input.Summary ||
+                    this.Summary != null &&
+                    input.Summary != null &&
+                    this.Summary.SequenceEqual(input.Summary)
                 ) && 
                 (
                     this.ErrorMessage == input.ErrorMessage ||
@@ -214,19 +253,14 @@ namespace net.crossly.Model
                     this.DurationMs.Equals(input.DurationMs))
                 ) && 
                 (
-                    this.RuleId == input.RuleId ||
-                    (this.RuleId != null &&
-                    this.RuleId.Equals(input.RuleId))
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
-                    this.ActionType == input.ActionType ||
-                    (this.ActionType != null &&
-                    this.ActionType.Equals(input.ActionType))
-                ) && 
-                (
-                    this.ChainId == input.ChainId ||
-                    (this.ChainId != null &&
-                    this.ChainId.Equals(input.ChainId))
+                    this.WorkflowRunId == input.WorkflowRunId ||
+                    (this.WorkflowRunId != null &&
+                    this.WorkflowRunId.Equals(input.WorkflowRunId))
                 );
         }
 
@@ -243,17 +277,29 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
                 if (this.UserId != null)
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                if (this.RuleId != null)
+                {
+                    hashCode = (hashCode * 59) + this.RuleId.GetHashCode();
+                }
+                if (this.ChainId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
+                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.ActionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionType.GetHashCode();
+                }
+                if (this.Summary != null)
+                {
+                    hashCode = (hashCode * 59) + this.Summary.GetHashCode();
                 }
                 if (this.ErrorMessage != null)
                 {
@@ -263,17 +309,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DurationMs.GetHashCode();
                 }
-                if (this.RuleId != null)
+                if (this.CreatedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.RuleId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                if (this.ActionType != null)
+                if (this.WorkflowRunId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ActionType.GetHashCode();
-                }
-                if (this.ChainId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WorkflowRunId.GetHashCode();
                 }
                 return hashCode;
             }

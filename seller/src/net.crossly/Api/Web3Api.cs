@@ -593,6 +593,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWeb3SolanaTensorBidPlaceTxResponse</returns>
         ApiResponse<CreateWeb3SolanaTensorBidPlaceTxResponse> CreateWeb3SolanaTensorBidCancelTxWithHttpInfo();
         /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        CreateWeb3SolanaTensorBidConfirmResponse CreateWeb3SolanaTensorBidConfirm();
+
+        /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse> CreateWeb3SolanaTensorBidConfirmWithHttpInfo();
+        /// <summary>
         /// Build a Tensor collection bid (or trait bid with &#x60;trait&#x60;) for your Solana wallet to sign. Price in lamports.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -608,6 +624,122 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateWeb3SolanaTensorBidPlaceTxResponse</returns>
         ApiResponse<CreateWeb3SolanaTensorBidPlaceTxResponse> CreateWeb3SolanaTensorBidPlaceTxWithHttpInfo();
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StakingStakeResponse</returns>
+        CreateWeb3StakingStakeResponse CreateWeb3StakingStake();
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StakingStakeResponse</returns>
+        ApiResponse<CreateWeb3StakingStakeResponse> CreateWeb3StakingStakeWithHttpInfo();
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StakingUnstakeResponse</returns>
+        CreateWeb3StakingUnstakeResponse CreateWeb3StakingUnstake();
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StakingUnstakeResponse</returns>
+        ApiResponse<CreateWeb3StakingUnstakeResponse> CreateWeb3StakingUnstakeWithHttpInfo();
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StoreWalletResponse</returns>
+        CreateWeb3StoreWalletResponse CreateWeb3StoreWallet();
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
+        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo();
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3WalletChallengeResponse</returns>
+        CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge();
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
+        ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo();
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>CreateWeb3WalletImportResponse</returns>
+        CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId);
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
+        ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>CreateWeb3StoreWalletSyncResponse</returns>
+        CreateWeb3StoreWalletSyncResponse CreateWeb3StoreWalletSync(Guid walletId);
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletSyncResponse</returns>
+        ApiResponse<CreateWeb3StoreWalletSyncResponse> CreateWeb3StoreWalletSyncWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StoreWalletResponse</returns>
+        CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify();
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
+        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo();
         /// <summary>
         /// Re-read a token&#39;s metadata from the chain&#39;s provider (name, traits, image — a new image is copied to Crossly&#39;s CDN). Once per token per 10 minutes.
         /// </summary>
@@ -663,6 +795,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
         ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeWithHttpInfo();
         /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateWeb3WalletImportResponse</returns>
+        CreateWeb3WalletImportResponse CreateWeb3WalletImport(string id);
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
+        ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3WalletImportWithHttpInfo(string id);
+        /// <summary>
         /// Import a linked wallet&#39;s NFTs into inventory; archives ones that have left the wallet.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -715,15 +865,16 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         ApiResponse<OkResponse> DeleteWeb3AlertWithHttpInfo(string id);
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;.
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         OkResponse DeleteWeb3HolderPerk(string id);
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;.
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;.
         /// </summary>
         /// <remarks>
         /// 
@@ -731,6 +882,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         ApiResponse<OkResponse> DeleteWeb3HolderPerkWithHttpInfo(string id);
         /// <summary>
         /// Delete a launch draft that never went live. Returns &#x60;{ ok }&#x60;.
@@ -769,6 +921,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWeb3LaunchFollowCreatorResponse</returns>
         ApiResponse<CreateWeb3LaunchFollowCreatorResponse> DeleteWeb3LaunchFollowCreatorWithHttpInfo(string id);
         /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>OkResponse</returns>
+        OkResponse DeleteWeb3LaunchPerk(Guid id);
+
+        /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        ApiResponse<OkResponse> DeleteWeb3LaunchPerkWithHttpInfo(Guid id);
+        /// <summary>
         /// Remove your own key for a marketplace; Crossly&#39;s key is used again.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -786,6 +956,24 @@ namespace net.crossly.Api
         /// <param name="marketplace"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWeb3MarketplaceKeyWithHttpInfo(string marketplace);
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns></returns>
+        void DeleteWeb3StoreWallet(Guid walletId);
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteWeb3StoreWalletWithHttpInfo(Guid walletId);
         /// <summary>
         /// Unlink a wallet. Its NFTs stay in inventory but stop syncing.
         /// </summary>
@@ -826,6 +1014,25 @@ namespace net.crossly.Api
         /// <param name="tokenId"></param>
         /// <returns>ApiResponse of GetWeb3AuctionResponse</returns>
         ApiResponse<GetWeb3AuctionResponse> GetWeb3AuctionWithHttpInfo(string chain, string contract, string tokenId);
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3BalanceResponse</returns>
+        GetWeb3BalanceResponse GetWeb3Balance();
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3BalanceResponse</returns>
+        ApiResponse<GetWeb3BalanceResponse> GetWeb3BalanceWithHttpInfo();
         /// <summary>
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds.
         /// </summary>
@@ -1085,6 +1292,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetWeb3LaunchDeployTxResponse</returns>
         ApiResponse<GetWeb3LaunchDeployTxResponse> GetWeb3LaunchDeployTxWithHttpInfo(string id);
         /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWeb3LaunchStatResponse</returns>
+        GetWeb3LaunchStatResponse GetWeb3LaunchStat(string id);
+
+        /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWeb3LaunchStatResponse</returns>
+        ApiResponse<GetWeb3LaunchStatResponse> GetWeb3LaunchStatWithHttpInfo(string id);
+        /// <summary>
         /// A launch’s creator tools: allowlist size and root (and whether the contract has it yet), uploaded art and reveal, supply minted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1249,6 +1474,59 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetWeb3SolanaCollectionTensorBidResponse</returns>
         ApiResponse<GetWeb3SolanaCollectionTensorBidResponse> GetWeb3SolanaCollectionTensorBidWithHttpInfo(string collection);
         /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+        /// </summary>
+        /// <remarks>
+        /// A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3StakingResponse</returns>
+        GetWeb3StakingResponse GetWeb3Staking();
+
+        /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+        /// </summary>
+        /// <remarks>
+        /// A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3StakingResponse</returns>
+        ApiResponse<GetWeb3StakingResponse> GetWeb3StakingWithHttpInfo();
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>GetWeb3WalletHoldingResponse</returns>
+        GetWeb3WalletHoldingResponse GetWeb3StoreWalletHolding(Guid walletId);
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of GetWeb3WalletHoldingResponse</returns>
+        ApiResponse<GetWeb3WalletHoldingResponse> GetWeb3StoreWalletHoldingWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3StoreWalletNftResponse</returns>
+        GetWeb3StoreWalletNftResponse GetWeb3StoreWalletNft();
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3StoreWalletNftResponse</returns>
+        ApiResponse<GetWeb3StoreWalletNftResponse> GetWeb3StoreWalletNftWithHttpInfo();
+        /// <summary>
         /// One NFT: metadata, traits, owner, open listings and offers, activity.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1270,6 +1548,24 @@ namespace net.crossly.Api
         /// <param name="tokenId"></param>
         /// <returns>ApiResponse of GetWeb3TokenResponse</returns>
         ApiResponse<GetWeb3TokenResponse> GetWeb3TokenWithHttpInfo(string chain, string contract, string tokenId);
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWeb3WalletHoldingResponse</returns>
+        GetWeb3WalletHoldingResponse GetWeb3WalletHolding(string id);
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWeb3WalletHoldingResponse</returns>
+        ApiResponse<GetWeb3WalletHoldingResponse> GetWeb3WalletHoldingWithHttpInfo(string id);
         /// <summary>
         /// Listings, offers, sales and cancels in the Crossly book, newest first.
         /// </summary>
@@ -1451,21 +1747,41 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListWeb3DropsResponse</returns>
         ApiResponse<ListWeb3DropsResponse> ListWeb3DropsWithHttpInfo();
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         ListWeb3HolderPerksResponse ListWeb3HolderPerks();
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         ApiResponse<ListWeb3HolderPerksResponse> ListWeb3HolderPerksWithHttpInfo();
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListWeb3LaunchPerksResponse</returns>
+        ListWeb3LaunchPerksResponse ListWeb3LaunchPerks(Guid id);
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListWeb3LaunchPerksResponse</returns>
+        ApiResponse<ListWeb3LaunchPerksResponse> ListWeb3LaunchPerksWithHttpInfo(Guid id);
         /// <summary>
         /// Your launchpad collections (drafts and live), newest first, with minted count and phase.
         /// </summary>
@@ -1539,14 +1855,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListWeb3NftsResponse</returns>
         ApiResponse<ListWeb3NftsResponse> ListWeb3NftsWithHttpInfo(string chain = default(string), string walletId = default(string), int? page = default(int?), int? limit = default(int?));
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status.
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWeb3OrdersResponse</returns>
         ListWeb3OrdersResponse ListWeb3Orders();
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status.
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always).
         /// </summary>
         /// <remarks>
         /// 
@@ -1651,6 +1967,38 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListWeb3SearchTokensResponse</returns>
         ApiResponse<ListWeb3SearchTokensResponse> ListWeb3SearchTokensWithHttpInfo();
         /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletBalancesResponse</returns>
+        ListWeb3StoreWalletBalancesResponse ListWeb3StoreWalletBalances();
+
+        /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletBalancesResponse</returns>
+        ApiResponse<ListWeb3StoreWalletBalancesResponse> ListWeb3StoreWalletBalancesWithHttpInfo();
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletsResponse</returns>
+        ListWeb3StoreWalletsResponse ListWeb3StoreWallets();
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletsResponse</returns>
+        ApiResponse<ListWeb3StoreWalletsResponse> ListWeb3StoreWalletsWithHttpInfo();
+        /// <summary>
         /// List your verified, linked wallets (EVM and Solana).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1683,21 +2031,41 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListWeb3WatchlistResponse</returns>
         ApiResponse<ListWeb3WatchlistResponse> ListWeb3WatchlistWithHttpInfo();
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ListWeb3HolderPerksItem</returns>
-        ListWeb3HolderPerksItem UpdateWeb3HolderPerk();
+        /// <returns>UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk();
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of ListWeb3HolderPerksItem</returns>
-        ApiResponse<ListWeb3HolderPerksItem> UpdateWeb3HolderPerkWithHttpInfo();
+        /// <returns>ApiResponse of UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo();
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateWeb3LaunchResponse</returns>
+        UpdateWeb3LaunchResponse UpdateWeb3Launch(string id);
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateWeb3LaunchResponse</returns>
+        ApiResponse<UpdateWeb3LaunchResponse> UpdateWeb3LaunchWithHttpInfo(string id);
         /// <summary>
         /// Replace the early-phase allowlist (up to 10,000 wallets). EVM live launches get back &#x60;rootTx&#x60;, the setAllowlistRoot transaction for the owner wallet.
         /// </summary>
@@ -1717,6 +2085,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of UpdateWeb3LaunchAllowlistResponse</returns>
         ApiResponse<UpdateWeb3LaunchAllowlistResponse> UpdateWeb3LaunchAllowlistWithHttpInfo(string id);
         /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListWeb3LaunchPerksResponse</returns>
+        ListWeb3LaunchPerksResponse UpdateWeb3LaunchPerk(Guid id);
+
+        /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListWeb3LaunchPerksResponse</returns>
+        ApiResponse<ListWeb3LaunchPerksResponse> UpdateWeb3LaunchPerkWithHttpInfo(Guid id);
+        /// <summary>
         /// Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1734,6 +2120,60 @@ namespace net.crossly.Api
         /// <param name="marketplace"></param>
         /// <returns>ApiResponse of ListWeb3MarketplaceKeysItem</returns>
         ApiResponse<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyWithHttpInfo(string marketplace);
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>UpdateWeb3StoreWalletResponse</returns>
+        UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId);
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
+        ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ListWeb3StoreWalletsResponse</returns>
+        ListWeb3StoreWalletsResponse UpdateWeb3StoreWalletDefault(Guid walletId);
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of ListWeb3StoreWalletsResponse</returns>
+        ApiResponse<ListWeb3StoreWalletsResponse> UpdateWeb3StoreWalletDefaultWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateWeb3WalletResponse</returns>
+        UpdateWeb3WalletResponse UpdateWeb3Wallet(string id);
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateWeb3WalletResponse</returns>
+        ApiResponse<UpdateWeb3WalletResponse> UpdateWeb3WalletWithHttpInfo(string id);
         #endregion Synchronous Operations
     }
 
@@ -2475,6 +2915,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWeb3SolanaTensorBidPlaceTxResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaTensorBidPlaceTxResponse>> CreateWeb3SolanaTensorBidCancelTxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3SolanaTensorBidConfirmResponse> CreateWeb3SolanaTensorBidConfirmAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3SolanaTensorBidConfirmResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse>> CreateWeb3SolanaTensorBidConfirmWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Build a Tensor collection bid (or trait bid with &#x60;trait&#x60;) for your Solana wallet to sign. Price in lamports.
         /// </summary>
         /// <remarks>
@@ -2495,6 +2956,157 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaTensorBidPlaceTxResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaTensorBidPlaceTxResponse>> CreateWeb3SolanaTensorBidPlaceTxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StakingStakeResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3StakingStakeResponse> CreateWeb3StakingStakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StakingStakeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StakingStakeResponse>> CreateWeb3StakingStakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StakingUnstakeResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3StakingUnstakeResponse> CreateWeb3StakingUnstakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StakingUnstakeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StakingUnstakeResponse>> CreateWeb3StakingUnstakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletImportResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletSyncResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3StoreWalletSyncResponse> CreateWeb3StoreWalletSyncAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletSyncResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletSyncResponse>> CreateWeb3StoreWalletSyncWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Re-read a token&#39;s metadata from the chain&#39;s provider (name, traits, image — a new image is copied to Crossly&#39;s CDN). Once per token per 10 minutes.
         /// </summary>
@@ -2565,6 +3177,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3WalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletImportResponse</returns>
+        System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3WalletImportAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3WalletImportWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Import a linked wallet&#39;s NFTs into inventory; archives ones that have left the wallet.
         /// </summary>
         /// <remarks>
@@ -2632,7 +3267,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteWeb3AlertWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;.
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;.
         /// </summary>
         /// <remarks>
         /// 
@@ -2641,10 +3276,11 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<OkResponse> DeleteWeb3HolderPerkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;.
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;.
         /// </summary>
         /// <remarks>
         /// 
@@ -2653,6 +3289,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteWeb3HolderPerkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a launch draft that never went live. Returns &#x60;{ ok }&#x60;.
@@ -2701,6 +3338,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWeb3LaunchFollowCreatorResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWeb3LaunchFollowCreatorResponse>> DeleteWeb3LaunchFollowCreatorWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        System.Threading.Tasks.Task<OkResponse> DeleteWeb3LaunchPerkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteWeb3LaunchPerkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Remove your own key for a marketplace; Crossly&#39;s key is used again.
         /// </summary>
         /// <remarks>
@@ -2723,6 +3383,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Unlink a wallet. Its NFTs stay in inventory but stop syncing.
         /// </summary>
@@ -2773,6 +3456,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3AuctionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWeb3AuctionResponse>> GetWeb3AuctionWithHttpInfoAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3BalanceResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3BalanceResponse> GetWeb3BalanceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3BalanceResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3BalanceResponse>> GetWeb3BalanceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds.
         /// </summary>
@@ -3102,6 +3806,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetWeb3LaunchDeployTxResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWeb3LaunchDeployTxResponse>> GetWeb3LaunchDeployTxWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3LaunchStatResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3LaunchStatResponse> GetWeb3LaunchStatAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3LaunchStatResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3LaunchStatResponse>> GetWeb3LaunchStatWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// A launch’s creator tools: allowlist size and root (and whether the contract has it yet), uploaded art and reveal, supply minted.
         /// </summary>
         /// <remarks>
@@ -3311,6 +4038,71 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetWeb3SolanaCollectionTensorBidResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWeb3SolanaCollectionTensorBidResponse>> GetWeb3SolanaCollectionTensorBidWithHttpInfoAsync(string collection, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+        /// </summary>
+        /// <remarks>
+        /// A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3StakingResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3StakingResponse> GetWeb3StakingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+        /// </summary>
+        /// <remarks>
+        /// A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3StakingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3StakingResponse>> GetWeb3StakingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3WalletHoldingResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3WalletHoldingResponse> GetWeb3StoreWalletHoldingAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3WalletHoldingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3WalletHoldingResponse>> GetWeb3StoreWalletHoldingWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3StoreWalletNftResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3StoreWalletNftResponse> GetWeb3StoreWalletNftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3StoreWalletNftResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3StoreWalletNftResponse>> GetWeb3StoreWalletNftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// One NFT: metadata, traits, owner, open listings and offers, activity.
         /// </summary>
         /// <remarks>
@@ -3337,6 +4129,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3TokenResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWeb3TokenResponse>> GetWeb3TokenWithHttpInfoAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3WalletHoldingResponse</returns>
+        System.Threading.Tasks.Task<GetWeb3WalletHoldingResponse> GetWeb3WalletHoldingAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3WalletHoldingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3WalletHoldingResponse>> GetWeb3WalletHoldingWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Listings, offers, sales and cancels in the Crossly book, newest first.
         /// </summary>
@@ -3573,7 +4388,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListWeb3DropsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3DropsResponse>> ListWeb3DropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
         /// </summary>
         /// <remarks>
         /// 
@@ -3581,10 +4396,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListWeb3HolderPerksResponse> ListWeb3HolderPerksAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
         /// </summary>
         /// <remarks>
         /// 
@@ -3592,7 +4408,31 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3HolderPerksResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListWeb3HolderPerksResponse>> ListWeb3HolderPerksWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3LaunchPerksResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3LaunchPerksResponse> ListWeb3LaunchPerksAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3LaunchPerksResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3LaunchPerksResponse>> ListWeb3LaunchPerksWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your launchpad collections (drafts and live), newest first, with minted count and phase.
         /// </summary>
@@ -3686,7 +4526,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListWeb3NftsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3NftsResponse>> ListWeb3NftsWithHttpInfoAsync(string chain = default(string), string walletId = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status.
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always).
         /// </summary>
         /// <remarks>
         /// 
@@ -3697,7 +4537,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListWeb3OrdersResponse> ListWeb3OrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status.
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always).
         /// </summary>
         /// <remarks>
         /// 
@@ -3833,6 +4673,48 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListWeb3SearchTokensResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3SearchTokensResponse>> ListWeb3SearchTokensWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletBalancesResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3StoreWalletBalancesResponse> ListWeb3StoreWalletBalancesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletBalancesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletBalancesResponse>> ListWeb3StoreWalletBalancesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletsResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3StoreWalletsResponse> ListWeb3StoreWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletsResponse>> ListWeb3StoreWalletsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// List your verified, linked wallets (EVM and Solana).
         /// </summary>
         /// <remarks>
@@ -3875,26 +4757,51 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListWeb3WatchlistResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3WatchlistResponse>> ListWeb3WatchlistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListWeb3HolderPerksItem</returns>
-        System.Threading.Tasks.Task<ListWeb3HolderPerksItem> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListWeb3HolderPerksItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3HolderPerksItem>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateWeb3HolderPerkResponse)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3LaunchResponse</returns>
+        System.Threading.Tasks.Task<UpdateWeb3LaunchResponse> UpdateWeb3LaunchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3LaunchResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3LaunchResponse>> UpdateWeb3LaunchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace the early-phase allowlist (up to 10,000 wallets). EVM live launches get back &#x60;rootTx&#x60;, the setAllowlistRoot transaction for the owner wallet.
         /// </summary>
@@ -3919,6 +4826,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (UpdateWeb3LaunchAllowlistResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateWeb3LaunchAllowlistResponse>> UpdateWeb3LaunchAllowlistWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3LaunchPerksResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3LaunchPerksResponse> UpdateWeb3LaunchPerkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3LaunchPerksResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3LaunchPerksResponse>> UpdateWeb3LaunchPerkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
         /// </summary>
         /// <remarks>
@@ -3941,6 +4871,75 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3MarketplaceKeysItem)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3MarketplaceKeysItem>> UpdateWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
+        System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletsResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3StoreWalletsResponse> UpdateWeb3StoreWalletDefaultAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletsResponse>> UpdateWeb3StoreWalletDefaultWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3WalletResponse</returns>
+        System.Threading.Tasks.Task<UpdateWeb3WalletResponse> UpdateWeb3WalletAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3WalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3WalletResponse>> UpdateWeb3WalletWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -8628,6 +9627,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        public CreateWeb3SolanaTensorBidConfirmResponse CreateWeb3SolanaTensorBidConfirm()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse> localVarResponse = CreateWeb3SolanaTensorBidConfirmWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse> CreateWeb3SolanaTensorBidConfirmWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3SolanaTensorBidConfirmResponse>("/v1/web3/solana/tensor-bids/confirm", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3SolanaTensorBidConfirm", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3SolanaTensorBidConfirmResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaTensorBidConfirmResponse> CreateWeb3SolanaTensorBidConfirmAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse> localVarResponse = await CreateWeb3SolanaTensorBidConfirmWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3SolanaTensorBidConfirmResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse>> CreateWeb3SolanaTensorBidConfirmWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3SolanaTensorBidConfirmResponse>("/v1/web3/solana/tensor-bids/confirm", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3SolanaTensorBidConfirm", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Build a Tensor collection bid (or trait bid with &#x60;trait&#x60;) for your Solana wallet to sign. Price in lamports. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -8746,6 +9873,914 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateWeb3SolanaTensorBidPlaceTx", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StakingStakeResponse</returns>
+        public CreateWeb3StakingStakeResponse CreateWeb3StakingStake()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StakingStakeResponse> localVarResponse = CreateWeb3StakingStakeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StakingStakeResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3StakingStakeResponse> CreateWeb3StakingStakeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3StakingStakeResponse>("/v1/web3/staking/stake", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StakingStake", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StakingStakeResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3StakingStakeResponse> CreateWeb3StakingStakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StakingStakeResponse> localVarResponse = await CreateWeb3StakingStakeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StakingStakeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StakingStakeResponse>> CreateWeb3StakingStakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3StakingStakeResponse>("/v1/web3/staking/stake", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StakingStake", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StakingUnstakeResponse</returns>
+        public CreateWeb3StakingUnstakeResponse CreateWeb3StakingUnstake()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StakingUnstakeResponse> localVarResponse = CreateWeb3StakingUnstakeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StakingUnstakeResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3StakingUnstakeResponse> CreateWeb3StakingUnstakeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3StakingUnstakeResponse>("/v1/web3/staking/unstake", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StakingUnstake", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StakingUnstakeResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3StakingUnstakeResponse> CreateWeb3StakingUnstakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StakingUnstakeResponse> localVarResponse = await CreateWeb3StakingUnstakeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StakingUnstakeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StakingUnstakeResponse>> CreateWeb3StakingUnstakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3StakingUnstakeResponse>("/v1/web3/staking/unstake", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StakingUnstake", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StoreWalletResponse</returns>
+        public CreateWeb3StoreWalletResponse CreateWeb3StoreWallet()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3StoreWalletResponse>("/v1/web3/store-wallets", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3StoreWalletResponse>("/v1/web3/store-wallets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3WalletChallengeResponse</returns>
+        public CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = CreateWeb3StoreWalletChallengeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3WalletChallengeResponse>("/v1/web3/store-wallets/challenge", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletChallenge", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = await CreateWeb3StoreWalletChallengeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start adding a selling wallet to the store: the message the wallet signs. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3WalletChallengeResponse>("/v1/web3/store-wallets/challenge", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletChallenge", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>CreateWeb3WalletImportResponse</returns>
+        public CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId)
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = CreateWeb3StoreWalletImportWithHttpInfo(walletId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3WalletImportResponse>("/v1/web3/store-wallets/{walletId}/import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletImportResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = await CreateWeb3StoreWalletImportWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3WalletImportResponse>("/v1/web3/store-wallets/{walletId}/import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>CreateWeb3StoreWalletSyncResponse</returns>
+        public CreateWeb3StoreWalletSyncResponse CreateWeb3StoreWalletSync(Guid walletId)
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletSyncResponse> localVarResponse = CreateWeb3StoreWalletSyncWithHttpInfo(walletId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletSyncResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletSyncResponse> CreateWeb3StoreWalletSyncWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3StoreWalletSyncResponse>("/v1/web3/store-wallets/{walletId}/sync", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletSync", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletSyncResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletSyncResponse> CreateWeb3StoreWalletSyncAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletSyncResponse> localVarResponse = await CreateWeb3StoreWalletSyncWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletSyncResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletSyncResponse>> CreateWeb3StoreWalletSyncWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3StoreWalletSyncResponse>("/v1/web3/store-wallets/{walletId}/sync", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletSync", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWeb3StoreWalletResponse</returns>
+        public CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify()
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletVerifyWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3StoreWalletResponse>("/v1/web3/store-wallets/verify", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletVerify", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletVerifyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Finish adding a selling wallet: verify its signature and link it to the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3StoreWalletResponse>("/v1/web3/store-wallets/verify", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3StoreWalletVerify", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -9194,6 +11229,152 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateWeb3WalletImportResponse</returns>
+        public CreateWeb3WalletImportResponse CreateWeb3WalletImport(string id)
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = CreateWeb3WalletImportWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3WalletImportWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3WalletImport");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWeb3WalletImportResponse>("/v1/web3/wallets/{id}/import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3WalletImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWeb3WalletImportResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3WalletImportAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = await CreateWeb3WalletImportWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3WalletImportWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3WalletImport");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWeb3WalletImportResponse>("/v1/web3/wallets/{id}/import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWeb3WalletImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Import a linked wallet&#39;s NFTs into inventory; archives ones that have left the wallet. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -9614,11 +11795,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;. 
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         public OkResponse DeleteWeb3HolderPerk(string id)
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = DeleteWeb3HolderPerkWithHttpInfo(id);
@@ -9626,11 +11808,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;. 
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<OkResponse> DeleteWeb3HolderPerkWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
@@ -9685,12 +11868,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;. 
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<OkResponse> DeleteWeb3HolderPerkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await DeleteWeb3HolderPerkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -9698,12 +11882,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove a holder perk. Returns &#x60;{ ok }&#x60;. 
+        /// DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> DeleteWeb3HolderPerkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
@@ -10052,6 +12237,140 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse DeleteWeb3LaunchPerk(Guid id)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = DeleteWeb3LaunchPerkWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> DeleteWeb3LaunchPerkWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<OkResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWeb3LaunchPerk", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        public async System.Threading.Tasks.Task<OkResponse> DeleteWeb3LaunchPerkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await DeleteWeb3LaunchPerkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> DeleteWeb3LaunchPerkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<OkResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWeb3LaunchPerk", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Remove your own key for a marketplace; Crossly&#39;s key is used again. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -10186,6 +12505,138 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteWeb3MarketplaceKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns></returns>
+        public void DeleteWeb3StoreWallet(Guid walletId)
+        {
+            DeleteWeb3StoreWalletWithHttpInfo(walletId);
+        }
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public net.crossly.Client.ApiResponse<Object> DeleteWeb3StoreWalletWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/v1/web3/store-wallets/{walletId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWeb3StoreWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await DeleteWeb3StoreWalletWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Stop the store selling from a wallet (the wallet and its other stores are unaffected). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<Object>> DeleteWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/web3/store-wallets/{walletId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWeb3StoreWallet", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -10514,6 +12965,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetWeb3Auction", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart. &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3BalanceResponse</returns>
+        public GetWeb3BalanceResponse GetWeb3Balance()
+        {
+            net.crossly.Client.ApiResponse<GetWeb3BalanceResponse> localVarResponse = GetWeb3BalanceWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart. &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3BalanceResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3BalanceResponse> GetWeb3BalanceWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3BalanceResponse>("/v1/web3/balances", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3Balance", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart. &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3BalanceResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3BalanceResponse> GetWeb3BalanceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3BalanceResponse> localVarResponse = await GetWeb3BalanceWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every CBX you have, in one read, with the three balances kept apart. &#x60;credit&#x60;: EARNED (withdrawable once matured; &#x60;withdrawableBaseUnits&#x60; is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). &#x60;connected&#x60;: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. &#x60;wallets&#x60;: each linked wallet with its own on-chain CBX (&#x60;status&#x60; read / not_solana / not_live / unavailable). &#x60;totals.allBaseUnits&#x60; is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (&#x60;decimals&#x60;).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3BalanceResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3BalanceResponse>> GetWeb3BalanceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3BalanceResponse>("/v1/web3/balances", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3Balance", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -12622,6 +15201,152 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWeb3LaunchStatResponse</returns>
+        public GetWeb3LaunchStatResponse GetWeb3LaunchStat(string id)
+        {
+            net.crossly.Client.ApiResponse<GetWeb3LaunchStatResponse> localVarResponse = GetWeb3LaunchStatWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWeb3LaunchStatResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3LaunchStatResponse> GetWeb3LaunchStatWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->GetWeb3LaunchStat");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3LaunchStatResponse>("/v1/web3/launches/{id}/stats", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3LaunchStat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3LaunchStatResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3LaunchStatResponse> GetWeb3LaunchStatAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3LaunchStatResponse> localVarResponse = await GetWeb3LaunchStatWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3LaunchStatResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3LaunchStatResponse>> GetWeb3LaunchStatWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->GetWeb3LaunchStat");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3LaunchStatResponse>("/v1/web3/launches/{id}/stats", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3LaunchStat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// A launch’s creator tools: allowlist size and root (and whether the contract has it yet), uploaded art and reveal, supply minted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -13954,6 +16679,396 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions. A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3StakingResponse</returns>
+        public GetWeb3StakingResponse GetWeb3Staking()
+        {
+            net.crossly.Client.ApiResponse<GetWeb3StakingResponse> localVarResponse = GetWeb3StakingWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions. A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3StakingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3StakingResponse> GetWeb3StakingWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3StakingResponse>("/v1/web3/staking", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3Staking", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions. A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3StakingResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3StakingResponse> GetWeb3StakingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3StakingResponse> localVarResponse = await GetWeb3StakingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your CBX stake: what is locked, its tier, the tier ladder and your past positions. A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3StakingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3StakingResponse>> GetWeb3StakingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3StakingResponse>("/v1/web3/staking", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3Staking", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>GetWeb3WalletHoldingResponse</returns>
+        public GetWeb3WalletHoldingResponse GetWeb3StoreWalletHolding(Guid walletId)
+        {
+            net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> localVarResponse = GetWeb3StoreWalletHoldingWithHttpInfo(walletId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of GetWeb3WalletHoldingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> GetWeb3StoreWalletHoldingWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3WalletHoldingResponse>("/v1/web3/store-wallets/{walletId}/holdings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3StoreWalletHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3WalletHoldingResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3WalletHoldingResponse> GetWeb3StoreWalletHoldingAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> localVarResponse = await GetWeb3StoreWalletHoldingWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a store wallet holds (chain + contract + token id), each marked in-inventory or not. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3WalletHoldingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse>> GetWeb3StoreWalletHoldingWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3WalletHoldingResponse>("/v1/web3/store-wallets/{walletId}/holdings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3StoreWalletHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWeb3StoreWalletNftResponse</returns>
+        public GetWeb3StoreWalletNftResponse GetWeb3StoreWalletNft()
+        {
+            net.crossly.Client.ApiResponse<GetWeb3StoreWalletNftResponse> localVarResponse = GetWeb3StoreWalletNftWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWeb3StoreWalletNftResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3StoreWalletNftResponse> GetWeb3StoreWalletNftWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3StoreWalletNftResponse>("/v1/web3/store-wallets/nfts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3StoreWalletNft", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3StoreWalletNftResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3StoreWalletNftResponse> GetWeb3StoreWalletNftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3StoreWalletNftResponse> localVarResponse = await GetWeb3StoreWalletNftWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3StoreWalletNftResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3StoreWalletNftResponse>> GetWeb3StoreWalletNftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3StoreWalletNftResponse>("/v1/web3/store-wallets/nfts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3StoreWalletNft", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// One NFT: metadata, traits, owner, open listings and offers, activity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -14126,6 +17241,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetWeb3Token", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWeb3WalletHoldingResponse</returns>
+        public GetWeb3WalletHoldingResponse GetWeb3WalletHolding(string id)
+        {
+            net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> localVarResponse = GetWeb3WalletHoldingWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWeb3WalletHoldingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> GetWeb3WalletHoldingWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->GetWeb3WalletHolding");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWeb3WalletHoldingResponse>("/v1/web3/wallets/{id}/holdings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3WalletHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWeb3WalletHoldingResponse</returns>
+        public async System.Threading.Tasks.Task<GetWeb3WalletHoldingResponse> GetWeb3WalletHoldingAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse> localVarResponse = await GetWeb3WalletHoldingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWeb3WalletHoldingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3WalletHoldingResponse>> GetWeb3WalletHoldingWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->GetWeb3WalletHolding");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWeb3WalletHoldingResponse>("/v1/web3/wallets/{id}/holdings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWeb3WalletHolding", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -15580,10 +18841,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         public ListWeb3HolderPerksResponse ListWeb3HolderPerks()
         {
             net.crossly.Client.ApiResponse<ListWeb3HolderPerksResponse> localVarResponse = ListWeb3HolderPerksWithHttpInfo();
@@ -15591,10 +18853,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListWeb3HolderPerksResponse> ListWeb3HolderPerksWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -15642,11 +18905,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3HolderPerksResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListWeb3HolderPerksResponse> ListWeb3HolderPerksAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListWeb3HolderPerksResponse> localVarResponse = await ListWeb3HolderPerksWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -15654,11 +18918,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3HolderPerksResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3HolderPerksResponse>> ListWeb3HolderPerksWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -15698,6 +18963,140 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListWeb3HolderPerks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListWeb3LaunchPerksResponse</returns>
+        public ListWeb3LaunchPerksResponse ListWeb3LaunchPerks(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> localVarResponse = ListWeb3LaunchPerksWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListWeb3LaunchPerksResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> ListWeb3LaunchPerksWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWeb3LaunchPerksResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3LaunchPerks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3LaunchPerksResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3LaunchPerksResponse> ListWeb3LaunchPerksAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> localVarResponse = await ListWeb3LaunchPerksWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3LaunchPerksResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse>> ListWeb3LaunchPerksWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWeb3LaunchPerksResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3LaunchPerks", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -16268,7 +19667,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status. 
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWeb3OrdersResponse</returns>
@@ -16279,7 +19678,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status. 
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWeb3OrdersResponse</returns>
@@ -16330,7 +19729,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status. 
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -16342,7 +19741,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your orders in the Crossly book (listings and offers), any status. 
+        /// Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -17164,6 +20563,262 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletBalancesResponse</returns>
+        public ListWeb3StoreWalletBalancesResponse ListWeb3StoreWalletBalances()
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletBalancesResponse> localVarResponse = ListWeb3StoreWalletBalancesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletBalancesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3StoreWalletBalancesResponse> ListWeb3StoreWalletBalancesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWeb3StoreWalletBalancesResponse>("/v1/web3/store-wallets/balances", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWalletBalances", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletBalancesResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3StoreWalletBalancesResponse> ListWeb3StoreWalletBalancesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletBalancesResponse> localVarResponse = await ListWeb3StoreWalletBalancesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletBalancesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3StoreWalletBalancesResponse>> ListWeb3StoreWalletBalancesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWeb3StoreWalletBalancesResponse>("/v1/web3/store-wallets/balances", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWalletBalances", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletsResponse</returns>
+        public ListWeb3StoreWalletsResponse ListWeb3StoreWallets()
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> localVarResponse = ListWeb3StoreWalletsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> ListWeb3StoreWalletsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWeb3StoreWalletsResponse>("/v1/web3/store-wallets", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWallets", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3StoreWalletsResponse> ListWeb3StoreWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> localVarResponse = await ListWeb3StoreWalletsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse>> ListWeb3StoreWalletsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWeb3StoreWalletsResponse>("/v1/web3/store-wallets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWallets", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List your verified, linked wallets (EVM and Solana). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -17420,22 +21075,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ListWeb3HolderPerksItem</returns>
-        public ListWeb3HolderPerksItem UpdateWeb3HolderPerk()
+        /// <returns>UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        public UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk()
         {
-            net.crossly.Client.ApiResponse<ListWeb3HolderPerksItem> localVarResponse = UpdateWeb3HolderPerkWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = UpdateWeb3HolderPerkWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of ListWeb3HolderPerksItem</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3HolderPerksItem> UpdateWeb3HolderPerkWithHttpInfo()
+        /// <returns>ApiResponse of UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -17468,7 +21125,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<ListWeb3HolderPerksItem>("/v1/web3/holder-perks", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<UpdateWeb3HolderPerkResponse>("/v1/web3/holder-perks", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateWeb3HolderPerk", localVarResponse);
@@ -17482,24 +21139,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListWeb3HolderPerksItem</returns>
-        public async System.Threading.Tasks.Task<ListWeb3HolderPerksItem> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateWeb3HolderPerkResponse</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3HolderPerksItem> localVarResponse = await UpdateWeb3HolderPerkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = await UpdateWeb3HolderPerkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection. 
+        /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListWeb3HolderPerksItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3HolderPerksItem>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateWeb3HolderPerkResponse)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -17533,11 +21192,157 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<ListWeb3HolderPerksItem>("/v1/web3/holder-perks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateWeb3HolderPerkResponse>("/v1/web3/holder-perks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateWeb3HolderPerk", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateWeb3LaunchResponse</returns>
+        public UpdateWeb3LaunchResponse UpdateWeb3Launch(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3LaunchResponse> localVarResponse = UpdateWeb3LaunchWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateWeb3LaunchResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateWeb3LaunchResponse> UpdateWeb3LaunchWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->UpdateWeb3Launch");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateWeb3LaunchResponse>("/v1/web3/launches/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3Launch", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3LaunchResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateWeb3LaunchResponse> UpdateWeb3LaunchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3LaunchResponse> localVarResponse = await UpdateWeb3LaunchWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3LaunchResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3LaunchResponse>> UpdateWeb3LaunchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->UpdateWeb3Launch");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateWeb3LaunchResponse>("/v1/web3/launches/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3Launch", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -17694,6 +21499,140 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListWeb3LaunchPerksResponse</returns>
+        public ListWeb3LaunchPerksResponse UpdateWeb3LaunchPerk(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> localVarResponse = UpdateWeb3LaunchPerkWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListWeb3LaunchPerksResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> UpdateWeb3LaunchPerkWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ListWeb3LaunchPerksResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3LaunchPerk", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3LaunchPerksResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3LaunchPerksResponse> UpdateWeb3LaunchPerkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse> localVarResponse = await UpdateWeb3LaunchPerkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3LaunchPerksResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3LaunchPerksResponse>> UpdateWeb3LaunchPerkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListWeb3LaunchPerksResponse>("/v1/web3/launches/{id}/perks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3LaunchPerk", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -17830,6 +21769,420 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateWeb3MarketplaceKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>UpdateWeb3StoreWalletResponse</returns>
+        public UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId)
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = UpdateWeb3StoreWalletWithHttpInfo(walletId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateWeb3StoreWalletResponse>("/v1/web3/store-wallets/{walletId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = await UpdateWeb3StoreWalletWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateWeb3StoreWalletResponse>("/v1/web3/store-wallets/{walletId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ListWeb3StoreWalletsResponse</returns>
+        public ListWeb3StoreWalletsResponse UpdateWeb3StoreWalletDefault(Guid walletId)
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> localVarResponse = UpdateWeb3StoreWalletDefaultWithHttpInfo(walletId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <returns>ApiResponse of ListWeb3StoreWalletsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> UpdateWeb3StoreWalletDefaultWithHttpInfo(Guid walletId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ListWeb3StoreWalletsResponse>("/v1/web3/store-wallets/{walletId}/default", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWalletDefault", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3StoreWalletsResponse> UpdateWeb3StoreWalletDefaultAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse> localVarResponse = await UpdateWeb3StoreWalletDefaultWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3StoreWalletsResponse>> UpdateWeb3StoreWalletDefaultWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListWeb3StoreWalletsResponse>("/v1/web3/store-wallets/{walletId}/default", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWalletDefault", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateWeb3WalletResponse</returns>
+        public UpdateWeb3WalletResponse UpdateWeb3Wallet(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3WalletResponse> localVarResponse = UpdateWeb3WalletWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateWeb3WalletResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateWeb3WalletResponse> UpdateWeb3WalletWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->UpdateWeb3Wallet");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateWeb3WalletResponse>("/v1/web3/wallets/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3Wallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3WalletResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateWeb3WalletResponse> UpdateWeb3WalletAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3WalletResponse> localVarResponse = await UpdateWeb3WalletWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3WalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3WalletResponse>> UpdateWeb3WalletWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->UpdateWeb3Wallet");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateWeb3WalletResponse>("/v1/web3/wallets/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3Wallet", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

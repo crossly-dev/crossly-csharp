@@ -39,29 +39,29 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCartOptimizerResponseDataLinesLine" /> class.
         /// </summary>
-        /// <param name="quantity">quantity (required).</param>
         /// <param name="query">query (required).</param>
-        public CreateBuyerCartOptimizerResponseDataLinesLine(decimal quantity = default(decimal), string query = default(string))
+        /// <param name="quantity">quantity (required).</param>
+        public CreateBuyerCartOptimizerResponseDataLinesLine(string query = default(string), decimal quantity = default(decimal))
         {
-            this.Quantity = quantity;
             // to ensure "query" is required (not null)
             if (query == null) {
                 throw new ArgumentNullException("query is a required property for CreateBuyerCartOptimizerResponseDataLinesLine and cannot be null");
             }
             this.Query = query;
+            this.Quantity = quantity;
         }
-
-        /// <summary>
-        /// Gets or Sets Quantity
-        /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets Query
         /// </summary>
         [DataMember(Name = "query", IsRequired = true, EmitDefaultValue = false)]
         public string Query { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quantity
+        /// </summary>
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +71,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerCartOptimizerResponseDataLinesLine {\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Query: ").Append(Query).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,13 +109,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
-                ) && 
-                (
                     this.Query == input.Query ||
                     (this.Query != null &&
                     this.Query.Equals(input.Query))
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
                 );
         }
 
@@ -128,11 +128,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.Query != null)
                 {
                     hashCode = (hashCode * 59) + this.Query.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;
             }
         }

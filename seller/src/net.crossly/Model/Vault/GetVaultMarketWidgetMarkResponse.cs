@@ -50,7 +50,7 @@ namespace net.crossly.Model
         /// <param name="insufficient">insufficient (required).</param>
         /// <param name="points">points (required).</param>
         /// <param name="href">href (required).</param>
-        public GetVaultMarketWidgetMarkResponse(string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), string condition = default(string), string gradeKey = default(string), ListVaultMarketFeedItemMark mark = default(ListVaultMarketFeedItemMark), decimal trades30d = default(decimal), bool insufficient = default(bool), List<GetVaultMarketWidgetMarkResponsePoints> points = default(List<GetVaultMarketWidgetMarkResponsePoints>), string href = default(string))
+        public GetVaultMarketWidgetMarkResponse(string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), string condition = default(string), string gradeKey = default(string), ListVaultMarketOpeningItemMark mark = default(ListVaultMarketOpeningItemMark), decimal trades30d = default(decimal), bool insufficient = default(bool), List<GetVaultMarketWidgetMarkResponsePoints> points = default(List<GetVaultMarketWidgetMarkResponsePoints>), string href = default(string))
         {
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
@@ -125,7 +125,7 @@ namespace net.crossly.Model
         /// Gets or Sets Mark
         /// </summary>
         [DataMember(Name = "mark", IsRequired = true, EmitDefaultValue = false)]
-        public ListVaultMarketFeedItemMark Mark { get; set; }
+        public ListVaultMarketOpeningItemMark Mark { get; set; }
 
         /// <summary>
         /// Gets or Sets Trades30d

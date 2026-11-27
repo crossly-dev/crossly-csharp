@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Grading = 1,
 
             /// <summary>
-            /// Enum Authentication for value: authentication
-            /// </summary>
-            [EnumMember(Value = "authentication")]
-            Authentication = 2,
-
-            /// <summary>
             /// Enum Subscription for value: subscription
             /// </summary>
             [EnumMember(Value = "subscription")]
-            Subscription = 3
+            Subscription = 2,
+
+            /// <summary>
+            /// Enum Authentication for value: authentication
+            /// </summary>
+            [EnumMember(Value = "authentication")]
+            Authentication = 3
 
         }
 

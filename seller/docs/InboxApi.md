@@ -5,24 +5,27 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateInboxAiSuggest**](InboxApi.md#createinboxaisuggest) | **POST** /v1/inbox/ai-suggest | AI reply suggestion for a conversation.
-[**CreateInboxCannedResponse**](InboxApi.md#createinboxcannedresponse) | **POST** /v1/inbox/canned-responses | Create a canned response.
+[**CreateInboxCannedResponse**](InboxApi.md#createinboxcannedresponse) | **POST** /v1/inbox/canned-responses | Create a canned response (added to the end of the list).
 [**CreateInboxConversationBulk**](InboxApi.md#createinboxconversationbulk) | **POST** /v1/inbox/conversations/bulk | Bulk mark read / mark unread / soft-delete conversations.
 [**CreateInboxConversationBulkAiRespond**](InboxApi.md#createinboxconversationbulkairespond) | **POST** /v1/inbox/conversations/bulk-ai-respond | AI reply suggestion for multiple conversations — draft or send.
 [**CreateInboxConversationOfferAction**](InboxApi.md#createinboxconversationofferaction) | **POST** /v1/inbox/conversations/{id}/offer-action | Accept / counter / decline an active offer on a conversation.
 [**CreateInboxMessageTriage**](InboxApi.md#createinboxmessagetriage) | **POST** /v1/inbox/messages/{id}/triage | Manually re-triage a buyer message.
 [**CreateInboxOffer**](InboxApi.md#createinboxoffer) | **POST** /v1/inbox/{id}/offer | Accept, counter, or decline an offer on a conversation.
 [**CreateInboxReply**](InboxApi.md#createinboxreply) | **POST** /v1/inbox/{id}/reply | Send a reply to a conversation thread.
+[**CreateInboxSendOffer**](InboxApi.md#createinboxsendoffer) | **POST** /v1/inbox/{id}/send-offer | Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
 [**CreateVideoRequestAnswer**](InboxApi.md#createvideorequestanswer) | **POST** /v1/video-requests/{id}/answer | Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
 [**CreateVideoRequestDecline**](InboxApi.md#createvideorequestdecline) | **POST** /v1/video-requests/{id}/decline | Decline a video request, with an optional note to the buyer.
 [**CreateVideoRequestUploadUrl**](InboxApi.md#createvideorequestuploadurl) | **POST** /v1/video-requests/upload-url | A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
 [**DeleteInboxCannedResponse**](InboxApi.md#deleteinboxcannedresponse) | **DELETE** /v1/inbox/canned-responses/{id} | Delete a canned response.
-[**GetInbox**](InboxApi.md#getinbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages.
-[**GetInboxCannedResponse**](InboxApi.md#getinboxcannedresponse) | **GET** /v1/inbox/canned-responses | List canned responses.
+[**GetInbox**](InboxApi.md#getinbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
+[**GetInboxCannedResponse**](InboxApi.md#getinboxcannedresponse) | **GET** /v1/inbox/canned-responses | List canned responses in the seller&#39;s order.
 [**GetInboxConversationMessage**](InboxApi.md#getinboxconversationmessage) | **GET** /v1/inbox/conversations/{id}/messages | Paginated messages for a conversation.
-[**GetInboxConversationUnreadCount**](InboxApi.md#getinboxconversationunreadcount) | **GET** /v1/inbox/conversations/unread-count | Sidebar badge: unread conversation count.
-[**ListInbox**](InboxApi.md#listinbox) | **GET** /v1/inbox | List conversations.
+[**GetInboxConversationUnreadCount**](InboxApi.md#getinboxconversationunreadcount) | **GET** /v1/inbox/conversations/unread-count | Unread conversation count (threads only; /v1/inbox/counts adds offers).
+[**GetInboxCount**](InboxApi.md#getinboxcount) | **GET** /v1/inbox/counts | Inbox badges: unread and needs-reply, split into conversations and offers.
+[**ListInbox**](InboxApi.md#listinbox) | **GET** /v1/inbox | List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
 [**ListVideoRequests**](InboxApi.md#listvideorequests) | **GET** /v1/video-requests | Buyers asking for a video of your items. status: open (default), answered, declined or all.
 [**UpdateInboxCannedResponse**](InboxApi.md#updateinboxcannedresponse) | **PUT** /v1/inbox/canned-responses/{id} | Update a canned response.
+[**UpdateInboxCannedResponseOrder**](InboxApi.md#updateinboxcannedresponseorder) | **PUT** /v1/inbox/canned-responses/order | Reorder canned responses.
 [**UpdateInboxConversation**](InboxApi.md#updateinboxconversation) | **PATCH** /v1/inbox/conversations/{id} | Mark read / change status / close conversation.
 
 
@@ -104,7 +107,7 @@ This endpoint does not need any parameter.
 # **CreateInboxCannedResponse**
 > CreateInboxCannedResponseResponse CreateInboxCannedResponse ()
 
-Create a canned response.
+Create a canned response (added to the end of the list).
 
 ### Example
 ```csharp
@@ -129,7 +132,7 @@ namespace Example
 
             try
             {
-                // Create a canned response.
+                // Create a canned response (added to the end of the list).
                 CreateInboxCannedResponseResponse result = apiInstance.CreateInboxCannedResponse();
                 Debug.WriteLine(result);
             }
@@ -634,6 +637,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createinboxsendoffer"></a>
+# **CreateInboxSendOffer**
+> CreateInboxSendOfferResponse CreateInboxSendOffer (Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest)
+
+Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation's canSendOffer is true (Grailed today). `amount` is in the listing's currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus 'sending' until the platform confirms.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateInboxSendOfferExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InboxApi(config);
+            var id = "id_example";  // Guid | 
+            var createInboxSendOfferRequest = new CreateInboxSendOfferRequest(); // CreateInboxSendOfferRequest | 
+
+            try
+            {
+                // Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation's canSendOffer is true (Grailed today). `amount` is in the listing's currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus 'sending' until the platform confirms.
+                CreateInboxSendOfferResponse result = apiInstance.CreateInboxSendOffer(id, createInboxSendOfferRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InboxApi.CreateInboxSendOffer: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **createInboxSendOfferRequest** | **CreateInboxSendOfferRequest**|  | 
+
+### Return type
+
+**CreateInboxSendOfferResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createvideorequestanswer"></a>
 # **CreateVideoRequestAnswer**
 > CreateVideoRequestAnswerResponse CreateVideoRequestAnswer (string id)
@@ -866,7 +949,7 @@ This endpoint does not need any parameter.
 
 <a name="deleteinboxcannedresponse"></a>
 # **DeleteInboxCannedResponse**
-> CreateOrderDisputeResponse DeleteInboxCannedResponse (Guid id)
+> void DeleteInboxCannedResponse (Guid id)
 
 Delete a canned response.
 
@@ -895,8 +978,7 @@ namespace Example
             try
             {
                 // Delete a canned response.
-                CreateOrderDisputeResponse result = apiInstance.DeleteInboxCannedResponse(id);
-                Debug.WriteLine(result);
+                apiInstance.DeleteInboxCannedResponse(id);
             }
             catch (ApiException  e)
             {
@@ -917,7 +999,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateOrderDisputeResponse**
+void (empty response body)
 
 ### Authorization
 
@@ -932,7 +1014,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **204** | No Content — the request succeeded and there is no body. |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -946,7 +1028,7 @@ Name | Type | Description  | Notes
 # **GetInbox**
 > GetInboxResponse GetInbox (Guid id)
 
-Get one conversation with its messages.
+Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
 
 ### Example
 ```csharp
@@ -972,7 +1054,7 @@ namespace Example
 
             try
             {
-                // Get one conversation with its messages.
+                // Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
                 GetInboxResponse result = apiInstance.GetInbox(id);
                 Debug.WriteLine(result);
             }
@@ -1024,7 +1106,7 @@ Name | Type | Description  | Notes
 # **GetInboxCannedResponse**
 > GetInboxCannedResponseResponse GetInboxCannedResponse ()
 
-List canned responses.
+List canned responses in the seller's order.
 
 ### Example
 ```csharp
@@ -1049,7 +1131,7 @@ namespace Example
 
             try
             {
-                // List canned responses.
+                // List canned responses in the seller's order.
                 GetInboxCannedResponseResponse result = apiInstance.GetInboxCannedResponse();
                 Debug.WriteLine(result);
             }
@@ -1176,7 +1258,7 @@ Name | Type | Description  | Notes
 # **GetInboxConversationUnreadCount**
 > CreateWeb3LaunchArtResponse GetInboxConversationUnreadCount ()
 
-Sidebar badge: unread conversation count.
+Unread conversation count (threads only; /v1/inbox/counts adds offers).
 
 ### Example
 ```csharp
@@ -1201,7 +1283,7 @@ namespace Example
 
             try
             {
-                // Sidebar badge: unread conversation count.
+                // Unread conversation count (threads only; /v1/inbox/counts adds offers).
                 CreateWeb3LaunchArtResponse result = apiInstance.GetInboxConversationUnreadCount();
                 Debug.WriteLine(result);
             }
@@ -1246,11 +1328,85 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getinboxcount"></a>
+# **GetInboxCount**
+> GetInboxCountResponse GetInboxCount ()
+
+Inbox badges: unread and needs-reply, split into conversations and offers.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetInboxCountExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InboxApi(config);
+
+            try
+            {
+                // Inbox badges: unread and needs-reply, split into conversations and offers.
+                GetInboxCountResponse result = apiInstance.GetInboxCount();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InboxApi.GetInboxCount: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetInboxCountResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listinbox"></a>
 # **ListInbox**
-> ListInboxResponse ListInbox (int? page = null, int? limit = null)
+> ListInboxResponse ListInbox (int? page = null, int? limit = null, string filter = null)
 
-List conversations.
+List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
 
 ### Example
 ```csharp
@@ -1274,11 +1430,12 @@ namespace Example
             var apiInstance = new InboxApi(config);
             var page = 1;  // int? |  (optional)  (default to 1)
             var limit = 25;  // int? |  (optional)  (default to 25)
+            var filter = "unread";  // string | unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional) 
 
             try
             {
-                // List conversations.
-                ListInboxResponse result = apiInstance.ListInbox(page, limit);
+                // List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
+                ListInboxResponse result = apiInstance.ListInbox(page, limit, filter);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1298,6 +1455,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int?**|  | [optional] [default to 1]
  **limit** | **int?**|  | [optional] [default to 25]
+ **filter** | **string**| unread | needs_reply (services/inbox/attention.ts). Omit for all. | [optional] 
 
 ### Return type
 
@@ -1462,6 +1620,86 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateinboxcannedresponseorder"></a>
+# **UpdateInboxCannedResponseOrder**
+> GetInboxCannedResponseResponse UpdateInboxCannedResponseOrder (UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest)
+
+Reorder canned responses.
+
+Pass EVERY canned response id in the new order (first = top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateInboxCannedResponseOrderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InboxApi(config);
+            var updateInboxCannedResponseOrderRequest = new UpdateInboxCannedResponseOrderRequest(); // UpdateInboxCannedResponseOrderRequest | 
+
+            try
+            {
+                // Reorder canned responses.
+                GetInboxCannedResponseResponse result = apiInstance.UpdateInboxCannedResponseOrder(updateInboxCannedResponseOrderRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InboxApi.UpdateInboxCannedResponseOrder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateInboxCannedResponseOrderRequest** | **UpdateInboxCannedResponseOrderRequest**|  | 
+
+### Return type
+
+**GetInboxCannedResponseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

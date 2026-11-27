@@ -39,17 +39,25 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCatalogListingPriceResponseDataPriceMatch" /> class.
         /// </summary>
-        /// <param name="platform">platform (required).</param>
         /// <param name="listPriceCents">listPriceCents (required).</param>
-        public GetBuyerCatalogListingPriceResponseDataPriceMatch(string platform = default(string), decimal listPriceCents = default(decimal))
+        /// <param name="platform">platform (required).</param>
+        /// <param name="platformName">platformName.</param>
+        public GetBuyerCatalogListingPriceResponseDataPriceMatch(decimal listPriceCents = default(decimal), string platform = default(string), string platformName = default(string))
         {
+            this.ListPriceCents = listPriceCents;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for GetBuyerCatalogListingPriceResponseDataPriceMatch and cannot be null");
             }
             this.Platform = platform;
-            this.ListPriceCents = listPriceCents;
+            this.PlatformName = platformName;
         }
+
+        /// <summary>
+        /// Gets or Sets ListPriceCents
+        /// </summary>
+        [DataMember(Name = "listPriceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ListPriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Platform
@@ -58,10 +66,10 @@ namespace net.crossly.buyer.Model
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets ListPriceCents
+        /// Gets or Sets PlatformName
         /// </summary>
-        [DataMember(Name = "listPriceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal ListPriceCents { get; set; }
+        [DataMember(Name = "platformName", EmitDefaultValue = true)]
+        public string PlatformName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +79,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCatalogListingPriceResponseDataPriceMatch {\n");
-            sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  ListPriceCents: ").Append(ListPriceCents).Append("\n");
+            sb.Append("  Platform: ").Append(Platform).Append("\n");
+            sb.Append("  PlatformName: ").Append(PlatformName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,13 +118,18 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.ListPriceCents == input.ListPriceCents ||
+                    this.ListPriceCents.Equals(input.ListPriceCents)
+                ) && 
+                (
                     this.Platform == input.Platform ||
                     (this.Platform != null &&
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
-                    this.ListPriceCents == input.ListPriceCents ||
-                    this.ListPriceCents.Equals(input.ListPriceCents)
+                    this.PlatformName == input.PlatformName ||
+                    (this.PlatformName != null &&
+                    this.PlatformName.Equals(input.PlatformName))
                 );
         }
 
@@ -128,11 +142,15 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.ListPriceCents.GetHashCode();
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ListPriceCents.GetHashCode();
+                if (this.PlatformName != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlatformName.GetHashCode();
+                }
                 return hashCode;
             }
         }

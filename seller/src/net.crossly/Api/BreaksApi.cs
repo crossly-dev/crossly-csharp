@@ -47,8 +47,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        CreateBreakCancelResponse CreateBreakCancel(string id);
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse CreateBreakCancel(string id);
 
         /// <summary>
         /// Cancel a break before any spot is paid for; after that, refund those orders instead (409).
@@ -58,8 +58,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        ApiResponse<CreateBreakCancelResponse> CreateBreakCancelWithHttpInfo(string id);
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> CreateBreakCancelWithHttpInfo(string id);
         /// <summary>
         /// Draw a sold-out random break: assigns spots from the committed seed and reveals it.
         /// </summary>
@@ -83,8 +83,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        CreateBreakCancelResponse CreateBreakOpened(string id);
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse CreateBreakOpened(string id);
 
         /// <summary>
         /// Mark the product opened on stream.
@@ -94,16 +94,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        ApiResponse<CreateBreakCancelResponse> CreateBreakOpenedWithHttpInfo(string id);
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> CreateBreakOpenedWithHttpInfo(string id);
         /// <summary>
         /// Record what a spot pulled.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        CreateBreakCancelResponse CreateBreakSpotHit(string id, string spotId);
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId);
 
         /// <summary>
         /// Record what a spot pulled.
@@ -114,8 +114,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        ApiResponse<CreateBreakCancelResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId);
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId);
         /// <summary>
         /// A break’s board with every spot, its buyer and its hits.
         /// </summary>
@@ -189,8 +189,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakCancelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakCancelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel a break before any spot is paid for; after that, refund those orders instead (409).
@@ -201,8 +201,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBreakCancelResponse>> CreateBreakCancelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> CreateBreakCancelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Draw a sold-out random break: assigns spots from the committed seed and reveals it.
         /// </summary>
@@ -235,8 +235,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakOpenedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakOpenedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mark the product opened on stream.
@@ -247,8 +247,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBreakCancelResponse>> CreateBreakOpenedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> CreateBreakOpenedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Record what a spot pulled.
         /// </summary>
@@ -259,8 +259,8 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="spotId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record what a spot pulled.
@@ -272,8 +272,8 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="spotId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBreakCancelResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A break’s board with every spot, its buyer and its hits.
         /// </summary>
@@ -571,10 +571,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        public CreateBreakCancelResponse CreateBreakCancel(string id)
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse CreateBreakCancel(string id)
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = CreateBreakCancelWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = CreateBreakCancelWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -583,8 +583,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBreakCancelResponse> CreateBreakCancelWithHttpInfo(string id)
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> CreateBreakCancelWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -624,7 +624,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateBreakCancelResponse>("/v1/breaks/{id}/cancel", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdateGroupBuyResponse>("/v1/breaks/{id}/cancel", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateBreakCancel", localVarResponse);
@@ -643,10 +643,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakCancelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakCancelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = await CreateBreakCancelWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await CreateBreakCancelWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -656,8 +656,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakCancelResponse>> CreateBreakCancelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> CreateBreakCancelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -698,7 +698,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBreakCancelResponse>("/v1/breaks/{id}/cancel", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateGroupBuyResponse>("/v1/breaks/{id}/cancel", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -863,10 +863,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        public CreateBreakCancelResponse CreateBreakOpened(string id)
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse CreateBreakOpened(string id)
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = CreateBreakOpenedWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = CreateBreakOpenedWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -875,8 +875,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBreakCancelResponse> CreateBreakOpenedWithHttpInfo(string id)
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> CreateBreakOpenedWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -916,7 +916,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateBreakCancelResponse>("/v1/breaks/{id}/opened", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdateGroupBuyResponse>("/v1/breaks/{id}/opened", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateBreakOpened", localVarResponse);
@@ -935,10 +935,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakOpenedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakOpenedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = await CreateBreakOpenedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await CreateBreakOpenedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -948,8 +948,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakCancelResponse>> CreateBreakOpenedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> CreateBreakOpenedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -990,7 +990,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBreakCancelResponse>("/v1/breaks/{id}/opened", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateGroupBuyResponse>("/v1/breaks/{id}/opened", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1010,10 +1010,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
-        /// <returns>CreateBreakCancelResponse</returns>
-        public CreateBreakCancelResponse CreateBreakSpotHit(string id, string spotId)
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId)
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = CreateBreakSpotHitWithHttpInfo(id, spotId);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = CreateBreakSpotHitWithHttpInfo(id, spotId);
             return localVarResponse.Data;
         }
 
@@ -1023,8 +1023,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
-        /// <returns>ApiResponse of CreateBreakCancelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBreakCancelResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId)
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1071,7 +1071,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateBreakCancelResponse>("/v1/breaks/{id}/spots/{spotId}/hits", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdateGroupBuyResponse>("/v1/breaks/{id}/spots/{spotId}/hits", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateBreakSpotHit", localVarResponse);
@@ -1091,10 +1091,10 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="spotId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateBreakCancelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBreakCancelResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBreakCancelResponse> localVarResponse = await CreateBreakSpotHitWithHttpInfoAsync(id, spotId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await CreateBreakSpotHitWithHttpInfoAsync(id, spotId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1105,8 +1105,8 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="spotId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateBreakCancelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakCancelResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1154,7 +1154,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBreakCancelResponse>("/v1/breaks/{id}/spots/{spotId}/hits", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateGroupBuyResponse>("/v1/breaks/{id}/spots/{spotId}/hits", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

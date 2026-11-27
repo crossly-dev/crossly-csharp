@@ -38,16 +38,22 @@ namespace net.crossly.Model
         public enum ModeEnum
         {
             /// <summary>
-            /// Enum Run for value: run
-            /// </summary>
-            [EnumMember(Value = "run")]
-            Run = 1,
-
-            /// <summary>
             /// Enum Direct for value: direct
             /// </summary>
             [EnumMember(Value = "direct")]
-            Direct = 2
+            Direct = 1,
+
+            /// <summary>
+            /// Enum Order for value: order
+            /// </summary>
+            [EnumMember(Value = "order")]
+            Order = 2,
+
+            /// <summary>
+            /// Enum Run for value: run
+            /// </summary>
+            [EnumMember(Value = "run")]
+            Run = 3
 
         }
 
@@ -64,16 +70,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Graded for value: graded
+            /// Enum Refunded for value: refunded
             /// </summary>
-            [EnumMember(Value = "graded")]
-            Graded = 1,
+            [EnumMember(Value = "refunded")]
+            Refunded = 1,
 
             /// <summary>
-            /// Enum Returned for value: returned
+            /// Enum Received for value: received
             /// </summary>
-            [EnumMember(Value = "returned")]
-            Returned = 2,
+            [EnumMember(Value = "received")]
+            Received = 2,
 
             /// <summary>
             /// Enum Released for value: released
@@ -82,52 +88,52 @@ namespace net.crossly.Model
             Released = 3,
 
             /// <summary>
-            /// Enum Refunded for value: refunded
-            /// </summary>
-            [EnumMember(Value = "refunded")]
-            Refunded = 4,
-
-            /// <summary>
             /// Enum Reserved for value: reserved
             /// </summary>
             [EnumMember(Value = "reserved")]
-            Reserved = 5,
-
-            /// <summary>
-            /// Enum Received for value: received
-            /// </summary>
-            [EnumMember(Value = "received")]
-            Received = 6,
+            Reserved = 4,
 
             /// <summary>
             /// Enum Charged for value: charged
             /// </summary>
             [EnumMember(Value = "charged")]
-            Charged = 7,
+            Charged = 5,
 
             /// <summary>
             /// Enum ShippedToHub for value: shipped_to_hub
             /// </summary>
             [EnumMember(Value = "shipped_to_hub")]
-            ShippedToHub = 8,
+            ShippedToHub = 6,
 
             /// <summary>
             /// Enum PrescreenFailed for value: prescreen_failed
             /// </summary>
             [EnumMember(Value = "prescreen_failed")]
-            PrescreenFailed = 9,
+            PrescreenFailed = 7,
 
             /// <summary>
             /// Enum AtGrader for value: at_grader
             /// </summary>
             [EnumMember(Value = "at_grader")]
-            AtGrader = 10,
+            AtGrader = 8,
+
+            /// <summary>
+            /// Enum Graded for value: graded
+            /// </summary>
+            [EnumMember(Value = "graded")]
+            Graded = 9,
 
             /// <summary>
             /// Enum Returning for value: returning
             /// </summary>
             [EnumMember(Value = "returning")]
-            Returning = 11,
+            Returning = 10,
+
+            /// <summary>
+            /// Enum Returned for value: returned
+            /// </summary>
+            [EnumMember(Value = "returned")]
+            Returned = 11,
 
             /// <summary>
             /// Enum Vaulted for value: vaulted
@@ -153,6 +159,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="mode">mode (required).</param>
+        /// <param name="orderId">The grading order (submission through Crossly) this card is in..</param>
         /// <param name="runId">runId.</param>
         /// <param name="runCutoffAt">runCutoffAt.</param>
         /// <param name="runStatus">runStatus.</param>
@@ -176,7 +183,7 @@ namespace net.crossly.Model
         /// <param name="certVerified">certVerified (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public ListGradingSubmissionsItem(string id = default(string), ModeEnum mode = default(ModeEnum), string runId = default(string), string runCutoffAt = default(string), string runStatus = default(string), string graderSlug = default(string), string graderName = default(string), string tierSlug = default(string), string inventoryItemId = default(string), string title = default(string), decimal declaredValueCents = default(decimal), bool prescreen = default(bool), StatusEnum status = default(StatusEnum), string missMode = default(string), string returnMode = default(string), decimal chargedCents = default(decimal), decimal refundedCents = default(decimal), string inboundLabelUrl = default(string), string inboundTracking = default(string), string returnTracking = default(string), string prescreenNote = default(string), ListGradingSubmissionsItemGrading grading = default(ListGradingSubmissionsItemGrading), bool certVerified = default(bool), string createdAt = default(string), string updatedAt = default(string))
+        public ListGradingSubmissionsItem(string id = default(string), ModeEnum mode = default(ModeEnum), string orderId = default(string), string runId = default(string), string runCutoffAt = default(string), string runStatus = default(string), string graderSlug = default(string), string graderName = default(string), string tierSlug = default(string), string inventoryItemId = default(string), string title = default(string), decimal declaredValueCents = default(decimal), bool prescreen = default(bool), StatusEnum status = default(StatusEnum), string missMode = default(string), string returnMode = default(string), decimal chargedCents = default(decimal), decimal refundedCents = default(decimal), string inboundLabelUrl = default(string), string inboundTracking = default(string), string returnTracking = default(string), string prescreenNote = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), bool certVerified = default(bool), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -225,6 +232,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("updatedAt is a required property for ListGradingSubmissionsItem and cannot be null");
             }
             this.UpdatedAt = updatedAt;
+            this.OrderId = orderId;
             this.RunId = runId;
             this.RunCutoffAt = runCutoffAt;
             this.RunStatus = runStatus;
@@ -242,6 +250,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// The grading order (submission through Crossly) this card is in.
+        /// </summary>
+        /// <value>The grading order (submission through Crossly) this card is in.</value>
+        [DataMember(Name = "orderId", EmitDefaultValue = true)]
+        public string OrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets RunId
@@ -355,7 +370,7 @@ namespace net.crossly.Model
         /// Gets or Sets Grading
         /// </summary>
         [DataMember(Name = "grading", EmitDefaultValue = true)]
-        public ListGradingSubmissionsItemGrading Grading { get; set; }
+        public CreateBulkBatchItemResponseGrading Grading { get; set; }
 
         /// <summary>
         /// Gets or Sets CertVerified
@@ -385,6 +400,7 @@ namespace net.crossly.Model
             sb.Append("class ListGradingSubmissionsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Mode: ").Append(Mode).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  RunId: ").Append(RunId).Append("\n");
             sb.Append("  RunCutoffAt: ").Append(RunCutoffAt).Append("\n");
             sb.Append("  RunStatus: ").Append(RunStatus).Append("\n");
@@ -451,6 +467,11 @@ namespace net.crossly.Model
                 (
                     this.Mode == input.Mode ||
                     this.Mode.Equals(input.Mode)
+                ) && 
+                (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
                     this.RunId == input.RunId ||
@@ -577,6 +598,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Mode.GetHashCode();
+                if (this.OrderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
                 if (this.RunId != null)
                 {
                     hashCode = (hashCode * 59) + this.RunId.GetHashCode();

@@ -45,7 +45,9 @@ namespace net.crossly.Model
         /// <param name="imageUrl">imageUrl.</param>
         /// <param name="priceCents">priceCents.</param>
         /// <param name="status">status (required).</param>
-        public ListBrandDropListingsItem(string platformListingId = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), decimal? priceCents = default(decimal?), string status = default(string))
+        /// <param name="slug">The Crossly listing&#39;s slug (platform_listings.platform_listing_id): what the cart adds by..</param>
+        /// <param name="quantity">Units the listing offers (null &#x3D; untracked): a pre-book&#39;s reservable quantity..</param>
+        public ListBrandDropListingsItem(string platformListingId = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), decimal? priceCents = default(decimal?), string status = default(string), string slug = default(string), decimal? quantity = default(decimal?))
         {
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
@@ -65,6 +67,8 @@ namespace net.crossly.Model
             this.Title = title;
             this.ImageUrl = imageUrl;
             this.PriceCents = priceCents;
+            this.Slug = slug;
+            this.Quantity = quantity;
         }
 
         /// <summary>
@@ -104,6 +108,20 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// The Crossly listing&#39;s slug (platform_listings.platform_listing_id): what the cart adds by.
+        /// </summary>
+        /// <value>The Crossly listing&#39;s slug (platform_listings.platform_listing_id): what the cart adds by.</value>
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
+
+        /// <summary>
+        /// Units the listing offers (null &#x3D; untracked): a pre-book&#39;s reservable quantity.
+        /// </summary>
+        /// <value>Units the listing offers (null &#x3D; untracked): a pre-book&#39;s reservable quantity.</value>
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public decimal? Quantity { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -117,6 +135,8 @@ namespace net.crossly.Model
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -181,6 +201,16 @@ namespace net.crossly.Model
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    (this.Quantity != null &&
+                    this.Quantity.Equals(input.Quantity))
                 );
         }
 
@@ -216,6 +246,14 @@ namespace net.crossly.Model
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Slug != null)
+                {
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Quantity != null)
+                {
+                    hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 }
                 return hashCode;
             }

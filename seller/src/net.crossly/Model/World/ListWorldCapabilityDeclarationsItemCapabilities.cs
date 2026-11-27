@@ -44,10 +44,10 @@ namespace net.crossly.Model
             Portal = 1,
 
             /// <summary>
-            /// Enum Display for value: display
+            /// Enum Interactive for value: interactive
             /// </summary>
-            [EnumMember(Value = "display")]
-            Display = 2,
+            [EnumMember(Value = "interactive")]
+            Interactive = 2,
 
             /// <summary>
             /// Enum Place for value: place
@@ -56,64 +56,64 @@ namespace net.crossly.Model
             Place = 3,
 
             /// <summary>
+            /// Enum Display for value: display
+            /// </summary>
+            [EnumMember(Value = "display")]
+            Display = 4,
+
+            /// <summary>
             /// Enum Badge for value: badge
             /// </summary>
             [EnumMember(Value = "badge")]
-            Badge = 4,
-
-            /// <summary>
-            /// Enum Wear for value: wear
-            /// </summary>
-            [EnumMember(Value = "wear")]
-            Wear = 5,
-
-            /// <summary>
-            /// Enum Emote for value: emote
-            /// </summary>
-            [EnumMember(Value = "emote")]
-            Emote = 6,
-
-            /// <summary>
-            /// Enum RoomTheme for value: room_theme
-            /// </summary>
-            [EnumMember(Value = "room_theme")]
-            RoomTheme = 7,
-
-            /// <summary>
-            /// Enum Pet for value: pet
-            /// </summary>
-            [EnumMember(Value = "pet")]
-            Pet = 8,
-
-            /// <summary>
-            /// Enum Gate for value: gate
-            /// </summary>
-            [EnumMember(Value = "gate")]
-            Gate = 9,
-
-            /// <summary>
-            /// Enum Quest for value: quest
-            /// </summary>
-            [EnumMember(Value = "quest")]
-            Quest = 10,
-
-            /// <summary>
-            /// Enum GamePass for value: game_pass
-            /// </summary>
-            [EnumMember(Value = "game_pass")]
-            GamePass = 11,
+            Badge = 5,
 
             /// <summary>
             /// Enum Perk for value: perk
             /// </summary>
             [EnumMember(Value = "perk")]
-            Perk = 12,
+            Perk = 6,
 
             /// <summary>
-            /// Enum Interactive for value: interactive
+            /// Enum Wear for value: wear
             /// </summary>
-            [EnumMember(Value = "interactive")]
-            Interactive = 13
+            [EnumMember(Value = "wear")]
+            Wear = 7,
+
+            /// <summary>
+            /// Enum Emote for value: emote
+            /// </summary>
+            [EnumMember(Value = "emote")]
+            Emote = 8,
+
+            /// <summary>
+            /// Enum RoomTheme for value: room_theme
+            /// </summary>
+            [EnumMember(Value = "room_theme")]
+            RoomTheme = 9,
+
+            /// <summary>
+            /// Enum Pet for value: pet
+            /// </summary>
+            [EnumMember(Value = "pet")]
+            Pet = 10,
+
+            /// <summary>
+            /// Enum Gate for value: gate
+            /// </summary>
+            [EnumMember(Value = "gate")]
+            Gate = 11,
+
+            /// <summary>
+            /// Enum Quest for value: quest
+            /// </summary>
+            [EnumMember(Value = "quest")]
+            Quest = 12,
+
+            /// <summary>
+            /// Enum GamePass for value: game_pass
+            /// </summary>
+            [EnumMember(Value = "game_pass")]
+            GamePass = 13
 
         }
 

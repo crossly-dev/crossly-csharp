@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Unit = 2,
 
             /// <summary>
-            /// Enum Index for value: index
-            /// </summary>
-            [EnumMember(Value = "index")]
-            Index = 3,
-
-            /// <summary>
             /// Enum Portfolio for value: portfolio
             /// </summary>
             [EnumMember(Value = "portfolio")]
-            Portfolio = 4
+            Portfolio = 3,
+
+            /// <summary>
+            /// Enum Index for value: index
+            /// </summary>
+            [EnumMember(Value = "index")]
+            Index = 4
 
         }
 
@@ -82,6 +82,7 @@ namespace net.crossly.Model
         /// <param name="verified">verified (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="showAmounts">showAmounts (required).</param>
+        /// <param name="owner">owner (required).</param>
         /// <param name="title">title (required).</param>
         /// <param name="subtitle">subtitle.</param>
         /// <param name="imageUrl">imageUrl.</param>
@@ -93,7 +94,7 @@ namespace net.crossly.Model
         /// <param name="amounts">amounts.</param>
         /// <param name="portfolio">portfolio.</param>
         /// <param name="links">links (required).</param>
-        public ListVaultMarketShareCardsItem(string id = default(string), KindEnum kind = default(KindEnum), bool verified = default(bool), string createdAt = default(string), bool showAmounts = default(bool), string title = default(string), string subtitle = default(string), string imageUrl = default(string), string bookKey = default(string), string indexSlug = default(string), ListVaultMarketShareCardsItemMark mark = default(ListVaultMarketShareCardsItemMark), ListVaultMarketShareCardsItemLevel level = default(ListVaultMarketShareCardsItemLevel), ListVaultMarketShareCardsItemChange change = default(ListVaultMarketShareCardsItemChange), ListVaultMarketShareCardsItemAmounts amounts = default(ListVaultMarketShareCardsItemAmounts), ListVaultMarketShareCardsItemPortfolio portfolio = default(ListVaultMarketShareCardsItemPortfolio), ListVaultMarketShareCardsItemLinks links = default(ListVaultMarketShareCardsItemLinks))
+        public ListVaultMarketShareCardsItem(string id = default(string), KindEnum kind = default(KindEnum), bool verified = default(bool), string createdAt = default(string), bool showAmounts = default(bool), ListVaultMarketShareCardsItemOwner owner = default(ListVaultMarketShareCardsItemOwner), string title = default(string), string subtitle = default(string), string imageUrl = default(string), string bookKey = default(string), string indexSlug = default(string), ListVaultMarketShareCardsItemMark mark = default(ListVaultMarketShareCardsItemMark), ListVaultMarketShareCardsItemLevel level = default(ListVaultMarketShareCardsItemLevel), ListVaultMarketShareCardsItemChange change = default(ListVaultMarketShareCardsItemChange), ListVaultMarketShareCardsItemAmounts amounts = default(ListVaultMarketShareCardsItemAmounts), ListVaultMarketShareCardsItemPortfolio portfolio = default(ListVaultMarketShareCardsItemPortfolio), ListVaultMarketShareCardsItemLinks links = default(ListVaultMarketShareCardsItemLinks))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -108,6 +109,11 @@ namespace net.crossly.Model
             }
             this.CreatedAt = createdAt;
             this.ShowAmounts = showAmounts;
+            // to ensure "owner" is required (not null)
+            if (owner == null) {
+                throw new ArgumentNullException("owner is a required property for ListVaultMarketShareCardsItem and cannot be null");
+            }
+            this.Owner = owner;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for ListVaultMarketShareCardsItem and cannot be null");
@@ -156,6 +162,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "showAmounts", IsRequired = true, EmitDefaultValue = true)]
         public bool ShowAmounts { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Owner
+        /// </summary>
+        [DataMember(Name = "owner", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketShareCardsItemOwner Owner { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -236,6 +248,7 @@ namespace net.crossly.Model
             sb.Append("  Verified: ").Append(Verified).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ShowAmounts: ").Append(ShowAmounts).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Subtitle: ").Append(Subtitle).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
@@ -303,6 +316,11 @@ namespace net.crossly.Model
                 (
                     this.ShowAmounts == input.ShowAmounts ||
                     this.ShowAmounts.Equals(input.ShowAmounts)
+                ) && 
+                (
+                    this.Owner == input.Owner ||
+                    (this.Owner != null &&
+                    this.Owner.Equals(input.Owner))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -381,6 +399,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ShowAmounts.GetHashCode();
+                if (this.Owner != null)
+                {
+                    hashCode = (hashCode * 59) + this.Owner.GetHashCode();
+                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();

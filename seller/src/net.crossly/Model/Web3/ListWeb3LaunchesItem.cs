@@ -38,40 +38,40 @@ namespace net.crossly.Model
         public enum ChainEnum
         {
             /// <summary>
-            /// Enum Solana for value: solana
-            /// </summary>
-            [EnumMember(Value = "solana")]
-            Solana = 1,
-
-            /// <summary>
             /// Enum Ethereum for value: ethereum
             /// </summary>
             [EnumMember(Value = "ethereum")]
-            Ethereum = 2,
+            Ethereum = 1,
 
             /// <summary>
             /// Enum Base for value: base
             /// </summary>
             [EnumMember(Value = "base")]
-            Base = 3,
+            Base = 2,
 
             /// <summary>
             /// Enum Polygon for value: polygon
             /// </summary>
             [EnumMember(Value = "polygon")]
-            Polygon = 4,
+            Polygon = 3,
 
             /// <summary>
             /// Enum Arbitrum for value: arbitrum
             /// </summary>
             [EnumMember(Value = "arbitrum")]
-            Arbitrum = 5,
+            Arbitrum = 4,
 
             /// <summary>
             /// Enum Optimism for value: optimism
             /// </summary>
             [EnumMember(Value = "optimism")]
-            Optimism = 6
+            Optimism = 5,
+
+            /// <summary>
+            /// Enum Solana for value: solana
+            /// </summary>
+            [EnumMember(Value = "solana")]
+            Solana = 6
 
         }
 
@@ -88,16 +88,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Live for value: live
-            /// </summary>
-            [EnumMember(Value = "live")]
-            Live = 1,
-
-            /// <summary>
             /// Enum Draft for value: draft
             /// </summary>
             [EnumMember(Value = "draft")]
-            Draft = 2,
+            Draft = 1,
+
+            /// <summary>
+            /// Enum Live for value: live
+            /// </summary>
+            [EnumMember(Value = "live")]
+            Live = 2,
 
             /// <summary>
             /// Enum Failed for value: failed
@@ -126,28 +126,28 @@ namespace net.crossly.Model
         public enum PhaseEnum
         {
             /// <summary>
-            /// Enum Ended for value: ended
-            /// </summary>
-            [EnumMember(Value = "ended")]
-            Ended = 1,
-
-            /// <summary>
-            /// Enum Holder for value: holder
-            /// </summary>
-            [EnumMember(Value = "holder")]
-            Holder = 2,
-
-            /// <summary>
             /// Enum Public for value: public
             /// </summary>
             [EnumMember(Value = "public")]
-            Public = 3,
+            Public = 1,
+
+            /// <summary>
+            /// Enum Ended for value: ended
+            /// </summary>
+            [EnumMember(Value = "ended")]
+            Ended = 2,
 
             /// <summary>
             /// Enum Upcoming for value: upcoming
             /// </summary>
             [EnumMember(Value = "upcoming")]
-            Upcoming = 4,
+            Upcoming = 3,
+
+            /// <summary>
+            /// Enum Holder for value: holder
+            /// </summary>
+            [EnumMember(Value = "holder")]
+            Holder = 4,
 
             /// <summary>
             /// Enum SoldOut for value: sold_out
@@ -194,7 +194,10 @@ namespace net.crossly.Model
         /// <param name="card">Card checkout (Crossmint) is set up and the collection is verified there. (required).</param>
         /// <param name="allowlist">The creator set an early-phase allowlist (check a wallet with /launch/:id/allowlist/:address). (required).</param>
         /// <param name="revealed">Per-token art has been revealed. (required).</param>
-        public ListWeb3LaunchesItem(string id = default(string), ChainEnum chain = default(ChainEnum), string contract = default(string), StatusEnum status = default(StatusEnum), string name = default(string), string symbol = default(string), string description = default(string), string imageUrl = default(string), decimal maxSupply = default(decimal), decimal minted = default(decimal), string priceWei = default(string), string holderStart = default(string), string publicStart = default(string), string endTime = default(string), ListWeb3LaunchesItemHolderGate holderGate = default(ListWeb3LaunchesItemHolderGate), decimal maxPerWallet = default(decimal), decimal royaltyBps = default(decimal), decimal platformBps = default(decimal), PhaseEnum phase = default(PhaseEnum), ListWeb3LaunchesItemCreator creator = default(ListWeb3LaunchesItemCreator), bool card = default(bool), bool allowlist = default(bool), bool revealed = default(bool))
+        /// <param name="cardSetId">Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints..</param>
+        /// <param name="creationRefs">creationRefs.</param>
+        /// <param name="holderPerks">Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks)..</param>
+        public ListWeb3LaunchesItem(string id = default(string), ChainEnum chain = default(ChainEnum), string contract = default(string), StatusEnum status = default(StatusEnum), string name = default(string), string symbol = default(string), string description = default(string), string imageUrl = default(string), decimal maxSupply = default(decimal), decimal minted = default(decimal), string priceWei = default(string), string holderStart = default(string), string publicStart = default(string), string endTime = default(string), ContractName holderGate = default(ContractName), decimal maxPerWallet = default(decimal), decimal royaltyBps = default(decimal), decimal platformBps = default(decimal), PhaseEnum phase = default(PhaseEnum), NameObject creator = default(NameObject), bool card = default(bool), bool allowlist = default(bool), bool revealed = default(bool), string cardSetId = default(string), List<string> creationRefs = default(List<string>), List<ListWeb3LaunchesItemHolderPerksItem> holderPerks = default(List<ListWeb3LaunchesItemHolderPerksItem>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -243,6 +246,9 @@ namespace net.crossly.Model
             this.HolderStart = holderStart;
             this.EndTime = endTime;
             this.HolderGate = holderGate;
+            this.CardSetId = cardSetId;
+            this.CreationRefs = creationRefs;
+            this.HolderPerks = holderPerks;
         }
 
         /// <summary>
@@ -321,7 +327,7 @@ namespace net.crossly.Model
         /// Gets or Sets HolderGate
         /// </summary>
         [DataMember(Name = "holderGate", EmitDefaultValue = true)]
-        public ListWeb3LaunchesItemHolderGate HolderGate { get; set; }
+        public ContractName HolderGate { get; set; }
 
         /// <summary>
         /// Gets or Sets MaxPerWallet
@@ -345,7 +351,7 @@ namespace net.crossly.Model
         /// Gets or Sets Creator
         /// </summary>
         [DataMember(Name = "creator", IsRequired = true, EmitDefaultValue = false)]
-        public ListWeb3LaunchesItemCreator Creator { get; set; }
+        public NameObject Creator { get; set; }
 
         /// <summary>
         /// Card checkout (Crossmint) is set up and the collection is verified there.
@@ -367,6 +373,26 @@ namespace net.crossly.Model
         /// <value>Per-token art has been revealed.</value>
         [DataMember(Name = "revealed", IsRequired = true, EmitDefaultValue = true)]
         public bool Revealed { get; set; }
+
+        /// <summary>
+        /// Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.
+        /// </summary>
+        /// <value>Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.</value>
+        [DataMember(Name = "cardSetId", EmitDefaultValue = true)]
+        public string CardSetId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreationRefs
+        /// </summary>
+        [DataMember(Name = "creationRefs", EmitDefaultValue = true)]
+        public List<string> CreationRefs { get; set; }
+
+        /// <summary>
+        /// Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).
+        /// </summary>
+        /// <value>Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).</value>
+        [DataMember(Name = "holderPerks", EmitDefaultValue = true)]
+        public List<ListWeb3LaunchesItemHolderPerksItem> HolderPerks { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -399,6 +425,9 @@ namespace net.crossly.Model
             sb.Append("  Card: ").Append(Card).Append("\n");
             sb.Append("  Allowlist: ").Append(Allowlist).Append("\n");
             sb.Append("  Revealed: ").Append(Revealed).Append("\n");
+            sb.Append("  CardSetId: ").Append(CardSetId).Append("\n");
+            sb.Append("  CreationRefs: ").Append(CreationRefs).Append("\n");
+            sb.Append("  HolderPerks: ").Append(HolderPerks).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -537,6 +566,23 @@ namespace net.crossly.Model
                 (
                     this.Revealed == input.Revealed ||
                     this.Revealed.Equals(input.Revealed)
+                ) && 
+                (
+                    this.CardSetId == input.CardSetId ||
+                    (this.CardSetId != null &&
+                    this.CardSetId.Equals(input.CardSetId))
+                ) && 
+                (
+                    this.CreationRefs == input.CreationRefs ||
+                    this.CreationRefs != null &&
+                    input.CreationRefs != null &&
+                    this.CreationRefs.SequenceEqual(input.CreationRefs)
+                ) && 
+                (
+                    this.HolderPerks == input.HolderPerks ||
+                    this.HolderPerks != null &&
+                    input.HolderPerks != null &&
+                    this.HolderPerks.SequenceEqual(input.HolderPerks)
                 );
         }
 
@@ -608,6 +654,18 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Card.GetHashCode();
                 hashCode = (hashCode * 59) + this.Allowlist.GetHashCode();
                 hashCode = (hashCode * 59) + this.Revealed.GetHashCode();
+                if (this.CardSetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CardSetId.GetHashCode();
+                }
+                if (this.CreationRefs != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreationRefs.GetHashCode();
+                }
+                if (this.HolderPerks != null)
+                {
+                    hashCode = (hashCode * 59) + this.HolderPerks.GetHashCode();
+                }
                 return hashCode;
             }
         }

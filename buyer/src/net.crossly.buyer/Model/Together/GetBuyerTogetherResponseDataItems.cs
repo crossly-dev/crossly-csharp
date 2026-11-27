@@ -40,29 +40,29 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerTogetherResponseDataItems" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="available">available (required).</param>
-        /// <param name="title">title.</param>
         /// <param name="slug">slug (required).</param>
+        /// <param name="title">title.</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="image">image.</param>
+        /// <param name="available">available (required).</param>
         /// <param name="addedBy">addedBy (required).</param>
         /// <param name="up">up (required).</param>
         /// <param name="down">down (required).</param>
         /// <param name="myVote">myVote (required).</param>
-        public GetBuyerTogetherResponseDataItems(string id = default(string), bool available = default(bool), string title = default(string), string slug = default(string), decimal priceCents = default(decimal), string image = default(string), string addedBy = default(string), decimal up = default(decimal), decimal down = default(decimal), decimal myVote = default(decimal))
+        public GetBuyerTogetherResponseDataItems(string id = default(string), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), string image = default(string), bool available = default(bool), string addedBy = default(string), decimal up = default(decimal), decimal down = default(decimal), decimal myVote = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerTogetherResponseDataItems and cannot be null");
             }
             this.Id = id;
-            this.Available = available;
             // to ensure "slug" is required (not null)
             if (slug == null) {
                 throw new ArgumentNullException("slug is a required property for GetBuyerTogetherResponseDataItems and cannot be null");
             }
             this.Slug = slug;
             this.PriceCents = priceCents;
+            this.Available = available;
             // to ensure "addedBy" is required (not null)
             if (addedBy == null) {
                 throw new ArgumentNullException("addedBy is a required property for GetBuyerTogetherResponseDataItems and cannot be null");
@@ -82,22 +82,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Available
+        /// Gets or Sets Slug
         /// </summary>
-        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
-        public bool Available { get; set; }
+        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
+        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", EmitDefaultValue = true)]
         public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
-        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceCents
@@ -110,6 +104,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "image", EmitDefaultValue = true)]
         public string Image { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Available
+        /// </summary>
+        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
+        public bool Available { get; set; }
 
         /// <summary>
         /// Gets or Sets AddedBy
@@ -144,11 +144,11 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerTogetherResponseDataItems {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Available: ").Append(Available).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
+            sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("  AddedBy: ").Append(AddedBy).Append("\n");
             sb.Append("  Up: ").Append(Up).Append("\n");
             sb.Append("  Down: ").Append(Down).Append("\n");
@@ -194,18 +194,14 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Available == input.Available ||
-                    this.Available.Equals(input.Available)
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
-                (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
                     this.PriceCents == input.PriceCents ||
@@ -215,6 +211,10 @@ namespace net.crossly.buyer.Model
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
+                ) && 
+                (
+                    this.Available == input.Available ||
+                    this.Available.Equals(input.Available)
                 ) && 
                 (
                     this.AddedBy == input.AddedBy ||
@@ -248,20 +248,20 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Available.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.Image != null)
                 {
                     hashCode = (hashCode * 59) + this.Image.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 if (this.AddedBy != null)
                 {
                     hashCode = (hashCode * 59) + this.AddedBy.GetHashCode();

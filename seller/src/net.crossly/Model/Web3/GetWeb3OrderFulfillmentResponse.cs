@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Bundle = 1,
 
             /// <summary>
+            /// Enum Offer for value: offer
+            /// </summary>
+            [EnumMember(Value = "offer")]
+            Offer = 2,
+
+            /// <summary>
             /// Enum Listing for value: listing
             /// </summary>
             [EnumMember(Value = "listing")]
-            Listing = 2,
+            Listing = 3,
 
             /// <summary>
             /// Enum PrivateListing for value: private_listing
             /// </summary>
             [EnumMember(Value = "private_listing")]
-            PrivateListing = 3,
-
-            /// <summary>
-            /// Enum Offer for value: offer
-            /// </summary>
-            [EnumMember(Value = "offer")]
-            Offer = 4,
+            PrivateListing = 4,
 
             /// <summary>
             /// Enum CollectionOffer for value: collection_offer

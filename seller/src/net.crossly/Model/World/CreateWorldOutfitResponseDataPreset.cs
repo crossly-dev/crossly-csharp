@@ -45,7 +45,7 @@ namespace net.crossly.Model
         /// <param name="items">items (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public CreateWorldOutfitResponseDataPreset(string id = default(string), string name = default(string), ListWorldOutfitsItemAppearance appearance = default(ListWorldOutfitsItemAppearance), List<Dictionary<string, Object>> items = default(List<Dictionary<string, Object>>), string createdAt = default(string), string updatedAt = default(string))
+        public CreateWorldOutfitResponseDataPreset(string id = default(string), string name = default(string), CreateWorldOutfitResponseDataPresetAppearance appearance = default(CreateWorldOutfitResponseDataPresetAppearance), List<Dictionary<string, Object>> items = default(List<Dictionary<string, Object>>), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -95,7 +95,7 @@ namespace net.crossly.Model
         /// Gets or Sets Appearance
         /// </summary>
         [DataMember(Name = "appearance", IsRequired = true, EmitDefaultValue = false)]
-        public ListWorldOutfitsItemAppearance Appearance { get; set; }
+        public CreateWorldOutfitResponseDataPresetAppearance Appearance { get; set; }
 
         /// <summary>
         /// Gets or Sets Items

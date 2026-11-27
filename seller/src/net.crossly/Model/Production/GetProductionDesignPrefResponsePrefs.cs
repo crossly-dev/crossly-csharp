@@ -42,14 +42,14 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="cosmeticId">cosmeticId (required).</param>
         /// <param name="merchantId">merchantId (required).</param>
         /// <param name="creatorSubjectId">creatorSubjectId (required).</param>
-        /// <param name="cosmeticId">cosmeticId (required).</param>
         /// <param name="spec">spec.</param>
         /// <param name="physicalOptOut">physicalOptOut (required).</param>
         /// <param name="brief">brief.</param>
         /// <param name="physicalLineAt">physicalLineAt.</param>
-        public GetProductionDesignPrefResponsePrefs(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string merchantId = default(string), string creatorSubjectId = default(string), string cosmeticId = default(string), CreateProductionDesignSpecResponsePrefsSpec spec = default(CreateProductionDesignSpecResponsePrefsSpec), bool physicalOptOut = default(bool), CreateProductionDesignSpecResponsePrefsBrief brief = default(CreateProductionDesignSpecResponsePrefsBrief), DateTime? physicalLineAt = default(DateTime?))
+        public GetProductionDesignPrefResponsePrefs(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string cosmeticId = default(string), string merchantId = default(string), string creatorSubjectId = default(string), CreateProductionDesignSpecResponsePrefsSpec spec = default(CreateProductionDesignSpecResponsePrefsSpec), bool physicalOptOut = default(bool), CreateProductionDesignSpecResponsePrefsBrief brief = default(CreateProductionDesignSpecResponsePrefsBrief), DateTime? physicalLineAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -58,6 +58,11 @@ namespace net.crossly.Model
             this.Id = id;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
+            // to ensure "cosmeticId" is required (not null)
+            if (cosmeticId == null) {
+                throw new ArgumentNullException("cosmeticId is a required property for GetProductionDesignPrefResponsePrefs and cannot be null");
+            }
+            this.CosmeticId = cosmeticId;
             // to ensure "merchantId" is required (not null)
             if (merchantId == null) {
                 throw new ArgumentNullException("merchantId is a required property for GetProductionDesignPrefResponsePrefs and cannot be null");
@@ -68,11 +73,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("creatorSubjectId is a required property for GetProductionDesignPrefResponsePrefs and cannot be null");
             }
             this.CreatorSubjectId = creatorSubjectId;
-            // to ensure "cosmeticId" is required (not null)
-            if (cosmeticId == null) {
-                throw new ArgumentNullException("cosmeticId is a required property for GetProductionDesignPrefResponsePrefs and cannot be null");
-            }
-            this.CosmeticId = cosmeticId;
             this.PhysicalOptOut = physicalOptOut;
             this.Spec = spec;
             this.Brief = brief;
@@ -98,6 +98,12 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets CosmeticId
+        /// </summary>
+        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
+        public string CosmeticId { get; set; }
+
+        /// <summary>
         /// Gets or Sets MerchantId
         /// </summary>
         [DataMember(Name = "merchantId", IsRequired = true, EmitDefaultValue = false)]
@@ -108,12 +114,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "creatorSubjectId", IsRequired = true, EmitDefaultValue = false)]
         public string CreatorSubjectId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CosmeticId
-        /// </summary>
-        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
-        public string CosmeticId { get; set; }
 
         /// <summary>
         /// Gets or Sets Spec
@@ -150,9 +150,9 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
             sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  CreatorSubjectId: ").Append(CreatorSubjectId).Append("\n");
-            sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
             sb.Append("  Spec: ").Append(Spec).Append("\n");
             sb.Append("  PhysicalOptOut: ").Append(PhysicalOptOut).Append("\n");
             sb.Append("  Brief: ").Append(Brief).Append("\n");
@@ -208,6 +208,11 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
+                    this.CosmeticId == input.CosmeticId ||
+                    (this.CosmeticId != null &&
+                    this.CosmeticId.Equals(input.CosmeticId))
+                ) && 
+                (
                     this.MerchantId == input.MerchantId ||
                     (this.MerchantId != null &&
                     this.MerchantId.Equals(input.MerchantId))
@@ -216,11 +221,6 @@ namespace net.crossly.Model
                     this.CreatorSubjectId == input.CreatorSubjectId ||
                     (this.CreatorSubjectId != null &&
                     this.CreatorSubjectId.Equals(input.CreatorSubjectId))
-                ) && 
-                (
-                    this.CosmeticId == input.CosmeticId ||
-                    (this.CosmeticId != null &&
-                    this.CosmeticId.Equals(input.CosmeticId))
                 ) && 
                 (
                     this.Spec == input.Spec ||
@@ -264,6 +264,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
+                if (this.CosmeticId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
+                }
                 if (this.MerchantId != null)
                 {
                     hashCode = (hashCode * 59) + this.MerchantId.GetHashCode();
@@ -271,10 +275,6 @@ namespace net.crossly.Model
                 if (this.CreatorSubjectId != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatorSubjectId.GetHashCode();
-                }
-                if (this.CosmeticId != null)
-                {
-                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
                 }
                 if (this.Spec != null)
                 {

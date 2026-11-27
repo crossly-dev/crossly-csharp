@@ -43,23 +43,23 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="reason">reason (required).</param>
-        /// <param name="receivedAt">receivedAt.</param>
         /// <param name="carrier">carrier.</param>
         /// <param name="shippedAt">shippedAt.</param>
         /// <param name="refundedAt">refundedAt.</param>
-        /// <param name="fit">fit.</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
-        /// <param name="purchaseId">purchaseId (required).</param>
+        /// <param name="reason">reason (required).</param>
+        /// <param name="receivedAt">receivedAt.</param>
         /// <param name="labelUrl">labelUrl.</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="refundStripeId">refundStripeId.</param>
+        /// <param name="purchaseId">purchaseId (required).</param>
         /// <param name="note">note.</param>
         /// <param name="feeCents">feeCents (required).</param>
         /// <param name="trackingCode">trackingCode.</param>
+        /// <param name="fit">fit.</param>
         /// <param name="refundCents">refundCents (required).</param>
         /// <param name="prepaidLabel">prepaidLabel (required).</param>
-        public ListPolicyReturnsItem(string orderId = default(string), string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string carrier = default(string), DateTime? shippedAt = default(DateTime?), DateTime? refundedAt = default(DateTime?), string fit = default(string), string sellerUserId = default(string), string buyerUserId = default(string), string purchaseId = default(string), string labelUrl = default(string), string refundStripeId = default(string), string note = default(string), decimal feeCents = default(decimal), string trackingCode = default(string), decimal refundCents = default(decimal), bool prepaidLabel = default(bool))
+        public ListPolicyReturnsItem(string orderId = default(string), string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string carrier = default(string), DateTime? shippedAt = default(DateTime?), DateTime? refundedAt = default(DateTime?), string buyerUserId = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string labelUrl = default(string), string sellerUserId = default(string), string refundStripeId = default(string), string purchaseId = default(string), string note = default(string), decimal feeCents = default(decimal), string trackingCode = default(string), string fit = default(string), decimal refundCents = default(decimal), bool prepaidLabel = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -72,6 +72,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for ListPolicyReturnsItem and cannot be null");
             }
             this.Status = status;
+            // to ensure "buyerUserId" is required (not null)
+            if (buyerUserId == null) {
+                throw new ArgumentNullException("buyerUserId is a required property for ListPolicyReturnsItem and cannot be null");
+            }
+            this.BuyerUserId = buyerUserId;
             // to ensure "reason" is required (not null)
             if (reason == null) {
                 throw new ArgumentNullException("reason is a required property for ListPolicyReturnsItem and cannot be null");
@@ -82,11 +87,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("sellerUserId is a required property for ListPolicyReturnsItem and cannot be null");
             }
             this.SellerUserId = sellerUserId;
-            // to ensure "buyerUserId" is required (not null)
-            if (buyerUserId == null) {
-                throw new ArgumentNullException("buyerUserId is a required property for ListPolicyReturnsItem and cannot be null");
-            }
-            this.BuyerUserId = buyerUserId;
             // to ensure "purchaseId" is required (not null)
             if (purchaseId == null) {
                 throw new ArgumentNullException("purchaseId is a required property for ListPolicyReturnsItem and cannot be null");
@@ -96,15 +96,15 @@ namespace net.crossly.Model
             this.RefundCents = refundCents;
             this.PrepaidLabel = prepaidLabel;
             this.OrderId = orderId;
-            this.ReceivedAt = receivedAt;
             this.Carrier = carrier;
             this.ShippedAt = shippedAt;
             this.RefundedAt = refundedAt;
-            this.Fit = fit;
+            this.ReceivedAt = receivedAt;
             this.LabelUrl = labelUrl;
             this.RefundStripeId = refundStripeId;
             this.Note = note;
             this.TrackingCode = trackingCode;
+            this.Fit = fit;
         }
 
         /// <summary>
@@ -132,18 +132,6 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Reason
-        /// </summary>
-        [DataMember(Name = "reason", IsRequired = true, EmitDefaultValue = false)]
-        public string Reason { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReceivedAt
-        /// </summary>
-        [DataMember(Name = "receivedAt", EmitDefaultValue = true)]
-        public DateTime? ReceivedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Carrier
         /// </summary>
         [DataMember(Name = "carrier", EmitDefaultValue = true)]
@@ -162,28 +150,22 @@ namespace net.crossly.Model
         public DateTime? RefundedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Fit
-        /// </summary>
-        [DataMember(Name = "fit", EmitDefaultValue = true)]
-        public string Fit { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
-
-        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string BuyerUserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PurchaseId
+        /// Gets or Sets Reason
         /// </summary>
-        [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
-        public string PurchaseId { get; set; }
+        [DataMember(Name = "reason", IsRequired = true, EmitDefaultValue = false)]
+        public string Reason { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReceivedAt
+        /// </summary>
+        [DataMember(Name = "receivedAt", EmitDefaultValue = true)]
+        public DateTime? ReceivedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelUrl
@@ -192,10 +174,22 @@ namespace net.crossly.Model
         public string LabelUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets RefundStripeId
         /// </summary>
         [DataMember(Name = "refundStripeId", EmitDefaultValue = true)]
         public string RefundStripeId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PurchaseId
+        /// </summary>
+        [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
+        public string PurchaseId { get; set; }
 
         /// <summary>
         /// Gets or Sets Note
@@ -214,6 +208,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "trackingCode", EmitDefaultValue = true)]
         public string TrackingCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Fit
+        /// </summary>
+        [DataMember(Name = "fit", EmitDefaultValue = true)]
+        public string Fit { get; set; }
 
         /// <summary>
         /// Gets or Sets RefundCents
@@ -239,20 +239,20 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Reason: ").Append(Reason).Append("\n");
-            sb.Append("  ReceivedAt: ").Append(ReceivedAt).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  ShippedAt: ").Append(ShippedAt).Append("\n");
             sb.Append("  RefundedAt: ").Append(RefundedAt).Append("\n");
-            sb.Append("  Fit: ").Append(Fit).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
-            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
+            sb.Append("  Reason: ").Append(Reason).Append("\n");
+            sb.Append("  ReceivedAt: ").Append(ReceivedAt).Append("\n");
             sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  RefundStripeId: ").Append(RefundStripeId).Append("\n");
+            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  FeeCents: ").Append(FeeCents).Append("\n");
             sb.Append("  TrackingCode: ").Append(TrackingCode).Append("\n");
+            sb.Append("  Fit: ").Append(Fit).Append("\n");
             sb.Append("  RefundCents: ").Append(RefundCents).Append("\n");
             sb.Append("  PrepaidLabel: ").Append(PrepaidLabel).Append("\n");
             sb.Append("}\n");
@@ -311,16 +311,6 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.Reason == input.Reason ||
-                    (this.Reason != null &&
-                    this.Reason.Equals(input.Reason))
-                ) && 
-                (
-                    this.ReceivedAt == input.ReceivedAt ||
-                    (this.ReceivedAt != null &&
-                    this.ReceivedAt.Equals(input.ReceivedAt))
-                ) && 
-                (
                     this.Carrier == input.Carrier ||
                     (this.Carrier != null &&
                     this.Carrier.Equals(input.Carrier))
@@ -336,24 +326,19 @@ namespace net.crossly.Model
                     this.RefundedAt.Equals(input.RefundedAt))
                 ) && 
                 (
-                    this.Fit == input.Fit ||
-                    (this.Fit != null &&
-                    this.Fit.Equals(input.Fit))
-                ) && 
-                (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
                 ) && 
                 (
-                    this.PurchaseId == input.PurchaseId ||
-                    (this.PurchaseId != null &&
-                    this.PurchaseId.Equals(input.PurchaseId))
+                    this.Reason == input.Reason ||
+                    (this.Reason != null &&
+                    this.Reason.Equals(input.Reason))
+                ) && 
+                (
+                    this.ReceivedAt == input.ReceivedAt ||
+                    (this.ReceivedAt != null &&
+                    this.ReceivedAt.Equals(input.ReceivedAt))
                 ) && 
                 (
                     this.LabelUrl == input.LabelUrl ||
@@ -361,9 +346,19 @@ namespace net.crossly.Model
                     this.LabelUrl.Equals(input.LabelUrl))
                 ) && 
                 (
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
+                ) && 
+                (
                     this.RefundStripeId == input.RefundStripeId ||
                     (this.RefundStripeId != null &&
                     this.RefundStripeId.Equals(input.RefundStripeId))
+                ) && 
+                (
+                    this.PurchaseId == input.PurchaseId ||
+                    (this.PurchaseId != null &&
+                    this.PurchaseId.Equals(input.PurchaseId))
                 ) && 
                 (
                     this.Note == input.Note ||
@@ -378,6 +373,11 @@ namespace net.crossly.Model
                     this.TrackingCode == input.TrackingCode ||
                     (this.TrackingCode != null &&
                     this.TrackingCode.Equals(input.TrackingCode))
+                ) && 
+                (
+                    this.Fit == input.Fit ||
+                    (this.Fit != null &&
+                    this.Fit.Equals(input.Fit))
                 ) && 
                 (
                     this.RefundCents == input.RefundCents ||
@@ -414,14 +414,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.Reason != null)
-                {
-                    hashCode = (hashCode * 59) + this.Reason.GetHashCode();
-                }
-                if (this.ReceivedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReceivedAt.GetHashCode();
-                }
                 if (this.Carrier != null)
                 {
                     hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
@@ -434,29 +426,33 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.RefundedAt.GetHashCode();
                 }
-                if (this.Fit != null)
-                {
-                    hashCode = (hashCode * 59) + this.Fit.GetHashCode();
-                }
-                if (this.SellerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
                 }
-                if (this.PurchaseId != null)
+                if (this.Reason != null)
                 {
-                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Reason.GetHashCode();
+                }
+                if (this.ReceivedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReceivedAt.GetHashCode();
                 }
                 if (this.LabelUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
                 }
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
                 if (this.RefundStripeId != null)
                 {
                     hashCode = (hashCode * 59) + this.RefundStripeId.GetHashCode();
+                }
+                if (this.PurchaseId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
                 }
                 if (this.Note != null)
                 {
@@ -466,6 +462,10 @@ namespace net.crossly.Model
                 if (this.TrackingCode != null)
                 {
                     hashCode = (hashCode * 59) + this.TrackingCode.GetHashCode();
+                }
+                if (this.Fit != null)
+                {
+                    hashCode = (hashCode * 59) + this.Fit.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RefundCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.PrepaidLabel.GetHashCode();

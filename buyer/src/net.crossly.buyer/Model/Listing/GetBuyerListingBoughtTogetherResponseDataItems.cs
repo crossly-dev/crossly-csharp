@@ -39,12 +39,12 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerListingBoughtTogetherResponseDataItems" /> class.
         /// </summary>
-        /// <param name="title">title.</param>
         /// <param name="slug">slug (required).</param>
+        /// <param name="title">title.</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="image">image.</param>
         /// <param name="sameSeller">sameSeller (required).</param>
-        public GetBuyerListingBoughtTogetherResponseDataItems(string title = default(string), string slug = default(string), decimal priceCents = default(decimal), string image = default(string), bool sameSeller = default(bool))
+        public GetBuyerListingBoughtTogetherResponseDataItems(string slug = default(string), string title = default(string), decimal priceCents = default(decimal), string image = default(string), bool sameSeller = default(bool))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -58,16 +58,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets Slug
         /// </summary>
         [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
         public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceCents
@@ -95,8 +95,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingBoughtTogetherResponseDataItems {\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  SameSeller: ").Append(SameSeller).Append("\n");
@@ -136,14 +136,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.PriceCents == input.PriceCents ||
@@ -169,13 +169,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.Image != null)

@@ -40,21 +40,21 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCollectionOfferResponseDataOffer" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="expiresAt">expiresAt (required).</param>
         /// <param name="cents">cents (required).</param>
-        public GetBuyerCollectionOfferResponseDataOffer(string id = default(string), string expiresAt = default(string), decimal cents = default(decimal))
+        /// <param name="expiresAt">expiresAt (required).</param>
+        public GetBuyerCollectionOfferResponseDataOffer(string id = default(string), decimal cents = default(decimal), string expiresAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerCollectionOfferResponseDataOffer and cannot be null");
             }
             this.Id = id;
+            this.Cents = cents;
             // to ensure "expiresAt" is required (not null)
             if (expiresAt == null) {
                 throw new ArgumentNullException("expiresAt is a required property for GetBuyerCollectionOfferResponseDataOffer and cannot be null");
             }
             this.ExpiresAt = expiresAt;
-            this.Cents = cents;
         }
 
         /// <summary>
@@ -64,16 +64,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpiresAt
-        /// </summary>
-        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
-        public string ExpiresAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Cents
         /// </summary>
         [DataMember(Name = "cents", IsRequired = true, EmitDefaultValue = false)]
         public decimal Cents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExpiresAt
+        /// </summary>
+        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
+        public string ExpiresAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,8 +84,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionOfferResponseDataOffer {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
+            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,13 +127,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Cents == input.Cents ||
+                    this.Cents.Equals(input.Cents)
+                ) && 
+                (
                     this.ExpiresAt == input.ExpiresAt ||
                     (this.ExpiresAt != null &&
                     this.ExpiresAt.Equals(input.ExpiresAt))
-                ) && 
-                (
-                    this.Cents == input.Cents ||
-                    this.Cents.Equals(input.Cents)
                 );
         }
 
@@ -150,11 +150,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Cents.GetHashCode();
                 if (this.ExpiresAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Cents.GetHashCode();
                 return hashCode;
             }
         }

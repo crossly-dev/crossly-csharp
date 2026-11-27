@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Allowed for value: allowed
-            /// </summary>
-            [EnumMember(Value = "allowed")]
-            Allowed = 1,
-
-            /// <summary>
             /// Enum Revoked for value: revoked
             /// </summary>
             [EnumMember(Value = "revoked")]
-            Revoked = 2,
+            Revoked = 1,
+
+            /// <summary>
+            /// Enum Allowed for value: allowed
+            /// </summary>
+            [EnumMember(Value = "allowed")]
+            Allowed = 2,
 
             /// <summary>
             /// Enum NotAllowed for value: not_allowed

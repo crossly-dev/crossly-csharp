@@ -34,25 +34,16 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAccountDeletionStatusResponse" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetAccountDeletionStatusResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetAccountDeletionStatusResponse" /> class.
-        /// </summary>
-        /// <param name="pending">pending (required).</param>
+        /// <param name="pending">pending.</param>
         public GetAccountDeletionStatusResponse(GetAccountDeletionStatusResponsePending pending = default(GetAccountDeletionStatusResponsePending))
         {
-            // to ensure "pending" is required (not null)
-            if (pending == null) {
-                throw new ArgumentNullException("pending is a required property for GetAccountDeletionStatusResponse and cannot be null");
-            }
             this.Pending = pending;
         }
 
         /// <summary>
         /// Gets or Sets Pending
         /// </summary>
-        [DataMember(Name = "pending", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "pending", EmitDefaultValue = true)]
         public GetAccountDeletionStatusResponsePending Pending { get; set; }
 
         /// <summary>

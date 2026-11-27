@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum ReasonEnum
         {
             /// <summary>
-            /// Enum UnsupportedPlatform for value: unsupported_platform
-            /// </summary>
-            [EnumMember(Value = "unsupported_platform")]
-            UnsupportedPlatform = 1,
-
-            /// <summary>
             /// Enum NotConnected for value: not_connected
             /// </summary>
             [EnumMember(Value = "not_connected")]
-            NotConnected = 2,
+            NotConnected = 1,
 
             /// <summary>
             /// Enum UnknownPlatform for value: unknown_platform
             /// </summary>
             [EnumMember(Value = "unknown_platform")]
-            UnknownPlatform = 3
+            UnknownPlatform = 2,
+
+            /// <summary>
+            /// Enum UnsupportedPlatform for value: unsupported_platform
+            /// </summary>
+            [EnumMember(Value = "unsupported_platform")]
+            UnsupportedPlatform = 3
 
         }
 

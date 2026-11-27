@@ -40,35 +40,35 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerBreakResponseDataSpots" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="label">label (required).</param>
         /// <param name="position">position (required).</param>
-        /// <param name="heldUntil">heldUntil.</param>
-        /// <param name="hits">hits.</param>
-        /// <param name="buyer">buyer.</param>
+        /// <param name="label">label (required).</param>
         /// <param name="taken">taken (required).</param>
         /// <param name="mine">mine (required).</param>
         /// <param name="heldByMe">heldByMe (required).</param>
         /// <param name="heldByOther">heldByOther (required).</param>
-        public GetBuyerBreakResponseDataSpots(string id = default(string), string label = default(string), decimal position = default(decimal), string heldUntil = default(string), string hits = default(string), string buyer = default(string), bool taken = default(bool), bool mine = default(bool), bool heldByMe = default(bool), bool heldByOther = default(bool))
+        /// <param name="heldUntil">heldUntil.</param>
+        /// <param name="buyer">buyer.</param>
+        /// <param name="hits">hits.</param>
+        public GetBuyerBreakResponseDataSpots(string id = default(string), decimal position = default(decimal), string label = default(string), bool taken = default(bool), bool mine = default(bool), bool heldByMe = default(bool), bool heldByOther = default(bool), string heldUntil = default(string), string buyer = default(string), string hits = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerBreakResponseDataSpots and cannot be null");
             }
             this.Id = id;
+            this.Position = position;
             // to ensure "label" is required (not null)
             if (label == null) {
                 throw new ArgumentNullException("label is a required property for GetBuyerBreakResponseDataSpots and cannot be null");
             }
             this.Label = label;
-            this.Position = position;
             this.Taken = taken;
             this.Mine = mine;
             this.HeldByMe = heldByMe;
             this.HeldByOther = heldByOther;
             this.HeldUntil = heldUntil;
-            this.Hits = hits;
             this.Buyer = buyer;
+            this.Hits = hits;
         }
 
         /// <summary>
@@ -78,34 +78,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
-        public string Label { get; set; }
-
-        /// <summary>
         /// Gets or Sets Position
         /// </summary>
         [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
         public decimal Position { get; set; }
 
         /// <summary>
-        /// Gets or Sets HeldUntil
+        /// Gets or Sets Label
         /// </summary>
-        [DataMember(Name = "heldUntil", EmitDefaultValue = true)]
-        public string HeldUntil { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Hits
-        /// </summary>
-        [DataMember(Name = "hits", EmitDefaultValue = true)]
-        public string Hits { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Buyer
-        /// </summary>
-        [DataMember(Name = "buyer", EmitDefaultValue = true)]
-        public string Buyer { get; set; }
+        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
+        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Taken
@@ -132,6 +114,24 @@ namespace net.crossly.buyer.Model
         public bool HeldByOther { get; set; }
 
         /// <summary>
+        /// Gets or Sets HeldUntil
+        /// </summary>
+        [DataMember(Name = "heldUntil", EmitDefaultValue = true)]
+        public string HeldUntil { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Buyer
+        /// </summary>
+        [DataMember(Name = "buyer", EmitDefaultValue = true)]
+        public string Buyer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Hits
+        /// </summary>
+        [DataMember(Name = "hits", EmitDefaultValue = true)]
+        public string Hits { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -140,15 +140,15 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerBreakResponseDataSpots {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
-            sb.Append("  HeldUntil: ").Append(HeldUntil).Append("\n");
-            sb.Append("  Hits: ").Append(Hits).Append("\n");
-            sb.Append("  Buyer: ").Append(Buyer).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Taken: ").Append(Taken).Append("\n");
             sb.Append("  Mine: ").Append(Mine).Append("\n");
             sb.Append("  HeldByMe: ").Append(HeldByMe).Append("\n");
             sb.Append("  HeldByOther: ").Append(HeldByOther).Append("\n");
+            sb.Append("  HeldUntil: ").Append(HeldUntil).Append("\n");
+            sb.Append("  Buyer: ").Append(Buyer).Append("\n");
+            sb.Append("  Hits: ").Append(Hits).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -190,28 +190,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Label == input.Label ||
-                    (this.Label != null &&
-                    this.Label.Equals(input.Label))
-                ) && 
-                (
                     this.Position == input.Position ||
                     this.Position.Equals(input.Position)
                 ) && 
                 (
-                    this.HeldUntil == input.HeldUntil ||
-                    (this.HeldUntil != null &&
-                    this.HeldUntil.Equals(input.HeldUntil))
-                ) && 
-                (
-                    this.Hits == input.Hits ||
-                    (this.Hits != null &&
-                    this.Hits.Equals(input.Hits))
-                ) && 
-                (
-                    this.Buyer == input.Buyer ||
-                    (this.Buyer != null &&
-                    this.Buyer.Equals(input.Buyer))
+                    this.Label == input.Label ||
+                    (this.Label != null &&
+                    this.Label.Equals(input.Label))
                 ) && 
                 (
                     this.Taken == input.Taken ||
@@ -228,6 +213,21 @@ namespace net.crossly.buyer.Model
                 (
                     this.HeldByOther == input.HeldByOther ||
                     this.HeldByOther.Equals(input.HeldByOther)
+                ) && 
+                (
+                    this.HeldUntil == input.HeldUntil ||
+                    (this.HeldUntil != null &&
+                    this.HeldUntil.Equals(input.HeldUntil))
+                ) && 
+                (
+                    this.Buyer == input.Buyer ||
+                    (this.Buyer != null &&
+                    this.Buyer.Equals(input.Buyer))
+                ) && 
+                (
+                    this.Hits == input.Hits ||
+                    (this.Hits != null &&
+                    this.Hits.Equals(input.Hits))
                 );
         }
 
@@ -244,27 +244,27 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.Label != null)
                 {
                     hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Position.GetHashCode();
-                if (this.HeldUntil != null)
-                {
-                    hashCode = (hashCode * 59) + this.HeldUntil.GetHashCode();
-                }
-                if (this.Hits != null)
-                {
-                    hashCode = (hashCode * 59) + this.Hits.GetHashCode();
-                }
-                if (this.Buyer != null)
-                {
-                    hashCode = (hashCode * 59) + this.Buyer.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Taken.GetHashCode();
                 hashCode = (hashCode * 59) + this.Mine.GetHashCode();
                 hashCode = (hashCode * 59) + this.HeldByMe.GetHashCode();
                 hashCode = (hashCode * 59) + this.HeldByOther.GetHashCode();
+                if (this.HeldUntil != null)
+                {
+                    hashCode = (hashCode * 59) + this.HeldUntil.GetHashCode();
+                }
+                if (this.Buyer != null)
+                {
+                    hashCode = (hashCode * 59) + this.Buyer.GetHashCode();
+                }
+                if (this.Hits != null)
+                {
+                    hashCode = (hashCode * 59) + this.Hits.GetHashCode();
+                }
                 return hashCode;
             }
         }

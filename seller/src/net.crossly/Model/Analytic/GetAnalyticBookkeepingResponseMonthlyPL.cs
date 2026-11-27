@@ -44,14 +44,16 @@ namespace net.crossly.Model
         /// <param name="cogs">cogs (required).</param>
         /// <param name="platformFees">platformFees (required).</param>
         /// <param name="shippingCosts">shippingCosts (required).</param>
+        /// <param name="otherExpenses">Mileage and manual expenses. (required).</param>
         /// <param name="netProfit">netProfit (required).</param>
-        public GetAnalyticBookkeepingResponseMonthlyPL(decimal month = default(decimal), decimal revenue = default(decimal), decimal cogs = default(decimal), decimal platformFees = default(decimal), decimal shippingCosts = default(decimal), decimal netProfit = default(decimal))
+        public GetAnalyticBookkeepingResponseMonthlyPL(decimal month = default(decimal), decimal revenue = default(decimal), decimal cogs = default(decimal), decimal platformFees = default(decimal), decimal shippingCosts = default(decimal), decimal otherExpenses = default(decimal), decimal netProfit = default(decimal))
         {
             this.Month = month;
             this.Revenue = revenue;
             this.Cogs = cogs;
             this.PlatformFees = platformFees;
             this.ShippingCosts = shippingCosts;
+            this.OtherExpenses = otherExpenses;
             this.NetProfit = netProfit;
         }
 
@@ -86,6 +88,13 @@ namespace net.crossly.Model
         public decimal ShippingCosts { get; set; }
 
         /// <summary>
+        /// Mileage and manual expenses.
+        /// </summary>
+        /// <value>Mileage and manual expenses.</value>
+        [DataMember(Name = "otherExpenses", IsRequired = true, EmitDefaultValue = false)]
+        public decimal OtherExpenses { get; set; }
+
+        /// <summary>
         /// Gets or Sets NetProfit
         /// </summary>
         [DataMember(Name = "netProfit", IsRequired = true, EmitDefaultValue = false)]
@@ -104,6 +113,7 @@ namespace net.crossly.Model
             sb.Append("  Cogs: ").Append(Cogs).Append("\n");
             sb.Append("  PlatformFees: ").Append(PlatformFees).Append("\n");
             sb.Append("  ShippingCosts: ").Append(ShippingCosts).Append("\n");
+            sb.Append("  OtherExpenses: ").Append(OtherExpenses).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -161,6 +171,10 @@ namespace net.crossly.Model
                     this.ShippingCosts.Equals(input.ShippingCosts)
                 ) && 
                 (
+                    this.OtherExpenses == input.OtherExpenses ||
+                    this.OtherExpenses.Equals(input.OtherExpenses)
+                ) && 
+                (
                     this.NetProfit == input.NetProfit ||
                     this.NetProfit.Equals(input.NetProfit)
                 );
@@ -180,6 +194,7 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Cogs.GetHashCode();
                 hashCode = (hashCode * 59) + this.PlatformFees.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingCosts.GetHashCode();
+                hashCode = (hashCode * 59) + this.OtherExpenses.GetHashCode();
                 hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
                 return hashCode;
             }

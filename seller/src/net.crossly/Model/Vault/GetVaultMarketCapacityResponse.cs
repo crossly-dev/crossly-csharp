@@ -51,7 +51,7 @@ namespace net.crossly.Model
         /// <param name="unpriced">unpriced (required).</param>
         /// <param name="perKey">perKey (required).</param>
         /// <param name="notes">notes (required).</param>
-        public GetVaultMarketCapacityResponse(string index = default(string), decimal notionalCents = default(decimal), decimal bandBps = default(decimal), decimal participation = default(decimal), decimal constituents = default(decimal), decimal fillableNowCents = default(decimal), decimal fillableNowBps = default(decimal), decimal plannedCents = default(decimal), decimal daysToComplete = default(decimal), List<string> unpriced = default(List<string>), List<Object> perKey = default(List<Object>), List<string> notes = default(List<string>))
+        public GetVaultMarketCapacityResponse(string index = default(string), decimal notionalCents = default(decimal), decimal bandBps = default(decimal), decimal participation = default(decimal), decimal constituents = default(decimal), decimal fillableNowCents = default(decimal), decimal fillableNowBps = default(decimal), decimal plannedCents = default(decimal), decimal daysToComplete = default(decimal), List<string> unpriced = default(List<string>), List<GetVaultMarketCapacityResponsePerKeyItem> perKey = default(List<GetVaultMarketCapacityResponsePerKeyItem>), List<string> notes = default(List<string>))
         {
             // to ensure "index" is required (not null)
             if (index == null) {
@@ -148,7 +148,7 @@ namespace net.crossly.Model
         /// Gets or Sets PerKey
         /// </summary>
         [DataMember(Name = "perKey", IsRequired = true, EmitDefaultValue = false)]
-        public List<Object> PerKey { get; set; }
+        public List<GetVaultMarketCapacityResponsePerKeyItem> PerKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Notes

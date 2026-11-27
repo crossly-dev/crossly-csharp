@@ -39,33 +39,33 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerTogetherResponseData" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
         /// <param name="code">code (required).</param>
-        public CreateBuyerTogetherResponseData(string id = default(string), string code = default(string))
+        /// <param name="id">id (required).</param>
+        public CreateBuyerTogetherResponseData(string code = default(string), string id = default(string))
         {
-            // to ensure "id" is required (not null)
-            if (id == null) {
-                throw new ArgumentNullException("id is a required property for CreateBuyerTogetherResponseData and cannot be null");
-            }
-            this.Id = id;
             // to ensure "code" is required (not null)
             if (code == null) {
                 throw new ArgumentNullException("code is a required property for CreateBuyerTogetherResponseData and cannot be null");
             }
             this.Code = code;
+            // to ensure "id" is required (not null)
+            if (id == null) {
+                throw new ArgumentNullException("id is a required property for CreateBuyerTogetherResponseData and cannot be null");
+            }
+            this.Id = id;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Code
         /// </summary>
         [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
         public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        public string Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +75,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerTogetherResponseData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -113,14 +113,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -133,13 +133,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                }
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
                 return hashCode;
             }

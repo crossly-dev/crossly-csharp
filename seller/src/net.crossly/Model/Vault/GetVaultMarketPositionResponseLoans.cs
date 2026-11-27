@@ -42,14 +42,14 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="closedAt">closedAt.</param>
+        /// <param name="openedAt">openedAt (required).</param>
         /// <param name="vaultItemId">vaultItemId (required).</param>
         /// <param name="holderAccountId">holderAccountId.</param>
-        /// <param name="openedAt">openedAt (required).</param>
+        /// <param name="positionId">positionId (required).</param>
         /// <param name="bookKey">bookKey (required).</param>
         /// <param name="feesPaidCents">feesPaidCents (required).</param>
         /// <param name="latePenaltyPaidCents">latePenaltyPaidCents (required).</param>
         /// <param name="lenderUserId">lenderUserId (required).</param>
-        /// <param name="positionId">positionId (required).</param>
         /// <param name="aprBps">aprBps (required).</param>
         /// <param name="markCentsAtOpen">markCentsAtOpen (required).</param>
         /// <param name="feesAccruedCents">feesAccruedCents (required).</param>
@@ -58,7 +58,7 @@ namespace net.crossly.Model
         /// <param name="recallDueAt">recallDueAt.</param>
         /// <param name="returnedVaultItemId">returnedVaultItemId.</param>
         /// <param name="latePenaltyAccruedCents">latePenaltyAccruedCents (required).</param>
-        public GetVaultMarketPositionResponseLoans(string id = default(string), string status = default(string), DateTime? closedAt = default(DateTime?), string vaultItemId = default(string), string holderAccountId = default(string), DateTime openedAt = default(DateTime), string bookKey = default(string), decimal feesPaidCents = default(decimal), decimal latePenaltyPaidCents = default(decimal), string lenderUserId = default(string), string positionId = default(string), decimal aprBps = default(decimal), decimal markCentsAtOpen = default(decimal), string feesAccruedCents = default(string), decimal lenderStorageCents = default(decimal), DateTime? recalledAt = default(DateTime?), DateTime? recallDueAt = default(DateTime?), string returnedVaultItemId = default(string), string latePenaltyAccruedCents = default(string))
+        public GetVaultMarketPositionResponseLoans(string id = default(string), string status = default(string), DateTime? closedAt = default(DateTime?), DateTime openedAt = default(DateTime), string vaultItemId = default(string), string holderAccountId = default(string), string positionId = default(string), string bookKey = default(string), decimal feesPaidCents = default(decimal), decimal latePenaltyPaidCents = default(decimal), string lenderUserId = default(string), decimal aprBps = default(decimal), decimal markCentsAtOpen = default(decimal), string feesAccruedCents = default(string), decimal lenderStorageCents = default(decimal), DateTime? recalledAt = default(DateTime?), DateTime? recallDueAt = default(DateTime?), string returnedVaultItemId = default(string), string latePenaltyAccruedCents = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -70,12 +70,17 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
             }
             this.Status = status;
+            this.OpenedAt = openedAt;
             // to ensure "vaultItemId" is required (not null)
             if (vaultItemId == null) {
                 throw new ArgumentNullException("vaultItemId is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
             }
             this.VaultItemId = vaultItemId;
-            this.OpenedAt = openedAt;
+            // to ensure "positionId" is required (not null)
+            if (positionId == null) {
+                throw new ArgumentNullException("positionId is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
+            }
+            this.PositionId = positionId;
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
                 throw new ArgumentNullException("bookKey is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
@@ -88,11 +93,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("lenderUserId is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
             }
             this.LenderUserId = lenderUserId;
-            // to ensure "positionId" is required (not null)
-            if (positionId == null) {
-                throw new ArgumentNullException("positionId is a required property for GetVaultMarketPositionResponseLoans and cannot be null");
-            }
-            this.PositionId = positionId;
             this.AprBps = aprBps;
             this.MarkCentsAtOpen = markCentsAtOpen;
             // to ensure "feesAccruedCents" is required (not null)
@@ -132,6 +132,12 @@ namespace net.crossly.Model
         public DateTime? ClosedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets OpenedAt
+        /// </summary>
+        [DataMember(Name = "openedAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime OpenedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets VaultItemId
         /// </summary>
         [DataMember(Name = "vaultItemId", IsRequired = true, EmitDefaultValue = false)]
@@ -144,10 +150,10 @@ namespace net.crossly.Model
         public string HolderAccountId { get; set; }
 
         /// <summary>
-        /// Gets or Sets OpenedAt
+        /// Gets or Sets PositionId
         /// </summary>
-        [DataMember(Name = "openedAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime OpenedAt { get; set; }
+        [DataMember(Name = "positionId", IsRequired = true, EmitDefaultValue = false)]
+        public string PositionId { get; set; }
 
         /// <summary>
         /// Gets or Sets BookKey
@@ -172,12 +178,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "lenderUserId", IsRequired = true, EmitDefaultValue = false)]
         public string LenderUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PositionId
-        /// </summary>
-        [DataMember(Name = "positionId", IsRequired = true, EmitDefaultValue = false)]
-        public string PositionId { get; set; }
 
         /// <summary>
         /// Gets or Sets AprBps
@@ -238,14 +238,14 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ClosedAt: ").Append(ClosedAt).Append("\n");
+            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
             sb.Append("  VaultItemId: ").Append(VaultItemId).Append("\n");
             sb.Append("  HolderAccountId: ").Append(HolderAccountId).Append("\n");
-            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
+            sb.Append("  PositionId: ").Append(PositionId).Append("\n");
             sb.Append("  BookKey: ").Append(BookKey).Append("\n");
             sb.Append("  FeesPaidCents: ").Append(FeesPaidCents).Append("\n");
             sb.Append("  LatePenaltyPaidCents: ").Append(LatePenaltyPaidCents).Append("\n");
             sb.Append("  LenderUserId: ").Append(LenderUserId).Append("\n");
-            sb.Append("  PositionId: ").Append(PositionId).Append("\n");
             sb.Append("  AprBps: ").Append(AprBps).Append("\n");
             sb.Append("  MarkCentsAtOpen: ").Append(MarkCentsAtOpen).Append("\n");
             sb.Append("  FeesAccruedCents: ").Append(FeesAccruedCents).Append("\n");
@@ -305,6 +305,11 @@ namespace net.crossly.Model
                     this.ClosedAt.Equals(input.ClosedAt))
                 ) && 
                 (
+                    this.OpenedAt == input.OpenedAt ||
+                    (this.OpenedAt != null &&
+                    this.OpenedAt.Equals(input.OpenedAt))
+                ) && 
+                (
                     this.VaultItemId == input.VaultItemId ||
                     (this.VaultItemId != null &&
                     this.VaultItemId.Equals(input.VaultItemId))
@@ -315,9 +320,9 @@ namespace net.crossly.Model
                     this.HolderAccountId.Equals(input.HolderAccountId))
                 ) && 
                 (
-                    this.OpenedAt == input.OpenedAt ||
-                    (this.OpenedAt != null &&
-                    this.OpenedAt.Equals(input.OpenedAt))
+                    this.PositionId == input.PositionId ||
+                    (this.PositionId != null &&
+                    this.PositionId.Equals(input.PositionId))
                 ) && 
                 (
                     this.BookKey == input.BookKey ||
@@ -336,11 +341,6 @@ namespace net.crossly.Model
                     this.LenderUserId == input.LenderUserId ||
                     (this.LenderUserId != null &&
                     this.LenderUserId.Equals(input.LenderUserId))
-                ) && 
-                (
-                    this.PositionId == input.PositionId ||
-                    (this.PositionId != null &&
-                    this.PositionId.Equals(input.PositionId))
                 ) && 
                 (
                     this.AprBps == input.AprBps ||
@@ -402,6 +402,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ClosedAt.GetHashCode();
                 }
+                if (this.OpenedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
+                }
                 if (this.VaultItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.VaultItemId.GetHashCode();
@@ -410,9 +414,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.HolderAccountId.GetHashCode();
                 }
-                if (this.OpenedAt != null)
+                if (this.PositionId != null)
                 {
-                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PositionId.GetHashCode();
                 }
                 if (this.BookKey != null)
                 {
@@ -423,10 +427,6 @@ namespace net.crossly.Model
                 if (this.LenderUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.LenderUserId.GetHashCode();
-                }
-                if (this.PositionId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PositionId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AprBps.GetHashCode();
                 hashCode = (hashCode * 59) + this.MarkCentsAtOpen.GetHashCode();

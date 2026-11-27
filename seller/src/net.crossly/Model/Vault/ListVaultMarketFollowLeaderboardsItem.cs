@@ -40,6 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListVaultMarketFollowLeaderboardsItem" /> class.
         /// </summary>
         /// <param name="rank">rank (required).</param>
+        /// <param name="person">person (required).</param>
         /// <param name="returnBps">returnBps (required).</param>
         /// <param name="volatilityBps">volatilityBps (required).</param>
         /// <param name="riskAdjusted">riskAdjusted (required).</param>
@@ -47,9 +48,14 @@ namespace net.crossly.Model
         /// <param name="days">days (required).</param>
         /// <param name="markets">markets (required).</param>
         /// <param name="isMe">isMe (required).</param>
-        public ListVaultMarketFollowLeaderboardsItem(decimal rank = default(decimal), decimal returnBps = default(decimal), decimal volatilityBps = default(decimal), decimal riskAdjusted = default(decimal), decimal maxDrawdownBps = default(decimal), decimal days = default(decimal), decimal markets = default(decimal), bool isMe = default(bool))
+        public ListVaultMarketFollowLeaderboardsItem(decimal rank = default(decimal), ListVaultMarketFollowLeaderboardsItemPerson person = default(ListVaultMarketFollowLeaderboardsItemPerson), decimal returnBps = default(decimal), decimal volatilityBps = default(decimal), decimal riskAdjusted = default(decimal), decimal maxDrawdownBps = default(decimal), decimal days = default(decimal), decimal markets = default(decimal), bool isMe = default(bool))
         {
             this.Rank = rank;
+            // to ensure "person" is required (not null)
+            if (person == null) {
+                throw new ArgumentNullException("person is a required property for ListVaultMarketFollowLeaderboardsItem and cannot be null");
+            }
+            this.Person = person;
             this.ReturnBps = returnBps;
             this.VolatilityBps = volatilityBps;
             this.RiskAdjusted = riskAdjusted;
@@ -64,6 +70,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "rank", IsRequired = true, EmitDefaultValue = false)]
         public decimal Rank { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Person
+        /// </summary>
+        [DataMember(Name = "person", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketFollowLeaderboardsItemPerson Person { get; set; }
 
         /// <summary>
         /// Gets or Sets ReturnBps
@@ -116,6 +128,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListVaultMarketFollowLeaderboardsItem {\n");
             sb.Append("  Rank: ").Append(Rank).Append("\n");
+            sb.Append("  Person: ").Append(Person).Append("\n");
             sb.Append("  ReturnBps: ").Append(ReturnBps).Append("\n");
             sb.Append("  VolatilityBps: ").Append(VolatilityBps).Append("\n");
             sb.Append("  RiskAdjusted: ").Append(RiskAdjusted).Append("\n");
@@ -163,6 +176,11 @@ namespace net.crossly.Model
                     this.Rank.Equals(input.Rank)
                 ) && 
                 (
+                    this.Person == input.Person ||
+                    (this.Person != null &&
+                    this.Person.Equals(input.Person))
+                ) && 
+                (
                     this.ReturnBps == input.ReturnBps ||
                     this.ReturnBps.Equals(input.ReturnBps)
                 ) && 
@@ -202,6 +220,10 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Rank.GetHashCode();
+                if (this.Person != null)
+                {
+                    hashCode = (hashCode * 59) + this.Person.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ReturnBps.GetHashCode();
                 hashCode = (hashCode * 59) + this.VolatilityBps.GetHashCode();
                 hashCode = (hashCode * 59) + this.RiskAdjusted.GetHashCode();

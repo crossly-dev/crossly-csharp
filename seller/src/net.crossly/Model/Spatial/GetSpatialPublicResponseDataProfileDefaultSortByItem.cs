@@ -38,100 +38,100 @@ namespace net.crossly.Model
         brand = 1,
 
         /// <summary>
-        /// Enum condition for value: condition
+        /// Enum label for value: label
         /// </summary>
-        [EnumMember(Value = "condition")]
-        condition = 2,
-
-        /// <summary>
-        /// Enum size for value: size
-        /// </summary>
-        [EnumMember(Value = "size")]
-        size = 3,
+        [EnumMember(Value = "label")]
+        label = 2,
 
         /// <summary>
         /// Enum status for value: status
         /// </summary>
         [EnumMember(Value = "status")]
-        status = 4,
-
-        /// <summary>
-        /// Enum label for value: label
-        /// </summary>
-        [EnumMember(Value = "label")]
-        label = 5,
-
-        /// <summary>
-        /// Enum title for value: title
-        /// </summary>
-        [EnumMember(Value = "title")]
-        title = 6,
-
-        /// <summary>
-        /// Enum valueOption for value: value
-        /// </summary>
-        [EnumMember(Value = "value")]
-        valueOption = 7,
-
-        /// <summary>
-        /// Enum year for value: year
-        /// </summary>
-        [EnumMember(Value = "year")]
-        year = 8,
-
-        /// <summary>
-        /// Enum grade for value: grade
-        /// </summary>
-        [EnumMember(Value = "grade")]
-        grade = 9,
-
-        /// <summary>
-        /// Enum game for value: game
-        /// </summary>
-        [EnumMember(Value = "game")]
-        game = 10,
-
-        /// <summary>
-        /// Enum set for value: set
-        /// </summary>
-        [EnumMember(Value = "set")]
-        set = 11,
-
-        /// <summary>
-        /// Enum franchise for value: franchise
-        /// </summary>
-        [EnumMember(Value = "franchise")]
-        franchise = 12,
-
-        /// <summary>
-        /// Enum team for value: team
-        /// </summary>
-        [EnumMember(Value = "team")]
-        team = 13,
-
-        /// <summary>
-        /// Enum era for value: era
-        /// </summary>
-        [EnumMember(Value = "era")]
-        era = 14,
-
-        /// <summary>
-        /// Enum genre for value: genre
-        /// </summary>
-        [EnumMember(Value = "genre")]
-        genre = 15,
-
-        /// <summary>
-        /// Enum colour for value: colour
-        /// </summary>
-        [EnumMember(Value = "colour")]
-        colour = 16,
+        status = 3,
 
         /// <summary>
         /// Enum age for value: age
         /// </summary>
         [EnumMember(Value = "age")]
-        age = 17,
+        age = 4,
+
+        /// <summary>
+        /// Enum condition for value: condition
+        /// </summary>
+        [EnumMember(Value = "condition")]
+        condition = 5,
+
+        /// <summary>
+        /// Enum size for value: size
+        /// </summary>
+        [EnumMember(Value = "size")]
+        size = 6,
+
+        /// <summary>
+        /// Enum title for value: title
+        /// </summary>
+        [EnumMember(Value = "title")]
+        title = 7,
+
+        /// <summary>
+        /// Enum valueOption for value: value
+        /// </summary>
+        [EnumMember(Value = "value")]
+        valueOption = 8,
+
+        /// <summary>
+        /// Enum set for value: set
+        /// </summary>
+        [EnumMember(Value = "set")]
+        set = 9,
+
+        /// <summary>
+        /// Enum team for value: team
+        /// </summary>
+        [EnumMember(Value = "team")]
+        team = 10,
+
+        /// <summary>
+        /// Enum year for value: year
+        /// </summary>
+        [EnumMember(Value = "year")]
+        year = 11,
+
+        /// <summary>
+        /// Enum grade for value: grade
+        /// </summary>
+        [EnumMember(Value = "grade")]
+        grade = 12,
+
+        /// <summary>
+        /// Enum game for value: game
+        /// </summary>
+        [EnumMember(Value = "game")]
+        game = 13,
+
+        /// <summary>
+        /// Enum franchise for value: franchise
+        /// </summary>
+        [EnumMember(Value = "franchise")]
+        franchise = 14,
+
+        /// <summary>
+        /// Enum era for value: era
+        /// </summary>
+        [EnumMember(Value = "era")]
+        era = 15,
+
+        /// <summary>
+        /// Enum genre for value: genre
+        /// </summary>
+        [EnumMember(Value = "genre")]
+        genre = 16,
+
+        /// <summary>
+        /// Enum colour for value: colour
+        /// </summary>
+        [EnumMember(Value = "colour")]
+        colour = 17,
 
         /// <summary>
         /// Enum exhibitor for value: exhibitor

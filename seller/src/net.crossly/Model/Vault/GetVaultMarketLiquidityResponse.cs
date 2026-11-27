@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum BucketEnum
         {
             /// <summary>
-            /// Enum High for value: high
-            /// </summary>
-            [EnumMember(Value = "high")]
-            High = 1,
-
-            /// <summary>
             /// Enum Mid for value: mid
             /// </summary>
             [EnumMember(Value = "mid")]
-            Mid = 2,
+            Mid = 1,
 
             /// <summary>
             /// Enum Low for value: low
             /// </summary>
             [EnumMember(Value = "low")]
-            Low = 3
+            Low = 2,
+
+            /// <summary>
+            /// Enum High for value: high
+            /// </summary>
+            [EnumMember(Value = "high")]
+            High = 3
 
         }
 

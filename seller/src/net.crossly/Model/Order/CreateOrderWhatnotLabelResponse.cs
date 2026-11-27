@@ -34,34 +34,115 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrderWhatnotLabelResponse" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateOrderWhatnotLabelResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateOrderWhatnotLabelResponse" /> class.
-        /// </summary>
-        /// <param name="shipment">shipment (required).</param>
-        /// <param name="recorded">recorded (required).</param>
-        public CreateOrderWhatnotLabelResponse(CreateOrderWhatnotLabelResponseShipment shipment = default(CreateOrderWhatnotLabelResponseShipment), bool recorded = default(bool))
+        /// <param name="shipment">shipment.</param>
+        /// <param name="recorded">recorded.</param>
+        /// <param name="ok">ok.</param>
+        /// <param name="downloadUrl">Absent for an additional label, which Poshmark delivers only by email..</param>
+        /// <param name="emailOnly">True when the label exists only in the seller&#39;s inbox..</param>
+        /// <param name="labelUrl">labelUrl.</param>
+        /// <param name="trackingNumber">trackingNumber.</param>
+        /// <param name="carrier">carrier.</param>
+        /// <param name="service">service.</param>
+        /// <param name="documentKind">documentKind.</param>
+        /// <param name="webUrl">webUrl.</param>
+        /// <param name="pending">pending.</param>
+        /// <param name="message">message.</param>
+        public CreateOrderWhatnotLabelResponse(GetOrderWhatnotShipmentResponseShipment shipment = default(GetOrderWhatnotShipmentResponseShipment), bool recorded = default(bool), bool ok = default(bool), string downloadUrl = default(string), bool emailOnly = default(bool), string labelUrl = default(string), string trackingNumber = default(string), string carrier = default(string), string service = default(string), string documentKind = default(string), string webUrl = default(string), bool pending = default(bool), string message = default(string))
         {
-            // to ensure "shipment" is required (not null)
-            if (shipment == null) {
-                throw new ArgumentNullException("shipment is a required property for CreateOrderWhatnotLabelResponse and cannot be null");
-            }
             this.Shipment = shipment;
             this.Recorded = recorded;
+            this.Ok = ok;
+            this.DownloadUrl = downloadUrl;
+            this.EmailOnly = emailOnly;
+            this.LabelUrl = labelUrl;
+            this.TrackingNumber = trackingNumber;
+            this.Carrier = carrier;
+            this.Service = service;
+            this.DocumentKind = documentKind;
+            this.WebUrl = webUrl;
+            this.Pending = pending;
+            this.Message = message;
         }
 
         /// <summary>
         /// Gets or Sets Shipment
         /// </summary>
-        [DataMember(Name = "shipment", IsRequired = true, EmitDefaultValue = false)]
-        public CreateOrderWhatnotLabelResponseShipment Shipment { get; set; }
+        [DataMember(Name = "shipment", EmitDefaultValue = false)]
+        public GetOrderWhatnotShipmentResponseShipment Shipment { get; set; }
 
         /// <summary>
         /// Gets or Sets Recorded
         /// </summary>
-        [DataMember(Name = "recorded", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "recorded", EmitDefaultValue = true)]
         public bool Recorded { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Ok
+        /// </summary>
+        [DataMember(Name = "ok", EmitDefaultValue = true)]
+        public bool Ok { get; set; }
+
+        /// <summary>
+        /// Absent for an additional label, which Poshmark delivers only by email.
+        /// </summary>
+        /// <value>Absent for an additional label, which Poshmark delivers only by email.</value>
+        [DataMember(Name = "downloadUrl", EmitDefaultValue = true)]
+        public string DownloadUrl { get; set; }
+
+        /// <summary>
+        /// True when the label exists only in the seller&#39;s inbox.
+        /// </summary>
+        /// <value>True when the label exists only in the seller&#39;s inbox.</value>
+        [DataMember(Name = "emailOnly", EmitDefaultValue = true)]
+        public bool EmailOnly { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LabelUrl
+        /// </summary>
+        [DataMember(Name = "labelUrl", EmitDefaultValue = false)]
+        public string LabelUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TrackingNumber
+        /// </summary>
+        [DataMember(Name = "trackingNumber", EmitDefaultValue = true)]
+        public string TrackingNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Carrier
+        /// </summary>
+        [DataMember(Name = "carrier", EmitDefaultValue = true)]
+        public string Carrier { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Service
+        /// </summary>
+        [DataMember(Name = "service", EmitDefaultValue = true)]
+        public string Service { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DocumentKind
+        /// </summary>
+        [DataMember(Name = "documentKind", EmitDefaultValue = true)]
+        public string DocumentKind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WebUrl
+        /// </summary>
+        [DataMember(Name = "webUrl", EmitDefaultValue = true)]
+        public string WebUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Pending
+        /// </summary>
+        [DataMember(Name = "pending", EmitDefaultValue = true)]
+        public bool Pending { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Message
+        /// </summary>
+        [DataMember(Name = "message", EmitDefaultValue = false)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,6 +154,17 @@ namespace net.crossly.Model
             sb.Append("class CreateOrderWhatnotLabelResponse {\n");
             sb.Append("  Shipment: ").Append(Shipment).Append("\n");
             sb.Append("  Recorded: ").Append(Recorded).Append("\n");
+            sb.Append("  Ok: ").Append(Ok).Append("\n");
+            sb.Append("  DownloadUrl: ").Append(DownloadUrl).Append("\n");
+            sb.Append("  EmailOnly: ").Append(EmailOnly).Append("\n");
+            sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
+            sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
+            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
+            sb.Append("  Service: ").Append(Service).Append("\n");
+            sb.Append("  DocumentKind: ").Append(DocumentKind).Append("\n");
+            sb.Append("  WebUrl: ").Append(WebUrl).Append("\n");
+            sb.Append("  Pending: ").Append(Pending).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,6 +208,58 @@ namespace net.crossly.Model
                 (
                     this.Recorded == input.Recorded ||
                     this.Recorded.Equals(input.Recorded)
+                ) && 
+                (
+                    this.Ok == input.Ok ||
+                    this.Ok.Equals(input.Ok)
+                ) && 
+                (
+                    this.DownloadUrl == input.DownloadUrl ||
+                    (this.DownloadUrl != null &&
+                    this.DownloadUrl.Equals(input.DownloadUrl))
+                ) && 
+                (
+                    this.EmailOnly == input.EmailOnly ||
+                    this.EmailOnly.Equals(input.EmailOnly)
+                ) && 
+                (
+                    this.LabelUrl == input.LabelUrl ||
+                    (this.LabelUrl != null &&
+                    this.LabelUrl.Equals(input.LabelUrl))
+                ) && 
+                (
+                    this.TrackingNumber == input.TrackingNumber ||
+                    (this.TrackingNumber != null &&
+                    this.TrackingNumber.Equals(input.TrackingNumber))
+                ) && 
+                (
+                    this.Carrier == input.Carrier ||
+                    (this.Carrier != null &&
+                    this.Carrier.Equals(input.Carrier))
+                ) && 
+                (
+                    this.Service == input.Service ||
+                    (this.Service != null &&
+                    this.Service.Equals(input.Service))
+                ) && 
+                (
+                    this.DocumentKind == input.DocumentKind ||
+                    (this.DocumentKind != null &&
+                    this.DocumentKind.Equals(input.DocumentKind))
+                ) && 
+                (
+                    this.WebUrl == input.WebUrl ||
+                    (this.WebUrl != null &&
+                    this.WebUrl.Equals(input.WebUrl))
+                ) && 
+                (
+                    this.Pending == input.Pending ||
+                    this.Pending.Equals(input.Pending)
+                ) && 
+                (
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 );
         }
 
@@ -133,6 +277,41 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Shipment.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Recorded.GetHashCode();
+                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
+                if (this.DownloadUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.DownloadUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EmailOnly.GetHashCode();
+                if (this.LabelUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
+                }
+                if (this.TrackingNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
+                }
+                if (this.Carrier != null)
+                {
+                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
+                }
+                if (this.Service != null)
+                {
+                    hashCode = (hashCode * 59) + this.Service.GetHashCode();
+                }
+                if (this.DocumentKind != null)
+                {
+                    hashCode = (hashCode * 59) + this.DocumentKind.GetHashCode();
+                }
+                if (this.WebUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.WebUrl.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Pending.GetHashCode();
+                if (this.Message != null)
+                {
+                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -43,6 +43,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateAccountResponse</returns>
         ApiResponse<CreateAccountResponse> CreateAccountWithHttpInfo();
         /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateConnectionCardnexusApiKeyResponse</returns>
+        CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey();
+
+        /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateConnectionCardnexusApiKeyResponse</returns>
+        ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo();
+        /// <summary>
         /// Add an IMAP mailbox connection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -74,6 +90,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateConnectionEmailImapTestResponse</returns>
         ApiResponse<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestWithHttpInfo();
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <returns>CreateConnectionLightspeedXTokenResponse</returns>
+        CreateConnectionLightspeedXTokenResponse CreateConnectionLightspeedXToken(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest);
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <returns>ApiResponse of CreateConnectionLightspeedXTokenResponse</returns>
+        ApiResponse<CreateConnectionLightspeedXTokenResponse> CreateConnectionLightspeedXTokenWithHttpInfo(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest);
         /// <summary>
         /// Express interest in a request_only platform.
         /// </summary>
@@ -111,7 +145,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreatePlatformAccountConnectResponse</returns>
         ApiResponse<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectWithHttpInfo(string platform);
         /// <summary>
-        /// Archive every active account row for a platform.
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -119,7 +153,7 @@ namespace net.crossly.Api
         CreatePlatformAccountDisconnectResponse CreatePlatformAccountDisconnect(string platform);
 
         /// <summary>
-        /// Archive every active account row for a platform.
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
         /// <remarks>
         /// 
@@ -251,10 +285,33 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetConnectionExtensionOnlineResponse</returns>
         ApiResponse<GetConnectionExtensionOnlineResponse> GetConnectionExtensionOnlineWithHttpInfo();
         /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+        /// </summary>
+        /// <remarks>
+        /// For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <returns>GetConnectionPolicyManagementOptionResponse</returns>
+        GetConnectionPolicyManagementOptionResponse GetConnectionPolicyManagementOption(string connectionId, string source);
+
+        /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+        /// </summary>
+        /// <remarks>
+        /// For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <returns>ApiResponse of GetConnectionPolicyManagementOptionResponse</returns>
+        ApiResponse<GetConnectionPolicyManagementOptionResponse> GetConnectionPolicyManagementOptionWithHttpInfo(string connectionId, string source);
+        /// <summary>
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -268,7 +325,7 @@ namespace net.crossly.Api
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -310,6 +367,25 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListAccountsResponse</returns>
         ApiResponse<ListAccountsResponse> ListAccountsWithHttpInfo();
         /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies.
+        /// </summary>
+        /// <remarks>
+        /// One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionPolicyManagementResponse</returns>
+        ListConnectionPolicyManagementResponse ListConnectionPolicyManagement();
+
+        /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies.
+        /// </summary>
+        /// <remarks>
+        /// One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionPolicyManagementResponse</returns>
+        ApiResponse<ListConnectionPolicyManagementResponse> ListConnectionPolicyManagementWithHttpInfo();
+        /// <summary>
         /// List OAuth-connected API platforms.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -343,6 +419,27 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of SuccessResponse</returns>
         ApiResponse<SuccessResponse> UpdateConnectionEmailImapWithHttpInfo(Guid id);
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account.
+        /// </summary>
+        /// <remarks>
+        /// Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <returns>ListConnectionPolicyManagementItem</returns>
+        ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId);
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account.
+        /// </summary>
+        /// <remarks>
+        /// Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <returns>ApiResponse of ListConnectionPolicyManagementItem</returns>
+        ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId);
         /// <summary>
         /// Update per-platform connection preferences.
         /// </summary>
@@ -394,6 +491,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateAccountResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateAccountResponse>> CreateAccountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionCardnexusApiKeyResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionCardnexusApiKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Add an IMAP mailbox connection.
         /// </summary>
         /// <remarks>
@@ -435,6 +553,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionEmailImapTestResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailImapTestResponse>> CreateConnectionEmailImapTestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionLightspeedXTokenResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionLightspeedXTokenResponse> CreateConnectionLightspeedXTokenAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionLightspeedXTokenResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionLightspeedXTokenResponse>> CreateConnectionLightspeedXTokenWithHttpInfoAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Express interest in a request_only platform.
         /// </summary>
@@ -482,7 +623,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreatePlatformAccountConnectResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatePlatformAccountConnectResponse>> CreatePlatformAccountConnectWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Archive every active account row for a platform.
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
         /// <remarks>
         /// 
@@ -494,7 +635,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreatePlatformAccountDisconnectResponse> CreatePlatformAccountDisconnectAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Archive every active account row for a platform.
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
         /// <remarks>
         /// 
@@ -662,10 +803,35 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetConnectionExtensionOnlineResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetConnectionExtensionOnlineResponse>> GetConnectionExtensionOnlineWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+        /// </summary>
+        /// <remarks>
+        /// For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetConnectionPolicyManagementOptionResponse</returns>
+        System.Threading.Tasks.Task<GetConnectionPolicyManagementOptionResponse> GetConnectionPolicyManagementOptionAsync(string connectionId, string source, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+        /// </summary>
+        /// <remarks>
+        /// For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetConnectionPolicyManagementOptionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetConnectionPolicyManagementOptionResponse>> GetConnectionPolicyManagementOptionWithHttpInfoAsync(string connectionId, string source, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -680,7 +846,7 @@ namespace net.crossly.Api
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -733,6 +899,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListAccountsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAccountsResponse>> ListAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies.
+        /// </summary>
+        /// <remarks>
+        /// One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionPolicyManagementResponse</returns>
+        System.Threading.Tasks.Task<ListConnectionPolicyManagementResponse> ListConnectionPolicyManagementAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies.
+        /// </summary>
+        /// <remarks>
+        /// One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionPolicyManagementResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionPolicyManagementResponse>> ListConnectionPolicyManagementWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// List OAuth-connected API platforms.
         /// </summary>
         /// <remarks>
@@ -776,6 +963,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> UpdateConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account.
+        /// </summary>
+        /// <remarks>
+        /// Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionPolicyManagementItem</returns>
+        System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account.
+        /// </summary>
+        /// <remarks>
+        /// Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionPolicyManagementItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update per-platform connection preferences.
         /// </summary>
@@ -1050,6 +1260,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateConnectionCardnexusApiKeyResponse</returns>
+        public CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey()
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = CreateConnectionCardnexusApiKeyWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateConnectionCardnexusApiKeyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateConnectionCardnexusApiKeyResponse>("/v1/connections/cardnexus/api-key", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionCardnexusApiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionCardnexusApiKeyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = await CreateConnectionCardnexusApiKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect CardNexus with a personal API key (validated live before it is stored). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionCardnexusApiKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionCardnexusApiKeyResponse>("/v1/connections/cardnexus/api-key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionCardnexusApiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Add an IMAP mailbox connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1296,6 +1634,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateConnectionEmailImapTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <returns>CreateConnectionLightspeedXTokenResponse</returns>
+        public CreateConnectionLightspeedXTokenResponse CreateConnectionLightspeedXToken(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionLightspeedXTokenResponse> localVarResponse = CreateConnectionLightspeedXTokenWithHttpInfo(createConnectionLightspeedXTokenRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <returns>ApiResponse of CreateConnectionLightspeedXTokenResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionLightspeedXTokenResponse> CreateConnectionLightspeedXTokenWithHttpInfo(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest)
+        {
+            // verify the required parameter 'createConnectionLightspeedXTokenRequest' is set
+            if (createConnectionLightspeedXTokenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionLightspeedXTokenRequest' when calling AccountsApi->CreateConnectionLightspeedXToken");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionLightspeedXTokenRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateConnectionLightspeedXTokenResponse>("/v1/connections/lightspeed_x/token", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionLightspeedXToken", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionLightspeedXTokenResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionLightspeedXTokenResponse> CreateConnectionLightspeedXTokenAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionLightspeedXTokenResponse> localVarResponse = await CreateConnectionLightspeedXTokenWithHttpInfoAsync(createConnectionLightspeedXTokenRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionLightspeedXTokenRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionLightspeedXTokenResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionLightspeedXTokenResponse>> CreateConnectionLightspeedXTokenWithHttpInfoAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createConnectionLightspeedXTokenRequest' is set
+            if (createConnectionLightspeedXTokenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionLightspeedXTokenRequest' when calling AccountsApi->CreateConnectionLightspeedXToken");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionLightspeedXTokenRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionLightspeedXTokenResponse>("/v1/connections/lightspeed_x/token", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionLightspeedXToken", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1598,7 +2084,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Archive every active account row for a platform. 
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -1610,7 +2096,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Archive every active account row for a platform. 
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -1669,7 +2155,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Archive every active account row for a platform. 
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -1682,7 +2168,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Archive every active account row for a platform. 
+        /// Disconnect every account of a platform (archives the rows and deletes their stored sessions). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2696,7 +3182,171 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods). For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <returns>GetConnectionPolicyManagementOptionResponse</returns>
+        public GetConnectionPolicyManagementOptionResponse GetConnectionPolicyManagementOption(string connectionId, string source)
+        {
+            net.crossly.Client.ApiResponse<GetConnectionPolicyManagementOptionResponse> localVarResponse = GetConnectionPolicyManagementOptionWithHttpInfo(connectionId, source);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods). For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <returns>ApiResponse of GetConnectionPolicyManagementOptionResponse</returns>
+        public net.crossly.Client.ApiResponse<GetConnectionPolicyManagementOptionResponse> GetConnectionPolicyManagementOptionWithHttpInfo(string connectionId, string source)
+        {
+            // verify the required parameter 'connectionId' is set
+            if (connectionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->GetConnectionPolicyManagementOption");
+            }
+
+            // verify the required parameter 'source' is set
+            if (source == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'source' when calling AccountsApi->GetConnectionPolicyManagementOption");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("source", net.crossly.Client.ClientUtils.ParameterToString(source)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetConnectionPolicyManagementOptionResponse>("/v1/connections/policy-management/{connectionId}/options/{source}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetConnectionPolicyManagementOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods). For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetConnectionPolicyManagementOptionResponse</returns>
+        public async System.Threading.Tasks.Task<GetConnectionPolicyManagementOptionResponse> GetConnectionPolicyManagementOptionAsync(string connectionId, string source, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetConnectionPolicyManagementOptionResponse> localVarResponse = await GetConnectionPolicyManagementOptionWithHttpInfoAsync(connectionId, source, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the live options a marketplace policy field offers (e.g. Allegro delivery methods). For one of your managed connections, the choices a preset&#39;s &#x60;platformFields&#x60; picker offers, from the marketplace (&#x60;source&#x60; is the field&#39;s &#x60;optionsSource&#x60;, e.g. &#x60;delivery-methods&#x60;). An unknown connection or source is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="source"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetConnectionPolicyManagementOptionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetConnectionPolicyManagementOptionResponse>> GetConnectionPolicyManagementOptionWithHttpInfoAsync(string connectionId, string source, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'connectionId' is set
+            if (connectionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->GetConnectionPolicyManagementOption");
+            }
+
+            // verify the required parameter 'source' is set
+            if (source == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'source' when calling AccountsApi->GetConnectionPolicyManagementOption");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("source", net.crossly.Client.ClientUtils.ParameterToString(source)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetConnectionPolicyManagementOptionResponse>("/v1/connections/policy-management/{connectionId}/options/{source}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetConnectionPolicyManagementOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2711,7 +3361,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2785,7 +3435,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2801,7 +3451,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60;. Etsy adds &#x60;{ correlationId }&#x60; (PKCE verifier stashed in Redis). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -3134,6 +3784,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies. One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionPolicyManagementResponse</returns>
+        public ListConnectionPolicyManagementResponse ListConnectionPolicyManagement()
+        {
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementResponse> localVarResponse = ListConnectionPolicyManagementWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies. One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionPolicyManagementResponse</returns>
+        public net.crossly.Client.ApiResponse<ListConnectionPolicyManagementResponse> ListConnectionPolicyManagementWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListConnectionPolicyManagementResponse>("/v1/connections/policy-management", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionPolicyManagement", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies. One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionPolicyManagementResponse</returns>
+        public async System.Threading.Tasks.Task<ListConnectionPolicyManagementResponse> ListConnectionPolicyManagementAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementResponse> localVarResponse = await ListConnectionPolicyManagementWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List eBay and Etsy accounts with whether Crossly manages their policies. One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionPolicyManagementResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionPolicyManagementResponse>> ListConnectionPolicyManagementWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListConnectionPolicyManagementResponse>("/v1/connections/policy-management", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionPolicyManagement", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List OAuth-connected API platforms. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3386,6 +4164,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateConnectionEmailImap", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account. Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <returns>ListConnectionPolicyManagementItem</returns>
+        public ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId)
+        {
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = UpdateConnectionPolicyManagementWithHttpInfo(connectionId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account. Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <returns>ApiResponse of ListConnectionPolicyManagementItem</returns>
+        public net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId)
+        {
+            // verify the required parameter 'connectionId' is set
+            if (connectionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->UpdateConnectionPolicyManagement");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ListConnectionPolicyManagementItem>("/v1/connections/policy-management/{connectionId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionPolicyManagement", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account. Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionPolicyManagementItem</returns>
+        public async System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = await UpdateConnectionPolicyManagementWithHttpInfoAsync(connectionId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn Crossly policy management on or off for one eBay or Etsy account. Body &#x60;{ managed: boolean }&#x60;. On: Crossly may overwrite that account&#39;s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="connectionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionPolicyManagementItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'connectionId' is set
+            if (connectionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->UpdateConnectionPolicyManagement");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListConnectionPolicyManagementItem>("/v1/connections/policy-management/{connectionId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionPolicyManagement", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

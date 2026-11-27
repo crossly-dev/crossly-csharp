@@ -44,34 +44,34 @@ namespace net.crossly.Model
             Entered = 1,
 
             /// <summary>
+            /// Enum Asked for value: asked
+            /// </summary>
+            [EnumMember(Value = "asked")]
+            Asked = 2,
+
+            /// <summary>
             /// Enum Lingered for value: lingered
             /// </summary>
             [EnumMember(Value = "lingered")]
-            Lingered = 2,
+            Lingered = 3,
 
             /// <summary>
             /// Enum Inspected for value: inspected
             /// </summary>
             [EnumMember(Value = "inspected")]
-            Inspected = 3,
+            Inspected = 4,
 
             /// <summary>
             /// Enum AddedToCart for value: added_to_cart
             /// </summary>
             [EnumMember(Value = "added_to_cart")]
-            AddedToCart = 4,
+            AddedToCart = 5,
 
             /// <summary>
             /// Enum LeavingWithCart for value: leaving_with_cart
             /// </summary>
             [EnumMember(Value = "leaving_with_cart")]
-            LeavingWithCart = 5,
-
-            /// <summary>
-            /// Enum Asked for value: asked
-            /// </summary>
-            [EnumMember(Value = "asked")]
-            Asked = 6
+            LeavingWithCart = 6
 
         }
 

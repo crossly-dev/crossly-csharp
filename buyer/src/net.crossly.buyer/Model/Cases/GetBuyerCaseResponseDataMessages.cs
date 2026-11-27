@@ -40,38 +40,38 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCaseResponseDataMessages" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="kind">message | offer | decision | state_change. (required).</param>
-        /// <param name="body">body (required).</param>
         /// <param name="authorRole">buyer | seller | ops | system. (required).</param>
+        /// <param name="body">body (required).</param>
+        /// <param name="kind">message | offer | decision | state_change. (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="attachmentUrls">attachmentUrls.</param>
-        public GetBuyerCaseResponseDataMessages(string id = default(string), string createdAt = default(string), string kind = default(string), string body = default(string), string authorRole = default(string), List<string> attachmentUrls = default(List<string>))
+        public GetBuyerCaseResponseDataMessages(string id = default(string), string authorRole = default(string), string body = default(string), string kind = default(string), string createdAt = default(string), List<string> attachmentUrls = default(List<string>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "kind" is required (not null)
-            if (kind == null) {
-                throw new ArgumentNullException("kind is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
-            }
-            this.Kind = kind;
-            // to ensure "body" is required (not null)
-            if (body == null) {
-                throw new ArgumentNullException("body is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
-            }
-            this.Body = body;
             // to ensure "authorRole" is required (not null)
             if (authorRole == null) {
                 throw new ArgumentNullException("authorRole is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
             }
             this.AuthorRole = authorRole;
+            // to ensure "body" is required (not null)
+            if (body == null) {
+                throw new ArgumentNullException("body is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
+            }
+            this.Body = body;
+            // to ensure "kind" is required (not null)
+            if (kind == null) {
+                throw new ArgumentNullException("kind is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
+            }
+            this.Kind = kind;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for GetBuyerCaseResponseDataMessages and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             this.AttachmentUrls = attachmentUrls;
         }
 
@@ -82,10 +82,17 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// buyer | seller | ops | system.
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
+        /// <value>buyer | seller | ops | system.</value>
+        [DataMember(Name = "authorRole", IsRequired = true, EmitDefaultValue = false)]
+        public string AuthorRole { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Body
+        /// </summary>
+        [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
+        public string Body { get; set; }
 
         /// <summary>
         /// message | offer | decision | state_change.
@@ -95,17 +102,10 @@ namespace net.crossly.buyer.Model
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets Body
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
-        public string Body { get; set; }
-
-        /// <summary>
-        /// buyer | seller | ops | system.
-        /// </summary>
-        /// <value>buyer | seller | ops | system.</value>
-        [DataMember(Name = "authorRole", IsRequired = true, EmitDefaultValue = false)]
-        public string AuthorRole { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets AttachmentUrls
@@ -122,10 +122,10 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCaseResponseDataMessages {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("  AuthorRole: ").Append(AuthorRole).Append("\n");
+            sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  AttachmentUrls: ").Append(AttachmentUrls).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -168,14 +168,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    (this.Kind != null &&
-                    this.Kind.Equals(input.Kind))
+                    this.AuthorRole == input.AuthorRole ||
+                    (this.AuthorRole != null &&
+                    this.AuthorRole.Equals(input.AuthorRole))
                 ) && 
                 (
                     this.Body == input.Body ||
@@ -183,9 +178,14 @@ namespace net.crossly.buyer.Model
                     this.Body.Equals(input.Body))
                 ) && 
                 (
-                    this.AuthorRole == input.AuthorRole ||
-                    (this.AuthorRole != null &&
-                    this.AuthorRole.Equals(input.AuthorRole))
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
                     this.AttachmentUrls == input.AttachmentUrls ||
@@ -208,21 +208,21 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
+                if (this.AuthorRole != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Kind != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AuthorRole.GetHashCode();
                 }
                 if (this.Body != null)
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
                 }
-                if (this.AuthorRole != null)
+                if (this.Kind != null)
                 {
-                    hashCode = (hashCode * 59) + this.AuthorRole.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 if (this.AttachmentUrls != null)
                 {

@@ -42,7 +42,7 @@ namespace net.crossly.Model
         /// <param name="bookKey">bookKey (required).</param>
         /// <param name="bid">bid (required).</param>
         /// <param name="ask">ask (required).</param>
-        public CreateVaultMarketProQuoteResponse(string bookKey = default(string), CreateVaultMarketProQuoteResponseBid bid = default(CreateVaultMarketProQuoteResponseBid), CreateVaultMarketProQuoteResponseBid ask = default(CreateVaultMarketProQuoteResponseBid))
+        public CreateVaultMarketProQuoteResponse(string bookKey = default(string), OrderIdError bid = default(OrderIdError), OrderIdError ask = default(OrderIdError))
         {
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
@@ -71,13 +71,13 @@ namespace net.crossly.Model
         /// Gets or Sets Bid
         /// </summary>
         [DataMember(Name = "bid", IsRequired = true, EmitDefaultValue = false)]
-        public CreateVaultMarketProQuoteResponseBid Bid { get; set; }
+        public OrderIdError Bid { get; set; }
 
         /// <summary>
         /// Gets or Sets Ask
         /// </summary>
         [DataMember(Name = "ask", IsRequired = true, EmitDefaultValue = false)]
-        public CreateVaultMarketProQuoteResponseBid Ask { get; set; }
+        public OrderIdError Ask { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -39,12 +39,12 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCreatorResponseDataCreator" /> class.
         /// </summary>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="avatarUrl">avatarUrl.</param>
-        /// <param name="bio">bio.</param>
-        /// <param name="code">code.</param>
         /// <param name="handle">handle (required).</param>
-        public GetBuyerCreatorResponseDataCreator(string displayName = default(string), string avatarUrl = default(string), string bio = default(string), string code = default(string), string handle = default(string))
+        /// <param name="displayName">displayName.</param>
+        /// <param name="bio">bio.</param>
+        /// <param name="avatarUrl">avatarUrl.</param>
+        /// <param name="code">code.</param>
+        public GetBuyerCreatorResponseDataCreator(string handle = default(string), string displayName = default(string), string bio = default(string), string avatarUrl = default(string), string code = default(string))
         {
             // to ensure "handle" is required (not null)
             if (handle == null) {
@@ -52,10 +52,16 @@ namespace net.crossly.buyer.Model
             }
             this.Handle = handle;
             this.DisplayName = displayName;
-            this.AvatarUrl = avatarUrl;
             this.Bio = bio;
+            this.AvatarUrl = avatarUrl;
             this.Code = code;
         }
+
+        /// <summary>
+        /// Gets or Sets Handle
+        /// </summary>
+        [DataMember(Name = "handle", IsRequired = true, EmitDefaultValue = false)]
+        public string Handle { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayName
@@ -64,28 +70,22 @@ namespace net.crossly.buyer.Model
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or Sets AvatarUrl
-        /// </summary>
-        [DataMember(Name = "avatarUrl", EmitDefaultValue = true)]
-        public string AvatarUrl { get; set; }
-
-        /// <summary>
         /// Gets or Sets Bio
         /// </summary>
         [DataMember(Name = "bio", EmitDefaultValue = true)]
         public string Bio { get; set; }
 
         /// <summary>
+        /// Gets or Sets AvatarUrl
+        /// </summary>
+        [DataMember(Name = "avatarUrl", EmitDefaultValue = true)]
+        public string AvatarUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Code
         /// </summary>
         [DataMember(Name = "code", EmitDefaultValue = true)]
         public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Handle
-        /// </summary>
-        [DataMember(Name = "handle", IsRequired = true, EmitDefaultValue = false)]
-        public string Handle { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,11 +95,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCreatorResponseDataCreator {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  AvatarUrl: ").Append(AvatarUrl).Append("\n");
-            sb.Append("  Bio: ").Append(Bio).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Handle: ").Append(Handle).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Bio: ").Append(Bio).Append("\n");
+            sb.Append("  AvatarUrl: ").Append(AvatarUrl).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -136,14 +136,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Handle == input.Handle ||
+                    (this.Handle != null &&
+                    this.Handle.Equals(input.Handle))
+                ) && 
+                (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
-                ) && 
-                (
-                    this.AvatarUrl == input.AvatarUrl ||
-                    (this.AvatarUrl != null &&
-                    this.AvatarUrl.Equals(input.AvatarUrl))
                 ) && 
                 (
                     this.Bio == input.Bio ||
@@ -151,14 +151,14 @@ namespace net.crossly.buyer.Model
                     this.Bio.Equals(input.Bio))
                 ) && 
                 (
+                    this.AvatarUrl == input.AvatarUrl ||
+                    (this.AvatarUrl != null &&
+                    this.AvatarUrl.Equals(input.AvatarUrl))
+                ) && 
+                (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
-                (
-                    this.Handle == input.Handle ||
-                    (this.Handle != null &&
-                    this.Handle.Equals(input.Handle))
                 );
         }
 
@@ -171,25 +171,25 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Handle != null)
+                {
+                    hashCode = (hashCode * 59) + this.Handle.GetHashCode();
+                }
                 if (this.DisplayName != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
-                }
-                if (this.AvatarUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.AvatarUrl.GetHashCode();
                 }
                 if (this.Bio != null)
                 {
                     hashCode = (hashCode * 59) + this.Bio.GetHashCode();
                 }
+                if (this.AvatarUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.AvatarUrl.GetHashCode();
+                }
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
-                }
-                if (this.Handle != null)
-                {
-                    hashCode = (hashCode * 59) + this.Handle.GetHashCode();
                 }
                 return hashCode;
             }

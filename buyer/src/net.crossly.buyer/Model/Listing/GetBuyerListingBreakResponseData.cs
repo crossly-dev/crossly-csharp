@@ -40,43 +40,43 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerListingBreakResponseData" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="title">title (required).</param>
+        /// <param name="format">format (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="slug">slug.</param>
         /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="format">format (required).</param>
-        /// <param name="seed">seed.</param>
-        /// <param name="seedCommit">seedCommit (required).</param>
         /// <param name="spotsLeft">spotsLeft (required).</param>
-        public GetBuyerListingBreakResponseData(string id = default(string), string status = default(string), string title = default(string), string slug = default(string), decimal priceCents = default(decimal), string format = default(string), string seed = default(string), string seedCommit = default(string), decimal spotsLeft = default(decimal))
+        /// <param name="seedCommit">seedCommit (required).</param>
+        /// <param name="seed">seed.</param>
+        public GetBuyerListingBreakResponseData(string id = default(string), string title = default(string), string format = default(string), string status = default(string), string slug = default(string), decimal priceCents = default(decimal), decimal spotsLeft = default(decimal), string seedCommit = default(string), string seed = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerListingBreakResponseData and cannot be null");
             }
             this.Id = id;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for GetBuyerListingBreakResponseData and cannot be null");
-            }
-            this.Status = status;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for GetBuyerListingBreakResponseData and cannot be null");
             }
             this.Title = title;
-            this.PriceCents = priceCents;
             // to ensure "format" is required (not null)
             if (format == null) {
                 throw new ArgumentNullException("format is a required property for GetBuyerListingBreakResponseData and cannot be null");
             }
             this.Format = format;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for GetBuyerListingBreakResponseData and cannot be null");
+            }
+            this.Status = status;
+            this.PriceCents = priceCents;
+            this.SpotsLeft = spotsLeft;
             // to ensure "seedCommit" is required (not null)
             if (seedCommit == null) {
                 throw new ArgumentNullException("seedCommit is a required property for GetBuyerListingBreakResponseData and cannot be null");
             }
             this.SeedCommit = seedCommit;
-            this.SpotsLeft = spotsLeft;
             this.Slug = slug;
             this.Seed = seed;
         }
@@ -88,16 +88,22 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
         public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Format
+        /// </summary>
+        [DataMember(Name = "format", IsRequired = true, EmitDefaultValue = false)]
+        public string Format { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Slug
@@ -112,16 +118,10 @@ namespace net.crossly.buyer.Model
         public decimal PriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Format
+        /// Gets or Sets SpotsLeft
         /// </summary>
-        [DataMember(Name = "format", IsRequired = true, EmitDefaultValue = false)]
-        public string Format { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Seed
-        /// </summary>
-        [DataMember(Name = "seed", EmitDefaultValue = true)]
-        public string Seed { get; set; }
+        [DataMember(Name = "spotsLeft", IsRequired = true, EmitDefaultValue = false)]
+        public decimal SpotsLeft { get; set; }
 
         /// <summary>
         /// Gets or Sets SeedCommit
@@ -130,10 +130,10 @@ namespace net.crossly.buyer.Model
         public string SeedCommit { get; set; }
 
         /// <summary>
-        /// Gets or Sets SpotsLeft
+        /// Gets or Sets Seed
         /// </summary>
-        [DataMember(Name = "spotsLeft", IsRequired = true, EmitDefaultValue = false)]
-        public decimal SpotsLeft { get; set; }
+        [DataMember(Name = "seed", EmitDefaultValue = true)]
+        public string Seed { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,14 +144,14 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingBreakResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  Format: ").Append(Format).Append("\n");
-            sb.Append("  Seed: ").Append(Seed).Append("\n");
-            sb.Append("  SeedCommit: ").Append(SeedCommit).Append("\n");
             sb.Append("  SpotsLeft: ").Append(SpotsLeft).Append("\n");
+            sb.Append("  SeedCommit: ").Append(SeedCommit).Append("\n");
+            sb.Append("  Seed: ").Append(Seed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -193,14 +193,19 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.Slug == input.Slug ||
@@ -212,14 +217,8 @@ namespace net.crossly.buyer.Model
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
-                    this.Format == input.Format ||
-                    (this.Format != null &&
-                    this.Format.Equals(input.Format))
-                ) && 
-                (
-                    this.Seed == input.Seed ||
-                    (this.Seed != null &&
-                    this.Seed.Equals(input.Seed))
+                    this.SpotsLeft == input.SpotsLeft ||
+                    this.SpotsLeft.Equals(input.SpotsLeft)
                 ) && 
                 (
                     this.SeedCommit == input.SeedCommit ||
@@ -227,8 +226,9 @@ namespace net.crossly.buyer.Model
                     this.SeedCommit.Equals(input.SeedCommit))
                 ) && 
                 (
-                    this.SpotsLeft == input.SpotsLeft ||
-                    this.SpotsLeft.Equals(input.SpotsLeft)
+                    this.Seed == input.Seed ||
+                    (this.Seed != null &&
+                    this.Seed.Equals(input.Seed))
                 );
         }
 
@@ -245,32 +245,32 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.Format != null)
+                hashCode = (hashCode * 59) + this.SpotsLeft.GetHashCode();
+                if (this.SeedCommit != null)
                 {
-                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SeedCommit.GetHashCode();
                 }
                 if (this.Seed != null)
                 {
                     hashCode = (hashCode * 59) + this.Seed.GetHashCode();
                 }
-                if (this.SeedCommit != null)
-                {
-                    hashCode = (hashCode * 59) + this.SeedCommit.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.SpotsLeft.GetHashCode();
                 return hashCode;
             }
         }

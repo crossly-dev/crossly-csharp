@@ -42,9 +42,9 @@ namespace net.crossly.buyer.Model
         /// <param name="slug">slug (required).</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="title">title.</param>
-        /// <param name="salePriceCents">salePriceCents.</param>
         /// <param name="thumbnail">thumbnail.</param>
-        public ListBuyerGiftFinderItem(string slug = default(string), decimal priceCents = default(decimal), string title = default(string), decimal? salePriceCents = default(decimal?), string thumbnail = default(string))
+        /// <param name="salePriceCents">salePriceCents.</param>
+        public ListBuyerGiftFinderItem(string slug = default(string), decimal priceCents = default(decimal), string title = default(string), string thumbnail = default(string), decimal? salePriceCents = default(decimal?))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -53,8 +53,8 @@ namespace net.crossly.buyer.Model
             this.Slug = slug;
             this.PriceCents = priceCents;
             this.Title = title;
-            this.SalePriceCents = salePriceCents;
             this.Thumbnail = thumbnail;
+            this.SalePriceCents = salePriceCents;
         }
 
         /// <summary>
@@ -76,16 +76,16 @@ namespace net.crossly.buyer.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets SalePriceCents
-        /// </summary>
-        [DataMember(Name = "salePriceCents", EmitDefaultValue = true)]
-        public decimal? SalePriceCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets Thumbnail
         /// </summary>
         [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
         public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SalePriceCents
+        /// </summary>
+        [DataMember(Name = "salePriceCents", EmitDefaultValue = true)]
+        public decimal? SalePriceCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,8 +98,8 @@ namespace net.crossly.buyer.Model
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  SalePriceCents: ").Append(SalePriceCents).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  SalePriceCents: ").Append(SalePriceCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,14 +150,14 @@ namespace net.crossly.buyer.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.SalePriceCents == input.SalePriceCents ||
-                    (this.SalePriceCents != null &&
-                    this.SalePriceCents.Equals(input.SalePriceCents))
-                ) && 
-                (
                     this.Thumbnail == input.Thumbnail ||
                     (this.Thumbnail != null &&
                     this.Thumbnail.Equals(input.Thumbnail))
+                ) && 
+                (
+                    this.SalePriceCents == input.SalePriceCents ||
+                    (this.SalePriceCents != null &&
+                    this.SalePriceCents.Equals(input.SalePriceCents))
                 );
         }
 
@@ -179,13 +179,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.SalePriceCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.SalePriceCents.GetHashCode();
-                }
                 if (this.Thumbnail != null)
                 {
                     hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
+                }
+                if (this.SalePriceCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.SalePriceCents.GetHashCode();
                 }
                 return hashCode;
             }

@@ -40,25 +40,35 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerPackOpeningsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="packTitle">packTitle (required).</param>
+        /// <param name="packSlug">packSlug (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="imageUrl">imageUrl.</param>
-        /// <param name="vaultItemId">vaultItemId.</param>
-        /// <param name="openedAt">openedAt.</param>
-        /// <param name="tierName">tierName.</param>
         /// <param name="valueCents">valueCents.</param>
         /// <param name="buybackCents">buybackCents.</param>
         /// <param name="itemTitle">itemTitle.</param>
+        /// <param name="imageUrl">imageUrl.</param>
+        /// <param name="tierName">tierName.</param>
+        /// <param name="vaultItemId">vaultItemId.</param>
+        /// <param name="openedAt">openedAt.</param>
         /// <param name="proof">proof (required).</param>
-        /// <param name="packTitle">packTitle (required).</param>
-        /// <param name="packSlug">packSlug (required).</param>
-        public ListBuyerPackOpeningsItem(string id = default(string), string status = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), string vaultItemId = default(string), string openedAt = default(string), string tierName = default(string), decimal? valueCents = default(decimal?), decimal? buybackCents = default(decimal?), string itemTitle = default(string), ListBuyerPackOpeningsItemProof proof = default(ListBuyerPackOpeningsItemProof), string packTitle = default(string), string packSlug = default(string))
+        public ListBuyerPackOpeningsItem(string id = default(string), string packTitle = default(string), string packSlug = default(string), string status = default(string), decimal priceCents = default(decimal), decimal? valueCents = default(decimal?), decimal? buybackCents = default(decimal?), string itemTitle = default(string), string imageUrl = default(string), string tierName = default(string), string vaultItemId = default(string), string openedAt = default(string), ListBuyerPackOpeningsItemProof proof = default(ListBuyerPackOpeningsItemProof))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerPackOpeningsItem and cannot be null");
             }
             this.Id = id;
+            // to ensure "packTitle" is required (not null)
+            if (packTitle == null) {
+                throw new ArgumentNullException("packTitle is a required property for ListBuyerPackOpeningsItem and cannot be null");
+            }
+            this.PackTitle = packTitle;
+            // to ensure "packSlug" is required (not null)
+            if (packSlug == null) {
+                throw new ArgumentNullException("packSlug is a required property for ListBuyerPackOpeningsItem and cannot be null");
+            }
+            this.PackSlug = packSlug;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for ListBuyerPackOpeningsItem and cannot be null");
@@ -70,23 +80,13 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("proof is a required property for ListBuyerPackOpeningsItem and cannot be null");
             }
             this.Proof = proof;
-            // to ensure "packTitle" is required (not null)
-            if (packTitle == null) {
-                throw new ArgumentNullException("packTitle is a required property for ListBuyerPackOpeningsItem and cannot be null");
-            }
-            this.PackTitle = packTitle;
-            // to ensure "packSlug" is required (not null)
-            if (packSlug == null) {
-                throw new ArgumentNullException("packSlug is a required property for ListBuyerPackOpeningsItem and cannot be null");
-            }
-            this.PackSlug = packSlug;
-            this.ImageUrl = imageUrl;
-            this.VaultItemId = vaultItemId;
-            this.OpenedAt = openedAt;
-            this.TierName = tierName;
             this.ValueCents = valueCents;
             this.BuybackCents = buybackCents;
             this.ItemTitle = itemTitle;
+            this.ImageUrl = imageUrl;
+            this.TierName = tierName;
+            this.VaultItemId = vaultItemId;
+            this.OpenedAt = openedAt;
         }
 
         /// <summary>
@@ -94,6 +94,18 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PackTitle
+        /// </summary>
+        [DataMember(Name = "packTitle", IsRequired = true, EmitDefaultValue = false)]
+        public string PackTitle { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PackSlug
+        /// </summary>
+        [DataMember(Name = "packSlug", IsRequired = true, EmitDefaultValue = false)]
+        public string PackSlug { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -106,30 +118,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal PriceCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImageUrl
-        /// </summary>
-        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
-        public string ImageUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VaultItemId
-        /// </summary>
-        [DataMember(Name = "vaultItemId", EmitDefaultValue = true)]
-        public string VaultItemId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OpenedAt
-        /// </summary>
-        [DataMember(Name = "openedAt", EmitDefaultValue = true)]
-        public string OpenedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TierName
-        /// </summary>
-        [DataMember(Name = "tierName", EmitDefaultValue = true)]
-        public string TierName { get; set; }
 
         /// <summary>
         /// Gets or Sets ValueCents
@@ -150,22 +138,34 @@ namespace net.crossly.buyer.Model
         public string ItemTitle { get; set; }
 
         /// <summary>
+        /// Gets or Sets ImageUrl
+        /// </summary>
+        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TierName
+        /// </summary>
+        [DataMember(Name = "tierName", EmitDefaultValue = true)]
+        public string TierName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VaultItemId
+        /// </summary>
+        [DataMember(Name = "vaultItemId", EmitDefaultValue = true)]
+        public string VaultItemId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OpenedAt
+        /// </summary>
+        [DataMember(Name = "openedAt", EmitDefaultValue = true)]
+        public string OpenedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Proof
         /// </summary>
         [DataMember(Name = "proof", IsRequired = true, EmitDefaultValue = false)]
         public ListBuyerPackOpeningsItemProof Proof { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PackTitle
-        /// </summary>
-        [DataMember(Name = "packTitle", IsRequired = true, EmitDefaultValue = false)]
-        public string PackTitle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PackSlug
-        /// </summary>
-        [DataMember(Name = "packSlug", IsRequired = true, EmitDefaultValue = false)]
-        public string PackSlug { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -176,18 +176,18 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerPackOpeningsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  PackTitle: ").Append(PackTitle).Append("\n");
+            sb.Append("  PackSlug: ").Append(PackSlug).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
-            sb.Append("  VaultItemId: ").Append(VaultItemId).Append("\n");
-            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
-            sb.Append("  TierName: ").Append(TierName).Append("\n");
             sb.Append("  ValueCents: ").Append(ValueCents).Append("\n");
             sb.Append("  BuybackCents: ").Append(BuybackCents).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  TierName: ").Append(TierName).Append("\n");
+            sb.Append("  VaultItemId: ").Append(VaultItemId).Append("\n");
+            sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
             sb.Append("  Proof: ").Append(Proof).Append("\n");
-            sb.Append("  PackTitle: ").Append(PackTitle).Append("\n");
-            sb.Append("  PackSlug: ").Append(PackSlug).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,6 +229,16 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.PackTitle == input.PackTitle ||
+                    (this.PackTitle != null &&
+                    this.PackTitle.Equals(input.PackTitle))
+                ) && 
+                (
+                    this.PackSlug == input.PackSlug ||
+                    (this.PackSlug != null &&
+                    this.PackSlug.Equals(input.PackSlug))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -236,26 +246,6 @@ namespace net.crossly.buyer.Model
                 (
                     this.PriceCents == input.PriceCents ||
                     this.PriceCents.Equals(input.PriceCents)
-                ) && 
-                (
-                    this.ImageUrl == input.ImageUrl ||
-                    (this.ImageUrl != null &&
-                    this.ImageUrl.Equals(input.ImageUrl))
-                ) && 
-                (
-                    this.VaultItemId == input.VaultItemId ||
-                    (this.VaultItemId != null &&
-                    this.VaultItemId.Equals(input.VaultItemId))
-                ) && 
-                (
-                    this.OpenedAt == input.OpenedAt ||
-                    (this.OpenedAt != null &&
-                    this.OpenedAt.Equals(input.OpenedAt))
-                ) && 
-                (
-                    this.TierName == input.TierName ||
-                    (this.TierName != null &&
-                    this.TierName.Equals(input.TierName))
                 ) && 
                 (
                     this.ValueCents == input.ValueCents ||
@@ -273,19 +263,29 @@ namespace net.crossly.buyer.Model
                     this.ItemTitle.Equals(input.ItemTitle))
                 ) && 
                 (
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
+                    this.TierName == input.TierName ||
+                    (this.TierName != null &&
+                    this.TierName.Equals(input.TierName))
+                ) && 
+                (
+                    this.VaultItemId == input.VaultItemId ||
+                    (this.VaultItemId != null &&
+                    this.VaultItemId.Equals(input.VaultItemId))
+                ) && 
+                (
+                    this.OpenedAt == input.OpenedAt ||
+                    (this.OpenedAt != null &&
+                    this.OpenedAt.Equals(input.OpenedAt))
+                ) && 
+                (
                     this.Proof == input.Proof ||
                     (this.Proof != null &&
                     this.Proof.Equals(input.Proof))
-                ) && 
-                (
-                    this.PackTitle == input.PackTitle ||
-                    (this.PackTitle != null &&
-                    this.PackTitle.Equals(input.PackTitle))
-                ) && 
-                (
-                    this.PackSlug == input.PackSlug ||
-                    (this.PackSlug != null &&
-                    this.PackSlug.Equals(input.PackSlug))
                 );
         }
 
@@ -302,27 +302,19 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.PackTitle != null)
+                {
+                    hashCode = (hashCode * 59) + this.PackTitle.GetHashCode();
+                }
+                if (this.PackSlug != null)
+                {
+                    hashCode = (hashCode * 59) + this.PackSlug.GetHashCode();
+                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.ImageUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
-                }
-                if (this.VaultItemId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VaultItemId.GetHashCode();
-                }
-                if (this.OpenedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
-                }
-                if (this.TierName != null)
-                {
-                    hashCode = (hashCode * 59) + this.TierName.GetHashCode();
-                }
                 if (this.ValueCents != null)
                 {
                     hashCode = (hashCode * 59) + this.ValueCents.GetHashCode();
@@ -335,17 +327,25 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();
                 }
+                if (this.ImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
+                }
+                if (this.TierName != null)
+                {
+                    hashCode = (hashCode * 59) + this.TierName.GetHashCode();
+                }
+                if (this.VaultItemId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VaultItemId.GetHashCode();
+                }
+                if (this.OpenedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.OpenedAt.GetHashCode();
+                }
                 if (this.Proof != null)
                 {
                     hashCode = (hashCode * 59) + this.Proof.GetHashCode();
-                }
-                if (this.PackTitle != null)
-                {
-                    hashCode = (hashCode * 59) + this.PackTitle.GetHashCode();
-                }
-                if (this.PackSlug != null)
-                {
-                    hashCode = (hashCode * 59) + this.PackSlug.GetHashCode();
                 }
                 return hashCode;
             }

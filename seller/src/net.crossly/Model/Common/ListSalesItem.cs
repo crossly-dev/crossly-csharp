@@ -39,30 +39,35 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListSalesItem" /> class.
         /// </summary>
+        /// <param name="appShare">appShare.</param>
         /// <param name="id">id (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="cancelledAt">cancelledAt.</param>
-        /// <param name="orderId">orderId.</param>
-        /// <param name="listingId">listingId.</param>
+        /// <param name="netProfit">netProfit.</param>
+        /// <param name="shippingCost">shippingCost.</param>
+        /// <param name="shippingCharged">shippingCharged.</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
         /// <param name="currency">currency.</param>
+        /// <param name="listingId">listingId.</param>
         /// <param name="platformListingId">platformListingId.</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="platformOrderId">platformOrderId.</param>
         /// <param name="costOfGoods">costOfGoods.</param>
+        /// <param name="cancelledAt">cancelledAt.</param>
         /// <param name="deletedAt">deletedAt.</param>
+        /// <param name="orderId">orderId.</param>
         /// <param name="salePrice">salePrice.</param>
         /// <param name="platformFee">platformFee.</param>
-        /// <param name="shippingCost">shippingCost.</param>
-        /// <param name="netProfit">netProfit.</param>
         /// <param name="taxCollected">taxCollected.</param>
-        /// <param name="shippingCharged">shippingCharged.</param>
         /// <param name="feeSource">feeSource.</param>
         /// <param name="detectedBy">detectedBy (required).</param>
         /// <param name="detectedAt">detectedAt (required).</param>
         /// <param name="documents">documents.</param>
         /// <param name="refundedAmount">refundedAmount.</param>
-        public ListSalesItem(string id = default(string), string userId = default(string), string platform = default(string), DateTime? cancelledAt = default(DateTime?), string orderId = default(string), string listingId = default(string), string inventoryItemId = default(string), string currency = default(string), string platformListingId = default(string), string platformOrderId = default(string), string costOfGoods = default(string), DateTime? deletedAt = default(DateTime?), string salePrice = default(string), string platformFee = default(string), string shippingCost = default(string), string netProfit = default(string), string taxCollected = default(string), string shippingCharged = default(string), string feeSource = default(string), string detectedBy = default(string), DateTime detectedAt = default(DateTime), List<ListSalesItemDocuments> documents = default(List<ListSalesItemDocuments>), string refundedAmount = default(string))
+        /// <param name="detailsPending">detailsPending (required).</param>
+        /// <param name="variantSku">variantSku.</param>
+        /// <param name="variantId">variantId.</param>
+        public ListSalesItem(GetOrderResponseAppShare appShare = default(GetOrderResponseAppShare), string id = default(string), string userId = default(string), string platform = default(string), string netProfit = default(string), string shippingCost = default(string), string shippingCharged = default(string), string inventoryItemId = default(string), string currency = default(string), string listingId = default(string), string platformListingId = default(string), string storefrontId = default(string), string platformOrderId = default(string), string costOfGoods = default(string), DateTime? cancelledAt = default(DateTime?), DateTime? deletedAt = default(DateTime?), string orderId = default(string), string salePrice = default(string), string platformFee = default(string), string taxCollected = default(string), string feeSource = default(string), string detectedBy = default(string), DateTime detectedAt = default(DateTime), List<ListSalesItemDocuments> documents = default(List<ListSalesItemDocuments>), string refundedAmount = default(string), bool detailsPending = default(bool), string variantSku = default(string), string variantId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -85,25 +90,36 @@ namespace net.crossly.Model
             }
             this.DetectedBy = detectedBy;
             this.DetectedAt = detectedAt;
-            this.CancelledAt = cancelledAt;
-            this.OrderId = orderId;
-            this.ListingId = listingId;
+            this.DetailsPending = detailsPending;
+            this.AppShare = appShare;
+            this.NetProfit = netProfit;
+            this.ShippingCost = shippingCost;
+            this.ShippingCharged = shippingCharged;
             this.InventoryItemId = inventoryItemId;
             this.Currency = currency;
+            this.ListingId = listingId;
             this.PlatformListingId = platformListingId;
+            this.StorefrontId = storefrontId;
             this.PlatformOrderId = platformOrderId;
             this.CostOfGoods = costOfGoods;
+            this.CancelledAt = cancelledAt;
             this.DeletedAt = deletedAt;
+            this.OrderId = orderId;
             this.SalePrice = salePrice;
             this.PlatformFee = platformFee;
-            this.ShippingCost = shippingCost;
-            this.NetProfit = netProfit;
             this.TaxCollected = taxCollected;
-            this.ShippingCharged = shippingCharged;
             this.FeeSource = feeSource;
             this.Documents = documents;
             this.RefundedAmount = refundedAmount;
+            this.VariantSku = variantSku;
+            this.VariantId = variantId;
         }
+
+        /// <summary>
+        /// Gets or Sets AppShare
+        /// </summary>
+        [DataMember(Name = "appShare", EmitDefaultValue = true)]
+        public GetOrderResponseAppShare AppShare { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -124,22 +140,22 @@ namespace net.crossly.Model
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets CancelledAt
+        /// Gets or Sets NetProfit
         /// </summary>
-        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
-        public DateTime? CancelledAt { get; set; }
+        [DataMember(Name = "netProfit", EmitDefaultValue = true)]
+        public string NetProfit { get; set; }
 
         /// <summary>
-        /// Gets or Sets OrderId
+        /// Gets or Sets ShippingCost
         /// </summary>
-        [DataMember(Name = "orderId", EmitDefaultValue = true)]
-        public string OrderId { get; set; }
+        [DataMember(Name = "shippingCost", EmitDefaultValue = true)]
+        public string ShippingCost { get; set; }
 
         /// <summary>
-        /// Gets or Sets ListingId
+        /// Gets or Sets ShippingCharged
         /// </summary>
-        [DataMember(Name = "listingId", EmitDefaultValue = true)]
-        public string ListingId { get; set; }
+        [DataMember(Name = "shippingCharged", EmitDefaultValue = true)]
+        public string ShippingCharged { get; set; }
 
         /// <summary>
         /// Gets or Sets InventoryItemId
@@ -154,10 +170,22 @@ namespace net.crossly.Model
         public string Currency { get; set; }
 
         /// <summary>
+        /// Gets or Sets ListingId
+        /// </summary>
+        [DataMember(Name = "listingId", EmitDefaultValue = true)]
+        public string ListingId { get; set; }
+
+        /// <summary>
         /// Gets or Sets PlatformListingId
         /// </summary>
         [DataMember(Name = "platformListingId", EmitDefaultValue = true)]
         public string PlatformListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformOrderId
@@ -172,10 +200,22 @@ namespace net.crossly.Model
         public string CostOfGoods { get; set; }
 
         /// <summary>
+        /// Gets or Sets CancelledAt
+        /// </summary>
+        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
+        public DateTime? CancelledAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets DeletedAt
         /// </summary>
         [DataMember(Name = "deletedAt", EmitDefaultValue = true)]
         public DateTime? DeletedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderId
+        /// </summary>
+        [DataMember(Name = "orderId", EmitDefaultValue = true)]
+        public string OrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets SalePrice
@@ -190,28 +230,10 @@ namespace net.crossly.Model
         public string PlatformFee { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingCost
-        /// </summary>
-        [DataMember(Name = "shippingCost", EmitDefaultValue = true)]
-        public string ShippingCost { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NetProfit
-        /// </summary>
-        [DataMember(Name = "netProfit", EmitDefaultValue = true)]
-        public string NetProfit { get; set; }
-
-        /// <summary>
         /// Gets or Sets TaxCollected
         /// </summary>
         [DataMember(Name = "taxCollected", EmitDefaultValue = true)]
         public string TaxCollected { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShippingCharged
-        /// </summary>
-        [DataMember(Name = "shippingCharged", EmitDefaultValue = true)]
-        public string ShippingCharged { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeSource
@@ -244,6 +266,24 @@ namespace net.crossly.Model
         public string RefundedAmount { get; set; }
 
         /// <summary>
+        /// Gets or Sets DetailsPending
+        /// </summary>
+        [DataMember(Name = "detailsPending", IsRequired = true, EmitDefaultValue = true)]
+        public bool DetailsPending { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VariantSku
+        /// </summary>
+        [DataMember(Name = "variantSku", EmitDefaultValue = true)]
+        public string VariantSku { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VariantId
+        /// </summary>
+        [DataMember(Name = "variantId", EmitDefaultValue = true)]
+        public string VariantId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -251,29 +291,34 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListSalesItem {\n");
+            sb.Append("  AppShare: ").Append(AppShare).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
+            sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
+            sb.Append("  ShippingCost: ").Append(ShippingCost).Append("\n");
+            sb.Append("  ShippingCharged: ").Append(ShippingCharged).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  PlatformOrderId: ").Append(PlatformOrderId).Append("\n");
             sb.Append("  CostOfGoods: ").Append(CostOfGoods).Append("\n");
+            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
             sb.Append("  DeletedAt: ").Append(DeletedAt).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  SalePrice: ").Append(SalePrice).Append("\n");
             sb.Append("  PlatformFee: ").Append(PlatformFee).Append("\n");
-            sb.Append("  ShippingCost: ").Append(ShippingCost).Append("\n");
-            sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
             sb.Append("  TaxCollected: ").Append(TaxCollected).Append("\n");
-            sb.Append("  ShippingCharged: ").Append(ShippingCharged).Append("\n");
             sb.Append("  FeeSource: ").Append(FeeSource).Append("\n");
             sb.Append("  DetectedBy: ").Append(DetectedBy).Append("\n");
             sb.Append("  DetectedAt: ").Append(DetectedAt).Append("\n");
             sb.Append("  Documents: ").Append(Documents).Append("\n");
             sb.Append("  RefundedAmount: ").Append(RefundedAmount).Append("\n");
+            sb.Append("  DetailsPending: ").Append(DetailsPending).Append("\n");
+            sb.Append("  VariantSku: ").Append(VariantSku).Append("\n");
+            sb.Append("  VariantId: ").Append(VariantId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -310,6 +355,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.AppShare == input.AppShare ||
+                    (this.AppShare != null &&
+                    this.AppShare.Equals(input.AppShare))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -325,19 +375,19 @@ namespace net.crossly.Model
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
-                    this.CancelledAt == input.CancelledAt ||
-                    (this.CancelledAt != null &&
-                    this.CancelledAt.Equals(input.CancelledAt))
+                    this.NetProfit == input.NetProfit ||
+                    (this.NetProfit != null &&
+                    this.NetProfit.Equals(input.NetProfit))
                 ) && 
                 (
-                    this.OrderId == input.OrderId ||
-                    (this.OrderId != null &&
-                    this.OrderId.Equals(input.OrderId))
+                    this.ShippingCost == input.ShippingCost ||
+                    (this.ShippingCost != null &&
+                    this.ShippingCost.Equals(input.ShippingCost))
                 ) && 
                 (
-                    this.ListingId == input.ListingId ||
-                    (this.ListingId != null &&
-                    this.ListingId.Equals(input.ListingId))
+                    this.ShippingCharged == input.ShippingCharged ||
+                    (this.ShippingCharged != null &&
+                    this.ShippingCharged.Equals(input.ShippingCharged))
                 ) && 
                 (
                     this.InventoryItemId == input.InventoryItemId ||
@@ -350,9 +400,19 @@ namespace net.crossly.Model
                     this.Currency.Equals(input.Currency))
                 ) && 
                 (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
+                ) && 
+                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.PlatformOrderId == input.PlatformOrderId ||
@@ -365,9 +425,19 @@ namespace net.crossly.Model
                     this.CostOfGoods.Equals(input.CostOfGoods))
                 ) && 
                 (
+                    this.CancelledAt == input.CancelledAt ||
+                    (this.CancelledAt != null &&
+                    this.CancelledAt.Equals(input.CancelledAt))
+                ) && 
+                (
                     this.DeletedAt == input.DeletedAt ||
                     (this.DeletedAt != null &&
                     this.DeletedAt.Equals(input.DeletedAt))
+                ) && 
+                (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
                     this.SalePrice == input.SalePrice ||
@@ -380,24 +450,9 @@ namespace net.crossly.Model
                     this.PlatformFee.Equals(input.PlatformFee))
                 ) && 
                 (
-                    this.ShippingCost == input.ShippingCost ||
-                    (this.ShippingCost != null &&
-                    this.ShippingCost.Equals(input.ShippingCost))
-                ) && 
-                (
-                    this.NetProfit == input.NetProfit ||
-                    (this.NetProfit != null &&
-                    this.NetProfit.Equals(input.NetProfit))
-                ) && 
-                (
                     this.TaxCollected == input.TaxCollected ||
                     (this.TaxCollected != null &&
                     this.TaxCollected.Equals(input.TaxCollected))
-                ) && 
-                (
-                    this.ShippingCharged == input.ShippingCharged ||
-                    (this.ShippingCharged != null &&
-                    this.ShippingCharged.Equals(input.ShippingCharged))
                 ) && 
                 (
                     this.FeeSource == input.FeeSource ||
@@ -424,6 +479,20 @@ namespace net.crossly.Model
                     this.RefundedAmount == input.RefundedAmount ||
                     (this.RefundedAmount != null &&
                     this.RefundedAmount.Equals(input.RefundedAmount))
+                ) && 
+                (
+                    this.DetailsPending == input.DetailsPending ||
+                    this.DetailsPending.Equals(input.DetailsPending)
+                ) && 
+                (
+                    this.VariantSku == input.VariantSku ||
+                    (this.VariantSku != null &&
+                    this.VariantSku.Equals(input.VariantSku))
+                ) && 
+                (
+                    this.VariantId == input.VariantId ||
+                    (this.VariantId != null &&
+                    this.VariantId.Equals(input.VariantId))
                 );
         }
 
@@ -436,6 +505,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AppShare != null)
+                {
+                    hashCode = (hashCode * 59) + this.AppShare.GetHashCode();
+                }
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -448,17 +521,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.CancelledAt != null)
+                if (this.NetProfit != null)
                 {
-                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
                 }
-                if (this.OrderId != null)
+                if (this.ShippingCost != null)
                 {
-                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShippingCost.GetHashCode();
                 }
-                if (this.ListingId != null)
+                if (this.ShippingCharged != null)
                 {
-                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShippingCharged.GetHashCode();
                 }
                 if (this.InventoryItemId != null)
                 {
@@ -468,9 +541,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.PlatformOrderId != null)
                 {
@@ -480,9 +561,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CostOfGoods.GetHashCode();
                 }
+                if (this.CancelledAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
+                }
                 if (this.DeletedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.DeletedAt.GetHashCode();
+                }
+                if (this.OrderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
                 if (this.SalePrice != null)
                 {
@@ -492,21 +581,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.PlatformFee.GetHashCode();
                 }
-                if (this.ShippingCost != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShippingCost.GetHashCode();
-                }
-                if (this.NetProfit != null)
-                {
-                    hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
-                }
                 if (this.TaxCollected != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxCollected.GetHashCode();
-                }
-                if (this.ShippingCharged != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShippingCharged.GetHashCode();
                 }
                 if (this.FeeSource != null)
                 {
@@ -527,6 +604,15 @@ namespace net.crossly.Model
                 if (this.RefundedAmount != null)
                 {
                     hashCode = (hashCode * 59) + this.RefundedAmount.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DetailsPending.GetHashCode();
+                if (this.VariantSku != null)
+                {
+                    hashCode = (hashCode * 59) + this.VariantSku.GetHashCode();
+                }
+                if (this.VariantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VariantId.GetHashCode();
                 }
                 return hashCode;
             }

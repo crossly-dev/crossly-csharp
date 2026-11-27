@@ -40,23 +40,23 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCaseResponseDataPurchase" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="buyerPaidCents">buyerPaidCents (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="refundStatus">refundStatus.</param>
         /// <param name="refundAmountCents">refundAmountCents.</param>
-        public GetBuyerCaseResponseDataPurchase(string id = default(string), string status = default(string), decimal buyerPaidCents = default(decimal), string refundStatus = default(string), decimal? refundAmountCents = default(decimal?))
+        public GetBuyerCaseResponseDataPurchase(string id = default(string), decimal buyerPaidCents = default(decimal), string status = default(string), string refundStatus = default(string), decimal? refundAmountCents = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerCaseResponseDataPurchase and cannot be null");
             }
             this.Id = id;
+            this.BuyerPaidCents = buyerPaidCents;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for GetBuyerCaseResponseDataPurchase and cannot be null");
             }
             this.Status = status;
-            this.BuyerPaidCents = buyerPaidCents;
             this.RefundStatus = refundStatus;
             this.RefundAmountCents = refundAmountCents;
         }
@@ -68,16 +68,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets BuyerPaidCents
         /// </summary>
         [DataMember(Name = "buyerPaidCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal BuyerPaidCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets RefundStatus
@@ -100,8 +100,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCaseResponseDataPurchase {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  BuyerPaidCents: ").Append(BuyerPaidCents).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  RefundStatus: ").Append(RefundStatus).Append("\n");
             sb.Append("  RefundAmountCents: ").Append(RefundAmountCents).Append("\n");
             sb.Append("}\n");
@@ -145,13 +145,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.BuyerPaidCents == input.BuyerPaidCents ||
+                    this.BuyerPaidCents.Equals(input.BuyerPaidCents)
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.BuyerPaidCents == input.BuyerPaidCents ||
-                    this.BuyerPaidCents.Equals(input.BuyerPaidCents)
                 ) && 
                 (
                     this.RefundStatus == input.RefundStatus ||
@@ -178,11 +178,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.BuyerPaidCents.GetHashCode();
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.BuyerPaidCents.GetHashCode();
                 if (this.RefundStatus != null)
                 {
                     hashCode = (hashCode * 59) + this.RefundStatus.GetHashCode();

@@ -38,148 +38,316 @@ namespace net.crossly.Model
         public enum SlotEnum
         {
             /// <summary>
+            /// Enum Phone for value: phone
+            /// </summary>
+            [EnumMember(Value = "phone")]
+            Phone = 1,
+
+            /// <summary>
             /// Enum Spin for value: spin
             /// </summary>
             [EnumMember(Value = "spin")]
-            Spin = 1,
+            Spin = 2,
 
             /// <summary>
             /// Enum Wave for value: wave
             /// </summary>
             [EnumMember(Value = "wave")]
-            Wave = 2,
+            Wave = 3,
 
             /// <summary>
             /// Enum Point for value: point
             /// </summary>
             [EnumMember(Value = "point")]
-            Point = 3,
+            Point = 4,
 
             /// <summary>
             /// Enum Clap for value: clap
             /// </summary>
             [EnumMember(Value = "clap")]
-            Clap = 4,
+            Clap = 5,
 
             /// <summary>
             /// Enum Cheer for value: cheer
             /// </summary>
             [EnumMember(Value = "cheer")]
-            Cheer = 5,
+            Cheer = 6,
 
             /// <summary>
             /// Enum Hype for value: hype
             /// </summary>
             [EnumMember(Value = "hype")]
-            Hype = 6,
+            Hype = 7,
 
             /// <summary>
             /// Enum Shrug for value: shrug
             /// </summary>
             [EnumMember(Value = "shrug")]
-            Shrug = 7,
+            Shrug = 8,
 
             /// <summary>
             /// Enum Nod for value: nod
             /// </summary>
             [EnumMember(Value = "nod")]
-            Nod = 8,
+            Nod = 9,
 
             /// <summary>
             /// Enum Sit for value: sit
             /// </summary>
             [EnumMember(Value = "sit")]
-            Sit = 9,
+            Sit = 10,
 
             /// <summary>
             /// Enum Lean for value: lean
             /// </summary>
             [EnumMember(Value = "lean")]
-            Lean = 10,
+            Lean = 11,
 
             /// <summary>
             /// Enum Reach for value: reach
             /// </summary>
             [EnumMember(Value = "reach")]
-            Reach = 11,
+            Reach = 12,
 
             /// <summary>
             /// Enum Dance for value: dance
             /// </summary>
             [EnumMember(Value = "dance")]
-            Dance = 12,
+            Dance = 13,
 
             /// <summary>
             /// Enum Bow for value: bow
             /// </summary>
             [EnumMember(Value = "bow")]
-            Bow = 13,
+            Bow = 14,
 
             /// <summary>
             /// Enum Thumbs for value: thumbs
             /// </summary>
             [EnumMember(Value = "thumbs")]
-            Thumbs = 14,
+            Thumbs = 15,
 
             /// <summary>
             /// Enum Loupe for value: loupe
             /// </summary>
             [EnumMember(Value = "loupe")]
-            Loupe = 15,
+            Loupe = 16,
 
             /// <summary>
             /// Enum BoxSpin for value: box_spin
             /// </summary>
             [EnumMember(Value = "box_spin")]
-            BoxSpin = 16,
+            BoxSpin = 17,
 
             /// <summary>
             /// Enum Flex for value: flex
             /// </summary>
             [EnumMember(Value = "flex")]
-            Flex = 17,
+            Flex = 18,
 
             /// <summary>
             /// Enum Hug for value: hug
             /// </summary>
             [EnumMember(Value = "hug")]
-            Hug = 18,
+            Hug = 19,
 
             /// <summary>
             /// Enum HighFive for value: high_five
             /// </summary>
             [EnumMember(Value = "high_five")]
-            HighFive = 19,
+            HighFive = 20,
 
             /// <summary>
             /// Enum Handshake for value: handshake
             /// </summary>
             [EnumMember(Value = "handshake")]
-            Handshake = 20,
+            Handshake = 21,
+
+            /// <summary>
+            /// Enum Facepalm for value: facepalm
+            /// </summary>
+            [EnumMember(Value = "facepalm")]
+            Facepalm = 22,
+
+            /// <summary>
+            /// Enum Think for value: think
+            /// </summary>
+            [EnumMember(Value = "think")]
+            Think = 23,
+
+            /// <summary>
+            /// Enum Laugh for value: laugh
+            /// </summary>
+            [EnumMember(Value = "laugh")]
+            Laugh = 24,
+
+            /// <summary>
+            /// Enum Sigh for value: sigh
+            /// </summary>
+            [EnumMember(Value = "sigh")]
+            Sigh = 25,
+
+            /// <summary>
+            /// Enum No for value: no
+            /// </summary>
+            [EnumMember(Value = "no")]
+            No = 26,
+
+            /// <summary>
+            /// Enum FistPump for value: fist_pump
+            /// </summary>
+            [EnumMember(Value = "fist_pump")]
+            FistPump = 27,
+
+            /// <summary>
+            /// Enum Victory for value: victory
+            /// </summary>
+            [EnumMember(Value = "victory")]
+            Victory = 28,
+
+            /// <summary>
+            /// Enum Yawn for value: yawn
+            /// </summary>
+            [EnumMember(Value = "yawn")]
+            Yawn = 29,
+
+            /// <summary>
+            /// Enum Salute for value: salute
+            /// </summary>
+            [EnumMember(Value = "salute")]
+            Salute = 30,
+
+            /// <summary>
+            /// Enum BigWave for value: big_wave
+            /// </summary>
+            [EnumMember(Value = "big_wave")]
+            BigWave = 31,
+
+            /// <summary>
+            /// Enum Beckon for value: beckon
+            /// </summary>
+            [EnumMember(Value = "beckon")]
+            Beckon = 32,
+
+            /// <summary>
+            /// Enum Shush for value: shush
+            /// </summary>
+            [EnumMember(Value = "shush")]
+            Shush = 33,
+
+            /// <summary>
+            /// Enum Kiss for value: kiss
+            /// </summary>
+            [EnumMember(Value = "kiss")]
+            Kiss = 34,
+
+            /// <summary>
+            /// Enum Peace for value: peace
+            /// </summary>
+            [EnumMember(Value = "peace")]
+            Peace = 35,
+
+            /// <summary>
+            /// Enum Heart for value: heart
+            /// </summary>
+            [EnumMember(Value = "heart")]
+            Heart = 36,
+
+            /// <summary>
+            /// Enum Sway for value: sway
+            /// </summary>
+            [EnumMember(Value = "sway")]
+            Sway = 37,
+
+            /// <summary>
+            /// Enum Vibe for value: vibe
+            /// </summary>
+            [EnumMember(Value = "vibe")]
+            Vibe = 38,
+
+            /// <summary>
+            /// Enum AirGuitar for value: air_guitar
+            /// </summary>
+            [EnumMember(Value = "air_guitar")]
+            AirGuitar = 39,
+
+            /// <summary>
+            /// Enum Robot for value: robot
+            /// </summary>
+            [EnumMember(Value = "robot")]
+            Robot = 40,
+
+            /// <summary>
+            /// Enum Disco for value: disco
+            /// </summary>
+            [EnumMember(Value = "disco")]
+            Disco = 41,
+
+            /// <summary>
+            /// Enum Gavel for value: gavel
+            /// </summary>
+            [EnumMember(Value = "gavel")]
+            Gavel = 42,
+
+            /// <summary>
+            /// Enum Haggle for value: haggle
+            /// </summary>
+            [EnumMember(Value = "haggle")]
+            Haggle = 43,
+
+            /// <summary>
+            /// Enum ArmsCrossed for value: arms_crossed
+            /// </summary>
+            [EnumMember(Value = "arms_crossed")]
+            ArmsCrossed = 44,
+
+            /// <summary>
+            /// Enum HandsOnHips for value: hands_on_hips
+            /// </summary>
+            [EnumMember(Value = "hands_on_hips")]
+            HandsOnHips = 45,
+
+            /// <summary>
+            /// Enum Kneel for value: kneel
+            /// </summary>
+            [EnumMember(Value = "kneel")]
+            Kneel = 46,
+
+            /// <summary>
+            /// Enum FistBump for value: fist_bump
+            /// </summary>
+            [EnumMember(Value = "fist_bump")]
+            FistBump = 47,
+
+            /// <summary>
+            /// Enum DanceOff for value: dance_off
+            /// </summary>
+            [EnumMember(Value = "dance_off")]
+            DanceOff = 48,
 
             /// <summary>
             /// Enum Showoff for value: showoff
             /// </summary>
             [EnumMember(Value = "showoff")]
-            Showoff = 21,
+            Showoff = 49,
 
             /// <summary>
             /// Enum Momenthandshake for value: moment:handshake
             /// </summary>
             [EnumMember(Value = "moment:handshake")]
-            Momenthandshake = 22,
+            Momenthandshake = 50,
 
             /// <summary>
             /// Enum Momentunbox for value: moment:unbox
             /// </summary>
             [EnumMember(Value = "moment:unbox")]
-            Momentunbox = 23,
+            Momentunbox = 51,
 
             /// <summary>
             /// Enum MomentslabFlip for value: moment:slab_flip
             /// </summary>
             [EnumMember(Value = "moment:slab_flip")]
-            MomentslabFlip = 24
+            MomentslabFlip = 52
 
         }
 

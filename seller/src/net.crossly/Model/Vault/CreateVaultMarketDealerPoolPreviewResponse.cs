@@ -45,22 +45,22 @@ namespace net.crossly.Model
             Floor = 1,
 
             /// <summary>
+            /// Enum Ceiling for value: ceiling
+            /// </summary>
+            [EnumMember(Value = "ceiling")]
+            Ceiling = 2,
+
+            /// <summary>
             /// Enum NoUnits for value: no_units
             /// </summary>
             [EnumMember(Value = "no_units")]
-            NoUnits = 2,
+            NoUnits = 3,
 
             /// <summary>
             /// Enum NoCash for value: no_cash
             /// </summary>
             [EnumMember(Value = "no_cash")]
-            NoCash = 3,
-
-            /// <summary>
-            /// Enum Ceiling for value: ceiling
-            /// </summary>
-            [EnumMember(Value = "ceiling")]
-            Ceiling = 4,
+            NoCash = 4,
 
             /// <summary>
             /// Enum CurveEnd for value: curve_end
@@ -90,22 +90,22 @@ namespace net.crossly.Model
             Floor = 1,
 
             /// <summary>
+            /// Enum Ceiling for value: ceiling
+            /// </summary>
+            [EnumMember(Value = "ceiling")]
+            Ceiling = 2,
+
+            /// <summary>
             /// Enum NoUnits for value: no_units
             /// </summary>
             [EnumMember(Value = "no_units")]
-            NoUnits = 2,
+            NoUnits = 3,
 
             /// <summary>
             /// Enum NoCash for value: no_cash
             /// </summary>
             [EnumMember(Value = "no_cash")]
-            NoCash = 3,
-
-            /// <summary>
-            /// Enum Ceiling for value: ceiling
-            /// </summary>
-            [EnumMember(Value = "ceiling")]
-            Ceiling = 4,
+            NoCash = 4,
 
             /// <summary>
             /// Enum CurveEnd for value: curve_end

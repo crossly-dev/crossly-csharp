@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="displayName">displayName.</param>
         /// <param name="room">room.</param>
         /// <param name="homeSlug">homeSlug.</param>
-        public ListWorldFriendsItem(string userId = default(string), string displayName = default(string), NameSlug room = default(NameSlug), string homeSlug = default(string))
+        public ListWorldFriendsItem(string userId = default(string), string displayName = default(string), NameSlug2 room = default(NameSlug2), string homeSlug = default(string))
         {
             // to ensure "userId" is required (not null)
             if (userId == null) {
@@ -71,7 +71,7 @@ namespace net.crossly.Model
         /// Gets or Sets Room
         /// </summary>
         [DataMember(Name = "room", EmitDefaultValue = true)]
-        public NameSlug Room { get; set; }
+        public NameSlug2 Room { get; set; }
 
         /// <summary>
         /// Gets or Sets HomeSlug

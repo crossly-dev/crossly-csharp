@@ -39,11 +39,13 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateVaultMarketSupplySendResponse" /> class.
         /// </summary>
+        /// <param name="batchId">batchId.</param>
         /// <param name="created">created (required).</param>
         /// <param name="skipped">skipped (required).</param>
         /// <param name="label">label.</param>
         /// <param name="labelError">labelError.</param>
-        public CreateVaultMarketSupplySendResponse(List<CreateVaultMarketSupplySendResponseCreated> created = default(List<CreateVaultMarketSupplySendResponseCreated>), List<CreateVaultMarketSupplySendResponseSkipped> skipped = default(List<CreateVaultMarketSupplySendResponseSkipped>), CreateVaultMarketPartnerBatchResponseLabel label = default(CreateVaultMarketPartnerBatchResponseLabel), string labelError = default(string))
+        /// <param name="storefrontId">storefrontId.</param>
+        public CreateVaultMarketSupplySendResponse(Object batchId = default(Object), Object created = default(Object), List<InventoryItemIdReason> skipped = default(List<InventoryItemIdReason>), Object label = default(Object), Object labelError = default(Object), string storefrontId = default(string))
         {
             // to ensure "created" is required (not null)
             if (created == null) {
@@ -55,33 +57,47 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("skipped is a required property for CreateVaultMarketSupplySendResponse and cannot be null");
             }
             this.Skipped = skipped;
+            this.BatchId = batchId;
             this.Label = label;
             this.LabelError = labelError;
+            this.StorefrontId = storefrontId;
         }
+
+        /// <summary>
+        /// Gets or Sets BatchId
+        /// </summary>
+        [DataMember(Name = "batchId", EmitDefaultValue = true)]
+        public Object BatchId { get; set; }
 
         /// <summary>
         /// Gets or Sets Created
         /// </summary>
-        [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateVaultMarketSupplySendResponseCreated> Created { get; set; }
+        [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
+        public Object Created { get; set; }
 
         /// <summary>
         /// Gets or Sets Skipped
         /// </summary>
         [DataMember(Name = "skipped", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateVaultMarketSupplySendResponseSkipped> Skipped { get; set; }
+        public List<InventoryItemIdReason> Skipped { get; set; }
 
         /// <summary>
         /// Gets or Sets Label
         /// </summary>
         [DataMember(Name = "label", EmitDefaultValue = true)]
-        public CreateVaultMarketPartnerBatchResponseLabel Label { get; set; }
+        public Object Label { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelError
         /// </summary>
         [DataMember(Name = "labelError", EmitDefaultValue = true)]
-        public string LabelError { get; set; }
+        public Object LabelError { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,10 +107,12 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateVaultMarketSupplySendResponse {\n");
+            sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Skipped: ").Append(Skipped).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  LabelError: ").Append(LabelError).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,10 +149,14 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.BatchId == input.BatchId ||
+                    (this.BatchId != null &&
+                    this.BatchId.Equals(input.BatchId))
+                ) && 
+                (
                     this.Created == input.Created ||
-                    this.Created != null &&
-                    input.Created != null &&
-                    this.Created.SequenceEqual(input.Created)
+                    (this.Created != null &&
+                    this.Created.Equals(input.Created))
                 ) && 
                 (
                     this.Skipped == input.Skipped ||
@@ -151,6 +173,11 @@ namespace net.crossly.Model
                     this.LabelError == input.LabelError ||
                     (this.LabelError != null &&
                     this.LabelError.Equals(input.LabelError))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
                 );
         }
 
@@ -163,6 +190,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.BatchId != null)
+                {
+                    hashCode = (hashCode * 59) + this.BatchId.GetHashCode();
+                }
                 if (this.Created != null)
                 {
                     hashCode = (hashCode * 59) + this.Created.GetHashCode();
@@ -178,6 +209,10 @@ namespace net.crossly.Model
                 if (this.LabelError != null)
                 {
                     hashCode = (hashCode * 59) + this.LabelError.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 return hashCode;
             }

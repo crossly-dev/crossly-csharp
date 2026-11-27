@@ -55,8 +55,9 @@ namespace net.crossly.Model
         /// <param name="pledges">pledges.</param>
         /// <param name="activity">activity.</param>
         /// <param name="fees">fees.</param>
+        /// <param name="cash">cash.</param>
         /// <param name="notes">notes.</param>
-        public GetVaultMarketStatementByMonthResponse(bool frozen = default(bool), Object hash = default(Object), string generatedAt = default(string), CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string month = default(string), string from = default(string), string to = default(string), string holdingsAsOf = default(string), bool provisional = default(bool), GetVaultMarketStatementByMonthResponseOneOf1Summary summary = default(GetVaultMarketStatementByMonthResponseOneOf1Summary), List<GetVaultMarketStatementByMonthResponseOneOf1Holdings> holdings = default(List<GetVaultMarketStatementByMonthResponseOneOf1Holdings>), List<Dictionary<string, Object>> loansOut = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> positions = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> pledges = default(List<Dictionary<string, Object>>), List<ListVaultMarketConfirmationsItem> activity = default(List<ListVaultMarketConfirmationsItem>), GetVaultMarketStatementByMonthResponseOneOf1Fees fees = default(GetVaultMarketStatementByMonthResponseOneOf1Fees), List<string> notes = default(List<string>))
+        public GetVaultMarketStatementByMonthResponse(bool frozen = default(bool), Object hash = default(Object), string generatedAt = default(string), CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string month = default(string), string from = default(string), string to = default(string), string holdingsAsOf = default(string), bool provisional = default(bool), GetVaultMarketStatementByMonthResponseOneOf1Summary summary = default(GetVaultMarketStatementByMonthResponseOneOf1Summary), List<GetVaultMarketStatementByMonthResponseOneOf1Holdings> holdings = default(List<GetVaultMarketStatementByMonthResponseOneOf1Holdings>), List<Dictionary<string, Object>> loansOut = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> positions = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> pledges = default(List<Dictionary<string, Object>>), List<ListVaultMarketConfirmationsItem> activity = default(List<ListVaultMarketConfirmationsItem>), GetVaultMarketStatementByMonthResponseOneOf1Fees fees = default(GetVaultMarketStatementByMonthResponseOneOf1Fees), Object cash = default(Object), List<string> notes = default(List<string>))
         {
             this.Frozen = frozen;
             // to ensure "hash" is required (not null)
@@ -82,6 +83,7 @@ namespace net.crossly.Model
             this.Pledges = pledges;
             this.Activity = activity;
             this.Fees = fees;
+            this.Cash = cash;
             this.Notes = notes;
         }
 
@@ -182,6 +184,12 @@ namespace net.crossly.Model
         public GetVaultMarketStatementByMonthResponseOneOf1Fees Fees { get; set; }
 
         /// <summary>
+        /// Gets or Sets Cash
+        /// </summary>
+        [DataMember(Name = "cash", EmitDefaultValue = true)]
+        public Object Cash { get; set; }
+
+        /// <summary>
         /// Gets or Sets Notes
         /// </summary>
         [DataMember(Name = "notes", EmitDefaultValue = false)]
@@ -211,6 +219,7 @@ namespace net.crossly.Model
             sb.Append("  Pledges: ").Append(Pledges).Append("\n");
             sb.Append("  Activity: ").Append(Activity).Append("\n");
             sb.Append("  Fees: ").Append(Fees).Append("\n");
+            sb.Append("  Cash: ").Append(Cash).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -331,6 +340,11 @@ namespace net.crossly.Model
                     this.Fees.Equals(input.Fees))
                 ) && 
                 (
+                    this.Cash == input.Cash ||
+                    (this.Cash != null &&
+                    this.Cash.Equals(input.Cash))
+                ) && 
+                (
                     this.Notes == input.Notes ||
                     this.Notes != null &&
                     input.Notes != null &&
@@ -404,6 +418,10 @@ namespace net.crossly.Model
                 if (this.Fees != null)
                 {
                     hashCode = (hashCode * 59) + this.Fees.GetHashCode();
+                }
+                if (this.Cash != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cash.GetHashCode();
                 }
                 if (this.Notes != null)
                 {

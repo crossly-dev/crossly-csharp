@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ModeEnum
         {
             /// <summary>
-            /// Enum Grouped for value: grouped
-            /// </summary>
-            [EnumMember(Value = "grouped")]
-            Grouped = 1,
-
-            /// <summary>
             /// Enum Separate for value: separate
             /// </summary>
             [EnumMember(Value = "separate")]
-            Separate = 2
+            Separate = 1,
+
+            /// <summary>
+            /// Enum Grouped for value: grouped
+            /// </summary>
+            [EnumMember(Value = "grouped")]
+            Grouped = 2
 
         }
 
@@ -70,9 +70,13 @@ namespace net.crossly.Model
         /// <param name="ok">ok (required).</param>
         /// <param name="listingId">The marketplace listing id — the GROUP&#39;s on a grouped platform, absent on a separate one where each option has its own..</param>
         /// <param name="jobIds">Dispatcher job ids, on the separate path..</param>
+        /// <param name="members">Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option..</param>
+        /// <param name="failed">Grouped: options that did not go live. Reported in &#x60;warnings&#x60;; the live ones are still recorded..</param>
+        /// <param name="afterRecorded">Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option..</param>
+        /// <param name="ownOptionRows">The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no &#x60;members&#x60; is not a gap..</param>
         /// <param name="warnings">warnings (required).</param>
         /// <param name="error">error.</param>
-        public CreateVariationGroupPublishResponseDataOutcomes(string platform = default(string), ModeEnum mode = default(ModeEnum), bool ok = default(bool), string listingId = default(string), List<string> jobIds = default(List<string>), List<string> warnings = default(List<string>), string error = default(string))
+        public CreateVariationGroupPublishResponseDataOutcomes(string platform = default(string), ModeEnum mode = default(ModeEnum), bool ok = default(bool), string listingId = default(string), List<string> jobIds = default(List<string>), List<Dictionary<string, Object>> members = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> failed = default(List<Dictionary<string, Object>>), Dictionary<string, Object> afterRecorded = default(Dictionary<string, Object>), bool? ownOptionRows = default(bool?), List<string> warnings = default(List<string>), string error = default(string))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
@@ -88,6 +92,10 @@ namespace net.crossly.Model
             this.Warnings = warnings;
             this.ListingId = listingId;
             this.JobIds = jobIds;
+            this.Members = members;
+            this.Failed = failed;
+            this.AfterRecorded = afterRecorded;
+            this.OwnOptionRows = ownOptionRows;
             this.Error = error;
         }
 
@@ -118,6 +126,34 @@ namespace net.crossly.Model
         public List<string> JobIds { get; set; }
 
         /// <summary>
+        /// Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.
+        /// </summary>
+        /// <value>Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.</value>
+        [DataMember(Name = "members", EmitDefaultValue = true)]
+        public List<Dictionary<string, Object>> Members { get; set; }
+
+        /// <summary>
+        /// Grouped: options that did not go live. Reported in &#x60;warnings&#x60;; the live ones are still recorded.
+        /// </summary>
+        /// <value>Grouped: options that did not go live. Reported in &#x60;warnings&#x60;; the live ones are still recorded.</value>
+        [DataMember(Name = "failed", EmitDefaultValue = true)]
+        public List<Dictionary<string, Object>> Failed { get; set; }
+
+        /// <summary>
+        /// Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.
+        /// </summary>
+        /// <value>Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.</value>
+        [DataMember(Name = "afterRecorded", EmitDefaultValue = true)]
+        public Dictionary<string, Object> AfterRecorded { get; set; }
+
+        /// <summary>
+        /// The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no &#x60;members&#x60; is not a gap.
+        /// </summary>
+        /// <value>The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no &#x60;members&#x60; is not a gap.</value>
+        [DataMember(Name = "ownOptionRows", EmitDefaultValue = true)]
+        public bool? OwnOptionRows { get; set; }
+
+        /// <summary>
         /// Gets or Sets Warnings
         /// </summary>
         [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = false)]
@@ -142,6 +178,10 @@ namespace net.crossly.Model
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  JobIds: ").Append(JobIds).Append("\n");
+            sb.Append("  Members: ").Append(Members).Append("\n");
+            sb.Append("  Failed: ").Append(Failed).Append("\n");
+            sb.Append("  AfterRecorded: ").Append(AfterRecorded).Append("\n");
+            sb.Append("  OwnOptionRows: ").Append(OwnOptionRows).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("}\n");
@@ -204,6 +244,29 @@ namespace net.crossly.Model
                     this.JobIds.SequenceEqual(input.JobIds)
                 ) && 
                 (
+                    this.Members == input.Members ||
+                    this.Members != null &&
+                    input.Members != null &&
+                    this.Members.SequenceEqual(input.Members)
+                ) && 
+                (
+                    this.Failed == input.Failed ||
+                    this.Failed != null &&
+                    input.Failed != null &&
+                    this.Failed.SequenceEqual(input.Failed)
+                ) && 
+                (
+                    this.AfterRecorded == input.AfterRecorded ||
+                    this.AfterRecorded != null &&
+                    input.AfterRecorded != null &&
+                    this.AfterRecorded.SequenceEqual(input.AfterRecorded)
+                ) && 
+                (
+                    this.OwnOptionRows == input.OwnOptionRows ||
+                    (this.OwnOptionRows != null &&
+                    this.OwnOptionRows.Equals(input.OwnOptionRows))
+                ) && 
+                (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
@@ -238,6 +301,22 @@ namespace net.crossly.Model
                 if (this.JobIds != null)
                 {
                     hashCode = (hashCode * 59) + this.JobIds.GetHashCode();
+                }
+                if (this.Members != null)
+                {
+                    hashCode = (hashCode * 59) + this.Members.GetHashCode();
+                }
+                if (this.Failed != null)
+                {
+                    hashCode = (hashCode * 59) + this.Failed.GetHashCode();
+                }
+                if (this.AfterRecorded != null)
+                {
+                    hashCode = (hashCode * 59) + this.AfterRecorded.GetHashCode();
+                }
+                if (this.OwnOptionRows != null)
+                {
+                    hashCode = (hashCode * 59) + this.OwnOptionRows.GetHashCode();
                 }
                 if (this.Warnings != null)
                 {

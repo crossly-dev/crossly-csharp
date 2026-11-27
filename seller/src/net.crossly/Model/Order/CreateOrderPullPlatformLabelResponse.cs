@@ -65,39 +65,51 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrderPullPlatformLabelResponse" /> class.
         /// </summary>
-        /// <param name="url">url (required).</param>
-        /// <param name="persisted">persisted (required).</param>
-        /// <param name="expiresInSeconds">expiresInSeconds (required).</param>
+        /// <param name="url">url.</param>
+        /// <param name="persisted">persisted.</param>
+        /// <param name="expiresInSeconds">expiresInSeconds.</param>
         /// <param name="provenance">provenance (required).</param>
-        public CreateOrderPullPlatformLabelResponse(string url = default(string), bool persisted = default(bool), decimal expiresInSeconds = default(decimal), ProvenanceEnum provenance = default(ProvenanceEnum))
+        /// <param name="shippingLabelUrl">shippingLabelUrl.</param>
+        /// <param name="trackingNumber">trackingNumber.</param>
+        public CreateOrderPullPlatformLabelResponse(string url = default(string), bool persisted = default(bool), decimal expiresInSeconds = default(decimal), ProvenanceEnum provenance = default(ProvenanceEnum), string shippingLabelUrl = default(string), string trackingNumber = default(string))
         {
-            // to ensure "url" is required (not null)
-            if (url == null) {
-                throw new ArgumentNullException("url is a required property for CreateOrderPullPlatformLabelResponse and cannot be null");
-            }
+            this.Provenance = provenance;
             this.Url = url;
             this.Persisted = persisted;
             this.ExpiresInSeconds = expiresInSeconds;
-            this.Provenance = provenance;
+            this.ShippingLabelUrl = shippingLabelUrl;
+            this.TrackingNumber = trackingNumber;
         }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Persisted
         /// </summary>
-        [DataMember(Name = "persisted", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "persisted", EmitDefaultValue = true)]
         public bool Persisted { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiresInSeconds
         /// </summary>
-        [DataMember(Name = "expiresInSeconds", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "expiresInSeconds", EmitDefaultValue = false)]
         public decimal ExpiresInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShippingLabelUrl
+        /// </summary>
+        [DataMember(Name = "shippingLabelUrl", EmitDefaultValue = false)]
+        public string ShippingLabelUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TrackingNumber
+        /// </summary>
+        [DataMember(Name = "trackingNumber", EmitDefaultValue = true)]
+        public string TrackingNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,6 +123,8 @@ namespace net.crossly.Model
             sb.Append("  Persisted: ").Append(Persisted).Append("\n");
             sb.Append("  ExpiresInSeconds: ").Append(ExpiresInSeconds).Append("\n");
             sb.Append("  Provenance: ").Append(Provenance).Append("\n");
+            sb.Append("  ShippingLabelUrl: ").Append(ShippingLabelUrl).Append("\n");
+            sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,6 +176,16 @@ namespace net.crossly.Model
                 (
                     this.Provenance == input.Provenance ||
                     this.Provenance.Equals(input.Provenance)
+                ) && 
+                (
+                    this.ShippingLabelUrl == input.ShippingLabelUrl ||
+                    (this.ShippingLabelUrl != null &&
+                    this.ShippingLabelUrl.Equals(input.ShippingLabelUrl))
+                ) && 
+                (
+                    this.TrackingNumber == input.TrackingNumber ||
+                    (this.TrackingNumber != null &&
+                    this.TrackingNumber.Equals(input.TrackingNumber))
                 );
         }
 
@@ -181,6 +205,14 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Persisted.GetHashCode();
                 hashCode = (hashCode * 59) + this.ExpiresInSeconds.GetHashCode();
                 hashCode = (hashCode * 59) + this.Provenance.GetHashCode();
+                if (this.ShippingLabelUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShippingLabelUrl.GetHashCode();
+                }
+                if (this.TrackingNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
+                }
                 return hashCode;
             }
         }

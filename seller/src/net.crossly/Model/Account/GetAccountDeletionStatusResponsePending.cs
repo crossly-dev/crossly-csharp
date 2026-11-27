@@ -42,7 +42,11 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="requestedAt">requestedAt (required).</param>
         /// <param name="scheduledFor">scheduledFor (required).</param>
-        public GetAccountDeletionStatusResponsePending(string id = default(string), DateTime requestedAt = default(DateTime), DateTime scheduledFor = default(DateTime))
+        /// <param name="pausedAt">Set when the account was found in use: it waits for a re-confirmation..</param>
+        /// <param name="pauseReason">pauseReason.</param>
+        /// <param name="listingCount">What the cascade will take. (required).</param>
+        /// <param name="inventoryCount">inventoryCount (required).</param>
+        public GetAccountDeletionStatusResponsePending(string id = default(string), DateTime requestedAt = default(DateTime), DateTime scheduledFor = default(DateTime), DateTime? pausedAt = default(DateTime?), string pauseReason = default(string), decimal listingCount = default(decimal), decimal inventoryCount = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -51,6 +55,10 @@ namespace net.crossly.Model
             this.Id = id;
             this.RequestedAt = requestedAt;
             this.ScheduledFor = scheduledFor;
+            this.ListingCount = listingCount;
+            this.InventoryCount = inventoryCount;
+            this.PausedAt = pausedAt;
+            this.PauseReason = pauseReason;
         }
 
         /// <summary>
@@ -72,6 +80,32 @@ namespace net.crossly.Model
         public DateTime ScheduledFor { get; set; }
 
         /// <summary>
+        /// Set when the account was found in use: it waits for a re-confirmation.
+        /// </summary>
+        /// <value>Set when the account was found in use: it waits for a re-confirmation.</value>
+        [DataMember(Name = "pausedAt", EmitDefaultValue = true)]
+        public DateTime? PausedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PauseReason
+        /// </summary>
+        [DataMember(Name = "pauseReason", EmitDefaultValue = true)]
+        public string PauseReason { get; set; }
+
+        /// <summary>
+        /// What the cascade will take.
+        /// </summary>
+        /// <value>What the cascade will take.</value>
+        [DataMember(Name = "listingCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ListingCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InventoryCount
+        /// </summary>
+        [DataMember(Name = "inventoryCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal InventoryCount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +116,10 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  RequestedAt: ").Append(RequestedAt).Append("\n");
             sb.Append("  ScheduledFor: ").Append(ScheduledFor).Append("\n");
+            sb.Append("  PausedAt: ").Append(PausedAt).Append("\n");
+            sb.Append("  PauseReason: ").Append(PauseReason).Append("\n");
+            sb.Append("  ListingCount: ").Append(ListingCount).Append("\n");
+            sb.Append("  InventoryCount: ").Append(InventoryCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,6 +169,24 @@ namespace net.crossly.Model
                     this.ScheduledFor == input.ScheduledFor ||
                     (this.ScheduledFor != null &&
                     this.ScheduledFor.Equals(input.ScheduledFor))
+                ) && 
+                (
+                    this.PausedAt == input.PausedAt ||
+                    (this.PausedAt != null &&
+                    this.PausedAt.Equals(input.PausedAt))
+                ) && 
+                (
+                    this.PauseReason == input.PauseReason ||
+                    (this.PauseReason != null &&
+                    this.PauseReason.Equals(input.PauseReason))
+                ) && 
+                (
+                    this.ListingCount == input.ListingCount ||
+                    this.ListingCount.Equals(input.ListingCount)
+                ) && 
+                (
+                    this.InventoryCount == input.InventoryCount ||
+                    this.InventoryCount.Equals(input.InventoryCount)
                 );
         }
 
@@ -155,6 +211,16 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ScheduledFor.GetHashCode();
                 }
+                if (this.PausedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PausedAt.GetHashCode();
+                }
+                if (this.PauseReason != null)
+                {
+                    hashCode = (hashCode * 59) + this.PauseReason.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ListingCount.GetHashCode();
+                hashCode = (hashCode * 59) + this.InventoryCount.GetHashCode();
                 return hashCode;
             }
         }

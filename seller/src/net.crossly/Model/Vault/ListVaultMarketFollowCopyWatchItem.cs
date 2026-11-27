@@ -39,10 +39,16 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListVaultMarketFollowCopyWatchItem" /> class.
         /// </summary>
+        /// <param name="person">person (required).</param>
         /// <param name="since">since (required).</param>
         /// <param name="active">active (required).</param>
-        public ListVaultMarketFollowCopyWatchItem(string since = default(string), bool active = default(bool))
+        public ListVaultMarketFollowCopyWatchItem(ListVaultMarketFollowCopyWatchItemPerson person = default(ListVaultMarketFollowCopyWatchItemPerson), string since = default(string), bool active = default(bool))
         {
+            // to ensure "person" is required (not null)
+            if (person == null) {
+                throw new ArgumentNullException("person is a required property for ListVaultMarketFollowCopyWatchItem and cannot be null");
+            }
+            this.Person = person;
             // to ensure "since" is required (not null)
             if (since == null) {
                 throw new ArgumentNullException("since is a required property for ListVaultMarketFollowCopyWatchItem and cannot be null");
@@ -50,6 +56,12 @@ namespace net.crossly.Model
             this.Since = since;
             this.Active = active;
         }
+
+        /// <summary>
+        /// Gets or Sets Person
+        /// </summary>
+        [DataMember(Name = "person", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketFollowCopyWatchItemPerson Person { get; set; }
 
         /// <summary>
         /// Gets or Sets Since
@@ -71,6 +83,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListVaultMarketFollowCopyWatchItem {\n");
+            sb.Append("  Person: ").Append(Person).Append("\n");
             sb.Append("  Since: ").Append(Since).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("}\n");
@@ -109,6 +122,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Person == input.Person ||
+                    (this.Person != null &&
+                    this.Person.Equals(input.Person))
+                ) && 
+                (
                     this.Since == input.Since ||
                     (this.Since != null &&
                     this.Since.Equals(input.Since))
@@ -128,6 +146,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Person != null)
+                {
+                    hashCode = (hashCode * 59) + this.Person.GetHashCode();
+                }
                 if (this.Since != null)
                 {
                     hashCode = (hashCode * 59) + this.Since.GetHashCode();

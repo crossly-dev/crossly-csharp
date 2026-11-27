@@ -32,8 +32,9 @@ namespace net.crossly.Model
     public partial class CreateEmbedKeyRequest : IEquatable<CreateEmbedKeyRequest>, IValidatableObject
     {
         /// <summary>
-        /// Defines Environment
+        /// Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
         /// </summary>
+        /// <value>Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum EnvironmentEnum
         {
@@ -53,8 +54,9 @@ namespace net.crossly.Model
 
 
         /// <summary>
-        /// Gets or Sets Environment
+        /// Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
         /// </summary>
+        /// <value>Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.</value>
         [DataMember(Name = "environment", EmitDefaultValue = false)]
         public EnvironmentEnum? Environment { get; set; }
         /// <summary>
@@ -67,8 +69,8 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="name">Which site this is for, e.g. \&quot;my Squarespace shop\&quot;. (required).</param>
         /// <param name="allowedOrigins">Origins permitted to use this key, e.g. [\&quot;https://shop.example.com\&quot;]. LEAVE EMPTY to allow any origin — necessary when embedding on a platform whose domain you do not control, and the reason this is not locked by default..</param>
-        /// <param name="environment">environment (default to EnvironmentEnum.Live).</param>
-        public CreateEmbedKeyRequest(string name = default(string), List<string> allowedOrigins = default(List<string>), EnvironmentEnum? environment = EnvironmentEnum.Live)
+        /// <param name="environment">Omit for this server&#39;s own: live on crossly.net, test on sandbox.crossly.net. The other one is refused..</param>
+        public CreateEmbedKeyRequest(string name = default(string), List<string> allowedOrigins = default(List<string>), EnvironmentEnum? environment = default(EnvironmentEnum?))
         {
             // to ensure "name" is required (not null)
             if (name == null) {

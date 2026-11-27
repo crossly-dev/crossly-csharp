@@ -41,14 +41,14 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="ruleId">ruleId.</param>
         /// <param name="actionType">actionType (required).</param>
         /// <param name="targetUserId">targetUserId (required).</param>
-        /// <param name="performedAt">performedAt (required).</param>
+        /// <param name="ruleId">ruleId.</param>
         /// <param name="engagerUserId">engagerUserId (required).</param>
         /// <param name="targetListingId">targetListingId.</param>
         /// <param name="targetPlatformListingId">targetPlatformListingId.</param>
-        public ListNetworkPoolLogItem(string id = default(string), string platform = default(string), string ruleId = default(string), string actionType = default(string), string targetUserId = default(string), DateTime performedAt = default(DateTime), string engagerUserId = default(string), string targetListingId = default(string), string targetPlatformListingId = default(string))
+        /// <param name="performedAt">performedAt (required).</param>
+        public ListNetworkPoolLogItem(string id = default(string), string platform = default(string), string actionType = default(string), string targetUserId = default(string), string ruleId = default(string), string engagerUserId = default(string), string targetListingId = default(string), string targetPlatformListingId = default(string), DateTime performedAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -70,12 +70,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("targetUserId is a required property for ListNetworkPoolLogItem and cannot be null");
             }
             this.TargetUserId = targetUserId;
-            this.PerformedAt = performedAt;
             // to ensure "engagerUserId" is required (not null)
             if (engagerUserId == null) {
                 throw new ArgumentNullException("engagerUserId is a required property for ListNetworkPoolLogItem and cannot be null");
             }
             this.EngagerUserId = engagerUserId;
+            this.PerformedAt = performedAt;
             this.RuleId = ruleId;
             this.TargetListingId = targetListingId;
             this.TargetPlatformListingId = targetPlatformListingId;
@@ -94,12 +94,6 @@ namespace net.crossly.Model
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets RuleId
-        /// </summary>
-        [DataMember(Name = "ruleId", EmitDefaultValue = true)]
-        public string RuleId { get; set; }
-
-        /// <summary>
         /// Gets or Sets ActionType
         /// </summary>
         [DataMember(Name = "actionType", IsRequired = true, EmitDefaultValue = false)]
@@ -112,10 +106,10 @@ namespace net.crossly.Model
         public string TargetUserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PerformedAt
+        /// Gets or Sets RuleId
         /// </summary>
-        [DataMember(Name = "performedAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime PerformedAt { get; set; }
+        [DataMember(Name = "ruleId", EmitDefaultValue = true)]
+        public string RuleId { get; set; }
 
         /// <summary>
         /// Gets or Sets EngagerUserId
@@ -136,6 +130,12 @@ namespace net.crossly.Model
         public string TargetPlatformListingId { get; set; }
 
         /// <summary>
+        /// Gets or Sets PerformedAt
+        /// </summary>
+        [DataMember(Name = "performedAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime PerformedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,13 +145,13 @@ namespace net.crossly.Model
             sb.Append("class ListNetworkPoolLogItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  RuleId: ").Append(RuleId).Append("\n");
             sb.Append("  ActionType: ").Append(ActionType).Append("\n");
             sb.Append("  TargetUserId: ").Append(TargetUserId).Append("\n");
-            sb.Append("  PerformedAt: ").Append(PerformedAt).Append("\n");
+            sb.Append("  RuleId: ").Append(RuleId).Append("\n");
             sb.Append("  EngagerUserId: ").Append(EngagerUserId).Append("\n");
             sb.Append("  TargetListingId: ").Append(TargetListingId).Append("\n");
             sb.Append("  TargetPlatformListingId: ").Append(TargetPlatformListingId).Append("\n");
+            sb.Append("  PerformedAt: ").Append(PerformedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -198,11 +198,6 @@ namespace net.crossly.Model
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
-                    this.RuleId == input.RuleId ||
-                    (this.RuleId != null &&
-                    this.RuleId.Equals(input.RuleId))
-                ) && 
-                (
                     this.ActionType == input.ActionType ||
                     (this.ActionType != null &&
                     this.ActionType.Equals(input.ActionType))
@@ -213,9 +208,9 @@ namespace net.crossly.Model
                     this.TargetUserId.Equals(input.TargetUserId))
                 ) && 
                 (
-                    this.PerformedAt == input.PerformedAt ||
-                    (this.PerformedAt != null &&
-                    this.PerformedAt.Equals(input.PerformedAt))
+                    this.RuleId == input.RuleId ||
+                    (this.RuleId != null &&
+                    this.RuleId.Equals(input.RuleId))
                 ) && 
                 (
                     this.EngagerUserId == input.EngagerUserId ||
@@ -231,6 +226,11 @@ namespace net.crossly.Model
                     this.TargetPlatformListingId == input.TargetPlatformListingId ||
                     (this.TargetPlatformListingId != null &&
                     this.TargetPlatformListingId.Equals(input.TargetPlatformListingId))
+                ) && 
+                (
+                    this.PerformedAt == input.PerformedAt ||
+                    (this.PerformedAt != null &&
+                    this.PerformedAt.Equals(input.PerformedAt))
                 );
         }
 
@@ -251,10 +251,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.RuleId != null)
-                {
-                    hashCode = (hashCode * 59) + this.RuleId.GetHashCode();
-                }
                 if (this.ActionType != null)
                 {
                     hashCode = (hashCode * 59) + this.ActionType.GetHashCode();
@@ -263,9 +259,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.TargetUserId.GetHashCode();
                 }
-                if (this.PerformedAt != null)
+                if (this.RuleId != null)
                 {
-                    hashCode = (hashCode * 59) + this.PerformedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RuleId.GetHashCode();
                 }
                 if (this.EngagerUserId != null)
                 {
@@ -278,6 +274,10 @@ namespace net.crossly.Model
                 if (this.TargetPlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.TargetPlatformListingId.GetHashCode();
+                }
+                if (this.PerformedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PerformedAt.GetHashCode();
                 }
                 return hashCode;
             }

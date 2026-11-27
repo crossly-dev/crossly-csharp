@@ -53,7 +53,9 @@ namespace net.crossly.buyer.Model
         /// <param name="facts">facts (required).</param>
         /// <param name="reason">reason (required).</param>
         /// <param name="priceCheck">priceCheck.</param>
-        public CreateBuyerAgentSessionTurnResponseOptions(decimal n = default(decimal), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), decimal? salePriceCents = default(decimal?), decimal? compareAtCents = default(decimal?), string thumbnail = default(string), string brand = default(string), string condition = default(string), string size = default(string), string sellerDisplayName = default(string), List<string> facts = default(List<string>), string reason = default(string), CreateBuyerAgentSessionActResponseQuotePriceCheck priceCheck = default(CreateBuyerAgentSessionActResponseQuotePriceCheck))
+        /// <param name="model">The world object it stands as, and the seller&#39;s public shop room (world-picks.ts)..</param>
+        /// <param name="shopSlug">shopSlug.</param>
+        public CreateBuyerAgentSessionTurnResponseOptions(decimal n = default(decimal), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), decimal? salePriceCents = default(decimal?), decimal? compareAtCents = default(decimal?), string thumbnail = default(string), string brand = default(string), string condition = default(string), string size = default(string), string sellerDisplayName = default(string), List<string> facts = default(List<string>), string reason = default(string), CreateBuyerAgentSessionActResponseQuotePriceCheck priceCheck = default(CreateBuyerAgentSessionActResponseQuotePriceCheck), string model = default(string), string shopSlug = default(string))
         {
             this.N = n;
             // to ensure "slug" is required (not null)
@@ -85,6 +87,8 @@ namespace net.crossly.buyer.Model
             this.Size = size;
             this.SellerDisplayName = sellerDisplayName;
             this.PriceCheck = priceCheck;
+            this.Model = model;
+            this.ShopSlug = shopSlug;
         }
 
         /// <summary>
@@ -172,6 +176,19 @@ namespace net.crossly.buyer.Model
         public CreateBuyerAgentSessionActResponseQuotePriceCheck PriceCheck { get; set; }
 
         /// <summary>
+        /// The world object it stands as, and the seller&#39;s public shop room (world-picks.ts).
+        /// </summary>
+        /// <value>The world object it stands as, and the seller&#39;s public shop room (world-picks.ts).</value>
+        [DataMember(Name = "model", EmitDefaultValue = true)]
+        public string Model { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShopSlug
+        /// </summary>
+        [DataMember(Name = "shopSlug", EmitDefaultValue = true)]
+        public string ShopSlug { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,6 +210,8 @@ namespace net.crossly.buyer.Model
             sb.Append("  Facts: ").Append(Facts).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  PriceCheck: ").Append(PriceCheck).Append("\n");
+            sb.Append("  Model: ").Append(Model).Append("\n");
+            sb.Append("  ShopSlug: ").Append(ShopSlug).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -296,6 +315,16 @@ namespace net.crossly.buyer.Model
                     this.PriceCheck == input.PriceCheck ||
                     (this.PriceCheck != null &&
                     this.PriceCheck.Equals(input.PriceCheck))
+                ) && 
+                (
+                    this.Model == input.Model ||
+                    (this.Model != null &&
+                    this.Model.Equals(input.Model))
+                ) && 
+                (
+                    this.ShopSlug == input.ShopSlug ||
+                    (this.ShopSlug != null &&
+                    this.ShopSlug.Equals(input.ShopSlug))
                 );
         }
 
@@ -357,6 +386,14 @@ namespace net.crossly.buyer.Model
                 if (this.PriceCheck != null)
                 {
                     hashCode = (hashCode * 59) + this.PriceCheck.GetHashCode();
+                }
+                if (this.Model != null)
+                {
+                    hashCode = (hashCode * 59) + this.Model.GetHashCode();
+                }
+                if (this.ShopSlug != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShopSlug.GetHashCode();
                 }
                 return hashCode;
             }

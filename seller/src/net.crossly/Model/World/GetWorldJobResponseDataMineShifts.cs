@@ -64,16 +64,16 @@ namespace net.crossly.Model
         public enum RailEnum
         {
             /// <summary>
-            /// Enum Bucks for value: bucks
-            /// </summary>
-            [EnumMember(Value = "bucks")]
-            Bucks = 1,
-
-            /// <summary>
             /// Enum Cbx for value: cbx
             /// </summary>
             [EnumMember(Value = "cbx")]
-            Cbx = 2
+            Cbx = 1,
+
+            /// <summary>
+            /// Enum Bucks for value: bucks
+            /// </summary>
+            [EnumMember(Value = "bucks")]
+            Bucks = 2
 
         }
 
@@ -90,16 +90,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Open for value: open
-            /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 1,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 2,
+            Cancelled = 1,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 2,
 
             /// <summary>
             /// Enum Paid for value: paid

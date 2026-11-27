@@ -41,9 +41,9 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="semver">semver (required).</param>
-        /// <param name="designVersion">designVersion (required).</param>
+        /// <param name="designVersion">designVersion.</param>
         /// <param name="state">state (required).</param>
-        public CreateWorldGamePackageResponseDataVersion(string id = default(string), string semver = default(string), decimal designVersion = default(decimal), string state = default(string))
+        public CreateWorldGamePackageResponseDataVersion(string id = default(string), string semver = default(string), decimal? designVersion = default(decimal?), string state = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -55,12 +55,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("semver is a required property for CreateWorldGamePackageResponseDataVersion and cannot be null");
             }
             this.Semver = semver;
-            this.DesignVersion = designVersion;
             // to ensure "state" is required (not null)
             if (state == null) {
                 throw new ArgumentNullException("state is a required property for CreateWorldGamePackageResponseDataVersion and cannot be null");
             }
             this.State = state;
+            this.DesignVersion = designVersion;
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets DesignVersion
         /// </summary>
-        [DataMember(Name = "designVersion", IsRequired = true, EmitDefaultValue = false)]
-        public decimal DesignVersion { get; set; }
+        [DataMember(Name = "designVersion", EmitDefaultValue = true)]
+        public decimal? DesignVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets State
@@ -146,7 +146,8 @@ namespace net.crossly.Model
                 ) && 
                 (
                     this.DesignVersion == input.DesignVersion ||
-                    this.DesignVersion.Equals(input.DesignVersion)
+                    (this.DesignVersion != null &&
+                    this.DesignVersion.Equals(input.DesignVersion))
                 ) && 
                 (
                     this.State == input.State ||
@@ -172,7 +173,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Semver.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DesignVersion.GetHashCode();
+                if (this.DesignVersion != null)
+                {
+                    hashCode = (hashCode * 59) + this.DesignVersion.GetHashCode();
+                }
                 if (this.State != null)
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();

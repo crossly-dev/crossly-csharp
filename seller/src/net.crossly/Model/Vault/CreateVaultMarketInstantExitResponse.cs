@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Filled for value: filled
-            /// </summary>
-            [EnumMember(Value = "filled")]
-            Filled = 1,
-
-            /// <summary>
             /// Enum Missed for value: missed
             /// </summary>
             [EnumMember(Value = "missed")]
-            Missed = 2
+            Missed = 1,
+
+            /// <summary>
+            /// Enum Filled for value: filled
+            /// </summary>
+            [EnumMember(Value = "filled")]
+            Filled = 2
 
         }
 

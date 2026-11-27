@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Open for value: open
-            /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 1,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 2,
+            Cancelled = 1,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 2,
 
             /// <summary>
             /// Enum Settled for value: settled
@@ -76,16 +76,16 @@ namespace net.crossly.Model
             Free = 1,
 
             /// <summary>
-            /// Enum Sponsored for value: sponsored
-            /// </summary>
-            [EnumMember(Value = "sponsored")]
-            Sponsored = 2,
-
-            /// <summary>
             /// Enum Paid for value: paid
             /// </summary>
             [EnumMember(Value = "paid")]
-            Paid = 3
+            Paid = 2,
+
+            /// <summary>
+            /// Enum Sponsored for value: sponsored
+            /// </summary>
+            [EnumMember(Value = "sponsored")]
+            Sponsored = 3
 
         }
 
@@ -132,16 +132,16 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="ownerUserId">ownerUserId (required).</param>
         /// <param name="endsAt">endsAt (required).</param>
         /// <param name="startsAt">startsAt (required).</param>
         /// <param name="feeCents">feeCents.</param>
-        /// <param name="ownerUserId">ownerUserId (required).</param>
         /// <param name="settledAt">settledAt.</param>
         /// <param name="gamePlace">gamePlace (required).</param>
         /// <param name="gameObject">gameObject (required).</param>
         /// <param name="entryMode">entryMode (required).</param>
         /// <param name="scoreOrder">scoreOrder (required).</param>
-        public ListWorldContestsItem(string id = default(string), DateTime createdAt = default(DateTime), StatusEnum status = default(StatusEnum), DateTime endsAt = default(DateTime), DateTime startsAt = default(DateTime), decimal? feeCents = default(decimal?), string ownerUserId = default(string), DateTime? settledAt = default(DateTime?), string gamePlace = default(string), string gameObject = default(string), EntryModeEnum entryMode = default(EntryModeEnum), ScoreOrderEnum scoreOrder = default(ScoreOrderEnum))
+        public ListWorldContestsItem(string id = default(string), DateTime createdAt = default(DateTime), StatusEnum status = default(StatusEnum), string ownerUserId = default(string), DateTime endsAt = default(DateTime), DateTime startsAt = default(DateTime), decimal? feeCents = default(decimal?), DateTime? settledAt = default(DateTime?), string gamePlace = default(string), string gameObject = default(string), EntryModeEnum entryMode = default(EntryModeEnum), ScoreOrderEnum scoreOrder = default(ScoreOrderEnum))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -150,13 +150,13 @@ namespace net.crossly.Model
             this.Id = id;
             this.CreatedAt = createdAt;
             this.Status = status;
-            this.EndsAt = endsAt;
-            this.StartsAt = startsAt;
             // to ensure "ownerUserId" is required (not null)
             if (ownerUserId == null) {
                 throw new ArgumentNullException("ownerUserId is a required property for ListWorldContestsItem and cannot be null");
             }
             this.OwnerUserId = ownerUserId;
+            this.EndsAt = endsAt;
+            this.StartsAt = startsAt;
             // to ensure "gamePlace" is required (not null)
             if (gamePlace == null) {
                 throw new ArgumentNullException("gamePlace is a required property for ListWorldContestsItem and cannot be null");
@@ -186,6 +186,12 @@ namespace net.crossly.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets OwnerUserId
+        /// </summary>
+        [DataMember(Name = "ownerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string OwnerUserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets EndsAt
         /// </summary>
         [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
@@ -202,12 +208,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "feeCents", EmitDefaultValue = true)]
         public decimal? FeeCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OwnerUserId
-        /// </summary>
-        [DataMember(Name = "ownerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string OwnerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets SettledAt
@@ -238,10 +238,10 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
             sb.Append("  FeeCents: ").Append(FeeCents).Append("\n");
-            sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
             sb.Append("  SettledAt: ").Append(SettledAt).Append("\n");
             sb.Append("  GamePlace: ").Append(GamePlace).Append("\n");
             sb.Append("  GameObject: ").Append(GameObject).Append("\n");
@@ -297,6 +297,11 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.OwnerUserId == input.OwnerUserId ||
+                    (this.OwnerUserId != null &&
+                    this.OwnerUserId.Equals(input.OwnerUserId))
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
@@ -310,11 +315,6 @@ namespace net.crossly.Model
                     this.FeeCents == input.FeeCents ||
                     (this.FeeCents != null &&
                     this.FeeCents.Equals(input.FeeCents))
-                ) && 
-                (
-                    this.OwnerUserId == input.OwnerUserId ||
-                    (this.OwnerUserId != null &&
-                    this.OwnerUserId.Equals(input.OwnerUserId))
                 ) && 
                 (
                     this.SettledAt == input.SettledAt ||
@@ -359,6 +359,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                if (this.OwnerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OwnerUserId.GetHashCode();
+                }
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
@@ -370,10 +374,6 @@ namespace net.crossly.Model
                 if (this.FeeCents != null)
                 {
                     hashCode = (hashCode * 59) + this.FeeCents.GetHashCode();
-                }
-                if (this.OwnerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.OwnerUserId.GetHashCode();
                 }
                 if (this.SettledAt != null)
                 {

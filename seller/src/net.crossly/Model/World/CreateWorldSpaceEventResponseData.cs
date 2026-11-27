@@ -41,17 +41,17 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="cancelledAt">cancelledAt.</param>
         /// <param name="title">title (required).</param>
         /// <param name="endsAt">endsAt (required).</param>
+        /// <param name="cancelledAt">cancelledAt.</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="startsAt">startsAt (required).</param>
-        /// <param name="remindedAt">remindedAt.</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="about">about.</param>
         /// <param name="spaceId">spaceId (required).</param>
+        /// <param name="remindedAt">remindedAt.</param>
         /// <param name="clubOnly">clubOnly (required).</param>
-        public CreateWorldSpaceEventResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime? cancelledAt = default(DateTime?), string title = default(string), DateTime endsAt = default(DateTime), string kind = default(string), DateTime startsAt = default(DateTime), DateTime? remindedAt = default(DateTime?), string createdBy = default(string), string about = default(string), string spaceId = default(string), bool clubOnly = default(bool))
+        public CreateWorldSpaceEventResponseData(string id = default(string), DateTime createdAt = default(DateTime), string title = default(string), DateTime endsAt = default(DateTime), DateTime? cancelledAt = default(DateTime?), string kind = default(string), DateTime startsAt = default(DateTime), string createdBy = default(string), string about = default(string), string spaceId = default(string), DateTime? remindedAt = default(DateTime?), bool clubOnly = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -78,9 +78,9 @@ namespace net.crossly.Model
             this.SpaceId = spaceId;
             this.ClubOnly = clubOnly;
             this.CancelledAt = cancelledAt;
-            this.RemindedAt = remindedAt;
             this.CreatedBy = createdBy;
             this.About = about;
+            this.RemindedAt = remindedAt;
         }
 
         /// <summary>
@@ -96,12 +96,6 @@ namespace net.crossly.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets CancelledAt
-        /// </summary>
-        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
-        public DateTime? CancelledAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
@@ -114,6 +108,12 @@ namespace net.crossly.Model
         public DateTime EndsAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets CancelledAt
+        /// </summary>
+        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
+        public DateTime? CancelledAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
@@ -124,12 +124,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "startsAt", IsRequired = true, EmitDefaultValue = false)]
         public DateTime StartsAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RemindedAt
-        /// </summary>
-        [DataMember(Name = "remindedAt", EmitDefaultValue = true)]
-        public DateTime? RemindedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
@@ -150,6 +144,12 @@ namespace net.crossly.Model
         public string SpaceId { get; set; }
 
         /// <summary>
+        /// Gets or Sets RemindedAt
+        /// </summary>
+        [DataMember(Name = "remindedAt", EmitDefaultValue = true)]
+        public DateTime? RemindedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets ClubOnly
         /// </summary>
         [DataMember(Name = "clubOnly", IsRequired = true, EmitDefaultValue = true)]
@@ -165,15 +165,15 @@ namespace net.crossly.Model
             sb.Append("class CreateWorldSpaceEventResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
-            sb.Append("  RemindedAt: ").Append(RemindedAt).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  About: ").Append(About).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
+            sb.Append("  RemindedAt: ").Append(RemindedAt).Append("\n");
             sb.Append("  ClubOnly: ").Append(ClubOnly).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -221,11 +221,6 @@ namespace net.crossly.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
-                    this.CancelledAt == input.CancelledAt ||
-                    (this.CancelledAt != null &&
-                    this.CancelledAt.Equals(input.CancelledAt))
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -236,6 +231,11 @@ namespace net.crossly.Model
                     this.EndsAt.Equals(input.EndsAt))
                 ) && 
                 (
+                    this.CancelledAt == input.CancelledAt ||
+                    (this.CancelledAt != null &&
+                    this.CancelledAt.Equals(input.CancelledAt))
+                ) && 
+                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
@@ -244,11 +244,6 @@ namespace net.crossly.Model
                     this.StartsAt == input.StartsAt ||
                     (this.StartsAt != null &&
                     this.StartsAt.Equals(input.StartsAt))
-                ) && 
-                (
-                    this.RemindedAt == input.RemindedAt ||
-                    (this.RemindedAt != null &&
-                    this.RemindedAt.Equals(input.RemindedAt))
                 ) && 
                 (
                     this.CreatedBy == input.CreatedBy ||
@@ -264,6 +259,11 @@ namespace net.crossly.Model
                     this.SpaceId == input.SpaceId ||
                     (this.SpaceId != null &&
                     this.SpaceId.Equals(input.SpaceId))
+                ) && 
+                (
+                    this.RemindedAt == input.RemindedAt ||
+                    (this.RemindedAt != null &&
+                    this.RemindedAt.Equals(input.RemindedAt))
                 ) && 
                 (
                     this.ClubOnly == input.ClubOnly ||
@@ -288,10 +288,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                if (this.CancelledAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
-                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -300,6 +296,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
+                if (this.CancelledAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
+                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
@@ -307,10 +307,6 @@ namespace net.crossly.Model
                 if (this.StartsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartsAt.GetHashCode();
-                }
-                if (this.RemindedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RemindedAt.GetHashCode();
                 }
                 if (this.CreatedBy != null)
                 {
@@ -323,6 +319,10 @@ namespace net.crossly.Model
                 if (this.SpaceId != null)
                 {
                     hashCode = (hashCode * 59) + this.SpaceId.GetHashCode();
+                }
+                if (this.RemindedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.RemindedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ClubOnly.GetHashCode();
                 return hashCode;

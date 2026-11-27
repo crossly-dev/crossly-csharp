@@ -39,17 +39,16 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerPackOpeningsItemProof" /> class.
         /// </summary>
-        /// <param name="nonce">nonce (required).</param>
-        /// <param name="tierId">tierId.</param>
-        /// <param name="serverSeed">serverSeed.</param>
         /// <param name="serverSeedHash">serverSeedHash (required).</param>
+        /// <param name="serverSeed">serverSeed.</param>
         /// <param name="clientSeed">clientSeed (required).</param>
-        /// <param name="poolItemId">poolItemId.</param>
+        /// <param name="nonce">nonce (required).</param>
         /// <param name="tierItemIds">tierItemIds.</param>
         /// <param name="tierWeights">tierWeights.</param>
-        public ListBuyerPackOpeningsItemProof(decimal nonce = default(decimal), string tierId = default(string), string serverSeed = default(string), string serverSeedHash = default(string), string clientSeed = default(string), string poolItemId = default(string), List<string> tierItemIds = default(List<string>), List<ListBuyerPackOpeningsItemProofTierWeights> tierWeights = default(List<ListBuyerPackOpeningsItemProofTierWeights>))
+        /// <param name="tierId">tierId.</param>
+        /// <param name="poolItemId">poolItemId.</param>
+        public ListBuyerPackOpeningsItemProof(string serverSeedHash = default(string), string serverSeed = default(string), string clientSeed = default(string), decimal nonce = default(decimal), List<string> tierItemIds = default(List<string>), List<ListBuyerPackOpeningsItemProofTierWeights> tierWeights = default(List<ListBuyerPackOpeningsItemProofTierWeights>), string tierId = default(string), string poolItemId = default(string))
         {
-            this.Nonce = nonce;
             // to ensure "serverSeedHash" is required (not null)
             if (serverSeedHash == null) {
                 throw new ArgumentNullException("serverSeedHash is a required property for ListBuyerPackOpeningsItemProof and cannot be null");
@@ -60,30 +59,13 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("clientSeed is a required property for ListBuyerPackOpeningsItemProof and cannot be null");
             }
             this.ClientSeed = clientSeed;
-            this.TierId = tierId;
+            this.Nonce = nonce;
             this.ServerSeed = serverSeed;
-            this.PoolItemId = poolItemId;
             this.TierItemIds = tierItemIds;
             this.TierWeights = tierWeights;
+            this.TierId = tierId;
+            this.PoolItemId = poolItemId;
         }
-
-        /// <summary>
-        /// Gets or Sets Nonce
-        /// </summary>
-        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Nonce { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TierId
-        /// </summary>
-        [DataMember(Name = "tierId", EmitDefaultValue = true)]
-        public string TierId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerSeed
-        /// </summary>
-        [DataMember(Name = "serverSeed", EmitDefaultValue = true)]
-        public string ServerSeed { get; set; }
 
         /// <summary>
         /// Gets or Sets ServerSeedHash
@@ -92,16 +74,22 @@ namespace net.crossly.buyer.Model
         public string ServerSeedHash { get; set; }
 
         /// <summary>
+        /// Gets or Sets ServerSeed
+        /// </summary>
+        [DataMember(Name = "serverSeed", EmitDefaultValue = true)]
+        public string ServerSeed { get; set; }
+
+        /// <summary>
         /// Gets or Sets ClientSeed
         /// </summary>
         [DataMember(Name = "clientSeed", IsRequired = true, EmitDefaultValue = false)]
         public string ClientSeed { get; set; }
 
         /// <summary>
-        /// Gets or Sets PoolItemId
+        /// Gets or Sets Nonce
         /// </summary>
-        [DataMember(Name = "poolItemId", EmitDefaultValue = true)]
-        public string PoolItemId { get; set; }
+        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Nonce { get; set; }
 
         /// <summary>
         /// Gets or Sets TierItemIds
@@ -116,6 +104,18 @@ namespace net.crossly.buyer.Model
         public List<ListBuyerPackOpeningsItemProofTierWeights> TierWeights { get; set; }
 
         /// <summary>
+        /// Gets or Sets TierId
+        /// </summary>
+        [DataMember(Name = "tierId", EmitDefaultValue = true)]
+        public string TierId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PoolItemId
+        /// </summary>
+        [DataMember(Name = "poolItemId", EmitDefaultValue = true)]
+        public string PoolItemId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -123,14 +123,14 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerPackOpeningsItemProof {\n");
-            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
-            sb.Append("  TierId: ").Append(TierId).Append("\n");
-            sb.Append("  ServerSeed: ").Append(ServerSeed).Append("\n");
             sb.Append("  ServerSeedHash: ").Append(ServerSeedHash).Append("\n");
+            sb.Append("  ServerSeed: ").Append(ServerSeed).Append("\n");
             sb.Append("  ClientSeed: ").Append(ClientSeed).Append("\n");
-            sb.Append("  PoolItemId: ").Append(PoolItemId).Append("\n");
+            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
             sb.Append("  TierItemIds: ").Append(TierItemIds).Append("\n");
             sb.Append("  TierWeights: ").Append(TierWeights).Append("\n");
+            sb.Append("  TierId: ").Append(TierId).Append("\n");
+            sb.Append("  PoolItemId: ").Append(PoolItemId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,13 +167,9 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Nonce == input.Nonce ||
-                    this.Nonce.Equals(input.Nonce)
-                ) && 
-                (
-                    this.TierId == input.TierId ||
-                    (this.TierId != null &&
-                    this.TierId.Equals(input.TierId))
+                    this.ServerSeedHash == input.ServerSeedHash ||
+                    (this.ServerSeedHash != null &&
+                    this.ServerSeedHash.Equals(input.ServerSeedHash))
                 ) && 
                 (
                     this.ServerSeed == input.ServerSeed ||
@@ -181,19 +177,13 @@ namespace net.crossly.buyer.Model
                     this.ServerSeed.Equals(input.ServerSeed))
                 ) && 
                 (
-                    this.ServerSeedHash == input.ServerSeedHash ||
-                    (this.ServerSeedHash != null &&
-                    this.ServerSeedHash.Equals(input.ServerSeedHash))
-                ) && 
-                (
                     this.ClientSeed == input.ClientSeed ||
                     (this.ClientSeed != null &&
                     this.ClientSeed.Equals(input.ClientSeed))
                 ) && 
                 (
-                    this.PoolItemId == input.PoolItemId ||
-                    (this.PoolItemId != null &&
-                    this.PoolItemId.Equals(input.PoolItemId))
+                    this.Nonce == input.Nonce ||
+                    this.Nonce.Equals(input.Nonce)
                 ) && 
                 (
                     this.TierItemIds == input.TierItemIds ||
@@ -206,6 +196,16 @@ namespace net.crossly.buyer.Model
                     this.TierWeights != null &&
                     input.TierWeights != null &&
                     this.TierWeights.SequenceEqual(input.TierWeights)
+                ) && 
+                (
+                    this.TierId == input.TierId ||
+                    (this.TierId != null &&
+                    this.TierId.Equals(input.TierId))
+                ) && 
+                (
+                    this.PoolItemId == input.PoolItemId ||
+                    (this.PoolItemId != null &&
+                    this.PoolItemId.Equals(input.PoolItemId))
                 );
         }
 
@@ -218,27 +218,19 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
-                if (this.TierId != null)
+                if (this.ServerSeedHash != null)
                 {
-                    hashCode = (hashCode * 59) + this.TierId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ServerSeedHash.GetHashCode();
                 }
                 if (this.ServerSeed != null)
                 {
                     hashCode = (hashCode * 59) + this.ServerSeed.GetHashCode();
                 }
-                if (this.ServerSeedHash != null)
-                {
-                    hashCode = (hashCode * 59) + this.ServerSeedHash.GetHashCode();
-                }
                 if (this.ClientSeed != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientSeed.GetHashCode();
                 }
-                if (this.PoolItemId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PoolItemId.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
                 if (this.TierItemIds != null)
                 {
                     hashCode = (hashCode * 59) + this.TierItemIds.GetHashCode();
@@ -246,6 +238,14 @@ namespace net.crossly.buyer.Model
                 if (this.TierWeights != null)
                 {
                     hashCode = (hashCode * 59) + this.TierWeights.GetHashCode();
+                }
+                if (this.TierId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TierId.GetHashCode();
+                }
+                if (this.PoolItemId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PoolItemId.GetHashCode();
                 }
                 return hashCode;
             }

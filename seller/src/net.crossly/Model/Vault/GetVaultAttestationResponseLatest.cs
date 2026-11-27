@@ -34,49 +34,49 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultAttestationResponseLatest" /> class.
         /// </summary>
+        /// <param name="other">other.</param>
         /// <param name="physicalCount">physicalCount.</param>
         /// <param name="insuranceCertificate">insuranceCertificate.</param>
         /// <param name="soc1Type2">soc1Type2.</param>
         /// <param name="soc2">soc2.</param>
-        /// <param name="other">other.</param>
-        public GetVaultAttestationResponseLatest(GetVaultAttestationResponseLatestPhysicalCount physicalCount = default(GetVaultAttestationResponseLatestPhysicalCount), GetVaultAttestationResponseLatestPhysicalCount insuranceCertificate = default(GetVaultAttestationResponseLatestPhysicalCount), GetVaultAttestationResponseLatestPhysicalCount soc1Type2 = default(GetVaultAttestationResponseLatestPhysicalCount), GetVaultAttestationResponseLatestPhysicalCount soc2 = default(GetVaultAttestationResponseLatestPhysicalCount), GetVaultAttestationResponseLatestPhysicalCount other = default(GetVaultAttestationResponseLatestPhysicalCount))
+        public GetVaultAttestationResponseLatest(GetVaultAttestationResponseLatestOther other = default(GetVaultAttestationResponseLatestOther), GetVaultAttestationResponseLatestOther physicalCount = default(GetVaultAttestationResponseLatestOther), GetVaultAttestationResponseLatestOther insuranceCertificate = default(GetVaultAttestationResponseLatestOther), GetVaultAttestationResponseLatestOther soc1Type2 = default(GetVaultAttestationResponseLatestOther), GetVaultAttestationResponseLatestOther soc2 = default(GetVaultAttestationResponseLatestOther))
         {
+            this.Other = other;
             this.PhysicalCount = physicalCount;
             this.InsuranceCertificate = insuranceCertificate;
             this.Soc1Type2 = soc1Type2;
             this.Soc2 = soc2;
-            this.Other = other;
         }
-
-        /// <summary>
-        /// Gets or Sets PhysicalCount
-        /// </summary>
-        [DataMember(Name = "physical_count", EmitDefaultValue = true)]
-        public GetVaultAttestationResponseLatestPhysicalCount PhysicalCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InsuranceCertificate
-        /// </summary>
-        [DataMember(Name = "insurance_certificate", EmitDefaultValue = true)]
-        public GetVaultAttestationResponseLatestPhysicalCount InsuranceCertificate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Soc1Type2
-        /// </summary>
-        [DataMember(Name = "soc1_type2", EmitDefaultValue = true)]
-        public GetVaultAttestationResponseLatestPhysicalCount Soc1Type2 { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Soc2
-        /// </summary>
-        [DataMember(Name = "soc2", EmitDefaultValue = true)]
-        public GetVaultAttestationResponseLatestPhysicalCount Soc2 { get; set; }
 
         /// <summary>
         /// Gets or Sets Other
         /// </summary>
         [DataMember(Name = "other", EmitDefaultValue = true)]
-        public GetVaultAttestationResponseLatestPhysicalCount Other { get; set; }
+        public GetVaultAttestationResponseLatestOther Other { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PhysicalCount
+        /// </summary>
+        [DataMember(Name = "physical_count", EmitDefaultValue = true)]
+        public GetVaultAttestationResponseLatestOther PhysicalCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InsuranceCertificate
+        /// </summary>
+        [DataMember(Name = "insurance_certificate", EmitDefaultValue = true)]
+        public GetVaultAttestationResponseLatestOther InsuranceCertificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Soc1Type2
+        /// </summary>
+        [DataMember(Name = "soc1_type2", EmitDefaultValue = true)]
+        public GetVaultAttestationResponseLatestOther Soc1Type2 { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Soc2
+        /// </summary>
+        [DataMember(Name = "soc2", EmitDefaultValue = true)]
+        public GetVaultAttestationResponseLatestOther Soc2 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,11 +86,11 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultAttestationResponseLatest {\n");
+            sb.Append("  Other: ").Append(Other).Append("\n");
             sb.Append("  PhysicalCount: ").Append(PhysicalCount).Append("\n");
             sb.Append("  InsuranceCertificate: ").Append(InsuranceCertificate).Append("\n");
             sb.Append("  Soc1Type2: ").Append(Soc1Type2).Append("\n");
             sb.Append("  Soc2: ").Append(Soc2).Append("\n");
-            sb.Append("  Other: ").Append(Other).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,6 +127,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Other == input.Other ||
+                    (this.Other != null &&
+                    this.Other.Equals(input.Other))
+                ) && 
+                (
                     this.PhysicalCount == input.PhysicalCount ||
                     (this.PhysicalCount != null &&
                     this.PhysicalCount.Equals(input.PhysicalCount))
@@ -145,11 +150,6 @@ namespace net.crossly.Model
                     this.Soc2 == input.Soc2 ||
                     (this.Soc2 != null &&
                     this.Soc2.Equals(input.Soc2))
-                ) && 
-                (
-                    this.Other == input.Other ||
-                    (this.Other != null &&
-                    this.Other.Equals(input.Other))
                 );
         }
 
@@ -162,6 +162,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Other != null)
+                {
+                    hashCode = (hashCode * 59) + this.Other.GetHashCode();
+                }
                 if (this.PhysicalCount != null)
                 {
                     hashCode = (hashCode * 59) + this.PhysicalCount.GetHashCode();
@@ -177,10 +181,6 @@ namespace net.crossly.Model
                 if (this.Soc2 != null)
                 {
                     hashCode = (hashCode * 59) + this.Soc2.GetHashCode();
-                }
-                if (this.Other != null)
-                {
-                    hashCode = (hashCode * 59) + this.Other.GetHashCode();
                 }
                 return hashCode;
             }

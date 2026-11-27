@@ -58,10 +58,11 @@ namespace net.crossly.buyer.Model
         /// <param name="aiMedia">The listing&#39;s photos/video include AI-generated media (or the seller declared it) — the tile&#39;s AI tag. (required).</param>
         /// <param name="aiMediaDetected">The AI tag is there only because Crossly&#39;s detector flagged an image (0507). (required).</param>
         /// <param name="shipsFromCountry">ISO alpha-2 the seller ships from (storefront ship-from, default US) —  the tile&#39;s \&quot;Ships from {country}\&quot; chip when it isn&#39;t the buyer&#39;s. (required).</param>
+        /// <param name="hasPassport">The item has an active Crossly Passport (the tile&#39;s \&quot;Crossly Passport\&quot; chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out..</param>
         /// <param name="soldAt">ISO timestamp of the sale..</param>
         /// <param name="soldPriceCents">Per-unit item price the buyer paid. Also in &#x60;priceCents&#x60;, so a plain  product tile shows the sold price..</param>
         /// <param name="soldQuantity">Units in this sale..</param>
-        public ListBuyerCatalogBrowseItem(string slug = default(string), string title = default(string), decimal priceCents = default(decimal), decimal? compareAtCents = default(decimal?), string thumbnail = default(string), string sellerDisplayName = default(string), string sellerAvatarUrl = default(string), string sellerHandle = default(string), string brand = default(string), string condition = default(string), bool promoted = default(bool), decimal viewCount = default(decimal), decimal watcherCount = default(decimal), decimal soldCount = default(decimal), decimal? salePriceCents = default(decimal?), string saleEndsAt = default(string), bool aiMedia = default(bool), bool aiMediaDetected = default(bool), string shipsFromCountry = default(string), string soldAt = default(string), decimal? soldPriceCents = default(decimal?), decimal? soldQuantity = default(decimal?))
+        public ListBuyerCatalogBrowseItem(string slug = default(string), string title = default(string), decimal priceCents = default(decimal), decimal? compareAtCents = default(decimal?), string thumbnail = default(string), string sellerDisplayName = default(string), string sellerAvatarUrl = default(string), string sellerHandle = default(string), string brand = default(string), string condition = default(string), bool promoted = default(bool), decimal viewCount = default(decimal), decimal watcherCount = default(decimal), decimal soldCount = default(decimal), decimal? salePriceCents = default(decimal?), string saleEndsAt = default(string), bool aiMedia = default(bool), bool aiMediaDetected = default(bool), string shipsFromCountry = default(string), bool? hasPassport = default(bool?), string soldAt = default(string), decimal? soldPriceCents = default(decimal?), decimal? soldQuantity = default(decimal?))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -94,6 +95,7 @@ namespace net.crossly.buyer.Model
             this.Condition = condition;
             this.SalePriceCents = salePriceCents;
             this.SaleEndsAt = saleEndsAt;
+            this.HasPassport = hasPassport;
             this.SoldAt = soldAt;
             this.SoldPriceCents = soldPriceCents;
             this.SoldQuantity = soldQuantity;
@@ -222,6 +224,13 @@ namespace net.crossly.buyer.Model
         public string ShipsFromCountry { get; set; }
 
         /// <summary>
+        /// The item has an active Crossly Passport (the tile&#39;s \&quot;Crossly Passport\&quot; chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.
+        /// </summary>
+        /// <value>The item has an active Crossly Passport (the tile&#39;s \&quot;Crossly Passport\&quot; chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.</value>
+        [DataMember(Name = "hasPassport", EmitDefaultValue = true)]
+        public bool? HasPassport { get; set; }
+
+        /// <summary>
         /// ISO timestamp of the sale.
         /// </summary>
         /// <value>ISO timestamp of the sale.</value>
@@ -269,6 +278,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  AiMedia: ").Append(AiMedia).Append("\n");
             sb.Append("  AiMediaDetected: ").Append(AiMediaDetected).Append("\n");
             sb.Append("  ShipsFromCountry: ").Append(ShipsFromCountry).Append("\n");
+            sb.Append("  HasPassport: ").Append(HasPassport).Append("\n");
             sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
             sb.Append("  SoldPriceCents: ").Append(SoldPriceCents).Append("\n");
             sb.Append("  SoldQuantity: ").Append(SoldQuantity).Append("\n");
@@ -396,6 +406,11 @@ namespace net.crossly.buyer.Model
                     this.ShipsFromCountry.Equals(input.ShipsFromCountry))
                 ) && 
                 (
+                    this.HasPassport == input.HasPassport ||
+                    (this.HasPassport != null &&
+                    this.HasPassport.Equals(input.HasPassport))
+                ) && 
+                (
                     this.SoldAt == input.SoldAt ||
                     (this.SoldAt != null &&
                     this.SoldAt.Equals(input.SoldAt))
@@ -475,6 +490,10 @@ namespace net.crossly.buyer.Model
                 if (this.ShipsFromCountry != null)
                 {
                     hashCode = (hashCode * 59) + this.ShipsFromCountry.GetHashCode();
+                }
+                if (this.HasPassport != null)
+                {
+                    hashCode = (hashCode * 59) + this.HasPassport.GetHashCode();
                 }
                 if (this.SoldAt != null)
                 {

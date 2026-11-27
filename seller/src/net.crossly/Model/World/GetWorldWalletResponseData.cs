@@ -40,9 +40,21 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetWorldWalletResponseData" /> class.
         /// </summary>
         /// <param name="bucksCents">bucksCents (required).</param>
-        public GetWorldWalletResponseData(decimal bucksCents = default(decimal))
+        /// <param name="cbx">cbx (required).</param>
+        /// <param name="cosm">cosm (required).</param>
+        public GetWorldWalletResponseData(decimal bucksCents = default(decimal), GetWorldWalletResponseDataCbx cbx = default(GetWorldWalletResponseDataCbx), GetWorldWalletResponseDataCosm cosm = default(GetWorldWalletResponseDataCosm))
         {
             this.BucksCents = bucksCents;
+            // to ensure "cbx" is required (not null)
+            if (cbx == null) {
+                throw new ArgumentNullException("cbx is a required property for GetWorldWalletResponseData and cannot be null");
+            }
+            this.Cbx = cbx;
+            // to ensure "cosm" is required (not null)
+            if (cosm == null) {
+                throw new ArgumentNullException("cosm is a required property for GetWorldWalletResponseData and cannot be null");
+            }
+            this.Cosm = cosm;
         }
 
         /// <summary>
@@ -50,6 +62,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bucksCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal BucksCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cbx
+        /// </summary>
+        [DataMember(Name = "cbx", IsRequired = true, EmitDefaultValue = false)]
+        public GetWorldWalletResponseDataCbx Cbx { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cosm
+        /// </summary>
+        [DataMember(Name = "cosm", IsRequired = true, EmitDefaultValue = false)]
+        public GetWorldWalletResponseDataCosm Cosm { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,6 +84,8 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetWorldWalletResponseData {\n");
             sb.Append("  BucksCents: ").Append(BucksCents).Append("\n");
+            sb.Append("  Cbx: ").Append(Cbx).Append("\n");
+            sb.Append("  Cosm: ").Append(Cosm).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,6 +124,16 @@ namespace net.crossly.Model
                 (
                     this.BucksCents == input.BucksCents ||
                     this.BucksCents.Equals(input.BucksCents)
+                ) && 
+                (
+                    this.Cbx == input.Cbx ||
+                    (this.Cbx != null &&
+                    this.Cbx.Equals(input.Cbx))
+                ) && 
+                (
+                    this.Cosm == input.Cosm ||
+                    (this.Cosm != null &&
+                    this.Cosm.Equals(input.Cosm))
                 );
         }
 
@@ -111,6 +147,14 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.BucksCents.GetHashCode();
+                if (this.Cbx != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cbx.GetHashCode();
+                }
+                if (this.Cosm != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cosm.GetHashCode();
+                }
                 return hashCode;
             }
         }

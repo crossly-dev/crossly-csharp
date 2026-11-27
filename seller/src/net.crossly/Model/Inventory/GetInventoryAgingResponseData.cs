@@ -32,6 +32,38 @@ namespace net.crossly.Model
     public partial class GetInventoryAgingResponseData : IEquatable<GetInventoryAgingResponseData>, IValidatableObject
     {
         /// <summary>
+        /// Defines SizeBy
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SizeByEnum
+        {
+            /// <summary>
+            /// Enum valueOption for value: value
+            /// </summary>
+            [EnumMember(Value = "value")]
+            valueOption = 1,
+
+            /// <summary>
+            /// Enum cost for value: cost
+            /// </summary>
+            [EnumMember(Value = "cost")]
+            cost = 2,
+
+            /// <summary>
+            /// Enum units for value: units
+            /// </summary>
+            [EnumMember(Value = "units")]
+            units = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets SizeBy
+        /// </summary>
+        [DataMember(Name = "sizeBy", IsRequired = true, EmitDefaultValue = false)]
+        public SizeByEnum SizeBy { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetInventoryAgingResponseData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,10 +73,18 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="buckets">buckets (required).</param>
         /// <param name="worst">worst (required).</param>
-        /// <param name="stuckCapitalCents">stuckCapitalCents (required).</param>
+        /// <param name="stuckCapitalCents">Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \&quot;older than three months\&quot;; that is over90CostCents. (required).</param>
+        /// <param name="attentionCostCents">attentionCostCents (required).</param>
+        /// <param name="over90CostCents">over90CostCents (required).</param>
+        /// <param name="over90ListedValueCents">over90ListedValueCents (required).</param>
         /// <param name="totalItems">totalItems (required).</param>
         /// <param name="totalUnits">totalUnits (required).</param>
-        public GetInventoryAgingResponseData(List<GetInventoryAgingResponseDataBuckets> buckets = default(List<GetInventoryAgingResponseDataBuckets>), List<GetInventoryAgingResponseDataWorst> worst = default(List<GetInventoryAgingResponseDataWorst>), decimal stuckCapitalCents = default(decimal), decimal totalItems = default(decimal), decimal totalUnits = default(decimal))
+        /// <param name="costKnownItems">costKnownItems (required).</param>
+        /// <param name="costUnknownItems">costUnknownItems (required).</param>
+        /// <param name="listedValueCents">listedValueCents (required).</param>
+        /// <param name="marketValueCents">marketValueCents.</param>
+        /// <param name="sizeBy">sizeBy (required).</param>
+        public GetInventoryAgingResponseData(List<GetInventoryAgingResponseDataBuckets> buckets = default(List<GetInventoryAgingResponseDataBuckets>), List<GetAnalyticInventoryResponseDataWorst> worst = default(List<GetAnalyticInventoryResponseDataWorst>), decimal stuckCapitalCents = default(decimal), decimal attentionCostCents = default(decimal), decimal over90CostCents = default(decimal), decimal over90ListedValueCents = default(decimal), decimal totalItems = default(decimal), decimal totalUnits = default(decimal), decimal costKnownItems = default(decimal), decimal costUnknownItems = default(decimal), decimal listedValueCents = default(decimal), decimal? marketValueCents = default(decimal?), SizeByEnum sizeBy = default(SizeByEnum))
         {
             // to ensure "buckets" is required (not null)
             if (buckets == null) {
@@ -57,8 +97,16 @@ namespace net.crossly.Model
             }
             this.Worst = worst;
             this.StuckCapitalCents = stuckCapitalCents;
+            this.AttentionCostCents = attentionCostCents;
+            this.Over90CostCents = over90CostCents;
+            this.Over90ListedValueCents = over90ListedValueCents;
             this.TotalItems = totalItems;
             this.TotalUnits = totalUnits;
+            this.CostKnownItems = costKnownItems;
+            this.CostUnknownItems = costUnknownItems;
+            this.ListedValueCents = listedValueCents;
+            this.SizeBy = sizeBy;
+            this.MarketValueCents = marketValueCents;
         }
 
         /// <summary>
@@ -71,13 +119,32 @@ namespace net.crossly.Model
         /// Gets or Sets Worst
         /// </summary>
         [DataMember(Name = "worst", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetInventoryAgingResponseDataWorst> Worst { get; set; }
+        public List<GetAnalyticInventoryResponseDataWorst> Worst { get; set; }
 
         /// <summary>
-        /// Gets or Sets StuckCapitalCents
+        /// Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \&quot;older than three months\&quot;; that is over90CostCents.
         /// </summary>
+        /// <value>Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \&quot;older than three months\&quot;; that is over90CostCents.</value>
         [DataMember(Name = "stuckCapitalCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal StuckCapitalCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AttentionCostCents
+        /// </summary>
+        [DataMember(Name = "attentionCostCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal AttentionCostCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Over90CostCents
+        /// </summary>
+        [DataMember(Name = "over90CostCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Over90CostCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Over90ListedValueCents
+        /// </summary>
+        [DataMember(Name = "over90ListedValueCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Over90ListedValueCents { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalItems
@@ -92,6 +159,30 @@ namespace net.crossly.Model
         public decimal TotalUnits { get; set; }
 
         /// <summary>
+        /// Gets or Sets CostKnownItems
+        /// </summary>
+        [DataMember(Name = "costKnownItems", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CostKnownItems { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CostUnknownItems
+        /// </summary>
+        [DataMember(Name = "costUnknownItems", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CostUnknownItems { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListedValueCents
+        /// </summary>
+        [DataMember(Name = "listedValueCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ListedValueCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MarketValueCents
+        /// </summary>
+        [DataMember(Name = "marketValueCents", EmitDefaultValue = true)]
+        public decimal? MarketValueCents { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,8 +193,16 @@ namespace net.crossly.Model
             sb.Append("  Buckets: ").Append(Buckets).Append("\n");
             sb.Append("  Worst: ").Append(Worst).Append("\n");
             sb.Append("  StuckCapitalCents: ").Append(StuckCapitalCents).Append("\n");
+            sb.Append("  AttentionCostCents: ").Append(AttentionCostCents).Append("\n");
+            sb.Append("  Over90CostCents: ").Append(Over90CostCents).Append("\n");
+            sb.Append("  Over90ListedValueCents: ").Append(Over90ListedValueCents).Append("\n");
             sb.Append("  TotalItems: ").Append(TotalItems).Append("\n");
             sb.Append("  TotalUnits: ").Append(TotalUnits).Append("\n");
+            sb.Append("  CostKnownItems: ").Append(CostKnownItems).Append("\n");
+            sb.Append("  CostUnknownItems: ").Append(CostUnknownItems).Append("\n");
+            sb.Append("  ListedValueCents: ").Append(ListedValueCents).Append("\n");
+            sb.Append("  MarketValueCents: ").Append(MarketValueCents).Append("\n");
+            sb.Append("  SizeBy: ").Append(SizeBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -156,12 +255,45 @@ namespace net.crossly.Model
                     this.StuckCapitalCents.Equals(input.StuckCapitalCents)
                 ) && 
                 (
+                    this.AttentionCostCents == input.AttentionCostCents ||
+                    this.AttentionCostCents.Equals(input.AttentionCostCents)
+                ) && 
+                (
+                    this.Over90CostCents == input.Over90CostCents ||
+                    this.Over90CostCents.Equals(input.Over90CostCents)
+                ) && 
+                (
+                    this.Over90ListedValueCents == input.Over90ListedValueCents ||
+                    this.Over90ListedValueCents.Equals(input.Over90ListedValueCents)
+                ) && 
+                (
                     this.TotalItems == input.TotalItems ||
                     this.TotalItems.Equals(input.TotalItems)
                 ) && 
                 (
                     this.TotalUnits == input.TotalUnits ||
                     this.TotalUnits.Equals(input.TotalUnits)
+                ) && 
+                (
+                    this.CostKnownItems == input.CostKnownItems ||
+                    this.CostKnownItems.Equals(input.CostKnownItems)
+                ) && 
+                (
+                    this.CostUnknownItems == input.CostUnknownItems ||
+                    this.CostUnknownItems.Equals(input.CostUnknownItems)
+                ) && 
+                (
+                    this.ListedValueCents == input.ListedValueCents ||
+                    this.ListedValueCents.Equals(input.ListedValueCents)
+                ) && 
+                (
+                    this.MarketValueCents == input.MarketValueCents ||
+                    (this.MarketValueCents != null &&
+                    this.MarketValueCents.Equals(input.MarketValueCents))
+                ) && 
+                (
+                    this.SizeBy == input.SizeBy ||
+                    this.SizeBy.Equals(input.SizeBy)
                 );
         }
 
@@ -183,8 +315,19 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Worst.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.StuckCapitalCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.AttentionCostCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Over90CostCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Over90ListedValueCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.TotalItems.GetHashCode();
                 hashCode = (hashCode * 59) + this.TotalUnits.GetHashCode();
+                hashCode = (hashCode * 59) + this.CostKnownItems.GetHashCode();
+                hashCode = (hashCode * 59) + this.CostUnknownItems.GetHashCode();
+                hashCode = (hashCode * 59) + this.ListedValueCents.GetHashCode();
+                if (this.MarketValueCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.MarketValueCents.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SizeBy.GetHashCode();
                 return hashCode;
             }
         }

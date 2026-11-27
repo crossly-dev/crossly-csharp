@@ -44,16 +44,16 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="carrier">carrier (required).</param>
-        /// <param name="orderIds">orderIds (required).</param>
-        /// <param name="shippoPickupId">shippoPickupId (required).</param>
         /// <param name="confirmation">confirmation.</param>
-        /// <param name="pickupDate">pickupDate (required).</param>
+        /// <param name="orderIds">orderIds (required).</param>
         /// <param name="minTime">minTime (required).</param>
         /// <param name="maxTime">maxTime (required).</param>
+        /// <param name="instructions">instructions.</param>
+        /// <param name="shippoPickupId">shippoPickupId (required).</param>
+        /// <param name="pickupDate">pickupDate (required).</param>
         /// <param name="confirmedStart">confirmedStart.</param>
         /// <param name="confirmedEnd">confirmedEnd.</param>
-        /// <param name="instructions">instructions.</param>
-        public ListOrderPickupsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string carrier = default(string), List<string> orderIds = default(List<string>), string shippoPickupId = default(string), string confirmation = default(string), string pickupDate = default(string), string minTime = default(string), string maxTime = default(string), DateTime? confirmedStart = default(DateTime?), DateTime? confirmedEnd = default(DateTime?), string instructions = default(string))
+        public ListOrderPickupsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string carrier = default(string), string confirmation = default(string), List<string> orderIds = default(List<string>), string minTime = default(string), string maxTime = default(string), string instructions = default(string), string shippoPickupId = default(string), string pickupDate = default(string), DateTime? confirmedStart = default(DateTime?), DateTime? confirmedEnd = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -81,16 +81,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("orderIds is a required property for ListOrderPickupsItem and cannot be null");
             }
             this.OrderIds = orderIds;
-            // to ensure "shippoPickupId" is required (not null)
-            if (shippoPickupId == null) {
-                throw new ArgumentNullException("shippoPickupId is a required property for ListOrderPickupsItem and cannot be null");
-            }
-            this.ShippoPickupId = shippoPickupId;
-            // to ensure "pickupDate" is required (not null)
-            if (pickupDate == null) {
-                throw new ArgumentNullException("pickupDate is a required property for ListOrderPickupsItem and cannot be null");
-            }
-            this.PickupDate = pickupDate;
             // to ensure "minTime" is required (not null)
             if (minTime == null) {
                 throw new ArgumentNullException("minTime is a required property for ListOrderPickupsItem and cannot be null");
@@ -101,10 +91,20 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("maxTime is a required property for ListOrderPickupsItem and cannot be null");
             }
             this.MaxTime = maxTime;
+            // to ensure "shippoPickupId" is required (not null)
+            if (shippoPickupId == null) {
+                throw new ArgumentNullException("shippoPickupId is a required property for ListOrderPickupsItem and cannot be null");
+            }
+            this.ShippoPickupId = shippoPickupId;
+            // to ensure "pickupDate" is required (not null)
+            if (pickupDate == null) {
+                throw new ArgumentNullException("pickupDate is a required property for ListOrderPickupsItem and cannot be null");
+            }
+            this.PickupDate = pickupDate;
             this.Confirmation = confirmation;
+            this.Instructions = instructions;
             this.ConfirmedStart = confirmedStart;
             this.ConfirmedEnd = confirmedEnd;
-            this.Instructions = instructions;
         }
 
         /// <summary>
@@ -138,28 +138,16 @@ namespace net.crossly.Model
         public string Carrier { get; set; }
 
         /// <summary>
-        /// Gets or Sets OrderIds
-        /// </summary>
-        [DataMember(Name = "orderIds", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> OrderIds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShippoPickupId
-        /// </summary>
-        [DataMember(Name = "shippoPickupId", IsRequired = true, EmitDefaultValue = false)]
-        public string ShippoPickupId { get; set; }
-
-        /// <summary>
         /// Gets or Sets Confirmation
         /// </summary>
         [DataMember(Name = "confirmation", EmitDefaultValue = true)]
         public string Confirmation { get; set; }
 
         /// <summary>
-        /// Gets or Sets PickupDate
+        /// Gets or Sets OrderIds
         /// </summary>
-        [DataMember(Name = "pickupDate", IsRequired = true, EmitDefaultValue = false)]
-        public string PickupDate { get; set; }
+        [DataMember(Name = "orderIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> OrderIds { get; set; }
 
         /// <summary>
         /// Gets or Sets MinTime
@@ -174,6 +162,24 @@ namespace net.crossly.Model
         public string MaxTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets Instructions
+        /// </summary>
+        [DataMember(Name = "instructions", EmitDefaultValue = true)]
+        public string Instructions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShippoPickupId
+        /// </summary>
+        [DataMember(Name = "shippoPickupId", IsRequired = true, EmitDefaultValue = false)]
+        public string ShippoPickupId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PickupDate
+        /// </summary>
+        [DataMember(Name = "pickupDate", IsRequired = true, EmitDefaultValue = false)]
+        public string PickupDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets ConfirmedStart
         /// </summary>
         [DataMember(Name = "confirmedStart", EmitDefaultValue = true)]
@@ -184,12 +190,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "confirmedEnd", EmitDefaultValue = true)]
         public DateTime? ConfirmedEnd { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Instructions
-        /// </summary>
-        [DataMember(Name = "instructions", EmitDefaultValue = true)]
-        public string Instructions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -204,15 +204,15 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
-            sb.Append("  OrderIds: ").Append(OrderIds).Append("\n");
-            sb.Append("  ShippoPickupId: ").Append(ShippoPickupId).Append("\n");
             sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
-            sb.Append("  PickupDate: ").Append(PickupDate).Append("\n");
+            sb.Append("  OrderIds: ").Append(OrderIds).Append("\n");
             sb.Append("  MinTime: ").Append(MinTime).Append("\n");
             sb.Append("  MaxTime: ").Append(MaxTime).Append("\n");
+            sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+            sb.Append("  ShippoPickupId: ").Append(ShippoPickupId).Append("\n");
+            sb.Append("  PickupDate: ").Append(PickupDate).Append("\n");
             sb.Append("  ConfirmedStart: ").Append(ConfirmedStart).Append("\n");
             sb.Append("  ConfirmedEnd: ").Append(ConfirmedEnd).Append("\n");
-            sb.Append("  Instructions: ").Append(Instructions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -274,25 +274,15 @@ namespace net.crossly.Model
                     this.Carrier.Equals(input.Carrier))
                 ) && 
                 (
-                    this.OrderIds == input.OrderIds ||
-                    this.OrderIds != null &&
-                    input.OrderIds != null &&
-                    this.OrderIds.SequenceEqual(input.OrderIds)
-                ) && 
-                (
-                    this.ShippoPickupId == input.ShippoPickupId ||
-                    (this.ShippoPickupId != null &&
-                    this.ShippoPickupId.Equals(input.ShippoPickupId))
-                ) && 
-                (
                     this.Confirmation == input.Confirmation ||
                     (this.Confirmation != null &&
                     this.Confirmation.Equals(input.Confirmation))
                 ) && 
                 (
-                    this.PickupDate == input.PickupDate ||
-                    (this.PickupDate != null &&
-                    this.PickupDate.Equals(input.PickupDate))
+                    this.OrderIds == input.OrderIds ||
+                    this.OrderIds != null &&
+                    input.OrderIds != null &&
+                    this.OrderIds.SequenceEqual(input.OrderIds)
                 ) && 
                 (
                     this.MinTime == input.MinTime ||
@@ -305,6 +295,21 @@ namespace net.crossly.Model
                     this.MaxTime.Equals(input.MaxTime))
                 ) && 
                 (
+                    this.Instructions == input.Instructions ||
+                    (this.Instructions != null &&
+                    this.Instructions.Equals(input.Instructions))
+                ) && 
+                (
+                    this.ShippoPickupId == input.ShippoPickupId ||
+                    (this.ShippoPickupId != null &&
+                    this.ShippoPickupId.Equals(input.ShippoPickupId))
+                ) && 
+                (
+                    this.PickupDate == input.PickupDate ||
+                    (this.PickupDate != null &&
+                    this.PickupDate.Equals(input.PickupDate))
+                ) && 
+                (
                     this.ConfirmedStart == input.ConfirmedStart ||
                     (this.ConfirmedStart != null &&
                     this.ConfirmedStart.Equals(input.ConfirmedStart))
@@ -313,11 +318,6 @@ namespace net.crossly.Model
                     this.ConfirmedEnd == input.ConfirmedEnd ||
                     (this.ConfirmedEnd != null &&
                     this.ConfirmedEnd.Equals(input.ConfirmedEnd))
-                ) && 
-                (
-                    this.Instructions == input.Instructions ||
-                    (this.Instructions != null &&
-                    this.Instructions.Equals(input.Instructions))
                 );
         }
 
@@ -350,21 +350,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
                 }
-                if (this.OrderIds != null)
-                {
-                    hashCode = (hashCode * 59) + this.OrderIds.GetHashCode();
-                }
-                if (this.ShippoPickupId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShippoPickupId.GetHashCode();
-                }
                 if (this.Confirmation != null)
                 {
                     hashCode = (hashCode * 59) + this.Confirmation.GetHashCode();
                 }
-                if (this.PickupDate != null)
+                if (this.OrderIds != null)
                 {
-                    hashCode = (hashCode * 59) + this.PickupDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderIds.GetHashCode();
                 }
                 if (this.MinTime != null)
                 {
@@ -374,6 +366,18 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.MaxTime.GetHashCode();
                 }
+                if (this.Instructions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Instructions.GetHashCode();
+                }
+                if (this.ShippoPickupId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShippoPickupId.GetHashCode();
+                }
+                if (this.PickupDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.PickupDate.GetHashCode();
+                }
                 if (this.ConfirmedStart != null)
                 {
                     hashCode = (hashCode * 59) + this.ConfirmedStart.GetHashCode();
@@ -381,10 +385,6 @@ namespace net.crossly.Model
                 if (this.ConfirmedEnd != null)
                 {
                     hashCode = (hashCode * 59) + this.ConfirmedEnd.GetHashCode();
-                }
-                if (this.Instructions != null)
-                {
-                    hashCode = (hashCode * 59) + this.Instructions.GetHashCode();
                 }
                 return hashCode;
             }

@@ -39,8 +39,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAnalyticTodayResponseInbox" /> class.
         /// </summary>
-        /// <param name="unread">Conversations not yet opened (hidden threads excluded). (required).</param>
-        /// <param name="awaitingReply">Open threads whose newest message is the buyer&#39;s. (required).</param>
+        /// <param name="unread">Unread conversations + unopened offers — the Unread tab&#39;s rows (services/inbox/attention.ts). (required).</param>
+        /// <param name="awaitingReply">Threads and offers waiting on the seller — the Needs reply tab&#39;s rows. (required).</param>
         /// <param name="medianResponseHours">Median hours from a buyer&#39;s question to the seller&#39;s reply, last 90 days; null below MIN_ANSWERED..</param>
         /// <param name="answered">Questions answered in the window (the median&#39;s sample). (required).</param>
         public GetAnalyticTodayResponseInbox(decimal unread = default(decimal), decimal awaitingReply = default(decimal), decimal? medianResponseHours = default(decimal?), decimal answered = default(decimal))
@@ -52,16 +52,16 @@ namespace net.crossly.Model
         }
 
         /// <summary>
-        /// Conversations not yet opened (hidden threads excluded).
+        /// Unread conversations + unopened offers — the Unread tab&#39;s rows (services/inbox/attention.ts).
         /// </summary>
-        /// <value>Conversations not yet opened (hidden threads excluded).</value>
+        /// <value>Unread conversations + unopened offers — the Unread tab&#39;s rows (services/inbox/attention.ts).</value>
         [DataMember(Name = "unread", IsRequired = true, EmitDefaultValue = false)]
         public decimal Unread { get; set; }
 
         /// <summary>
-        /// Open threads whose newest message is the buyer&#39;s.
+        /// Threads and offers waiting on the seller — the Needs reply tab&#39;s rows.
         /// </summary>
-        /// <value>Open threads whose newest message is the buyer&#39;s.</value>
+        /// <value>Threads and offers waiting on the seller — the Needs reply tab&#39;s rows.</value>
         [DataMember(Name = "awaitingReply", IsRequired = true, EmitDefaultValue = false)]
         public decimal AwaitingReply { get; set; }
 

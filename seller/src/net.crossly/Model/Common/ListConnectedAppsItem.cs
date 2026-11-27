@@ -49,7 +49,8 @@ namespace net.crossly.Model
         /// <param name="homepageUrl">homepageUrl.</param>
         /// <param name="developerName">developerName.</param>
         /// <param name="developerEmail">developerEmail (required).</param>
-        public ListConnectedAppsItem(string grantId = default(string), List<string> scopes = default(List<string>), DateTime connectedAt = default(DateTime), DateTime? lastUsedAt = default(DateTime?), string appId = default(string), string appName = default(string), string appDescription = default(string), string homepageUrl = default(string), string developerName = default(string), string developerEmail = default(string))
+        /// <param name="revShareBps">The share of take-home THIS install agreed to (frozen at consent), not the app&#39;s current terms. Null &#x3D; free..</param>
+        public ListConnectedAppsItem(string grantId = default(string), List<string> scopes = default(List<string>), DateTime connectedAt = default(DateTime), DateTime? lastUsedAt = default(DateTime?), string appId = default(string), string appName = default(string), string appDescription = default(string), string homepageUrl = default(string), string developerName = default(string), string developerEmail = default(string), decimal? revShareBps = default(decimal?))
         {
             // to ensure "grantId" is required (not null)
             if (grantId == null) {
@@ -81,6 +82,7 @@ namespace net.crossly.Model
             this.AppDescription = appDescription;
             this.HomepageUrl = homepageUrl;
             this.DeveloperName = developerName;
+            this.RevShareBps = revShareBps;
         }
 
         /// <summary>
@@ -144,6 +146,13 @@ namespace net.crossly.Model
         public string DeveloperEmail { get; set; }
 
         /// <summary>
+        /// The share of take-home THIS install agreed to (frozen at consent), not the app&#39;s current terms. Null &#x3D; free.
+        /// </summary>
+        /// <value>The share of take-home THIS install agreed to (frozen at consent), not the app&#39;s current terms. Null &#x3D; free.</value>
+        [DataMember(Name = "revShareBps", EmitDefaultValue = true)]
+        public decimal? RevShareBps { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +170,7 @@ namespace net.crossly.Model
             sb.Append("  HomepageUrl: ").Append(HomepageUrl).Append("\n");
             sb.Append("  DeveloperName: ").Append(DeveloperName).Append("\n");
             sb.Append("  DeveloperEmail: ").Append(DeveloperEmail).Append("\n");
+            sb.Append("  RevShareBps: ").Append(RevShareBps).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -246,6 +256,11 @@ namespace net.crossly.Model
                     this.DeveloperEmail == input.DeveloperEmail ||
                     (this.DeveloperEmail != null &&
                     this.DeveloperEmail.Equals(input.DeveloperEmail))
+                ) && 
+                (
+                    this.RevShareBps == input.RevShareBps ||
+                    (this.RevShareBps != null &&
+                    this.RevShareBps.Equals(input.RevShareBps))
                 );
         }
 
@@ -297,6 +312,10 @@ namespace net.crossly.Model
                 if (this.DeveloperEmail != null)
                 {
                     hashCode = (hashCode * 59) + this.DeveloperEmail.GetHashCode();
+                }
+                if (this.RevShareBps != null)
+                {
+                    hashCode = (hashCode * 59) + this.RevShareBps.GetHashCode();
                 }
                 return hashCode;
             }

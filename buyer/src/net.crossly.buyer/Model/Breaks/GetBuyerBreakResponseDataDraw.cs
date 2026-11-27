@@ -39,25 +39,25 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerBreakResponseDataDraw" /> class.
         /// </summary>
-        /// <param name="position">position (required).</param>
         /// <param name="entry">entry (required).</param>
-        public GetBuyerBreakResponseDataDraw(decimal position = default(decimal), decimal entry = default(decimal))
+        /// <param name="position">position (required).</param>
+        public GetBuyerBreakResponseDataDraw(decimal entry = default(decimal), decimal position = default(decimal))
         {
-            this.Position = position;
             this.Entry = entry;
+            this.Position = position;
         }
-
-        /// <summary>
-        /// Gets or Sets Position
-        /// </summary>
-        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Position { get; set; }
 
         /// <summary>
         /// Gets or Sets Entry
         /// </summary>
         [DataMember(Name = "entry", IsRequired = true, EmitDefaultValue = false)]
         public decimal Entry { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Position
+        /// </summary>
+        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Position { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,8 +67,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerBreakResponseDataDraw {\n");
-            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  Entry: ").Append(Entry).Append("\n");
+            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,12 +105,12 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Position == input.Position ||
-                    this.Position.Equals(input.Position)
-                ) && 
-                (
                     this.Entry == input.Entry ||
                     this.Entry.Equals(input.Entry)
+                ) && 
+                (
+                    this.Position == input.Position ||
+                    this.Position.Equals(input.Position)
                 );
         }
 
@@ -123,8 +123,8 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 hashCode = (hashCode * 59) + this.Entry.GetHashCode();
+                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 return hashCode;
             }
         }

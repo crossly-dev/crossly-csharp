@@ -47,7 +47,8 @@ namespace net.crossly.Model
         /// <param name="reward">\&quot;10% off\&quot; / \&quot;$5 off\&quot;: what finishing it unlocks, never the code itself. (required).</param>
         /// <param name="endsAt">endsAt (required).</param>
         /// <param name="finishers">finishers (required).</param>
-        public ListGameHuntsItem(string id = default(string), string title = default(string), SlugName shop = default(SlugName), ListGameHuntsItemStall stall = default(ListGameHuntsItemStall), decimal tokens = default(decimal), string reward = default(string), string endsAt = default(string), decimal finishers = default(decimal))
+        /// <param name="rules">rules.</param>
+        public ListGameHuntsItem(string id = default(string), string title = default(string), NameSlug shop = default(NameSlug), ListGameHuntsItemStall stall = default(ListGameHuntsItemStall), decimal tokens = default(decimal), string reward = default(string), string endsAt = default(string), decimal finishers = default(decimal), ListGameHuntsItemRules rules = default(ListGameHuntsItemRules))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -77,6 +78,7 @@ namespace net.crossly.Model
             this.EndsAt = endsAt;
             this.Finishers = finishers;
             this.Stall = stall;
+            this.Rules = rules;
         }
 
         /// <summary>
@@ -95,7 +97,7 @@ namespace net.crossly.Model
         /// Gets or Sets Shop
         /// </summary>
         [DataMember(Name = "shop", IsRequired = true, EmitDefaultValue = false)]
-        public SlugName Shop { get; set; }
+        public NameSlug Shop { get; set; }
 
         /// <summary>
         /// Gets or Sets Stall
@@ -129,6 +131,12 @@ namespace net.crossly.Model
         public decimal Finishers { get; set; }
 
         /// <summary>
+        /// Gets or Sets Rules
+        /// </summary>
+        [DataMember(Name = "rules", EmitDefaultValue = true)]
+        public ListGameHuntsItemRules Rules { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -144,6 +152,7 @@ namespace net.crossly.Model
             sb.Append("  Reward: ").Append(Reward).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Finishers: ").Append(Finishers).Append("\n");
+            sb.Append("  Rules: ").Append(Rules).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,6 +225,11 @@ namespace net.crossly.Model
                 (
                     this.Finishers == input.Finishers ||
                     this.Finishers.Equals(input.Finishers)
+                ) && 
+                (
+                    this.Rules == input.Rules ||
+                    (this.Rules != null &&
+                    this.Rules.Equals(input.Rules))
                 );
         }
 
@@ -254,6 +268,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Finishers.GetHashCode();
+                if (this.Rules != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rules.GetHashCode();
+                }
                 return hashCode;
             }
         }

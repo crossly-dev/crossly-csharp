@@ -39,19 +39,23 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListInboxItem" /> class.
         /// </summary>
+        /// <param name="canSendOffer">canSendOffer (required).</param>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="listingId">listingId.</param>
         /// <param name="accountSlot">accountSlot (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="source">source.</param>
+        /// <param name="labels">labels (required).</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
+        /// <param name="listingId">listingId.</param>
         /// <param name="platformListingId">platformListingId.</param>
         /// <param name="buyerUsername">buyerUsername.</param>
-        /// <param name="subject">subject.</param>
         /// <param name="platformConversationId">platformConversationId (required).</param>
         /// <param name="buyerPlatformId">buyerPlatformId.</param>
+        /// <param name="buyerAvatarUrl">buyerAvatarUrl.</param>
+        /// <param name="subject">subject.</param>
         /// <param name="isRead">isRead (required).</param>
         /// <param name="isHidden">isHidden (required).</param>
         /// <param name="hasOffer">hasOffer (required).</param>
@@ -59,8 +63,11 @@ namespace net.crossly.Model
         /// <param name="offerStatus">offerStatus.</param>
         /// <param name="platformConversationUrl">platformConversationUrl.</param>
         /// <param name="lastMessageAt">lastMessageAt.</param>
-        public ListInboxItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string platform = default(string), string listingId = default(string), decimal accountSlot = default(decimal), string inventoryItemId = default(string), string platformListingId = default(string), string buyerUsername = default(string), string subject = default(string), string platformConversationId = default(string), string buyerPlatformId = default(string), bool isRead = default(bool), bool isHidden = default(bool), bool hasOffer = default(bool), string offerAmount = default(string), string offerStatus = default(string), string platformConversationUrl = default(string), DateTime? lastMessageAt = default(DateTime?))
+        /// <param name="supersededAt">supersededAt.</param>
+        /// <param name="isStarred">isStarred (required).</param>
+        public ListInboxItem(bool canSendOffer = default(bool), string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string status = default(string), string source = default(string), List<string> labels = default(List<string>), string inventoryItemId = default(string), string listingId = default(string), string platformListingId = default(string), string buyerUsername = default(string), string platformConversationId = default(string), string buyerPlatformId = default(string), string buyerAvatarUrl = default(string), string subject = default(string), bool isRead = default(bool), bool isHidden = default(bool), bool hasOffer = default(bool), string offerAmount = default(string), string offerStatus = default(string), string platformConversationUrl = default(string), DateTime? lastMessageAt = default(DateTime?), DateTime? supersededAt = default(DateTime?), bool isStarred = default(bool))
         {
+            this.CanSendOffer = canSendOffer;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListInboxItem and cannot be null");
@@ -72,17 +79,22 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListInboxItem and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListInboxItem and cannot be null");
-            }
-            this.Status = status;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for ListInboxItem and cannot be null");
             }
             this.Platform = platform;
             this.AccountSlot = accountSlot;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListInboxItem and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "labels" is required (not null)
+            if (labels == null) {
+                throw new ArgumentNullException("labels is a required property for ListInboxItem and cannot be null");
+            }
+            this.Labels = labels;
             // to ensure "platformConversationId" is required (not null)
             if (platformConversationId == null) {
                 throw new ArgumentNullException("platformConversationId is a required property for ListInboxItem and cannot be null");
@@ -91,17 +103,27 @@ namespace net.crossly.Model
             this.IsRead = isRead;
             this.IsHidden = isHidden;
             this.HasOffer = hasOffer;
-            this.ListingId = listingId;
+            this.IsStarred = isStarred;
+            this.Source = source;
             this.InventoryItemId = inventoryItemId;
+            this.ListingId = listingId;
             this.PlatformListingId = platformListingId;
             this.BuyerUsername = buyerUsername;
-            this.Subject = subject;
             this.BuyerPlatformId = buyerPlatformId;
+            this.BuyerAvatarUrl = buyerAvatarUrl;
+            this.Subject = subject;
             this.OfferAmount = offerAmount;
             this.OfferStatus = offerStatus;
             this.PlatformConversationUrl = platformConversationUrl;
             this.LastMessageAt = lastMessageAt;
+            this.SupersededAt = supersededAt;
         }
+
+        /// <summary>
+        /// Gets or Sets CanSendOffer
+        /// </summary>
+        [DataMember(Name = "canSendOffer", IsRequired = true, EmitDefaultValue = true)]
+        public bool CanSendOffer { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -122,22 +144,10 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets Platform
         /// </summary>
         [DataMember(Name = "platform", IsRequired = true, EmitDefaultValue = false)]
         public string Platform { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ListingId
-        /// </summary>
-        [DataMember(Name = "listingId", EmitDefaultValue = true)]
-        public string ListingId { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountSlot
@@ -146,10 +156,34 @@ namespace net.crossly.Model
         public decimal AccountSlot { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Source
+        /// </summary>
+        [DataMember(Name = "source", EmitDefaultValue = true)]
+        public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Labels
+        /// </summary>
+        [DataMember(Name = "labels", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Labels { get; set; }
+
+        /// <summary>
         /// Gets or Sets InventoryItemId
         /// </summary>
         [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
         public string InventoryItemId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListingId
+        /// </summary>
+        [DataMember(Name = "listingId", EmitDefaultValue = true)]
+        public string ListingId { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -164,12 +198,6 @@ namespace net.crossly.Model
         public string BuyerUsername { get; set; }
 
         /// <summary>
-        /// Gets or Sets Subject
-        /// </summary>
-        [DataMember(Name = "subject", EmitDefaultValue = true)]
-        public string Subject { get; set; }
-
-        /// <summary>
         /// Gets or Sets PlatformConversationId
         /// </summary>
         [DataMember(Name = "platformConversationId", IsRequired = true, EmitDefaultValue = false)]
@@ -180,6 +208,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "buyerPlatformId", EmitDefaultValue = true)]
         public string BuyerPlatformId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BuyerAvatarUrl
+        /// </summary>
+        [DataMember(Name = "buyerAvatarUrl", EmitDefaultValue = true)]
+        public string BuyerAvatarUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Subject
+        /// </summary>
+        [DataMember(Name = "subject", EmitDefaultValue = true)]
+        public string Subject { get; set; }
 
         /// <summary>
         /// Gets or Sets IsRead
@@ -224,6 +264,18 @@ namespace net.crossly.Model
         public DateTime? LastMessageAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets SupersededAt
+        /// </summary>
+        [DataMember(Name = "supersededAt", EmitDefaultValue = true)]
+        public DateTime? SupersededAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsStarred
+        /// </summary>
+        [DataMember(Name = "isStarred", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsStarred { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -231,19 +283,23 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListInboxItem {\n");
+            sb.Append("  CanSendOffer: ").Append(CanSendOffer).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  BuyerUsername: ").Append(BuyerUsername).Append("\n");
-            sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  PlatformConversationId: ").Append(PlatformConversationId).Append("\n");
             sb.Append("  BuyerPlatformId: ").Append(BuyerPlatformId).Append("\n");
+            sb.Append("  BuyerAvatarUrl: ").Append(BuyerAvatarUrl).Append("\n");
+            sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  IsRead: ").Append(IsRead).Append("\n");
             sb.Append("  IsHidden: ").Append(IsHidden).Append("\n");
             sb.Append("  HasOffer: ").Append(HasOffer).Append("\n");
@@ -251,6 +307,8 @@ namespace net.crossly.Model
             sb.Append("  OfferStatus: ").Append(OfferStatus).Append("\n");
             sb.Append("  PlatformConversationUrl: ").Append(PlatformConversationUrl).Append("\n");
             sb.Append("  LastMessageAt: ").Append(LastMessageAt).Append("\n");
+            sb.Append("  SupersededAt: ").Append(SupersededAt).Append("\n");
+            sb.Append("  IsStarred: ").Append(IsStarred).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -287,6 +345,10 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.CanSendOffer == input.CanSendOffer ||
+                    this.CanSendOffer.Equals(input.CanSendOffer)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -302,28 +364,39 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.Platform == input.Platform ||
                     (this.Platform != null &&
                     this.Platform.Equals(input.Platform))
-                ) && 
-                (
-                    this.ListingId == input.ListingId ||
-                    (this.ListingId != null &&
-                    this.ListingId.Equals(input.ListingId))
                 ) && 
                 (
                     this.AccountSlot == input.AccountSlot ||
                     this.AccountSlot.Equals(input.AccountSlot)
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Source == input.Source ||
+                    (this.Source != null &&
+                    this.Source.Equals(input.Source))
+                ) && 
+                (
+                    this.Labels == input.Labels ||
+                    this.Labels != null &&
+                    input.Labels != null &&
+                    this.Labels.SequenceEqual(input.Labels)
+                ) && 
+                (
                     this.InventoryItemId == input.InventoryItemId ||
                     (this.InventoryItemId != null &&
                     this.InventoryItemId.Equals(input.InventoryItemId))
+                ) && 
+                (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
                 ) && 
                 (
                     this.PlatformListingId == input.PlatformListingId ||
@@ -336,11 +409,6 @@ namespace net.crossly.Model
                     this.BuyerUsername.Equals(input.BuyerUsername))
                 ) && 
                 (
-                    this.Subject == input.Subject ||
-                    (this.Subject != null &&
-                    this.Subject.Equals(input.Subject))
-                ) && 
-                (
                     this.PlatformConversationId == input.PlatformConversationId ||
                     (this.PlatformConversationId != null &&
                     this.PlatformConversationId.Equals(input.PlatformConversationId))
@@ -349,6 +417,16 @@ namespace net.crossly.Model
                     this.BuyerPlatformId == input.BuyerPlatformId ||
                     (this.BuyerPlatformId != null &&
                     this.BuyerPlatformId.Equals(input.BuyerPlatformId))
+                ) && 
+                (
+                    this.BuyerAvatarUrl == input.BuyerAvatarUrl ||
+                    (this.BuyerAvatarUrl != null &&
+                    this.BuyerAvatarUrl.Equals(input.BuyerAvatarUrl))
+                ) && 
+                (
+                    this.Subject == input.Subject ||
+                    (this.Subject != null &&
+                    this.Subject.Equals(input.Subject))
                 ) && 
                 (
                     this.IsRead == input.IsRead ||
@@ -381,6 +459,15 @@ namespace net.crossly.Model
                     this.LastMessageAt == input.LastMessageAt ||
                     (this.LastMessageAt != null &&
                     this.LastMessageAt.Equals(input.LastMessageAt))
+                ) && 
+                (
+                    this.SupersededAt == input.SupersededAt ||
+                    (this.SupersededAt != null &&
+                    this.SupersededAt.Equals(input.SupersededAt))
+                ) && 
+                (
+                    this.IsStarred == input.IsStarred ||
+                    this.IsStarred.Equals(input.IsStarred)
                 );
         }
 
@@ -393,6 +480,7 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.CanSendOffer.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -405,22 +493,30 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.ListingId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Source != null)
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.Labels != null)
+                {
+                    hashCode = (hashCode * 59) + this.Labels.GetHashCode();
+                }
                 if (this.InventoryItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
+                }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
                 }
                 if (this.PlatformListingId != null)
                 {
@@ -430,10 +526,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.BuyerUsername.GetHashCode();
                 }
-                if (this.Subject != null)
-                {
-                    hashCode = (hashCode * 59) + this.Subject.GetHashCode();
-                }
                 if (this.PlatformConversationId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformConversationId.GetHashCode();
@@ -441,6 +533,14 @@ namespace net.crossly.Model
                 if (this.BuyerPlatformId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerPlatformId.GetHashCode();
+                }
+                if (this.BuyerAvatarUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuyerAvatarUrl.GetHashCode();
+                }
+                if (this.Subject != null)
+                {
+                    hashCode = (hashCode * 59) + this.Subject.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsRead.GetHashCode();
                 hashCode = (hashCode * 59) + this.IsHidden.GetHashCode();
@@ -461,6 +561,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LastMessageAt.GetHashCode();
                 }
+                if (this.SupersededAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.SupersededAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsStarred.GetHashCode();
                 return hashCode;
             }
         }

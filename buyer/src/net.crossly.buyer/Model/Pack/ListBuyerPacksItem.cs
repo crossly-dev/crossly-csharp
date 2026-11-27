@@ -40,48 +40,48 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerPacksItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="description">description.</param>
-        /// <param name="title">title (required).</param>
         /// <param name="slug">slug (required).</param>
-        /// <param name="priceCents">priceCents (required).</param>
+        /// <param name="title">title (required).</param>
+        /// <param name="description">description.</param>
         /// <param name="imageUrl">imageUrl.</param>
-        /// <param name="tiers">tiers (required).</param>
+        /// <param name="priceCents">priceCents (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="buybackBps">buybackBps (required).</param>
         /// <param name="buybackDays">buybackDays (required).</param>
+        /// <param name="tiers">tiers (required).</param>
         /// <param name="expectedValueCents">expectedValueCents (required).</param>
         /// <param name="openable">openable (required).</param>
         /// <param name="chase">chase (required).</param>
-        public ListBuyerPacksItem(string id = default(string), string status = default(string), string description = default(string), string title = default(string), string slug = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), List<ListBuyerPacksItemTiers> tiers = default(List<ListBuyerPacksItemTiers>), decimal buybackBps = default(decimal), decimal buybackDays = default(decimal), decimal expectedValueCents = default(decimal), bool openable = default(bool), List<ListBuyerPacksItemChase> chase = default(List<ListBuyerPacksItemChase>))
+        public ListBuyerPacksItem(string id = default(string), string slug = default(string), string title = default(string), string description = default(string), string imageUrl = default(string), decimal priceCents = default(decimal), string status = default(string), decimal buybackBps = default(decimal), decimal buybackDays = default(decimal), List<ListBuyerPacksItemTiers> tiers = default(List<ListBuyerPacksItemTiers>), decimal expectedValueCents = default(decimal), bool openable = default(bool), List<ListBuyerPacksItemChase> chase = default(List<ListBuyerPacksItemChase>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerPacksItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerPacksItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for ListBuyerPacksItem and cannot be null");
-            }
-            this.Title = title;
             // to ensure "slug" is required (not null)
             if (slug == null) {
                 throw new ArgumentNullException("slug is a required property for ListBuyerPacksItem and cannot be null");
             }
             this.Slug = slug;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for ListBuyerPacksItem and cannot be null");
+            }
+            this.Title = title;
             this.PriceCents = priceCents;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerPacksItem and cannot be null");
+            }
+            this.Status = status;
+            this.BuybackBps = buybackBps;
+            this.BuybackDays = buybackDays;
             // to ensure "tiers" is required (not null)
             if (tiers == null) {
                 throw new ArgumentNullException("tiers is a required property for ListBuyerPacksItem and cannot be null");
             }
             this.Tiers = tiers;
-            this.BuybackBps = buybackBps;
-            this.BuybackDays = buybackDays;
             this.ExpectedValueCents = expectedValueCents;
             this.Openable = openable;
             // to ensure "chase" is required (not null)
@@ -100,16 +100,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Slug
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
+        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -118,16 +112,10 @@ namespace net.crossly.buyer.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets Slug
+        /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
-        public string Slug { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PriceCents
-        /// </summary>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal PriceCents { get; set; }
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets ImageUrl
@@ -136,10 +124,16 @@ namespace net.crossly.buyer.Model
         public string ImageUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets Tiers
+        /// Gets or Sets PriceCents
         /// </summary>
-        [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListBuyerPacksItemTiers> Tiers { get; set; }
+        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PriceCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets BuybackBps
@@ -152,6 +146,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "buybackDays", IsRequired = true, EmitDefaultValue = false)]
         public decimal BuybackDays { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Tiers
+        /// </summary>
+        [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
+        public List<ListBuyerPacksItemTiers> Tiers { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpectedValueCents
@@ -180,15 +180,15 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerPacksItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
-            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
-            sb.Append("  Tiers: ").Append(Tiers).Append("\n");
+            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  BuybackBps: ").Append(BuybackBps).Append("\n");
             sb.Append("  BuybackDays: ").Append(BuybackDays).Append("\n");
+            sb.Append("  Tiers: ").Append(Tiers).Append("\n");
             sb.Append("  ExpectedValueCents: ").Append(ExpectedValueCents).Append("\n");
             sb.Append("  Openable: ").Append(Openable).Append("\n");
             sb.Append("  Chase: ").Append(Chase).Append("\n");
@@ -233,14 +233,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -248,13 +243,9 @@ namespace net.crossly.buyer.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
-                ) && 
-                (
-                    this.PriceCents == input.PriceCents ||
-                    this.PriceCents.Equals(input.PriceCents)
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.ImageUrl == input.ImageUrl ||
@@ -262,10 +253,13 @@ namespace net.crossly.buyer.Model
                     this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
-                    this.Tiers == input.Tiers ||
-                    this.Tiers != null &&
-                    input.Tiers != null &&
-                    this.Tiers.SequenceEqual(input.Tiers)
+                    this.PriceCents == input.PriceCents ||
+                    this.PriceCents.Equals(input.PriceCents)
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.BuybackBps == input.BuybackBps ||
@@ -274,6 +268,12 @@ namespace net.crossly.buyer.Model
                 (
                     this.BuybackDays == input.BuybackDays ||
                     this.BuybackDays.Equals(input.BuybackDays)
+                ) && 
+                (
+                    this.Tiers == input.Tiers ||
+                    this.Tiers != null &&
+                    input.Tiers != null &&
+                    this.Tiers.SequenceEqual(input.Tiers)
                 ) && 
                 (
                     this.ExpectedValueCents == input.ExpectedValueCents ||
@@ -304,33 +304,33 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.Status != null)
+                if (this.Slug != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Description != null)
-                {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.Slug != null)
+                if (this.Description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.ImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.BuybackBps.GetHashCode();
+                hashCode = (hashCode * 59) + this.BuybackDays.GetHashCode();
                 if (this.Tiers != null)
                 {
                     hashCode = (hashCode * 59) + this.Tiers.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.BuybackBps.GetHashCode();
-                hashCode = (hashCode * 59) + this.BuybackDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.ExpectedValueCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.Openable.GetHashCode();
                 if (this.Chase != null)

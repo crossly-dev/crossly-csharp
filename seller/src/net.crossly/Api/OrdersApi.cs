@@ -98,8 +98,8 @@ namespace net.crossly.Api
         /// Bulk mark orders as disputed with a shared reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateInventoryLabelRenameResponse</returns>
-        CreateInventoryLabelRenameResponse CreateOrderBulkMarkDisputed();
+        /// <returns>UpdatedResponse</returns>
+        UpdatedResponse CreateOrderBulkMarkDisputed();
 
         /// <summary>
         /// Bulk mark orders as disputed with a shared reason.
@@ -108,8 +108,8 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateInventoryLabelRenameResponse</returns>
-        ApiResponse<CreateInventoryLabelRenameResponse> CreateOrderBulkMarkDisputedWithHttpInfo();
+        /// <returns>ApiResponse of UpdatedResponse</returns>
+        ApiResponse<UpdatedResponse> CreateOrderBulkMarkDisputedWithHttpInfo();
         /// <summary>
         /// Bulk flip status&#x3D;shipped, clear the reserved-stock marker, and notify each platform.
         /// </summary>
@@ -143,7 +143,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of System.IO.Stream</returns>
         ApiResponse<System.IO.Stream> CreateOrderBulkPackingSlipWithHttpInfo();
         /// <summary>
-        /// Cancel an order on its marketplace.
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -151,7 +151,7 @@ namespace net.crossly.Api
         CreateOrderCancelResponse CreateOrderCancel(Guid id);
 
         /// <summary>
-        /// Cancel an order on its marketplace.
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
         /// </summary>
         /// <remarks>
         /// 
@@ -160,6 +160,27 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateOrderCancelResponse</returns>
         ApiResponse<CreateOrderCancelResponse> CreateOrderCancelWithHttpInfo(Guid id);
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds.
+        /// </summary>
+        /// <remarks>
+        /// Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderCorrectTrackingResponse</returns>
+        CreateOrderCorrectTrackingResponse CreateOrderCorrectTracking(Guid id);
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds.
+        /// </summary>
+        /// <remarks>
+        /// Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderCorrectTrackingResponse</returns>
+        ApiResponse<CreateOrderCorrectTrackingResponse> CreateOrderCorrectTrackingWithHttpInfo(Guid id);
         /// <summary>
         /// Flag an order as disputed.
         /// </summary>
@@ -195,7 +216,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateOrderImportResponse</returns>
         ApiResponse<CreateOrderImportResponse> CreateOrderImportWithHttpInfo();
         /// <summary>
-        /// Purchase EasyPost shipping label.
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -203,7 +224,7 @@ namespace net.crossly.Api
         CreateOrderLabelResponse CreateOrderLabel(Guid id);
 
         /// <summary>
-        /// Purchase EasyPost shipping label.
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -212,6 +233,48 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateOrderLabelResponse</returns>
         ApiResponse<CreateOrderLabelResponse> CreateOrderLabelWithHttpInfo(Guid id);
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet.
+        /// </summary>
+        /// <remarks>
+        /// Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderLabelVoidResponse</returns>
+        CreateOrderLabelVoidResponse CreateOrderLabelVoid(Guid id);
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet.
+        /// </summary>
+        /// <remarks>
+        /// Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderLabelVoidResponse</returns>
+        ApiResponse<CreateOrderLabelVoidResponse> CreateOrderLabelVoidWithHttpInfo(Guid id);
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
+        /// </summary>
+        /// <remarks>
+        /// For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderLinkListingResponse</returns>
+        CreateOrderLinkListingResponse CreateOrderLinkListing(Guid id);
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
+        /// </summary>
+        /// <remarks>
+        /// For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderLinkListingResponse</returns>
+        ApiResponse<CreateOrderLinkListingResponse> CreateOrderLinkListingWithHttpInfo(Guid id);
         /// <summary>
         /// Message the order&#39;s buyer on the marketplace.
         /// </summary>
@@ -231,6 +294,26 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateOrderMessageResponse</returns>
         ApiResponse<CreateOrderMessageResponse> CreateOrderMessageWithHttpInfo(Guid id);
         /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <returns>OkResponse</returns>
+        OkResponse CreateOrderOrderChat(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest);
+
+        /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        ApiResponse<OkResponse> CreateOrderOrderChatWithHttpInfo(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest);
+        /// <summary>
         /// Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -247,7 +330,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateOrderPickupResponse</returns>
         ApiResponse<CreateOrderPickupResponse> CreateOrderPickupWithHttpInfo();
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short.
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -255,7 +338,7 @@ namespace net.crossly.Api
         CreateOrderPickupLabelResponse CreateOrderPickupLabel(string id);
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short.
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -264,6 +347,96 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateOrderPickupLabelResponse</returns>
         ApiResponse<CreateOrderPickupLabelResponse> CreateOrderPickupLabelWithHttpInfo(string id);
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        GetOrderWhatnotShipmentResponse CreateOrderPlatformLabelPackage(Guid id);
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        ApiResponse<GetOrderWhatnotShipmentResponse> CreateOrderPlatformLabelPackageWithHttpInfo(Guid id);
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderWhatnotPackageQuoteResponse</returns>
+        CreateOrderWhatnotPackageQuoteResponse CreateOrderPlatformLabelPackageQuote(Guid id);
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderWhatnotPackageQuoteResponse</returns>
+        ApiResponse<CreateOrderWhatnotPackageQuoteResponse> CreateOrderPlatformLabelPackageQuoteWithHttpInfo(Guid id);
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelPullResponse</returns>
+        CreateOrderPlatformLabelPullResponse CreateOrderPlatformLabelPull(Guid id);
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelPullResponse</returns>
+        ApiResponse<CreateOrderPlatformLabelPullResponse> CreateOrderPlatformLabelPullWithHttpInfo(Guid id);
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelPurchaseResponse</returns>
+        CreateOrderPlatformLabelPurchaseResponse CreateOrderPlatformLabelPurchase(Guid id);
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelPurchaseResponse</returns>
+        ApiResponse<CreateOrderPlatformLabelPurchaseResponse> CreateOrderPlatformLabelPurchaseWithHttpInfo(Guid id);
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelQuoteResponse</returns>
+        CreateOrderPlatformLabelQuoteResponse CreateOrderPlatformLabelQuote(Guid id);
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelQuoteResponse</returns>
+        ApiResponse<CreateOrderPlatformLabelQuoteResponse> CreateOrderPlatformLabelQuoteWithHttpInfo(Guid id);
         /// <summary>
         /// Pull a pre-paid label from cookie platforms (Poshmark/Mercari).
         /// </summary>
@@ -283,7 +456,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateOrderPullPlatformLabelResponse</returns>
         ApiResponse<CreateOrderPullPlatformLabelResponse> CreateOrderPullPlatformLabelWithHttpInfo(Guid id);
         /// <summary>
-        /// EasyPost rate quote for an order.
+        /// Crossly Shipping rate quote for an order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -291,7 +464,7 @@ namespace net.crossly.Api
         CreateOrderRateResponse CreateOrderRate(Guid id);
 
         /// <summary>
-        /// EasyPost rate quote for an order.
+        /// Crossly Shipping rate quote for an order.
         /// </summary>
         /// <remarks>
         /// 
@@ -301,15 +474,16 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateOrderRateResponse</returns>
         ApiResponse<CreateOrderRateResponse> CreateOrderRateWithHttpInfo(Guid id);
         /// <summary>
-        /// Issue a full or partial refund on the platform.
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateOrderRefundResponse</returns>
+        [Obsolete]
         CreateOrderRefundResponse CreateOrderRefund(Guid id);
 
         /// <summary>
-        /// Issue a full or partial refund on the platform.
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
         /// </summary>
         /// <remarks>
         /// 
@@ -317,7 +491,46 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateOrderRefundResponse</returns>
+        [Obsolete]
         ApiResponse<CreateOrderRefundResponse> CreateOrderRefundWithHttpInfo(Guid id);
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderRefundByIdResponse</returns>
+        CreateOrderRefundByIdResponse CreateOrderRefundById(Guid id);
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderRefundByIdResponse</returns>
+        ApiResponse<CreateOrderRefundByIdResponse> CreateOrderRefundByIdWithHttpInfo(Guid id);
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <returns>ListOrderRefundsItem</returns>
+        ListOrderRefundsItem CreateOrderRefundResolve(Guid id, Guid refundId);
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <returns>ApiResponse of ListOrderRefundsItem</returns>
+        ApiResponse<ListOrderRefundsItem> CreateOrderRefundResolveWithHttpInfo(Guid id, Guid refundId);
         /// <summary>
         /// Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
         /// </summary>
@@ -339,8 +552,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateInboxOfferResponse</returns>
-        CreateInboxOfferResponse CreateOrderTracking(Guid id);
+        /// <returns>CreateOrderTrackingResponse</returns>
+        CreateOrderTrackingResponse CreateOrderTracking(Guid id);
 
         /// <summary>
         /// Submit tracking number + carrier and notify the platform.
@@ -350,8 +563,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateInboxOfferResponse</returns>
-        ApiResponse<CreateInboxOfferResponse> CreateOrderTrackingWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of CreateOrderTrackingResponse</returns>
+        ApiResponse<CreateOrderTrackingResponse> CreateOrderTrackingWithHttpInfo(Guid id);
         /// <summary>
         /// Generate the Whatnot shipping label and record it on the order.
         /// </summary>
@@ -375,8 +588,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderWhatnotLabelResponse</returns>
-        CreateOrderWhatnotLabelResponse CreateOrderWhatnotPackage(Guid id);
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        GetOrderWhatnotShipmentResponse CreateOrderWhatnotPackage(Guid id);
 
         /// <summary>
         /// Save a Whatnot shipment package (weight oz, box inches).
@@ -386,8 +599,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderWhatnotLabelResponse</returns>
-        ApiResponse<CreateOrderWhatnotLabelResponse> CreateOrderWhatnotPackageWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        ApiResponse<GetOrderWhatnotShipmentResponse> CreateOrderWhatnotPackageWithHttpInfo(Guid id);
         /// <summary>
         /// Quote what a Whatnot package change costs (cents).
         /// </summary>
@@ -479,6 +692,62 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of RentalResponse</returns>
         ApiResponse<RentalResponse> CreateRentalDeclineWithHttpInfo(string id);
         /// <summary>
+        /// Mark a rental delivered to the renter.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        RentalResponse CreateRentalDelivered(string id);
+
+        /// <summary>
+        /// Mark a rental delivered to the renter.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        ApiResponse<RentalResponse> CreateRentalDeliveredWithHttpInfo(string id);
+        /// <summary>
+        /// Approve or decline a renter’s request for more days.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <returns>CreateRentalExtensionDecideResponse</returns>
+        CreateRentalExtensionDecideResponse CreateRentalExtensionDecide(string id, string extensionId);
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <returns>ApiResponse of CreateRentalExtensionDecideResponse</returns>
+        ApiResponse<CreateRentalExtensionDecideResponse> CreateRentalExtensionDecideWithHttpInfo(string id, string extensionId);
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        RentalResponse CreateRentalInspect(string id);
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        ApiResponse<RentalResponse> CreateRentalInspectWithHttpInfo(string id);
+        /// <summary>
         /// Buy both labels for a booked rental: outbound to the renter, and the return label they use.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -496,6 +765,42 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of RentalResponse</returns>
         ApiResponse<RentalResponse> CreateRentalLabelWithHttpInfo(string id);
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        RentalResponse CreateRentalNotReturned(string id);
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        ApiResponse<RentalResponse> CreateRentalNotReturnedWithHttpInfo(string id);
+        /// <summary>
+        /// Release the deposit now, without a claim.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        RentalResponse CreateRentalReleaseDeposit(string id);
+
+        /// <summary>
+        /// Release the deposit now, without a claim.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        ApiResponse<RentalResponse> CreateRentalReleaseDepositWithHttpInfo(string id);
         /// <summary>
         /// Mark a rental back with you. You then have 3 days to claim damage before the deposit goes back.
         /// </summary>
@@ -533,23 +838,26 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of RentalResponse</returns>
         ApiResponse<RentalResponse> CreateRentalShippedWithHttpInfo(string id);
         /// <summary>
-        /// Get one order.
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <returns>ListOrdersItem</returns>
-        ListOrdersItem GetOrder(Guid id);
-
-        /// <summary>
-        /// Get one order.
+        /// Get one order, with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ListOrdersItem</returns>
-        ApiResponse<ListOrdersItem> GetOrderWithHttpInfo(Guid id);
+        /// <returns>GetOrderResponse</returns>
+        GetOrderResponse GetOrder(Guid id);
+
+        /// <summary>
+        /// Get one order, with its sale price, fees, SKU and line items.
+        /// </summary>
+        /// <remarks>
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderResponse</returns>
+        ApiResponse<GetOrderResponse> GetOrderWithHttpInfo(Guid id);
         /// <summary>
         /// Whether this order can be cancelled, and which reason codes the marketplace accepts.
         /// </summary>
@@ -584,6 +892,27 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Dictionary&lt;string, decimal&gt;</returns>
         ApiResponse<Dictionary<string, decimal>> GetOrderCountWithHttpInfo();
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from.
+        /// </summary>
+        /// <remarks>
+        /// Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderDeliveryPhotoResponse</returns>
+        GetOrderDeliveryPhotoResponse GetOrderDeliveryPhoto(string id);
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from.
+        /// </summary>
+        /// <remarks>
+        /// Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderDeliveryPhotoResponse</returns>
+        ApiResponse<GetOrderDeliveryPhotoResponse> GetOrderDeliveryPhotoWithHttpInfo(string id);
         /// <summary>
         /// Everything recorded about how this order was packed and how it arrived.
         /// </summary>
@@ -630,6 +959,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of System.IO.Stream</returns>
         ApiResponse<System.IO.Stream> GetOrderLabelPrintWithHttpInfo(Guid id, string size = default(string), string flip = default(string), Guid? parcelId = default(Guid?));
         /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderOrderChatResponse</returns>
+        GetOrderOrderChatResponse GetOrderOrderChat(Guid id);
+
+        /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderOrderChatResponse</returns>
+        ApiResponse<GetOrderOrderChatResponse> GetOrderOrderChatWithHttpInfo(Guid id);
+        /// <summary>
         /// Single-order packing slip PDF.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -648,6 +995,78 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of System.IO.Stream</returns>
         ApiResponse<System.IO.Stream> GetOrderPackingSlipWithHttpInfo(Guid id);
         /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderPlatformLabelOptionResponse</returns>
+        GetOrderPlatformLabelOptionResponse GetOrderPlatformLabelOption(Guid id);
+
+        /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderPlatformLabelOptionResponse</returns>
+        ApiResponse<GetOrderPlatformLabelOptionResponse> GetOrderPlatformLabelOptionWithHttpInfo(Guid id);
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        UrlExpiresInSecondsResponse GetOrderPlatformLabelPackingSlip(Guid id);
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        ApiResponse<UrlExpiresInSecondsResponse> GetOrderPlatformLabelPackingSlipWithHttpInfo(Guid id);
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        GetOrderWhatnotShipmentResponse GetOrderPlatformLabelState(Guid id);
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        ApiResponse<GetOrderWhatnotShipmentResponse> GetOrderPlatformLabelStateWithHttpInfo(Guid id);
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        UrlExpiresInSecondsResponse GetOrderPlatformLabelUrl(Guid id);
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        ApiResponse<UrlExpiresInSecondsResponse> GetOrderPlatformLabelUrlWithHttpInfo(Guid id);
+        /// <summary>
         /// Proof-of-delivery evidence from the carrier&#39;s scan record (PDF, or JSON).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -665,6 +1084,42 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetOrderProofOfDeliveryResponse</returns>
         ApiResponse<GetOrderProofOfDeliveryResponse> GetOrderProofOfDeliveryWithHttpInfo(Guid id);
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderRefundOptionResponse</returns>
+        GetOrderRefundOptionResponse GetOrderRefundOption(Guid id);
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderRefundOptionResponse</returns>
+        ApiResponse<GetOrderRefundOptionResponse> GetOrderRefundOptionWithHttpInfo(Guid id);
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderSalesTaxResponse</returns>
+        GetOrderSalesTaxResponse GetOrderSalesTax(Guid id);
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderSalesTaxResponse</returns>
+        ApiResponse<GetOrderSalesTaxResponse> GetOrderSalesTaxWithHttpInfo(Guid id);
         /// <summary>
         /// One SCAN form; a queued form is re-read from the carrier and its PDF appears once built.
         /// </summary>
@@ -709,8 +1164,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>GetOrderWhatnotPackingSlipResponse</returns>
-        GetOrderWhatnotPackingSlipResponse GetOrderWhatnotPackingSlip(Guid id);
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        UrlExpiresInSecondsResponse GetOrderWhatnotPackingSlip(Guid id);
 
         /// <summary>
         /// A fresh link to Whatnot&#39;s packing slip PDF.
@@ -720,15 +1175,15 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of GetOrderWhatnotPackingSlipResponse</returns>
-        ApiResponse<GetOrderWhatnotPackingSlipResponse> GetOrderWhatnotPackingSlipWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        ApiResponse<UrlExpiresInSecondsResponse> GetOrderWhatnotPackingSlipWithHttpInfo(Guid id);
         /// <summary>
         /// Whatnot shipment for an order (package, label, tracking). Records a label found on it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderWhatnotLabelResponse</returns>
-        CreateOrderWhatnotLabelResponse GetOrderWhatnotShipment(Guid id);
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        GetOrderWhatnotShipmentResponse GetOrderWhatnotShipment(Guid id);
 
         /// <summary>
         /// Whatnot shipment for an order (package, label, tracking). Records a label found on it.
@@ -738,8 +1193,42 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderWhatnotLabelResponse</returns>
-        ApiResponse<CreateOrderWhatnotLabelResponse> GetOrderWhatnotShipmentWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        ApiResponse<GetOrderWhatnotShipmentResponse> GetOrderWhatnotShipmentWithHttpInfo(Guid id);
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetRentalResponse</returns>
+        GetRentalResponse GetRental(string id);
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetRentalResponse</returns>
+        ApiResponse<GetRentalResponse> GetRentalWithHttpInfo(string id);
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetRentalCalendarResponse</returns>
+        GetRentalCalendarResponse GetRentalCalendar();
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetRentalCalendarResponse</returns>
+        ApiResponse<GetRentalCalendarResponse> GetRentalCalendarWithHttpInfo();
         /// <summary>
         /// Your items on layaway (active and paid off). Do not ship an active one: its order moves to needs_fulfillment when paid in full.
         /// </summary>
@@ -773,14 +1262,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListLiveShipmentsResponse</returns>
         ApiResponse<ListLiveShipmentsResponse> ListLiveShipmentsWithHttpInfo();
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier.
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListOrderPickupReadyResponse</returns>
         ListOrderPickupReadyResponse ListOrderPickupReady();
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier.
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier.
         /// </summary>
         /// <remarks>
         /// 
@@ -804,6 +1293,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListOrderPickupsResponse</returns>
         ApiResponse<ListOrderPickupsResponse> ListOrderPickupsWithHttpInfo();
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListOrderRefundsResponse</returns>
+        ListOrderRefundsResponse ListOrderRefunds(Guid id);
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListOrderRefundsResponse</returns>
+        ApiResponse<ListOrderRefundsResponse> ListOrderRefundsWithHttpInfo(Guid id);
         /// <summary>
         /// SCAN forms, newest first.
         /// </summary>
@@ -842,29 +1349,56 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListOrderUnitsResponse</returns>
         ApiResponse<ListOrderUnitsResponse> ListOrderUnitsWithHttpInfo(string id);
         /// <summary>
-        /// List orders.
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional, default to 25)</param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="platform"> (optional)</param>
-        /// <returns>ListOrdersResponse</returns>
-        ListOrdersResponse ListOrders(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string));
-
-        /// <summary>
-        /// List orders.
+        /// List orders, each with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
+        /// <returns>ListOrdersResponse</returns>
+        ListOrdersResponse ListOrders(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?));
+
+        /// <summary>
+        /// List orders, each with its sale price, fees, SKU and line items.
+        /// </summary>
+        /// <remarks>
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <returns>ApiResponse of ListOrdersResponse</returns>
-        ApiResponse<ListOrdersResponse> ListOrdersWithHttpInfo(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string));
+        ApiResponse<ListOrdersResponse> ListOrdersWithHttpInfo(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?));
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListRentalHistoryResponse</returns>
+        ListRentalHistoryResponse ListRentalHistory();
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListRentalHistoryResponse</returns>
+        ApiResponse<ListRentalHistoryResponse> ListRentalHistoryWithHttpInfo();
         /// <summary>
         /// Rentals of your items, with the ship-to and the outbound label.
         /// </summary>
@@ -886,8 +1420,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ListOrdersItem</returns>
-        ListOrdersItem UpdateOrder(Guid id);
+        /// <returns>UpdateOrderResponse</returns>
+        UpdateOrderResponse UpdateOrder(Guid id);
 
         /// <summary>
         /// Update order (status, notes, tracking).
@@ -897,8 +1431,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ListOrdersItem</returns>
-        ApiResponse<ListOrdersItem> UpdateOrderWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of UpdateOrderResponse</returns>
+        ApiResponse<UpdateOrderResponse> UpdateOrderWithHttpInfo(Guid id);
         #endregion Synchronous Operations
     }
 
@@ -1004,8 +1538,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInventoryLabelRenameResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryLabelRenameResponse> CreateOrderBulkMarkDisputedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdatedResponse</returns>
+        System.Threading.Tasks.Task<UpdatedResponse> CreateOrderBulkMarkDisputedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk mark orders as disputed with a shared reason.
@@ -1015,8 +1549,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInventoryLabelRenameResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryLabelRenameResponse>> CreateOrderBulkMarkDisputedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateOrderBulkMarkDisputedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk flip status&#x3D;shipped, clear the reserved-stock marker, and notify each platform.
         /// </summary>
@@ -1060,7 +1594,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> CreateOrderBulkPackingSlipWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Cancel an order on its marketplace.
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
         /// </summary>
         /// <remarks>
         /// 
@@ -1072,7 +1606,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateOrderCancelResponse> CreateOrderCancelAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Cancel an order on its marketplace.
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
         /// </summary>
         /// <remarks>
         /// 
@@ -1082,6 +1616,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderCancelResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderCancelResponse>> CreateOrderCancelWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds.
+        /// </summary>
+        /// <remarks>
+        /// Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderCorrectTrackingResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderCorrectTrackingResponse> CreateOrderCorrectTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds.
+        /// </summary>
+        /// <remarks>
+        /// Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderCorrectTrackingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderCorrectTrackingResponse>> CreateOrderCorrectTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Flag an order as disputed.
         /// </summary>
@@ -1127,7 +1684,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateOrderImportResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderImportResponse>> CreateOrderImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Purchase EasyPost shipping label.
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -1139,7 +1696,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateOrderLabelResponse> CreateOrderLabelAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Purchase EasyPost shipping label.
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -1149,6 +1706,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderLabelResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderLabelResponse>> CreateOrderLabelWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet.
+        /// </summary>
+        /// <remarks>
+        /// Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderLabelVoidResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderLabelVoidResponse> CreateOrderLabelVoidAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet.
+        /// </summary>
+        /// <remarks>
+        /// Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderLabelVoidResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderLabelVoidResponse>> CreateOrderLabelVoidWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
+        /// </summary>
+        /// <remarks>
+        /// For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderLinkListingResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderLinkListingResponse> CreateOrderLinkListingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
+        /// </summary>
+        /// <remarks>
+        /// For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderLinkListingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderLinkListingResponse>> CreateOrderLinkListingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Message the order&#39;s buyer on the marketplace.
         /// </summary>
@@ -1173,6 +1776,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateOrderMessageResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderMessageResponse>> CreateOrderMessageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        System.Threading.Tasks.Task<OkResponse> CreateOrderOrderChatAsync(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateOrderOrderChatWithHttpInfoAsync(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
         /// </summary>
         /// <remarks>
@@ -1194,7 +1822,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateOrderPickupResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderPickupResponse>> CreateOrderPickupWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short.
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -1206,7 +1834,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateOrderPickupLabelResponse> CreateOrderPickupLabelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short.
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
         /// </summary>
         /// <remarks>
         /// 
@@ -1216,6 +1844,121 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderPickupLabelResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderPickupLabelResponse>> CreateOrderPickupLabelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> CreateOrderPlatformLabelPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderWhatnotShipmentResponse>> CreateOrderPlatformLabelPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderWhatnotPackageQuoteResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderWhatnotPackageQuoteResponse> CreateOrderPlatformLabelPackageQuoteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderWhatnotPackageQuoteResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderWhatnotPackageQuoteResponse>> CreateOrderPlatformLabelPackageQuoteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelPullResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderPlatformLabelPullResponse> CreateOrderPlatformLabelPullAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelPullResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderPlatformLabelPullResponse>> CreateOrderPlatformLabelPullWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelPurchaseResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderPlatformLabelPurchaseResponse> CreateOrderPlatformLabelPurchaseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelPurchaseResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderPlatformLabelPurchaseResponse>> CreateOrderPlatformLabelPurchaseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelQuoteResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderPlatformLabelQuoteResponse> CreateOrderPlatformLabelQuoteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelQuoteResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderPlatformLabelQuoteResponse>> CreateOrderPlatformLabelQuoteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pull a pre-paid label from cookie platforms (Poshmark/Mercari).
         /// </summary>
@@ -1240,7 +1983,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateOrderPullPlatformLabelResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderPullPlatformLabelResponse>> CreateOrderPullPlatformLabelWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// EasyPost rate quote for an order.
+        /// Crossly Shipping rate quote for an order.
         /// </summary>
         /// <remarks>
         /// 
@@ -1252,7 +1995,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateOrderRateResponse> CreateOrderRateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// EasyPost rate quote for an order.
+        /// Crossly Shipping rate quote for an order.
         /// </summary>
         /// <remarks>
         /// 
@@ -1263,7 +2006,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateOrderRateResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOrderRateResponse>> CreateOrderRateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Issue a full or partial refund on the platform.
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
         /// </summary>
         /// <remarks>
         /// 
@@ -1272,10 +2015,11 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderRefundResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateOrderRefundResponse> CreateOrderRefundAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Issue a full or partial refund on the platform.
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
         /// </summary>
         /// <remarks>
         /// 
@@ -1284,7 +2028,56 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderRefundResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateOrderRefundResponse>> CreateOrderRefundWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderRefundByIdResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderRefundByIdResponse> CreateOrderRefundByIdAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderRefundByIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderRefundByIdResponse>> CreateOrderRefundByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListOrderRefundsItem</returns>
+        System.Threading.Tasks.Task<ListOrderRefundsItem> CreateOrderRefundResolveAsync(Guid id, Guid refundId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListOrderRefundsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListOrderRefundsItem>> CreateOrderRefundResolveWithHttpInfoAsync(Guid id, Guid refundId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
         /// </summary>
@@ -1315,8 +2108,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInboxOfferResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateOrderTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateOrderTrackingResponse</returns>
+        System.Threading.Tasks.Task<CreateOrderTrackingResponse> CreateOrderTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Submit tracking number + carrier and notify the platform.
@@ -1327,8 +2120,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInboxOfferResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxOfferResponse>> CreateOrderTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateOrderTrackingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderTrackingResponse>> CreateOrderTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generate the Whatnot shipping label and record it on the order.
         /// </summary>
@@ -1361,8 +2154,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderWhatnotLabelResponse</returns>
-        System.Threading.Tasks.Task<CreateOrderWhatnotLabelResponse> CreateOrderWhatnotPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> CreateOrderWhatnotPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save a Whatnot shipment package (weight oz, box inches).
@@ -1373,8 +2166,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderWhatnotLabelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateOrderWhatnotLabelResponse>> CreateOrderWhatnotPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderWhatnotShipmentResponse>> CreateOrderWhatnotPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Quote what a Whatnot package change costs (cents).
         /// </summary>
@@ -1491,6 +2284,77 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (RentalResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalDeclineWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Mark a rental delivered to the renter.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        System.Threading.Tasks.Task<RentalResponse> CreateRentalDeliveredAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Mark a rental delivered to the renter.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalDeliveredWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Approve or decline a renter’s request for more days.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRentalExtensionDecideResponse</returns>
+        System.Threading.Tasks.Task<CreateRentalExtensionDecideResponse> CreateRentalExtensionDecideAsync(string id, string extensionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRentalExtensionDecideResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateRentalExtensionDecideResponse>> CreateRentalExtensionDecideWithHttpInfoAsync(string id, string extensionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        System.Threading.Tasks.Task<RentalResponse> CreateRentalInspectAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalInspectWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Buy both labels for a booked rental: outbound to the renter, and the return label they use.
         /// </summary>
         /// <remarks>
@@ -1513,6 +2377,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RentalResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalLabelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        System.Threading.Tasks.Task<RentalResponse> CreateRentalNotReturnedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalNotReturnedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Release the deposit now, without a claim.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        System.Threading.Tasks.Task<RentalResponse> CreateRentalReleaseDepositAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Release the deposit now, without a claim.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalReleaseDepositWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Mark a rental back with you. You then have 3 days to claim damage before the deposit goes back.
         /// </summary>
@@ -1560,28 +2470,28 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (RentalResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RentalResponse>> CreateRentalShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get one order.
+        /// Get one order, with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListOrdersItem</returns>
-        System.Threading.Tasks.Task<ListOrdersItem> GetOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetOrderResponse</returns>
+        System.Threading.Tasks.Task<GetOrderResponse> GetOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get one order.
+        /// Get one order, with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListOrdersItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListOrdersItem>> GetOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetOrderResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderResponse>> GetOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Whether this order can be cancelled, and which reason codes the marketplace accepts.
         /// </summary>
@@ -1626,6 +2536,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, decimal&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<Dictionary<string, decimal>>> GetOrderCountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from.
+        /// </summary>
+        /// <remarks>
+        /// Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderDeliveryPhotoResponse</returns>
+        System.Threading.Tasks.Task<GetOrderDeliveryPhotoResponse> GetOrderDeliveryPhotoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from.
+        /// </summary>
+        /// <remarks>
+        /// Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderDeliveryPhotoResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderDeliveryPhotoResponse>> GetOrderDeliveryPhotoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Everything recorded about how this order was packed and how it arrived.
         /// </summary>
@@ -1679,6 +2612,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetOrderLabelPrintWithHttpInfoAsync(Guid id, string size = default(string), string flip = default(string), Guid? parcelId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderOrderChatResponse</returns>
+        System.Threading.Tasks.Task<GetOrderOrderChatResponse> GetOrderOrderChatAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderOrderChatResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderOrderChatResponse>> GetOrderOrderChatWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Single-order packing slip PDF.
         /// </summary>
         /// <remarks>
@@ -1702,6 +2658,98 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetOrderPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderPlatformLabelOptionResponse</returns>
+        System.Threading.Tasks.Task<GetOrderPlatformLabelOptionResponse> GetOrderPlatformLabelOptionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderPlatformLabelOptionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderPlatformLabelOptionResponse>> GetOrderPlatformLabelOptionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderPlatformLabelPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UrlExpiresInSecondsResponse>> GetOrderPlatformLabelPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> GetOrderPlatformLabelStateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderWhatnotShipmentResponse>> GetOrderPlatformLabelStateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderPlatformLabelUrlAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UrlExpiresInSecondsResponse>> GetOrderPlatformLabelUrlWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Proof-of-delivery evidence from the carrier&#39;s scan record (PDF, or JSON).
         /// </summary>
         /// <remarks>
@@ -1724,6 +2772,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetOrderProofOfDeliveryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetOrderProofOfDeliveryResponse>> GetOrderProofOfDeliveryWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderRefundOptionResponse</returns>
+        System.Threading.Tasks.Task<GetOrderRefundOptionResponse> GetOrderRefundOptionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderRefundOptionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderRefundOptionResponse>> GetOrderRefundOptionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderSalesTaxResponse</returns>
+        System.Threading.Tasks.Task<GetOrderSalesTaxResponse> GetOrderSalesTaxAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderSalesTaxResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderSalesTaxResponse>> GetOrderSalesTaxWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One SCAN form; a queued form is re-read from the carrier and its PDF appears once built.
         /// </summary>
@@ -1779,8 +2873,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetOrderWhatnotPackingSlipResponse</returns>
-        System.Threading.Tasks.Task<GetOrderWhatnotPackingSlipResponse> GetOrderWhatnotPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderWhatnotPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A fresh link to Whatnot&#39;s packing slip PDF.
@@ -1791,8 +2885,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetOrderWhatnotPackingSlipResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetOrderWhatnotPackingSlipResponse>> GetOrderWhatnotPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UrlExpiresInSecondsResponse>> GetOrderWhatnotPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Whatnot shipment for an order (package, label, tracking). Records a label found on it.
         /// </summary>
@@ -1802,8 +2896,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderWhatnotLabelResponse</returns>
-        System.Threading.Tasks.Task<CreateOrderWhatnotLabelResponse> GetOrderWhatnotShipmentAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> GetOrderWhatnotShipmentAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Whatnot shipment for an order (package, label, tracking). Records a label found on it.
@@ -1814,8 +2908,52 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderWhatnotLabelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateOrderWhatnotLabelResponse>> GetOrderWhatnotShipmentWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderWhatnotShipmentResponse>> GetOrderWhatnotShipmentWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRentalResponse</returns>
+        System.Threading.Tasks.Task<GetRentalResponse> GetRentalAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRentalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRentalResponse>> GetRentalWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRentalCalendarResponse</returns>
+        System.Threading.Tasks.Task<GetRentalCalendarResponse> GetRentalCalendarAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRentalCalendarResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRentalCalendarResponse>> GetRentalCalendarWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your items on layaway (active and paid off). Do not ship an active one: its order moves to needs_fulfillment when paid in full.
         /// </summary>
@@ -1859,7 +2997,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListLiveShipmentsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListLiveShipmentsResponse>> ListLiveShipmentsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier.
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier.
         /// </summary>
         /// <remarks>
         /// 
@@ -1870,7 +3008,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListOrderPickupReadyResponse> ListOrderPickupReadyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier.
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier.
         /// </summary>
         /// <remarks>
         /// 
@@ -1900,6 +3038,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListOrderPickupsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListOrderPickupsResponse>> ListOrderPickupsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListOrderRefundsResponse</returns>
+        System.Threading.Tasks.Task<ListOrderRefundsResponse> ListOrderRefundsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListOrderRefundsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListOrderRefundsResponse>> ListOrderRefundsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// SCAN forms, newest first.
         /// </summary>
@@ -1945,34 +3106,63 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListOrderUnitsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListOrderUnitsResponse>> ListOrderUnitsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List orders.
+        /// List orders, each with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListOrdersResponse</returns>
-        System.Threading.Tasks.Task<ListOrdersResponse> ListOrdersAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListOrdersResponse> ListOrdersAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List orders.
+        /// List orders, each with its sale price, fees, SKU and line items.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListOrdersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListOrdersResponse>> ListOrdersWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListOrdersResponse>> ListOrdersWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListRentalHistoryResponse</returns>
+        System.Threading.Tasks.Task<ListRentalHistoryResponse> ListRentalHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListRentalHistoryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListRentalHistoryResponse>> ListRentalHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rentals of your items, with the ship-to and the outbound label.
         /// </summary>
@@ -2003,8 +3193,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListOrdersItem</returns>
-        System.Threading.Tasks.Task<ListOrdersItem> UpdateOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateOrderResponse</returns>
+        System.Threading.Tasks.Task<UpdateOrderResponse> UpdateOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update order (status, notes, tracking).
@@ -2015,8 +3205,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListOrdersItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListOrdersItem>> UpdateOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdateOrderResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateOrderResponse>> UpdateOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -2689,10 +3879,10 @@ namespace net.crossly.Api
         /// Bulk mark orders as disputed with a shared reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateInventoryLabelRenameResponse</returns>
-        public CreateInventoryLabelRenameResponse CreateOrderBulkMarkDisputed()
+        /// <returns>UpdatedResponse</returns>
+        public UpdatedResponse CreateOrderBulkMarkDisputed()
         {
-            net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> localVarResponse = CreateOrderBulkMarkDisputedWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateOrderBulkMarkDisputedWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -2700,8 +3890,8 @@ namespace net.crossly.Api
         /// Bulk mark orders as disputed with a shared reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateInventoryLabelRenameResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> CreateOrderBulkMarkDisputedWithHttpInfo()
+        /// <returns>ApiResponse of UpdatedResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateOrderBulkMarkDisputedWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2734,7 +3924,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateInventoryLabelRenameResponse>("/v1/orders/bulk-mark-disputed", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdatedResponse>("/v1/orders/bulk-mark-disputed", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderBulkMarkDisputed", localVarResponse);
@@ -2752,10 +3942,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInventoryLabelRenameResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryLabelRenameResponse> CreateOrderBulkMarkDisputedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdatedResponse</returns>
+        public async System.Threading.Tasks.Task<UpdatedResponse> CreateOrderBulkMarkDisputedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> localVarResponse = await CreateOrderBulkMarkDisputedWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateOrderBulkMarkDisputedWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2764,8 +3954,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInventoryLabelRenameResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse>> CreateOrderBulkMarkDisputedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateOrderBulkMarkDisputedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2799,7 +3989,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInventoryLabelRenameResponse>("/v1/orders/bulk-mark-disputed", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdatedResponse>("/v1/orders/bulk-mark-disputed", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -3072,7 +4262,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cancel an order on its marketplace. 
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3084,7 +4274,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cancel an order on its marketplace. 
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3137,7 +4327,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cancel an order on its marketplace. 
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3150,7 +4340,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cancel an order on its marketplace. 
+        /// Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3196,6 +4386,140 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderCancel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds. Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderCorrectTrackingResponse</returns>
+        public CreateOrderCorrectTrackingResponse CreateOrderCorrectTracking(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderCorrectTrackingResponse> localVarResponse = CreateOrderCorrectTrackingWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds. Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderCorrectTrackingResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderCorrectTrackingResponse> CreateOrderCorrectTrackingWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderCorrectTrackingResponse>("/v1/orders/{id}/correct-tracking", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderCorrectTracking", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds. Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderCorrectTrackingResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderCorrectTrackingResponse> CreateOrderCorrectTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderCorrectTrackingResponse> localVarResponse = await CreateOrderCorrectTrackingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Correct a wrong tracking number the marketplace already holds. Replaces the order&#39;s tracking number with &#x60;trackingNumber&#x60;, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): &#x60;correction&#x60; is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderCorrectTrackingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderCorrectTrackingResponse>> CreateOrderCorrectTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderCorrectTrackingResponse>("/v1/orders/{id}/correct-tracking", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderCorrectTracking", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3468,7 +4792,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Purchase EasyPost shipping label. 
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3480,7 +4804,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Purchase EasyPost shipping label. 
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3533,7 +4857,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Purchase EasyPost shipping label. 
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3546,7 +4870,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Purchase EasyPost shipping label. 
+        /// Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3592,6 +4916,274 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderLabel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet. Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderLabelVoidResponse</returns>
+        public CreateOrderLabelVoidResponse CreateOrderLabelVoid(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderLabelVoidResponse> localVarResponse = CreateOrderLabelVoidWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet. Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderLabelVoidResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderLabelVoidResponse> CreateOrderLabelVoidWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderLabelVoidResponse>("/v1/orders/{id}/label/void", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderLabelVoid", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet. Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderLabelVoidResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderLabelVoidResponse> CreateOrderLabelVoidAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderLabelVoidResponse> localVarResponse = await CreateOrderLabelVoidWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Void a Crossly Shipping label and refund it to the shipping wallet. Voids the order&#39;s unused label, owes the wallet charge back in full (markup included) and sets the order back to needs_fulfillment. The refund is held as pending (&#x60;refundPendingCents&#x60;; &#x60;refundedCents&#x60; stays 0) and is credited to the shipping wallet when Crossly releases held credits. Only while the carrier has not scanned the parcel and within 30 days of purchase. &#x60;tracking.outcome&#x60; says what happens to tracking already sent to the marketplace: not_submitted, removal_queued, replace_on_next_label, or update_manually (with &#x60;platformOrderUrl&#x60;). Repeating the call returns the same result with &#x60;alreadyVoided: true&#x60; and refunds nothing again.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderLabelVoidResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderLabelVoidResponse>> CreateOrderLabelVoidWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderLabelVoidResponse>("/v1/orders/{id}/label/void", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderLabelVoid", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere). For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderLinkListingResponse</returns>
+        public CreateOrderLinkListingResponse CreateOrderLinkListing(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderLinkListingResponse> localVarResponse = CreateOrderLinkListingWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere). For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderLinkListingResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderLinkListingResponse> CreateOrderLinkListingWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderLinkListingResponse>("/v1/orders/{id}/link-listing", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderLinkListing", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere). For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderLinkListingResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderLinkListingResponse> CreateOrderLinkListingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderLinkListingResponse> localVarResponse = await CreateOrderLinkListingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere). For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing&#39;s row on the order&#39;s platform (or moves the stub&#39;s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderLinkListingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderLinkListingResponse>> CreateOrderLinkListingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderLinkListingResponse>("/v1/orders/{id}/link-listing", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderLinkListing", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3736,6 +5328,160 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse CreateOrderOrderChat(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateOrderOrderChatWithHttpInfo(id, createOrderOrderChatRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> CreateOrderOrderChatWithHttpInfo(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest)
+        {
+            // verify the required parameter 'createOrderOrderChatRequest' is set
+            if (createOrderOrderChatRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createOrderOrderChatRequest' when calling OrdersApi->CreateOrderOrderChat");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createOrderOrderChatRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<OkResponse>("/v1/orders/{id}/order-chat", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderOrderChat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        public async System.Threading.Tasks.Task<OkResponse> CreateOrderOrderChatAsync(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateOrderOrderChatWithHttpInfoAsync(id, createOrderOrderChatRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createOrderOrderChatRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateOrderOrderChatWithHttpInfoAsync(Guid id, CreateOrderOrderChatRequest createOrderOrderChatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createOrderOrderChatRequest' is set
+            if (createOrderOrderChatRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createOrderOrderChatRequest' when calling OrdersApi->CreateOrderOrderChat");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createOrderOrderChatRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<OkResponse>("/v1/orders/{id}/order-chat", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderOrderChat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3864,7 +5610,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. 
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3876,7 +5622,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. 
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3935,7 +5681,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. 
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3948,7 +5694,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. 
+        /// Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -4000,6 +5746,676 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderPickupLabel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        public GetOrderWhatnotShipmentResponse CreateOrderPlatformLabelPackage(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = CreateOrderPlatformLabelPackageWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> CreateOrderPlatformLabelPackageWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/platform-label/package", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPackage", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> CreateOrderPlatformLabelPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = await CreateOrderPlatformLabelPackageWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save the package (weight oz, box inches) the marketplace prices the label from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse>> CreateOrderPlatformLabelPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/platform-label/package", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPackage", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderWhatnotPackageQuoteResponse</returns>
+        public CreateOrderWhatnotPackageQuoteResponse CreateOrderPlatformLabelPackageQuote(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderWhatnotPackageQuoteResponse> localVarResponse = CreateOrderPlatformLabelPackageQuoteWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderWhatnotPackageQuoteResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderWhatnotPackageQuoteResponse> CreateOrderPlatformLabelPackageQuoteWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderWhatnotPackageQuoteResponse>("/v1/orders/{id}/platform-label/package/quote", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPackageQuote", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderWhatnotPackageQuoteResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderWhatnotPackageQuoteResponse> CreateOrderPlatformLabelPackageQuoteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderWhatnotPackageQuoteResponse> localVarResponse = await CreateOrderPlatformLabelPackageQuoteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Quote what a change to the marketplace shipment&#39;s package costs (cents). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderWhatnotPackageQuoteResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderWhatnotPackageQuoteResponse>> CreateOrderPlatformLabelPackageQuoteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderWhatnotPackageQuoteResponse>("/v1/orders/{id}/platform-label/package/quote", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPackageQuote", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelPullResponse</returns>
+        public CreateOrderPlatformLabelPullResponse CreateOrderPlatformLabelPull(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPullResponse> localVarResponse = CreateOrderPlatformLabelPullWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelPullResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPullResponse> CreateOrderPlatformLabelPullWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderPlatformLabelPullResponse>("/v1/orders/{id}/platform-label/pull", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPull", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelPullResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderPlatformLabelPullResponse> CreateOrderPlatformLabelPullAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPullResponse> localVarResponse = await CreateOrderPlatformLabelPullWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pull the marketplace&#39;s prepaid label into Crossly (every platform with a label descriptor). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelPullResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPullResponse>> CreateOrderPlatformLabelPullWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderPlatformLabelPullResponse>("/v1/orders/{id}/platform-label/pull", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPull", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelPurchaseResponse</returns>
+        public CreateOrderPlatformLabelPurchaseResponse CreateOrderPlatformLabelPurchase(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPurchaseResponse> localVarResponse = CreateOrderPlatformLabelPurchaseWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelPurchaseResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPurchaseResponse> CreateOrderPlatformLabelPurchaseWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderPlatformLabelPurchaseResponse>("/v1/orders/{id}/platform-label/purchase", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPurchase", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelPurchaseResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderPlatformLabelPurchaseResponse> CreateOrderPlatformLabelPurchaseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPurchaseResponse> localVarResponse = await CreateOrderPlatformLabelPurchaseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Buy a replacement / extra marketplace label, or have the marketplace generate it, and record it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelPurchaseResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderPlatformLabelPurchaseResponse>> CreateOrderPlatformLabelPurchaseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderPlatformLabelPurchaseResponse>("/v1/orders/{id}/platform-label/purchase", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelPurchase", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderPlatformLabelQuoteResponse</returns>
+        public CreateOrderPlatformLabelQuoteResponse CreateOrderPlatformLabelQuote(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelQuoteResponse> localVarResponse = CreateOrderPlatformLabelQuoteWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderPlatformLabelQuoteResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderPlatformLabelQuoteResponse> CreateOrderPlatformLabelQuoteWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderPlatformLabelQuoteResponse>("/v1/orders/{id}/platform-label/quote", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelQuote", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderPlatformLabelQuoteResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderPlatformLabelQuoteResponse> CreateOrderPlatformLabelQuoteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderPlatformLabelQuoteResponse> localVarResponse = await CreateOrderPlatformLabelQuoteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Quote what buying a marketplace label costs, before you are charged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderPlatformLabelQuoteResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderPlatformLabelQuoteResponse>> CreateOrderPlatformLabelQuoteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderPlatformLabelQuoteResponse>("/v1/orders/{id}/platform-label/quote", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderPlatformLabelQuote", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4144,7 +6560,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// EasyPost rate quote for an order. 
+        /// Crossly Shipping rate quote for an order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -4156,7 +6572,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// EasyPost rate quote for an order. 
+        /// Crossly Shipping rate quote for an order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -4209,7 +6625,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// EasyPost rate quote for an order. 
+        /// Crossly Shipping rate quote for an order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -4222,7 +6638,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// EasyPost rate quote for an order. 
+        /// Crossly Shipping rate quote for an order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -4278,11 +6694,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Issue a full or partial refund on the platform. 
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateOrderRefundResponse</returns>
+        [Obsolete]
         public CreateOrderRefundResponse CreateOrderRefund(Guid id)
         {
             net.crossly.Client.ApiResponse<CreateOrderRefundResponse> localVarResponse = CreateOrderRefundWithHttpInfo(id);
@@ -4290,11 +6707,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Issue a full or partial refund on the platform. 
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateOrderRefundResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateOrderRefundResponse> CreateOrderRefundWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4343,12 +6761,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Issue a full or partial refund on the platform. 
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderRefundResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateOrderRefundResponse> CreateOrderRefundAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateOrderRefundResponse> localVarResponse = await CreateOrderRefundWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -4356,12 +6775,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Issue a full or partial refund on the platform. 
+        /// DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderRefundResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderRefundResponse>> CreateOrderRefundWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -4402,6 +6822,280 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderRefund", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateOrderRefundByIdResponse</returns>
+        public CreateOrderRefundByIdResponse CreateOrderRefundById(Guid id)
+        {
+            net.crossly.Client.ApiResponse<CreateOrderRefundByIdResponse> localVarResponse = CreateOrderRefundByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateOrderRefundByIdResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderRefundByIdResponse> CreateOrderRefundByIdWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOrderRefundByIdResponse>("/v1/orders/{id}/refunds", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderRefundById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOrderRefundByIdResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderRefundByIdResponse> CreateOrderRefundByIdAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateOrderRefundByIdResponse> localVarResponse = await CreateOrderRefundByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Refund an order, in full or in part. &#x60;amount&#x60; is dollars; omit it for everything left (or the line items&#39; value). Crossly-marketplace orders refund the buyer&#39;s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order&#39;s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOrderRefundByIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderRefundByIdResponse>> CreateOrderRefundByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderRefundByIdResponse>("/v1/orders/{id}/refunds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderRefundById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <returns>ListOrderRefundsItem</returns>
+        public ListOrderRefundsItem CreateOrderRefundResolve(Guid id, Guid refundId)
+        {
+            net.crossly.Client.ApiResponse<ListOrderRefundsItem> localVarResponse = CreateOrderRefundResolveWithHttpInfo(id, refundId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <returns>ApiResponse of ListOrderRefundsItem</returns>
+        public net.crossly.Client.ApiResponse<ListOrderRefundsItem> CreateOrderRefundResolveWithHttpInfo(Guid id, Guid refundId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("refundId", net.crossly.Client.ClientUtils.ParameterToString(refundId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ListOrderRefundsItem>("/v1/orders/{id}/refunds/{refundId}/resolve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderRefundResolve", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListOrderRefundsItem</returns>
+        public async System.Threading.Tasks.Task<ListOrderRefundsItem> CreateOrderRefundResolveAsync(Guid id, Guid refundId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListOrderRefundsItem> localVarResponse = await CreateOrderRefundResolveWithHttpInfoAsync(id, refundId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Settle an &#x60;unverified&#x60; refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="refundId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListOrderRefundsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrderRefundsItem>> CreateOrderRefundResolveWithHttpInfoAsync(Guid id, Guid refundId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("refundId", net.crossly.Client.ClientUtils.ParameterToString(refundId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ListOrderRefundsItem>("/v1/orders/{id}/refunds/{refundId}/resolve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderRefundResolve", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4544,10 +7238,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateInboxOfferResponse</returns>
-        public CreateInboxOfferResponse CreateOrderTracking(Guid id)
+        /// <returns>CreateOrderTrackingResponse</returns>
+        public CreateOrderTrackingResponse CreateOrderTracking(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = CreateOrderTrackingWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateOrderTrackingResponse> localVarResponse = CreateOrderTrackingWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -4556,8 +7250,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateInboxOfferResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxOfferResponse> CreateOrderTrackingWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of CreateOrderTrackingResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateOrderTrackingResponse> CreateOrderTrackingWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4591,7 +7285,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateInboxOfferResponse>("/v1/orders/{id}/tracking", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateOrderTrackingResponse>("/v1/orders/{id}/tracking", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderTracking", localVarResponse);
@@ -4610,10 +7304,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInboxOfferResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateOrderTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateOrderTrackingResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOrderTrackingResponse> CreateOrderTrackingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = await CreateOrderTrackingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateOrderTrackingResponse> localVarResponse = await CreateOrderTrackingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4623,8 +7317,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInboxOfferResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxOfferResponse>> CreateOrderTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateOrderTrackingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderTrackingResponse>> CreateOrderTrackingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4659,7 +7353,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInboxOfferResponse>("/v1/orders/{id}/tracking", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderTrackingResponse>("/v1/orders/{id}/tracking", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -4812,10 +7506,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderWhatnotLabelResponse</returns>
-        public CreateOrderWhatnotLabelResponse CreateOrderWhatnotPackage(Guid id)
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        public GetOrderWhatnotShipmentResponse CreateOrderWhatnotPackage(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> localVarResponse = CreateOrderWhatnotPackageWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = CreateOrderWhatnotPackageWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -4824,8 +7518,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderWhatnotLabelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> CreateOrderWhatnotPackageWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> CreateOrderWhatnotPackageWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4859,7 +7553,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateOrderWhatnotLabelResponse>("/v1/orders/{id}/whatnot/package", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/whatnot/package", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOrderWhatnotPackage", localVarResponse);
@@ -4878,10 +7572,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderWhatnotLabelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateOrderWhatnotLabelResponse> CreateOrderWhatnotPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> CreateOrderWhatnotPackageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> localVarResponse = await CreateOrderWhatnotPackageWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = await CreateOrderWhatnotPackageWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4891,8 +7585,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderWhatnotLabelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse>> CreateOrderWhatnotPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse>> CreateOrderWhatnotPackageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4927,7 +7621,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOrderWhatnotLabelResponse>("/v1/orders/{id}/whatnot/package", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/whatnot/package", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -5660,6 +8354,462 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Mark a rental delivered to the renter. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        public RentalResponse CreateRentalDelivered(string id)
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = CreateRentalDeliveredWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark a rental delivered to the renter. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        public net.crossly.Client.ApiResponse<RentalResponse> CreateRentalDeliveredWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalDelivered");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RentalResponse>("/v1/rentals/{id}/delivered", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalDelivered", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Mark a rental delivered to the renter. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        public async System.Threading.Tasks.Task<RentalResponse> CreateRentalDeliveredAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = await CreateRentalDeliveredWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark a rental delivered to the renter. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<RentalResponse>> CreateRentalDeliveredWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalDelivered");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RentalResponse>("/v1/rentals/{id}/delivered", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalDelivered", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <returns>CreateRentalExtensionDecideResponse</returns>
+        public CreateRentalExtensionDecideResponse CreateRentalExtensionDecide(string id, string extensionId)
+        {
+            net.crossly.Client.ApiResponse<CreateRentalExtensionDecideResponse> localVarResponse = CreateRentalExtensionDecideWithHttpInfo(id, extensionId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <returns>ApiResponse of CreateRentalExtensionDecideResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateRentalExtensionDecideResponse> CreateRentalExtensionDecideWithHttpInfo(string id, string extensionId)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalExtensionDecide");
+            }
+
+            // verify the required parameter 'extensionId' is set
+            if (extensionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'extensionId' when calling OrdersApi->CreateRentalExtensionDecide");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("extensionId", net.crossly.Client.ClientUtils.ParameterToString(extensionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateRentalExtensionDecideResponse>("/v1/rentals/{id}/extensions/{extensionId}/decide", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalExtensionDecide", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRentalExtensionDecideResponse</returns>
+        public async System.Threading.Tasks.Task<CreateRentalExtensionDecideResponse> CreateRentalExtensionDecideAsync(string id, string extensionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateRentalExtensionDecideResponse> localVarResponse = await CreateRentalExtensionDecideWithHttpInfoAsync(id, extensionId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or decline a renter’s request for more days. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="extensionId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRentalExtensionDecideResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateRentalExtensionDecideResponse>> CreateRentalExtensionDecideWithHttpInfoAsync(string id, string extensionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalExtensionDecide");
+            }
+
+            // verify the required parameter 'extensionId' is set
+            if (extensionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'extensionId' when calling OrdersApi->CreateRentalExtensionDecide");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("extensionId", net.crossly.Client.ClientUtils.ParameterToString(extensionId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateRentalExtensionDecideResponse>("/v1/rentals/{id}/extensions/{extensionId}/decide", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalExtensionDecide", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        public RentalResponse CreateRentalInspect(string id)
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = CreateRentalInspectWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        public net.crossly.Client.ApiResponse<RentalResponse> CreateRentalInspectWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalInspect");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RentalResponse>("/v1/rentals/{id}/inspect", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalInspect", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        public async System.Threading.Tasks.Task<RentalResponse> CreateRentalInspectAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = await CreateRentalInspectWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record the return inspection: the checklist, photos, and optionally release the deposit. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<RentalResponse>> CreateRentalInspectWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalInspect");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RentalResponse>("/v1/rentals/{id}/inspect", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalInspect", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Buy both labels for a booked rental: outbound to the renter, and the return label they use. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -5796,6 +8946,298 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateRentalLabel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        public RentalResponse CreateRentalNotReturned(string id)
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = CreateRentalNotReturnedWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        public net.crossly.Client.ApiResponse<RentalResponse> CreateRentalNotReturnedWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalNotReturned");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RentalResponse>("/v1/rentals/{id}/not-returned", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalNotReturned", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        public async System.Threading.Tasks.Task<RentalResponse> CreateRentalNotReturnedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = await CreateRentalNotReturnedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Report a rental not returned (14 days past due): the deposit goes to you. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<RentalResponse>> CreateRentalNotReturnedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalNotReturned");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RentalResponse>("/v1/rentals/{id}/not-returned", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalNotReturned", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Release the deposit now, without a claim. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>RentalResponse</returns>
+        public RentalResponse CreateRentalReleaseDeposit(string id)
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = CreateRentalReleaseDepositWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Release the deposit now, without a claim. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of RentalResponse</returns>
+        public net.crossly.Client.ApiResponse<RentalResponse> CreateRentalReleaseDepositWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalReleaseDeposit");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RentalResponse>("/v1/rentals/{id}/release-deposit", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalReleaseDeposit", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Release the deposit now, without a claim. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RentalResponse</returns>
+        public async System.Threading.Tasks.Task<RentalResponse> CreateRentalReleaseDepositAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<RentalResponse> localVarResponse = await CreateRentalReleaseDepositWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Release the deposit now, without a claim. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RentalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<RentalResponse>> CreateRentalReleaseDepositWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->CreateRentalReleaseDeposit");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RentalResponse>("/v1/rentals/{id}/release-deposit", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRentalReleaseDeposit", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -6098,24 +9540,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one order. 
+        /// Get one order, with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ListOrdersItem</returns>
-        public ListOrdersItem GetOrder(Guid id)
+        /// <returns>GetOrderResponse</returns>
+        public GetOrderResponse GetOrder(Guid id)
         {
-            net.crossly.Client.ApiResponse<ListOrdersItem> localVarResponse = GetOrderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetOrderResponse> localVarResponse = GetOrderWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get one order. 
+        /// Get one order, with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ListOrdersItem</returns>
-        public net.crossly.Client.ApiResponse<ListOrdersItem> GetOrderWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of GetOrderResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderResponse> GetOrderWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -6149,7 +9591,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListOrdersItem>("/v1/orders/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetOrderResponse>("/v1/orders/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrder", localVarResponse);
@@ -6163,26 +9605,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one order. 
+        /// Get one order, with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListOrdersItem</returns>
-        public async System.Threading.Tasks.Task<ListOrdersItem> GetOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetOrderResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderResponse> GetOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListOrdersItem> localVarResponse = await GetOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetOrderResponse> localVarResponse = await GetOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get one order. 
+        /// Get one order, with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListOrdersItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrdersItem>> GetOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetOrderResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderResponse>> GetOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -6217,7 +9659,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListOrdersItem>("/v1/orders/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderResponse>("/v1/orders/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -6484,6 +9926,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrderCount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from. Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderDeliveryPhotoResponse</returns>
+        public GetOrderDeliveryPhotoResponse GetOrderDeliveryPhoto(string id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderDeliveryPhotoResponse> localVarResponse = GetOrderDeliveryPhotoWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from. Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderDeliveryPhotoResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderDeliveryPhotoResponse> GetOrderDeliveryPhotoWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->GetOrderDeliveryPhoto");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderDeliveryPhotoResponse>("/v1/orders/{id}/delivery-photo", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderDeliveryPhoto", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from. Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderDeliveryPhotoResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderDeliveryPhotoResponse> GetOrderDeliveryPhotoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderDeliveryPhotoResponse> localVarResponse = await GetOrderDeliveryPhotoWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The courier&#39;s delivery photo for this order, pulled automatically, with where it came from. Crossly pulls the doorstep photo from whoever has it (the carrier API, e.g. UPS; Trackified when its tracking carries one; the marketplace when its payload does) and stores it on the order. state is found | none | not_delivered; source / sourceLabel say where it came from (\&quot;From UPS\&quot;, \&quot;Added by you\&quot;); checked lists who was asked when there is none. Carriers often attach the photo hours after delivery.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderDeliveryPhotoResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderDeliveryPhotoResponse>> GetOrderDeliveryPhotoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->GetOrderDeliveryPhoto");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderDeliveryPhotoResponse>("/v1/orders/{id}/delivery-photo", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderDeliveryPhoto", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -6812,6 +10400,140 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderOrderChatResponse</returns>
+        public GetOrderOrderChatResponse GetOrderOrderChat(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderOrderChatResponse> localVarResponse = GetOrderOrderChatWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderOrderChatResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderOrderChatResponse> GetOrderOrderChatWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderOrderChatResponse>("/v1/orders/{id}/order-chat", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderOrderChat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderOrderChatResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderOrderChatResponse> GetOrderOrderChatAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderOrderChatResponse> localVarResponse = await GetOrderOrderChatWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderOrderChatResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderOrderChatResponse>> GetOrderOrderChatWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderOrderChatResponse>("/v1/orders/{id}/order-chat", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderOrderChat", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Single-order packing slip PDF. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -6948,6 +10670,542 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderPlatformLabelOptionResponse</returns>
+        public GetOrderPlatformLabelOptionResponse GetOrderPlatformLabelOption(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderPlatformLabelOptionResponse> localVarResponse = GetOrderPlatformLabelOptionWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderPlatformLabelOptionResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderPlatformLabelOptionResponse> GetOrderPlatformLabelOptionWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderPlatformLabelOptionResponse>("/v1/orders/{id}/platform-label/options", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderPlatformLabelOptionResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderPlatformLabelOptionResponse> GetOrderPlatformLabelOptionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderPlatformLabelOptionResponse> localVarResponse = await GetOrderPlatformLabelOptionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What buying a marketplace label offers for this order (weight tiers, mailbox state). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderPlatformLabelOptionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderPlatformLabelOptionResponse>> GetOrderPlatformLabelOptionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderPlatformLabelOptionResponse>("/v1/orders/{id}/platform-label/options", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        public UrlExpiresInSecondsResponse GetOrderPlatformLabelPackingSlip(Guid id)
+        {
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = GetOrderPlatformLabelPackingSlipWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        public net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> GetOrderPlatformLabelPackingSlipWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<UrlExpiresInSecondsResponse>("/v1/orders/{id}/platform-label/packing-slip", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelPackingSlip", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        public async System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderPlatformLabelPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = await GetOrderPlatformLabelPackingSlipWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A fresh link to the marketplace&#39;s own packing slip PDF. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse>> GetOrderPlatformLabelPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<UrlExpiresInSecondsResponse>("/v1/orders/{id}/platform-label/packing-slip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelPackingSlip", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        public GetOrderWhatnotShipmentResponse GetOrderPlatformLabelState(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = GetOrderPlatformLabelStateWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> GetOrderPlatformLabelStateWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/platform-label/state", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelState", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> GetOrderPlatformLabelStateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = await GetOrderPlatformLabelStateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse>> GetOrderPlatformLabelStateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/platform-label/state", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelState", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        public UrlExpiresInSecondsResponse GetOrderPlatformLabelUrl(Guid id)
+        {
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = GetOrderPlatformLabelUrlWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        public net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> GetOrderPlatformLabelUrlWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<UrlExpiresInSecondsResponse>("/v1/orders/{id}/platform-label/url", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        public async System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderPlatformLabelUrlAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = await GetOrderPlatformLabelUrlWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A fresh, short-lived link to the marketplace&#39;s label sheet. Never stored. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse>> GetOrderPlatformLabelUrlWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<UrlExpiresInSecondsResponse>("/v1/orders/{id}/platform-label/url", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderPlatformLabelUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Proof-of-delivery evidence from the carrier&#39;s scan record (PDF, or JSON). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -7072,6 +11330,274 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrderProofOfDelivery", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderRefundOptionResponse</returns>
+        public GetOrderRefundOptionResponse GetOrderRefundOption(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderRefundOptionResponse> localVarResponse = GetOrderRefundOptionWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderRefundOptionResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderRefundOptionResponse> GetOrderRefundOptionWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderRefundOptionResponse>("/v1/orders/{id}/refund-options", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderRefundOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderRefundOptionResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderRefundOptionResponse> GetOrderRefundOptionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderRefundOptionResponse> localVarResponse = await GetOrderRefundOptionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What a refund on this order may be, from the platform&#39;s declared capability: whether Crossly can refund it at all, full and/or partial, what a partial is measured against (total &#x3D; what the buyer paid, item &#x3D; the item price only), whether it may precede shipment, the platform&#39;s own reason keys (when listed, a refund&#39;s reason must be one of them), whether a comment is sent, whether the refund IS cancelling the sale (cancelsSale: Mercari, full only), whether the window closes when the order completes (untilCompleted; windowClosed &#x3D; it has) and a one-line note on what the platform does not allow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderRefundOptionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderRefundOptionResponse>> GetOrderRefundOptionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderRefundOptionResponse>("/v1/orders/{id}/refund-options", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderRefundOption", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderSalesTaxResponse</returns>
+        public GetOrderSalesTaxResponse GetOrderSalesTax(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> localVarResponse = GetOrderSalesTaxWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderSalesTaxResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> GetOrderSalesTaxWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderSalesTaxResponse>("/v1/orders/{id}/sales-tax", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderSalesTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderSalesTaxResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderSalesTaxResponse> GetOrderSalesTaxAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> localVarResponse = await GetOrderSalesTaxWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderSalesTaxResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse>> GetOrderSalesTaxWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderSalesTaxResponse>("/v1/orders/{id}/sales-tax", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderSalesTax", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -7366,10 +11892,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>GetOrderWhatnotPackingSlipResponse</returns>
-        public GetOrderWhatnotPackingSlipResponse GetOrderWhatnotPackingSlip(Guid id)
+        /// <returns>UrlExpiresInSecondsResponse</returns>
+        public UrlExpiresInSecondsResponse GetOrderWhatnotPackingSlip(Guid id)
         {
-            net.crossly.Client.ApiResponse<GetOrderWhatnotPackingSlipResponse> localVarResponse = GetOrderWhatnotPackingSlipWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = GetOrderWhatnotPackingSlipWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -7378,8 +11904,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of GetOrderWhatnotPackingSlipResponse</returns>
-        public net.crossly.Client.ApiResponse<GetOrderWhatnotPackingSlipResponse> GetOrderWhatnotPackingSlipWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of UrlExpiresInSecondsResponse</returns>
+        public net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> GetOrderWhatnotPackingSlipWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -7413,7 +11939,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetOrderWhatnotPackingSlipResponse>("/v1/orders/{id}/whatnot/packing-slip", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<UrlExpiresInSecondsResponse>("/v1/orders/{id}/whatnot/packing-slip", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrderWhatnotPackingSlip", localVarResponse);
@@ -7432,10 +11958,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetOrderWhatnotPackingSlipResponse</returns>
-        public async System.Threading.Tasks.Task<GetOrderWhatnotPackingSlipResponse> GetOrderWhatnotPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UrlExpiresInSecondsResponse</returns>
+        public async System.Threading.Tasks.Task<UrlExpiresInSecondsResponse> GetOrderWhatnotPackingSlipAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetOrderWhatnotPackingSlipResponse> localVarResponse = await GetOrderWhatnotPackingSlipWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse> localVarResponse = await GetOrderWhatnotPackingSlipWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7445,8 +11971,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetOrderWhatnotPackingSlipResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderWhatnotPackingSlipResponse>> GetOrderWhatnotPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UrlExpiresInSecondsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UrlExpiresInSecondsResponse>> GetOrderWhatnotPackingSlipWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -7481,7 +12007,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderWhatnotPackingSlipResponse>("/v1/orders/{id}/whatnot/packing-slip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<UrlExpiresInSecondsResponse>("/v1/orders/{id}/whatnot/packing-slip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -7500,10 +12026,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderWhatnotLabelResponse</returns>
-        public CreateOrderWhatnotLabelResponse GetOrderWhatnotShipment(Guid id)
+        /// <returns>GetOrderWhatnotShipmentResponse</returns>
+        public GetOrderWhatnotShipmentResponse GetOrderWhatnotShipment(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> localVarResponse = GetOrderWhatnotShipmentWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = GetOrderWhatnotShipmentWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -7512,8 +12038,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderWhatnotLabelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> GetOrderWhatnotShipmentWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of GetOrderWhatnotShipmentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> GetOrderWhatnotShipmentWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -7547,7 +12073,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<CreateOrderWhatnotLabelResponse>("/v1/orders/{id}/whatnot/shipment", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/whatnot/shipment", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrderWhatnotShipment", localVarResponse);
@@ -7566,10 +12092,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderWhatnotLabelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateOrderWhatnotLabelResponse> GetOrderWhatnotShipmentAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetOrderWhatnotShipmentResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderWhatnotShipmentResponse> GetOrderWhatnotShipmentAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse> localVarResponse = await GetOrderWhatnotShipmentWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse> localVarResponse = await GetOrderWhatnotShipmentWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7579,8 +12105,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderWhatnotLabelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderWhatnotLabelResponse>> GetOrderWhatnotShipmentWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetOrderWhatnotShipmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderWhatnotShipmentResponse>> GetOrderWhatnotShipmentWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -7615,11 +12141,285 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<CreateOrderWhatnotLabelResponse>("/v1/orders/{id}/whatnot/shipment", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderWhatnotShipmentResponse>("/v1/orders/{id}/whatnot/shipment", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetOrderWhatnotShipment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetRentalResponse</returns>
+        public GetRentalResponse GetRental(string id)
+        {
+            net.crossly.Client.ApiResponse<GetRentalResponse> localVarResponse = GetRentalWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetRentalResponse</returns>
+        public net.crossly.Client.ApiResponse<GetRentalResponse> GetRentalWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->GetRental");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetRentalResponse>("/v1/rentals/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRental", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRentalResponse</returns>
+        public async System.Threading.Tasks.Task<GetRentalResponse> GetRentalAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetRentalResponse> localVarResponse = await GetRentalWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRentalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetRentalResponse>> GetRentalWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling OrdersApi->GetRental");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetRentalResponse>("/v1/rentals/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRental", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetRentalCalendarResponse</returns>
+        public GetRentalCalendarResponse GetRentalCalendar()
+        {
+            net.crossly.Client.ApiResponse<GetRentalCalendarResponse> localVarResponse = GetRentalCalendarWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetRentalCalendarResponse</returns>
+        public net.crossly.Client.ApiResponse<GetRentalCalendarResponse> GetRentalCalendarWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetRentalCalendarResponse>("/v1/rentals/calendar", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRentalCalendar", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRentalCalendarResponse</returns>
+        public async System.Threading.Tasks.Task<GetRentalCalendarResponse> GetRentalCalendarAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetRentalCalendarResponse> localVarResponse = await GetRentalCalendarWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRentalCalendarResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetRentalCalendarResponse>> GetRentalCalendarWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetRentalCalendarResponse>("/v1/rentals/calendar", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRentalCalendar", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -7886,7 +12686,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier. 
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListOrderPickupReadyResponse</returns>
@@ -7897,7 +12697,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier. 
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListOrderPickupReadyResponse</returns>
@@ -7948,7 +12748,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier. 
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -7960,7 +12760,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Orders with a purchased Shippo label a courier can collect or a SCAN form can cover, grouped by carrier. 
+        /// Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -8132,6 +12932,140 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListOrderPickups", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListOrderRefundsResponse</returns>
+        public ListOrderRefundsResponse ListOrderRefunds(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListOrderRefundsResponse> localVarResponse = ListOrderRefundsWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListOrderRefundsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListOrderRefundsResponse> ListOrderRefundsWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListOrderRefundsResponse>("/v1/orders/{id}/refunds", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOrderRefunds", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListOrderRefundsResponse</returns>
+        public async System.Threading.Tasks.Task<ListOrderRefundsResponse> ListOrderRefundsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListOrderRefundsResponse> localVarResponse = await ListOrderRefundsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every refund requested on this order through the API or a cancel, newest first (amounts in dollars). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListOrderRefundsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrderRefundsResponse>> ListOrderRefundsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListOrderRefundsResponse>("/v1/orders/{id}/refunds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOrderRefunds", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -8416,30 +13350,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List orders. 
+        /// List orders, each with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <returns>ListOrdersResponse</returns>
-        public ListOrdersResponse ListOrders(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string))
+        public ListOrdersResponse ListOrders(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?))
         {
-            net.crossly.Client.ApiResponse<ListOrdersResponse> localVarResponse = ListOrdersWithHttpInfo(page, limit, status, platform);
+            net.crossly.Client.ApiResponse<ListOrdersResponse> localVarResponse = ListOrdersWithHttpInfo(page, limit, status, platform, channel, details, unlinked, updatedSince);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List orders. 
+        /// List orders, each with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <returns>ApiResponse of ListOrdersResponse</returns>
-        public net.crossly.Client.ApiResponse<ListOrdersResponse> ListOrdersWithHttpInfo(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string))
+        public net.crossly.Client.ApiResponse<ListOrdersResponse> ListOrdersWithHttpInfo(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -8478,6 +13420,22 @@ namespace net.crossly.Api
             if (platform != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+            }
+            if (channel != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "channel", channel));
+            }
+            if (details != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "details", details));
+            }
+            if (unlinked != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "unlinked", unlinked));
+            }
+            if (updatedSince != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "updatedSince", updatedSince));
             }
 
             // authentication (PersonalAccessToken) required
@@ -8502,32 +13460,40 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List orders. 
+        /// List orders, each with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListOrdersResponse</returns>
-        public async System.Threading.Tasks.Task<ListOrdersResponse> ListOrdersAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListOrdersResponse> ListOrdersAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListOrdersResponse> localVarResponse = await ListOrdersWithHttpInfoAsync(page, limit, status, platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListOrdersResponse> localVarResponse = await ListOrdersWithHttpInfoAsync(page, limit, status, platform, channel, details, unlinked, updatedSince, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List orders. 
+        /// List orders, each with its sale price, fees, SKU and line items. Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\&quot;exact\&quot; &#x3D; the fee the marketplace charged, \&quot;estimated\&quot;), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer&#39;s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="platform"> (optional)</param>
+        /// <param name="channel">Only orders sold through this business channel (e.g. wholesale). (optional)</param>
+        /// <param name="details">pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. (optional)</param>
+        /// <param name="unlinked">1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). (optional)</param>
+        /// <param name="updatedSince">Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListOrdersResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrdersResponse>> ListOrdersWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrdersResponse>> ListOrdersWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string status = default(string), string platform = default(string), string channel = default(string), string details = default(string), string unlinked = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -8568,6 +13534,22 @@ namespace net.crossly.Api
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
             }
+            if (channel != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "channel", channel));
+            }
+            if (details != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "details", details));
+            }
+            if (unlinked != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "unlinked", unlinked));
+            }
+            if (updatedSince != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "updatedSince", updatedSince));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8582,6 +13564,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListOrders", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListRentalHistoryResponse</returns>
+        public ListRentalHistoryResponse ListRentalHistory()
+        {
+            net.crossly.Client.ApiResponse<ListRentalHistoryResponse> localVarResponse = ListRentalHistoryWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListRentalHistoryResponse</returns>
+        public net.crossly.Client.ApiResponse<ListRentalHistoryResponse> ListRentalHistoryWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListRentalHistoryResponse>("/v1/rentals/history", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListRentalHistory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListRentalHistoryResponse</returns>
+        public async System.Threading.Tasks.Task<ListRentalHistoryResponse> ListRentalHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListRentalHistoryResponse> localVarResponse = await ListRentalHistoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Active rentals and history, filtered by view, status, dates, item or a search. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListRentalHistoryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListRentalHistoryResponse>> ListRentalHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListRentalHistoryResponse>("/v1/rentals/history", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListRentalHistory", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -8724,10 +13834,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ListOrdersItem</returns>
-        public ListOrdersItem UpdateOrder(Guid id)
+        /// <returns>UpdateOrderResponse</returns>
+        public UpdateOrderResponse UpdateOrder(Guid id)
         {
-            net.crossly.Client.ApiResponse<ListOrdersItem> localVarResponse = UpdateOrderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateOrderResponse> localVarResponse = UpdateOrderWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -8736,8 +13846,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ListOrdersItem</returns>
-        public net.crossly.Client.ApiResponse<ListOrdersItem> UpdateOrderWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of UpdateOrderResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateOrderResponse> UpdateOrderWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -8771,7 +13881,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<ListOrdersItem>("/v1/orders/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<UpdateOrderResponse>("/v1/orders/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateOrder", localVarResponse);
@@ -8790,10 +13900,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListOrdersItem</returns>
-        public async System.Threading.Tasks.Task<ListOrdersItem> UpdateOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateOrderResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateOrderResponse> UpdateOrderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListOrdersItem> localVarResponse = await UpdateOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateOrderResponse> localVarResponse = await UpdateOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8803,8 +13913,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListOrdersItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListOrdersItem>> UpdateOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateOrderResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateOrderResponse>> UpdateOrderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -8839,7 +13949,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<ListOrdersItem>("/v1/orders/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateOrderResponse>("/v1/orders/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

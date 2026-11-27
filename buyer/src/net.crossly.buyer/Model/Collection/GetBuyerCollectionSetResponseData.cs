@@ -40,36 +40,36 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCollectionSetResponseData" /> class.
         /// </summary>
         /// <param name="group">group (required).</param>
-        /// <param name="leaderboard">leaderboard (required).</param>
-        /// <param name="missing">missing (required).</param>
-        /// <param name="pieces">pieces (required).</param>
-        /// <param name="leaderboardOptIn">leaderboardOptIn (required).</param>
         /// <param name="pct">pct (required).</param>
+        /// <param name="pieces">pieces (required).</param>
+        /// <param name="missing">missing (required).</param>
         /// <param name="missingCostCents">missingCostCents (required).</param>
         /// <param name="missingUnpriced">missingUnpriced (required).</param>
+        /// <param name="leaderboard">leaderboard (required).</param>
         /// <param name="myRank">myRank.</param>
-        public GetBuyerCollectionSetResponseData(GetBuyerCollectionSetResponseDataGroup group = default(GetBuyerCollectionSetResponseDataGroup), List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard = default(List<GetBuyerCollectionSetResponseDataLeaderboard>), decimal missing = default(decimal), List<GetBuyerCollectionSetResponseDataPieces> pieces = default(List<GetBuyerCollectionSetResponseDataPieces>), bool leaderboardOptIn = default(bool), decimal pct = default(decimal), decimal missingCostCents = default(decimal), decimal missingUnpriced = default(decimal), decimal? myRank = default(decimal?))
+        /// <param name="leaderboardOptIn">leaderboardOptIn (required).</param>
+        public GetBuyerCollectionSetResponseData(GetBuyerCollectionSetResponseDataGroup group = default(GetBuyerCollectionSetResponseDataGroup), decimal pct = default(decimal), List<GetBuyerCollectionSetResponseDataPieces> pieces = default(List<GetBuyerCollectionSetResponseDataPieces>), decimal missing = default(decimal), decimal missingCostCents = default(decimal), decimal missingUnpriced = default(decimal), List<GetBuyerCollectionSetResponseDataLeaderboard> leaderboard = default(List<GetBuyerCollectionSetResponseDataLeaderboard>), decimal? myRank = default(decimal?), bool leaderboardOptIn = default(bool))
         {
             // to ensure "group" is required (not null)
             if (group == null) {
                 throw new ArgumentNullException("group is a required property for GetBuyerCollectionSetResponseData and cannot be null");
             }
             this.Group = group;
-            // to ensure "leaderboard" is required (not null)
-            if (leaderboard == null) {
-                throw new ArgumentNullException("leaderboard is a required property for GetBuyerCollectionSetResponseData and cannot be null");
-            }
-            this.Leaderboard = leaderboard;
-            this.Missing = missing;
+            this.Pct = pct;
             // to ensure "pieces" is required (not null)
             if (pieces == null) {
                 throw new ArgumentNullException("pieces is a required property for GetBuyerCollectionSetResponseData and cannot be null");
             }
             this.Pieces = pieces;
-            this.LeaderboardOptIn = leaderboardOptIn;
-            this.Pct = pct;
+            this.Missing = missing;
             this.MissingCostCents = missingCostCents;
             this.MissingUnpriced = missingUnpriced;
+            // to ensure "leaderboard" is required (not null)
+            if (leaderboard == null) {
+                throw new ArgumentNullException("leaderboard is a required property for GetBuyerCollectionSetResponseData and cannot be null");
+            }
+            this.Leaderboard = leaderboard;
+            this.LeaderboardOptIn = leaderboardOptIn;
             this.MyRank = myRank;
         }
 
@@ -80,16 +80,10 @@ namespace net.crossly.buyer.Model
         public GetBuyerCollectionSetResponseDataGroup Group { get; set; }
 
         /// <summary>
-        /// Gets or Sets Leaderboard
+        /// Gets or Sets Pct
         /// </summary>
-        [DataMember(Name = "leaderboard", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetBuyerCollectionSetResponseDataLeaderboard> Leaderboard { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Missing
-        /// </summary>
-        [DataMember(Name = "missing", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Missing { get; set; }
+        [DataMember(Name = "pct", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Pct { get; set; }
 
         /// <summary>
         /// Gets or Sets Pieces
@@ -98,16 +92,10 @@ namespace net.crossly.buyer.Model
         public List<GetBuyerCollectionSetResponseDataPieces> Pieces { get; set; }
 
         /// <summary>
-        /// Gets or Sets LeaderboardOptIn
+        /// Gets or Sets Missing
         /// </summary>
-        [DataMember(Name = "leaderboardOptIn", IsRequired = true, EmitDefaultValue = true)]
-        public bool LeaderboardOptIn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Pct
-        /// </summary>
-        [DataMember(Name = "pct", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Pct { get; set; }
+        [DataMember(Name = "missing", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Missing { get; set; }
 
         /// <summary>
         /// Gets or Sets MissingCostCents
@@ -122,10 +110,22 @@ namespace net.crossly.buyer.Model
         public decimal MissingUnpriced { get; set; }
 
         /// <summary>
+        /// Gets or Sets Leaderboard
+        /// </summary>
+        [DataMember(Name = "leaderboard", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetBuyerCollectionSetResponseDataLeaderboard> Leaderboard { get; set; }
+
+        /// <summary>
         /// Gets or Sets MyRank
         /// </summary>
         [DataMember(Name = "myRank", EmitDefaultValue = true)]
         public decimal? MyRank { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LeaderboardOptIn
+        /// </summary>
+        [DataMember(Name = "leaderboardOptIn", IsRequired = true, EmitDefaultValue = true)]
+        public bool LeaderboardOptIn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,14 +136,14 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionSetResponseData {\n");
             sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Leaderboard: ").Append(Leaderboard).Append("\n");
-            sb.Append("  Missing: ").Append(Missing).Append("\n");
-            sb.Append("  Pieces: ").Append(Pieces).Append("\n");
-            sb.Append("  LeaderboardOptIn: ").Append(LeaderboardOptIn).Append("\n");
             sb.Append("  Pct: ").Append(Pct).Append("\n");
+            sb.Append("  Pieces: ").Append(Pieces).Append("\n");
+            sb.Append("  Missing: ").Append(Missing).Append("\n");
             sb.Append("  MissingCostCents: ").Append(MissingCostCents).Append("\n");
             sb.Append("  MissingUnpriced: ").Append(MissingUnpriced).Append("\n");
+            sb.Append("  Leaderboard: ").Append(Leaderboard).Append("\n");
             sb.Append("  MyRank: ").Append(MyRank).Append("\n");
+            sb.Append("  LeaderboardOptIn: ").Append(LeaderboardOptIn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -185,14 +185,8 @@ namespace net.crossly.buyer.Model
                     this.Group.Equals(input.Group))
                 ) && 
                 (
-                    this.Leaderboard == input.Leaderboard ||
-                    this.Leaderboard != null &&
-                    input.Leaderboard != null &&
-                    this.Leaderboard.SequenceEqual(input.Leaderboard)
-                ) && 
-                (
-                    this.Missing == input.Missing ||
-                    this.Missing.Equals(input.Missing)
+                    this.Pct == input.Pct ||
+                    this.Pct.Equals(input.Pct)
                 ) && 
                 (
                     this.Pieces == input.Pieces ||
@@ -201,12 +195,8 @@ namespace net.crossly.buyer.Model
                     this.Pieces.SequenceEqual(input.Pieces)
                 ) && 
                 (
-                    this.LeaderboardOptIn == input.LeaderboardOptIn ||
-                    this.LeaderboardOptIn.Equals(input.LeaderboardOptIn)
-                ) && 
-                (
-                    this.Pct == input.Pct ||
-                    this.Pct.Equals(input.Pct)
+                    this.Missing == input.Missing ||
+                    this.Missing.Equals(input.Missing)
                 ) && 
                 (
                     this.MissingCostCents == input.MissingCostCents ||
@@ -217,9 +207,19 @@ namespace net.crossly.buyer.Model
                     this.MissingUnpriced.Equals(input.MissingUnpriced)
                 ) && 
                 (
+                    this.Leaderboard == input.Leaderboard ||
+                    this.Leaderboard != null &&
+                    input.Leaderboard != null &&
+                    this.Leaderboard.SequenceEqual(input.Leaderboard)
+                ) && 
+                (
                     this.MyRank == input.MyRank ||
                     (this.MyRank != null &&
                     this.MyRank.Equals(input.MyRank))
+                ) && 
+                (
+                    this.LeaderboardOptIn == input.LeaderboardOptIn ||
+                    this.LeaderboardOptIn.Equals(input.LeaderboardOptIn)
                 );
         }
 
@@ -236,23 +236,23 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Group.GetHashCode();
                 }
-                if (this.Leaderboard != null)
-                {
-                    hashCode = (hashCode * 59) + this.Leaderboard.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Missing.GetHashCode();
+                hashCode = (hashCode * 59) + this.Pct.GetHashCode();
                 if (this.Pieces != null)
                 {
                     hashCode = (hashCode * 59) + this.Pieces.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.LeaderboardOptIn.GetHashCode();
-                hashCode = (hashCode * 59) + this.Pct.GetHashCode();
+                hashCode = (hashCode * 59) + this.Missing.GetHashCode();
                 hashCode = (hashCode * 59) + this.MissingCostCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.MissingUnpriced.GetHashCode();
+                if (this.Leaderboard != null)
+                {
+                    hashCode = (hashCode * 59) + this.Leaderboard.GetHashCode();
+                }
                 if (this.MyRank != null)
                 {
                     hashCode = (hashCode * 59) + this.MyRank.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.LeaderboardOptIn.GetHashCode();
                 return hashCode;
             }
         }

@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="label">The variant / grade line (\&quot;Size 10 - PSA 10\&quot;), or null..</param>
         /// <param name="imageUrl">imageUrl.</param>
         /// <param name="units">units (required).</param>
-        /// <param name="bookKey">The book key, for a click through to its market (/shop/vault/markets/&lt;bookKey&gt;)..</param>
+        /// <param name="bookKey">The book key, for a click through to its market (/trading/&lt;bookKey&gt;)..</param>
         /// <param name="markCents">One unit&#39;s mark, cents - - only when the viewer may see values (else absent)..</param>
         public GetHomeResponseVaultWallUnits(string title = default(string), string label = default(string), string imageUrl = default(string), decimal units = default(decimal), string bookKey = default(string), decimal? markCents = default(decimal?))
         {
@@ -85,9 +85,9 @@ namespace net.crossly.Model
         public decimal Units { get; set; }
 
         /// <summary>
-        /// The book key, for a click through to its market (/shop/vault/markets/&lt;bookKey&gt;).
+        /// The book key, for a click through to its market (/trading/&lt;bookKey&gt;).
         /// </summary>
-        /// <value>The book key, for a click through to its market (/shop/vault/markets/&lt;bookKey&gt;).</value>
+        /// <value>The book key, for a click through to its market (/trading/&lt;bookKey&gt;).</value>
         [DataMember(Name = "bookKey", EmitDefaultValue = true)]
         public string BookKey { get; set; }
 

@@ -39,73 +39,37 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerHotspotsItem" /> class.
         /// </summary>
-        /// <param name="available">available (required).</param>
-        /// <param name="label">label.</param>
-        /// <param name="title">title.</param>
         /// <param name="platformListingId">platformListingId (required).</param>
-        /// <param name="slug">slug.</param>
-        /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="imageUrl">imageUrl.</param>
         /// <param name="x">x (required).</param>
         /// <param name="y">y (required).</param>
-        public ListBuyerHotspotsItem(bool available = default(bool), string label = default(string), string title = default(string), string platformListingId = default(string), string slug = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), decimal x = default(decimal), decimal y = default(decimal))
+        /// <param name="label">label.</param>
+        /// <param name="slug">slug.</param>
+        /// <param name="title">title.</param>
+        /// <param name="priceCents">priceCents (required).</param>
+        /// <param name="imageUrl">imageUrl.</param>
+        /// <param name="available">available (required).</param>
+        public ListBuyerHotspotsItem(string platformListingId = default(string), decimal x = default(decimal), decimal y = default(decimal), string label = default(string), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), bool available = default(bool))
         {
-            this.Available = available;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListBuyerHotspotsItem and cannot be null");
             }
             this.PlatformListingId = platformListingId;
-            this.PriceCents = priceCents;
             this.X = x;
             this.Y = y;
+            this.PriceCents = priceCents;
+            this.Available = available;
             this.Label = label;
-            this.Title = title;
             this.Slug = slug;
+            this.Title = title;
             this.ImageUrl = imageUrl;
         }
-
-        /// <summary>
-        /// Gets or Sets Available
-        /// </summary>
-        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
-        public bool Available { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", EmitDefaultValue = true)]
-        public string Label { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
         /// </summary>
         [DataMember(Name = "platformListingId", IsRequired = true, EmitDefaultValue = false)]
         public string PlatformListingId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", EmitDefaultValue = true)]
-        public string Slug { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PriceCents
-        /// </summary>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal PriceCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImageUrl
-        /// </summary>
-        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
-        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets X
@@ -120,6 +84,42 @@ namespace net.crossly.buyer.Model
         public decimal Y { get; set; }
 
         /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name = "label", EmitDefaultValue = true)]
+        public string Label { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Slug
+        /// </summary>
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PriceCents
+        /// </summary>
+        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PriceCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImageUrl
+        /// </summary>
+        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Available
+        /// </summary>
+        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
+        public bool Available { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,15 +127,15 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerHotspotsItem {\n");
-            sb.Append("  Available: ").Append(Available).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
-            sb.Append("  Slug: ").Append(Slug).Append("\n");
-            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -172,8 +172,17 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Available == input.Available ||
-                    this.Available.Equals(input.Available)
+                    this.PlatformListingId == input.PlatformListingId ||
+                    (this.PlatformListingId != null &&
+                    this.PlatformListingId.Equals(input.PlatformListingId))
+                ) && 
+                (
+                    this.X == input.X ||
+                    this.X.Equals(input.X)
+                ) && 
+                (
+                    this.Y == input.Y ||
+                    this.Y.Equals(input.Y)
                 ) && 
                 (
                     this.Label == input.Label ||
@@ -181,19 +190,14 @@ namespace net.crossly.buyer.Model
                     this.Label.Equals(input.Label))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
-                    this.PlatformListingId == input.PlatformListingId ||
-                    (this.PlatformListingId != null &&
-                    this.PlatformListingId.Equals(input.PlatformListingId))
-                ) && 
-                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.PriceCents == input.PriceCents ||
@@ -205,12 +209,8 @@ namespace net.crossly.buyer.Model
                     this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
-                    this.X == input.X ||
-                    this.X.Equals(input.X)
-                ) && 
-                (
-                    this.Y == input.Y ||
-                    this.Y.Equals(input.Y)
+                    this.Available == input.Available ||
+                    this.Available.Equals(input.Available)
                 );
         }
 
@@ -223,30 +223,30 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Available.GetHashCode();
-                if (this.Label != null)
-                {
-                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.X.GetHashCode();
+                hashCode = (hashCode * 59) + this.Y.GetHashCode();
+                if (this.Label != null)
+                {
+                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
+                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.ImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.X.GetHashCode();
-                hashCode = (hashCode * 59) + this.Y.GetHashCode();
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 return hashCode;
             }
         }

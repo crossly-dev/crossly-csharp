@@ -66,16 +66,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2
 
         }
 
@@ -92,16 +92,16 @@ namespace net.crossly.Model
         public enum TierEnum
         {
             /// <summary>
-            /// Enum Standard for value: standard
-            /// </summary>
-            [EnumMember(Value = "standard")]
-            Standard = 1,
-
-            /// <summary>
             /// Enum Closed for value: closed
             /// </summary>
             [EnumMember(Value = "closed")]
-            Closed = 2,
+            Closed = 1,
+
+            /// <summary>
+            /// Enum Standard for value: standard
+            /// </summary>
+            [EnumMember(Value = "standard")]
+            Standard = 2,
 
             /// <summary>
             /// Enum Deep for value: deep
@@ -130,22 +130,22 @@ namespace net.crossly.Model
         public enum MarginStateEnum
         {
             /// <summary>
-            /// Enum BuyIn for value: buy_in
-            /// </summary>
-            [EnumMember(Value = "buy_in")]
-            BuyIn = 1,
-
-            /// <summary>
             /// Enum Healthy for value: healthy
             /// </summary>
             [EnumMember(Value = "healthy")]
-            Healthy = 2,
+            Healthy = 1,
 
             /// <summary>
             /// Enum Call for value: call
             /// </summary>
             [EnumMember(Value = "call")]
-            Call = 3
+            Call = 2,
+
+            /// <summary>
+            /// Enum BuyIn for value: buy_in
+            /// </summary>
+            [EnumMember(Value = "buy_in")]
+            BuyIn = 3
 
         }
 

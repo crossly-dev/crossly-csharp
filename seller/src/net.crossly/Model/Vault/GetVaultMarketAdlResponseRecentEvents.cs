@@ -39,16 +39,16 @@ namespace net.crossly.Model
         public enum BankruptSideEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2
 
         }
 

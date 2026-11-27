@@ -39,29 +39,29 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerTotalRequestsItemLines" /> class.
         /// </summary>
-        /// <param name="quantity">quantity (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
-        public ListBuyerTotalRequestsItemLines(decimal quantity = default(decimal), string platformListingId = default(string))
+        /// <param name="quantity">quantity (required).</param>
+        public ListBuyerTotalRequestsItemLines(string platformListingId = default(string), decimal quantity = default(decimal))
         {
-            this.Quantity = quantity;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListBuyerTotalRequestsItemLines and cannot be null");
             }
             this.PlatformListingId = platformListingId;
+            this.Quantity = quantity;
         }
-
-        /// <summary>
-        /// Gets or Sets Quantity
-        /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
         /// </summary>
         [DataMember(Name = "platformListingId", IsRequired = true, EmitDefaultValue = false)]
         public string PlatformListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quantity
+        /// </summary>
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +71,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerTotalRequestsItemLines {\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,13 +109,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
                 );
         }
 
@@ -128,11 +128,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;
             }
         }

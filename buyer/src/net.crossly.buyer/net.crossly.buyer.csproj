@@ -4,19 +4,24 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>net.crossly.buyer</AssemblyName>
-    <PackageId>net.crossly.buyer</PackageId>
+    <PackageId>Crossly.Buyer</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>OpenAPI</Authors>
-    <Company>OpenAPI</Company>
-    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
-    <Copyright>No Copyright</Copyright>
+    <Authors>Crossly</Authors>
+    <Company>Crossly</Company>
+    <AssemblyTitle>Crossly .NET SDK (buyer)</AssemblyTitle>
+    <Description>Official .NET client for the Crossly buyer API (shopping: cart, orders, wishlists, offers), generated from the public OpenAPI spec, with retries, idempotency keys and typed errors. Webhook verification: Crossly.Core; ASP.NET Core middleware: Crossly.AspNetCore.</Description>
+    <Copyright>Copyright (c) Crossly</Copyright>
     <RootNamespace>net.crossly.buyer</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\net.crossly.buyer.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/crossly-dev/crossly-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/crossly-dev/crossly-csharp/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <Product>Crossly .NET SDK</Product>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/crossly-dev/crossly-csharp</PackageProjectUrl>
+    <PackageTags>crossly;reselling;crosslisting;marketplace;sdk</PackageTags>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +30,11 @@
     <PackageReference Include="RestSharp" Version="106.13.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Webhook verifier, CrosslyException, CrosslyPages (one assembly for seller and buyer). -->
+    <ProjectReference Include="../../../codegen/integrations/extras/csharp/Crossly.Core/Crossly.Core.csproj" />
   </ItemGroup>
 
 </Project>

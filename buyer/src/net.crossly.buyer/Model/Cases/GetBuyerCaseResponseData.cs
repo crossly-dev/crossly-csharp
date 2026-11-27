@@ -39,37 +39,37 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCaseResponseData" /> class.
         /// </summary>
-        /// <param name="messages">messages (required).</param>
         /// <param name="_case">_case (required).</param>
+        /// <param name="messages">messages (required).</param>
         /// <param name="purchase">purchase.</param>
         /// <param name="returnShipment">returnShipment.</param>
-        public GetBuyerCaseResponseData(List<GetBuyerCaseResponseDataMessages> messages = default(List<GetBuyerCaseResponseDataMessages>), GetBuyerCaseResponseDataCase _case = default(GetBuyerCaseResponseDataCase), GetBuyerCaseResponseDataPurchase purchase = default(GetBuyerCaseResponseDataPurchase), GetBuyerCaseResponseDataReturnShipment returnShipment = default(GetBuyerCaseResponseDataReturnShipment))
+        public GetBuyerCaseResponseData(GetBuyerCaseResponseDataCase _case = default(GetBuyerCaseResponseDataCase), List<GetBuyerCaseResponseDataMessages> messages = default(List<GetBuyerCaseResponseDataMessages>), GetBuyerCaseResponseDataPurchase purchase = default(GetBuyerCaseResponseDataPurchase), GetBuyerCaseResponseDataReturnShipment returnShipment = default(GetBuyerCaseResponseDataReturnShipment))
         {
-            // to ensure "messages" is required (not null)
-            if (messages == null) {
-                throw new ArgumentNullException("messages is a required property for GetBuyerCaseResponseData and cannot be null");
-            }
-            this.Messages = messages;
             // to ensure "_case" is required (not null)
             if (_case == null) {
                 throw new ArgumentNullException("_case is a required property for GetBuyerCaseResponseData and cannot be null");
             }
             this.Case = _case;
+            // to ensure "messages" is required (not null)
+            if (messages == null) {
+                throw new ArgumentNullException("messages is a required property for GetBuyerCaseResponseData and cannot be null");
+            }
+            this.Messages = messages;
             this.Purchase = purchase;
             this.ReturnShipment = returnShipment;
         }
-
-        /// <summary>
-        /// Gets or Sets Messages
-        /// </summary>
-        [DataMember(Name = "messages", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetBuyerCaseResponseDataMessages> Messages { get; set; }
 
         /// <summary>
         /// Gets or Sets Case
         /// </summary>
         [DataMember(Name = "case", IsRequired = true, EmitDefaultValue = false)]
         public GetBuyerCaseResponseDataCase Case { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Messages
+        /// </summary>
+        [DataMember(Name = "messages", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetBuyerCaseResponseDataMessages> Messages { get; set; }
 
         /// <summary>
         /// Gets or Sets Purchase
@@ -91,8 +91,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCaseResponseData {\n");
-            sb.Append("  Messages: ").Append(Messages).Append("\n");
             sb.Append("  Case: ").Append(Case).Append("\n");
+            sb.Append("  Messages: ").Append(Messages).Append("\n");
             sb.Append("  Purchase: ").Append(Purchase).Append("\n");
             sb.Append("  ReturnShipment: ").Append(ReturnShipment).Append("\n");
             sb.Append("}\n");
@@ -131,15 +131,15 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Case == input.Case ||
+                    (this.Case != null &&
+                    this.Case.Equals(input.Case))
+                ) && 
+                (
                     this.Messages == input.Messages ||
                     this.Messages != null &&
                     input.Messages != null &&
                     this.Messages.SequenceEqual(input.Messages)
-                ) && 
-                (
-                    this.Case == input.Case ||
-                    (this.Case != null &&
-                    this.Case.Equals(input.Case))
                 ) && 
                 (
                     this.Purchase == input.Purchase ||
@@ -162,13 +162,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Messages != null)
-                {
-                    hashCode = (hashCode * 59) + this.Messages.GetHashCode();
-                }
                 if (this.Case != null)
                 {
                     hashCode = (hashCode * 59) + this.Case.GetHashCode();
+                }
+                if (this.Messages != null)
+                {
+                    hashCode = (hashCode * 59) + this.Messages.GetHashCode();
                 }
                 if (this.Purchase != null)
                 {

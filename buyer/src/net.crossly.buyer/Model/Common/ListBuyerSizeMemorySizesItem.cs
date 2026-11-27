@@ -82,28 +82,28 @@ namespace net.crossly.buyer.Model
         public enum DepartmentEnum
         {
             /// <summary>
+            /// Enum Unisex for value: unisex
+            /// </summary>
+            [EnumMember(Value = "unisex")]
+            Unisex = 1,
+
+            /// <summary>
             /// Enum Men for value: men
             /// </summary>
             [EnumMember(Value = "men")]
-            Men = 1,
+            Men = 2,
 
             /// <summary>
             /// Enum Women for value: women
             /// </summary>
             [EnumMember(Value = "women")]
-            Women = 2,
+            Women = 3,
 
             /// <summary>
             /// Enum Kids for value: kids
             /// </summary>
             [EnumMember(Value = "kids")]
-            Kids = 3,
-
-            /// <summary>
-            /// Enum Unisex for value: unisex
-            /// </summary>
-            [EnumMember(Value = "unisex")]
-            Unisex = 4
+            Kids = 4
 
         }
 

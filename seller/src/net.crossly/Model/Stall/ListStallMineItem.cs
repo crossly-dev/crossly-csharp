@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum UnitEnum
         {
             /// <summary>
-            /// Enum Event for value: event
-            /// </summary>
-            [EnumMember(Value = "event")]
-            Event = 1,
-
-            /// <summary>
             /// Enum Day for value: day
             /// </summary>
             [EnumMember(Value = "day")]
-            Day = 2
+            Day = 1,
+
+            /// <summary>
+            /// Enum Event for value: event
+            /// </summary>
+            [EnumMember(Value = "event")]
+            Event = 2
 
         }
 
@@ -108,16 +108,16 @@ namespace net.crossly.Model
             Card = 1,
 
             /// <summary>
-            /// Enum Bucks for value: bucks
-            /// </summary>
-            [EnumMember(Value = "bucks")]
-            Bucks = 2,
-
-            /// <summary>
             /// Enum Cbx for value: cbx
             /// </summary>
             [EnumMember(Value = "cbx")]
-            Cbx = 3
+            Cbx = 2,
+
+            /// <summary>
+            /// Enum Bucks for value: bucks
+            /// </summary>
+            [EnumMember(Value = "bucks")]
+            Bucks = 3
 
         }
 
@@ -127,6 +127,38 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "rail", IsRequired = true, EmitDefaultValue = false)]
         public RailEnum Rail { get; set; }
+        /// <summary>
+        /// Defines BoothKind
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum BoothKindEnum
+        {
+            /// <summary>
+            /// Enum Booth for value: booth
+            /// </summary>
+            [EnumMember(Value = "booth")]
+            Booth = 1,
+
+            /// <summary>
+            /// Enum Cart for value: cart
+            /// </summary>
+            [EnumMember(Value = "cart")]
+            Cart = 2,
+
+            /// <summary>
+            /// Enum Pavilion for value: pavilion
+            /// </summary>
+            [EnumMember(Value = "pavilion")]
+            Pavilion = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets BoothKind
+        /// </summary>
+        [DataMember(Name = "boothKind", IsRequired = true, EmitDefaultValue = false)]
+        public BoothKindEnum BoothKind { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ListStallMineItem" /> class.
         /// </summary>
@@ -154,12 +186,14 @@ namespace net.crossly.Model
         /// <param name="refundedCents">refundedCents (required).</param>
         /// <param name="cancellable">cancellable (required).</param>
         /// <param name="listingIds">listingIds (required).</param>
+        /// <param name="boothKind">boothKind (required).</param>
+        /// <param name="capacity">capacity (required).</param>
         /// <param name="awning">awning.</param>
         /// <param name="booth">booth.</param>
         /// <param name="sign">sign.</param>
         /// <param name="attendant">attendant (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListStallMineItem(ListStallMineItemStats stats = default(ListStallMineItemStats), bool upcoming = default(bool), CreateStallBookResponseBookingBooth drawnBooth = default(CreateStallBookResponseBookingBooth), List<ListStallMineItemBoothTrimmed> boothTrimmed = default(List<ListStallMineItemBoothTrimmed>), string id = default(string), string street = default(string), decimal spotIndex = default(decimal), UnitEnum unit = default(UnitEnum), List<CreateStallBookResponseBookingUnits> units = default(List<CreateStallBookResponseBookingUnits>), string startsAt = default(string), string endsAt = default(string), StatusEnum status = default(StatusEnum), RailEnum rail = default(RailEnum), CreateStallBookResponseBookingOwner owner = default(CreateStallBookResponseBookingOwner), ListStallMineItemQuote quote = default(ListStallMineItemQuote), decimal totalCents = default(decimal), decimal refundedCents = default(decimal), bool cancellable = default(bool), List<string> listingIds = default(List<string>), ColourPattern awning = default(ColourPattern), CreateStallBookResponseBookingBooth booth = default(CreateStallBookResponseBookingBooth), string sign = default(string), bool attendant = default(bool), string createdAt = default(string))
+        public ListStallMineItem(ListStallMineItemStats stats = default(ListStallMineItemStats), bool upcoming = default(bool), CreateStallBookResponseBookingBooth drawnBooth = default(CreateStallBookResponseBookingBooth), List<ListStallMineItemBoothTrimmed> boothTrimmed = default(List<ListStallMineItemBoothTrimmed>), string id = default(string), string street = default(string), decimal spotIndex = default(decimal), UnitEnum unit = default(UnitEnum), List<CreateStallBookResponseBookingUnits> units = default(List<CreateStallBookResponseBookingUnits>), string startsAt = default(string), string endsAt = default(string), StatusEnum status = default(StatusEnum), RailEnum rail = default(RailEnum), CreateStallBookResponseBookingOwner owner = default(CreateStallBookResponseBookingOwner), ListStallMineItemQuote quote = default(ListStallMineItemQuote), decimal totalCents = default(decimal), decimal refundedCents = default(decimal), bool cancellable = default(bool), List<string> listingIds = default(List<string>), BoothKindEnum boothKind = default(BoothKindEnum), decimal capacity = default(decimal), ColourPattern awning = default(ColourPattern), CreateStallBookResponseBookingBooth booth = default(CreateStallBookResponseBookingBooth), string sign = default(string), bool attendant = default(bool), string createdAt = default(string))
         {
             // to ensure "stats" is required (not null)
             if (stats == null) {
@@ -219,6 +253,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("listingIds is a required property for ListStallMineItem and cannot be null");
             }
             this.ListingIds = listingIds;
+            this.BoothKind = boothKind;
+            this.Capacity = capacity;
             this.Attendant = attendant;
             // to ensure "createdAt" is required (not null)
             if (createdAt == null) {
@@ -328,6 +364,12 @@ namespace net.crossly.Model
         public List<string> ListingIds { get; set; }
 
         /// <summary>
+        /// Gets or Sets Capacity
+        /// </summary>
+        [DataMember(Name = "capacity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Capacity { get; set; }
+
+        /// <summary>
         /// Gets or Sets Awning
         /// </summary>
         [DataMember(Name = "awning", EmitDefaultValue = true)]
@@ -384,6 +426,8 @@ namespace net.crossly.Model
             sb.Append("  RefundedCents: ").Append(RefundedCents).Append("\n");
             sb.Append("  Cancellable: ").Append(Cancellable).Append("\n");
             sb.Append("  ListingIds: ").Append(ListingIds).Append("\n");
+            sb.Append("  BoothKind: ").Append(BoothKind).Append("\n");
+            sb.Append("  Capacity: ").Append(Capacity).Append("\n");
             sb.Append("  Awning: ").Append(Awning).Append("\n");
             sb.Append("  Booth: ").Append(Booth).Append("\n");
             sb.Append("  Sign: ").Append(Sign).Append("\n");
@@ -515,6 +559,14 @@ namespace net.crossly.Model
                     this.ListingIds.SequenceEqual(input.ListingIds)
                 ) && 
                 (
+                    this.BoothKind == input.BoothKind ||
+                    this.BoothKind.Equals(input.BoothKind)
+                ) && 
+                (
+                    this.Capacity == input.Capacity ||
+                    this.Capacity.Equals(input.Capacity)
+                ) && 
+                (
                     this.Awning == input.Awning ||
                     (this.Awning != null &&
                     this.Awning.Equals(input.Awning))
@@ -601,6 +653,8 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ListingIds.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.BoothKind.GetHashCode();
+                hashCode = (hashCode * 59) + this.Capacity.GetHashCode();
                 if (this.Awning != null)
                 {
                     hashCode = (hashCode * 59) + this.Awning.GetHashCode();

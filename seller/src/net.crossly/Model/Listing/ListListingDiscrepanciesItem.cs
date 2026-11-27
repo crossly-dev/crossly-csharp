@@ -43,12 +43,12 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="source">source (required).</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="listingId">listingId (required).</param>
+        /// <param name="accountSlot">accountSlot (required).</param>
         /// <param name="marketplaceId">marketplaceId (required).</param>
         /// <param name="lastError">lastError.</param>
-        /// <param name="accountSlot">accountSlot (required).</param>
+        /// <param name="source">source (required).</param>
+        /// <param name="listingId">listingId (required).</param>
         /// <param name="field">field (required).</param>
         /// <param name="ourValue">ourValue.</param>
         /// <param name="remoteValue">remoteValue.</param>
@@ -56,7 +56,7 @@ namespace net.crossly.Model
         /// <param name="lastDetectedAt">lastDetectedAt (required).</param>
         /// <param name="dismissedAt">dismissedAt.</param>
         /// <param name="dismissedRemoteValue">dismissedRemoteValue.</param>
-        public ListListingDiscrepanciesItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string source = default(string), string platform = default(string), string listingId = default(string), string marketplaceId = default(string), string lastError = default(string), decimal accountSlot = default(decimal), string field = default(string), string ourValue = default(string), string remoteValue = default(string), DateTime firstDetectedAt = default(DateTime), DateTime lastDetectedAt = default(DateTime), DateTime? dismissedAt = default(DateTime?), string dismissedRemoteValue = default(string))
+        public ListListingDiscrepanciesItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string marketplaceId = default(string), string lastError = default(string), string source = default(string), string listingId = default(string), string field = default(string), string ourValue = default(string), string remoteValue = default(string), DateTime firstDetectedAt = default(DateTime), DateTime lastDetectedAt = default(DateTime), DateTime? dismissedAt = default(DateTime?), string dismissedRemoteValue = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -70,27 +70,27 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListListingDiscrepanciesItem and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "source" is required (not null)
-            if (source == null) {
-                throw new ArgumentNullException("source is a required property for ListListingDiscrepanciesItem and cannot be null");
-            }
-            this.Source = source;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for ListListingDiscrepanciesItem and cannot be null");
             }
             this.Platform = platform;
-            // to ensure "listingId" is required (not null)
-            if (listingId == null) {
-                throw new ArgumentNullException("listingId is a required property for ListListingDiscrepanciesItem and cannot be null");
-            }
-            this.ListingId = listingId;
+            this.AccountSlot = accountSlot;
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null) {
                 throw new ArgumentNullException("marketplaceId is a required property for ListListingDiscrepanciesItem and cannot be null");
             }
             this.MarketplaceId = marketplaceId;
-            this.AccountSlot = accountSlot;
+            // to ensure "source" is required (not null)
+            if (source == null) {
+                throw new ArgumentNullException("source is a required property for ListListingDiscrepanciesItem and cannot be null");
+            }
+            this.Source = source;
+            // to ensure "listingId" is required (not null)
+            if (listingId == null) {
+                throw new ArgumentNullException("listingId is a required property for ListListingDiscrepanciesItem and cannot be null");
+            }
+            this.ListingId = listingId;
             // to ensure "field" is required (not null)
             if (field == null) {
                 throw new ArgumentNullException("field is a required property for ListListingDiscrepanciesItem and cannot be null");
@@ -130,22 +130,16 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Source
-        /// </summary>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
-        public string Source { get; set; }
-
-        /// <summary>
         /// Gets or Sets Platform
         /// </summary>
         [DataMember(Name = "platform", IsRequired = true, EmitDefaultValue = false)]
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets ListingId
+        /// Gets or Sets AccountSlot
         /// </summary>
-        [DataMember(Name = "listingId", IsRequired = true, EmitDefaultValue = false)]
-        public string ListingId { get; set; }
+        [DataMember(Name = "accountSlot", IsRequired = true, EmitDefaultValue = false)]
+        public decimal AccountSlot { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceId
@@ -160,10 +154,16 @@ namespace net.crossly.Model
         public string LastError { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccountSlot
+        /// Gets or Sets Source
         /// </summary>
-        [DataMember(Name = "accountSlot", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AccountSlot { get; set; }
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListingId
+        /// </summary>
+        [DataMember(Name = "listingId", IsRequired = true, EmitDefaultValue = false)]
+        public string ListingId { get; set; }
 
         /// <summary>
         /// Gets or Sets Field
@@ -219,12 +219,12 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
+            sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
-            sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  OurValue: ").Append(OurValue).Append("\n");
             sb.Append("  RemoteValue: ").Append(RemoteValue).Append("\n");
@@ -288,19 +288,13 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
-                ) && 
-                (
                     this.Platform == input.Platform ||
                     (this.Platform != null &&
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
-                    this.ListingId == input.ListingId ||
-                    (this.ListingId != null &&
-                    this.ListingId.Equals(input.ListingId))
+                    this.AccountSlot == input.AccountSlot ||
+                    this.AccountSlot.Equals(input.AccountSlot)
                 ) && 
                 (
                     this.MarketplaceId == input.MarketplaceId ||
@@ -313,8 +307,14 @@ namespace net.crossly.Model
                     this.LastError.Equals(input.LastError))
                 ) && 
                 (
-                    this.AccountSlot == input.AccountSlot ||
-                    this.AccountSlot.Equals(input.AccountSlot)
+                    this.Source == input.Source ||
+                    (this.Source != null &&
+                    this.Source.Equals(input.Source))
+                ) && 
+                (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
                 ) && 
                 (
                     this.Field == input.Field ||
@@ -378,18 +378,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.Source != null)
-                {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
-                }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.ListingId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
                 if (this.MarketplaceId != null)
                 {
                     hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
@@ -398,7 +391,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LastError.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
+                if (this.Source != null)
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                }
                 if (this.Field != null)
                 {
                     hashCode = (hashCode * 59) + this.Field.GetHashCode();

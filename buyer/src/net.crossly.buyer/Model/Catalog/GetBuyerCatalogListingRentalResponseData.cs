@@ -41,18 +41,20 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="dailyCents">dailyCents (required).</param>
         /// <param name="weeklyCents">weeklyCents.</param>
-        /// <param name="depositCents">depositCents (required).</param>
+        /// <param name="depositCents">depositCents.</param>
         /// <param name="minDays">minDays (required).</param>
         /// <param name="maxDays">maxDays (required).</param>
         /// <param name="bufferDays">bufferDays (required).</param>
         /// <param name="rentOnly">rentOnly (required).</param>
         /// <param name="requireApproval">requireApproval (required).</param>
         /// <param name="available">available (required).</param>
+        /// <param name="returnPolicy">returnPolicy.</param>
         /// <param name="booked">booked (required).</param>
-        public GetBuyerCatalogListingRentalResponseData(decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal depositCents = default(decimal), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), bool available = default(bool), List<GetBuyerCatalogListingRentalResponseDataBooked> booked = default(List<GetBuyerCatalogListingRentalResponseDataBooked>))
+        /// <param name="options">options (required).</param>
+        /// <param name="unitsFree">unitsFree (required).</param>
+        public GetBuyerCatalogListingRentalResponseData(decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal? depositCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), bool available = default(bool), string returnPolicy = default(string), List<GetBuyerCatalogListingRentalResponseDataBooked> booked = default(List<GetBuyerCatalogListingRentalResponseDataBooked>), GetBuyerCatalogListingRentalResponseDataOptions options = default(GetBuyerCatalogListingRentalResponseDataOptions), Dictionary<string, Object> unitsFree = default(Dictionary<string, Object>))
         {
             this.DailyCents = dailyCents;
-            this.DepositCents = depositCents;
             this.MinDays = minDays;
             this.MaxDays = maxDays;
             this.BufferDays = bufferDays;
@@ -64,7 +66,19 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("booked is a required property for GetBuyerCatalogListingRentalResponseData and cannot be null");
             }
             this.Booked = booked;
+            // to ensure "options" is required (not null)
+            if (options == null) {
+                throw new ArgumentNullException("options is a required property for GetBuyerCatalogListingRentalResponseData and cannot be null");
+            }
+            this.Options = options;
+            // to ensure "unitsFree" is required (not null)
+            if (unitsFree == null) {
+                throw new ArgumentNullException("unitsFree is a required property for GetBuyerCatalogListingRentalResponseData and cannot be null");
+            }
+            this.UnitsFree = unitsFree;
             this.WeeklyCents = weeklyCents;
+            this.DepositCents = depositCents;
+            this.ReturnPolicy = returnPolicy;
         }
 
         /// <summary>
@@ -82,8 +96,8 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Gets or Sets DepositCents
         /// </summary>
-        [DataMember(Name = "depositCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal DepositCents { get; set; }
+        [DataMember(Name = "depositCents", EmitDefaultValue = true)]
+        public decimal? DepositCents { get; set; }
 
         /// <summary>
         /// Gets or Sets MinDays
@@ -122,10 +136,28 @@ namespace net.crossly.buyer.Model
         public bool Available { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReturnPolicy
+        /// </summary>
+        [DataMember(Name = "returnPolicy", EmitDefaultValue = true)]
+        public string ReturnPolicy { get; set; }
+
+        /// <summary>
         /// Gets or Sets Booked
         /// </summary>
         [DataMember(Name = "booked", IsRequired = true, EmitDefaultValue = false)]
         public List<GetBuyerCatalogListingRentalResponseDataBooked> Booked { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Options
+        /// </summary>
+        [DataMember(Name = "options", IsRequired = true, EmitDefaultValue = false)]
+        public GetBuyerCatalogListingRentalResponseDataOptions Options { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UnitsFree
+        /// </summary>
+        [DataMember(Name = "unitsFree", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> UnitsFree { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,7 +176,10 @@ namespace net.crossly.buyer.Model
             sb.Append("  RentOnly: ").Append(RentOnly).Append("\n");
             sb.Append("  RequireApproval: ").Append(RequireApproval).Append("\n");
             sb.Append("  Available: ").Append(Available).Append("\n");
+            sb.Append("  ReturnPolicy: ").Append(ReturnPolicy).Append("\n");
             sb.Append("  Booked: ").Append(Booked).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
+            sb.Append("  UnitsFree: ").Append(UnitsFree).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -191,7 +226,8 @@ namespace net.crossly.buyer.Model
                 ) && 
                 (
                     this.DepositCents == input.DepositCents ||
-                    this.DepositCents.Equals(input.DepositCents)
+                    (this.DepositCents != null &&
+                    this.DepositCents.Equals(input.DepositCents))
                 ) && 
                 (
                     this.MinDays == input.MinDays ||
@@ -218,10 +254,26 @@ namespace net.crossly.buyer.Model
                     this.Available.Equals(input.Available)
                 ) && 
                 (
+                    this.ReturnPolicy == input.ReturnPolicy ||
+                    (this.ReturnPolicy != null &&
+                    this.ReturnPolicy.Equals(input.ReturnPolicy))
+                ) && 
+                (
                     this.Booked == input.Booked ||
                     this.Booked != null &&
                     input.Booked != null &&
                     this.Booked.SequenceEqual(input.Booked)
+                ) && 
+                (
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
+                ) && 
+                (
+                    this.UnitsFree == input.UnitsFree ||
+                    this.UnitsFree != null &&
+                    input.UnitsFree != null &&
+                    this.UnitsFree.SequenceEqual(input.UnitsFree)
                 );
         }
 
@@ -239,16 +291,31 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.WeeklyCents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
+                if (this.DepositCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.MinDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.MaxDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.BufferDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.RentOnly.GetHashCode();
                 hashCode = (hashCode * 59) + this.RequireApproval.GetHashCode();
                 hashCode = (hashCode * 59) + this.Available.GetHashCode();
+                if (this.ReturnPolicy != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnPolicy.GetHashCode();
+                }
                 if (this.Booked != null)
                 {
                     hashCode = (hashCode * 59) + this.Booked.GetHashCode();
+                }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
+                }
+                if (this.UnitsFree != null)
+                {
+                    hashCode = (hashCode * 59) + this.UnitsFree.GetHashCode();
                 }
                 return hashCode;
             }

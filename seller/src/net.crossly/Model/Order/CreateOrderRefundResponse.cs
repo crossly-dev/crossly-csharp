@@ -41,7 +41,11 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="refundId">refundId (required).</param>
         /// <param name="amount">amount (required).</param>
-        public CreateOrderRefundResponse(string refundId = default(string), decimal amount = default(decimal))
+        /// <param name="id">id (required).</param>
+        /// <param name="totalRefunded">totalRefunded (required).</param>
+        /// <param name="remaining">remaining.</param>
+        /// <param name="replayed">replayed (required).</param>
+        public CreateOrderRefundResponse(string refundId = default(string), decimal amount = default(decimal), string id = default(string), decimal totalRefunded = default(decimal), decimal? remaining = default(decimal?), bool replayed = default(bool))
         {
             // to ensure "refundId" is required (not null)
             if (refundId == null) {
@@ -49,6 +53,14 @@ namespace net.crossly.Model
             }
             this.RefundId = refundId;
             this.Amount = amount;
+            // to ensure "id" is required (not null)
+            if (id == null) {
+                throw new ArgumentNullException("id is a required property for CreateOrderRefundResponse and cannot be null");
+            }
+            this.Id = id;
+            this.TotalRefunded = totalRefunded;
+            this.Replayed = replayed;
+            this.Remaining = remaining;
         }
 
         /// <summary>
@@ -64,6 +76,30 @@ namespace net.crossly.Model
         public decimal Amount { get; set; }
 
         /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalRefunded
+        /// </summary>
+        [DataMember(Name = "totalRefunded", IsRequired = true, EmitDefaultValue = false)]
+        public decimal TotalRefunded { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Remaining
+        /// </summary>
+        [DataMember(Name = "remaining", EmitDefaultValue = true)]
+        public decimal? Remaining { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Replayed
+        /// </summary>
+        [DataMember(Name = "replayed", IsRequired = true, EmitDefaultValue = true)]
+        public bool Replayed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,6 +109,10 @@ namespace net.crossly.Model
             sb.Append("class CreateOrderRefundResponse {\n");
             sb.Append("  RefundId: ").Append(RefundId).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  TotalRefunded: ").Append(TotalRefunded).Append("\n");
+            sb.Append("  Remaining: ").Append(Remaining).Append("\n");
+            sb.Append("  Replayed: ").Append(Replayed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,6 +156,24 @@ namespace net.crossly.Model
                 (
                     this.Amount == input.Amount ||
                     this.Amount.Equals(input.Amount)
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.TotalRefunded == input.TotalRefunded ||
+                    this.TotalRefunded.Equals(input.TotalRefunded)
+                ) && 
+                (
+                    this.Remaining == input.Remaining ||
+                    (this.Remaining != null &&
+                    this.Remaining.Equals(input.Remaining))
+                ) && 
+                (
+                    this.Replayed == input.Replayed ||
+                    this.Replayed.Equals(input.Replayed)
                 );
         }
 
@@ -133,6 +191,16 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.RefundId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TotalRefunded.GetHashCode();
+                if (this.Remaining != null)
+                {
+                    hashCode = (hashCode * 59) + this.Remaining.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Replayed.GetHashCode();
                 return hashCode;
             }
         }

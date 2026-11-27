@@ -39,21 +39,41 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetInventorySellThroughResponseDataComparison" /> class.
         /// </summary>
-        /// <param name="pctChange">pctChange.</param>
+        /// <param name="pctChange">Always null: a relative change of a rate is not reported. Read &#x60;pp&#x60;. (required).</param>
+        /// <param name="pp">Percentage points, null when not comparable..</param>
         /// <param name="comparable">comparable (required).</param>
         /// <param name="reason">reason.</param>
-        public GetInventorySellThroughResponseDataComparison(decimal? pctChange = default(decimal?), bool comparable = default(bool), string reason = default(string))
+        /// <param name="delta">delta (required).</param>
+        public GetInventorySellThroughResponseDataComparison(Object pctChange = default(Object), decimal? pp = default(decimal?), bool comparable = default(bool), string reason = default(string), GetAnalyticOverviewResponseDataKpisNetSalesDelta delta = default(GetAnalyticOverviewResponseDataKpisNetSalesDelta))
         {
-            this.Comparable = comparable;
+            // to ensure "pctChange" is required (not null)
+            if (pctChange == null) {
+                throw new ArgumentNullException("pctChange is a required property for GetInventorySellThroughResponseDataComparison and cannot be null");
+            }
             this.PctChange = pctChange;
+            this.Comparable = comparable;
+            // to ensure "delta" is required (not null)
+            if (delta == null) {
+                throw new ArgumentNullException("delta is a required property for GetInventorySellThroughResponseDataComparison and cannot be null");
+            }
+            this.Delta = delta;
+            this.Pp = pp;
             this.Reason = reason;
         }
 
         /// <summary>
-        /// Gets or Sets PctChange
+        /// Always null: a relative change of a rate is not reported. Read &#x60;pp&#x60;.
         /// </summary>
-        [DataMember(Name = "pctChange", EmitDefaultValue = true)]
-        public decimal? PctChange { get; set; }
+        /// <value>Always null: a relative change of a rate is not reported. Read &#x60;pp&#x60;.</value>
+        [DataMember(Name = "pctChange", IsRequired = true, EmitDefaultValue = true)]
+        public Object PctChange { get; set; }
+
+        /// <summary>
+        /// Percentage points, null when not comparable.
+        /// </summary>
+        /// <value>Percentage points, null when not comparable.</value>
+        [DataMember(Name = "pp", EmitDefaultValue = true)]
+        public decimal? Pp { get; set; }
 
         /// <summary>
         /// Gets or Sets Comparable
@@ -68,6 +88,12 @@ namespace net.crossly.Model
         public string Reason { get; set; }
 
         /// <summary>
+        /// Gets or Sets Delta
+        /// </summary>
+        [DataMember(Name = "delta", IsRequired = true, EmitDefaultValue = false)]
+        public GetAnalyticOverviewResponseDataKpisNetSalesDelta Delta { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,8 +102,10 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetInventorySellThroughResponseDataComparison {\n");
             sb.Append("  PctChange: ").Append(PctChange).Append("\n");
+            sb.Append("  Pp: ").Append(Pp).Append("\n");
             sb.Append("  Comparable: ").Append(Comparable).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
+            sb.Append("  Delta: ").Append(Delta).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +147,11 @@ namespace net.crossly.Model
                     this.PctChange.Equals(input.PctChange))
                 ) && 
                 (
+                    this.Pp == input.Pp ||
+                    (this.Pp != null &&
+                    this.Pp.Equals(input.Pp))
+                ) && 
+                (
                     this.Comparable == input.Comparable ||
                     this.Comparable.Equals(input.Comparable)
                 ) && 
@@ -126,6 +159,11 @@ namespace net.crossly.Model
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
+                ) && 
+                (
+                    this.Delta == input.Delta ||
+                    (this.Delta != null &&
+                    this.Delta.Equals(input.Delta))
                 );
         }
 
@@ -142,10 +180,18 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.PctChange.GetHashCode();
                 }
+                if (this.Pp != null)
+                {
+                    hashCode = (hashCode * 59) + this.Pp.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Comparable.GetHashCode();
                 if (this.Reason != null)
                 {
                     hashCode = (hashCode * 59) + this.Reason.GetHashCode();
+                }
+                if (this.Delta != null)
+                {
+                    hashCode = (hashCode * 59) + this.Delta.GetHashCode();
                 }
                 return hashCode;
             }

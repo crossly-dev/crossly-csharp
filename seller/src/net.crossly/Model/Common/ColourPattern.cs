@@ -38,64 +38,64 @@ namespace net.crossly.Model
         public enum ColourEnum
         {
             /// <summary>
-            /// Enum Red for value: red
-            /// </summary>
-            [EnumMember(Value = "red")]
-            Red = 1,
-
-            /// <summary>
-            /// Enum Orange for value: orange
-            /// </summary>
-            [EnumMember(Value = "orange")]
-            Orange = 2,
-
-            /// <summary>
             /// Enum Yellow for value: yellow
             /// </summary>
             [EnumMember(Value = "yellow")]
-            Yellow = 3,
-
-            /// <summary>
-            /// Enum Green for value: green
-            /// </summary>
-            [EnumMember(Value = "green")]
-            Green = 4,
-
-            /// <summary>
-            /// Enum Teal for value: teal
-            /// </summary>
-            [EnumMember(Value = "teal")]
-            Teal = 5,
+            Yellow = 1,
 
             /// <summary>
             /// Enum Blue for value: blue
             /// </summary>
             [EnumMember(Value = "blue")]
-            Blue = 6,
+            Blue = 2,
 
             /// <summary>
-            /// Enum Purple for value: purple
+            /// Enum Green for value: green
             /// </summary>
-            [EnumMember(Value = "purple")]
-            Purple = 7,
+            [EnumMember(Value = "green")]
+            Green = 3,
 
             /// <summary>
             /// Enum Pink for value: pink
             /// </summary>
             [EnumMember(Value = "pink")]
-            Pink = 8,
+            Pink = 4,
 
             /// <summary>
-            /// Enum Cream for value: cream
+            /// Enum Purple for value: purple
             /// </summary>
-            [EnumMember(Value = "cream")]
-            Cream = 9,
+            [EnumMember(Value = "purple")]
+            Purple = 5,
 
             /// <summary>
             /// Enum Charcoal for value: charcoal
             /// </summary>
             [EnumMember(Value = "charcoal")]
-            Charcoal = 10
+            Charcoal = 6,
+
+            /// <summary>
+            /// Enum Red for value: red
+            /// </summary>
+            [EnumMember(Value = "red")]
+            Red = 7,
+
+            /// <summary>
+            /// Enum Orange for value: orange
+            /// </summary>
+            [EnumMember(Value = "orange")]
+            Orange = 8,
+
+            /// <summary>
+            /// Enum Teal for value: teal
+            /// </summary>
+            [EnumMember(Value = "teal")]
+            Teal = 9,
+
+            /// <summary>
+            /// Enum Cream for value: cream
+            /// </summary>
+            [EnumMember(Value = "cream")]
+            Cream = 10
 
         }
 
@@ -112,10 +112,10 @@ namespace net.crossly.Model
         public enum PatternEnum
         {
             /// <summary>
-            /// Enum Solid for value: solid
+            /// Enum Check for value: check
             /// </summary>
-            [EnumMember(Value = "solid")]
-            Solid = 1,
+            [EnumMember(Value = "check")]
+            Check = 1,
 
             /// <summary>
             /// Enum Stripe for value: stripe
@@ -124,16 +124,16 @@ namespace net.crossly.Model
             Stripe = 2,
 
             /// <summary>
+            /// Enum Solid for value: solid
+            /// </summary>
+            [EnumMember(Value = "solid")]
+            Solid = 3,
+
+            /// <summary>
             /// Enum Scallop for value: scallop
             /// </summary>
             [EnumMember(Value = "scallop")]
-            Scallop = 3,
-
-            /// <summary>
-            /// Enum Check for value: check
-            /// </summary>
-            [EnumMember(Value = "check")]
-            Check = 4
+            Scallop = 4
 
         }
 

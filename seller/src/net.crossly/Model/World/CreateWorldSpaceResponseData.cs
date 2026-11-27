@@ -45,14 +45,14 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="slug">slug (required).</param>
+        /// <param name="venue">venue (required).</param>
         /// <param name="hostUserId">hostUserId (required).</param>
+        /// <param name="about">about.</param>
         /// <param name="gateChain">gateChain.</param>
         /// <param name="gateContract">gateContract.</param>
         /// <param name="gateName">gateName.</param>
-        /// <param name="venue">venue (required).</param>
         /// <param name="membership">membership (required).</param>
-        /// <param name="about">about.</param>
-        public CreateWorldSpaceResponseData(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), string slug = default(string), string hostUserId = default(string), string gateChain = default(string), string gateContract = default(string), string gateName = default(string), string venue = default(string), string membership = default(string), string about = default(string))
+        public CreateWorldSpaceResponseData(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), string slug = default(string), string venue = default(string), string hostUserId = default(string), string about = default(string), string gateChain = default(string), string gateContract = default(string), string gateName = default(string), string membership = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -76,25 +76,25 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("slug is a required property for CreateWorldSpaceResponseData and cannot be null");
             }
             this.Slug = slug;
-            // to ensure "hostUserId" is required (not null)
-            if (hostUserId == null) {
-                throw new ArgumentNullException("hostUserId is a required property for CreateWorldSpaceResponseData and cannot be null");
-            }
-            this.HostUserId = hostUserId;
             // to ensure "venue" is required (not null)
             if (venue == null) {
                 throw new ArgumentNullException("venue is a required property for CreateWorldSpaceResponseData and cannot be null");
             }
             this.Venue = venue;
+            // to ensure "hostUserId" is required (not null)
+            if (hostUserId == null) {
+                throw new ArgumentNullException("hostUserId is a required property for CreateWorldSpaceResponseData and cannot be null");
+            }
+            this.HostUserId = hostUserId;
             // to ensure "membership" is required (not null)
             if (membership == null) {
                 throw new ArgumentNullException("membership is a required property for CreateWorldSpaceResponseData and cannot be null");
             }
             this.Membership = membership;
+            this.About = about;
             this.GateChain = gateChain;
             this.GateContract = gateContract;
             this.GateName = gateName;
-            this.About = about;
         }
 
         /// <summary>
@@ -134,10 +134,22 @@ namespace net.crossly.Model
         public string Slug { get; set; }
 
         /// <summary>
+        /// Gets or Sets Venue
+        /// </summary>
+        [DataMember(Name = "venue", IsRequired = true, EmitDefaultValue = false)]
+        public string Venue { get; set; }
+
+        /// <summary>
         /// Gets or Sets HostUserId
         /// </summary>
         [DataMember(Name = "hostUserId", IsRequired = true, EmitDefaultValue = false)]
         public string HostUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets About
+        /// </summary>
+        [DataMember(Name = "about", EmitDefaultValue = true)]
+        public string About { get; set; }
 
         /// <summary>
         /// Gets or Sets GateChain
@@ -158,22 +170,10 @@ namespace net.crossly.Model
         public string GateName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Venue
-        /// </summary>
-        [DataMember(Name = "venue", IsRequired = true, EmitDefaultValue = false)]
-        public string Venue { get; set; }
-
-        /// <summary>
         /// Gets or Sets Membership
         /// </summary>
         [DataMember(Name = "membership", IsRequired = true, EmitDefaultValue = false)]
         public string Membership { get; set; }
-
-        /// <summary>
-        /// Gets or Sets About
-        /// </summary>
-        [DataMember(Name = "about", EmitDefaultValue = true)]
-        public string About { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -189,13 +189,13 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Venue: ").Append(Venue).Append("\n");
             sb.Append("  HostUserId: ").Append(HostUserId).Append("\n");
+            sb.Append("  About: ").Append(About).Append("\n");
             sb.Append("  GateChain: ").Append(GateChain).Append("\n");
             sb.Append("  GateContract: ").Append(GateContract).Append("\n");
             sb.Append("  GateName: ").Append(GateName).Append("\n");
-            sb.Append("  Venue: ").Append(Venue).Append("\n");
             sb.Append("  Membership: ").Append(Membership).Append("\n");
-            sb.Append("  About: ").Append(About).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -262,9 +262,19 @@ namespace net.crossly.Model
                     this.Slug.Equals(input.Slug))
                 ) && 
                 (
+                    this.Venue == input.Venue ||
+                    (this.Venue != null &&
+                    this.Venue.Equals(input.Venue))
+                ) && 
+                (
                     this.HostUserId == input.HostUserId ||
                     (this.HostUserId != null &&
                     this.HostUserId.Equals(input.HostUserId))
+                ) && 
+                (
+                    this.About == input.About ||
+                    (this.About != null &&
+                    this.About.Equals(input.About))
                 ) && 
                 (
                     this.GateChain == input.GateChain ||
@@ -282,19 +292,9 @@ namespace net.crossly.Model
                     this.GateName.Equals(input.GateName))
                 ) && 
                 (
-                    this.Venue == input.Venue ||
-                    (this.Venue != null &&
-                    this.Venue.Equals(input.Venue))
-                ) && 
-                (
                     this.Membership == input.Membership ||
                     (this.Membership != null &&
                     this.Membership.Equals(input.Membership))
-                ) && 
-                (
-                    this.About == input.About ||
-                    (this.About != null &&
-                    this.About.Equals(input.About))
                 );
         }
 
@@ -331,9 +331,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
+                if (this.Venue != null)
+                {
+                    hashCode = (hashCode * 59) + this.Venue.GetHashCode();
+                }
                 if (this.HostUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.HostUserId.GetHashCode();
+                }
+                if (this.About != null)
+                {
+                    hashCode = (hashCode * 59) + this.About.GetHashCode();
                 }
                 if (this.GateChain != null)
                 {
@@ -347,17 +355,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.GateName.GetHashCode();
                 }
-                if (this.Venue != null)
-                {
-                    hashCode = (hashCode * 59) + this.Venue.GetHashCode();
-                }
                 if (this.Membership != null)
                 {
                     hashCode = (hashCode * 59) + this.Membership.GetHashCode();
-                }
-                if (this.About != null)
-                {
-                    hashCode = (hashCode * 59) + this.About.GetHashCode();
                 }
                 return hashCode;
             }

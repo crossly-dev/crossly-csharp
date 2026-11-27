@@ -45,28 +45,28 @@ namespace net.crossly.Model
             Level = 1,
 
             /// <summary>
+            /// Enum Bin for value: bin
+            /// </summary>
+            [EnumMember(Value = "bin")]
+            Bin = 2,
+
+            /// <summary>
             /// Enum Zone for value: zone
             /// </summary>
             [EnumMember(Value = "zone")]
-            Zone = 2,
+            Zone = 3,
 
             /// <summary>
             /// Enum Aisle for value: aisle
             /// </summary>
             [EnumMember(Value = "aisle")]
-            Aisle = 3,
+            Aisle = 4,
 
             /// <summary>
             /// Enum Bay for value: bay
             /// </summary>
             [EnumMember(Value = "bay")]
-            Bay = 4,
-
-            /// <summary>
-            /// Enum Bin for value: bin
-            /// </summary>
-            [EnumMember(Value = "bin")]
-            Bin = 5
+            Bay = 5
 
         }
 

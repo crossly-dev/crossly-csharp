@@ -44,7 +44,9 @@ namespace net.crossly.Model
         /// <param name="count">count (required).</param>
         /// <param name="platformFees">platformFees (required).</param>
         /// <param name="netProfit">netProfit (required).</param>
-        public GetAnalyticBookkeepingResponsePlatformBreakdown(string platform = default(string), decimal revenue = default(decimal), decimal count = default(decimal), decimal platformFees = default(decimal), decimal netProfit = default(decimal))
+        /// <param name="refunds">refunds (required).</param>
+        /// <param name="taxCollected">taxCollected (required).</param>
+        public GetAnalyticBookkeepingResponsePlatformBreakdown(string platform = default(string), decimal revenue = default(decimal), decimal count = default(decimal), decimal platformFees = default(decimal), decimal netProfit = default(decimal), decimal refunds = default(decimal), decimal taxCollected = default(decimal))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
@@ -55,6 +57,8 @@ namespace net.crossly.Model
             this.Count = count;
             this.PlatformFees = platformFees;
             this.NetProfit = netProfit;
+            this.Refunds = refunds;
+            this.TaxCollected = taxCollected;
         }
 
         /// <summary>
@@ -88,6 +92,18 @@ namespace net.crossly.Model
         public decimal NetProfit { get; set; }
 
         /// <summary>
+        /// Gets or Sets Refunds
+        /// </summary>
+        [DataMember(Name = "refunds", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Refunds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TaxCollected
+        /// </summary>
+        [DataMember(Name = "taxCollected", IsRequired = true, EmitDefaultValue = false)]
+        public decimal TaxCollected { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +116,8 @@ namespace net.crossly.Model
             sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  PlatformFees: ").Append(PlatformFees).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
+            sb.Append("  Refunds: ").Append(Refunds).Append("\n");
+            sb.Append("  TaxCollected: ").Append(TaxCollected).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +173,14 @@ namespace net.crossly.Model
                 (
                     this.NetProfit == input.NetProfit ||
                     this.NetProfit.Equals(input.NetProfit)
+                ) && 
+                (
+                    this.Refunds == input.Refunds ||
+                    this.Refunds.Equals(input.Refunds)
+                ) && 
+                (
+                    this.TaxCollected == input.TaxCollected ||
+                    this.TaxCollected.Equals(input.TaxCollected)
                 );
         }
 
@@ -175,6 +201,8 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Count.GetHashCode();
                 hashCode = (hashCode * 59) + this.PlatformFees.GetHashCode();
                 hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
+                hashCode = (hashCode * 59) + this.Refunds.GetHashCode();
+                hashCode = (hashCode * 59) + this.TaxCollected.GetHashCode();
                 return hashCode;
             }
         }

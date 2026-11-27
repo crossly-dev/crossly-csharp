@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Transfer for value: transfer
+            /// Enum Sale for value: sale
             /// </summary>
-            [EnumMember(Value = "transfer")]
-            Transfer = 1,
+            [EnumMember(Value = "sale")]
+            Sale = 1,
 
             /// <summary>
             /// Enum Listing for value: listing
@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Listing = 2,
 
             /// <summary>
-            /// Enum Sale for value: sale
-            /// </summary>
-            [EnumMember(Value = "sale")]
-            Sale = 3,
-
-            /// <summary>
             /// Enum Mint for value: mint
             /// </summary>
             [EnumMember(Value = "mint")]
-            Mint = 4,
+            Mint = 3,
+
+            /// <summary>
+            /// Enum Transfer for value: transfer
+            /// </summary>
+            [EnumMember(Value = "transfer")]
+            Transfer = 4,
 
             /// <summary>
             /// Enum Burn for value: burn

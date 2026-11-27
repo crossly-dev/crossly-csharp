@@ -39,51 +39,39 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAutomationRuleExportByIdResponse" /> class.
         /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="action">action (required).</param>
         /// <param name="schemaVersion">schemaVersion (required).</param>
+        /// <param name="name">name (required).</param>
         /// <param name="trigger">trigger (required).</param>
-        /// <param name="condition">condition.</param>
-        /// <param name="metadata">metadata.</param>
-        /// <param name="description">description.</param>
-        /// <param name="platforms">platforms.</param>
+        /// <param name="action">action (required).</param>
         /// <param name="schema">Optional reference to the public schema URL — purely cosmetic..</param>
-        public GetAutomationRuleExportByIdResponse(string name = default(string), GetAutomationRuleExportByIdResponseAction action = default(GetAutomationRuleExportByIdResponseAction), decimal schemaVersion = default(decimal), GetAutomationRuleExportByIdResponseAction trigger = default(GetAutomationRuleExportByIdResponseAction), GetAutomationRuleExportByIdResponseCondition condition = default(GetAutomationRuleExportByIdResponseCondition), GetAutomationRuleExportByIdResponseMetadata metadata = default(GetAutomationRuleExportByIdResponseMetadata), string description = default(string), List<string> platforms = default(List<string>), string schema = default(string))
+        /// <param name="description">description.</param>
+        /// <param name="condition">condition.</param>
+        /// <param name="platforms">platforms.</param>
+        /// <param name="metadata">metadata.</param>
+        public GetAutomationRuleExportByIdResponse(decimal schemaVersion = default(decimal), string name = default(string), GetAutomationRuleExportByIdResponseTrigger trigger = default(GetAutomationRuleExportByIdResponseTrigger), GetAutomationRuleExportByIdResponseTrigger action = default(GetAutomationRuleExportByIdResponseTrigger), string schema = default(string), string description = default(string), GetAutomationRuleExportByIdResponseCondition condition = default(GetAutomationRuleExportByIdResponseCondition), List<string> platforms = default(List<string>), GetAutomationRuleExportByIdResponseMetadata metadata = default(GetAutomationRuleExportByIdResponseMetadata))
         {
+            this.SchemaVersion = schemaVersion;
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GetAutomationRuleExportByIdResponse and cannot be null");
             }
             this.Name = name;
-            // to ensure "action" is required (not null)
-            if (action == null) {
-                throw new ArgumentNullException("action is a required property for GetAutomationRuleExportByIdResponse and cannot be null");
-            }
-            this.Action = action;
-            this.SchemaVersion = schemaVersion;
             // to ensure "trigger" is required (not null)
             if (trigger == null) {
                 throw new ArgumentNullException("trigger is a required property for GetAutomationRuleExportByIdResponse and cannot be null");
             }
             this.Trigger = trigger;
-            this.Condition = condition;
-            this.Metadata = metadata;
-            this.Description = description;
-            this.Platforms = platforms;
+            // to ensure "action" is required (not null)
+            if (action == null) {
+                throw new ArgumentNullException("action is a required property for GetAutomationRuleExportByIdResponse and cannot be null");
+            }
+            this.Action = action;
             this.Schema = schema;
+            this.Description = description;
+            this.Condition = condition;
+            this.Platforms = platforms;
+            this.Metadata = metadata;
         }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Action
-        /// </summary>
-        [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = false)]
-        public GetAutomationRuleExportByIdResponseAction Action { get; set; }
 
         /// <summary>
         /// Gets or Sets SchemaVersion
@@ -92,34 +80,22 @@ namespace net.crossly.Model
         public decimal SchemaVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or Sets Trigger
         /// </summary>
         [DataMember(Name = "trigger", IsRequired = true, EmitDefaultValue = false)]
-        public GetAutomationRuleExportByIdResponseAction Trigger { get; set; }
+        public GetAutomationRuleExportByIdResponseTrigger Trigger { get; set; }
 
         /// <summary>
-        /// Gets or Sets Condition
+        /// Gets or Sets Action
         /// </summary>
-        [DataMember(Name = "condition", EmitDefaultValue = true)]
-        public GetAutomationRuleExportByIdResponseCondition Condition { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Metadata
-        /// </summary>
-        [DataMember(Name = "metadata", EmitDefaultValue = true)]
-        public GetAutomationRuleExportByIdResponseMetadata Metadata { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Platforms
-        /// </summary>
-        [DataMember(Name = "platforms", EmitDefaultValue = true)]
-        public List<string> Platforms { get; set; }
+        [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = false)]
+        public GetAutomationRuleExportByIdResponseTrigger Action { get; set; }
 
         /// <summary>
         /// Optional reference to the public schema URL — purely cosmetic.
@@ -129,6 +105,30 @@ namespace net.crossly.Model
         public string Schema { get; set; }
 
         /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Condition
+        /// </summary>
+        [DataMember(Name = "condition", EmitDefaultValue = true)]
+        public GetAutomationRuleExportByIdResponseCondition Condition { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Platforms
+        /// </summary>
+        [DataMember(Name = "platforms", EmitDefaultValue = true)]
+        public List<string> Platforms { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metadata
+        /// </summary>
+        [DataMember(Name = "metadata", EmitDefaultValue = true)]
+        public GetAutomationRuleExportByIdResponseMetadata Metadata { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -136,15 +136,15 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAutomationRuleExportByIdResponse {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Action: ").Append(Action).Append("\n");
             sb.Append("  SchemaVersion: ").Append(SchemaVersion).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Trigger: ").Append(Trigger).Append("\n");
-            sb.Append("  Condition: ").Append(Condition).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
+            sb.Append("  Action: ").Append(Action).Append("\n");
             sb.Append("  Schema: ").Append(Schema).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Condition: ").Append(Condition).Append("\n");
+            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -181,18 +181,13 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.SchemaVersion == input.SchemaVersion ||
+                    this.SchemaVersion.Equals(input.SchemaVersion)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Action == input.Action ||
-                    (this.Action != null &&
-                    this.Action.Equals(input.Action))
-                ) && 
-                (
-                    this.SchemaVersion == input.SchemaVersion ||
-                    this.SchemaVersion.Equals(input.SchemaVersion)
                 ) && 
                 (
                     this.Trigger == input.Trigger ||
@@ -200,19 +195,24 @@ namespace net.crossly.Model
                     this.Trigger.Equals(input.Trigger))
                 ) && 
                 (
-                    this.Condition == input.Condition ||
-                    (this.Condition != null &&
-                    this.Condition.Equals(input.Condition))
+                    this.Action == input.Action ||
+                    (this.Action != null &&
+                    this.Action.Equals(input.Action))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    (this.Metadata != null &&
-                    this.Metadata.Equals(input.Metadata))
+                    this.Schema == input.Schema ||
+                    (this.Schema != null &&
+                    this.Schema.Equals(input.Schema))
                 ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Condition == input.Condition ||
+                    (this.Condition != null &&
+                    this.Condition.Equals(input.Condition))
                 ) && 
                 (
                     this.Platforms == input.Platforms ||
@@ -221,9 +221,9 @@ namespace net.crossly.Model
                     this.Platforms.SequenceEqual(input.Platforms)
                 ) && 
                 (
-                    this.Schema == input.Schema ||
-                    (this.Schema != null &&
-                    this.Schema.Equals(input.Schema))
+                    this.Metadata == input.Metadata ||
+                    (this.Metadata != null &&
+                    this.Metadata.Equals(input.Metadata))
                 );
         }
 
@@ -236,38 +236,38 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.SchemaVersion.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.Trigger != null)
+                {
+                    hashCode = (hashCode * 59) + this.Trigger.GetHashCode();
                 }
                 if (this.Action != null)
                 {
                     hashCode = (hashCode * 59) + this.Action.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.SchemaVersion.GetHashCode();
-                if (this.Trigger != null)
+                if (this.Schema != null)
                 {
-                    hashCode = (hashCode * 59) + this.Trigger.GetHashCode();
-                }
-                if (this.Condition != null)
-                {
-                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
-                }
-                if (this.Metadata != null)
-                {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Schema.GetHashCode();
                 }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.Condition != null)
+                {
+                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
+                }
                 if (this.Platforms != null)
                 {
                     hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
                 }
-                if (this.Schema != null)
+                if (this.Metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Schema.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
                 }
                 return hashCode;
             }

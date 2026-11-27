@@ -38,52 +38,76 @@ namespace net.crossly.Model
         public enum KeyEnum
         {
             /// <summary>
-            /// Enum RoundTrip for value: round_trip
-            /// </summary>
-            [EnumMember(Value = "round_trip")]
-            RoundTrip = 1,
-
-            /// <summary>
             /// Enum FirstFill for value: first_fill
             /// </summary>
             [EnumMember(Value = "first_fill")]
-            FirstFill = 2,
+            FirstFill = 1,
 
             /// <summary>
             /// Enum ReadMark for value: read_mark
             /// </summary>
             [EnumMember(Value = "read_mark")]
-            ReadMark = 3,
+            ReadMark = 2,
 
             /// <summary>
             /// Enum BidBelow for value: bid_below
             /// </summary>
             [EnumMember(Value = "bid_below")]
-            BidBelow = 4,
+            BidBelow = 3,
 
             /// <summary>
             /// Enum MakerFill for value: maker_fill
             /// </summary>
             [EnumMember(Value = "maker_fill")]
-            MakerFill = 5,
+            MakerFill = 4,
 
             /// <summary>
             /// Enum InstantExit for value: instant_exit
             /// </summary>
             [EnumMember(Value = "instant_exit")]
-            InstantExit = 6,
+            InstantExit = 5,
 
             /// <summary>
             /// Enum PriceWatch for value: price_watch
             /// </summary>
             [EnumMember(Value = "price_watch")]
-            PriceWatch = 7,
+            PriceWatch = 6,
+
+            /// <summary>
+            /// Enum RoundTrip for value: round_trip
+            /// </summary>
+            [EnumMember(Value = "round_trip")]
+            RoundTrip = 7,
 
             /// <summary>
             /// Enum MiniSet for value: mini_set
             /// </summary>
             [EnumMember(Value = "mini_set")]
-            MiniSet = 8
+            MiniSet = 8,
+
+            /// <summary>
+            /// Enum ShareFirst for value: share_first
+            /// </summary>
+            [EnumMember(Value = "share_first")]
+            ShareFirst = 9,
+
+            /// <summary>
+            /// Enum ShareQueue for value: share_queue
+            /// </summary>
+            [EnumMember(Value = "share_queue")]
+            ShareQueue = 10,
+
+            /// <summary>
+            /// Enum OptionFirst for value: option_first
+            /// </summary>
+            [EnumMember(Value = "option_first")]
+            OptionFirst = 11,
+
+            /// <summary>
+            /// Enum OptionExpiry for value: option_expiry
+            /// </summary>
+            [EnumMember(Value = "option_expiry")]
+            OptionExpiry = 12
 
         }
 
@@ -106,28 +130,28 @@ namespace net.crossly.Model
             Market = 1,
 
             /// <summary>
-            /// Enum Assistant for value: assistant
-            /// </summary>
-            [EnumMember(Value = "assistant")]
-            Assistant = 2,
-
-            /// <summary>
             /// Enum Paper for value: paper
             /// </summary>
             [EnumMember(Value = "paper")]
-            Paper = 3,
+            Paper = 2,
 
             /// <summary>
-            /// Enum MarkCheck for value: mark_check
+            /// Enum Assistant for value: assistant
             /// </summary>
-            [EnumMember(Value = "mark_check")]
-            MarkCheck = 4,
+            [EnumMember(Value = "assistant")]
+            Assistant = 3,
 
             /// <summary>
             /// Enum Sets for value: sets
             /// </summary>
             [EnumMember(Value = "sets")]
-            Sets = 5
+            Sets = 4,
+
+            /// <summary>
+            /// Enum MarkCheck for value: mark_check
+            /// </summary>
+            [EnumMember(Value = "mark_check")]
+            MarkCheck = 5
 
         }
 
@@ -153,7 +177,13 @@ namespace net.crossly.Model
             /// Enum Marks for value: marks
             /// </summary>
             [EnumMember(Value = "marks")]
-            Marks = 2
+            Marks = 2,
+
+            /// <summary>
+            /// Enum VaultShares for value: vault-shares
+            /// </summary>
+            [EnumMember(Value = "vault-shares")]
+            VaultShares = 3
 
         }
 

@@ -32,28 +32,28 @@ namespace net.crossly.Model
     public enum GetWorldCapabilityCatalogueResponseDataKindsClientsItem
     {
         /// <summary>
-        /// Enum Web for value: web
-        /// </summary>
-        [EnumMember(Value = "web")]
-        Web = 1,
-
-        /// <summary>
         /// Enum App for value: app
         /// </summary>
         [EnumMember(Value = "app")]
-        App = 2,
-
-        /// <summary>
-        /// Enum Godot for value: godot
-        /// </summary>
-        [EnumMember(Value = "godot")]
-        Godot = 3,
+        App = 1,
 
         /// <summary>
         /// Enum Api for value: api
         /// </summary>
         [EnumMember(Value = "api")]
-        Api = 4,
+        Api = 2,
+
+        /// <summary>
+        /// Enum Web for value: web
+        /// </summary>
+        [EnumMember(Value = "web")]
+        Web = 3,
+
+        /// <summary>
+        /// Enum Godot for value: godot
+        /// </summary>
+        [EnumMember(Value = "godot")]
+        Godot = 4,
 
         /// <summary>
         /// Enum Runner for value: runner

@@ -43,7 +43,9 @@ namespace net.crossly.Model
         /// <param name="monthlyPL">monthlyPL (required).</param>
         /// <param name="annualTotals">annualTotals (required).</param>
         /// <param name="platformBreakdown">platformBreakdown (required).</param>
-        public GetAnalyticBookkeepingResponse(decimal year = default(decimal), List<GetAnalyticBookkeepingResponseMonthlyPL> monthlyPL = default(List<GetAnalyticBookkeepingResponseMonthlyPL>), GetAnalyticBookkeepingResponseAnnualTotals annualTotals = default(GetAnalyticBookkeepingResponseAnnualTotals), List<GetAnalyticBookkeepingResponsePlatformBreakdown> platformBreakdown = default(List<GetAnalyticBookkeepingResponsePlatformBreakdown>))
+        /// <param name="pendingDetailsCount">Sales of the year whose price and buyer are not known yet: in no line above. \&quot;N sales pending details\&quot;. (required).</param>
+        /// <param name="tz">The books timezone the year was cut in. (required).</param>
+        public GetAnalyticBookkeepingResponse(decimal year = default(decimal), List<GetAnalyticBookkeepingResponseMonthlyPL> monthlyPL = default(List<GetAnalyticBookkeepingResponseMonthlyPL>), GetAnalyticBookkeepingResponseAnnualTotals annualTotals = default(GetAnalyticBookkeepingResponseAnnualTotals), List<GetAnalyticBookkeepingResponsePlatformBreakdown> platformBreakdown = default(List<GetAnalyticBookkeepingResponsePlatformBreakdown>), decimal pendingDetailsCount = default(decimal), string tz = default(string))
         {
             this.Year = year;
             // to ensure "monthlyPL" is required (not null)
@@ -61,6 +63,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("platformBreakdown is a required property for GetAnalyticBookkeepingResponse and cannot be null");
             }
             this.PlatformBreakdown = platformBreakdown;
+            this.PendingDetailsCount = pendingDetailsCount;
+            // to ensure "tz" is required (not null)
+            if (tz == null) {
+                throw new ArgumentNullException("tz is a required property for GetAnalyticBookkeepingResponse and cannot be null");
+            }
+            this.Tz = tz;
         }
 
         /// <summary>
@@ -88,6 +96,20 @@ namespace net.crossly.Model
         public List<GetAnalyticBookkeepingResponsePlatformBreakdown> PlatformBreakdown { get; set; }
 
         /// <summary>
+        /// Sales of the year whose price and buyer are not known yet: in no line above. \&quot;N sales pending details\&quot;.
+        /// </summary>
+        /// <value>Sales of the year whose price and buyer are not known yet: in no line above. \&quot;N sales pending details\&quot;.</value>
+        [DataMember(Name = "pendingDetailsCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PendingDetailsCount { get; set; }
+
+        /// <summary>
+        /// The books timezone the year was cut in.
+        /// </summary>
+        /// <value>The books timezone the year was cut in.</value>
+        [DataMember(Name = "tz", IsRequired = true, EmitDefaultValue = false)]
+        public string Tz { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -99,6 +121,8 @@ namespace net.crossly.Model
             sb.Append("  MonthlyPL: ").Append(MonthlyPL).Append("\n");
             sb.Append("  AnnualTotals: ").Append(AnnualTotals).Append("\n");
             sb.Append("  PlatformBreakdown: ").Append(PlatformBreakdown).Append("\n");
+            sb.Append("  PendingDetailsCount: ").Append(PendingDetailsCount).Append("\n");
+            sb.Append("  Tz: ").Append(Tz).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +178,15 @@ namespace net.crossly.Model
                     this.PlatformBreakdown != null &&
                     input.PlatformBreakdown != null &&
                     this.PlatformBreakdown.SequenceEqual(input.PlatformBreakdown)
+                ) && 
+                (
+                    this.PendingDetailsCount == input.PendingDetailsCount ||
+                    this.PendingDetailsCount.Equals(input.PendingDetailsCount)
+                ) && 
+                (
+                    this.Tz == input.Tz ||
+                    (this.Tz != null &&
+                    this.Tz.Equals(input.Tz))
                 );
         }
 
@@ -178,6 +211,11 @@ namespace net.crossly.Model
                 if (this.PlatformBreakdown != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformBreakdown.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.PendingDetailsCount.GetHashCode();
+                if (this.Tz != null)
+                {
+                    hashCode = (hashCode * 59) + this.Tz.GetHashCode();
                 }
                 return hashCode;
             }

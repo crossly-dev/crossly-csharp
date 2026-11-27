@@ -44,9 +44,10 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="title">title.</param>
-        /// <param name="surface">surface (required).</param>
         /// <param name="body">body (required).</param>
-        public CreateInboxCannedResponseResponseCannedResponse(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string title = default(string), string surface = default(string), string body = default(string))
+        /// <param name="surface">surface (required).</param>
+        /// <param name="sortOrder">sortOrder (required).</param>
+        public CreateInboxCannedResponseResponseCannedResponse(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string title = default(string), string body = default(string), string surface = default(string), decimal sortOrder = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -64,16 +65,17 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for CreateInboxCannedResponseResponseCannedResponse and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "surface" is required (not null)
-            if (surface == null) {
-                throw new ArgumentNullException("surface is a required property for CreateInboxCannedResponseResponseCannedResponse and cannot be null");
-            }
-            this.Surface = surface;
             // to ensure "body" is required (not null)
             if (body == null) {
                 throw new ArgumentNullException("body is a required property for CreateInboxCannedResponseResponseCannedResponse and cannot be null");
             }
             this.Body = body;
+            // to ensure "surface" is required (not null)
+            if (surface == null) {
+                throw new ArgumentNullException("surface is a required property for CreateInboxCannedResponseResponseCannedResponse and cannot be null");
+            }
+            this.Surface = surface;
+            this.SortOrder = sortOrder;
             this.Title = title;
         }
 
@@ -108,16 +110,22 @@ namespace net.crossly.Model
         public string Title { get; set; }
 
         /// <summary>
+        /// Gets or Sets Body
+        /// </summary>
+        [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
+        public string Body { get; set; }
+
+        /// <summary>
         /// Gets or Sets Surface
         /// </summary>
         [DataMember(Name = "surface", IsRequired = true, EmitDefaultValue = false)]
         public string Surface { get; set; }
 
         /// <summary>
-        /// Gets or Sets Body
+        /// Gets or Sets SortOrder
         /// </summary>
-        [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
-        public string Body { get; set; }
+        [DataMember(Name = "sortOrder", IsRequired = true, EmitDefaultValue = false)]
+        public decimal SortOrder { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,8 +140,9 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  Surface: ").Append(Surface).Append("\n");
             sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("  Surface: ").Append(Surface).Append("\n");
+            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -195,14 +204,18 @@ namespace net.crossly.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
+                    this.Body == input.Body ||
+                    (this.Body != null &&
+                    this.Body.Equals(input.Body))
+                ) && 
+                (
                     this.Surface == input.Surface ||
                     (this.Surface != null &&
                     this.Surface.Equals(input.Surface))
                 ) && 
                 (
-                    this.Body == input.Body ||
-                    (this.Body != null &&
-                    this.Body.Equals(input.Body))
+                    this.SortOrder == input.SortOrder ||
+                    this.SortOrder.Equals(input.SortOrder)
                 );
         }
 
@@ -235,14 +248,15 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.Surface != null)
-                {
-                    hashCode = (hashCode * 59) + this.Surface.GetHashCode();
-                }
                 if (this.Body != null)
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
                 }
+                if (this.Surface != null)
+                {
+                    hashCode = (hashCode * 59) + this.Surface.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.SortOrder.GetHashCode();
                 return hashCode;
             }
         }

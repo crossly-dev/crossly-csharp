@@ -41,7 +41,8 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="platform">platform (required).</param>
         /// <param name="reason">reason (required).</param>
-        public CreateListingResponseSkipped(string platform = default(string), string reason = default(string))
+        /// <param name="code">code.</param>
+        public CreateListingResponseSkipped(string platform = default(string), string reason = default(string), string code = default(string))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
@@ -53,6 +54,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("reason is a required property for CreateListingResponseSkipped and cannot be null");
             }
             this.Reason = reason;
+            this.Code = code;
         }
 
         /// <summary>
@@ -68,6 +70,12 @@ namespace net.crossly.Model
         public string Reason { get; set; }
 
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name = "code", EmitDefaultValue = true)]
+        public string Code { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +85,7 @@ namespace net.crossly.Model
             sb.Append("class CreateListingResponseSkipped {\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,6 +130,11 @@ namespace net.crossly.Model
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
+                ) && 
+                (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 );
         }
 
@@ -140,6 +154,10 @@ namespace net.crossly.Model
                 if (this.Reason != null)
                 {
                     hashCode = (hashCode * 59) + this.Reason.GetHashCode();
+                }
+                if (this.Code != null)
+                {
+                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
                 }
                 return hashCode;
             }

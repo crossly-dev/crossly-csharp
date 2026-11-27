@@ -42,28 +42,48 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">status (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="description">description.</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="releasedAt">releasedAt.</param>
+        /// <param name="published">published (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="endsAt">endsAt.</param>
+        /// <param name="eventId">eventId.</param>
+        /// <param name="format">format (required).</param>
+        /// <param name="config">config (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="coverImageUrl">coverImageUrl.</param>
-        /// <param name="publishedAt">publishedAt.</param>
-        /// <param name="reviewedAt">reviewedAt.</param>
-        /// <param name="reviewNote">reviewNote.</param>
-        /// <param name="supplierName">supplierName.</param>
-        /// <param name="partnerId">partnerId.</param>
-        /// <param name="published">published (required).</param>
         /// <param name="platformListingIds">platformListingIds.</param>
         /// <param name="dropAt">dropAt (required).</param>
+        /// <param name="partnerId">partnerId.</param>
         /// <param name="wholesaleUnitCostCents">wholesaleUnitCostCents.</param>
         /// <param name="unitsPurchased">unitsPurchased.</param>
+        /// <param name="supplierName">supplierName.</param>
         /// <param name="poReference">poReference.</param>
         /// <param name="retailUnitPriceCents">retailUnitPriceCents.</param>
         /// <param name="buyerApiEnabled">buyerApiEnabled (required).</param>
         /// <param name="perCustomerLimit">perCustomerLimit.</param>
         /// <param name="previewFrom">previewFrom.</param>
+        /// <param name="publishedAt">publishedAt.</param>
+        /// <param name="reviewNote">reviewNote.</param>
+        /// <param name="reviewedAt">reviewedAt.</param>
+        /// <param name="placements">placements (required).</param>
+        /// <param name="announceAt">announceAt.</param>
+        /// <param name="countdownAt">countdownAt.</param>
+        /// <param name="pausedAt">pausedAt.</param>
+        /// <param name="liveStreamId">liveStreamId.</param>
+        /// <param name="spatialDropId">spatialDropId.</param>
+        /// <param name="timezone">timezone.</param>
+        /// <param name="featuredStatus">featuredStatus.</param>
+        /// <param name="audience">audience (required).</param>
+        /// <param name="audienceCatalogId">audienceCatalogId.</param>
+        /// <param name="dropKind">dropKind (required).</param>
+        /// <param name="depositBps">depositBps.</param>
+        /// <param name="shipBy">shipBy.</param>
+        /// <param name="balanceNetDays">balanceNetDays.</param>
         /// <param name="listingCount">listingCount (required).</param>
-        public ListBrandDropsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), string status = default(string), string description = default(string), DateTime? endsAt = default(DateTime?), string sellerUserId = default(string), string coverImageUrl = default(string), DateTime? publishedAt = default(DateTime?), DateTime? reviewedAt = default(DateTime?), string reviewNote = default(string), string supplierName = default(string), string partnerId = default(string), bool published = default(bool), List<string> platformListingIds = default(List<string>), DateTime dropAt = default(DateTime), decimal? wholesaleUnitCostCents = default(decimal?), decimal? unitsPurchased = default(decimal?), string poReference = default(string), decimal? retailUnitPriceCents = default(decimal?), bool buyerApiEnabled = default(bool), decimal? perCustomerLimit = default(decimal?), DateTime? previewFrom = default(DateTime?), decimal listingCount = default(decimal))
+        public ListBrandDropsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), string status = default(string), DateTime? releasedAt = default(DateTime?), bool published = default(bool), string storefrontId = default(string), DateTime? endsAt = default(DateTime?), string eventId = default(string), string format = default(string), Dictionary<string, Object> config = default(Dictionary<string, Object>), string sellerUserId = default(string), string coverImageUrl = default(string), List<string> platformListingIds = default(List<string>), DateTime dropAt = default(DateTime), string partnerId = default(string), decimal? wholesaleUnitCostCents = default(decimal?), decimal? unitsPurchased = default(decimal?), string supplierName = default(string), string poReference = default(string), decimal? retailUnitPriceCents = default(decimal?), bool buyerApiEnabled = default(bool), decimal? perCustomerLimit = default(decimal?), DateTime? previewFrom = default(DateTime?), DateTime? publishedAt = default(DateTime?), string reviewNote = default(string), DateTime? reviewedAt = default(DateTime?), List<string> placements = default(List<string>), DateTime? announceAt = default(DateTime?), DateTime? countdownAt = default(DateTime?), DateTime? pausedAt = default(DateTime?), string liveStreamId = default(string), string spatialDropId = default(string), string timezone = default(string), string featuredStatus = default(string), string audience = default(string), string audienceCatalogId = default(string), string dropKind = default(string), decimal? depositBps = default(decimal?), string shipBy = default(string), decimal? balanceNetDays = default(decimal?), decimal listingCount = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -76,35 +96,75 @@ namespace net.crossly.Model
             }
             this.Name = name;
             this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for ListBrandDropsItem and cannot be null");
             }
             this.Status = status;
+            this.Published = published;
+            // to ensure "format" is required (not null)
+            if (format == null) {
+                throw new ArgumentNullException("format is a required property for ListBrandDropsItem and cannot be null");
+            }
+            this.Format = format;
+            // to ensure "config" is required (not null)
+            if (config == null) {
+                throw new ArgumentNullException("config is a required property for ListBrandDropsItem and cannot be null");
+            }
+            this.Config = config;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
                 throw new ArgumentNullException("sellerUserId is a required property for ListBrandDropsItem and cannot be null");
             }
             this.SellerUserId = sellerUserId;
-            this.Published = published;
             this.DropAt = dropAt;
             this.BuyerApiEnabled = buyerApiEnabled;
+            // to ensure "placements" is required (not null)
+            if (placements == null) {
+                throw new ArgumentNullException("placements is a required property for ListBrandDropsItem and cannot be null");
+            }
+            this.Placements = placements;
+            // to ensure "audience" is required (not null)
+            if (audience == null) {
+                throw new ArgumentNullException("audience is a required property for ListBrandDropsItem and cannot be null");
+            }
+            this.Audience = audience;
+            // to ensure "dropKind" is required (not null)
+            if (dropKind == null) {
+                throw new ArgumentNullException("dropKind is a required property for ListBrandDropsItem and cannot be null");
+            }
+            this.DropKind = dropKind;
             this.ListingCount = listingCount;
             this.Description = description;
+            this.ReleasedAt = releasedAt;
+            this.StorefrontId = storefrontId;
             this.EndsAt = endsAt;
+            this.EventId = eventId;
             this.CoverImageUrl = coverImageUrl;
-            this.PublishedAt = publishedAt;
-            this.ReviewedAt = reviewedAt;
-            this.ReviewNote = reviewNote;
-            this.SupplierName = supplierName;
-            this.PartnerId = partnerId;
             this.PlatformListingIds = platformListingIds;
+            this.PartnerId = partnerId;
             this.WholesaleUnitCostCents = wholesaleUnitCostCents;
             this.UnitsPurchased = unitsPurchased;
+            this.SupplierName = supplierName;
             this.PoReference = poReference;
             this.RetailUnitPriceCents = retailUnitPriceCents;
             this.PerCustomerLimit = perCustomerLimit;
             this.PreviewFrom = previewFrom;
+            this.PublishedAt = publishedAt;
+            this.ReviewNote = reviewNote;
+            this.ReviewedAt = reviewedAt;
+            this.AnnounceAt = announceAt;
+            this.CountdownAt = countdownAt;
+            this.PausedAt = pausedAt;
+            this.LiveStreamId = liveStreamId;
+            this.SpatialDropId = spatialDropId;
+            this.Timezone = timezone;
+            this.FeaturedStatus = featuredStatus;
+            this.AudienceCatalogId = audienceCatalogId;
+            this.DepositBps = depositBps;
+            this.ShipBy = shipBy;
+            this.BalanceNetDays = balanceNetDays;
         }
 
         /// <summary>
@@ -126,10 +186,10 @@ namespace net.crossly.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets UpdatedAt
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
@@ -138,10 +198,52 @@ namespace net.crossly.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReleasedAt
+        /// </summary>
+        [DataMember(Name = "releasedAt", EmitDefaultValue = true)]
+        public DateTime? ReleasedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Published
+        /// </summary>
+        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
+        public bool Published { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets EndsAt
         /// </summary>
         [DataMember(Name = "endsAt", EmitDefaultValue = true)]
         public DateTime? EndsAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EventId
+        /// </summary>
+        [DataMember(Name = "eventId", EmitDefaultValue = true)]
+        public string EventId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Format
+        /// </summary>
+        [DataMember(Name = "format", IsRequired = true, EmitDefaultValue = false)]
+        public string Format { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Config
+        /// </summary>
+        [DataMember(Name = "config", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Config { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerUserId
@@ -156,42 +258,6 @@ namespace net.crossly.Model
         public string CoverImageUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets PublishedAt
-        /// </summary>
-        [DataMember(Name = "publishedAt", EmitDefaultValue = true)]
-        public DateTime? PublishedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReviewedAt
-        /// </summary>
-        [DataMember(Name = "reviewedAt", EmitDefaultValue = true)]
-        public DateTime? ReviewedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReviewNote
-        /// </summary>
-        [DataMember(Name = "reviewNote", EmitDefaultValue = true)]
-        public string ReviewNote { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SupplierName
-        /// </summary>
-        [DataMember(Name = "supplierName", EmitDefaultValue = true)]
-        public string SupplierName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PartnerId
-        /// </summary>
-        [DataMember(Name = "partnerId", EmitDefaultValue = true)]
-        public string PartnerId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Published
-        /// </summary>
-        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
-        public bool Published { get; set; }
-
-        /// <summary>
         /// Gets or Sets PlatformListingIds
         /// </summary>
         [DataMember(Name = "platformListingIds", EmitDefaultValue = true)]
@@ -204,6 +270,12 @@ namespace net.crossly.Model
         public DateTime DropAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets PartnerId
+        /// </summary>
+        [DataMember(Name = "partnerId", EmitDefaultValue = true)]
+        public string PartnerId { get; set; }
+
+        /// <summary>
         /// Gets or Sets WholesaleUnitCostCents
         /// </summary>
         [DataMember(Name = "wholesaleUnitCostCents", EmitDefaultValue = true)]
@@ -214,6 +286,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "unitsPurchased", EmitDefaultValue = true)]
         public decimal? UnitsPurchased { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SupplierName
+        /// </summary>
+        [DataMember(Name = "supplierName", EmitDefaultValue = true)]
+        public string SupplierName { get; set; }
 
         /// <summary>
         /// Gets or Sets PoReference
@@ -246,6 +324,108 @@ namespace net.crossly.Model
         public DateTime? PreviewFrom { get; set; }
 
         /// <summary>
+        /// Gets or Sets PublishedAt
+        /// </summary>
+        [DataMember(Name = "publishedAt", EmitDefaultValue = true)]
+        public DateTime? PublishedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReviewNote
+        /// </summary>
+        [DataMember(Name = "reviewNote", EmitDefaultValue = true)]
+        public string ReviewNote { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReviewedAt
+        /// </summary>
+        [DataMember(Name = "reviewedAt", EmitDefaultValue = true)]
+        public DateTime? ReviewedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Placements
+        /// </summary>
+        [DataMember(Name = "placements", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Placements { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AnnounceAt
+        /// </summary>
+        [DataMember(Name = "announceAt", EmitDefaultValue = true)]
+        public DateTime? AnnounceAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CountdownAt
+        /// </summary>
+        [DataMember(Name = "countdownAt", EmitDefaultValue = true)]
+        public DateTime? CountdownAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PausedAt
+        /// </summary>
+        [DataMember(Name = "pausedAt", EmitDefaultValue = true)]
+        public DateTime? PausedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LiveStreamId
+        /// </summary>
+        [DataMember(Name = "liveStreamId", EmitDefaultValue = true)]
+        public string LiveStreamId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SpatialDropId
+        /// </summary>
+        [DataMember(Name = "spatialDropId", EmitDefaultValue = true)]
+        public string SpatialDropId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Timezone
+        /// </summary>
+        [DataMember(Name = "timezone", EmitDefaultValue = true)]
+        public string Timezone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FeaturedStatus
+        /// </summary>
+        [DataMember(Name = "featuredStatus", EmitDefaultValue = true)]
+        public string FeaturedStatus { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Audience
+        /// </summary>
+        [DataMember(Name = "audience", IsRequired = true, EmitDefaultValue = false)]
+        public string Audience { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AudienceCatalogId
+        /// </summary>
+        [DataMember(Name = "audienceCatalogId", EmitDefaultValue = true)]
+        public string AudienceCatalogId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DropKind
+        /// </summary>
+        [DataMember(Name = "dropKind", IsRequired = true, EmitDefaultValue = false)]
+        public string DropKind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DepositBps
+        /// </summary>
+        [DataMember(Name = "depositBps", EmitDefaultValue = true)]
+        public decimal? DepositBps { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShipBy
+        /// </summary>
+        [DataMember(Name = "shipBy", EmitDefaultValue = true)]
+        public string ShipBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BalanceNetDays
+        /// </summary>
+        [DataMember(Name = "balanceNetDays", EmitDefaultValue = true)]
+        public decimal? BalanceNetDays { get; set; }
+
+        /// <summary>
         /// Gets or Sets ListingCount
         /// </summary>
         [DataMember(Name = "listingCount", IsRequired = true, EmitDefaultValue = false)]
@@ -262,26 +442,46 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  ReleasedAt: ").Append(ReleasedAt).Append("\n");
+            sb.Append("  Published: ").Append(Published).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  EventId: ").Append(EventId).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
+            sb.Append("  Config: ").Append(Config).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
-            sb.Append("  PublishedAt: ").Append(PublishedAt).Append("\n");
-            sb.Append("  ReviewedAt: ").Append(ReviewedAt).Append("\n");
-            sb.Append("  ReviewNote: ").Append(ReviewNote).Append("\n");
-            sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");
-            sb.Append("  PartnerId: ").Append(PartnerId).Append("\n");
-            sb.Append("  Published: ").Append(Published).Append("\n");
             sb.Append("  PlatformListingIds: ").Append(PlatformListingIds).Append("\n");
             sb.Append("  DropAt: ").Append(DropAt).Append("\n");
+            sb.Append("  PartnerId: ").Append(PartnerId).Append("\n");
             sb.Append("  WholesaleUnitCostCents: ").Append(WholesaleUnitCostCents).Append("\n");
             sb.Append("  UnitsPurchased: ").Append(UnitsPurchased).Append("\n");
+            sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");
             sb.Append("  PoReference: ").Append(PoReference).Append("\n");
             sb.Append("  RetailUnitPriceCents: ").Append(RetailUnitPriceCents).Append("\n");
             sb.Append("  BuyerApiEnabled: ").Append(BuyerApiEnabled).Append("\n");
             sb.Append("  PerCustomerLimit: ").Append(PerCustomerLimit).Append("\n");
             sb.Append("  PreviewFrom: ").Append(PreviewFrom).Append("\n");
+            sb.Append("  PublishedAt: ").Append(PublishedAt).Append("\n");
+            sb.Append("  ReviewNote: ").Append(ReviewNote).Append("\n");
+            sb.Append("  ReviewedAt: ").Append(ReviewedAt).Append("\n");
+            sb.Append("  Placements: ").Append(Placements).Append("\n");
+            sb.Append("  AnnounceAt: ").Append(AnnounceAt).Append("\n");
+            sb.Append("  CountdownAt: ").Append(CountdownAt).Append("\n");
+            sb.Append("  PausedAt: ").Append(PausedAt).Append("\n");
+            sb.Append("  LiveStreamId: ").Append(LiveStreamId).Append("\n");
+            sb.Append("  SpatialDropId: ").Append(SpatialDropId).Append("\n");
+            sb.Append("  Timezone: ").Append(Timezone).Append("\n");
+            sb.Append("  FeaturedStatus: ").Append(FeaturedStatus).Append("\n");
+            sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AudienceCatalogId: ").Append(AudienceCatalogId).Append("\n");
+            sb.Append("  DropKind: ").Append(DropKind).Append("\n");
+            sb.Append("  DepositBps: ").Append(DepositBps).Append("\n");
+            sb.Append("  ShipBy: ").Append(ShipBy).Append("\n");
+            sb.Append("  BalanceNetDays: ").Append(BalanceNetDays).Append("\n");
             sb.Append("  ListingCount: ").Append(ListingCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -334,9 +534,9 @@ namespace net.crossly.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -344,9 +544,44 @@ namespace net.crossly.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.ReleasedAt == input.ReleasedAt ||
+                    (this.ReleasedAt != null &&
+                    this.ReleasedAt.Equals(input.ReleasedAt))
+                ) && 
+                (
+                    this.Published == input.Published ||
+                    this.Published.Equals(input.Published)
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
+                ) && 
+                (
+                    this.EventId == input.EventId ||
+                    (this.EventId != null &&
+                    this.EventId.Equals(input.EventId))
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
+                ) && 
+                (
+                    this.Config == input.Config ||
+                    this.Config != null &&
+                    input.Config != null &&
+                    this.Config.SequenceEqual(input.Config)
                 ) && 
                 (
                     this.SellerUserId == input.SellerUserId ||
@@ -357,35 +592,6 @@ namespace net.crossly.Model
                     this.CoverImageUrl == input.CoverImageUrl ||
                     (this.CoverImageUrl != null &&
                     this.CoverImageUrl.Equals(input.CoverImageUrl))
-                ) && 
-                (
-                    this.PublishedAt == input.PublishedAt ||
-                    (this.PublishedAt != null &&
-                    this.PublishedAt.Equals(input.PublishedAt))
-                ) && 
-                (
-                    this.ReviewedAt == input.ReviewedAt ||
-                    (this.ReviewedAt != null &&
-                    this.ReviewedAt.Equals(input.ReviewedAt))
-                ) && 
-                (
-                    this.ReviewNote == input.ReviewNote ||
-                    (this.ReviewNote != null &&
-                    this.ReviewNote.Equals(input.ReviewNote))
-                ) && 
-                (
-                    this.SupplierName == input.SupplierName ||
-                    (this.SupplierName != null &&
-                    this.SupplierName.Equals(input.SupplierName))
-                ) && 
-                (
-                    this.PartnerId == input.PartnerId ||
-                    (this.PartnerId != null &&
-                    this.PartnerId.Equals(input.PartnerId))
-                ) && 
-                (
-                    this.Published == input.Published ||
-                    this.Published.Equals(input.Published)
                 ) && 
                 (
                     this.PlatformListingIds == input.PlatformListingIds ||
@@ -399,6 +605,11 @@ namespace net.crossly.Model
                     this.DropAt.Equals(input.DropAt))
                 ) && 
                 (
+                    this.PartnerId == input.PartnerId ||
+                    (this.PartnerId != null &&
+                    this.PartnerId.Equals(input.PartnerId))
+                ) && 
+                (
                     this.WholesaleUnitCostCents == input.WholesaleUnitCostCents ||
                     (this.WholesaleUnitCostCents != null &&
                     this.WholesaleUnitCostCents.Equals(input.WholesaleUnitCostCents))
@@ -407,6 +618,11 @@ namespace net.crossly.Model
                     this.UnitsPurchased == input.UnitsPurchased ||
                     (this.UnitsPurchased != null &&
                     this.UnitsPurchased.Equals(input.UnitsPurchased))
+                ) && 
+                (
+                    this.SupplierName == input.SupplierName ||
+                    (this.SupplierName != null &&
+                    this.SupplierName.Equals(input.SupplierName))
                 ) && 
                 (
                     this.PoReference == input.PoReference ||
@@ -431,6 +647,92 @@ namespace net.crossly.Model
                     this.PreviewFrom == input.PreviewFrom ||
                     (this.PreviewFrom != null &&
                     this.PreviewFrom.Equals(input.PreviewFrom))
+                ) && 
+                (
+                    this.PublishedAt == input.PublishedAt ||
+                    (this.PublishedAt != null &&
+                    this.PublishedAt.Equals(input.PublishedAt))
+                ) && 
+                (
+                    this.ReviewNote == input.ReviewNote ||
+                    (this.ReviewNote != null &&
+                    this.ReviewNote.Equals(input.ReviewNote))
+                ) && 
+                (
+                    this.ReviewedAt == input.ReviewedAt ||
+                    (this.ReviewedAt != null &&
+                    this.ReviewedAt.Equals(input.ReviewedAt))
+                ) && 
+                (
+                    this.Placements == input.Placements ||
+                    this.Placements != null &&
+                    input.Placements != null &&
+                    this.Placements.SequenceEqual(input.Placements)
+                ) && 
+                (
+                    this.AnnounceAt == input.AnnounceAt ||
+                    (this.AnnounceAt != null &&
+                    this.AnnounceAt.Equals(input.AnnounceAt))
+                ) && 
+                (
+                    this.CountdownAt == input.CountdownAt ||
+                    (this.CountdownAt != null &&
+                    this.CountdownAt.Equals(input.CountdownAt))
+                ) && 
+                (
+                    this.PausedAt == input.PausedAt ||
+                    (this.PausedAt != null &&
+                    this.PausedAt.Equals(input.PausedAt))
+                ) && 
+                (
+                    this.LiveStreamId == input.LiveStreamId ||
+                    (this.LiveStreamId != null &&
+                    this.LiveStreamId.Equals(input.LiveStreamId))
+                ) && 
+                (
+                    this.SpatialDropId == input.SpatialDropId ||
+                    (this.SpatialDropId != null &&
+                    this.SpatialDropId.Equals(input.SpatialDropId))
+                ) && 
+                (
+                    this.Timezone == input.Timezone ||
+                    (this.Timezone != null &&
+                    this.Timezone.Equals(input.Timezone))
+                ) && 
+                (
+                    this.FeaturedStatus == input.FeaturedStatus ||
+                    (this.FeaturedStatus != null &&
+                    this.FeaturedStatus.Equals(input.FeaturedStatus))
+                ) && 
+                (
+                    this.Audience == input.Audience ||
+                    (this.Audience != null &&
+                    this.Audience.Equals(input.Audience))
+                ) && 
+                (
+                    this.AudienceCatalogId == input.AudienceCatalogId ||
+                    (this.AudienceCatalogId != null &&
+                    this.AudienceCatalogId.Equals(input.AudienceCatalogId))
+                ) && 
+                (
+                    this.DropKind == input.DropKind ||
+                    (this.DropKind != null &&
+                    this.DropKind.Equals(input.DropKind))
+                ) && 
+                (
+                    this.DepositBps == input.DepositBps ||
+                    (this.DepositBps != null &&
+                    this.DepositBps.Equals(input.DepositBps))
+                ) && 
+                (
+                    this.ShipBy == input.ShipBy ||
+                    (this.ShipBy != null &&
+                    this.ShipBy.Equals(input.ShipBy))
+                ) && 
+                (
+                    this.BalanceNetDays == input.BalanceNetDays ||
+                    (this.BalanceNetDays != null &&
+                    this.BalanceNetDays.Equals(input.BalanceNetDays))
                 ) && 
                 (
                     this.ListingCount == input.ListingCount ||
@@ -459,17 +761,42 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                if (this.Status != null)
+                if (this.UpdatedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.ReleasedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReleasedAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Published.GetHashCode();
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
+                }
+                if (this.EventId != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventId.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
+                }
+                if (this.Config != null)
+                {
+                    hashCode = (hashCode * 59) + this.Config.GetHashCode();
                 }
                 if (this.SellerUserId != null)
                 {
@@ -479,27 +806,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CoverImageUrl.GetHashCode();
                 }
-                if (this.PublishedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.PublishedAt.GetHashCode();
-                }
-                if (this.ReviewedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReviewedAt.GetHashCode();
-                }
-                if (this.ReviewNote != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReviewNote.GetHashCode();
-                }
-                if (this.SupplierName != null)
-                {
-                    hashCode = (hashCode * 59) + this.SupplierName.GetHashCode();
-                }
-                if (this.PartnerId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PartnerId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Published.GetHashCode();
                 if (this.PlatformListingIds != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingIds.GetHashCode();
@@ -508,6 +814,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DropAt.GetHashCode();
                 }
+                if (this.PartnerId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PartnerId.GetHashCode();
+                }
                 if (this.WholesaleUnitCostCents != null)
                 {
                     hashCode = (hashCode * 59) + this.WholesaleUnitCostCents.GetHashCode();
@@ -515,6 +825,10 @@ namespace net.crossly.Model
                 if (this.UnitsPurchased != null)
                 {
                     hashCode = (hashCode * 59) + this.UnitsPurchased.GetHashCode();
+                }
+                if (this.SupplierName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SupplierName.GetHashCode();
                 }
                 if (this.PoReference != null)
                 {
@@ -532,6 +846,74 @@ namespace net.crossly.Model
                 if (this.PreviewFrom != null)
                 {
                     hashCode = (hashCode * 59) + this.PreviewFrom.GetHashCode();
+                }
+                if (this.PublishedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublishedAt.GetHashCode();
+                }
+                if (this.ReviewNote != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReviewNote.GetHashCode();
+                }
+                if (this.ReviewedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReviewedAt.GetHashCode();
+                }
+                if (this.Placements != null)
+                {
+                    hashCode = (hashCode * 59) + this.Placements.GetHashCode();
+                }
+                if (this.AnnounceAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.AnnounceAt.GetHashCode();
+                }
+                if (this.CountdownAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CountdownAt.GetHashCode();
+                }
+                if (this.PausedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PausedAt.GetHashCode();
+                }
+                if (this.LiveStreamId != null)
+                {
+                    hashCode = (hashCode * 59) + this.LiveStreamId.GetHashCode();
+                }
+                if (this.SpatialDropId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SpatialDropId.GetHashCode();
+                }
+                if (this.Timezone != null)
+                {
+                    hashCode = (hashCode * 59) + this.Timezone.GetHashCode();
+                }
+                if (this.FeaturedStatus != null)
+                {
+                    hashCode = (hashCode * 59) + this.FeaturedStatus.GetHashCode();
+                }
+                if (this.Audience != null)
+                {
+                    hashCode = (hashCode * 59) + this.Audience.GetHashCode();
+                }
+                if (this.AudienceCatalogId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AudienceCatalogId.GetHashCode();
+                }
+                if (this.DropKind != null)
+                {
+                    hashCode = (hashCode * 59) + this.DropKind.GetHashCode();
+                }
+                if (this.DepositBps != null)
+                {
+                    hashCode = (hashCode * 59) + this.DepositBps.GetHashCode();
+                }
+                if (this.ShipBy != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShipBy.GetHashCode();
+                }
+                if (this.BalanceNetDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.BalanceNetDays.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ListingCount.GetHashCode();
                 return hashCode;

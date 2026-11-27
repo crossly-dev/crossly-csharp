@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Applied = 1,
 
             /// <summary>
-            /// Enum Approved for value: approved
-            /// </summary>
-            [EnumMember(Value = "approved")]
-            Approved = 2,
-
-            /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 3,
+            Rejected = 2,
+
+            /// <summary>
+            /// Enum Approved for value: approved
+            /// </summary>
+            [EnumMember(Value = "approved")]
+            Approved = 3,
 
             /// <summary>
             /// Enum Suspended for value: suspended
@@ -90,7 +90,11 @@ namespace net.crossly.Model
         /// <param name="appliedAt">appliedAt (required).</param>
         /// <param name="decidedAt">decidedAt.</param>
         /// <param name="decisionNote">decisionNote.</param>
-        public CreateVaultMarketPartnerApplyResponsePartner(string id = default(string), string userId = default(string), StatusEnum status = default(StatusEnum), string shopName = default(string), Dictionary<string, Object> address = default(Dictionary<string, Object>), string website = default(string), string note = default(string), string code = default(string), decimal shareBps = default(decimal), decimal capCents = default(decimal), string appliedAt = default(string), string decidedAt = default(string), string decisionNote = default(string))
+        /// <param name="postalCode">postalCode.</param>
+        /// <param name="hours">hours.</param>
+        /// <param name="services">services (required).</param>
+        /// <param name="listed">listed (required).</param>
+        public CreateVaultMarketPartnerApplyResponsePartner(string id = default(string), string userId = default(string), StatusEnum status = default(StatusEnum), string shopName = default(string), Dictionary<string, Object> address = default(Dictionary<string, Object>), string website = default(string), string note = default(string), string code = default(string), decimal shareBps = default(decimal), decimal capCents = default(decimal), string appliedAt = default(string), string decidedAt = default(string), string decisionNote = default(string), string postalCode = default(string), Dictionary<string, Object> hours = default(Dictionary<string, Object>), List<string> services = default(List<string>), bool listed = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -115,12 +119,20 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("appliedAt is a required property for CreateVaultMarketPartnerApplyResponsePartner and cannot be null");
             }
             this.AppliedAt = appliedAt;
+            // to ensure "services" is required (not null)
+            if (services == null) {
+                throw new ArgumentNullException("services is a required property for CreateVaultMarketPartnerApplyResponsePartner and cannot be null");
+            }
+            this.Services = services;
+            this.Listed = listed;
             this.Address = address;
             this.Website = website;
             this.Note = note;
             this.Code = code;
             this.DecidedAt = decidedAt;
             this.DecisionNote = decisionNote;
+            this.PostalCode = postalCode;
+            this.Hours = hours;
         }
 
         /// <summary>
@@ -196,6 +208,30 @@ namespace net.crossly.Model
         public string DecisionNote { get; set; }
 
         /// <summary>
+        /// Gets or Sets PostalCode
+        /// </summary>
+        [DataMember(Name = "postalCode", EmitDefaultValue = true)]
+        public string PostalCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Hours
+        /// </summary>
+        [DataMember(Name = "hours", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Hours { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Services
+        /// </summary>
+        [DataMember(Name = "services", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Services { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Listed
+        /// </summary>
+        [DataMember(Name = "listed", IsRequired = true, EmitDefaultValue = true)]
+        public bool Listed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -216,6 +252,10 @@ namespace net.crossly.Model
             sb.Append("  AppliedAt: ").Append(AppliedAt).Append("\n");
             sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
             sb.Append("  DecisionNote: ").Append(DecisionNote).Append("\n");
+            sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
+            sb.Append("  Hours: ").Append(Hours).Append("\n");
+            sb.Append("  Services: ").Append(Services).Append("\n");
+            sb.Append("  Listed: ").Append(Listed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -313,6 +353,27 @@ namespace net.crossly.Model
                     this.DecisionNote == input.DecisionNote ||
                     (this.DecisionNote != null &&
                     this.DecisionNote.Equals(input.DecisionNote))
+                ) && 
+                (
+                    this.PostalCode == input.PostalCode ||
+                    (this.PostalCode != null &&
+                    this.PostalCode.Equals(input.PostalCode))
+                ) && 
+                (
+                    this.Hours == input.Hours ||
+                    this.Hours != null &&
+                    input.Hours != null &&
+                    this.Hours.SequenceEqual(input.Hours)
+                ) && 
+                (
+                    this.Services == input.Services ||
+                    this.Services != null &&
+                    input.Services != null &&
+                    this.Services.SequenceEqual(input.Services)
+                ) && 
+                (
+                    this.Listed == input.Listed ||
+                    this.Listed.Equals(input.Listed)
                 );
         }
 
@@ -368,6 +429,19 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DecisionNote.GetHashCode();
                 }
+                if (this.PostalCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                }
+                if (this.Hours != null)
+                {
+                    hashCode = (hashCode * 59) + this.Hours.GetHashCode();
+                }
+                if (this.Services != null)
+                {
+                    hashCode = (hashCode * 59) + this.Services.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Listed.GetHashCode();
                 return hashCode;
             }
         }

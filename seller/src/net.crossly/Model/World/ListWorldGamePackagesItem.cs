@@ -44,8 +44,10 @@ namespace net.crossly.Model
         /// <param name="name">name (required).</param>
         /// <param name="designId">designId (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="unpublishedAt">unpublishedAt.</param>
         /// <param name="versions">versions (required).</param>
-        public ListWorldGamePackagesItem(string id = default(string), string slug = default(string), string name = default(string), string designId = default(string), DateTime createdAt = default(DateTime), List<GetWorldGamePackageResponseDataVersions> versions = default(List<GetWorldGamePackageResponseDataVersions>))
+        public ListWorldGamePackagesItem(string id = default(string), string slug = default(string), string name = default(string), string designId = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), DateTime? unpublishedAt = default(DateTime?), List<GetWorldGamePackageResponseDataVersions> versions = default(List<GetWorldGamePackageResponseDataVersions>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -68,11 +70,13 @@ namespace net.crossly.Model
             }
             this.DesignId = designId;
             this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
             // to ensure "versions" is required (not null)
             if (versions == null) {
                 throw new ArgumentNullException("versions is a required property for ListWorldGamePackagesItem and cannot be null");
             }
             this.Versions = versions;
+            this.UnpublishedAt = unpublishedAt;
         }
 
         /// <summary>
@@ -106,6 +110,18 @@ namespace net.crossly.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UnpublishedAt
+        /// </summary>
+        [DataMember(Name = "unpublishedAt", EmitDefaultValue = true)]
+        public DateTime? UnpublishedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Versions
         /// </summary>
         [DataMember(Name = "versions", IsRequired = true, EmitDefaultValue = false)]
@@ -124,6 +140,8 @@ namespace net.crossly.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DesignId: ").Append(DesignId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  UnpublishedAt: ").Append(UnpublishedAt).Append("\n");
             sb.Append("  Versions: ").Append(Versions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -186,6 +204,16 @@ namespace net.crossly.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.UnpublishedAt == input.UnpublishedAt ||
+                    (this.UnpublishedAt != null &&
+                    this.UnpublishedAt.Equals(input.UnpublishedAt))
+                ) && 
+                (
                     this.Versions == input.Versions ||
                     this.Versions != null &&
                     input.Versions != null &&
@@ -221,6 +249,14 @@ namespace net.crossly.Model
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                }
+                if (this.UnpublishedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UnpublishedAt.GetHashCode();
                 }
                 if (this.Versions != null)
                 {

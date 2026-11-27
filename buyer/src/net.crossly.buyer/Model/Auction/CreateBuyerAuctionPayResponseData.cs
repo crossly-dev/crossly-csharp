@@ -41,14 +41,14 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="paid">paid (required).</param>
         /// <param name="clientSecret">Stripe PaymentIntent client secret — confirm it with Stripe on the buyer&#39;s device..</param>
-        /// <param name="amountCents">amountCents.</param>
         /// <param name="paymentIntentId">paymentIntentId.</param>
-        public CreateBuyerAuctionPayResponseData(bool paid = default(bool), string clientSecret = default(string), decimal? amountCents = default(decimal?), string paymentIntentId = default(string))
+        /// <param name="amountCents">amountCents.</param>
+        public CreateBuyerAuctionPayResponseData(bool paid = default(bool), string clientSecret = default(string), string paymentIntentId = default(string), decimal? amountCents = default(decimal?))
         {
             this.Paid = paid;
             this.ClientSecret = clientSecret;
-            this.AmountCents = amountCents;
             this.PaymentIntentId = paymentIntentId;
+            this.AmountCents = amountCents;
         }
 
         /// <summary>
@@ -65,16 +65,16 @@ namespace net.crossly.buyer.Model
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Gets or Sets AmountCents
-        /// </summary>
-        [DataMember(Name = "amountCents", EmitDefaultValue = true)]
-        public decimal? AmountCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets PaymentIntentId
         /// </summary>
         [DataMember(Name = "paymentIntentId", EmitDefaultValue = true)]
         public string PaymentIntentId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AmountCents
+        /// </summary>
+        [DataMember(Name = "amountCents", EmitDefaultValue = true)]
+        public decimal? AmountCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,8 +86,8 @@ namespace net.crossly.buyer.Model
             sb.Append("class CreateBuyerAuctionPayResponseData {\n");
             sb.Append("  Paid: ").Append(Paid).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
-            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
             sb.Append("  PaymentIntentId: ").Append(PaymentIntentId).Append("\n");
+            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,14 +133,14 @@ namespace net.crossly.buyer.Model
                     this.ClientSecret.Equals(input.ClientSecret))
                 ) && 
                 (
-                    this.AmountCents == input.AmountCents ||
-                    (this.AmountCents != null &&
-                    this.AmountCents.Equals(input.AmountCents))
-                ) && 
-                (
                     this.PaymentIntentId == input.PaymentIntentId ||
                     (this.PaymentIntentId != null &&
                     this.PaymentIntentId.Equals(input.PaymentIntentId))
+                ) && 
+                (
+                    this.AmountCents == input.AmountCents ||
+                    (this.AmountCents != null &&
+                    this.AmountCents.Equals(input.AmountCents))
                 );
         }
 
@@ -158,13 +158,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
                 }
-                if (this.AmountCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
-                }
                 if (this.PaymentIntentId != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentIntentId.GetHashCode();
+                }
+                if (this.AmountCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
                 }
                 return hashCode;
             }

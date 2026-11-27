@@ -56,22 +56,22 @@ namespace net.crossly.Model
             Expired = 3,
 
             /// <summary>
+            /// Enum Conflict for value: conflict
+            /// </summary>
+            [EnumMember(Value = "conflict")]
+            Conflict = 4,
+
+            /// <summary>
             /// Enum Frozen for value: frozen
             /// </summary>
             [EnumMember(Value = "frozen")]
-            Frozen = 4,
+            Frozen = 5,
 
             /// <summary>
             /// Enum Burned for value: burned
             /// </summary>
             [EnumMember(Value = "burned")]
-            Burned = 5,
-
-            /// <summary>
-            /// Enum Conflict for value: conflict
-            /// </summary>
-            [EnumMember(Value = "conflict")]
-            Conflict = 6
+            Burned = 6
 
         }
 

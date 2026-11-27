@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum VerdictEnum
         {
             /// <summary>
-            /// Enum Opened for value: opened
-            /// </summary>
-            [EnumMember(Value = "opened")]
-            Opened = 1,
-
-            /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 2,
+            Unknown = 1,
+
+            /// <summary>
+            /// Enum Opened for value: opened
+            /// </summary>
+            [EnumMember(Value = "opened")]
+            Opened = 2,
 
             /// <summary>
             /// Enum Intact for value: intact

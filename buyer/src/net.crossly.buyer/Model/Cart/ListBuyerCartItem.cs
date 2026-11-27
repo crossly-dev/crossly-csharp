@@ -44,10 +44,11 @@ namespace net.crossly.buyer.Model
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="unitPriceCents">unitPriceCents (required).</param>
+        /// <param name="listingVariantId">listingVariantId.</param>
         /// <param name="slug">slug.</param>
         /// <param name="title">title.</param>
         /// <param name="listingStatus">listingStatus.</param>
-        public ListBuyerCartItem(bool available = default(bool), string id = default(string), string platformListingId = default(string), decimal quantity = default(decimal), decimal unitPriceCents = default(decimal), string slug = default(string), string title = default(string), string listingStatus = default(string))
+        public ListBuyerCartItem(bool available = default(bool), string id = default(string), string platformListingId = default(string), decimal quantity = default(decimal), decimal unitPriceCents = default(decimal), string listingVariantId = default(string), string slug = default(string), string title = default(string), string listingStatus = default(string))
         {
             this.Available = available;
             // to ensure "id" is required (not null)
@@ -62,6 +63,7 @@ namespace net.crossly.buyer.Model
             this.PlatformListingId = platformListingId;
             this.Quantity = quantity;
             this.UnitPriceCents = unitPriceCents;
+            this.ListingVariantId = listingVariantId;
             this.Slug = slug;
             this.Title = title;
             this.ListingStatus = listingStatus;
@@ -98,6 +100,12 @@ namespace net.crossly.buyer.Model
         public decimal UnitPriceCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets ListingVariantId
+        /// </summary>
+        [DataMember(Name = "listingVariantId", EmitDefaultValue = true)]
+        public string ListingVariantId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Slug
         /// </summary>
         [DataMember(Name = "slug", EmitDefaultValue = true)]
@@ -128,6 +136,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  UnitPriceCents: ").Append(UnitPriceCents).Append("\n");
+            sb.Append("  ListingVariantId: ").Append(ListingVariantId).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  ListingStatus: ").Append(ListingStatus).Append("\n");
@@ -189,6 +198,11 @@ namespace net.crossly.buyer.Model
                     this.UnitPriceCents.Equals(input.UnitPriceCents)
                 ) && 
                 (
+                    this.ListingVariantId == input.ListingVariantId ||
+                    (this.ListingVariantId != null &&
+                    this.ListingVariantId.Equals(input.ListingVariantId))
+                ) && 
+                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
@@ -225,6 +239,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 hashCode = (hashCode * 59) + this.UnitPriceCents.GetHashCode();
+                if (this.ListingVariantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingVariantId.GetHashCode();
+                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();

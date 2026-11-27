@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum BandEnum
         {
             /// <summary>
-            /// Enum Spread for value: spread
-            /// </summary>
-            [EnumMember(Value = "spread")]
-            Spread = 1,
-
-            /// <summary>
             /// Enum Moderate for value: moderate
             /// </summary>
             [EnumMember(Value = "moderate")]
-            Moderate = 2,
+            Moderate = 1,
+
+            /// <summary>
+            /// Enum Spread for value: spread
+            /// </summary>
+            [EnumMember(Value = "spread")]
+            Spread = 2,
 
             /// <summary>
             /// Enum Empty for value: empty

@@ -39,25 +39,19 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerAuctionBidsItem" /> class.
         /// </summary>
-        /// <param name="amountCents">amountCents (required).</param>
         /// <param name="bidder">\&quot;You\&quot; for your own bids; otherwise anonymised, e.g. \&quot;a***e (12)\&quot;. (required).</param>
+        /// <param name="amountCents">amountCents (required).</param>
         /// <param name="placedAt">placedAt.</param>
-        public ListBuyerAuctionBidsItem(decimal amountCents = default(decimal), string bidder = default(string), string placedAt = default(string))
+        public ListBuyerAuctionBidsItem(string bidder = default(string), decimal amountCents = default(decimal), string placedAt = default(string))
         {
-            this.AmountCents = amountCents;
             // to ensure "bidder" is required (not null)
             if (bidder == null) {
                 throw new ArgumentNullException("bidder is a required property for ListBuyerAuctionBidsItem and cannot be null");
             }
             this.Bidder = bidder;
+            this.AmountCents = amountCents;
             this.PlacedAt = placedAt;
         }
-
-        /// <summary>
-        /// Gets or Sets AmountCents
-        /// </summary>
-        [DataMember(Name = "amountCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AmountCents { get; set; }
 
         /// <summary>
         /// \&quot;You\&quot; for your own bids; otherwise anonymised, e.g. \&quot;a***e (12)\&quot;.
@@ -65,6 +59,12 @@ namespace net.crossly.buyer.Model
         /// <value>\&quot;You\&quot; for your own bids; otherwise anonymised, e.g. \&quot;a***e (12)\&quot;.</value>
         [DataMember(Name = "bidder", IsRequired = true, EmitDefaultValue = false)]
         public string Bidder { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AmountCents
+        /// </summary>
+        [DataMember(Name = "amountCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal AmountCents { get; set; }
 
         /// <summary>
         /// Gets or Sets PlacedAt
@@ -80,8 +80,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerAuctionBidsItem {\n");
-            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
             sb.Append("  Bidder: ").Append(Bidder).Append("\n");
+            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
             sb.Append("  PlacedAt: ").Append(PlacedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -119,13 +119,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.AmountCents == input.AmountCents ||
-                    this.AmountCents.Equals(input.AmountCents)
-                ) && 
-                (
                     this.Bidder == input.Bidder ||
                     (this.Bidder != null &&
                     this.Bidder.Equals(input.Bidder))
+                ) && 
+                (
+                    this.AmountCents == input.AmountCents ||
+                    this.AmountCents.Equals(input.AmountCents)
                 ) && 
                 (
                     this.PlacedAt == input.PlacedAt ||
@@ -143,11 +143,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
                 if (this.Bidder != null)
                 {
                     hashCode = (hashCode * 59) + this.Bidder.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
                 if (this.PlacedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.PlacedAt.GetHashCode();

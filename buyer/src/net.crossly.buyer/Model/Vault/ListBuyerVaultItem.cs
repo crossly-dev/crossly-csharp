@@ -40,34 +40,29 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerVaultItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="condition">condition (required).</param>
-        /// <param name="gradeKey">gradeKey.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="receivedAt">receivedAt.</param>
+        /// <param name="skuId">skuId (required).</param>
+        /// <param name="skuName">skuName.</param>
         /// <param name="imageUrl">imageUrl.</param>
         /// <param name="variantId">variantId.</param>
+        /// <param name="variantLabel">variantLabel.</param>
+        /// <param name="condition">condition (required).</param>
+        /// <param name="gradeKey">gradeKey.</param>
+        /// <param name="location">location.</param>
         /// <param name="lastSaleCents">lastSaleCents.</param>
-        /// <param name="skuId">skuId (required).</param>
+        /// <param name="askPriceCents">askPriceCents.</param>
         /// <param name="withdrawSpeed">withdrawSpeed.</param>
         /// <param name="withdrawTracking">withdrawTracking.</param>
-        /// <param name="location">location.</param>
-        /// <param name="skuName">skuName.</param>
-        /// <param name="variantLabel">variantLabel.</param>
-        /// <param name="askPriceCents">askPriceCents.</param>
+        /// <param name="receivedAt">receivedAt.</param>
         /// <param name="situation">What is really going on with it: in_auction, pledged, collateral, lent, in_grading, gift_pending, else the status..</param>
         /// <param name="earlyWithdrawFeeCents">earlyWithdrawFeeCents.</param>
-        public ListBuyerVaultItem(string id = default(string), string condition = default(string), string gradeKey = default(string), string status = default(string), string receivedAt = default(string), string imageUrl = default(string), string variantId = default(string), decimal? lastSaleCents = default(decimal?), string skuId = default(string), string withdrawSpeed = default(string), string withdrawTracking = default(string), string location = default(string), string skuName = default(string), string variantLabel = default(string), decimal? askPriceCents = default(decimal?), string situation = default(string), decimal? earlyWithdrawFeeCents = default(decimal?))
+        public ListBuyerVaultItem(string id = default(string), string status = default(string), string skuId = default(string), string skuName = default(string), string imageUrl = default(string), string variantId = default(string), string variantLabel = default(string), string condition = default(string), string gradeKey = default(string), string location = default(string), decimal? lastSaleCents = default(decimal?), decimal? askPriceCents = default(decimal?), string withdrawSpeed = default(string), string withdrawTracking = default(string), string receivedAt = default(string), string situation = default(string), decimal? earlyWithdrawFeeCents = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerVaultItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "condition" is required (not null)
-            if (condition == null) {
-                throw new ArgumentNullException("condition is a required property for ListBuyerVaultItem and cannot be null");
-            }
-            this.Condition = condition;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for ListBuyerVaultItem and cannot be null");
@@ -78,17 +73,22 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("skuId is a required property for ListBuyerVaultItem and cannot be null");
             }
             this.SkuId = skuId;
-            this.GradeKey = gradeKey;
-            this.ReceivedAt = receivedAt;
+            // to ensure "condition" is required (not null)
+            if (condition == null) {
+                throw new ArgumentNullException("condition is a required property for ListBuyerVaultItem and cannot be null");
+            }
+            this.Condition = condition;
+            this.SkuName = skuName;
             this.ImageUrl = imageUrl;
             this.VariantId = variantId;
+            this.VariantLabel = variantLabel;
+            this.GradeKey = gradeKey;
+            this.Location = location;
             this.LastSaleCents = lastSaleCents;
+            this.AskPriceCents = askPriceCents;
             this.WithdrawSpeed = withdrawSpeed;
             this.WithdrawTracking = withdrawTracking;
-            this.Location = location;
-            this.SkuName = skuName;
-            this.VariantLabel = variantLabel;
-            this.AskPriceCents = askPriceCents;
+            this.ReceivedAt = receivedAt;
             this.Situation = situation;
             this.EarlyWithdrawFeeCents = earlyWithdrawFeeCents;
         }
@@ -100,28 +100,22 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Condition
-        /// </summary>
-        [DataMember(Name = "condition", IsRequired = true, EmitDefaultValue = false)]
-        public string Condition { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GradeKey
-        /// </summary>
-        [DataMember(Name = "gradeKey", EmitDefaultValue = true)]
-        public string GradeKey { get; set; }
-
-        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets ReceivedAt
+        /// Gets or Sets SkuId
         /// </summary>
-        [DataMember(Name = "receivedAt", EmitDefaultValue = true)]
-        public string ReceivedAt { get; set; }
+        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
+        public string SkuId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SkuName
+        /// </summary>
+        [DataMember(Name = "skuName", EmitDefaultValue = true)]
+        public string SkuName { get; set; }
 
         /// <summary>
         /// Gets or Sets ImageUrl
@@ -136,16 +130,40 @@ namespace net.crossly.buyer.Model
         public string VariantId { get; set; }
 
         /// <summary>
+        /// Gets or Sets VariantLabel
+        /// </summary>
+        [DataMember(Name = "variantLabel", EmitDefaultValue = true)]
+        public string VariantLabel { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Condition
+        /// </summary>
+        [DataMember(Name = "condition", IsRequired = true, EmitDefaultValue = false)]
+        public string Condition { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GradeKey
+        /// </summary>
+        [DataMember(Name = "gradeKey", EmitDefaultValue = true)]
+        public string GradeKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Location
+        /// </summary>
+        [DataMember(Name = "location", EmitDefaultValue = true)]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or Sets LastSaleCents
         /// </summary>
         [DataMember(Name = "lastSaleCents", EmitDefaultValue = true)]
         public decimal? LastSaleCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets SkuId
+        /// Gets or Sets AskPriceCents
         /// </summary>
-        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
-        public string SkuId { get; set; }
+        [DataMember(Name = "askPriceCents", EmitDefaultValue = true)]
+        public decimal? AskPriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets WithdrawSpeed
@@ -160,28 +178,10 @@ namespace net.crossly.buyer.Model
         public string WithdrawTracking { get; set; }
 
         /// <summary>
-        /// Gets or Sets Location
+        /// Gets or Sets ReceivedAt
         /// </summary>
-        [DataMember(Name = "location", EmitDefaultValue = true)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SkuName
-        /// </summary>
-        [DataMember(Name = "skuName", EmitDefaultValue = true)]
-        public string SkuName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VariantLabel
-        /// </summary>
-        [DataMember(Name = "variantLabel", EmitDefaultValue = true)]
-        public string VariantLabel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AskPriceCents
-        /// </summary>
-        [DataMember(Name = "askPriceCents", EmitDefaultValue = true)]
-        public decimal? AskPriceCents { get; set; }
+        [DataMember(Name = "receivedAt", EmitDefaultValue = true)]
+        public string ReceivedAt { get; set; }
 
         /// <summary>
         /// What is really going on with it: in_auction, pledged, collateral, lent, in_grading, gift_pending, else the status.
@@ -205,20 +205,20 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerVaultItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Condition: ").Append(Condition).Append("\n");
-            sb.Append("  GradeKey: ").Append(GradeKey).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  ReceivedAt: ").Append(ReceivedAt).Append("\n");
+            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
+            sb.Append("  SkuName: ").Append(SkuName).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  VariantId: ").Append(VariantId).Append("\n");
+            sb.Append("  VariantLabel: ").Append(VariantLabel).Append("\n");
+            sb.Append("  Condition: ").Append(Condition).Append("\n");
+            sb.Append("  GradeKey: ").Append(GradeKey).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  LastSaleCents: ").Append(LastSaleCents).Append("\n");
-            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
+            sb.Append("  AskPriceCents: ").Append(AskPriceCents).Append("\n");
             sb.Append("  WithdrawSpeed: ").Append(WithdrawSpeed).Append("\n");
             sb.Append("  WithdrawTracking: ").Append(WithdrawTracking).Append("\n");
-            sb.Append("  Location: ").Append(Location).Append("\n");
-            sb.Append("  SkuName: ").Append(SkuName).Append("\n");
-            sb.Append("  VariantLabel: ").Append(VariantLabel).Append("\n");
-            sb.Append("  AskPriceCents: ").Append(AskPriceCents).Append("\n");
+            sb.Append("  ReceivedAt: ").Append(ReceivedAt).Append("\n");
             sb.Append("  Situation: ").Append(Situation).Append("\n");
             sb.Append("  EarlyWithdrawFeeCents: ").Append(EarlyWithdrawFeeCents).Append("\n");
             sb.Append("}\n");
@@ -262,24 +262,19 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Condition == input.Condition ||
-                    (this.Condition != null &&
-                    this.Condition.Equals(input.Condition))
-                ) && 
-                (
-                    this.GradeKey == input.GradeKey ||
-                    (this.GradeKey != null &&
-                    this.GradeKey.Equals(input.GradeKey))
-                ) && 
-                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.ReceivedAt == input.ReceivedAt ||
-                    (this.ReceivedAt != null &&
-                    this.ReceivedAt.Equals(input.ReceivedAt))
+                    this.SkuId == input.SkuId ||
+                    (this.SkuId != null &&
+                    this.SkuId.Equals(input.SkuId))
+                ) && 
+                (
+                    this.SkuName == input.SkuName ||
+                    (this.SkuName != null &&
+                    this.SkuName.Equals(input.SkuName))
                 ) && 
                 (
                     this.ImageUrl == input.ImageUrl ||
@@ -292,14 +287,34 @@ namespace net.crossly.buyer.Model
                     this.VariantId.Equals(input.VariantId))
                 ) && 
                 (
+                    this.VariantLabel == input.VariantLabel ||
+                    (this.VariantLabel != null &&
+                    this.VariantLabel.Equals(input.VariantLabel))
+                ) && 
+                (
+                    this.Condition == input.Condition ||
+                    (this.Condition != null &&
+                    this.Condition.Equals(input.Condition))
+                ) && 
+                (
+                    this.GradeKey == input.GradeKey ||
+                    (this.GradeKey != null &&
+                    this.GradeKey.Equals(input.GradeKey))
+                ) && 
+                (
+                    this.Location == input.Location ||
+                    (this.Location != null &&
+                    this.Location.Equals(input.Location))
+                ) && 
+                (
                     this.LastSaleCents == input.LastSaleCents ||
                     (this.LastSaleCents != null &&
                     this.LastSaleCents.Equals(input.LastSaleCents))
                 ) && 
                 (
-                    this.SkuId == input.SkuId ||
-                    (this.SkuId != null &&
-                    this.SkuId.Equals(input.SkuId))
+                    this.AskPriceCents == input.AskPriceCents ||
+                    (this.AskPriceCents != null &&
+                    this.AskPriceCents.Equals(input.AskPriceCents))
                 ) && 
                 (
                     this.WithdrawSpeed == input.WithdrawSpeed ||
@@ -312,24 +327,9 @@ namespace net.crossly.buyer.Model
                     this.WithdrawTracking.Equals(input.WithdrawTracking))
                 ) && 
                 (
-                    this.Location == input.Location ||
-                    (this.Location != null &&
-                    this.Location.Equals(input.Location))
-                ) && 
-                (
-                    this.SkuName == input.SkuName ||
-                    (this.SkuName != null &&
-                    this.SkuName.Equals(input.SkuName))
-                ) && 
-                (
-                    this.VariantLabel == input.VariantLabel ||
-                    (this.VariantLabel != null &&
-                    this.VariantLabel.Equals(input.VariantLabel))
-                ) && 
-                (
-                    this.AskPriceCents == input.AskPriceCents ||
-                    (this.AskPriceCents != null &&
-                    this.AskPriceCents.Equals(input.AskPriceCents))
+                    this.ReceivedAt == input.ReceivedAt ||
+                    (this.ReceivedAt != null &&
+                    this.ReceivedAt.Equals(input.ReceivedAt))
                 ) && 
                 (
                     this.Situation == input.Situation ||
@@ -356,21 +356,17 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.Condition != null)
-                {
-                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
-                }
-                if (this.GradeKey != null)
-                {
-                    hashCode = (hashCode * 59) + this.GradeKey.GetHashCode();
-                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.ReceivedAt != null)
+                if (this.SkuId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReceivedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
+                }
+                if (this.SkuName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SkuName.GetHashCode();
                 }
                 if (this.ImageUrl != null)
                 {
@@ -380,13 +376,29 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.VariantId.GetHashCode();
                 }
+                if (this.VariantLabel != null)
+                {
+                    hashCode = (hashCode * 59) + this.VariantLabel.GetHashCode();
+                }
+                if (this.Condition != null)
+                {
+                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
+                }
+                if (this.GradeKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.GradeKey.GetHashCode();
+                }
+                if (this.Location != null)
+                {
+                    hashCode = (hashCode * 59) + this.Location.GetHashCode();
+                }
                 if (this.LastSaleCents != null)
                 {
                     hashCode = (hashCode * 59) + this.LastSaleCents.GetHashCode();
                 }
-                if (this.SkuId != null)
+                if (this.AskPriceCents != null)
                 {
-                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AskPriceCents.GetHashCode();
                 }
                 if (this.WithdrawSpeed != null)
                 {
@@ -396,21 +408,9 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.WithdrawTracking.GetHashCode();
                 }
-                if (this.Location != null)
+                if (this.ReceivedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.Location.GetHashCode();
-                }
-                if (this.SkuName != null)
-                {
-                    hashCode = (hashCode * 59) + this.SkuName.GetHashCode();
-                }
-                if (this.VariantLabel != null)
-                {
-                    hashCode = (hashCode * 59) + this.VariantLabel.GetHashCode();
-                }
-                if (this.AskPriceCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.AskPriceCents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReceivedAt.GetHashCode();
                 }
                 if (this.Situation != null)
                 {

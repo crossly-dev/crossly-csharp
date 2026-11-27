@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Deposit for value: deposit
-            /// </summary>
-            [EnumMember(Value = "deposit")]
-            Deposit = 1,
-
-            /// <summary>
             /// Enum Sale for value: sale
             /// </summary>
             [EnumMember(Value = "sale")]
-            Sale = 2,
+            Sale = 1,
+
+            /// <summary>
+            /// Enum Deposit for value: deposit
+            /// </summary>
+            [EnumMember(Value = "deposit")]
+            Deposit = 2,
 
             /// <summary>
             /// Enum Buy for value: buy
@@ -81,6 +81,7 @@ namespace net.crossly.Model
         /// <param name="kind">kind (required).</param>
         /// <param name="verb">verb (required).</param>
         /// <param name="at">at (required).</param>
+        /// <param name="by">by (required).</param>
         /// <param name="bookKey">bookKey (required).</param>
         /// <param name="name">name.</param>
         /// <param name="label">label.</param>
@@ -88,7 +89,7 @@ namespace net.crossly.Model
         /// <param name="mark">mark (required).</param>
         /// <param name="exhibition">exhibition.</param>
         /// <param name="buyHref">buyHref (required).</param>
-        public ListVaultMarketFollowFeedItem(string id = default(string), KindEnum kind = default(KindEnum), string verb = default(string), string at = default(string), string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), ListVaultMarketFeedItemMark mark = default(ListVaultMarketFeedItemMark), ListVaultMarketFollowFeedItemExhibition exhibition = default(ListVaultMarketFollowFeedItemExhibition), string buyHref = default(string))
+        public ListVaultMarketFollowFeedItem(string id = default(string), KindEnum kind = default(KindEnum), string verb = default(string), string at = default(string), ListVaultMarketFollowFeedItemBy by = default(ListVaultMarketFollowFeedItemBy), string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), ListVaultMarketOpeningItemMark mark = default(ListVaultMarketOpeningItemMark), ListVaultMarketFollowFeedItemExhibition exhibition = default(ListVaultMarketFollowFeedItemExhibition), string buyHref = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -106,6 +107,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("at is a required property for ListVaultMarketFollowFeedItem and cannot be null");
             }
             this.At = at;
+            // to ensure "by" is required (not null)
+            if (by == null) {
+                throw new ArgumentNullException("by is a required property for ListVaultMarketFollowFeedItem and cannot be null");
+            }
+            this.By = by;
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
                 throw new ArgumentNullException("bookKey is a required property for ListVaultMarketFollowFeedItem and cannot be null");
@@ -146,6 +152,12 @@ namespace net.crossly.Model
         public string At { get; set; }
 
         /// <summary>
+        /// Gets or Sets By
+        /// </summary>
+        [DataMember(Name = "by", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketFollowFeedItemBy By { get; set; }
+
+        /// <summary>
         /// Gets or Sets BookKey
         /// </summary>
         [DataMember(Name = "bookKey", IsRequired = true, EmitDefaultValue = false)]
@@ -173,7 +185,7 @@ namespace net.crossly.Model
         /// Gets or Sets Mark
         /// </summary>
         [DataMember(Name = "mark", IsRequired = true, EmitDefaultValue = false)]
-        public ListVaultMarketFeedItemMark Mark { get; set; }
+        public ListVaultMarketOpeningItemMark Mark { get; set; }
 
         /// <summary>
         /// Gets or Sets Exhibition
@@ -199,6 +211,7 @@ namespace net.crossly.Model
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Verb: ").Append(Verb).Append("\n");
             sb.Append("  At: ").Append(At).Append("\n");
+            sb.Append("  By: ").Append(By).Append("\n");
             sb.Append("  BookKey: ").Append(BookKey).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
@@ -261,6 +274,11 @@ namespace net.crossly.Model
                     this.At.Equals(input.At))
                 ) && 
                 (
+                    this.By == input.By ||
+                    (this.By != null &&
+                    this.By.Equals(input.By))
+                ) && 
+                (
                     this.BookKey == input.BookKey ||
                     (this.BookKey != null &&
                     this.BookKey.Equals(input.BookKey))
@@ -318,6 +336,10 @@ namespace net.crossly.Model
                 if (this.At != null)
                 {
                     hashCode = (hashCode * 59) + this.At.GetHashCode();
+                }
+                if (this.By != null)
+                {
+                    hashCode = (hashCode * 59) + this.By.GetHashCode();
                 }
                 if (this.BookKey != null)
                 {

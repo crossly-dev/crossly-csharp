@@ -32,22 +32,22 @@ namespace net.crossly.Model
     public enum GetCbxMeResponseDataScopesItem
     {
         /// <summary>
+        /// Enum Read for value: read
+        /// </summary>
+        [EnumMember(Value = "read")]
+        Read = 1,
+
+        /// <summary>
         /// Enum Spend for value: spend
         /// </summary>
         [EnumMember(Value = "spend")]
-        Spend = 1,
+        Spend = 2,
 
         /// <summary>
         /// Enum Campaign for value: campaign
         /// </summary>
         [EnumMember(Value = "campaign")]
-        Campaign = 2,
-
-        /// <summary>
-        /// Enum Read for value: read
-        /// </summary>
-        [EnumMember(Value = "read")]
-        Read = 3,
+        Campaign = 3,
 
         /// <summary>
         /// Enum Accrue for value: accrue

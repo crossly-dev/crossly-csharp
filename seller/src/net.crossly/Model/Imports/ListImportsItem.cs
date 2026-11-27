@@ -42,11 +42,10 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="platform">platform (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="lastError">lastError.</param>
         /// <param name="startedAt">startedAt.</param>
-        /// <param name="batchId">batchId.</param>
         /// <param name="finishedAt">finishedAt.</param>
         /// <param name="filters">filters.</param>
         /// <param name="importMode">importMode (required).</param>
@@ -57,9 +56,10 @@ namespace net.crossly.Model
         /// <param name="importedCount">importedCount (required).</param>
         /// <param name="skippedCount">skippedCount (required).</param>
         /// <param name="errorCount">errorCount (required).</param>
+        /// <param name="batchId">batchId.</param>
         /// <param name="listOnCrossly">listOnCrossly (required).</param>
         /// <param name="crosslyListedAt">crosslyListedAt.</param>
-        public ListImportsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string platform = default(string), string lastError = default(string), DateTime? startedAt = default(DateTime?), string batchId = default(string), DateTime? finishedAt = default(DateTime?), ListImportsItemFilters filters = default(ListImportsItemFilters), string importMode = default(string), bool includeInactive = default(bool), bool mergeIntoExistingListing = default(bool), bool mergeIntoExistingInventory = default(bool), decimal totalCount = default(decimal), decimal importedCount = default(decimal), decimal skippedCount = default(decimal), decimal errorCount = default(decimal), bool listOnCrossly = default(bool), DateTime? crosslyListedAt = default(DateTime?))
+        public ListImportsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string status = default(string), string lastError = default(string), DateTime? startedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), ListImportsItemFilters filters = default(ListImportsItemFilters), string importMode = default(string), bool includeInactive = default(bool), bool mergeIntoExistingListing = default(bool), bool mergeIntoExistingInventory = default(bool), decimal totalCount = default(decimal), decimal importedCount = default(decimal), decimal skippedCount = default(decimal), decimal errorCount = default(decimal), string batchId = default(string), bool listOnCrossly = default(bool), DateTime? crosslyListedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -72,16 +72,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListImportsItem and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListImportsItem and cannot be null");
-            }
-            this.Status = status;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for ListImportsItem and cannot be null");
             }
             this.Platform = platform;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListImportsItem and cannot be null");
+            }
+            this.Status = status;
             // to ensure "importMode" is required (not null)
             if (importMode == null) {
                 throw new ArgumentNullException("importMode is a required property for ListImportsItem and cannot be null");
@@ -97,9 +97,9 @@ namespace net.crossly.Model
             this.ListOnCrossly = listOnCrossly;
             this.LastError = lastError;
             this.StartedAt = startedAt;
-            this.BatchId = batchId;
             this.FinishedAt = finishedAt;
             this.Filters = filters;
+            this.BatchId = batchId;
             this.CrosslyListedAt = crosslyListedAt;
         }
 
@@ -122,16 +122,16 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets Platform
         /// </summary>
         [DataMember(Name = "platform", IsRequired = true, EmitDefaultValue = false)]
         public string Platform { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets LastError
@@ -144,12 +144,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "startedAt", EmitDefaultValue = true)]
         public DateTime? StartedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BatchId
-        /// </summary>
-        [DataMember(Name = "batchId", EmitDefaultValue = true)]
-        public string BatchId { get; set; }
 
         /// <summary>
         /// Gets or Sets FinishedAt
@@ -212,6 +206,12 @@ namespace net.crossly.Model
         public decimal ErrorCount { get; set; }
 
         /// <summary>
+        /// Gets or Sets BatchId
+        /// </summary>
+        [DataMember(Name = "batchId", EmitDefaultValue = true)]
+        public string BatchId { get; set; }
+
+        /// <summary>
         /// Gets or Sets ListOnCrossly
         /// </summary>
         [DataMember(Name = "listOnCrossly", IsRequired = true, EmitDefaultValue = true)]
@@ -234,11 +234,10 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
-            sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  FinishedAt: ").Append(FinishedAt).Append("\n");
             sb.Append("  Filters: ").Append(Filters).Append("\n");
             sb.Append("  ImportMode: ").Append(ImportMode).Append("\n");
@@ -249,6 +248,7 @@ namespace net.crossly.Model
             sb.Append("  ImportedCount: ").Append(ImportedCount).Append("\n");
             sb.Append("  SkippedCount: ").Append(SkippedCount).Append("\n");
             sb.Append("  ErrorCount: ").Append(ErrorCount).Append("\n");
+            sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  ListOnCrossly: ").Append(ListOnCrossly).Append("\n");
             sb.Append("  CrosslyListedAt: ").Append(CrosslyListedAt).Append("\n");
             sb.Append("}\n");
@@ -302,14 +302,14 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.Platform == input.Platform ||
                     (this.Platform != null &&
                     this.Platform.Equals(input.Platform))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.LastError == input.LastError ||
@@ -320,11 +320,6 @@ namespace net.crossly.Model
                     this.StartedAt == input.StartedAt ||
                     (this.StartedAt != null &&
                     this.StartedAt.Equals(input.StartedAt))
-                ) && 
-                (
-                    this.BatchId == input.BatchId ||
-                    (this.BatchId != null &&
-                    this.BatchId.Equals(input.BatchId))
                 ) && 
                 (
                     this.FinishedAt == input.FinishedAt ||
@@ -370,6 +365,11 @@ namespace net.crossly.Model
                     this.ErrorCount.Equals(input.ErrorCount)
                 ) && 
                 (
+                    this.BatchId == input.BatchId ||
+                    (this.BatchId != null &&
+                    this.BatchId.Equals(input.BatchId))
+                ) && 
+                (
                     this.ListOnCrossly == input.ListOnCrossly ||
                     this.ListOnCrossly.Equals(input.ListOnCrossly)
                 ) && 
@@ -401,13 +401,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.LastError != null)
                 {
@@ -416,10 +416,6 @@ namespace net.crossly.Model
                 if (this.StartedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartedAt.GetHashCode();
-                }
-                if (this.BatchId != null)
-                {
-                    hashCode = (hashCode * 59) + this.BatchId.GetHashCode();
                 }
                 if (this.FinishedAt != null)
                 {
@@ -440,6 +436,10 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.ImportedCount.GetHashCode();
                 hashCode = (hashCode * 59) + this.SkippedCount.GetHashCode();
                 hashCode = (hashCode * 59) + this.ErrorCount.GetHashCode();
+                if (this.BatchId != null)
+                {
+                    hashCode = (hashCode * 59) + this.BatchId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ListOnCrossly.GetHashCode();
                 if (this.CrosslyListedAt != null)
                 {

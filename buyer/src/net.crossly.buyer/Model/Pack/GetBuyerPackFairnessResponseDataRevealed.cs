@@ -40,24 +40,18 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerPackFairnessResponseDataRevealed" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="nonce">nonce (required).</param>
-        /// <param name="revealedAt">revealedAt (required).</param>
         /// <param name="serverSeed">serverSeed (required).</param>
         /// <param name="serverSeedHash">serverSeedHash (required).</param>
         /// <param name="clientSeed">clientSeed (required).</param>
-        public GetBuyerPackFairnessResponseDataRevealed(string id = default(string), decimal nonce = default(decimal), string revealedAt = default(string), string serverSeed = default(string), string serverSeedHash = default(string), string clientSeed = default(string))
+        /// <param name="nonce">nonce (required).</param>
+        /// <param name="revealedAt">revealedAt (required).</param>
+        public GetBuyerPackFairnessResponseDataRevealed(string id = default(string), string serverSeed = default(string), string serverSeedHash = default(string), string clientSeed = default(string), decimal nonce = default(decimal), string revealedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerPackFairnessResponseDataRevealed and cannot be null");
             }
             this.Id = id;
-            this.Nonce = nonce;
-            // to ensure "revealedAt" is required (not null)
-            if (revealedAt == null) {
-                throw new ArgumentNullException("revealedAt is a required property for GetBuyerPackFairnessResponseDataRevealed and cannot be null");
-            }
-            this.RevealedAt = revealedAt;
             // to ensure "serverSeed" is required (not null)
             if (serverSeed == null) {
                 throw new ArgumentNullException("serverSeed is a required property for GetBuyerPackFairnessResponseDataRevealed and cannot be null");
@@ -73,6 +67,12 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("clientSeed is a required property for GetBuyerPackFairnessResponseDataRevealed and cannot be null");
             }
             this.ClientSeed = clientSeed;
+            this.Nonce = nonce;
+            // to ensure "revealedAt" is required (not null)
+            if (revealedAt == null) {
+                throw new ArgumentNullException("revealedAt is a required property for GetBuyerPackFairnessResponseDataRevealed and cannot be null");
+            }
+            this.RevealedAt = revealedAt;
         }
 
         /// <summary>
@@ -80,18 +80,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Nonce
-        /// </summary>
-        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Nonce { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RevealedAt
-        /// </summary>
-        [DataMember(Name = "revealedAt", IsRequired = true, EmitDefaultValue = false)]
-        public string RevealedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ServerSeed
@@ -112,6 +100,18 @@ namespace net.crossly.buyer.Model
         public string ClientSeed { get; set; }
 
         /// <summary>
+        /// Gets or Sets Nonce
+        /// </summary>
+        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Nonce { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RevealedAt
+        /// </summary>
+        [DataMember(Name = "revealedAt", IsRequired = true, EmitDefaultValue = false)]
+        public string RevealedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -120,11 +120,11 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPackFairnessResponseDataRevealed {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
-            sb.Append("  RevealedAt: ").Append(RevealedAt).Append("\n");
             sb.Append("  ServerSeed: ").Append(ServerSeed).Append("\n");
             sb.Append("  ServerSeedHash: ").Append(ServerSeedHash).Append("\n");
             sb.Append("  ClientSeed: ").Append(ClientSeed).Append("\n");
+            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
+            sb.Append("  RevealedAt: ").Append(RevealedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -166,15 +166,6 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Nonce == input.Nonce ||
-                    this.Nonce.Equals(input.Nonce)
-                ) && 
-                (
-                    this.RevealedAt == input.RevealedAt ||
-                    (this.RevealedAt != null &&
-                    this.RevealedAt.Equals(input.RevealedAt))
-                ) && 
-                (
                     this.ServerSeed == input.ServerSeed ||
                     (this.ServerSeed != null &&
                     this.ServerSeed.Equals(input.ServerSeed))
@@ -188,6 +179,15 @@ namespace net.crossly.buyer.Model
                     this.ClientSeed == input.ClientSeed ||
                     (this.ClientSeed != null &&
                     this.ClientSeed.Equals(input.ClientSeed))
+                ) && 
+                (
+                    this.Nonce == input.Nonce ||
+                    this.Nonce.Equals(input.Nonce)
+                ) && 
+                (
+                    this.RevealedAt == input.RevealedAt ||
+                    (this.RevealedAt != null &&
+                    this.RevealedAt.Equals(input.RevealedAt))
                 );
         }
 
@@ -204,11 +204,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
-                if (this.RevealedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RevealedAt.GetHashCode();
-                }
                 if (this.ServerSeed != null)
                 {
                     hashCode = (hashCode * 59) + this.ServerSeed.GetHashCode();
@@ -220,6 +215,11 @@ namespace net.crossly.buyer.Model
                 if (this.ClientSeed != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientSeed.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
+                if (this.RevealedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.RevealedAt.GetHashCode();
                 }
                 return hashCode;
             }

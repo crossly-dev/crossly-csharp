@@ -39,11 +39,16 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerTogetherItem" /> class.
         /// </summary>
+        /// <param name="code">code (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="endsAt">endsAt (required).</param>
-        /// <param name="code">code (required).</param>
-        public ListBuyerTogetherItem(string name = default(string), string endsAt = default(string), string code = default(string))
+        public ListBuyerTogetherItem(string code = default(string), string name = default(string), string endsAt = default(string))
         {
+            // to ensure "code" is required (not null)
+            if (code == null) {
+                throw new ArgumentNullException("code is a required property for ListBuyerTogetherItem and cannot be null");
+            }
+            this.Code = code;
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for ListBuyerTogetherItem and cannot be null");
@@ -54,12 +59,13 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("endsAt is a required property for ListBuyerTogetherItem and cannot be null");
             }
             this.EndsAt = endsAt;
-            // to ensure "code" is required (not null)
-            if (code == null) {
-                throw new ArgumentNullException("code is a required property for ListBuyerTogetherItem and cannot be null");
-            }
-            this.Code = code;
         }
+
+        /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
+        public string Code { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -74,12 +80,6 @@ namespace net.crossly.buyer.Model
         public string EndsAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
-        public string Code { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -87,9 +87,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerTogetherItem {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -126,6 +126,11 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -134,11 +139,6 @@ namespace net.crossly.buyer.Model
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
                 );
         }
 
@@ -151,6 +151,10 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Code != null)
+                {
+                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -158,10 +162,6 @@ namespace net.crossly.buyer.Model
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
-                }
-                if (this.Code != null)
-                {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
                 }
                 return hashCode;
             }

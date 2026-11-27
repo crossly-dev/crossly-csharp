@@ -40,55 +40,61 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerCartSavedItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="slug">slug (required).</param>
+        /// <param name="title">title (required).</param>
         /// <param name="priceCents">The listing&#39;s price NOW, in cents — what moving it back would charge. (required).</param>
+        /// <param name="quantity">quantity (required).</param>
         /// <param name="inStock">inStock (required).</param>
         /// <param name="availableQuantity">availableQuantity (required).</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="savedAt">savedAt (required).</param>
-        /// <param name="sellerDisplayName">sellerDisplayName.</param>
         /// <param name="thumbnail">thumbnail.</param>
-        public ListBuyerCartSavedItem(string id = default(string), decimal quantity = default(decimal), string title = default(string), string platformListingId = default(string), string sellerUserId = default(string), string slug = default(string), decimal priceCents = default(decimal), bool inStock = default(bool), decimal availableQuantity = default(decimal), string savedAt = default(string), string sellerDisplayName = default(string), string thumbnail = default(string))
+        /// <param name="sellerDisplayName">sellerDisplayName.</param>
+        /// <param name="listingVariantId">The option it was saved as (catalog &#x60;variants[].id&#x60;), restored on move-to-cart; null otherwise..</param>
+        /// <param name="variantName">That option&#39;s label (\&quot;M\&quot;)..</param>
+        /// <param name="needsOption">The listing has options and this item names none: add it again with an option (move-to-cart refuses)..</param>
+        public ListBuyerCartSavedItem(string id = default(string), string platformListingId = default(string), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), decimal quantity = default(decimal), bool inStock = default(bool), decimal availableQuantity = default(decimal), string sellerUserId = default(string), string savedAt = default(string), string thumbnail = default(string), string sellerDisplayName = default(string), string listingVariantId = default(string), string variantName = default(string), bool? needsOption = default(bool?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerCartSavedItem and cannot be null");
             }
             this.Id = id;
-            this.Quantity = quantity;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for ListBuyerCartSavedItem and cannot be null");
-            }
-            this.Title = title;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListBuyerCartSavedItem and cannot be null");
             }
             this.PlatformListingId = platformListingId;
-            // to ensure "sellerUserId" is required (not null)
-            if (sellerUserId == null) {
-                throw new ArgumentNullException("sellerUserId is a required property for ListBuyerCartSavedItem and cannot be null");
-            }
-            this.SellerUserId = sellerUserId;
             // to ensure "slug" is required (not null)
             if (slug == null) {
                 throw new ArgumentNullException("slug is a required property for ListBuyerCartSavedItem and cannot be null");
             }
             this.Slug = slug;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for ListBuyerCartSavedItem and cannot be null");
+            }
+            this.Title = title;
             this.PriceCents = priceCents;
+            this.Quantity = quantity;
             this.InStock = inStock;
             this.AvailableQuantity = availableQuantity;
+            // to ensure "sellerUserId" is required (not null)
+            if (sellerUserId == null) {
+                throw new ArgumentNullException("sellerUserId is a required property for ListBuyerCartSavedItem and cannot be null");
+            }
+            this.SellerUserId = sellerUserId;
             // to ensure "savedAt" is required (not null)
             if (savedAt == null) {
                 throw new ArgumentNullException("savedAt is a required property for ListBuyerCartSavedItem and cannot be null");
             }
             this.SavedAt = savedAt;
-            this.SellerDisplayName = sellerDisplayName;
             this.Thumbnail = thumbnail;
+            this.SellerDisplayName = sellerDisplayName;
+            this.ListingVariantId = listingVariantId;
+            this.VariantName = variantName;
+            this.NeedsOption = needsOption;
         }
 
         /// <summary>
@@ -98,28 +104,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
-        /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Quantity { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets PlatformListingId
         /// </summary>
         [DataMember(Name = "platformListingId", IsRequired = true, EmitDefaultValue = false)]
         public string PlatformListingId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets Slug
@@ -128,11 +116,23 @@ namespace net.crossly.buyer.Model
         public string Slug { get; set; }
 
         /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
+
+        /// <summary>
         /// The listing&#39;s price NOW, in cents — what moving it back would charge.
         /// </summary>
         /// <value>The listing&#39;s price NOW, in cents — what moving it back would charge.</value>
         [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal PriceCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quantity
+        /// </summary>
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets InStock
@@ -147,10 +147,22 @@ namespace net.crossly.buyer.Model
         public decimal AvailableQuantity { get; set; }
 
         /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets SavedAt
         /// </summary>
         [DataMember(Name = "savedAt", IsRequired = true, EmitDefaultValue = false)]
         public string SavedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Thumbnail
+        /// </summary>
+        [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
+        public string Thumbnail { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerDisplayName
@@ -159,10 +171,25 @@ namespace net.crossly.buyer.Model
         public string SellerDisplayName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Thumbnail
+        /// The option it was saved as (catalog &#x60;variants[].id&#x60;), restored on move-to-cart; null otherwise.
         /// </summary>
-        [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
-        public string Thumbnail { get; set; }
+        /// <value>The option it was saved as (catalog &#x60;variants[].id&#x60;), restored on move-to-cart; null otherwise.</value>
+        [DataMember(Name = "listingVariantId", EmitDefaultValue = true)]
+        public string ListingVariantId { get; set; }
+
+        /// <summary>
+        /// That option&#39;s label (\&quot;M\&quot;).
+        /// </summary>
+        /// <value>That option&#39;s label (\&quot;M\&quot;).</value>
+        [DataMember(Name = "variantName", EmitDefaultValue = true)]
+        public string VariantName { get; set; }
+
+        /// <summary>
+        /// The listing has options and this item names none: add it again with an option (move-to-cart refuses).
+        /// </summary>
+        /// <value>The listing has options and this item names none: add it again with an option (move-to-cart refuses).</value>
+        [DataMember(Name = "needsOption", EmitDefaultValue = true)]
+        public bool? NeedsOption { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -173,17 +200,20 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerCartSavedItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  InStock: ").Append(InStock).Append("\n");
             sb.Append("  AvailableQuantity: ").Append(AvailableQuantity).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  SavedAt: ").Append(SavedAt).Append("\n");
-            sb.Append("  SellerDisplayName: ").Append(SellerDisplayName).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  SellerDisplayName: ").Append(SellerDisplayName).Append("\n");
+            sb.Append("  ListingVariantId: ").Append(ListingVariantId).Append("\n");
+            sb.Append("  VariantName: ").Append(VariantName).Append("\n");
+            sb.Append("  NeedsOption: ").Append(NeedsOption).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -225,23 +255,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
-                ) && 
-                (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.Slug == input.Slug ||
@@ -249,8 +265,17 @@ namespace net.crossly.buyer.Model
                     this.Slug.Equals(input.Slug))
                 ) && 
                 (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
+                ) && 
+                (
                     this.PriceCents == input.PriceCents ||
                     this.PriceCents.Equals(input.PriceCents)
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
                 ) && 
                 (
                     this.InStock == input.InStock ||
@@ -261,9 +286,19 @@ namespace net.crossly.buyer.Model
                     this.AvailableQuantity.Equals(input.AvailableQuantity)
                 ) && 
                 (
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
+                ) && 
+                (
                     this.SavedAt == input.SavedAt ||
                     (this.SavedAt != null &&
                     this.SavedAt.Equals(input.SavedAt))
+                ) && 
+                (
+                    this.Thumbnail == input.Thumbnail ||
+                    (this.Thumbnail != null &&
+                    this.Thumbnail.Equals(input.Thumbnail))
                 ) && 
                 (
                     this.SellerDisplayName == input.SellerDisplayName ||
@@ -271,9 +306,19 @@ namespace net.crossly.buyer.Model
                     this.SellerDisplayName.Equals(input.SellerDisplayName))
                 ) && 
                 (
-                    this.Thumbnail == input.Thumbnail ||
-                    (this.Thumbnail != null &&
-                    this.Thumbnail.Equals(input.Thumbnail))
+                    this.ListingVariantId == input.ListingVariantId ||
+                    (this.ListingVariantId != null &&
+                    this.ListingVariantId.Equals(input.ListingVariantId))
+                ) && 
+                (
+                    this.VariantName == input.VariantName ||
+                    (this.VariantName != null &&
+                    this.VariantName.Equals(input.VariantName))
+                ) && 
+                (
+                    this.NeedsOption == input.NeedsOption ||
+                    (this.NeedsOption != null &&
+                    this.NeedsOption.Equals(input.NeedsOption))
                 );
         }
 
@@ -290,37 +335,49 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
-                }
-                if (this.SellerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 hashCode = (hashCode * 59) + this.InStock.GetHashCode();
                 hashCode = (hashCode * 59) + this.AvailableQuantity.GetHashCode();
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
                 if (this.SavedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.SavedAt.GetHashCode();
+                }
+                if (this.Thumbnail != null)
+                {
+                    hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
                 }
                 if (this.SellerDisplayName != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerDisplayName.GetHashCode();
                 }
-                if (this.Thumbnail != null)
+                if (this.ListingVariantId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ListingVariantId.GetHashCode();
+                }
+                if (this.VariantName != null)
+                {
+                    hashCode = (hashCode * 59) + this.VariantName.GetHashCode();
+                }
+                if (this.NeedsOption != null)
+                {
+                    hashCode = (hashCode * 59) + this.NeedsOption.GetHashCode();
                 }
                 return hashCode;
             }

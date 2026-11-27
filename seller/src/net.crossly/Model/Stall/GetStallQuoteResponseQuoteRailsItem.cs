@@ -38,16 +38,16 @@ namespace net.crossly.Model
         Card = 1,
 
         /// <summary>
-        /// Enum Bucks for value: bucks
-        /// </summary>
-        [EnumMember(Value = "bucks")]
-        Bucks = 2,
-
-        /// <summary>
         /// Enum Cbx for value: cbx
         /// </summary>
         [EnumMember(Value = "cbx")]
-        Cbx = 3
+        Cbx = 2,
+
+        /// <summary>
+        /// Enum Bucks for value: bucks
+        /// </summary>
+        [EnumMember(Value = "bucks")]
+        Bucks = 3
 
     }
 

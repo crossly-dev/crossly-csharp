@@ -42,17 +42,19 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="endedAt">endedAt.</param>
         /// <param name="ownerUserId">ownerUserId (required).</param>
-        /// <param name="endReason">endReason.</param>
-        /// <param name="paidThrough">paidThrough.</param>
+        /// <param name="endedAt">endedAt.</param>
+        /// <param name="rail">rail.</param>
         /// <param name="plotId">plotId (required).</param>
+        /// <param name="paidThrough">paidThrough.</param>
         /// <param name="deedId">deedId (required).</param>
         /// <param name="tenantUserId">tenantUserId.</param>
         /// <param name="tenantSceneId">tenantSceneId.</param>
         /// <param name="rentWeeklyCents">rentWeeklyCents (required).</param>
         /// <param name="termsFrozenAt">termsFrozenAt.</param>
-        public CreateSpatialPropertyDeedLeaseResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), DateTime? endedAt = default(DateTime?), string ownerUserId = default(string), string endReason = default(string), DateTime? paidThrough = default(DateTime?), string plotId = default(string), string deedId = default(string), string tenantUserId = default(string), string tenantSceneId = default(string), decimal rentWeeklyCents = default(decimal), DateTime? termsFrozenAt = default(DateTime?))
+        /// <param name="endReason">endReason.</param>
+        /// <param name="autopay">autopay (required).</param>
+        public CreateSpatialPropertyDeedLeaseResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string ownerUserId = default(string), DateTime? endedAt = default(DateTime?), string rail = default(string), string plotId = default(string), DateTime? paidThrough = default(DateTime?), string deedId = default(string), string tenantUserId = default(string), string tenantSceneId = default(string), decimal rentWeeklyCents = default(decimal), DateTime? termsFrozenAt = default(DateTime?), string endReason = default(string), bool autopay = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -81,12 +83,14 @@ namespace net.crossly.Model
             }
             this.DeedId = deedId;
             this.RentWeeklyCents = rentWeeklyCents;
+            this.Autopay = autopay;
             this.EndedAt = endedAt;
-            this.EndReason = endReason;
+            this.Rail = rail;
             this.PaidThrough = paidThrough;
             this.TenantUserId = tenantUserId;
             this.TenantSceneId = tenantSceneId;
             this.TermsFrozenAt = termsFrozenAt;
+            this.EndReason = endReason;
         }
 
         /// <summary>
@@ -108,34 +112,34 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndedAt
-        /// </summary>
-        [DataMember(Name = "endedAt", EmitDefaultValue = true)]
-        public DateTime? EndedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets OwnerUserId
         /// </summary>
         [DataMember(Name = "ownerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string OwnerUserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndReason
+        /// Gets or Sets EndedAt
         /// </summary>
-        [DataMember(Name = "endReason", EmitDefaultValue = true)]
-        public string EndReason { get; set; }
+        [DataMember(Name = "endedAt", EmitDefaultValue = true)]
+        public DateTime? EndedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets PaidThrough
+        /// Gets or Sets Rail
         /// </summary>
-        [DataMember(Name = "paidThrough", EmitDefaultValue = true)]
-        public DateTime? PaidThrough { get; set; }
+        [DataMember(Name = "rail", EmitDefaultValue = true)]
+        public string Rail { get; set; }
 
         /// <summary>
         /// Gets or Sets PlotId
         /// </summary>
         [DataMember(Name = "plotId", IsRequired = true, EmitDefaultValue = false)]
         public string PlotId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PaidThrough
+        /// </summary>
+        [DataMember(Name = "paidThrough", EmitDefaultValue = true)]
+        public DateTime? PaidThrough { get; set; }
 
         /// <summary>
         /// Gets or Sets DeedId
@@ -168,6 +172,18 @@ namespace net.crossly.Model
         public DateTime? TermsFrozenAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets EndReason
+        /// </summary>
+        [DataMember(Name = "endReason", EmitDefaultValue = true)]
+        public string EndReason { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Autopay
+        /// </summary>
+        [DataMember(Name = "autopay", IsRequired = true, EmitDefaultValue = true)]
+        public bool Autopay { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -178,16 +194,18 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  EndedAt: ").Append(EndedAt).Append("\n");
             sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
-            sb.Append("  EndReason: ").Append(EndReason).Append("\n");
-            sb.Append("  PaidThrough: ").Append(PaidThrough).Append("\n");
+            sb.Append("  EndedAt: ").Append(EndedAt).Append("\n");
+            sb.Append("  Rail: ").Append(Rail).Append("\n");
             sb.Append("  PlotId: ").Append(PlotId).Append("\n");
+            sb.Append("  PaidThrough: ").Append(PaidThrough).Append("\n");
             sb.Append("  DeedId: ").Append(DeedId).Append("\n");
             sb.Append("  TenantUserId: ").Append(TenantUserId).Append("\n");
             sb.Append("  TenantSceneId: ").Append(TenantSceneId).Append("\n");
             sb.Append("  RentWeeklyCents: ").Append(RentWeeklyCents).Append("\n");
             sb.Append("  TermsFrozenAt: ").Append(TermsFrozenAt).Append("\n");
+            sb.Append("  EndReason: ").Append(EndReason).Append("\n");
+            sb.Append("  Autopay: ").Append(Autopay).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -239,29 +257,29 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.EndedAt == input.EndedAt ||
-                    (this.EndedAt != null &&
-                    this.EndedAt.Equals(input.EndedAt))
-                ) && 
-                (
                     this.OwnerUserId == input.OwnerUserId ||
                     (this.OwnerUserId != null &&
                     this.OwnerUserId.Equals(input.OwnerUserId))
                 ) && 
                 (
-                    this.EndReason == input.EndReason ||
-                    (this.EndReason != null &&
-                    this.EndReason.Equals(input.EndReason))
+                    this.EndedAt == input.EndedAt ||
+                    (this.EndedAt != null &&
+                    this.EndedAt.Equals(input.EndedAt))
                 ) && 
                 (
-                    this.PaidThrough == input.PaidThrough ||
-                    (this.PaidThrough != null &&
-                    this.PaidThrough.Equals(input.PaidThrough))
+                    this.Rail == input.Rail ||
+                    (this.Rail != null &&
+                    this.Rail.Equals(input.Rail))
                 ) && 
                 (
                     this.PlotId == input.PlotId ||
                     (this.PlotId != null &&
                     this.PlotId.Equals(input.PlotId))
+                ) && 
+                (
+                    this.PaidThrough == input.PaidThrough ||
+                    (this.PaidThrough != null &&
+                    this.PaidThrough.Equals(input.PaidThrough))
                 ) && 
                 (
                     this.DeedId == input.DeedId ||
@@ -286,6 +304,15 @@ namespace net.crossly.Model
                     this.TermsFrozenAt == input.TermsFrozenAt ||
                     (this.TermsFrozenAt != null &&
                     this.TermsFrozenAt.Equals(input.TermsFrozenAt))
+                ) && 
+                (
+                    this.EndReason == input.EndReason ||
+                    (this.EndReason != null &&
+                    this.EndReason.Equals(input.EndReason))
+                ) && 
+                (
+                    this.Autopay == input.Autopay ||
+                    this.Autopay.Equals(input.Autopay)
                 );
         }
 
@@ -310,25 +337,25 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.EndedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.EndedAt.GetHashCode();
-                }
                 if (this.OwnerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.OwnerUserId.GetHashCode();
                 }
-                if (this.EndReason != null)
+                if (this.EndedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.EndReason.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EndedAt.GetHashCode();
                 }
-                if (this.PaidThrough != null)
+                if (this.Rail != null)
                 {
-                    hashCode = (hashCode * 59) + this.PaidThrough.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Rail.GetHashCode();
                 }
                 if (this.PlotId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlotId.GetHashCode();
+                }
+                if (this.PaidThrough != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaidThrough.GetHashCode();
                 }
                 if (this.DeedId != null)
                 {
@@ -347,6 +374,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.TermsFrozenAt.GetHashCode();
                 }
+                if (this.EndReason != null)
+                {
+                    hashCode = (hashCode * 59) + this.EndReason.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Autopay.GetHashCode();
                 return hashCode;
             }
         }

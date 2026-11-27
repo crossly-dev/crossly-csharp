@@ -41,10 +41,10 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="orders">orders (required).</param>
         /// <param name="sales">sales (required).</param>
-        /// <param name="hallLoans">hallLoans (required).</param>
         /// <param name="leaderboard">leaderboard (required).</param>
         /// <param name="deposits">deposits (required).</param>
-        public GetVaultMarketFollowSharingResponseExplain(string orders = default(string), string sales = default(string), string hallLoans = default(string), string leaderboard = default(string), string deposits = default(string))
+        /// <param name="hallLoans">hallLoans (required).</param>
+        public GetVaultMarketFollowSharingResponseExplain(string orders = default(string), string sales = default(string), string leaderboard = default(string), string deposits = default(string), string hallLoans = default(string))
         {
             // to ensure "orders" is required (not null)
             if (orders == null) {
@@ -56,11 +56,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("sales is a required property for GetVaultMarketFollowSharingResponseExplain and cannot be null");
             }
             this.Sales = sales;
-            // to ensure "hallLoans" is required (not null)
-            if (hallLoans == null) {
-                throw new ArgumentNullException("hallLoans is a required property for GetVaultMarketFollowSharingResponseExplain and cannot be null");
-            }
-            this.HallLoans = hallLoans;
             // to ensure "leaderboard" is required (not null)
             if (leaderboard == null) {
                 throw new ArgumentNullException("leaderboard is a required property for GetVaultMarketFollowSharingResponseExplain and cannot be null");
@@ -71,6 +66,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("deposits is a required property for GetVaultMarketFollowSharingResponseExplain and cannot be null");
             }
             this.Deposits = deposits;
+            // to ensure "hallLoans" is required (not null)
+            if (hallLoans == null) {
+                throw new ArgumentNullException("hallLoans is a required property for GetVaultMarketFollowSharingResponseExplain and cannot be null");
+            }
+            this.HallLoans = hallLoans;
         }
 
         /// <summary>
@@ -86,12 +86,6 @@ namespace net.crossly.Model
         public string Sales { get; set; }
 
         /// <summary>
-        /// Gets or Sets HallLoans
-        /// </summary>
-        [DataMember(Name = "hallLoans", IsRequired = true, EmitDefaultValue = false)]
-        public string HallLoans { get; set; }
-
-        /// <summary>
         /// Gets or Sets Leaderboard
         /// </summary>
         [DataMember(Name = "leaderboard", IsRequired = true, EmitDefaultValue = false)]
@@ -104,6 +98,12 @@ namespace net.crossly.Model
         public string Deposits { get; set; }
 
         /// <summary>
+        /// Gets or Sets HallLoans
+        /// </summary>
+        [DataMember(Name = "hallLoans", IsRequired = true, EmitDefaultValue = false)]
+        public string HallLoans { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,9 +113,9 @@ namespace net.crossly.Model
             sb.Append("class GetVaultMarketFollowSharingResponseExplain {\n");
             sb.Append("  Orders: ").Append(Orders).Append("\n");
             sb.Append("  Sales: ").Append(Sales).Append("\n");
-            sb.Append("  HallLoans: ").Append(HallLoans).Append("\n");
             sb.Append("  Leaderboard: ").Append(Leaderboard).Append("\n");
             sb.Append("  Deposits: ").Append(Deposits).Append("\n");
+            sb.Append("  HallLoans: ").Append(HallLoans).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,11 +162,6 @@ namespace net.crossly.Model
                     this.Sales.Equals(input.Sales))
                 ) && 
                 (
-                    this.HallLoans == input.HallLoans ||
-                    (this.HallLoans != null &&
-                    this.HallLoans.Equals(input.HallLoans))
-                ) && 
-                (
                     this.Leaderboard == input.Leaderboard ||
                     (this.Leaderboard != null &&
                     this.Leaderboard.Equals(input.Leaderboard))
@@ -175,6 +170,11 @@ namespace net.crossly.Model
                     this.Deposits == input.Deposits ||
                     (this.Deposits != null &&
                     this.Deposits.Equals(input.Deposits))
+                ) && 
+                (
+                    this.HallLoans == input.HallLoans ||
+                    (this.HallLoans != null &&
+                    this.HallLoans.Equals(input.HallLoans))
                 );
         }
 
@@ -195,10 +195,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Sales.GetHashCode();
                 }
-                if (this.HallLoans != null)
-                {
-                    hashCode = (hashCode * 59) + this.HallLoans.GetHashCode();
-                }
                 if (this.Leaderboard != null)
                 {
                     hashCode = (hashCode * 59) + this.Leaderboard.GetHashCode();
@@ -206,6 +202,10 @@ namespace net.crossly.Model
                 if (this.Deposits != null)
                 {
                     hashCode = (hashCode * 59) + this.Deposits.GetHashCode();
+                }
+                if (this.HallLoans != null)
+                {
+                    hashCode = (hashCode * 59) + this.HallLoans.GetHashCode();
                 }
                 return hashCode;
             }

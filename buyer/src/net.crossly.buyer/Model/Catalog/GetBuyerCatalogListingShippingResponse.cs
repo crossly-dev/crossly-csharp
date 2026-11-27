@@ -49,15 +49,20 @@ namespace net.crossly.buyer.Model
         /// <param name="destinationCountry">destinationCountry.</param>
         /// <param name="shipsToCountry">shipsToCountry (required).</param>
         /// <param name="noShipReason">noShipReason.</param>
+        /// <param name="noShipMessage">Why it doesn&#39;t ship here, as the buyer should read it; null when it does..</param>
+        /// <param name="rule">The seller&#39;s ship-to rule that decided a refusal; null when none did..</param>
+        /// <param name="partial">True when a fuller address (ZIP / postcode) could change the answer. (required).</param>
         /// <param name="services">services (required).</param>
         /// <param name="defaultServiceId">defaultServiceId.</param>
+        /// <param name="calculatedAtCheckout">Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); &#x60;cents&#x60; is null..</param>
         /// <param name="international">international (required).</param>
         /// <param name="importChargesNote">importChargesNote (required).</param>
-        public GetBuyerCatalogListingShippingResponse(decimal? cents = default(decimal?), string kind = default(string), decimal quantity = default(decimal), string carrier = default(string), string service = default(string), bool cached = default(bool), decimal? freeShippingThresholdCents = default(decimal?), string destinationCountry = default(string), bool shipsToCountry = default(bool), string noShipReason = default(string), List<GetBuyerCatalogListingShippingResponseServices> services = default(List<GetBuyerCatalogListingShippingResponseServices>), string defaultServiceId = default(string), GetBuyerCatalogListingShippingResponseInternational international = default(GetBuyerCatalogListingShippingResponseInternational), bool importChargesNote = default(bool))
+        public GetBuyerCatalogListingShippingResponse(decimal? cents = default(decimal?), string kind = default(string), decimal quantity = default(decimal), string carrier = default(string), string service = default(string), bool cached = default(bool), decimal? freeShippingThresholdCents = default(decimal?), string destinationCountry = default(string), bool shipsToCountry = default(bool), string noShipReason = default(string), string noShipMessage = default(string), Dictionary<string, Object> rule = default(Dictionary<string, Object>), bool partial = default(bool), List<GetBuyerCatalogListingShippingResponseServices> services = default(List<GetBuyerCatalogListingShippingResponseServices>), string defaultServiceId = default(string), bool? calculatedAtCheckout = default(bool?), GetBuyerCatalogListingShippingResponseInternational international = default(GetBuyerCatalogListingShippingResponseInternational), bool importChargesNote = default(bool))
         {
             this.Quantity = quantity;
             this.Cached = cached;
             this.ShipsToCountry = shipsToCountry;
+            this.Partial = partial;
             // to ensure "services" is required (not null)
             if (services == null) {
                 throw new ArgumentNullException("services is a required property for GetBuyerCatalogListingShippingResponse and cannot be null");
@@ -76,7 +81,10 @@ namespace net.crossly.buyer.Model
             this.FreeShippingThresholdCents = freeShippingThresholdCents;
             this.DestinationCountry = destinationCountry;
             this.NoShipReason = noShipReason;
+            this.NoShipMessage = noShipMessage;
+            this.Rule = rule;
             this.DefaultServiceId = defaultServiceId;
+            this.CalculatedAtCheckout = calculatedAtCheckout;
         }
 
         /// <summary>
@@ -140,6 +148,27 @@ namespace net.crossly.buyer.Model
         public string NoShipReason { get; set; }
 
         /// <summary>
+        /// Why it doesn&#39;t ship here, as the buyer should read it; null when it does.
+        /// </summary>
+        /// <value>Why it doesn&#39;t ship here, as the buyer should read it; null when it does.</value>
+        [DataMember(Name = "noShipMessage", EmitDefaultValue = true)]
+        public string NoShipMessage { get; set; }
+
+        /// <summary>
+        /// The seller&#39;s ship-to rule that decided a refusal; null when none did.
+        /// </summary>
+        /// <value>The seller&#39;s ship-to rule that decided a refusal; null when none did.</value>
+        [DataMember(Name = "rule", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Rule { get; set; }
+
+        /// <summary>
+        /// True when a fuller address (ZIP / postcode) could change the answer.
+        /// </summary>
+        /// <value>True when a fuller address (ZIP / postcode) could change the answer.</value>
+        [DataMember(Name = "partial", IsRequired = true, EmitDefaultValue = true)]
+        public bool Partial { get; set; }
+
+        /// <summary>
         /// Gets or Sets Services
         /// </summary>
         [DataMember(Name = "services", IsRequired = true, EmitDefaultValue = false)]
@@ -150,6 +179,13 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "defaultServiceId", EmitDefaultValue = true)]
         public string DefaultServiceId { get; set; }
+
+        /// <summary>
+        /// Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); &#x60;cents&#x60; is null.
+        /// </summary>
+        /// <value>Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); &#x60;cents&#x60; is null.</value>
+        [DataMember(Name = "calculatedAtCheckout", EmitDefaultValue = true)]
+        public bool? CalculatedAtCheckout { get; set; }
 
         /// <summary>
         /// Gets or Sets International
@@ -181,8 +217,12 @@ namespace net.crossly.buyer.Model
             sb.Append("  DestinationCountry: ").Append(DestinationCountry).Append("\n");
             sb.Append("  ShipsToCountry: ").Append(ShipsToCountry).Append("\n");
             sb.Append("  NoShipReason: ").Append(NoShipReason).Append("\n");
+            sb.Append("  NoShipMessage: ").Append(NoShipMessage).Append("\n");
+            sb.Append("  Rule: ").Append(Rule).Append("\n");
+            sb.Append("  Partial: ").Append(Partial).Append("\n");
             sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("  DefaultServiceId: ").Append(DefaultServiceId).Append("\n");
+            sb.Append("  CalculatedAtCheckout: ").Append(CalculatedAtCheckout).Append("\n");
             sb.Append("  International: ").Append(International).Append("\n");
             sb.Append("  ImportChargesNote: ").Append(ImportChargesNote).Append("\n");
             sb.Append("}\n");
@@ -268,6 +308,21 @@ namespace net.crossly.buyer.Model
                     this.NoShipReason.Equals(input.NoShipReason))
                 ) && 
                 (
+                    this.NoShipMessage == input.NoShipMessage ||
+                    (this.NoShipMessage != null &&
+                    this.NoShipMessage.Equals(input.NoShipMessage))
+                ) && 
+                (
+                    this.Rule == input.Rule ||
+                    this.Rule != null &&
+                    input.Rule != null &&
+                    this.Rule.SequenceEqual(input.Rule)
+                ) && 
+                (
+                    this.Partial == input.Partial ||
+                    this.Partial.Equals(input.Partial)
+                ) && 
+                (
                     this.Services == input.Services ||
                     this.Services != null &&
                     input.Services != null &&
@@ -277,6 +332,11 @@ namespace net.crossly.buyer.Model
                     this.DefaultServiceId == input.DefaultServiceId ||
                     (this.DefaultServiceId != null &&
                     this.DefaultServiceId.Equals(input.DefaultServiceId))
+                ) && 
+                (
+                    this.CalculatedAtCheckout == input.CalculatedAtCheckout ||
+                    (this.CalculatedAtCheckout != null &&
+                    this.CalculatedAtCheckout.Equals(input.CalculatedAtCheckout))
                 ) && 
                 (
                     this.International == input.International ||
@@ -329,6 +389,15 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.NoShipReason.GetHashCode();
                 }
+                if (this.NoShipMessage != null)
+                {
+                    hashCode = (hashCode * 59) + this.NoShipMessage.GetHashCode();
+                }
+                if (this.Rule != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rule.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Partial.GetHashCode();
                 if (this.Services != null)
                 {
                     hashCode = (hashCode * 59) + this.Services.GetHashCode();
@@ -336,6 +405,10 @@ namespace net.crossly.buyer.Model
                 if (this.DefaultServiceId != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultServiceId.GetHashCode();
+                }
+                if (this.CalculatedAtCheckout != null)
+                {
+                    hashCode = (hashCode * 59) + this.CalculatedAtCheckout.GetHashCode();
                 }
                 if (this.International != null)
                 {

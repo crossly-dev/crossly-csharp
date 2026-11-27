@@ -76,16 +76,16 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
-            /// Enum Funding for value: funding
-            /// </summary>
-            [EnumMember(Value = "funding")]
-            Funding = 2,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 3,
+            Cancelled = 2,
+
+            /// <summary>
+            /// Enum Funding for value: funding
+            /// </summary>
+            [EnumMember(Value = "funding")]
+            Funding = 3,
 
             /// <summary>
             /// Enum Auction for value: auction
@@ -94,40 +94,40 @@ namespace net.crossly.Model
             Auction = 4,
 
             /// <summary>
-            /// Enum Repaying for value: repaying
-            /// </summary>
-            [EnumMember(Value = "repaying")]
-            Repaying = 5,
-
-            /// <summary>
-            /// Enum Refinancing for value: refinancing
-            /// </summary>
-            [EnumMember(Value = "refinancing")]
-            Refinancing = 6,
-
-            /// <summary>
-            /// Enum RefiPending for value: refi_pending
-            /// </summary>
-            [EnumMember(Value = "refi_pending")]
-            RefiPending = 7,
-
-            /// <summary>
             /// Enum Repaid for value: repaid
             /// </summary>
             [EnumMember(Value = "repaid")]
-            Repaid = 8,
-
-            /// <summary>
-            /// Enum Refinanced for value: refinanced
-            /// </summary>
-            [EnumMember(Value = "refinanced")]
-            Refinanced = 9,
+            Repaid = 5,
 
             /// <summary>
             /// Enum Foreclosed for value: foreclosed
             /// </summary>
             [EnumMember(Value = "foreclosed")]
-            Foreclosed = 10
+            Foreclosed = 6,
+
+            /// <summary>
+            /// Enum Repaying for value: repaying
+            /// </summary>
+            [EnumMember(Value = "repaying")]
+            Repaying = 7,
+
+            /// <summary>
+            /// Enum Refinancing for value: refinancing
+            /// </summary>
+            [EnumMember(Value = "refinancing")]
+            Refinancing = 8,
+
+            /// <summary>
+            /// Enum RefiPending for value: refi_pending
+            /// </summary>
+            [EnumMember(Value = "refi_pending")]
+            RefiPending = 9,
+
+            /// <summary>
+            /// Enum Refinanced for value: refinanced
+            /// </summary>
+            [EnumMember(Value = "refinanced")]
+            Refinanced = 10
 
         }
 

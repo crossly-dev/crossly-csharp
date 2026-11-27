@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="name">name (required).</param>
         /// <param name="shop">shop.</param>
-        public ListDropMineItemSeller(string name = default(string), NameSlug shop = default(NameSlug))
+        public ListDropMineItemSeller(string name = default(string), NameSlug2 shop = default(NameSlug2))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -61,7 +61,7 @@ namespace net.crossly.Model
         /// Gets or Sets Shop
         /// </summary>
         [DataMember(Name = "shop", EmitDefaultValue = true)]
-        public NameSlug Shop { get; set; }
+        public NameSlug2 Shop { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

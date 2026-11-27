@@ -41,14 +41,14 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="ok">ok (required).</param>
         /// <param name="canReview">Feedback can now be left on this order. (required).</param>
-        /// <param name="buyerReceivedAt">buyerReceivedAt.</param>
         /// <param name="alreadyConfirmed">alreadyConfirmed.</param>
-        public CreateBuyerOrderReceivedResponseData(bool ok = default(bool), bool canReview = default(bool), string buyerReceivedAt = default(string), bool? alreadyConfirmed = default(bool?))
+        /// <param name="buyerReceivedAt">buyerReceivedAt.</param>
+        public CreateBuyerOrderReceivedResponseData(bool ok = default(bool), bool canReview = default(bool), bool? alreadyConfirmed = default(bool?), string buyerReceivedAt = default(string))
         {
             this.Ok = ok;
             this.CanReview = canReview;
-            this.BuyerReceivedAt = buyerReceivedAt;
             this.AlreadyConfirmed = alreadyConfirmed;
+            this.BuyerReceivedAt = buyerReceivedAt;
         }
 
         /// <summary>
@@ -65,16 +65,16 @@ namespace net.crossly.buyer.Model
         public bool CanReview { get; set; }
 
         /// <summary>
-        /// Gets or Sets BuyerReceivedAt
-        /// </summary>
-        [DataMember(Name = "buyerReceivedAt", EmitDefaultValue = true)]
-        public string BuyerReceivedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets AlreadyConfirmed
         /// </summary>
         [DataMember(Name = "alreadyConfirmed", EmitDefaultValue = true)]
         public bool? AlreadyConfirmed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BuyerReceivedAt
+        /// </summary>
+        [DataMember(Name = "buyerReceivedAt", EmitDefaultValue = true)]
+        public string BuyerReceivedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,8 +86,8 @@ namespace net.crossly.buyer.Model
             sb.Append("class CreateBuyerOrderReceivedResponseData {\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  CanReview: ").Append(CanReview).Append("\n");
-            sb.Append("  BuyerReceivedAt: ").Append(BuyerReceivedAt).Append("\n");
             sb.Append("  AlreadyConfirmed: ").Append(AlreadyConfirmed).Append("\n");
+            sb.Append("  BuyerReceivedAt: ").Append(BuyerReceivedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -132,14 +132,14 @@ namespace net.crossly.buyer.Model
                     this.CanReview.Equals(input.CanReview)
                 ) && 
                 (
-                    this.BuyerReceivedAt == input.BuyerReceivedAt ||
-                    (this.BuyerReceivedAt != null &&
-                    this.BuyerReceivedAt.Equals(input.BuyerReceivedAt))
-                ) && 
-                (
                     this.AlreadyConfirmed == input.AlreadyConfirmed ||
                     (this.AlreadyConfirmed != null &&
                     this.AlreadyConfirmed.Equals(input.AlreadyConfirmed))
+                ) && 
+                (
+                    this.BuyerReceivedAt == input.BuyerReceivedAt ||
+                    (this.BuyerReceivedAt != null &&
+                    this.BuyerReceivedAt.Equals(input.BuyerReceivedAt))
                 );
         }
 
@@ -154,13 +154,13 @@ namespace net.crossly.buyer.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 hashCode = (hashCode * 59) + this.CanReview.GetHashCode();
-                if (this.BuyerReceivedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.BuyerReceivedAt.GetHashCode();
-                }
                 if (this.AlreadyConfirmed != null)
                 {
                     hashCode = (hashCode * 59) + this.AlreadyConfirmed.GetHashCode();
+                }
+                if (this.BuyerReceivedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuyerReceivedAt.GetHashCode();
                 }
                 return hashCode;
             }

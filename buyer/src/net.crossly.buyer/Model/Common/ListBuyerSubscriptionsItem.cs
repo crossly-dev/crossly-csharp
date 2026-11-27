@@ -41,12 +41,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="title">title.</param>
-        /// <param name="slug">slug.</param>
-        /// <param name="nextRunAt">nextRunAt (required).</param>
         /// <param name="intervalDays">intervalDays (required).</param>
         /// <param name="discountBps">discountBps (required).</param>
-        public ListBuyerSubscriptionsItem(string id = default(string), string status = default(string), string title = default(string), string slug = default(string), string nextRunAt = default(string), decimal intervalDays = default(decimal), decimal discountBps = default(decimal))
+        /// <param name="nextRunAt">nextRunAt (required).</param>
+        /// <param name="slug">slug.</param>
+        /// <param name="title">title.</param>
+        public ListBuyerSubscriptionsItem(string id = default(string), string status = default(string), decimal intervalDays = default(decimal), decimal discountBps = default(decimal), string nextRunAt = default(string), string slug = default(string), string title = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -58,15 +58,15 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("status is a required property for ListBuyerSubscriptionsItem and cannot be null");
             }
             this.Status = status;
+            this.IntervalDays = intervalDays;
+            this.DiscountBps = discountBps;
             // to ensure "nextRunAt" is required (not null)
             if (nextRunAt == null) {
                 throw new ArgumentNullException("nextRunAt is a required property for ListBuyerSubscriptionsItem and cannot be null");
             }
             this.NextRunAt = nextRunAt;
-            this.IntervalDays = intervalDays;
-            this.DiscountBps = discountBps;
-            this.Title = title;
             this.Slug = slug;
+            this.Title = title;
         }
 
         /// <summary>
@@ -82,24 +82,6 @@ namespace net.crossly.buyer.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", EmitDefaultValue = true)]
-        public string Slug { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NextRunAt
-        /// </summary>
-        [DataMember(Name = "nextRunAt", IsRequired = true, EmitDefaultValue = false)]
-        public string NextRunAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets IntervalDays
         /// </summary>
         [DataMember(Name = "intervalDays", IsRequired = true, EmitDefaultValue = false)]
@@ -112,6 +94,24 @@ namespace net.crossly.buyer.Model
         public decimal DiscountBps { get; set; }
 
         /// <summary>
+        /// Gets or Sets NextRunAt
+        /// </summary>
+        [DataMember(Name = "nextRunAt", IsRequired = true, EmitDefaultValue = false)]
+        public string NextRunAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Slug
+        /// </summary>
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -121,11 +121,11 @@ namespace net.crossly.buyer.Model
             sb.Append("class ListBuyerSubscriptionsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  Slug: ").Append(Slug).Append("\n");
-            sb.Append("  NextRunAt: ").Append(NextRunAt).Append("\n");
             sb.Append("  IntervalDays: ").Append(IntervalDays).Append("\n");
             sb.Append("  DiscountBps: ").Append(DiscountBps).Append("\n");
+            sb.Append("  NextRunAt: ").Append(NextRunAt).Append("\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -172,14 +172,12 @@ namespace net.crossly.buyer.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.IntervalDays == input.IntervalDays ||
+                    this.IntervalDays.Equals(input.IntervalDays)
                 ) && 
                 (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
+                    this.DiscountBps == input.DiscountBps ||
+                    this.DiscountBps.Equals(input.DiscountBps)
                 ) && 
                 (
                     this.NextRunAt == input.NextRunAt ||
@@ -187,12 +185,14 @@ namespace net.crossly.buyer.Model
                     this.NextRunAt.Equals(input.NextRunAt))
                 ) && 
                 (
-                    this.IntervalDays == input.IntervalDays ||
-                    this.IntervalDays.Equals(input.IntervalDays)
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
-                    this.DiscountBps == input.DiscountBps ||
-                    this.DiscountBps.Equals(input.DiscountBps)
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 );
         }
 
@@ -213,20 +213,20 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.Title != null)
+                hashCode = (hashCode * 59) + this.IntervalDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.DiscountBps.GetHashCode();
+                if (this.NextRunAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NextRunAt.GetHashCode();
                 }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
-                if (this.NextRunAt != null)
+                if (this.Title != null)
                 {
-                    hashCode = (hashCode * 59) + this.NextRunAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IntervalDays.GetHashCode();
-                hashCode = (hashCode * 59) + this.DiscountBps.GetHashCode();
                 return hashCode;
             }
         }

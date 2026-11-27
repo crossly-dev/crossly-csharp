@@ -39,17 +39,33 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAnalyticSummaryResponse" /> class.
         /// </summary>
+        /// <param name="days">days (required).</param>
         /// <param name="sales">sales (required).</param>
         /// <param name="revenue">revenue (required).</param>
         /// <param name="fees">fees (required).</param>
-        /// <param name="days">days (required).</param>
-        public GetAnalyticSummaryResponse(decimal sales = default(decimal), decimal revenue = default(decimal), decimal fees = default(decimal), decimal days = default(decimal))
+        /// <param name="pendingDetailsCount">pendingDetailsCount (required).</param>
+        /// <param name="unitsSold">unitsSold (required).</param>
+        /// <param name="netSalesCents">netSalesCents (required).</param>
+        /// <param name="feesCents">feesCents (required).</param>
+        /// <param name="netProfitCents">netProfitCents.</param>
+        public GetAnalyticSummaryResponse(decimal days = default(decimal), decimal sales = default(decimal), decimal revenue = default(decimal), decimal fees = default(decimal), decimal pendingDetailsCount = default(decimal), decimal unitsSold = default(decimal), decimal netSalesCents = default(decimal), decimal feesCents = default(decimal), decimal? netProfitCents = default(decimal?))
         {
+            this.Days = days;
             this.Sales = sales;
             this.Revenue = revenue;
             this.Fees = fees;
-            this.Days = days;
+            this.PendingDetailsCount = pendingDetailsCount;
+            this.UnitsSold = unitsSold;
+            this.NetSalesCents = netSalesCents;
+            this.FeesCents = feesCents;
+            this.NetProfitCents = netProfitCents;
         }
+
+        /// <summary>
+        /// Gets or Sets Days
+        /// </summary>
+        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Days { get; set; }
 
         /// <summary>
         /// Gets or Sets Sales
@@ -70,10 +86,34 @@ namespace net.crossly.Model
         public decimal Fees { get; set; }
 
         /// <summary>
-        /// Gets or Sets Days
+        /// Gets or Sets PendingDetailsCount
         /// </summary>
-        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Days { get; set; }
+        [DataMember(Name = "pendingDetailsCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PendingDetailsCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UnitsSold
+        /// </summary>
+        [DataMember(Name = "unitsSold", IsRequired = true, EmitDefaultValue = false)]
+        public decimal UnitsSold { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetSalesCents
+        /// </summary>
+        [DataMember(Name = "netSalesCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal NetSalesCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FeesCents
+        /// </summary>
+        [DataMember(Name = "feesCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal FeesCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetProfitCents
+        /// </summary>
+        [DataMember(Name = "netProfitCents", EmitDefaultValue = true)]
+        public decimal? NetProfitCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,10 +123,15 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAnalyticSummaryResponse {\n");
+            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  Sales: ").Append(Sales).Append("\n");
             sb.Append("  Revenue: ").Append(Revenue).Append("\n");
             sb.Append("  Fees: ").Append(Fees).Append("\n");
-            sb.Append("  Days: ").Append(Days).Append("\n");
+            sb.Append("  PendingDetailsCount: ").Append(PendingDetailsCount).Append("\n");
+            sb.Append("  UnitsSold: ").Append(UnitsSold).Append("\n");
+            sb.Append("  NetSalesCents: ").Append(NetSalesCents).Append("\n");
+            sb.Append("  FeesCents: ").Append(FeesCents).Append("\n");
+            sb.Append("  NetProfitCents: ").Append(NetProfitCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +168,10 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Days == input.Days ||
+                    this.Days.Equals(input.Days)
+                ) && 
+                (
                     this.Sales == input.Sales ||
                     this.Sales.Equals(input.Sales)
                 ) && 
@@ -135,8 +184,25 @@ namespace net.crossly.Model
                     this.Fees.Equals(input.Fees)
                 ) && 
                 (
-                    this.Days == input.Days ||
-                    this.Days.Equals(input.Days)
+                    this.PendingDetailsCount == input.PendingDetailsCount ||
+                    this.PendingDetailsCount.Equals(input.PendingDetailsCount)
+                ) && 
+                (
+                    this.UnitsSold == input.UnitsSold ||
+                    this.UnitsSold.Equals(input.UnitsSold)
+                ) && 
+                (
+                    this.NetSalesCents == input.NetSalesCents ||
+                    this.NetSalesCents.Equals(input.NetSalesCents)
+                ) && 
+                (
+                    this.FeesCents == input.FeesCents ||
+                    this.FeesCents.Equals(input.FeesCents)
+                ) && 
+                (
+                    this.NetProfitCents == input.NetProfitCents ||
+                    (this.NetProfitCents != null &&
+                    this.NetProfitCents.Equals(input.NetProfitCents))
                 );
         }
 
@@ -149,10 +215,18 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sales.GetHashCode();
                 hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
                 hashCode = (hashCode * 59) + this.Fees.GetHashCode();
-                hashCode = (hashCode * 59) + this.Days.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingDetailsCount.GetHashCode();
+                hashCode = (hashCode * 59) + this.UnitsSold.GetHashCode();
+                hashCode = (hashCode * 59) + this.NetSalesCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.FeesCents.GetHashCode();
+                if (this.NetProfitCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.NetProfitCents.GetHashCode();
+                }
                 return hashCode;
             }
         }

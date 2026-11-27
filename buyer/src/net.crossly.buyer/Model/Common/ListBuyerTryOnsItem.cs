@@ -40,33 +40,33 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerTryOnsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="listingId">listingId (required).</param>
         /// <param name="resultUrl">resultUrl.</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="listingTitle">listingTitle.</param>
-        public ListBuyerTryOnsItem(string id = default(string), string createdAt = default(string), string status = default(string), string listingId = default(string), string resultUrl = default(string), string listingTitle = default(string))
+        public ListBuyerTryOnsItem(string id = default(string), string listingId = default(string), string resultUrl = default(string), string status = default(string), string createdAt = default(string), string listingTitle = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerTryOnsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerTryOnsItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerTryOnsItem and cannot be null");
-            }
-            this.Status = status;
             // to ensure "listingId" is required (not null)
             if (listingId == null) {
                 throw new ArgumentNullException("listingId is a required property for ListBuyerTryOnsItem and cannot be null");
             }
             this.ListingId = listingId;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerTryOnsItem and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerTryOnsItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             this.ResultUrl = resultUrl;
             this.ListingTitle = listingTitle;
         }
@@ -76,18 +76,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingId
@@ -100,6 +88,18 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "resultUrl", EmitDefaultValue = true)]
         public string ResultUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingTitle
@@ -116,10 +116,10 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerTryOnsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  ResultUrl: ").Append(ResultUrl).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ListingTitle: ").Append(ListingTitle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -162,16 +162,6 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.ListingId == input.ListingId ||
                     (this.ListingId != null &&
                     this.ListingId.Equals(input.ListingId))
@@ -180,6 +170,16 @@ namespace net.crossly.buyer.Model
                     this.ResultUrl == input.ResultUrl ||
                     (this.ResultUrl != null &&
                     this.ResultUrl.Equals(input.ResultUrl))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
                     this.ListingTitle == input.ListingTitle ||
@@ -201,14 +201,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.ListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
@@ -216,6 +208,14 @@ namespace net.crossly.buyer.Model
                 if (this.ResultUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ResultUrl.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 if (this.ListingTitle != null)
                 {

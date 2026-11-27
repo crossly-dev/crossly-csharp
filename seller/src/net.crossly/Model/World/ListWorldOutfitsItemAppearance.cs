@@ -47,7 +47,8 @@ namespace net.crossly.Model
         /// <param name="brows">Face presets (BROW_STYLES, MOUTH_RESTS). Optional: a look saved before they existed is the defaults..</param>
         /// <param name="mouth">mouth.</param>
         /// <param name="shape">A body shape (BODY_SHAPES). Optional, like the face presets..</param>
-        public ListWorldOutfitsItemAppearance(string skin = default(string), string hair = default(string), string hairColour = default(string), string eyes = default(string), string build = default(string), string brows = default(string), string mouth = default(string), string shape = default(string))
+        /// <param name="outfit">outfit.</param>
+        public ListWorldOutfitsItemAppearance(string skin = default(string), string hair = default(string), string hairColour = default(string), string eyes = default(string), string build = default(string), string brows = default(string), string mouth = default(string), string shape = default(string), ListWorldOutfitsItemAppearanceOutfit outfit = default(ListWorldOutfitsItemAppearanceOutfit))
         {
             // to ensure "skin" is required (not null)
             if (skin == null) {
@@ -77,6 +78,7 @@ namespace net.crossly.Model
             this.Brows = brows;
             this.Mouth = mouth;
             this.Shape = shape;
+            this.Outfit = outfit;
         }
 
         /// <summary>
@@ -130,6 +132,12 @@ namespace net.crossly.Model
         public string Shape { get; set; }
 
         /// <summary>
+        /// Gets or Sets Outfit
+        /// </summary>
+        [DataMember(Name = "outfit", EmitDefaultValue = true)]
+        public ListWorldOutfitsItemAppearanceOutfit Outfit { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +153,7 @@ namespace net.crossly.Model
             sb.Append("  Brows: ").Append(Brows).Append("\n");
             sb.Append("  Mouth: ").Append(Mouth).Append("\n");
             sb.Append("  Shape: ").Append(Shape).Append("\n");
+            sb.Append("  Outfit: ").Append(Outfit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -219,6 +228,11 @@ namespace net.crossly.Model
                     this.Shape == input.Shape ||
                     (this.Shape != null &&
                     this.Shape.Equals(input.Shape))
+                ) && 
+                (
+                    this.Outfit == input.Outfit ||
+                    (this.Outfit != null &&
+                    this.Outfit.Equals(input.Outfit))
                 );
         }
 
@@ -262,6 +276,10 @@ namespace net.crossly.Model
                 if (this.Shape != null)
                 {
                     hashCode = (hashCode * 59) + this.Shape.GetHashCode();
+                }
+                if (this.Outfit != null)
+                {
+                    hashCode = (hashCode * 59) + this.Outfit.GetHashCode();
                 }
                 return hashCode;
             }

@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetInventoryValueHistoryResponseData" /> class.
         /// </summary>
         /// <param name="points">points (required).</param>
-        /// <param name="collectingSince">collectingSince (required).</param>
+        /// <param name="collectingSince">collectingSince.</param>
         public GetInventoryValueHistoryResponseData(List<GetInventoryValueHistoryResponseDataPoints> points = default(List<GetInventoryValueHistoryResponseDataPoints>), string collectingSince = default(string))
         {
             // to ensure "points" is required (not null)
@@ -48,10 +48,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("points is a required property for GetInventoryValueHistoryResponseData and cannot be null");
             }
             this.Points = points;
-            // to ensure "collectingSince" is required (not null)
-            if (collectingSince == null) {
-                throw new ArgumentNullException("collectingSince is a required property for GetInventoryValueHistoryResponseData and cannot be null");
-            }
             this.CollectingSince = collectingSince;
         }
 
@@ -64,7 +60,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets CollectingSince
         /// </summary>
-        [DataMember(Name = "collectingSince", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "collectingSince", EmitDefaultValue = true)]
         public string CollectingSince { get; set; }
 
         /// <summary>

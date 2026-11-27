@@ -46,8 +46,9 @@ namespace net.crossly.Model
         /// <param name="lvar">lvar (required).</param>
         /// <param name="stress">stress (required).</param>
         /// <param name="concentration">concentration (required).</param>
+        /// <param name="counterparty">counterparty (required).</param>
         /// <param name="partnerDcm">partnerDcm (required).</param>
-        public GetVaultMarketRiskReportResponse(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string asOf = default(string), GetVaultMarketNavResponseTotals nav = default(GetVaultMarketNavResponseTotals), GetVaultMarketRiskReportResponseVar var = default(GetVaultMarketRiskReportResponseVar), GetVaultMarketRiskReportResponseLvar lvar = default(GetVaultMarketRiskReportResponseLvar), GetVaultMarketRiskReportResponseStress stress = default(GetVaultMarketRiskReportResponseStress), GetVaultMarketRiskReportResponseConcentration concentration = default(GetVaultMarketRiskReportResponseConcentration), GetVaultMarketRiskReportResponsePartnerDcm partnerDcm = default(GetVaultMarketRiskReportResponsePartnerDcm))
+        public GetVaultMarketRiskReportResponse(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string asOf = default(string), GetVaultMarketNavResponseTotals nav = default(GetVaultMarketNavResponseTotals), GetVaultMarketRiskReportResponseVar var = default(GetVaultMarketRiskReportResponseVar), GetVaultMarketRiskReportResponseLvar lvar = default(GetVaultMarketRiskReportResponseLvar), GetVaultMarketRiskReportResponseStress stress = default(GetVaultMarketRiskReportResponseStress), GetVaultMarketRiskReportResponseConcentration concentration = default(GetVaultMarketRiskReportResponseConcentration), GetVaultMarketRiskReportResponseCounterparty counterparty = default(GetVaultMarketRiskReportResponseCounterparty), GetVaultMarketRiskReportResponsePartnerDcm partnerDcm = default(GetVaultMarketRiskReportResponsePartnerDcm))
         {
             // to ensure "account" is required (not null)
             if (account == null) {
@@ -84,6 +85,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("concentration is a required property for GetVaultMarketRiskReportResponse and cannot be null");
             }
             this.Concentration = concentration;
+            // to ensure "counterparty" is required (not null)
+            if (counterparty == null) {
+                throw new ArgumentNullException("counterparty is a required property for GetVaultMarketRiskReportResponse and cannot be null");
+            }
+            this.Counterparty = counterparty;
             // to ensure "partnerDcm" is required (not null)
             if (partnerDcm == null) {
                 throw new ArgumentNullException("partnerDcm is a required property for GetVaultMarketRiskReportResponse and cannot be null");
@@ -134,6 +140,12 @@ namespace net.crossly.Model
         public GetVaultMarketRiskReportResponseConcentration Concentration { get; set; }
 
         /// <summary>
+        /// Gets or Sets Counterparty
+        /// </summary>
+        [DataMember(Name = "counterparty", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketRiskReportResponseCounterparty Counterparty { get; set; }
+
+        /// <summary>
         /// Gets or Sets PartnerDcm
         /// </summary>
         [DataMember(Name = "partnerDcm", IsRequired = true, EmitDefaultValue = false)]
@@ -154,6 +166,7 @@ namespace net.crossly.Model
             sb.Append("  Lvar: ").Append(Lvar).Append("\n");
             sb.Append("  Stress: ").Append(Stress).Append("\n");
             sb.Append("  Concentration: ").Append(Concentration).Append("\n");
+            sb.Append("  Counterparty: ").Append(Counterparty).Append("\n");
             sb.Append("  PartnerDcm: ").Append(PartnerDcm).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -226,6 +239,11 @@ namespace net.crossly.Model
                     this.Concentration.Equals(input.Concentration))
                 ) && 
                 (
+                    this.Counterparty == input.Counterparty ||
+                    (this.Counterparty != null &&
+                    this.Counterparty.Equals(input.Counterparty))
+                ) && 
+                (
                     this.PartnerDcm == input.PartnerDcm ||
                     (this.PartnerDcm != null &&
                     this.PartnerDcm.Equals(input.PartnerDcm))
@@ -268,6 +286,10 @@ namespace net.crossly.Model
                 if (this.Concentration != null)
                 {
                     hashCode = (hashCode * 59) + this.Concentration.GetHashCode();
+                }
+                if (this.Counterparty != null)
+                {
+                    hashCode = (hashCode * 59) + this.Counterparty.GetHashCode();
                 }
                 if (this.PartnerDcm != null)
                 {

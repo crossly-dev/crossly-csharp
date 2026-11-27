@@ -39,16 +39,16 @@ namespace net.crossly.Model
         public enum ViewerEnum
         {
             /// <summary>
-            /// Enum Holder for value: holder
-            /// </summary>
-            [EnumMember(Value = "holder")]
-            Holder = 1,
-
-            /// <summary>
             /// Enum Public for value: public
             /// </summary>
             [EnumMember(Value = "public")]
-            Public = 2
+            Public = 1,
+
+            /// <summary>
+            /// Enum Holder for value: holder
+            /// </summary>
+            [EnumMember(Value = "holder")]
+            Holder = 2
 
         }
 
@@ -78,7 +78,7 @@ namespace net.crossly.Model
         /// <param name="stats">stats (required).</param>
         /// <param name="events">events (required).</param>
         /// <param name="marketHref">marketHref.</param>
-        public GetVaultMarketUnitStoryResponse(GetVaultMarketUnitStoryResponseUnit unit = default(GetVaultMarketUnitStoryResponseUnit), GetVaultMarketUnitStoryResponseHolder holder = default(GetVaultMarketUnitStoryResponseHolder), ListVaultMarketFeedItemMark mark = default(ListVaultMarketFeedItemMark), ViewerEnum viewer = default(ViewerEnum), bool shareable = default(bool), string shareUrl = default(string), List<GetVaultMarketUnitStoryResponseBadgesItem> badges = default(List<GetVaultMarketUnitStoryResponseBadgesItem>), GetVaultMarketUnitStoryResponseChain chain = default(GetVaultMarketUnitStoryResponseChain), GetVaultMarketUnitStoryResponseStats stats = default(GetVaultMarketUnitStoryResponseStats), List<GetVaultMarketUnitStoryResponseEvents> events = default(List<GetVaultMarketUnitStoryResponseEvents>), string marketHref = default(string))
+        public GetVaultMarketUnitStoryResponse(GetVaultMarketUnitStoryResponseUnit unit = default(GetVaultMarketUnitStoryResponseUnit), GetVaultMarketUnitStoryResponseHolder holder = default(GetVaultMarketUnitStoryResponseHolder), ListVaultMarketOpeningItemMark mark = default(ListVaultMarketOpeningItemMark), ViewerEnum viewer = default(ViewerEnum), bool shareable = default(bool), string shareUrl = default(string), List<GetVaultMarketUnitStoryResponseBadgesItem> badges = default(List<GetVaultMarketUnitStoryResponseBadgesItem>), GetVaultMarketUnitStoryResponseChain chain = default(GetVaultMarketUnitStoryResponseChain), GetVaultMarketUnitStoryResponseStats stats = default(GetVaultMarketUnitStoryResponseStats), List<GetVaultMarketUnitStoryResponseEvents> events = default(List<GetVaultMarketUnitStoryResponseEvents>), string marketHref = default(string))
         {
             // to ensure "unit" is required (not null)
             if (unit == null) {
@@ -137,7 +137,7 @@ namespace net.crossly.Model
         /// Gets or Sets Mark
         /// </summary>
         [DataMember(Name = "mark", IsRequired = true, EmitDefaultValue = false)]
-        public ListVaultMarketFeedItemMark Mark { get; set; }
+        public ListVaultMarketOpeningItemMark Mark { get; set; }
 
         /// <summary>
         /// Anyone with the link can read it (the holder&#39;s public vault profile is on).

@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
-            /// Enum Foreclosed for value: foreclosed
-            /// </summary>
-            [EnumMember(Value = "foreclosed")]
-            Foreclosed = 2,
-
-            /// <summary>
             /// Enum Grace for value: grace
             /// </summary>
             [EnumMember(Value = "grace")]
-            Grace = 3,
+            Grace = 2,
 
             /// <summary>
             /// Enum Delinquent for value: delinquent
             /// </summary>
             [EnumMember(Value = "delinquent")]
-            Delinquent = 4
+            Delinquent = 3,
+
+            /// <summary>
+            /// Enum Foreclosed for value: foreclosed
+            /// </summary>
+            [EnumMember(Value = "foreclosed")]
+            Foreclosed = 4
 
         }
 
@@ -67,40 +67,55 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public StatusEnum Status { get; set; }
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSpatialPropertyDeedMaintenanceResponseData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateSpatialPropertyDeedMaintenanceResponseData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateSpatialPropertyDeedMaintenanceResponseData" /> class.
-        /// </summary>
-        /// <param name="paidThrough">paidThrough (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="paidCents">paidCents (required).</param>
-        public CreateSpatialPropertyDeedMaintenanceResponseData(string paidThrough = default(string), StatusEnum status = default(StatusEnum), decimal paidCents = default(decimal))
+        /// <param name="requiresAction">requiresAction.</param>
+        /// <param name="paymentId">paymentId.</param>
+        /// <param name="clientSecret">clientSecret.</param>
+        /// <param name="paidThrough">paidThrough.</param>
+        /// <param name="status">status.</param>
+        /// <param name="paidCents">paidCents.</param>
+        public CreateSpatialPropertyDeedMaintenanceResponseData(bool requiresAction = default(bool), string paymentId = default(string), string clientSecret = default(string), string paidThrough = default(string), StatusEnum? status = default(StatusEnum?), decimal paidCents = default(decimal))
         {
-            // to ensure "paidThrough" is required (not null)
-            if (paidThrough == null) {
-                throw new ArgumentNullException("paidThrough is a required property for CreateSpatialPropertyDeedMaintenanceResponseData and cannot be null");
-            }
+            this.RequiresAction = requiresAction;
+            this.PaymentId = paymentId;
+            this.ClientSecret = clientSecret;
             this.PaidThrough = paidThrough;
             this.Status = status;
             this.PaidCents = paidCents;
         }
 
         /// <summary>
+        /// Gets or Sets RequiresAction
+        /// </summary>
+        [DataMember(Name = "requiresAction", EmitDefaultValue = true)]
+        public bool RequiresAction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PaymentId
+        /// </summary>
+        [DataMember(Name = "paymentId", EmitDefaultValue = false)]
+        public string PaymentId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientSecret
+        /// </summary>
+        [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
+        public string ClientSecret { get; set; }
+
+        /// <summary>
         /// Gets or Sets PaidThrough
         /// </summary>
-        [DataMember(Name = "paidThrough", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "paidThrough", EmitDefaultValue = false)]
         public string PaidThrough { get; set; }
 
         /// <summary>
         /// Gets or Sets PaidCents
         /// </summary>
-        [DataMember(Name = "paidCents", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "paidCents", EmitDefaultValue = false)]
         public decimal PaidCents { get; set; }
 
         /// <summary>
@@ -111,6 +126,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateSpatialPropertyDeedMaintenanceResponseData {\n");
+            sb.Append("  RequiresAction: ").Append(RequiresAction).Append("\n");
+            sb.Append("  PaymentId: ").Append(PaymentId).Append("\n");
+            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  PaidThrough: ").Append(PaidThrough).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PaidCents: ").Append(PaidCents).Append("\n");
@@ -150,6 +168,20 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.RequiresAction == input.RequiresAction ||
+                    this.RequiresAction.Equals(input.RequiresAction)
+                ) && 
+                (
+                    this.PaymentId == input.PaymentId ||
+                    (this.PaymentId != null &&
+                    this.PaymentId.Equals(input.PaymentId))
+                ) && 
+                (
+                    this.ClientSecret == input.ClientSecret ||
+                    (this.ClientSecret != null &&
+                    this.ClientSecret.Equals(input.ClientSecret))
+                ) && 
+                (
                     this.PaidThrough == input.PaidThrough ||
                     (this.PaidThrough != null &&
                     this.PaidThrough.Equals(input.PaidThrough))
@@ -173,6 +205,15 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.RequiresAction.GetHashCode();
+                if (this.PaymentId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentId.GetHashCode();
+                }
+                if (this.ClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.PaidThrough != null)
                 {
                     hashCode = (hashCode * 59) + this.PaidThrough.GetHashCode();

@@ -45,6 +45,9 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="description">description.</param>
+        /// <param name="notes">notes.</param>
+        /// <param name="isDefault">isDefault (required).</param>
         /// <param name="condition">condition.</param>
         /// <param name="size">size.</param>
         /// <param name="material">material.</param>
@@ -56,18 +59,15 @@ namespace net.crossly.Model
         /// <param name="sizeSystem">sizeSystem.</param>
         /// <param name="color">color.</param>
         /// <param name="tags">tags.</param>
-        /// <param name="notes">notes.</param>
         /// <param name="weightOz">weightOz.</param>
-        /// <param name="description">description.</param>
-        /// <param name="isDefault">isDefault (required).</param>
         /// <param name="title">title.</param>
-        /// <param name="scope">scope (required).</param>
-        /// <param name="shareToken">shareToken.</param>
         /// <param name="sortOrder">sortOrder (required).</param>
+        /// <param name="scope">scope (required).</param>
         /// <param name="descriptionVariants">descriptionVariants.</param>
         /// <param name="titleVariants">titleVariants.</param>
         /// <param name="defaultForCategory">defaultForCategory.</param>
-        public ListMeTemplatesItem(string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), string color = default(string), List<string> tags = default(List<string>), string notes = default(string), decimal? weightOz = default(decimal?), string description = default(string), bool isDefault = default(bool), string title = default(string), string scope = default(string), string shareToken = default(string), decimal sortOrder = default(decimal), List<string> descriptionVariants = default(List<string>), List<string> titleVariants = default(List<string>), string defaultForCategory = default(string))
+        /// <param name="shareToken">shareToken.</param>
+        public ListMeTemplatesItem(string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string description = default(string), string notes = default(string), bool isDefault = default(bool), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), string color = default(string), List<string> tags = default(List<string>), decimal? weightOz = default(decimal?), string title = default(string), decimal sortOrder = default(decimal), string scope = default(string), List<string> descriptionVariants = default(List<string>), List<string> titleVariants = default(List<string>), string defaultForCategory = default(string), string shareToken = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -87,13 +87,15 @@ namespace net.crossly.Model
             }
             this.UserId = userId;
             this.IsDefault = isDefault;
+            this.SortOrder = sortOrder;
             // to ensure "scope" is required (not null)
             if (scope == null) {
                 throw new ArgumentNullException("scope is a required property for ListMeTemplatesItem and cannot be null");
             }
             this.Scope = scope;
-            this.SortOrder = sortOrder;
             this.Brand = brand;
+            this.Description = description;
+            this.Notes = notes;
             this.Condition = condition;
             this.Size = size;
             this.Material = material;
@@ -105,14 +107,12 @@ namespace net.crossly.Model
             this.SizeSystem = sizeSystem;
             this.Color = color;
             this.Tags = tags;
-            this.Notes = notes;
             this.WeightOz = weightOz;
-            this.Description = description;
             this.Title = title;
-            this.ShareToken = shareToken;
             this.DescriptionVariants = descriptionVariants;
             this.TitleVariants = titleVariants;
             this.DefaultForCategory = defaultForCategory;
+            this.ShareToken = shareToken;
         }
 
         /// <summary>
@@ -150,6 +150,24 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Notes
+        /// </summary>
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
+        public string Notes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsDefault
+        /// </summary>
+        [DataMember(Name = "isDefault", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsDefault { get; set; }
 
         /// <summary>
         /// Gets or Sets Condition
@@ -218,28 +236,10 @@ namespace net.crossly.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or Sets Notes
-        /// </summary>
-        [DataMember(Name = "notes", EmitDefaultValue = true)]
-        public string Notes { get; set; }
-
-        /// <summary>
         /// Gets or Sets WeightOz
         /// </summary>
         [DataMember(Name = "weightOz", EmitDefaultValue = true)]
         public decimal? WeightOz { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsDefault
-        /// </summary>
-        [DataMember(Name = "isDefault", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsDefault { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -248,22 +248,16 @@ namespace net.crossly.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets Scope
-        /// </summary>
-        [DataMember(Name = "scope", IsRequired = true, EmitDefaultValue = false)]
-        public string Scope { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShareToken
-        /// </summary>
-        [DataMember(Name = "shareToken", EmitDefaultValue = true)]
-        public string ShareToken { get; set; }
-
-        /// <summary>
         /// Gets or Sets SortOrder
         /// </summary>
         [DataMember(Name = "sortOrder", IsRequired = true, EmitDefaultValue = false)]
         public decimal SortOrder { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Scope
+        /// </summary>
+        [DataMember(Name = "scope", IsRequired = true, EmitDefaultValue = false)]
+        public string Scope { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionVariants
@@ -284,6 +278,12 @@ namespace net.crossly.Model
         public string DefaultForCategory { get; set; }
 
         /// <summary>
+        /// Gets or Sets ShareToken
+        /// </summary>
+        [DataMember(Name = "shareToken", EmitDefaultValue = true)]
+        public string ShareToken { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -297,6 +297,9 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  Material: ").Append(Material).Append("\n");
@@ -308,17 +311,14 @@ namespace net.crossly.Model
             sb.Append("  SizeSystem: ").Append(SizeSystem).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  WeightOz: ").Append(WeightOz).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  ShareToken: ").Append(ShareToken).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
+            sb.Append("  Scope: ").Append(Scope).Append("\n");
             sb.Append("  DescriptionVariants: ").Append(DescriptionVariants).Append("\n");
             sb.Append("  TitleVariants: ").Append(TitleVariants).Append("\n");
             sb.Append("  DefaultForCategory: ").Append(DefaultForCategory).Append("\n");
+            sb.Append("  ShareToken: ").Append(ShareToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -385,6 +385,20 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Notes == input.Notes ||
+                    (this.Notes != null &&
+                    this.Notes.Equals(input.Notes))
+                ) && 
+                (
+                    this.IsDefault == input.IsDefault ||
+                    this.IsDefault.Equals(input.IsDefault)
+                ) && 
+                (
                     this.Condition == input.Condition ||
                     (this.Condition != null &&
                     this.Condition.Equals(input.Condition))
@@ -441,23 +455,9 @@ namespace net.crossly.Model
                     this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
-                ) && 
-                (
                     this.WeightOz == input.WeightOz ||
                     (this.WeightOz != null &&
                     this.WeightOz.Equals(input.WeightOz))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
-                    this.IsDefault == input.IsDefault ||
-                    this.IsDefault.Equals(input.IsDefault)
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -465,18 +465,13 @@ namespace net.crossly.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
+                    this.SortOrder == input.SortOrder ||
+                    this.SortOrder.Equals(input.SortOrder)
+                ) && 
+                (
                     this.Scope == input.Scope ||
                     (this.Scope != null &&
                     this.Scope.Equals(input.Scope))
-                ) && 
-                (
-                    this.ShareToken == input.ShareToken ||
-                    (this.ShareToken != null &&
-                    this.ShareToken.Equals(input.ShareToken))
-                ) && 
-                (
-                    this.SortOrder == input.SortOrder ||
-                    this.SortOrder.Equals(input.SortOrder)
                 ) && 
                 (
                     this.DescriptionVariants == input.DescriptionVariants ||
@@ -494,6 +489,11 @@ namespace net.crossly.Model
                     this.DefaultForCategory == input.DefaultForCategory ||
                     (this.DefaultForCategory != null &&
                     this.DefaultForCategory.Equals(input.DefaultForCategory))
+                ) && 
+                (
+                    this.ShareToken == input.ShareToken ||
+                    (this.ShareToken != null &&
+                    this.ShareToken.Equals(input.ShareToken))
                 );
         }
 
@@ -530,6 +530,15 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.Notes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
                 if (this.Condition != null)
                 {
                     hashCode = (hashCode * 59) + this.Condition.GetHashCode();
@@ -574,32 +583,19 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
                 }
-                if (this.Notes != null)
-                {
-                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
-                }
                 if (this.WeightOz != null)
                 {
                     hashCode = (hashCode * 59) + this.WeightOz.GetHashCode();
                 }
-                if (this.Description != null)
-                {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.SortOrder.GetHashCode();
                 if (this.Scope != null)
                 {
                     hashCode = (hashCode * 59) + this.Scope.GetHashCode();
                 }
-                if (this.ShareToken != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShareToken.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.SortOrder.GetHashCode();
                 if (this.DescriptionVariants != null)
                 {
                     hashCode = (hashCode * 59) + this.DescriptionVariants.GetHashCode();
@@ -611,6 +607,10 @@ namespace net.crossly.Model
                 if (this.DefaultForCategory != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultForCategory.GetHashCode();
+                }
+                if (this.ShareToken != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShareToken.GetHashCode();
                 }
                 return hashCode;
             }

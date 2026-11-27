@@ -38,16 +38,16 @@ namespace net.crossly.Model
         Free = 1,
 
         /// <summary>
-        /// Enum Sponsored for value: sponsored
-        /// </summary>
-        [EnumMember(Value = "sponsored")]
-        Sponsored = 2,
-
-        /// <summary>
         /// Enum Paid for value: paid
         /// </summary>
         [EnumMember(Value = "paid")]
-        Paid = 3
+        Paid = 2,
+
+        /// <summary>
+        /// Enum Sponsored for value: sponsored
+        /// </summary>
+        [EnumMember(Value = "sponsored")]
+        Sponsored = 3
 
     }
 

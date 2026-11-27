@@ -45,22 +45,22 @@ namespace net.crossly.buyer.Model
             Confirmed = 1,
 
             /// <summary>
+            /// Enum Barcode for value: barcode
+            /// </summary>
+            [EnumMember(Value = "barcode")]
+            Barcode = 2,
+
+            /// <summary>
             /// Enum Visual for value: visual
             /// </summary>
             [EnumMember(Value = "visual")]
-            Visual = 2,
+            Visual = 3,
 
             /// <summary>
             /// Enum Ocr for value: ocr
             /// </summary>
             [EnumMember(Value = "ocr")]
-            Ocr = 3,
-
-            /// <summary>
-            /// Enum Barcode for value: barcode
-            /// </summary>
-            [EnumMember(Value = "barcode")]
-            Barcode = 4
+            Ocr = 4
 
         }
 

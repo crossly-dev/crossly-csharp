@@ -39,49 +39,43 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerListingImpactResponseData" /> class.
         /// </summary>
-        /// <param name="source">source (required).</param>
-        /// <param name="label">label (required).</param>
         /// <param name="key">key (required).</param>
+        /// <param name="label">label (required).</param>
         /// <param name="co2Kg">co2Kg.</param>
         /// <param name="waterL">waterL.</param>
-        public GetBuyerListingImpactResponseData(string source = default(string), string label = default(string), string key = default(string), decimal? co2Kg = default(decimal?), decimal? waterL = default(decimal?))
+        /// <param name="source">source (required).</param>
+        public GetBuyerListingImpactResponseData(string key = default(string), string label = default(string), decimal? co2Kg = default(decimal?), decimal? waterL = default(decimal?), string source = default(string))
         {
-            // to ensure "source" is required (not null)
-            if (source == null) {
-                throw new ArgumentNullException("source is a required property for GetBuyerListingImpactResponseData and cannot be null");
-            }
-            this.Source = source;
-            // to ensure "label" is required (not null)
-            if (label == null) {
-                throw new ArgumentNullException("label is a required property for GetBuyerListingImpactResponseData and cannot be null");
-            }
-            this.Label = label;
             // to ensure "key" is required (not null)
             if (key == null) {
                 throw new ArgumentNullException("key is a required property for GetBuyerListingImpactResponseData and cannot be null");
             }
             this.Key = key;
+            // to ensure "label" is required (not null)
+            if (label == null) {
+                throw new ArgumentNullException("label is a required property for GetBuyerListingImpactResponseData and cannot be null");
+            }
+            this.Label = label;
+            // to ensure "source" is required (not null)
+            if (source == null) {
+                throw new ArgumentNullException("source is a required property for GetBuyerListingImpactResponseData and cannot be null");
+            }
+            this.Source = source;
             this.Co2Kg = co2Kg;
             this.WaterL = waterL;
         }
-
-        /// <summary>
-        /// Gets or Sets Source
-        /// </summary>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
-        public string Source { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
-        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Key
         /// </summary>
         [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
+        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Co2Kg
@@ -96,6 +90,12 @@ namespace net.crossly.buyer.Model
         public decimal? WaterL { get; set; }
 
         /// <summary>
+        /// Gets or Sets Source
+        /// </summary>
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        public string Source { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -103,11 +103,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingImpactResponseData {\n");
-            sb.Append("  Source: ").Append(Source).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Co2Kg: ").Append(Co2Kg).Append("\n");
             sb.Append("  WaterL: ").Append(WaterL).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,19 +144,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
+                    this.Key == input.Key ||
+                    (this.Key != null &&
+                    this.Key.Equals(input.Key))
                 ) && 
                 (
                     this.Label == input.Label ||
                     (this.Label != null &&
                     this.Label.Equals(input.Label))
-                ) && 
-                (
-                    this.Key == input.Key ||
-                    (this.Key != null &&
-                    this.Key.Equals(input.Key))
                 ) && 
                 (
                     this.Co2Kg == input.Co2Kg ||
@@ -167,6 +162,11 @@ namespace net.crossly.buyer.Model
                     this.WaterL == input.WaterL ||
                     (this.WaterL != null &&
                     this.WaterL.Equals(input.WaterL))
+                ) && 
+                (
+                    this.Source == input.Source ||
+                    (this.Source != null &&
+                    this.Source.Equals(input.Source))
                 );
         }
 
@@ -179,17 +179,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Source != null)
+                if (this.Key != null)
                 {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
                 if (this.Label != null)
                 {
                     hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
-                if (this.Key != null)
-                {
-                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
                 if (this.Co2Kg != null)
                 {
@@ -198,6 +194,10 @@ namespace net.crossly.buyer.Model
                 if (this.WaterL != null)
                 {
                     hashCode = (hashCode * 59) + this.WaterL.GetHashCode();
+                }
+                if (this.Source != null)
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
                 }
                 return hashCode;
             }

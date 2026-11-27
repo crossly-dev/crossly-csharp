@@ -40,16 +40,16 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerAuctionMeResponseData" /> class.
         /// </summary>
         /// <param name="bidding">bidding (required).</param>
-        /// <param name="won">won.</param>
         /// <param name="myMaxCents">myMaxCents.</param>
         /// <param name="leading">leading.</param>
+        /// <param name="won">won.</param>
         /// <param name="needsPayment">Won, and the charge at close did not go through — call pay..</param>
-        public GetBuyerAuctionMeResponseData(bool bidding = default(bool), bool? won = default(bool?), decimal? myMaxCents = default(decimal?), bool? leading = default(bool?), bool? needsPayment = default(bool?))
+        public GetBuyerAuctionMeResponseData(bool bidding = default(bool), decimal? myMaxCents = default(decimal?), bool? leading = default(bool?), bool? won = default(bool?), bool? needsPayment = default(bool?))
         {
             this.Bidding = bidding;
-            this.Won = won;
             this.MyMaxCents = myMaxCents;
             this.Leading = leading;
+            this.Won = won;
             this.NeedsPayment = needsPayment;
         }
 
@@ -58,12 +58,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "bidding", IsRequired = true, EmitDefaultValue = true)]
         public bool Bidding { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Won
-        /// </summary>
-        [DataMember(Name = "won", EmitDefaultValue = true)]
-        public bool? Won { get; set; }
 
         /// <summary>
         /// Gets or Sets MyMaxCents
@@ -76,6 +70,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "leading", EmitDefaultValue = true)]
         public bool? Leading { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Won
+        /// </summary>
+        [DataMember(Name = "won", EmitDefaultValue = true)]
+        public bool? Won { get; set; }
 
         /// <summary>
         /// Won, and the charge at close did not go through — call pay.
@@ -93,9 +93,9 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerAuctionMeResponseData {\n");
             sb.Append("  Bidding: ").Append(Bidding).Append("\n");
-            sb.Append("  Won: ").Append(Won).Append("\n");
             sb.Append("  MyMaxCents: ").Append(MyMaxCents).Append("\n");
             sb.Append("  Leading: ").Append(Leading).Append("\n");
+            sb.Append("  Won: ").Append(Won).Append("\n");
             sb.Append("  NeedsPayment: ").Append(NeedsPayment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -137,11 +137,6 @@ namespace net.crossly.buyer.Model
                     this.Bidding.Equals(input.Bidding)
                 ) && 
                 (
-                    this.Won == input.Won ||
-                    (this.Won != null &&
-                    this.Won.Equals(input.Won))
-                ) && 
-                (
                     this.MyMaxCents == input.MyMaxCents ||
                     (this.MyMaxCents != null &&
                     this.MyMaxCents.Equals(input.MyMaxCents))
@@ -150,6 +145,11 @@ namespace net.crossly.buyer.Model
                     this.Leading == input.Leading ||
                     (this.Leading != null &&
                     this.Leading.Equals(input.Leading))
+                ) && 
+                (
+                    this.Won == input.Won ||
+                    (this.Won != null &&
+                    this.Won.Equals(input.Won))
                 ) && 
                 (
                     this.NeedsPayment == input.NeedsPayment ||
@@ -168,10 +168,6 @@ namespace net.crossly.buyer.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Bidding.GetHashCode();
-                if (this.Won != null)
-                {
-                    hashCode = (hashCode * 59) + this.Won.GetHashCode();
-                }
                 if (this.MyMaxCents != null)
                 {
                     hashCode = (hashCode * 59) + this.MyMaxCents.GetHashCode();
@@ -179,6 +175,10 @@ namespace net.crossly.buyer.Model
                 if (this.Leading != null)
                 {
                     hashCode = (hashCode * 59) + this.Leading.GetHashCode();
+                }
+                if (this.Won != null)
+                {
+                    hashCode = (hashCode * 59) + this.Won.GetHashCode();
                 }
                 if (this.NeedsPayment != null)
                 {

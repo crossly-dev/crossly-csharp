@@ -48,7 +48,8 @@ namespace net.crossly.Model
         /// <param name="sharesProblem">sharesProblem.</param>
         /// <param name="units">units (required).</param>
         /// <param name="claims">claims (required).</param>
-        public GetVaultMarketTodResponse(GetVaultMarketTodMyClaimResponseGate gate = default(GetVaultMarketTodMyClaimResponseGate), bool accepted = default(bool), string acceptedVersion = default(string), string acceptedAt = default(string), bool locked = default(bool), List<GetVaultMarketTodResponseBeneficiaries> beneficiaries = default(List<GetVaultMarketTodResponseBeneficiaries>), string sharesProblem = default(string), List<GetVaultMarketTodResponseUnits> units = default(List<GetVaultMarketTodResponseUnits>), List<GetVaultMarketTodResponseClaims> claims = default(List<GetVaultMarketTodResponseClaims>))
+        /// <param name="vaultShares">vaultShares.</param>
+        public GetVaultMarketTodResponse(GetVaultMarketTodMyClaimResponseGate gate = default(GetVaultMarketTodMyClaimResponseGate), bool accepted = default(bool), string acceptedVersion = default(string), string acceptedAt = default(string), bool locked = default(bool), List<GetVaultMarketTodResponseBeneficiaries> beneficiaries = default(List<GetVaultMarketTodResponseBeneficiaries>), string sharesProblem = default(string), List<GetVaultMarketTodResponseUnits> units = default(List<GetVaultMarketTodResponseUnits>), List<GetVaultMarketTodResponseClaims> claims = default(List<GetVaultMarketTodResponseClaims>), GetVaultMarketTodResponseVaultShares vaultShares = default(GetVaultMarketTodResponseVaultShares))
         {
             // to ensure "gate" is required (not null)
             if (gate == null) {
@@ -79,6 +80,7 @@ namespace net.crossly.Model
             this.Claims = claims;
             this.AcceptedAt = acceptedAt;
             this.SharesProblem = sharesProblem;
+            this.VaultShares = vaultShares;
         }
 
         /// <summary>
@@ -136,6 +138,12 @@ namespace net.crossly.Model
         public List<GetVaultMarketTodResponseClaims> Claims { get; set; }
 
         /// <summary>
+        /// Gets or Sets VaultShares
+        /// </summary>
+        [DataMember(Name = "vaultShares", EmitDefaultValue = true)]
+        public GetVaultMarketTodResponseVaultShares VaultShares { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -152,6 +160,7 @@ namespace net.crossly.Model
             sb.Append("  SharesProblem: ").Append(SharesProblem).Append("\n");
             sb.Append("  Units: ").Append(Units).Append("\n");
             sb.Append("  Claims: ").Append(Claims).Append("\n");
+            sb.Append("  VaultShares: ").Append(VaultShares).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -232,6 +241,11 @@ namespace net.crossly.Model
                     this.Claims != null &&
                     input.Claims != null &&
                     this.Claims.SequenceEqual(input.Claims)
+                ) && 
+                (
+                    this.VaultShares == input.VaultShares ||
+                    (this.VaultShares != null &&
+                    this.VaultShares.Equals(input.VaultShares))
                 );
         }
 
@@ -273,6 +287,10 @@ namespace net.crossly.Model
                 if (this.Claims != null)
                 {
                     hashCode = (hashCode * 59) + this.Claims.GetHashCode();
+                }
+                if (this.VaultShares != null)
+                {
+                    hashCode = (hashCode * 59) + this.VaultShares.GetHashCode();
                 }
                 return hashCode;
             }

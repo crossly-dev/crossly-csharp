@@ -40,53 +40,73 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListAutomationRulesItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="userId">userId (required).</param>
         /// <param name="name">name (required).</param>
+        /// <param name="isActive">isActive (required).</param>
+        /// <param name="triggerType">triggerType (required).</param>
+        /// <param name="triggerConfig">triggerConfig (required).</param>
+        /// <param name="conditionType">conditionType.</param>
+        /// <param name="conditionConfig">conditionConfig.</param>
+        /// <param name="actionType">actionType (required).</param>
+        /// <param name="actionConfig">actionConfig (required).</param>
+        /// <param name="platforms">platforms.</param>
+        /// <param name="lastRunAt">lastRunAt.</param>
+        /// <param name="nextRunAt">nextRunAt.</param>
+        /// <param name="runCount">runCount (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="isActive">isActive (required).</param>
-        /// <param name="platforms">platforms.</param>
-        /// <param name="nextRunAt">nextRunAt.</param>
-        /// <param name="lastRunAt">lastRunAt.</param>
-        /// <param name="triggerType">triggerType (required).</param>
-        /// <param name="conditionType">conditionType.</param>
-        /// <param name="actionType">actionType (required).</param>
-        /// <param name="runCount">runCount (required).</param>
-        public ListAutomationRulesItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), bool isActive = default(bool), List<string> platforms = default(List<string>), DateTime? nextRunAt = default(DateTime?), DateTime? lastRunAt = default(DateTime?), string triggerType = default(string), string conditionType = default(string), string actionType = default(string), decimal runCount = default(decimal))
+        /// <param name="workflowId">The workflow this rule is (open it in /v1/workflows). (required).</param>
+        public ListAutomationRulesItem(string id = default(string), string userId = default(string), string name = default(string), bool isActive = default(bool), string triggerType = default(string), Dictionary<string, Object> triggerConfig = default(Dictionary<string, Object>), string conditionType = default(string), Dictionary<string, Object> conditionConfig = default(Dictionary<string, Object>), string actionType = default(string), Dictionary<string, Object> actionConfig = default(Dictionary<string, Object>), List<string> platforms = default(List<string>), DateTime? lastRunAt = default(DateTime?), DateTime? nextRunAt = default(DateTime?), decimal runCount = default(decimal), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string workflowId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListAutomationRulesItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for ListAutomationRulesItem and cannot be null");
-            }
-            this.Name = name;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             // to ensure "userId" is required (not null)
             if (userId == null) {
                 throw new ArgumentNullException("userId is a required property for ListAutomationRulesItem and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for ListAutomationRulesItem and cannot be null");
+            }
+            this.Name = name;
             this.IsActive = isActive;
             // to ensure "triggerType" is required (not null)
             if (triggerType == null) {
                 throw new ArgumentNullException("triggerType is a required property for ListAutomationRulesItem and cannot be null");
             }
             this.TriggerType = triggerType;
+            // to ensure "triggerConfig" is required (not null)
+            if (triggerConfig == null) {
+                throw new ArgumentNullException("triggerConfig is a required property for ListAutomationRulesItem and cannot be null");
+            }
+            this.TriggerConfig = triggerConfig;
             // to ensure "actionType" is required (not null)
             if (actionType == null) {
                 throw new ArgumentNullException("actionType is a required property for ListAutomationRulesItem and cannot be null");
             }
             this.ActionType = actionType;
+            // to ensure "actionConfig" is required (not null)
+            if (actionConfig == null) {
+                throw new ArgumentNullException("actionConfig is a required property for ListAutomationRulesItem and cannot be null");
+            }
+            this.ActionConfig = actionConfig;
             this.RunCount = runCount;
-            this.Platforms = platforms;
-            this.NextRunAt = nextRunAt;
-            this.LastRunAt = lastRunAt;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+            // to ensure "workflowId" is required (not null)
+            if (workflowId == null) {
+                throw new ArgumentNullException("workflowId is a required property for ListAutomationRulesItem and cannot be null");
+            }
+            this.WorkflowId = workflowId;
             this.ConditionType = conditionType;
+            this.ConditionConfig = conditionConfig;
+            this.Platforms = platforms;
+            this.LastRunAt = lastRunAt;
+            this.NextRunAt = nextRunAt;
         }
 
         /// <summary>
@@ -96,10 +116,82 @@ namespace net.crossly.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
+        public string UserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsActive
+        /// </summary>
+        [DataMember(Name = "isActive", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TriggerType
+        /// </summary>
+        [DataMember(Name = "triggerType", IsRequired = true, EmitDefaultValue = false)]
+        public string TriggerType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TriggerConfig
+        /// </summary>
+        [DataMember(Name = "triggerConfig", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> TriggerConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConditionType
+        /// </summary>
+        [DataMember(Name = "conditionType", EmitDefaultValue = true)]
+        public string ConditionType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConditionConfig
+        /// </summary>
+        [DataMember(Name = "conditionConfig", EmitDefaultValue = true)]
+        public Dictionary<string, Object> ConditionConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ActionType
+        /// </summary>
+        [DataMember(Name = "actionType", IsRequired = true, EmitDefaultValue = false)]
+        public string ActionType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ActionConfig
+        /// </summary>
+        [DataMember(Name = "actionConfig", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> ActionConfig { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Platforms
+        /// </summary>
+        [DataMember(Name = "platforms", EmitDefaultValue = true)]
+        public List<string> Platforms { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastRunAt
+        /// </summary>
+        [DataMember(Name = "lastRunAt", EmitDefaultValue = true)]
+        public DateTime? LastRunAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NextRunAt
+        /// </summary>
+        [DataMember(Name = "nextRunAt", EmitDefaultValue = true)]
+        public DateTime? NextRunAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RunCount
+        /// </summary>
+        [DataMember(Name = "runCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal RunCount { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -114,58 +206,11 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// The workflow this rule is (open it in /v1/workflows).
         /// </summary>
-        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
-        public string UserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsActive
-        /// </summary>
-        [DataMember(Name = "isActive", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Platforms
-        /// </summary>
-        [DataMember(Name = "platforms", EmitDefaultValue = true)]
-        public List<string> Platforms { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NextRunAt
-        /// </summary>
-        [DataMember(Name = "nextRunAt", EmitDefaultValue = true)]
-        public DateTime? NextRunAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastRunAt
-        /// </summary>
-        [DataMember(Name = "lastRunAt", EmitDefaultValue = true)]
-        public DateTime? LastRunAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TriggerType
-        /// </summary>
-        [DataMember(Name = "triggerType", IsRequired = true, EmitDefaultValue = false)]
-        public string TriggerType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ConditionType
-        /// </summary>
-        [DataMember(Name = "conditionType", EmitDefaultValue = true)]
-        public string ConditionType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ActionType
-        /// </summary>
-        [DataMember(Name = "actionType", IsRequired = true, EmitDefaultValue = false)]
-        public string ActionType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RunCount
-        /// </summary>
-        [DataMember(Name = "runCount", IsRequired = true, EmitDefaultValue = false)]
-        public decimal RunCount { get; set; }
+        /// <value>The workflow this rule is (open it in /v1/workflows).</value>
+        [DataMember(Name = "workflowId", IsRequired = true, EmitDefaultValue = false)]
+        public string WorkflowId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -176,18 +221,22 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListAutomationRulesItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  TriggerType: ").Append(TriggerType).Append("\n");
+            sb.Append("  TriggerConfig: ").Append(TriggerConfig).Append("\n");
+            sb.Append("  ConditionType: ").Append(ConditionType).Append("\n");
+            sb.Append("  ConditionConfig: ").Append(ConditionConfig).Append("\n");
+            sb.Append("  ActionType: ").Append(ActionType).Append("\n");
+            sb.Append("  ActionConfig: ").Append(ActionConfig).Append("\n");
+            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
+            sb.Append("  LastRunAt: ").Append(LastRunAt).Append("\n");
+            sb.Append("  NextRunAt: ").Append(NextRunAt).Append("\n");
+            sb.Append("  RunCount: ").Append(RunCount).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
-            sb.Append("  NextRunAt: ").Append(NextRunAt).Append("\n");
-            sb.Append("  LastRunAt: ").Append(LastRunAt).Append("\n");
-            sb.Append("  TriggerType: ").Append(TriggerType).Append("\n");
-            sb.Append("  ConditionType: ").Append(ConditionType).Append("\n");
-            sb.Append("  ActionType: ").Append(ActionType).Append("\n");
-            sb.Append("  RunCount: ").Append(RunCount).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,9 +278,71 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.IsActive == input.IsActive ||
+                    this.IsActive.Equals(input.IsActive)
+                ) && 
+                (
+                    this.TriggerType == input.TriggerType ||
+                    (this.TriggerType != null &&
+                    this.TriggerType.Equals(input.TriggerType))
+                ) && 
+                (
+                    this.TriggerConfig == input.TriggerConfig ||
+                    this.TriggerConfig != null &&
+                    input.TriggerConfig != null &&
+                    this.TriggerConfig.SequenceEqual(input.TriggerConfig)
+                ) && 
+                (
+                    this.ConditionType == input.ConditionType ||
+                    (this.ConditionType != null &&
+                    this.ConditionType.Equals(input.ConditionType))
+                ) && 
+                (
+                    this.ConditionConfig == input.ConditionConfig ||
+                    this.ConditionConfig != null &&
+                    input.ConditionConfig != null &&
+                    this.ConditionConfig.SequenceEqual(input.ConditionConfig)
+                ) && 
+                (
+                    this.ActionType == input.ActionType ||
+                    (this.ActionType != null &&
+                    this.ActionType.Equals(input.ActionType))
+                ) && 
+                (
+                    this.ActionConfig == input.ActionConfig ||
+                    this.ActionConfig != null &&
+                    input.ActionConfig != null &&
+                    this.ActionConfig.SequenceEqual(input.ActionConfig)
+                ) && 
+                (
+                    this.Platforms == input.Platforms ||
+                    this.Platforms != null &&
+                    input.Platforms != null &&
+                    this.Platforms.SequenceEqual(input.Platforms)
+                ) && 
+                (
+                    this.LastRunAt == input.LastRunAt ||
+                    (this.LastRunAt != null &&
+                    this.LastRunAt.Equals(input.LastRunAt))
+                ) && 
+                (
+                    this.NextRunAt == input.NextRunAt ||
+                    (this.NextRunAt != null &&
+                    this.NextRunAt.Equals(input.NextRunAt))
+                ) && 
+                (
+                    this.RunCount == input.RunCount ||
+                    this.RunCount.Equals(input.RunCount)
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -244,48 +355,9 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
-                    this.UserId == input.UserId ||
-                    (this.UserId != null &&
-                    this.UserId.Equals(input.UserId))
-                ) && 
-                (
-                    this.IsActive == input.IsActive ||
-                    this.IsActive.Equals(input.IsActive)
-                ) && 
-                (
-                    this.Platforms == input.Platforms ||
-                    this.Platforms != null &&
-                    input.Platforms != null &&
-                    this.Platforms.SequenceEqual(input.Platforms)
-                ) && 
-                (
-                    this.NextRunAt == input.NextRunAt ||
-                    (this.NextRunAt != null &&
-                    this.NextRunAt.Equals(input.NextRunAt))
-                ) && 
-                (
-                    this.LastRunAt == input.LastRunAt ||
-                    (this.LastRunAt != null &&
-                    this.LastRunAt.Equals(input.LastRunAt))
-                ) && 
-                (
-                    this.TriggerType == input.TriggerType ||
-                    (this.TriggerType != null &&
-                    this.TriggerType.Equals(input.TriggerType))
-                ) && 
-                (
-                    this.ConditionType == input.ConditionType ||
-                    (this.ConditionType != null &&
-                    this.ConditionType.Equals(input.ConditionType))
-                ) && 
-                (
-                    this.ActionType == input.ActionType ||
-                    (this.ActionType != null &&
-                    this.ActionType.Equals(input.ActionType))
-                ) && 
-                (
-                    this.RunCount == input.RunCount ||
-                    this.RunCount.Equals(input.RunCount)
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
                 );
         }
 
@@ -302,10 +374,52 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.UserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
+                if (this.TriggerType != null)
+                {
+                    hashCode = (hashCode * 59) + this.TriggerType.GetHashCode();
+                }
+                if (this.TriggerConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.TriggerConfig.GetHashCode();
+                }
+                if (this.ConditionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConditionType.GetHashCode();
+                }
+                if (this.ConditionConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConditionConfig.GetHashCode();
+                }
+                if (this.ActionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionType.GetHashCode();
+                }
+                if (this.ActionConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionConfig.GetHashCode();
+                }
+                if (this.Platforms != null)
+                {
+                    hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
+                }
+                if (this.LastRunAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastRunAt.GetHashCode();
+                }
+                if (this.NextRunAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextRunAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RunCount.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
@@ -314,36 +428,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
-                if (this.UserId != null)
+                if (this.WorkflowId != null)
                 {
-                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
-                if (this.Platforms != null)
-                {
-                    hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
-                }
-                if (this.NextRunAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.NextRunAt.GetHashCode();
-                }
-                if (this.LastRunAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastRunAt.GetHashCode();
-                }
-                if (this.TriggerType != null)
-                {
-                    hashCode = (hashCode * 59) + this.TriggerType.GetHashCode();
-                }
-                if (this.ConditionType != null)
-                {
-                    hashCode = (hashCode * 59) + this.ConditionType.GetHashCode();
-                }
-                if (this.ActionType != null)
-                {
-                    hashCode = (hashCode * 59) + this.ActionType.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.RunCount.GetHashCode();
                 return hashCode;
             }
         }

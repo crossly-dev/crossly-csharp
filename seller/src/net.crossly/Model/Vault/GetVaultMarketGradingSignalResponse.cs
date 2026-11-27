@@ -44,22 +44,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 
@@ -76,16 +76,16 @@ namespace net.crossly.Model
         public enum RawTierEnum
         {
             /// <summary>
-            /// Enum Standard for value: standard
-            /// </summary>
-            [EnumMember(Value = "standard")]
-            Standard = 1,
-
-            /// <summary>
             /// Enum Closed for value: closed
             /// </summary>
             [EnumMember(Value = "closed")]
-            Closed = 2,
+            Closed = 1,
+
+            /// <summary>
+            /// Enum Standard for value: standard
+            /// </summary>
+            [EnumMember(Value = "standard")]
+            Standard = 2,
 
             /// <summary>
             /// Enum Deep for value: deep
@@ -124,7 +124,8 @@ namespace net.crossly.Model
         /// <param name="rawTier">rawTier (required).</param>
         /// <param name="myUnits">Units of yours it pays to grade (none when no grade pays). (required).</param>
         /// <param name="myRawUnits">myRawUnits (required).</param>
-        public GetVaultMarketGradingSignalResponse(string bookKey = default(string), decimal? rawMarkCents = default(decimal?), RawMarkQualityEnum rawMarkQuality = default(RawMarkQualityEnum), List<GetVaultMarketKeyStatResponse> graded = default(List<GetVaultMarketKeyStatResponse>), List<GetVaultMarketGradingSignalResponseGraders> graders = default(List<GetVaultMarketGradingSignalResponseGraders>), bool worthIt = default(bool), RawTierEnum rawTier = default(RawTierEnum), List<string> myUnits = default(List<string>), decimal myRawUnits = default(decimal))
+        /// <param name="cta">cta.</param>
+        public GetVaultMarketGradingSignalResponse(string bookKey = default(string), decimal? rawMarkCents = default(decimal?), RawMarkQualityEnum rawMarkQuality = default(RawMarkQualityEnum), List<GetVaultMarketGradingSignalResponseGraded> graded = default(List<GetVaultMarketGradingSignalResponseGraded>), List<GetVaultMarketGradingSignalResponseGraders> graders = default(List<GetVaultMarketGradingSignalResponseGraders>), bool worthIt = default(bool), RawTierEnum rawTier = default(RawTierEnum), List<string> myUnits = default(List<string>), decimal myRawUnits = default(decimal), GetVaultMarketGradingSignalResponseCta cta = default(GetVaultMarketGradingSignalResponseCta))
         {
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
@@ -151,6 +152,7 @@ namespace net.crossly.Model
             this.MyUnits = myUnits;
             this.MyRawUnits = myRawUnits;
             this.RawMarkCents = rawMarkCents;
+            this.Cta = cta;
         }
 
         /// <summary>
@@ -169,7 +171,7 @@ namespace net.crossly.Model
         /// Gets or Sets Graded
         /// </summary>
         [DataMember(Name = "graded", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetVaultMarketKeyStatResponse> Graded { get; set; }
+        public List<GetVaultMarketGradingSignalResponseGraded> Graded { get; set; }
 
         /// <summary>
         /// Gets or Sets Graders
@@ -197,6 +199,12 @@ namespace net.crossly.Model
         public decimal MyRawUnits { get; set; }
 
         /// <summary>
+        /// Gets or Sets Cta
+        /// </summary>
+        [DataMember(Name = "cta", EmitDefaultValue = true)]
+        public GetVaultMarketGradingSignalResponseCta Cta { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -213,6 +221,7 @@ namespace net.crossly.Model
             sb.Append("  RawTier: ").Append(RawTier).Append("\n");
             sb.Append("  MyUnits: ").Append(MyUnits).Append("\n");
             sb.Append("  MyRawUnits: ").Append(MyRawUnits).Append("\n");
+            sb.Append("  Cta: ").Append(Cta).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -291,6 +300,11 @@ namespace net.crossly.Model
                 (
                     this.MyRawUnits == input.MyRawUnits ||
                     this.MyRawUnits.Equals(input.MyRawUnits)
+                ) && 
+                (
+                    this.Cta == input.Cta ||
+                    (this.Cta != null &&
+                    this.Cta.Equals(input.Cta))
                 );
         }
 
@@ -327,6 +341,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.MyUnits.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MyRawUnits.GetHashCode();
+                if (this.Cta != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cta.GetHashCode();
+                }
                 return hashCode;
             }
         }

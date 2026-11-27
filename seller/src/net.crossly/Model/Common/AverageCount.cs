@@ -26,7 +26,7 @@ using OpenAPIDateConverter = net.crossly.Client.OpenAPIDateConverter;
 namespace net.crossly.Model
 {
     /// <summary>
-    /// AverageCount
+    /// 1172 ratings: average stars (null before the first) and how many.
     /// </summary>
     [DataContract(Name = "AverageCount")]
     public partial class AverageCount : IEquatable<AverageCount>, IValidatableObject

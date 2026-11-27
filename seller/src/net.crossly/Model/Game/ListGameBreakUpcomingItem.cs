@@ -44,13 +44,14 @@ namespace net.crossly.Model
         /// <param name="product">product.</param>
         /// <param name="status">status (required).</param>
         /// <param name="startsAt">Scheduled start (ISO), and whether the seller is breaking right now..</param>
+        /// <param name="doorsOpenAt">When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller&#39;s &#x60;live_early_entry&#x60; perk. Null with no start. Optional: a board read without a viewer leaves it at the start..</param>
         /// <param name="live">live (required).</param>
         /// <param name="shop">shop (required).</param>
         /// <param name="buyUrl">The listing the spots are bought through, on crossly.net. Never a world checkout..</param>
         /// <param name="spotsLeft">spotsLeft (required).</param>
         /// <param name="spots">spots (required).</param>
         /// <param name="hits">hits (required).</param>
-        public ListGameBreakUpcomingItem(string breakId = default(string), string title = default(string), string product = default(string), string status = default(string), string startsAt = default(string), bool live = default(bool), SlugName shop = default(SlugName), string buyUrl = default(string), decimal spotsLeft = default(decimal), List<ListGameBreakUpcomingItemSpots> spots = default(List<ListGameBreakUpcomingItemSpots>), List<ListGameBreakUpcomingItemHits> hits = default(List<ListGameBreakUpcomingItemHits>))
+        public ListGameBreakUpcomingItem(string breakId = default(string), string title = default(string), string product = default(string), string status = default(string), string startsAt = default(string), string doorsOpenAt = default(string), bool live = default(bool), NameSlug shop = default(NameSlug), string buyUrl = default(string), decimal spotsLeft = default(decimal), List<ListGameBreakUpcomingItemSpots> spots = default(List<ListGameBreakUpcomingItemSpots>), List<ListGameBreakUpcomingItemHits> hits = default(List<ListGameBreakUpcomingItemHits>))
         {
             // to ensure "breakId" is required (not null)
             if (breakId == null) {
@@ -86,6 +87,7 @@ namespace net.crossly.Model
             this.Hits = hits;
             this.Product = product;
             this.StartsAt = startsAt;
+            this.DoorsOpenAt = doorsOpenAt;
             this.BuyUrl = buyUrl;
         }
 
@@ -121,6 +123,13 @@ namespace net.crossly.Model
         public string StartsAt { get; set; }
 
         /// <summary>
+        /// When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller&#39;s &#x60;live_early_entry&#x60; perk. Null with no start. Optional: a board read without a viewer leaves it at the start.
+        /// </summary>
+        /// <value>When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller&#39;s &#x60;live_early_entry&#x60; perk. Null with no start. Optional: a board read without a viewer leaves it at the start.</value>
+        [DataMember(Name = "doorsOpenAt", EmitDefaultValue = true)]
+        public string DoorsOpenAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Live
         /// </summary>
         [DataMember(Name = "live", IsRequired = true, EmitDefaultValue = true)]
@@ -130,7 +139,7 @@ namespace net.crossly.Model
         /// Gets or Sets Shop
         /// </summary>
         [DataMember(Name = "shop", IsRequired = true, EmitDefaultValue = false)]
-        public SlugName Shop { get; set; }
+        public NameSlug Shop { get; set; }
 
         /// <summary>
         /// The listing the spots are bought through, on crossly.net. Never a world checkout.
@@ -170,6 +179,7 @@ namespace net.crossly.Model
             sb.Append("  Product: ").Append(Product).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
+            sb.Append("  DoorsOpenAt: ").Append(DoorsOpenAt).Append("\n");
             sb.Append("  Live: ").Append(Live).Append("\n");
             sb.Append("  Shop: ").Append(Shop).Append("\n");
             sb.Append("  BuyUrl: ").Append(BuyUrl).Append("\n");
@@ -237,6 +247,11 @@ namespace net.crossly.Model
                     this.StartsAt.Equals(input.StartsAt))
                 ) && 
                 (
+                    this.DoorsOpenAt == input.DoorsOpenAt ||
+                    (this.DoorsOpenAt != null &&
+                    this.DoorsOpenAt.Equals(input.DoorsOpenAt))
+                ) && 
+                (
                     this.Live == input.Live ||
                     this.Live.Equals(input.Live)
                 ) && 
@@ -296,6 +311,10 @@ namespace net.crossly.Model
                 if (this.StartsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartsAt.GetHashCode();
+                }
+                if (this.DoorsOpenAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DoorsOpenAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Live.GetHashCode();
                 if (this.Shop != null)

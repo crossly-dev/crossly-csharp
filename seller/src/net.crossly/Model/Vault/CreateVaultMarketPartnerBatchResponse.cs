@@ -44,7 +44,7 @@ namespace net.crossly.Model
         /// <param name="created">created (required).</param>
         /// <param name="label">label.</param>
         /// <param name="labelError">labelError.</param>
-        public CreateVaultMarketPartnerBatchResponse(string batchId = default(string), string partnerCode = default(string), List<CreateVaultMarketPartnerBatchResponseCreated> created = default(List<CreateVaultMarketPartnerBatchResponseCreated>), CreateVaultMarketPartnerBatchResponseLabel label = default(CreateVaultMarketPartnerBatchResponseLabel), string labelError = default(string))
+        public CreateVaultMarketPartnerBatchResponse(string batchId = default(string), string partnerCode = default(string), List<CreateVaultMarketPartnerBatchResponseCreated> created = default(List<CreateVaultMarketPartnerBatchResponseCreated>), LabelUrlTrackingCode label = default(LabelUrlTrackingCode), string labelError = default(string))
         {
             // to ensure "batchId" is required (not null)
             if (batchId == null) {
@@ -87,7 +87,7 @@ namespace net.crossly.Model
         /// Gets or Sets Label
         /// </summary>
         [DataMember(Name = "label", EmitDefaultValue = true)]
-        public CreateVaultMarketPartnerBatchResponseLabel Label { get; set; }
+        public LabelUrlTrackingCode Label { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelError

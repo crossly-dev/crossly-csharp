@@ -42,12 +42,12 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="notes">notes.</param>
         /// <param name="status">status (required).</param>
+        /// <param name="notes">notes.</param>
+        /// <param name="supplierName">supplierName.</param>
+        /// <param name="trackingCode">trackingCode.</param>
         /// <param name="merchantId">merchantId (required).</param>
         /// <param name="candidateId">candidateId (required).</param>
-        /// <param name="trackingCode">trackingCode.</param>
-        /// <param name="supplierName">supplierName.</param>
         /// <param name="supplierContact">supplierContact.</param>
         /// <param name="freightMode">freightMode.</param>
         /// <param name="estimateLandedCents">estimateLandedCents.</param>
@@ -62,7 +62,7 @@ namespace net.crossly.Model
         /// <param name="sampleRounds">sampleRounds (required).</param>
         /// <param name="qcStatus">qcStatus.</param>
         /// <param name="qcNotes">qcNotes.</param>
-        public UpdateProductionPoResponsePo(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string notes = default(string), string status = default(string), string merchantId = default(string), string candidateId = default(string), string trackingCode = default(string), string supplierName = default(string), string supplierContact = default(string), string freightMode = default(string), decimal? estimateLandedCents = default(decimal?), decimal? actualUnitFobCents = default(decimal?), decimal? actualToolingCents = default(decimal?), decimal? actualSamplesCents = default(decimal?), decimal? actualFreightCents = default(decimal?), decimal? actualDutyCents = default(decimal?), decimal? actualQcCents = default(decimal?), decimal? actualThreeplCents = default(decimal?), decimal? actualLandedCents = default(decimal?), decimal sampleRounds = default(decimal), string qcStatus = default(string), string qcNotes = default(string))
+        public UpdateProductionPoResponsePo(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), string notes = default(string), string supplierName = default(string), string trackingCode = default(string), string merchantId = default(string), string candidateId = default(string), string supplierContact = default(string), string freightMode = default(string), decimal? estimateLandedCents = default(decimal?), decimal? actualUnitFobCents = default(decimal?), decimal? actualToolingCents = default(decimal?), decimal? actualSamplesCents = default(decimal?), decimal? actualFreightCents = default(decimal?), decimal? actualDutyCents = default(decimal?), decimal? actualQcCents = default(decimal?), decimal? actualThreeplCents = default(decimal?), decimal? actualLandedCents = default(decimal?), decimal sampleRounds = default(decimal), string qcStatus = default(string), string qcNotes = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -88,8 +88,8 @@ namespace net.crossly.Model
             this.CandidateId = candidateId;
             this.SampleRounds = sampleRounds;
             this.Notes = notes;
-            this.TrackingCode = trackingCode;
             this.SupplierName = supplierName;
+            this.TrackingCode = trackingCode;
             this.SupplierContact = supplierContact;
             this.FreightMode = freightMode;
             this.EstimateLandedCents = estimateLandedCents;
@@ -124,16 +124,28 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets Notes
         /// </summary>
         [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets SupplierName
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
+        [DataMember(Name = "supplierName", EmitDefaultValue = true)]
+        public string SupplierName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TrackingCode
+        /// </summary>
+        [DataMember(Name = "trackingCode", EmitDefaultValue = true)]
+        public string TrackingCode { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantId
@@ -146,18 +158,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "candidateId", IsRequired = true, EmitDefaultValue = false)]
         public string CandidateId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TrackingCode
-        /// </summary>
-        [DataMember(Name = "trackingCode", EmitDefaultValue = true)]
-        public string TrackingCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SupplierName
-        /// </summary>
-        [DataMember(Name = "supplierName", EmitDefaultValue = true)]
-        public string SupplierName { get; set; }
 
         /// <summary>
         /// Gets or Sets SupplierContact
@@ -254,12 +254,12 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");
+            sb.Append("  TrackingCode: ").Append(TrackingCode).Append("\n");
             sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  CandidateId: ").Append(CandidateId).Append("\n");
-            sb.Append("  TrackingCode: ").Append(TrackingCode).Append("\n");
-            sb.Append("  SupplierName: ").Append(SupplierName).Append("\n");
             sb.Append("  SupplierContact: ").Append(SupplierContact).Append("\n");
             sb.Append("  FreightMode: ").Append(FreightMode).Append("\n");
             sb.Append("  EstimateLandedCents: ").Append(EstimateLandedCents).Append("\n");
@@ -325,14 +325,24 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
                     this.Notes == input.Notes ||
                     (this.Notes != null &&
                     this.Notes.Equals(input.Notes))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.SupplierName == input.SupplierName ||
+                    (this.SupplierName != null &&
+                    this.SupplierName.Equals(input.SupplierName))
+                ) && 
+                (
+                    this.TrackingCode == input.TrackingCode ||
+                    (this.TrackingCode != null &&
+                    this.TrackingCode.Equals(input.TrackingCode))
                 ) && 
                 (
                     this.MerchantId == input.MerchantId ||
@@ -343,16 +353,6 @@ namespace net.crossly.Model
                     this.CandidateId == input.CandidateId ||
                     (this.CandidateId != null &&
                     this.CandidateId.Equals(input.CandidateId))
-                ) && 
-                (
-                    this.TrackingCode == input.TrackingCode ||
-                    (this.TrackingCode != null &&
-                    this.TrackingCode.Equals(input.TrackingCode))
-                ) && 
-                (
-                    this.SupplierName == input.SupplierName ||
-                    (this.SupplierName != null &&
-                    this.SupplierName.Equals(input.SupplierName))
                 ) && 
                 (
                     this.SupplierContact == input.SupplierContact ||
@@ -446,13 +446,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 if (this.Notes != null)
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
-                if (this.Status != null)
+                if (this.SupplierName != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SupplierName.GetHashCode();
+                }
+                if (this.TrackingCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.TrackingCode.GetHashCode();
                 }
                 if (this.MerchantId != null)
                 {
@@ -461,14 +469,6 @@ namespace net.crossly.Model
                 if (this.CandidateId != null)
                 {
                     hashCode = (hashCode * 59) + this.CandidateId.GetHashCode();
-                }
-                if (this.TrackingCode != null)
-                {
-                    hashCode = (hashCode * 59) + this.TrackingCode.GetHashCode();
-                }
-                if (this.SupplierName != null)
-                {
-                    hashCode = (hashCode * 59) + this.SupplierName.GetHashCode();
                 }
                 if (this.SupplierContact != null)
                 {

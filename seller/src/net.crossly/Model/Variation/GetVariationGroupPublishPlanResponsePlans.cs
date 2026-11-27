@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ModeEnum
         {
             /// <summary>
-            /// Enum Grouped for value: grouped
-            /// </summary>
-            [EnumMember(Value = "grouped")]
-            Grouped = 1,
-
-            /// <summary>
             /// Enum Separate for value: separate
             /// </summary>
             [EnumMember(Value = "separate")]
-            Separate = 2
+            Separate = 1,
+
+            /// <summary>
+            /// Enum Grouped for value: grouped
+            /// </summary>
+            [EnumMember(Value = "grouped")]
+            Grouped = 2
 
         }
 

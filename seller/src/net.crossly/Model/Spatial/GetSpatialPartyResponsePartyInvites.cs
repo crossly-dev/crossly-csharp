@@ -50,22 +50,22 @@ namespace net.crossly.Model
             Cancelled = 2,
 
             /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
-
-            /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 4,
+            Accepted = 3,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 5
+            Declined = 4,
+
+            /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 5
 
         }
 

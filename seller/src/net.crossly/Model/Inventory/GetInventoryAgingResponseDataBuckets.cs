@@ -38,34 +38,34 @@ namespace net.crossly.Model
         public enum BucketEnum
         {
             /// <summary>
-            /// Enum _07 for value: 0-7
+            /// Enum Unlisted for value: unlisted
             /// </summary>
-            [EnumMember(Value = "0-7")]
-            _07 = 1,
-
-            /// <summary>
-            /// Enum _730 for value: 7-30
-            /// </summary>
-            [EnumMember(Value = "7-30")]
-            _730 = 2,
-
-            /// <summary>
-            /// Enum _3090 for value: 30-90
-            /// </summary>
-            [EnumMember(Value = "30-90")]
-            _3090 = 3,
+            [EnumMember(Value = "unlisted")]
+            Unlisted = 1,
 
             /// <summary>
             /// Enum _90 for value: 90+
             /// </summary>
             [EnumMember(Value = "90+")]
-            _90 = 4,
+            _90 = 2,
 
             /// <summary>
-            /// Enum Unlisted for value: unlisted
+            /// Enum _07 for value: 0-7
             /// </summary>
-            [EnumMember(Value = "unlisted")]
-            Unlisted = 5
+            [EnumMember(Value = "0-7")]
+            _07 = 3,
+
+            /// <summary>
+            /// Enum _730 for value: 7-30
+            /// </summary>
+            [EnumMember(Value = "7-30")]
+            _730 = 4,
+
+            /// <summary>
+            /// Enum _3090 for value: 30-90
+            /// </summary>
+            [EnumMember(Value = "30-90")]
+            _3090 = 5
 
         }
 
@@ -75,6 +75,50 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bucket", IsRequired = true, EmitDefaultValue = false)]
         public BucketEnum Bucket { get; set; }
+        /// <summary>
+        /// Defines Key
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum KeyEnum
+        {
+            /// <summary>
+            /// Enum Unlisted for value: unlisted
+            /// </summary>
+            [EnumMember(Value = "unlisted")]
+            Unlisted = 1,
+
+            /// <summary>
+            /// Enum Lt7 for value: lt7
+            /// </summary>
+            [EnumMember(Value = "lt7")]
+            Lt7 = 2,
+
+            /// <summary>
+            /// Enum D730 for value: d7_30
+            /// </summary>
+            [EnumMember(Value = "d7_30")]
+            D730 = 3,
+
+            /// <summary>
+            /// Enum D3090 for value: d30_90
+            /// </summary>
+            [EnumMember(Value = "d30_90")]
+            D3090 = 4,
+
+            /// <summary>
+            /// Enum Gt90 for value: gt90
+            /// </summary>
+            [EnumMember(Value = "gt90")]
+            Gt90 = 5
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Key
+        /// </summary>
+        [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = false)]
+        public KeyEnum Key { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="GetInventoryAgingResponseDataBuckets" /> class.
         /// </summary>
@@ -86,21 +130,35 @@ namespace net.crossly.Model
         /// <param name="bucket">bucket (required).</param>
         /// <param name="itemCount">itemCount (required).</param>
         /// <param name="unitCount">unitCount (required).</param>
-        /// <param name="costCents">What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf. (required).</param>
-        /// <param name="retailCents">What it would bring in at current prices, for the opportunity figure. (required).</param>
-        /// <param name="recommendation">One line the seller can act on. (required).</param>
-        public GetInventoryAgingResponseDataBuckets(BucketEnum bucket = default(BucketEnum), decimal itemCount = default(decimal), decimal unitCount = default(decimal), decimal costCents = default(decimal), decimal retailCents = default(decimal), string recommendation = default(string))
+        /// <param name="retailCents">Old name for listedValueCents. (required).</param>
+        /// <param name="recommendation">recommendation (required).</param>
+        /// <param name="key">key (required).</param>
+        /// <param name="items">items (required).</param>
+        /// <param name="units">units (required).</param>
+        /// <param name="costCents">Σ unit cost × units over the items whose cost is known. (required).</param>
+        /// <param name="costKnownItems">costKnownItems (required).</param>
+        /// <param name="costUnknownItems">costUnknownItems (required).</param>
+        /// <param name="listedValueCents">Σ ask × units; items with no ask add nothing. (required).</param>
+        /// <param name="marketValueCents">Σ market × units over the marked items; null when none in the bucket are marked..</param>
+        public GetInventoryAgingResponseDataBuckets(BucketEnum bucket = default(BucketEnum), decimal itemCount = default(decimal), decimal unitCount = default(decimal), decimal retailCents = default(decimal), string recommendation = default(string), KeyEnum key = default(KeyEnum), decimal items = default(decimal), decimal units = default(decimal), decimal costCents = default(decimal), decimal costKnownItems = default(decimal), decimal costUnknownItems = default(decimal), decimal listedValueCents = default(decimal), decimal? marketValueCents = default(decimal?))
         {
             this.Bucket = bucket;
             this.ItemCount = itemCount;
             this.UnitCount = unitCount;
-            this.CostCents = costCents;
             this.RetailCents = retailCents;
             // to ensure "recommendation" is required (not null)
             if (recommendation == null) {
                 throw new ArgumentNullException("recommendation is a required property for GetInventoryAgingResponseDataBuckets and cannot be null");
             }
             this.Recommendation = recommendation;
+            this.Key = key;
+            this.Items = items;
+            this.Units = units;
+            this.CostCents = costCents;
+            this.CostKnownItems = costKnownItems;
+            this.CostUnknownItems = costUnknownItems;
+            this.ListedValueCents = listedValueCents;
+            this.MarketValueCents = marketValueCents;
         }
 
         /// <summary>
@@ -116,25 +174,62 @@ namespace net.crossly.Model
         public decimal UnitCount { get; set; }
 
         /// <summary>
-        /// What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.
+        /// Old name for listedValueCents.
         /// </summary>
-        /// <value>What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.</value>
-        [DataMember(Name = "costCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal CostCents { get; set; }
-
-        /// <summary>
-        /// What it would bring in at current prices, for the opportunity figure.
-        /// </summary>
-        /// <value>What it would bring in at current prices, for the opportunity figure.</value>
+        /// <value>Old name for listedValueCents.</value>
         [DataMember(Name = "retailCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal RetailCents { get; set; }
 
         /// <summary>
-        /// One line the seller can act on.
+        /// Gets or Sets Recommendation
         /// </summary>
-        /// <value>One line the seller can act on.</value>
         [DataMember(Name = "recommendation", IsRequired = true, EmitDefaultValue = false)]
         public string Recommendation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Items
+        /// </summary>
+        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Items { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Units
+        /// </summary>
+        [DataMember(Name = "units", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Units { get; set; }
+
+        /// <summary>
+        /// Σ unit cost × units over the items whose cost is known.
+        /// </summary>
+        /// <value>Σ unit cost × units over the items whose cost is known.</value>
+        [DataMember(Name = "costCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CostCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CostKnownItems
+        /// </summary>
+        [DataMember(Name = "costKnownItems", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CostKnownItems { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CostUnknownItems
+        /// </summary>
+        [DataMember(Name = "costUnknownItems", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CostUnknownItems { get; set; }
+
+        /// <summary>
+        /// Σ ask × units; items with no ask add nothing.
+        /// </summary>
+        /// <value>Σ ask × units; items with no ask add nothing.</value>
+        [DataMember(Name = "listedValueCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ListedValueCents { get; set; }
+
+        /// <summary>
+        /// Σ market × units over the marked items; null when none in the bucket are marked.
+        /// </summary>
+        /// <value>Σ market × units over the marked items; null when none in the bucket are marked.</value>
+        [DataMember(Name = "marketValueCents", EmitDefaultValue = true)]
+        public decimal? MarketValueCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,9 +242,16 @@ namespace net.crossly.Model
             sb.Append("  Bucket: ").Append(Bucket).Append("\n");
             sb.Append("  ItemCount: ").Append(ItemCount).Append("\n");
             sb.Append("  UnitCount: ").Append(UnitCount).Append("\n");
-            sb.Append("  CostCents: ").Append(CostCents).Append("\n");
             sb.Append("  RetailCents: ").Append(RetailCents).Append("\n");
             sb.Append("  Recommendation: ").Append(Recommendation).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Units: ").Append(Units).Append("\n");
+            sb.Append("  CostCents: ").Append(CostCents).Append("\n");
+            sb.Append("  CostKnownItems: ").Append(CostKnownItems).Append("\n");
+            sb.Append("  CostUnknownItems: ").Append(CostUnknownItems).Append("\n");
+            sb.Append("  ListedValueCents: ").Append(ListedValueCents).Append("\n");
+            sb.Append("  MarketValueCents: ").Append(MarketValueCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -198,10 +300,6 @@ namespace net.crossly.Model
                     this.UnitCount.Equals(input.UnitCount)
                 ) && 
                 (
-                    this.CostCents == input.CostCents ||
-                    this.CostCents.Equals(input.CostCents)
-                ) && 
-                (
                     this.RetailCents == input.RetailCents ||
                     this.RetailCents.Equals(input.RetailCents)
                 ) && 
@@ -209,6 +307,39 @@ namespace net.crossly.Model
                     this.Recommendation == input.Recommendation ||
                     (this.Recommendation != null &&
                     this.Recommendation.Equals(input.Recommendation))
+                ) && 
+                (
+                    this.Key == input.Key ||
+                    this.Key.Equals(input.Key)
+                ) && 
+                (
+                    this.Items == input.Items ||
+                    this.Items.Equals(input.Items)
+                ) && 
+                (
+                    this.Units == input.Units ||
+                    this.Units.Equals(input.Units)
+                ) && 
+                (
+                    this.CostCents == input.CostCents ||
+                    this.CostCents.Equals(input.CostCents)
+                ) && 
+                (
+                    this.CostKnownItems == input.CostKnownItems ||
+                    this.CostKnownItems.Equals(input.CostKnownItems)
+                ) && 
+                (
+                    this.CostUnknownItems == input.CostUnknownItems ||
+                    this.CostUnknownItems.Equals(input.CostUnknownItems)
+                ) && 
+                (
+                    this.ListedValueCents == input.ListedValueCents ||
+                    this.ListedValueCents.Equals(input.ListedValueCents)
+                ) && 
+                (
+                    this.MarketValueCents == input.MarketValueCents ||
+                    (this.MarketValueCents != null &&
+                    this.MarketValueCents.Equals(input.MarketValueCents))
                 );
         }
 
@@ -224,11 +355,21 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Bucket.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemCount.GetHashCode();
                 hashCode = (hashCode * 59) + this.UnitCount.GetHashCode();
-                hashCode = (hashCode * 59) + this.CostCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.RetailCents.GetHashCode();
                 if (this.Recommendation != null)
                 {
                     hashCode = (hashCode * 59) + this.Recommendation.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                hashCode = (hashCode * 59) + this.Units.GetHashCode();
+                hashCode = (hashCode * 59) + this.CostCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.CostKnownItems.GetHashCode();
+                hashCode = (hashCode * 59) + this.CostUnknownItems.GetHashCode();
+                hashCode = (hashCode * 59) + this.ListedValueCents.GetHashCode();
+                if (this.MarketValueCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.MarketValueCents.GetHashCode();
                 }
                 return hashCode;
             }

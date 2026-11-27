@@ -71,16 +71,16 @@ namespace net.crossly.Model
             Open = 1,
 
             /// <summary>
-            /// Enum Done for value: done
-            /// </summary>
-            [EnumMember(Value = "done")]
-            Done = 2,
-
-            /// <summary>
             /// Enum Closed for value: closed
             /// </summary>
             [EnumMember(Value = "closed")]
-            Closed = 3
+            Closed = 2,
+
+            /// <summary>
+            /// Enum Done for value: done
+            /// </summary>
+            [EnumMember(Value = "done")]
+            Done = 3
 
         }
 
@@ -113,7 +113,7 @@ namespace net.crossly.Model
         /// <param name="status">open: dealing at the mat · done: shaken, a trade exists · closed: the seller left. (required).</param>
         /// <param name="tradeId">tradeId.</param>
         /// <param name="version">Bumped on every change, so a client can drop a stale echo. (required).</param>
-        public ListWorldPlaceTradeTablesItem(ListWorldPlaceTradeTablesItemVisitor visitor = default(ListWorldPlaceTradeTablesItemVisitor), ListWorldPlaceTradeTablesItemTotals totals = default(ListWorldPlaceTradeTablesItemTotals), YouEnum? you = default(YouEnum?), ListWorldPlaceTradeTablesItemLine line = default(ListWorldPlaceTradeTablesItemLine), string id = default(string), string postId = default(string), string place = default(string), UserIdName seller = default(UserIdName), ListWorldPlaceTradeTablesItemMat mat = default(ListWorldPlaceTradeTablesItemMat), ListWorldPlaceTradeTablesItemCash cash = default(ListWorldPlaceTradeTablesItemCash), ListWorldPlaceTradeTablesItemShook shook = default(ListWorldPlaceTradeTablesItemShook), StatusEnum status = default(StatusEnum), string tradeId = default(string), decimal version = default(decimal))
+        public ListWorldPlaceTradeTablesItem(GetWorldExperiencePlaceCollabOpResponseDataFramesBy visitor = default(GetWorldExperiencePlaceCollabOpResponseDataFramesBy), ListWorldPlaceTradeTablesItemTotals totals = default(ListWorldPlaceTradeTablesItemTotals), YouEnum? you = default(YouEnum?), ListWorldPlaceTradeTablesItemLine line = default(ListWorldPlaceTradeTablesItemLine), string id = default(string), string postId = default(string), string place = default(string), UserIdName seller = default(UserIdName), ListWorldPlaceTradeTablesItemMat mat = default(ListWorldPlaceTradeTablesItemMat), ListWorldPlaceTradeTablesItemCash cash = default(ListWorldPlaceTradeTablesItemCash), ListWorldPlaceTradeTablesItemShook shook = default(ListWorldPlaceTradeTablesItemShook), StatusEnum status = default(StatusEnum), string tradeId = default(string), decimal version = default(decimal))
         {
             // to ensure "totals" is required (not null)
             if (totals == null) {
@@ -171,7 +171,7 @@ namespace net.crossly.Model
         /// Gets or Sets Visitor
         /// </summary>
         [DataMember(Name = "visitor", EmitDefaultValue = true)]
-        public ListWorldPlaceTradeTablesItemVisitor Visitor { get; set; }
+        public GetWorldExperiencePlaceCollabOpResponseDataFramesBy Visitor { get; set; }
 
         /// <summary>
         /// Gets or Sets Totals

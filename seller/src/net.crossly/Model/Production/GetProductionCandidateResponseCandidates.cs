@@ -44,12 +44,12 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="retailPriceCents">retailPriceCents.</param>
-        /// <param name="creatorUserId">creatorUserId.</param>
-        /// <param name="completedAt">completedAt.</param>
         /// <param name="acceptedAt">acceptedAt.</param>
+        /// <param name="completedAt">completedAt.</param>
+        /// <param name="creatorUserId">creatorUserId.</param>
+        /// <param name="cosmeticId">cosmeticId (required).</param>
         /// <param name="merchantId">merchantId (required).</param>
         /// <param name="creatorSubjectId">creatorSubjectId (required).</param>
-        /// <param name="cosmeticId">cosmeticId (required).</param>
         /// <param name="editionSize">editionSize.</param>
         /// <param name="unitCostCents">unitCostCents.</param>
         /// <param name="runCostCents">runCostCents.</param>
@@ -63,7 +63,7 @@ namespace net.crossly.Model
         /// <param name="ipClearedAt">ipClearedAt.</param>
         /// <param name="greenlitAt">greenlitAt.</param>
         /// <param name="declineReason">declineReason.</param>
-        public GetProductionCandidateResponseCandidates(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), decimal? retailPriceCents = default(decimal?), string creatorUserId = default(string), DateTime? completedAt = default(DateTime?), DateTime? acceptedAt = default(DateTime?), string merchantId = default(string), string creatorSubjectId = default(string), string cosmeticId = default(string), decimal? editionSize = default(decimal?), decimal? unitCostCents = default(decimal?), decimal? runCostCents = default(decimal?), decimal designerRoyaltyBps = default(decimal), decimal fundingAtEligibleCents = default(decimal), decimal distinctHoldersAtEligible = default(decimal), bool holderPriority = default(bool), decimal? holderPriceCents = default(decimal?), GetProductionCandidateResponseCandidatesDesignBrief designBrief = default(GetProductionCandidateResponseCandidatesDesignBrief), CreateProductionDesignSpecResponsePrefsSpec spec = default(CreateProductionDesignSpecResponsePrefsSpec), DateTime? ipClearedAt = default(DateTime?), DateTime? greenlitAt = default(DateTime?), string declineReason = default(string))
+        public GetProductionCandidateResponseCandidates(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), decimal? retailPriceCents = default(decimal?), DateTime? acceptedAt = default(DateTime?), DateTime? completedAt = default(DateTime?), string creatorUserId = default(string), string cosmeticId = default(string), string merchantId = default(string), string creatorSubjectId = default(string), decimal? editionSize = default(decimal?), decimal? unitCostCents = default(decimal?), decimal? runCostCents = default(decimal?), decimal designerRoyaltyBps = default(decimal), decimal fundingAtEligibleCents = default(decimal), decimal distinctHoldersAtEligible = default(decimal), bool holderPriority = default(bool), decimal? holderPriceCents = default(decimal?), GetProductionCandidateResponseCandidatesDesignBrief designBrief = default(GetProductionCandidateResponseCandidatesDesignBrief), CreateProductionDesignSpecResponsePrefsSpec spec = default(CreateProductionDesignSpecResponsePrefsSpec), DateTime? ipClearedAt = default(DateTime?), DateTime? greenlitAt = default(DateTime?), string declineReason = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -77,6 +77,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for GetProductionCandidateResponseCandidates and cannot be null");
             }
             this.Status = status;
+            // to ensure "cosmeticId" is required (not null)
+            if (cosmeticId == null) {
+                throw new ArgumentNullException("cosmeticId is a required property for GetProductionCandidateResponseCandidates and cannot be null");
+            }
+            this.CosmeticId = cosmeticId;
             // to ensure "merchantId" is required (not null)
             if (merchantId == null) {
                 throw new ArgumentNullException("merchantId is a required property for GetProductionCandidateResponseCandidates and cannot be null");
@@ -87,19 +92,14 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("creatorSubjectId is a required property for GetProductionCandidateResponseCandidates and cannot be null");
             }
             this.CreatorSubjectId = creatorSubjectId;
-            // to ensure "cosmeticId" is required (not null)
-            if (cosmeticId == null) {
-                throw new ArgumentNullException("cosmeticId is a required property for GetProductionCandidateResponseCandidates and cannot be null");
-            }
-            this.CosmeticId = cosmeticId;
             this.DesignerRoyaltyBps = designerRoyaltyBps;
             this.FundingAtEligibleCents = fundingAtEligibleCents;
             this.DistinctHoldersAtEligible = distinctHoldersAtEligible;
             this.HolderPriority = holderPriority;
             this.RetailPriceCents = retailPriceCents;
-            this.CreatorUserId = creatorUserId;
-            this.CompletedAt = completedAt;
             this.AcceptedAt = acceptedAt;
+            this.CompletedAt = completedAt;
+            this.CreatorUserId = creatorUserId;
             this.EditionSize = editionSize;
             this.UnitCostCents = unitCostCents;
             this.RunCostCents = runCostCents;
@@ -142,10 +142,10 @@ namespace net.crossly.Model
         public decimal? RetailPriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatorUserId
+        /// Gets or Sets AcceptedAt
         /// </summary>
-        [DataMember(Name = "creatorUserId", EmitDefaultValue = true)]
-        public string CreatorUserId { get; set; }
+        [DataMember(Name = "acceptedAt", EmitDefaultValue = true)]
+        public DateTime? AcceptedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets CompletedAt
@@ -154,10 +154,16 @@ namespace net.crossly.Model
         public DateTime? CompletedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets AcceptedAt
+        /// Gets or Sets CreatorUserId
         /// </summary>
-        [DataMember(Name = "acceptedAt", EmitDefaultValue = true)]
-        public DateTime? AcceptedAt { get; set; }
+        [DataMember(Name = "creatorUserId", EmitDefaultValue = true)]
+        public string CreatorUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CosmeticId
+        /// </summary>
+        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
+        public string CosmeticId { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantId
@@ -170,12 +176,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "creatorSubjectId", IsRequired = true, EmitDefaultValue = false)]
         public string CreatorSubjectId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CosmeticId
-        /// </summary>
-        [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
-        public string CosmeticId { get; set; }
 
         /// <summary>
         /// Gets or Sets EditionSize
@@ -268,12 +268,12 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  RetailPriceCents: ").Append(RetailPriceCents).Append("\n");
-            sb.Append("  CreatorUserId: ").Append(CreatorUserId).Append("\n");
-            sb.Append("  CompletedAt: ").Append(CompletedAt).Append("\n");
             sb.Append("  AcceptedAt: ").Append(AcceptedAt).Append("\n");
+            sb.Append("  CompletedAt: ").Append(CompletedAt).Append("\n");
+            sb.Append("  CreatorUserId: ").Append(CreatorUserId).Append("\n");
+            sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
             sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  CreatorSubjectId: ").Append(CreatorSubjectId).Append("\n");
-            sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
             sb.Append("  EditionSize: ").Append(EditionSize).Append("\n");
             sb.Append("  UnitCostCents: ").Append(UnitCostCents).Append("\n");
             sb.Append("  RunCostCents: ").Append(RunCostCents).Append("\n");
@@ -348,9 +348,9 @@ namespace net.crossly.Model
                     this.RetailPriceCents.Equals(input.RetailPriceCents))
                 ) && 
                 (
-                    this.CreatorUserId == input.CreatorUserId ||
-                    (this.CreatorUserId != null &&
-                    this.CreatorUserId.Equals(input.CreatorUserId))
+                    this.AcceptedAt == input.AcceptedAt ||
+                    (this.AcceptedAt != null &&
+                    this.AcceptedAt.Equals(input.AcceptedAt))
                 ) && 
                 (
                     this.CompletedAt == input.CompletedAt ||
@@ -358,9 +358,14 @@ namespace net.crossly.Model
                     this.CompletedAt.Equals(input.CompletedAt))
                 ) && 
                 (
-                    this.AcceptedAt == input.AcceptedAt ||
-                    (this.AcceptedAt != null &&
-                    this.AcceptedAt.Equals(input.AcceptedAt))
+                    this.CreatorUserId == input.CreatorUserId ||
+                    (this.CreatorUserId != null &&
+                    this.CreatorUserId.Equals(input.CreatorUserId))
+                ) && 
+                (
+                    this.CosmeticId == input.CosmeticId ||
+                    (this.CosmeticId != null &&
+                    this.CosmeticId.Equals(input.CosmeticId))
                 ) && 
                 (
                     this.MerchantId == input.MerchantId ||
@@ -371,11 +376,6 @@ namespace net.crossly.Model
                     this.CreatorSubjectId == input.CreatorSubjectId ||
                     (this.CreatorSubjectId != null &&
                     this.CreatorSubjectId.Equals(input.CreatorSubjectId))
-                ) && 
-                (
-                    this.CosmeticId == input.CosmeticId ||
-                    (this.CosmeticId != null &&
-                    this.CosmeticId.Equals(input.CosmeticId))
                 ) && 
                 (
                     this.EditionSize == input.EditionSize ||
@@ -469,17 +469,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.RetailPriceCents.GetHashCode();
                 }
-                if (this.CreatorUserId != null)
+                if (this.AcceptedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatorUserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AcceptedAt.GetHashCode();
                 }
                 if (this.CompletedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CompletedAt.GetHashCode();
                 }
-                if (this.AcceptedAt != null)
+                if (this.CreatorUserId != null)
                 {
-                    hashCode = (hashCode * 59) + this.AcceptedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CreatorUserId.GetHashCode();
+                }
+                if (this.CosmeticId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
                 }
                 if (this.MerchantId != null)
                 {
@@ -488,10 +492,6 @@ namespace net.crossly.Model
                 if (this.CreatorSubjectId != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatorSubjectId.GetHashCode();
-                }
-                if (this.CosmeticId != null)
-                {
-                    hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
                 }
                 if (this.EditionSize != null)
                 {

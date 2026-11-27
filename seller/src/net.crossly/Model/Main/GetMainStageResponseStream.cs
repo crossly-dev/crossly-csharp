@@ -44,7 +44,8 @@ namespace net.crossly.Model
         /// <param name="playbackUrl">playbackUrl.</param>
         /// <param name="coverImageUrl">coverImageUrl.</param>
         /// <param name="host">host.</param>
-        public GetMainStageResponseStream(string id = default(string), string title = default(string), string playbackUrl = default(string), string coverImageUrl = default(string), string host = default(string))
+        /// <param name="lot">lot.</param>
+        public GetMainStageResponseStream(string id = default(string), string title = default(string), string playbackUrl = default(string), string coverImageUrl = default(string), string host = default(string), GetMainStageResponseStreamLot lot = default(GetMainStageResponseStreamLot))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -59,6 +60,7 @@ namespace net.crossly.Model
             this.PlaybackUrl = playbackUrl;
             this.CoverImageUrl = coverImageUrl;
             this.Host = host;
+            this.Lot = lot;
         }
 
         /// <summary>
@@ -92,6 +94,12 @@ namespace net.crossly.Model
         public string Host { get; set; }
 
         /// <summary>
+        /// Gets or Sets Lot
+        /// </summary>
+        [DataMember(Name = "lot", EmitDefaultValue = true)]
+        public GetMainStageResponseStreamLot Lot { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -104,6 +112,7 @@ namespace net.crossly.Model
             sb.Append("  PlaybackUrl: ").Append(PlaybackUrl).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
+            sb.Append("  Lot: ").Append(Lot).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +172,11 @@ namespace net.crossly.Model
                     this.Host == input.Host ||
                     (this.Host != null &&
                     this.Host.Equals(input.Host))
+                ) && 
+                (
+                    this.Lot == input.Lot ||
+                    (this.Lot != null &&
+                    this.Lot.Equals(input.Lot))
                 );
         }
 
@@ -194,6 +208,10 @@ namespace net.crossly.Model
                 if (this.Host != null)
                 {
                     hashCode = (hashCode * 59) + this.Host.GetHashCode();
+                }
+                if (this.Lot != null)
+                {
+                    hashCode = (hashCode * 59) + this.Lot.GetHashCode();
                 }
                 return hashCode;
             }

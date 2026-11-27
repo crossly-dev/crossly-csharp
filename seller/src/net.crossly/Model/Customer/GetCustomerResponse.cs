@@ -47,7 +47,9 @@ namespace net.crossly.Model
         /// <param name="contact">contact (required).</param>
         /// <param name="profiles">profiles (required).</param>
         /// <param name="stats">stats (required).</param>
-        public GetCustomerResponse(string normalizedHandle = default(string), List<string> platforms = default(List<string>), decimal totalOrders = default(decimal), decimal totalSpent = default(decimal), List<GetCustomerResponseOrders> orders = default(List<GetCustomerResponseOrders>), GetCustomerResponseContact contact = default(GetCustomerResponseContact), List<GetCustomerResponseProfiles> profiles = default(List<GetCustomerResponseProfiles>), GetCustomerResponseStats stats = default(GetCustomerResponseStats))
+        /// <param name="notes">notes (required).</param>
+        /// <param name="notesUpdatedAt">notesUpdatedAt.</param>
+        public GetCustomerResponse(string normalizedHandle = default(string), List<string> platforms = default(List<string>), decimal totalOrders = default(decimal), decimal totalSpent = default(decimal), List<GetCustomerResponseOrders> orders = default(List<GetCustomerResponseOrders>), GetCustomerResponseContact contact = default(GetCustomerResponseContact), List<GetCustomerResponseProfiles> profiles = default(List<GetCustomerResponseProfiles>), GetCustomerResponseStats stats = default(GetCustomerResponseStats), string notes = default(string), string notesUpdatedAt = default(string))
         {
             // to ensure "normalizedHandle" is required (not null)
             if (normalizedHandle == null) {
@@ -81,6 +83,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("stats is a required property for GetCustomerResponse and cannot be null");
             }
             this.Stats = stats;
+            // to ensure "notes" is required (not null)
+            if (notes == null) {
+                throw new ArgumentNullException("notes is a required property for GetCustomerResponse and cannot be null");
+            }
+            this.Notes = notes;
+            this.NotesUpdatedAt = notesUpdatedAt;
         }
 
         /// <summary>
@@ -132,6 +140,18 @@ namespace net.crossly.Model
         public GetCustomerResponseStats Stats { get; set; }
 
         /// <summary>
+        /// Gets or Sets Notes
+        /// </summary>
+        [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = false)]
+        public string Notes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NotesUpdatedAt
+        /// </summary>
+        [DataMember(Name = "notesUpdatedAt", EmitDefaultValue = true)]
+        public string NotesUpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,6 +167,8 @@ namespace net.crossly.Model
             sb.Append("  Contact: ").Append(Contact).Append("\n");
             sb.Append("  Profiles: ").Append(Profiles).Append("\n");
             sb.Append("  Stats: ").Append(Stats).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  NotesUpdatedAt: ").Append(NotesUpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -222,6 +244,16 @@ namespace net.crossly.Model
                     this.Stats == input.Stats ||
                     (this.Stats != null &&
                     this.Stats.Equals(input.Stats))
+                ) && 
+                (
+                    this.Notes == input.Notes ||
+                    (this.Notes != null &&
+                    this.Notes.Equals(input.Notes))
+                ) && 
+                (
+                    this.NotesUpdatedAt == input.NotesUpdatedAt ||
+                    (this.NotesUpdatedAt != null &&
+                    this.NotesUpdatedAt.Equals(input.NotesUpdatedAt))
                 );
         }
 
@@ -259,6 +291,14 @@ namespace net.crossly.Model
                 if (this.Stats != null)
                 {
                     hashCode = (hashCode * 59) + this.Stats.GetHashCode();
+                }
+                if (this.Notes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                }
+                if (this.NotesUpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotesUpdatedAt.GetHashCode();
                 }
                 return hashCode;
             }

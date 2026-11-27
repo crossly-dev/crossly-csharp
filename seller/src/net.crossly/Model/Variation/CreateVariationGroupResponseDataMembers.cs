@@ -41,6 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="listingId">listingId (required).</param>
         /// <param name="axisValue">axisValue.</param>
+        /// <param name="options">The member&#39;s value on every axis of a multi-axis group; null on a single-axis member..</param>
         /// <param name="sortKey">sortKey (required).</param>
         /// <param name="title">title.</param>
         /// <param name="price">price.</param>
@@ -48,7 +49,7 @@ namespace net.crossly.Model
         /// <param name="status">status (required).</param>
         /// <param name="sku">sku.</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
-        public CreateVariationGroupResponseDataMembers(string listingId = default(string), string axisValue = default(string), decimal sortKey = default(decimal), string title = default(string), string price = default(string), List<string> images = default(List<string>), string status = default(string), string sku = default(string), decimal quantityAvailable = default(decimal))
+        public CreateVariationGroupResponseDataMembers(string listingId = default(string), string axisValue = default(string), Dictionary<string, Object> options = default(Dictionary<string, Object>), decimal sortKey = default(decimal), string title = default(string), string price = default(string), List<string> images = default(List<string>), string status = default(string), string sku = default(string), decimal quantityAvailable = default(decimal))
         {
             // to ensure "listingId" is required (not null)
             if (listingId == null) {
@@ -63,6 +64,7 @@ namespace net.crossly.Model
             this.Status = status;
             this.QuantityAvailable = quantityAvailable;
             this.AxisValue = axisValue;
+            this.Options = options;
             this.Title = title;
             this.Price = price;
             this.Images = images;
@@ -80,6 +82,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "axisValue", EmitDefaultValue = true)]
         public string AxisValue { get; set; }
+
+        /// <summary>
+        /// The member&#39;s value on every axis of a multi-axis group; null on a single-axis member.
+        /// </summary>
+        /// <value>The member&#39;s value on every axis of a multi-axis group; null on a single-axis member.</value>
+        [DataMember(Name = "options", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Options { get; set; }
 
         /// <summary>
         /// Gets or Sets SortKey
@@ -133,6 +142,7 @@ namespace net.crossly.Model
             sb.Append("class CreateVariationGroupResponseDataMembers {\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  AxisValue: ").Append(AxisValue).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  SortKey: ").Append(SortKey).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
@@ -186,6 +196,12 @@ namespace net.crossly.Model
                     this.AxisValue.Equals(input.AxisValue))
                 ) && 
                 (
+                    this.Options == input.Options ||
+                    this.Options != null &&
+                    input.Options != null &&
+                    this.Options.SequenceEqual(input.Options)
+                ) && 
+                (
                     this.SortKey == input.SortKey ||
                     this.SortKey.Equals(input.SortKey)
                 ) && 
@@ -237,6 +253,10 @@ namespace net.crossly.Model
                 if (this.AxisValue != null)
                 {
                     hashCode = (hashCode * 59) + this.AxisValue.GetHashCode();
+                }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SortKey.GetHashCode();
                 if (this.Title != null)

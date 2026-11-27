@@ -64,16 +64,16 @@ namespace net.crossly.Model
         public enum RailEnum
         {
             /// <summary>
-            /// Enum Bucks for value: bucks
-            /// </summary>
-            [EnumMember(Value = "bucks")]
-            Bucks = 1,
-
-            /// <summary>
             /// Enum Cbx for value: cbx
             /// </summary>
             [EnumMember(Value = "cbx")]
-            Cbx = 2
+            Cbx = 1,
+
+            /// <summary>
+            /// Enum Bucks for value: bucks
+            /// </summary>
+            [EnumMember(Value = "bucks")]
+            Bucks = 2
 
         }
 
@@ -90,16 +90,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Open for value: open
-            /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 1,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 2,
+            Cancelled = 1,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 2,
 
             /// <summary>
             /// Enum Paid for value: paid
@@ -156,7 +156,7 @@ namespace net.crossly.Model
         /// <param name="postedByYou">postedByYou (required).</param>
         /// <param name="worker">worker.</param>
         /// <param name="paid">paid (required).</param>
-        public ListJobShiftsItem(string id = default(string), RoleEnum role = default(RoleEnum), string title = default(string), SlugName place = default(SlugName), string startsAt = default(string), string endsAt = default(string), decimal payCents = default(decimal), RailEnum rail = default(RailEnum), StatusEnum status = default(StatusEnum), decimal presentSeconds = default(decimal), decimal requiredSeconds = default(decimal), bool claimedByYou = default(bool), bool postedByYou = default(bool), string worker = default(string), bool paid = default(bool))
+        public ListJobShiftsItem(string id = default(string), RoleEnum role = default(RoleEnum), string title = default(string), NameSlug place = default(NameSlug), string startsAt = default(string), string endsAt = default(string), decimal payCents = default(decimal), RailEnum rail = default(RailEnum), StatusEnum status = default(StatusEnum), decimal presentSeconds = default(decimal), decimal requiredSeconds = default(decimal), bool claimedByYou = default(bool), bool postedByYou = default(bool), string worker = default(string), bool paid = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -211,7 +211,7 @@ namespace net.crossly.Model
         /// Gets or Sets Place
         /// </summary>
         [DataMember(Name = "place", IsRequired = true, EmitDefaultValue = false)]
-        public SlugName Place { get; set; }
+        public NameSlug Place { get; set; }
 
         /// <summary>
         /// Gets or Sets StartsAt

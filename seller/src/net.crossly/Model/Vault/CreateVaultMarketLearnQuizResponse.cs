@@ -77,7 +77,13 @@ namespace net.crossly.Model
             /// Enum Marks for value: marks
             /// </summary>
             [EnumMember(Value = "marks")]
-            Marks = 7
+            Marks = 7,
+
+            /// <summary>
+            /// Enum VaultShares for value: vault-shares
+            /// </summary>
+            [EnumMember(Value = "vault-shares")]
+            VaultShares = 8
 
         }
 

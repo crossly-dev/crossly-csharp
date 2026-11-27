@@ -39,21 +39,21 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerGiftFinderOptionResponseDataRecipients" /> class.
         /// </summary>
-        /// <param name="label">label (required).</param>
         /// <param name="key">key (required).</param>
+        /// <param name="label">label (required).</param>
         /// <param name="interests">interests (required).</param>
-        public GetBuyerGiftFinderOptionResponseDataRecipients(string label = default(string), string key = default(string), List<Dictionary<string, Object>> interests = default(List<Dictionary<string, Object>>))
+        public GetBuyerGiftFinderOptionResponseDataRecipients(string key = default(string), string label = default(string), List<Dictionary<string, Object>> interests = default(List<Dictionary<string, Object>>))
         {
-            // to ensure "label" is required (not null)
-            if (label == null) {
-                throw new ArgumentNullException("label is a required property for GetBuyerGiftFinderOptionResponseDataRecipients and cannot be null");
-            }
-            this.Label = label;
             // to ensure "key" is required (not null)
             if (key == null) {
                 throw new ArgumentNullException("key is a required property for GetBuyerGiftFinderOptionResponseDataRecipients and cannot be null");
             }
             this.Key = key;
+            // to ensure "label" is required (not null)
+            if (label == null) {
+                throw new ArgumentNullException("label is a required property for GetBuyerGiftFinderOptionResponseDataRecipients and cannot be null");
+            }
+            this.Label = label;
             // to ensure "interests" is required (not null)
             if (interests == null) {
                 throw new ArgumentNullException("interests is a required property for GetBuyerGiftFinderOptionResponseDataRecipients and cannot be null");
@@ -62,16 +62,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
-        public string Label { get; set; }
-
-        /// <summary>
         /// Gets or Sets Key
         /// </summary>
         [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
+        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Interests
@@ -87,8 +87,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerGiftFinderOptionResponseDataRecipients {\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Interests: ").Append(Interests).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,14 +126,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Label == input.Label ||
-                    (this.Label != null &&
-                    this.Label.Equals(input.Label))
-                ) && 
-                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.Label == input.Label ||
+                    (this.Label != null &&
+                    this.Label.Equals(input.Label))
                 ) && 
                 (
                     this.Interests == input.Interests ||
@@ -152,13 +152,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Label != null)
-                {
-                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.Label != null)
+                {
+                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
                 }
                 if (this.Interests != null)
                 {

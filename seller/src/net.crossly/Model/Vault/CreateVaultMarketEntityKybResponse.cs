@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Pending = 1,
 
             /// <summary>
-            /// Enum Approved for value: approved
-            /// </summary>
-            [EnumMember(Value = "approved")]
-            Approved = 2,
-
-            /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 3,
+            Rejected = 2,
+
+            /// <summary>
+            /// Enum Approved for value: approved
+            /// </summary>
+            [EnumMember(Value = "approved")]
+            Approved = 3,
 
             /// <summary>
             /// Enum Restricted for value: restricted

@@ -39,12 +39,24 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultMarketAccountResponseGates" /> class.
         /// </summary>
+        /// <param name="shares">shares (required).</param>
         /// <param name="custody">custody (required).</param>
         /// <param name="lending">lending (required).</param>
         /// <param name="leverage">leverage (required).</param>
         /// <param name="staking">staking (required).</param>
-        public GetVaultMarketAccountResponseGates(ListVaultMarketGradeToVaultItemGatesGradingRuns custody = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns lending = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns leverage = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns staking = default(ListVaultMarketGradeToVaultItemGatesGradingRuns))
+        /// <param name="sharesPartner">sharesPartner (required).</param>
+        /// <param name="sharesSelf">sharesSelf (required).</param>
+        /// <param name="optionsRouting">optionsRouting (required).</param>
+        /// <param name="optionsVenue">optionsVenue (required).</param>
+        /// <param name="predictionPartner">predictionPartner (required).</param>
+        /// <param name="predictionSelf">predictionSelf (required).</param>
+        public GetVaultMarketAccountResponseGates(ListVaultMarketGradeToVaultItemGatesGradingRuns shares = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns custody = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns lending = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns leverage = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns staking = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns sharesPartner = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns sharesSelf = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns optionsRouting = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns optionsVenue = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns predictionPartner = default(ListVaultMarketGradeToVaultItemGatesGradingRuns), ListVaultMarketGradeToVaultItemGatesGradingRuns predictionSelf = default(ListVaultMarketGradeToVaultItemGatesGradingRuns))
         {
+            // to ensure "shares" is required (not null)
+            if (shares == null) {
+                throw new ArgumentNullException("shares is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.Shares = shares;
             // to ensure "custody" is required (not null)
             if (custody == null) {
                 throw new ArgumentNullException("custody is a required property for GetVaultMarketAccountResponseGates and cannot be null");
@@ -65,7 +77,43 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("staking is a required property for GetVaultMarketAccountResponseGates and cannot be null");
             }
             this.Staking = staking;
+            // to ensure "sharesPartner" is required (not null)
+            if (sharesPartner == null) {
+                throw new ArgumentNullException("sharesPartner is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.SharesPartner = sharesPartner;
+            // to ensure "sharesSelf" is required (not null)
+            if (sharesSelf == null) {
+                throw new ArgumentNullException("sharesSelf is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.SharesSelf = sharesSelf;
+            // to ensure "optionsRouting" is required (not null)
+            if (optionsRouting == null) {
+                throw new ArgumentNullException("optionsRouting is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.OptionsRouting = optionsRouting;
+            // to ensure "optionsVenue" is required (not null)
+            if (optionsVenue == null) {
+                throw new ArgumentNullException("optionsVenue is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.OptionsVenue = optionsVenue;
+            // to ensure "predictionPartner" is required (not null)
+            if (predictionPartner == null) {
+                throw new ArgumentNullException("predictionPartner is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.PredictionPartner = predictionPartner;
+            // to ensure "predictionSelf" is required (not null)
+            if (predictionSelf == null) {
+                throw new ArgumentNullException("predictionSelf is a required property for GetVaultMarketAccountResponseGates and cannot be null");
+            }
+            this.PredictionSelf = predictionSelf;
         }
+
+        /// <summary>
+        /// Gets or Sets Shares
+        /// </summary>
+        [DataMember(Name = "shares", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns Shares { get; set; }
 
         /// <summary>
         /// Gets or Sets Custody
@@ -92,6 +140,42 @@ namespace net.crossly.Model
         public ListVaultMarketGradeToVaultItemGatesGradingRuns Staking { get; set; }
 
         /// <summary>
+        /// Gets or Sets SharesPartner
+        /// </summary>
+        [DataMember(Name = "shares_partner", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns SharesPartner { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SharesSelf
+        /// </summary>
+        [DataMember(Name = "shares_self", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns SharesSelf { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OptionsRouting
+        /// </summary>
+        [DataMember(Name = "options_routing", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns OptionsRouting { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OptionsVenue
+        /// </summary>
+        [DataMember(Name = "options_venue", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns OptionsVenue { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PredictionPartner
+        /// </summary>
+        [DataMember(Name = "prediction_partner", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns PredictionPartner { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PredictionSelf
+        /// </summary>
+        [DataMember(Name = "prediction_self", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketGradeToVaultItemGatesGradingRuns PredictionSelf { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -99,10 +183,17 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketAccountResponseGates {\n");
+            sb.Append("  Shares: ").Append(Shares).Append("\n");
             sb.Append("  Custody: ").Append(Custody).Append("\n");
             sb.Append("  Lending: ").Append(Lending).Append("\n");
             sb.Append("  Leverage: ").Append(Leverage).Append("\n");
             sb.Append("  Staking: ").Append(Staking).Append("\n");
+            sb.Append("  SharesPartner: ").Append(SharesPartner).Append("\n");
+            sb.Append("  SharesSelf: ").Append(SharesSelf).Append("\n");
+            sb.Append("  OptionsRouting: ").Append(OptionsRouting).Append("\n");
+            sb.Append("  OptionsVenue: ").Append(OptionsVenue).Append("\n");
+            sb.Append("  PredictionPartner: ").Append(PredictionPartner).Append("\n");
+            sb.Append("  PredictionSelf: ").Append(PredictionSelf).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,6 +230,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Shares == input.Shares ||
+                    (this.Shares != null &&
+                    this.Shares.Equals(input.Shares))
+                ) && 
+                (
                     this.Custody == input.Custody ||
                     (this.Custody != null &&
                     this.Custody.Equals(input.Custody))
@@ -157,6 +253,36 @@ namespace net.crossly.Model
                     this.Staking == input.Staking ||
                     (this.Staking != null &&
                     this.Staking.Equals(input.Staking))
+                ) && 
+                (
+                    this.SharesPartner == input.SharesPartner ||
+                    (this.SharesPartner != null &&
+                    this.SharesPartner.Equals(input.SharesPartner))
+                ) && 
+                (
+                    this.SharesSelf == input.SharesSelf ||
+                    (this.SharesSelf != null &&
+                    this.SharesSelf.Equals(input.SharesSelf))
+                ) && 
+                (
+                    this.OptionsRouting == input.OptionsRouting ||
+                    (this.OptionsRouting != null &&
+                    this.OptionsRouting.Equals(input.OptionsRouting))
+                ) && 
+                (
+                    this.OptionsVenue == input.OptionsVenue ||
+                    (this.OptionsVenue != null &&
+                    this.OptionsVenue.Equals(input.OptionsVenue))
+                ) && 
+                (
+                    this.PredictionPartner == input.PredictionPartner ||
+                    (this.PredictionPartner != null &&
+                    this.PredictionPartner.Equals(input.PredictionPartner))
+                ) && 
+                (
+                    this.PredictionSelf == input.PredictionSelf ||
+                    (this.PredictionSelf != null &&
+                    this.PredictionSelf.Equals(input.PredictionSelf))
                 );
         }
 
@@ -169,6 +295,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Shares != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shares.GetHashCode();
+                }
                 if (this.Custody != null)
                 {
                     hashCode = (hashCode * 59) + this.Custody.GetHashCode();
@@ -184,6 +314,30 @@ namespace net.crossly.Model
                 if (this.Staking != null)
                 {
                     hashCode = (hashCode * 59) + this.Staking.GetHashCode();
+                }
+                if (this.SharesPartner != null)
+                {
+                    hashCode = (hashCode * 59) + this.SharesPartner.GetHashCode();
+                }
+                if (this.SharesSelf != null)
+                {
+                    hashCode = (hashCode * 59) + this.SharesSelf.GetHashCode();
+                }
+                if (this.OptionsRouting != null)
+                {
+                    hashCode = (hashCode * 59) + this.OptionsRouting.GetHashCode();
+                }
+                if (this.OptionsVenue != null)
+                {
+                    hashCode = (hashCode * 59) + this.OptionsVenue.GetHashCode();
+                }
+                if (this.PredictionPartner != null)
+                {
+                    hashCode = (hashCode * 59) + this.PredictionPartner.GetHashCode();
+                }
+                if (this.PredictionSelf != null)
+                {
+                    hashCode = (hashCode * 59) + this.PredictionSelf.GetHashCode();
                 }
                 return hashCode;
             }

@@ -39,13 +39,12 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerPackFairnessResponseData" /> class.
         /// </summary>
-        /// <param name="nonce">nonce (required).</param>
         /// <param name="serverSeedHash">serverSeedHash (required).</param>
         /// <param name="clientSeed">clientSeed (required).</param>
+        /// <param name="nonce">nonce (required).</param>
         /// <param name="revealed">revealed (required).</param>
-        public GetBuyerPackFairnessResponseData(decimal nonce = default(decimal), string serverSeedHash = default(string), string clientSeed = default(string), List<GetBuyerPackFairnessResponseDataRevealed> revealed = default(List<GetBuyerPackFairnessResponseDataRevealed>))
+        public GetBuyerPackFairnessResponseData(string serverSeedHash = default(string), string clientSeed = default(string), decimal nonce = default(decimal), List<GetBuyerPackFairnessResponseDataRevealed> revealed = default(List<GetBuyerPackFairnessResponseDataRevealed>))
         {
-            this.Nonce = nonce;
             // to ensure "serverSeedHash" is required (not null)
             if (serverSeedHash == null) {
                 throw new ArgumentNullException("serverSeedHash is a required property for GetBuyerPackFairnessResponseData and cannot be null");
@@ -56,18 +55,13 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("clientSeed is a required property for GetBuyerPackFairnessResponseData and cannot be null");
             }
             this.ClientSeed = clientSeed;
+            this.Nonce = nonce;
             // to ensure "revealed" is required (not null)
             if (revealed == null) {
                 throw new ArgumentNullException("revealed is a required property for GetBuyerPackFairnessResponseData and cannot be null");
             }
             this.Revealed = revealed;
         }
-
-        /// <summary>
-        /// Gets or Sets Nonce
-        /// </summary>
-        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Nonce { get; set; }
 
         /// <summary>
         /// Gets or Sets ServerSeedHash
@@ -80,6 +74,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "clientSeed", IsRequired = true, EmitDefaultValue = false)]
         public string ClientSeed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Nonce
+        /// </summary>
+        [DataMember(Name = "nonce", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Nonce { get; set; }
 
         /// <summary>
         /// Gets or Sets Revealed
@@ -95,9 +95,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPackFairnessResponseData {\n");
-            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
             sb.Append("  ServerSeedHash: ").Append(ServerSeedHash).Append("\n");
             sb.Append("  ClientSeed: ").Append(ClientSeed).Append("\n");
+            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
             sb.Append("  Revealed: ").Append(Revealed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,10 +135,6 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Nonce == input.Nonce ||
-                    this.Nonce.Equals(input.Nonce)
-                ) && 
-                (
                     this.ServerSeedHash == input.ServerSeedHash ||
                     (this.ServerSeedHash != null &&
                     this.ServerSeedHash.Equals(input.ServerSeedHash))
@@ -147,6 +143,10 @@ namespace net.crossly.buyer.Model
                     this.ClientSeed == input.ClientSeed ||
                     (this.ClientSeed != null &&
                     this.ClientSeed.Equals(input.ClientSeed))
+                ) && 
+                (
+                    this.Nonce == input.Nonce ||
+                    this.Nonce.Equals(input.Nonce)
                 ) && 
                 (
                     this.Revealed == input.Revealed ||
@@ -165,7 +165,6 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
                 if (this.ServerSeedHash != null)
                 {
                     hashCode = (hashCode * 59) + this.ServerSeedHash.GetHashCode();
@@ -174,6 +173,7 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ClientSeed.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Nonce.GetHashCode();
                 if (this.Revealed != null)
                 {
                     hashCode = (hashCode * 59) + this.Revealed.GetHashCode();

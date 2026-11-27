@@ -40,47 +40,31 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerOffersItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="expiresAt">expiresAt (required).</param>
-        /// <param name="isBundle">isBundle (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="amountCents">The offer amount for the whole set, in cents. (required).</param>
-        /// <param name="expired">expired (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="expiresAt">expiresAt (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="items">items (required).</param>
-        /// <param name="awaitingBuyer">A seller counter waiting on YOU: accept, decline or counter back. (required).</param>
+        /// <param name="isBundle">isBundle (required).</param>
         /// <param name="redeemable">Accepted, unpaid, unexpired and every item still live — pay for it now. (required).</param>
-        /// <param name="decidedAt">decidedAt.</param>
+        /// <param name="expired">expired (required).</param>
+        /// <param name="awaitingBuyer">A seller counter waiting on YOU: accept, decline or counter back. (required).</param>
+        /// <param name="platformListingIds">platformListingIds.</param>
+        /// <param name="listedTotalCents">Asking-price total when the offer was made, in cents..</param>
         /// <param name="message">message.</param>
         /// <param name="parentOfferId">parentOfferId.</param>
-        /// <param name="platformListingIds">platformListingIds.</param>
-        /// <param name="consumedAt">consumedAt.</param>
-        /// <param name="listedTotalCents">Asking-price total when the offer was made, in cents..</param>
         /// <param name="origin">null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise..</param>
-        public ListBuyerOffersItem(string id = default(string), string createdAt = default(string), string status = default(string), string expiresAt = default(string), bool isBundle = default(bool), string platformListingId = default(string), string sellerUserId = default(string), decimal amountCents = default(decimal), bool expired = default(bool), List<ListBuyerOffersItemItems> items = default(List<ListBuyerOffersItemItems>), bool awaitingBuyer = default(bool), bool redeemable = default(bool), string decidedAt = default(string), string message = default(string), string parentOfferId = default(string), List<string> platformListingIds = default(List<string>), string consumedAt = default(string), decimal? listedTotalCents = default(decimal?), string origin = default(string))
+        /// <param name="decidedAt">decidedAt.</param>
+        /// <param name="consumedAt">consumedAt.</param>
+        public ListBuyerOffersItem(string id = default(string), string platformListingId = default(string), string sellerUserId = default(string), decimal amountCents = default(decimal), string status = default(string), string expiresAt = default(string), string createdAt = default(string), List<ListBuyerOffersItemItems> items = default(List<ListBuyerOffersItemItems>), bool isBundle = default(bool), bool redeemable = default(bool), bool expired = default(bool), bool awaitingBuyer = default(bool), List<string> platformListingIds = default(List<string>), decimal? listedTotalCents = default(decimal?), string message = default(string), string parentOfferId = default(string), string origin = default(string), string decidedAt = default(string), string consumedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerOffersItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerOffersItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerOffersItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "expiresAt" is required (not null)
-            if (expiresAt == null) {
-                throw new ArgumentNullException("expiresAt is a required property for ListBuyerOffersItem and cannot be null");
-            }
-            this.ExpiresAt = expiresAt;
-            this.IsBundle = isBundle;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListBuyerOffersItem and cannot be null");
@@ -92,21 +76,37 @@ namespace net.crossly.buyer.Model
             }
             this.SellerUserId = sellerUserId;
             this.AmountCents = amountCents;
-            this.Expired = expired;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerOffersItem and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "expiresAt" is required (not null)
+            if (expiresAt == null) {
+                throw new ArgumentNullException("expiresAt is a required property for ListBuyerOffersItem and cannot be null");
+            }
+            this.ExpiresAt = expiresAt;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerOffersItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             // to ensure "items" is required (not null)
             if (items == null) {
                 throw new ArgumentNullException("items is a required property for ListBuyerOffersItem and cannot be null");
             }
             this.Items = items;
-            this.AwaitingBuyer = awaitingBuyer;
+            this.IsBundle = isBundle;
             this.Redeemable = redeemable;
-            this.DecidedAt = decidedAt;
+            this.Expired = expired;
+            this.AwaitingBuyer = awaitingBuyer;
+            this.PlatformListingIds = platformListingIds;
+            this.ListedTotalCents = listedTotalCents;
             this.Message = message;
             this.ParentOfferId = parentOfferId;
-            this.PlatformListingIds = platformListingIds;
-            this.ConsumedAt = consumedAt;
-            this.ListedTotalCents = listedTotalCents;
             this.Origin = origin;
+            this.DecidedAt = decidedAt;
+            this.ConsumedAt = consumedAt;
         }
 
         /// <summary>
@@ -114,30 +114,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExpiresAt
-        /// </summary>
-        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
-        public string ExpiresAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsBundle
-        /// </summary>
-        [DataMember(Name = "isBundle", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsBundle { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -159,10 +135,22 @@ namespace net.crossly.buyer.Model
         public decimal AmountCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Expired
+        /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "expired", IsRequired = true, EmitDefaultValue = true)]
-        public bool Expired { get; set; }
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExpiresAt
+        /// </summary>
+        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
+        public string ExpiresAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
@@ -171,11 +159,10 @@ namespace net.crossly.buyer.Model
         public List<ListBuyerOffersItemItems> Items { get; set; }
 
         /// <summary>
-        /// A seller counter waiting on YOU: accept, decline or counter back.
+        /// Gets or Sets IsBundle
         /// </summary>
-        /// <value>A seller counter waiting on YOU: accept, decline or counter back.</value>
-        [DataMember(Name = "awaitingBuyer", IsRequired = true, EmitDefaultValue = true)]
-        public bool AwaitingBuyer { get; set; }
+        [DataMember(Name = "isBundle", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsBundle { get; set; }
 
         /// <summary>
         /// Accepted, unpaid, unexpired and every item still live — pay for it now.
@@ -185,10 +172,30 @@ namespace net.crossly.buyer.Model
         public bool Redeemable { get; set; }
 
         /// <summary>
-        /// Gets or Sets DecidedAt
+        /// Gets or Sets Expired
         /// </summary>
-        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
-        public string DecidedAt { get; set; }
+        [DataMember(Name = "expired", IsRequired = true, EmitDefaultValue = true)]
+        public bool Expired { get; set; }
+
+        /// <summary>
+        /// A seller counter waiting on YOU: accept, decline or counter back.
+        /// </summary>
+        /// <value>A seller counter waiting on YOU: accept, decline or counter back.</value>
+        [DataMember(Name = "awaitingBuyer", IsRequired = true, EmitDefaultValue = true)]
+        public bool AwaitingBuyer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlatformListingIds
+        /// </summary>
+        [DataMember(Name = "platformListingIds", EmitDefaultValue = true)]
+        public List<string> PlatformListingIds { get; set; }
+
+        /// <summary>
+        /// Asking-price total when the offer was made, in cents.
+        /// </summary>
+        /// <value>Asking-price total when the offer was made, in cents.</value>
+        [DataMember(Name = "listedTotalCents", EmitDefaultValue = true)]
+        public decimal? ListedTotalCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Message
@@ -203,30 +210,23 @@ namespace net.crossly.buyer.Model
         public string ParentOfferId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PlatformListingIds
+        /// null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
         /// </summary>
-        [DataMember(Name = "platformListingIds", EmitDefaultValue = true)]
-        public List<string> PlatformListingIds { get; set; }
+        /// <value>null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.</value>
+        [DataMember(Name = "origin", EmitDefaultValue = true)]
+        public string Origin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DecidedAt
+        /// </summary>
+        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
+        public string DecidedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ConsumedAt
         /// </summary>
         [DataMember(Name = "consumedAt", EmitDefaultValue = true)]
         public string ConsumedAt { get; set; }
-
-        /// <summary>
-        /// Asking-price total when the offer was made, in cents.
-        /// </summary>
-        /// <value>Asking-price total when the offer was made, in cents.</value>
-        [DataMember(Name = "listedTotalCents", EmitDefaultValue = true)]
-        public decimal? ListedTotalCents { get; set; }
-
-        /// <summary>
-        /// null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
-        /// </summary>
-        /// <value>null &#x3D; you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.</value>
-        [DataMember(Name = "origin", EmitDefaultValue = true)]
-        public string Origin { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -237,24 +237,24 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerOffersItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
-            sb.Append("  IsBundle: ").Append(IsBundle).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
-            sb.Append("  Expired: ").Append(Expired).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
-            sb.Append("  AwaitingBuyer: ").Append(AwaitingBuyer).Append("\n");
+            sb.Append("  IsBundle: ").Append(IsBundle).Append("\n");
             sb.Append("  Redeemable: ").Append(Redeemable).Append("\n");
-            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
+            sb.Append("  Expired: ").Append(Expired).Append("\n");
+            sb.Append("  AwaitingBuyer: ").Append(AwaitingBuyer).Append("\n");
+            sb.Append("  PlatformListingIds: ").Append(PlatformListingIds).Append("\n");
+            sb.Append("  ListedTotalCents: ").Append(ListedTotalCents).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  ParentOfferId: ").Append(ParentOfferId).Append("\n");
-            sb.Append("  PlatformListingIds: ").Append(PlatformListingIds).Append("\n");
-            sb.Append("  ConsumedAt: ").Append(ConsumedAt).Append("\n");
-            sb.Append("  ListedTotalCents: ").Append(ListedTotalCents).Append("\n");
             sb.Append("  Origin: ").Append(Origin).Append("\n");
+            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
+            sb.Append("  ConsumedAt: ").Append(ConsumedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -296,25 +296,6 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.ExpiresAt == input.ExpiresAt ||
-                    (this.ExpiresAt != null &&
-                    this.ExpiresAt.Equals(input.ExpiresAt))
-                ) && 
-                (
-                    this.IsBundle == input.IsBundle ||
-                    this.IsBundle.Equals(input.IsBundle)
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
@@ -329,8 +310,19 @@ namespace net.crossly.buyer.Model
                     this.AmountCents.Equals(input.AmountCents)
                 ) && 
                 (
-                    this.Expired == input.Expired ||
-                    this.Expired.Equals(input.Expired)
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.ExpiresAt == input.ExpiresAt ||
+                    (this.ExpiresAt != null &&
+                    this.ExpiresAt.Equals(input.ExpiresAt))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
                     this.Items == input.Items ||
@@ -339,17 +331,31 @@ namespace net.crossly.buyer.Model
                     this.Items.SequenceEqual(input.Items)
                 ) && 
                 (
-                    this.AwaitingBuyer == input.AwaitingBuyer ||
-                    this.AwaitingBuyer.Equals(input.AwaitingBuyer)
+                    this.IsBundle == input.IsBundle ||
+                    this.IsBundle.Equals(input.IsBundle)
                 ) && 
                 (
                     this.Redeemable == input.Redeemable ||
                     this.Redeemable.Equals(input.Redeemable)
                 ) && 
                 (
-                    this.DecidedAt == input.DecidedAt ||
-                    (this.DecidedAt != null &&
-                    this.DecidedAt.Equals(input.DecidedAt))
+                    this.Expired == input.Expired ||
+                    this.Expired.Equals(input.Expired)
+                ) && 
+                (
+                    this.AwaitingBuyer == input.AwaitingBuyer ||
+                    this.AwaitingBuyer.Equals(input.AwaitingBuyer)
+                ) && 
+                (
+                    this.PlatformListingIds == input.PlatformListingIds ||
+                    this.PlatformListingIds != null &&
+                    input.PlatformListingIds != null &&
+                    this.PlatformListingIds.SequenceEqual(input.PlatformListingIds)
+                ) && 
+                (
+                    this.ListedTotalCents == input.ListedTotalCents ||
+                    (this.ListedTotalCents != null &&
+                    this.ListedTotalCents.Equals(input.ListedTotalCents))
                 ) && 
                 (
                     this.Message == input.Message ||
@@ -362,25 +368,19 @@ namespace net.crossly.buyer.Model
                     this.ParentOfferId.Equals(input.ParentOfferId))
                 ) && 
                 (
-                    this.PlatformListingIds == input.PlatformListingIds ||
-                    this.PlatformListingIds != null &&
-                    input.PlatformListingIds != null &&
-                    this.PlatformListingIds.SequenceEqual(input.PlatformListingIds)
+                    this.Origin == input.Origin ||
+                    (this.Origin != null &&
+                    this.Origin.Equals(input.Origin))
+                ) && 
+                (
+                    this.DecidedAt == input.DecidedAt ||
+                    (this.DecidedAt != null &&
+                    this.DecidedAt.Equals(input.DecidedAt))
                 ) && 
                 (
                     this.ConsumedAt == input.ConsumedAt ||
                     (this.ConsumedAt != null &&
                     this.ConsumedAt.Equals(input.ConsumedAt))
-                ) && 
-                (
-                    this.ListedTotalCents == input.ListedTotalCents ||
-                    (this.ListedTotalCents != null &&
-                    this.ListedTotalCents.Equals(input.ListedTotalCents))
-                ) && 
-                (
-                    this.Origin == input.Origin ||
-                    (this.Origin != null &&
-                    this.Origin.Equals(input.Origin))
                 );
         }
 
@@ -397,19 +397,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.ExpiresAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsBundle.GetHashCode();
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
@@ -419,16 +406,33 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.Expired.GetHashCode();
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.ExpiresAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
                 if (this.Items != null)
                 {
                     hashCode = (hashCode * 59) + this.Items.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AwaitingBuyer.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsBundle.GetHashCode();
                 hashCode = (hashCode * 59) + this.Redeemable.GetHashCode();
-                if (this.DecidedAt != null)
+                hashCode = (hashCode * 59) + this.Expired.GetHashCode();
+                hashCode = (hashCode * 59) + this.AwaitingBuyer.GetHashCode();
+                if (this.PlatformListingIds != null)
                 {
-                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PlatformListingIds.GetHashCode();
+                }
+                if (this.ListedTotalCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListedTotalCents.GetHashCode();
                 }
                 if (this.Message != null)
                 {
@@ -438,21 +442,17 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ParentOfferId.GetHashCode();
                 }
-                if (this.PlatformListingIds != null)
+                if (this.Origin != null)
                 {
-                    hashCode = (hashCode * 59) + this.PlatformListingIds.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Origin.GetHashCode();
+                }
+                if (this.DecidedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
                 }
                 if (this.ConsumedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ConsumedAt.GetHashCode();
-                }
-                if (this.ListedTotalCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.ListedTotalCents.GetHashCode();
-                }
-                if (this.Origin != null)
-                {
-                    hashCode = (hashCode * 59) + this.Origin.GetHashCode();
                 }
                 return hashCode;
             }

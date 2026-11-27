@@ -26,7 +26,7 @@ using OpenAPIDateConverter = net.crossly.Client.OpenAPIDateConverter;
 namespace net.crossly.Model
 {
     /// <summary>
-    /// The context the bare rate can&#39;t carry. &#x60;tooYoungToJudge&#x60; is the important one: a cohort measured the day its window closed has had no time to sell, and a low number there means \&quot;wait\&quot;, not \&quot;bad buys\&quot; — a seller acting on it would stop sourcing for no reason.
+    /// GetAnalyticDashboardResponseSellThrough
     /// </summary>
     [DataContract(Name = "GetAnalyticDashboardResponseSellThrough")]
     public partial class GetAnalyticDashboardResponseSellThrough : IEquatable<GetAnalyticDashboardResponseSellThrough>, IValidatableObject
@@ -44,12 +44,14 @@ namespace net.crossly.Model
         /// <param name="cohortSold">cohortSold (required).</param>
         /// <param name="maturityDays">maturityDays (required).</param>
         /// <param name="tooYoungToJudge">tooYoungToJudge (required).</param>
-        public GetAnalyticDashboardResponseSellThrough(decimal? rate = default(decimal?), decimal cohortSize = default(decimal), decimal cohortSold = default(decimal), decimal maturityDays = default(decimal), bool tooYoungToJudge = default(bool))
+        /// <param name="immature">immature (required).</param>
+        public GetAnalyticDashboardResponseSellThrough(decimal? rate = default(decimal?), decimal cohortSize = default(decimal), decimal cohortSold = default(decimal), decimal maturityDays = default(decimal), bool tooYoungToJudge = default(bool), decimal immature = default(decimal))
         {
             this.CohortSize = cohortSize;
             this.CohortSold = cohortSold;
             this.MaturityDays = maturityDays;
             this.TooYoungToJudge = tooYoungToJudge;
+            this.Immature = immature;
             this.Rate = rate;
         }
 
@@ -84,6 +86,12 @@ namespace net.crossly.Model
         public bool TooYoungToJudge { get; set; }
 
         /// <summary>
+        /// Gets or Sets Immature
+        /// </summary>
+        [DataMember(Name = "immature", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Immature { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,6 +104,7 @@ namespace net.crossly.Model
             sb.Append("  CohortSold: ").Append(CohortSold).Append("\n");
             sb.Append("  MaturityDays: ").Append(MaturityDays).Append("\n");
             sb.Append("  TooYoungToJudge: ").Append(TooYoungToJudge).Append("\n");
+            sb.Append("  Immature: ").Append(Immature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,6 +160,10 @@ namespace net.crossly.Model
                 (
                     this.TooYoungToJudge == input.TooYoungToJudge ||
                     this.TooYoungToJudge.Equals(input.TooYoungToJudge)
+                ) && 
+                (
+                    this.Immature == input.Immature ||
+                    this.Immature.Equals(input.Immature)
                 );
         }
 
@@ -171,6 +184,7 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.CohortSold.GetHashCode();
                 hashCode = (hashCode * 59) + this.MaturityDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.TooYoungToJudge.GetHashCode();
+                hashCode = (hashCode * 59) + this.Immature.GetHashCode();
                 return hashCode;
             }
         }

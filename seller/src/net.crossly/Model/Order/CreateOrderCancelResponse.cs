@@ -32,6 +32,70 @@ namespace net.crossly.Model
     public partial class CreateOrderCancelResponse : IEquatable<CreateOrderCancelResponse>, IValidatableObject
     {
         /// <summary>
+        /// The marketplace outcome, or already_cancelled when the order was cancelled before this call.
+        /// </summary>
+        /// <value>The marketplace outcome, or already_cancelled when the order was cancelled before this call.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PlatformCancelEnum
+        {
+            /// <summary>
+            /// Enum Sent for value: sent
+            /// </summary>
+            [EnumMember(Value = "sent")]
+            Sent = 1,
+
+            /// <summary>
+            /// Enum Failed for value: failed
+            /// </summary>
+            [EnumMember(Value = "failed")]
+            Failed = 2,
+
+            /// <summary>
+            /// Enum Queued for value: queued
+            /// </summary>
+            [EnumMember(Value = "queued")]
+            Queued = 3,
+
+            /// <summary>
+            /// Enum Relayed for value: relayed
+            /// </summary>
+            [EnumMember(Value = "relayed")]
+            Relayed = 4,
+
+            /// <summary>
+            /// Enum Unsupported for value: unsupported
+            /// </summary>
+            [EnumMember(Value = "unsupported")]
+            Unsupported = 5,
+
+            /// <summary>
+            /// Enum NoPlatformOrderId for value: no_platform_order_id
+            /// </summary>
+            [EnumMember(Value = "no_platform_order_id")]
+            NoPlatformOrderId = 6,
+
+            /// <summary>
+            /// Enum RecordedOnly for value: recorded_only
+            /// </summary>
+            [EnumMember(Value = "recorded_only")]
+            RecordedOnly = 7,
+
+            /// <summary>
+            /// Enum AlreadyCancelled for value: already_cancelled
+            /// </summary>
+            [EnumMember(Value = "already_cancelled")]
+            AlreadyCancelled = 8
+
+        }
+
+
+        /// <summary>
+        /// The marketplace outcome, or already_cancelled when the order was cancelled before this call.
+        /// </summary>
+        /// <value>The marketplace outcome, or already_cancelled when the order was cancelled before this call.</value>
+        [DataMember(Name = "platformCancel", IsRequired = true, EmitDefaultValue = false)]
+        public PlatformCancelEnum PlatformCancel { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrderCancelResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,35 +103,41 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrderCancelResponse" /> class.
         /// </summary>
-        /// <param name="orderId">orderId (required).</param>
+        /// <param name="platformCancel">The marketplace outcome, or already_cancelled when the order was cancelled before this call. (required).</param>
+        /// <param name="refund">refund.</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="cancelledInCrossly">cancelledInCrossly (required).</param>
-        /// <param name="platformCancel">platformCancel (required).</param>
-        public CreateOrderCancelResponse(string orderId = default(string), string platform = default(string), bool cancelledInCrossly = default(bool), string platformCancel = default(string))
+        /// <param name="orderId">orderId (required).</param>
+        /// <param name="error">The platform&#39;s error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed..</param>
+        /// <param name="jobId">Cookie track only..</param>
+        /// <param name="cancelledInCrossly">True unless the cancel was relayed to the managing app (then false until it completes). (required).</param>
+        /// <param name="commandId">platformCancel &#39;relayed&#39;: the app command tracking it..</param>
+        /// <param name="platformResult">Platform payload (e.g. eBay&#39;s cancellationId) when it answered..</param>
+        public CreateOrderCancelResponse(PlatformCancelEnum platformCancel = default(PlatformCancelEnum), CreateOrderCancelResponseRefund refund = default(CreateOrderCancelResponseRefund), string platform = default(string), string orderId = default(string), string error = default(string), string jobId = default(string), bool cancelledInCrossly = default(bool), string commandId = default(string), Dictionary<string, Object> platformResult = default(Dictionary<string, Object>))
         {
-            // to ensure "orderId" is required (not null)
-            if (orderId == null) {
-                throw new ArgumentNullException("orderId is a required property for CreateOrderCancelResponse and cannot be null");
-            }
-            this.OrderId = orderId;
+            this.PlatformCancel = platformCancel;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for CreateOrderCancelResponse and cannot be null");
             }
             this.Platform = platform;
-            this.CancelledInCrossly = cancelledInCrossly;
-            // to ensure "platformCancel" is required (not null)
-            if (platformCancel == null) {
-                throw new ArgumentNullException("platformCancel is a required property for CreateOrderCancelResponse and cannot be null");
+            // to ensure "orderId" is required (not null)
+            if (orderId == null) {
+                throw new ArgumentNullException("orderId is a required property for CreateOrderCancelResponse and cannot be null");
             }
-            this.PlatformCancel = platformCancel;
+            this.OrderId = orderId;
+            this.CancelledInCrossly = cancelledInCrossly;
+            this.Refund = refund;
+            this.Error = error;
+            this.JobId = jobId;
+            this.CommandId = commandId;
+            this.PlatformResult = platformResult;
         }
 
         /// <summary>
-        /// Gets or Sets OrderId
+        /// Gets or Sets Refund
         /// </summary>
-        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = false)]
-        public string OrderId { get; set; }
+        [DataMember(Name = "refund", EmitDefaultValue = true)]
+        public CreateOrderCancelResponseRefund Refund { get; set; }
 
         /// <summary>
         /// Gets or Sets Platform
@@ -76,16 +146,45 @@ namespace net.crossly.Model
         public string Platform { get; set; }
 
         /// <summary>
-        /// Gets or Sets CancelledInCrossly
+        /// Gets or Sets OrderId
         /// </summary>
+        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = false)]
+        public string OrderId { get; set; }
+
+        /// <summary>
+        /// The platform&#39;s error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed.
+        /// </summary>
+        /// <value>The platform&#39;s error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed.</value>
+        [DataMember(Name = "error", EmitDefaultValue = true)]
+        public string Error { get; set; }
+
+        /// <summary>
+        /// Cookie track only.
+        /// </summary>
+        /// <value>Cookie track only.</value>
+        [DataMember(Name = "jobId", EmitDefaultValue = true)]
+        public string JobId { get; set; }
+
+        /// <summary>
+        /// True unless the cancel was relayed to the managing app (then false until it completes).
+        /// </summary>
+        /// <value>True unless the cancel was relayed to the managing app (then false until it completes).</value>
         [DataMember(Name = "cancelledInCrossly", IsRequired = true, EmitDefaultValue = true)]
         public bool CancelledInCrossly { get; set; }
 
         /// <summary>
-        /// Gets or Sets PlatformCancel
+        /// platformCancel &#39;relayed&#39;: the app command tracking it.
         /// </summary>
-        [DataMember(Name = "platformCancel", IsRequired = true, EmitDefaultValue = false)]
-        public string PlatformCancel { get; set; }
+        /// <value>platformCancel &#39;relayed&#39;: the app command tracking it.</value>
+        [DataMember(Name = "commandId", EmitDefaultValue = true)]
+        public string CommandId { get; set; }
+
+        /// <summary>
+        /// Platform payload (e.g. eBay&#39;s cancellationId) when it answered.
+        /// </summary>
+        /// <value>Platform payload (e.g. eBay&#39;s cancellationId) when it answered.</value>
+        [DataMember(Name = "platformResult", EmitDefaultValue = true)]
+        public Dictionary<string, Object> PlatformResult { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,10 +194,15 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateOrderCancelResponse {\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  CancelledInCrossly: ").Append(CancelledInCrossly).Append("\n");
             sb.Append("  PlatformCancel: ").Append(PlatformCancel).Append("\n");
+            sb.Append("  Refund: ").Append(Refund).Append("\n");
+            sb.Append("  Platform: ").Append(Platform).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
+            sb.Append("  JobId: ").Append(JobId).Append("\n");
+            sb.Append("  CancelledInCrossly: ").Append(CancelledInCrossly).Append("\n");
+            sb.Append("  CommandId: ").Append(CommandId).Append("\n");
+            sb.Append("  PlatformResult: ").Append(PlatformResult).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,9 +239,13 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.OrderId == input.OrderId ||
-                    (this.OrderId != null &&
-                    this.OrderId.Equals(input.OrderId))
+                    this.PlatformCancel == input.PlatformCancel ||
+                    this.PlatformCancel.Equals(input.PlatformCancel)
+                ) && 
+                (
+                    this.Refund == input.Refund ||
+                    (this.Refund != null &&
+                    this.Refund.Equals(input.Refund))
                 ) && 
                 (
                     this.Platform == input.Platform ||
@@ -145,13 +253,34 @@ namespace net.crossly.Model
                     this.Platform.Equals(input.Platform))
                 ) && 
                 (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
+                ) && 
+                (
+                    this.Error == input.Error ||
+                    (this.Error != null &&
+                    this.Error.Equals(input.Error))
+                ) && 
+                (
+                    this.JobId == input.JobId ||
+                    (this.JobId != null &&
+                    this.JobId.Equals(input.JobId))
+                ) && 
+                (
                     this.CancelledInCrossly == input.CancelledInCrossly ||
                     this.CancelledInCrossly.Equals(input.CancelledInCrossly)
                 ) && 
                 (
-                    this.PlatformCancel == input.PlatformCancel ||
-                    (this.PlatformCancel != null &&
-                    this.PlatformCancel.Equals(input.PlatformCancel))
+                    this.CommandId == input.CommandId ||
+                    (this.CommandId != null &&
+                    this.CommandId.Equals(input.CommandId))
+                ) && 
+                (
+                    this.PlatformResult == input.PlatformResult ||
+                    this.PlatformResult != null &&
+                    input.PlatformResult != null &&
+                    this.PlatformResult.SequenceEqual(input.PlatformResult)
                 );
         }
 
@@ -164,18 +293,35 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.OrderId != null)
+                hashCode = (hashCode * 59) + this.PlatformCancel.GetHashCode();
+                if (this.Refund != null)
                 {
-                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Refund.GetHashCode();
                 }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.CancelledInCrossly.GetHashCode();
-                if (this.PlatformCancel != null)
+                if (this.OrderId != null)
                 {
-                    hashCode = (hashCode * 59) + this.PlatformCancel.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
+                if (this.Error != null)
+                {
+                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
+                }
+                if (this.JobId != null)
+                {
+                    hashCode = (hashCode * 59) + this.JobId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.CancelledInCrossly.GetHashCode();
+                if (this.CommandId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CommandId.GetHashCode();
+                }
+                if (this.PlatformResult != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlatformResult.GetHashCode();
                 }
                 return hashCode;
             }

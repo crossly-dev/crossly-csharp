@@ -44,7 +44,8 @@ namespace net.crossly.Model
         /// <param name="value">value (required).</param>
         /// <param name="offers">offers (required).</param>
         /// <param name="firstMarks">firstMarks (required).</param>
-        public GetVaultMarketDigestPreviewResponse(List<string> lines = default(List<string>), string week = default(string), GetVaultMarketDigestPreviewResponseValue value = default(GetVaultMarketDigestPreviewResponseValue), List<GetVaultMarketDigestPreviewResponseOffers> offers = default(List<GetVaultMarketDigestPreviewResponseOffers>), List<GetVaultMarketDigestPreviewResponseFirstMarks> firstMarks = default(List<GetVaultMarketDigestPreviewResponseFirstMarks>))
+        /// <param name="learn">learn (required).</param>
+        public GetVaultMarketDigestPreviewResponse(List<string> lines = default(List<string>), string week = default(string), GetVaultMarketDigestPreviewResponseValue value = default(GetVaultMarketDigestPreviewResponseValue), List<GetVaultMarketDigestPreviewResponseOffers> offers = default(List<GetVaultMarketDigestPreviewResponseOffers>), List<GetVaultMarketDigestPreviewResponseFirstMarks> firstMarks = default(List<GetVaultMarketDigestPreviewResponseFirstMarks>), GetVaultMarketDigestPreviewResponseLearn learn = default(GetVaultMarketDigestPreviewResponseLearn))
         {
             // to ensure "lines" is required (not null)
             if (lines == null) {
@@ -71,6 +72,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("firstMarks is a required property for GetVaultMarketDigestPreviewResponse and cannot be null");
             }
             this.FirstMarks = firstMarks;
+            // to ensure "learn" is required (not null)
+            if (learn == null) {
+                throw new ArgumentNullException("learn is a required property for GetVaultMarketDigestPreviewResponse and cannot be null");
+            }
+            this.Learn = learn;
         }
 
         /// <summary>
@@ -104,6 +110,12 @@ namespace net.crossly.Model
         public List<GetVaultMarketDigestPreviewResponseFirstMarks> FirstMarks { get; set; }
 
         /// <summary>
+        /// Gets or Sets Learn
+        /// </summary>
+        [DataMember(Name = "learn", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketDigestPreviewResponseLearn Learn { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -116,6 +128,7 @@ namespace net.crossly.Model
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Offers: ").Append(Offers).Append("\n");
             sb.Append("  FirstMarks: ").Append(FirstMarks).Append("\n");
+            sb.Append("  Learn: ").Append(Learn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -178,6 +191,11 @@ namespace net.crossly.Model
                     this.FirstMarks != null &&
                     input.FirstMarks != null &&
                     this.FirstMarks.SequenceEqual(input.FirstMarks)
+                ) && 
+                (
+                    this.Learn == input.Learn ||
+                    (this.Learn != null &&
+                    this.Learn.Equals(input.Learn))
                 );
         }
 
@@ -209,6 +227,10 @@ namespace net.crossly.Model
                 if (this.FirstMarks != null)
                 {
                     hashCode = (hashCode * 59) + this.FirstMarks.GetHashCode();
+                }
+                if (this.Learn != null)
+                {
+                    hashCode = (hashCode * 59) + this.Learn.GetHashCode();
                 }
                 return hashCode;
             }

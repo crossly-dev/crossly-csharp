@@ -40,17 +40,17 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="CreateBuyerOfferRespondResponseData" /> class.
         /// </summary>
         /// <param name="status">accepted | declined | countered. (required).</param>
-        /// <param name="offerId">Countered: the id of YOUR new offer, now waiting on the seller..</param>
         /// <param name="redeemable">Accepted: you can now pay for it (48 hours)..</param>
-        public CreateBuyerOfferRespondResponseData(string status = default(string), string offerId = default(string), bool? redeemable = default(bool?))
+        /// <param name="offerId">Countered: the id of YOUR new offer, now waiting on the seller..</param>
+        public CreateBuyerOfferRespondResponseData(string status = default(string), bool? redeemable = default(bool?), string offerId = default(string))
         {
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for CreateBuyerOfferRespondResponseData and cannot be null");
             }
             this.Status = status;
-            this.OfferId = offerId;
             this.Redeemable = redeemable;
+            this.OfferId = offerId;
         }
 
         /// <summary>
@@ -61,18 +61,18 @@ namespace net.crossly.buyer.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Countered: the id of YOUR new offer, now waiting on the seller.
-        /// </summary>
-        /// <value>Countered: the id of YOUR new offer, now waiting on the seller.</value>
-        [DataMember(Name = "offerId", EmitDefaultValue = true)]
-        public string OfferId { get; set; }
-
-        /// <summary>
         /// Accepted: you can now pay for it (48 hours).
         /// </summary>
         /// <value>Accepted: you can now pay for it (48 hours).</value>
         [DataMember(Name = "redeemable", EmitDefaultValue = true)]
         public bool? Redeemable { get; set; }
+
+        /// <summary>
+        /// Countered: the id of YOUR new offer, now waiting on the seller.
+        /// </summary>
+        /// <value>Countered: the id of YOUR new offer, now waiting on the seller.</value>
+        [DataMember(Name = "offerId", EmitDefaultValue = true)]
+        public string OfferId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,8 +83,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerOfferRespondResponseData {\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  OfferId: ").Append(OfferId).Append("\n");
             sb.Append("  Redeemable: ").Append(Redeemable).Append("\n");
+            sb.Append("  OfferId: ").Append(OfferId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -126,14 +126,14 @@ namespace net.crossly.buyer.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.OfferId == input.OfferId ||
-                    (this.OfferId != null &&
-                    this.OfferId.Equals(input.OfferId))
-                ) && 
-                (
                     this.Redeemable == input.Redeemable ||
                     (this.Redeemable != null &&
                     this.Redeemable.Equals(input.Redeemable))
+                ) && 
+                (
+                    this.OfferId == input.OfferId ||
+                    (this.OfferId != null &&
+                    this.OfferId.Equals(input.OfferId))
                 );
         }
 
@@ -150,13 +150,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.OfferId != null)
-                {
-                    hashCode = (hashCode * 59) + this.OfferId.GetHashCode();
-                }
                 if (this.Redeemable != null)
                 {
                     hashCode = (hashCode * 59) + this.Redeemable.GetHashCode();
+                }
+                if (this.OfferId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OfferId.GetHashCode();
                 }
                 return hashCode;
             }

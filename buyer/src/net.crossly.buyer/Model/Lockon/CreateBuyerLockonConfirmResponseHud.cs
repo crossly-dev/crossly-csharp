@@ -39,16 +39,16 @@ namespace net.crossly.buyer.Model
         public enum ToneEnum
         {
             /// <summary>
-            /// Enum None for value: none
-            /// </summary>
-            [EnumMember(Value = "none")]
-            None = 1,
-
-            /// <summary>
             /// Enum Info for value: info
             /// </summary>
             [EnumMember(Value = "info")]
-            Info = 2,
+            Info = 1,
+
+            /// <summary>
+            /// Enum None for value: none
+            /// </summary>
+            [EnumMember(Value = "none")]
+            None = 2,
 
             /// <summary>
             /// Enum Win for value: win

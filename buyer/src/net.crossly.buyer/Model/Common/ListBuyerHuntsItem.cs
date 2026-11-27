@@ -42,10 +42,10 @@ namespace net.crossly.buyer.Model
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="mode">mode (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="maxPriceCents">maxPriceCents (required).</param>
         /// <param name="buysLeft">buysLeft (required).</param>
-        public ListBuyerHuntsItem(string id = default(string), string name = default(string), string mode = default(string), string status = default(string), decimal maxPriceCents = default(decimal), decimal buysLeft = default(decimal))
+        /// <param name="status">status (required).</param>
+        public ListBuyerHuntsItem(string id = default(string), string name = default(string), string mode = default(string), decimal maxPriceCents = default(decimal), decimal buysLeft = default(decimal), string status = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -62,13 +62,13 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("mode is a required property for ListBuyerHuntsItem and cannot be null");
             }
             this.Mode = mode;
+            this.MaxPriceCents = maxPriceCents;
+            this.BuysLeft = buysLeft;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for ListBuyerHuntsItem and cannot be null");
             }
             this.Status = status;
-            this.MaxPriceCents = maxPriceCents;
-            this.BuysLeft = buysLeft;
         }
 
         /// <summary>
@@ -90,12 +90,6 @@ namespace net.crossly.buyer.Model
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets MaxPriceCents
         /// </summary>
         [DataMember(Name = "maxPriceCents", IsRequired = true, EmitDefaultValue = false)]
@@ -108,6 +102,12 @@ namespace net.crossly.buyer.Model
         public decimal BuysLeft { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,9 +118,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Mode: ").Append(Mode).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  MaxPriceCents: ").Append(MaxPriceCents).Append("\n");
             sb.Append("  BuysLeft: ").Append(BuysLeft).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -172,17 +172,17 @@ namespace net.crossly.buyer.Model
                     this.Mode.Equals(input.Mode))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.MaxPriceCents == input.MaxPriceCents ||
                     this.MaxPriceCents.Equals(input.MaxPriceCents)
                 ) && 
                 (
                     this.BuysLeft == input.BuysLeft ||
                     this.BuysLeft.Equals(input.BuysLeft)
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -207,12 +207,12 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Mode.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.MaxPriceCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.BuysLeft.GetHashCode();
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.MaxPriceCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.BuysLeft.GetHashCode();
                 return hashCode;
             }
         }

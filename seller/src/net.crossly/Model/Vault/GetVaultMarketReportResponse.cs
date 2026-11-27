@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// <param name="method">method (required).</param>
         /// <param name="printable">printable (required).</param>
         /// <param name="quarters">quarters (required).</param>
-        public GetVaultMarketReportResponse(string quarter = default(string), string label = default(string), GetInventorySellThroughResponseDataWindow range = default(GetInventorySellThroughResponseDataWindow), bool inProgress = default(bool), string generatedAt = default(string), GetVaultMarketReportResponseTotals totals = default(GetVaultMarketReportResponseTotals), List<GetVaultMarketReportResponseIndexes> indexes = default(List<GetVaultMarketReportResponseIndexes>), List<GetVaultMarketReportResponseRisers> risers = default(List<GetVaultMarketReportResponseRisers>), List<GetVaultMarketReportResponseRisers> fallers = default(List<GetVaultMarketReportResponseRisers>), List<GetVaultMarketReportResponseMostLent> mostLent = default(List<GetVaultMarketReportResponseMostLent>), List<GetVaultMarketReportResponseGradePremiums> gradePremiums = default(List<GetVaultMarketReportResponseGradePremiums>), List<string> method = default(List<string>), GetVaultMarketReportResponsePrintable printable = default(GetVaultMarketReportResponsePrintable), List<string> quarters = default(List<string>))
+        public GetVaultMarketReportResponse(string quarter = default(string), string label = default(string), StartEnd range = default(StartEnd), bool inProgress = default(bool), string generatedAt = default(string), GetVaultMarketReportResponseTotals totals = default(GetVaultMarketReportResponseTotals), List<GetVaultMarketReportResponseIndexes> indexes = default(List<GetVaultMarketReportResponseIndexes>), List<GetVaultMarketReportResponseRisers> risers = default(List<GetVaultMarketReportResponseRisers>), List<GetVaultMarketReportResponseRisers> fallers = default(List<GetVaultMarketReportResponseRisers>), List<GetVaultMarketReportResponseMostLent> mostLent = default(List<GetVaultMarketReportResponseMostLent>), List<GetVaultMarketReportResponseGradePremiums> gradePremiums = default(List<GetVaultMarketReportResponseGradePremiums>), List<string> method = default(List<string>), GetVaultMarketReportResponsePrintable printable = default(GetVaultMarketReportResponsePrintable), List<string> quarters = default(List<string>))
         {
             // to ensure "quarter" is required (not null)
             if (quarter == null) {
@@ -139,7 +139,7 @@ namespace net.crossly.Model
         /// Gets or Sets Range
         /// </summary>
         [DataMember(Name = "range", IsRequired = true, EmitDefaultValue = false)]
-        public GetInventorySellThroughResponseDataWindow Range { get; set; }
+        public StartEnd Range { get; set; }
 
         /// <summary>
         /// Gets or Sets InProgress

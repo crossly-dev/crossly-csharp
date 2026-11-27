@@ -27,14 +27,14 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Accept a pending team invitation by raw token.
+        /// Accept a team invitation by the raw token from its link.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateTeamAcceptResponse</returns>
         CreateTeamAcceptResponse CreateTeamAccept();
 
         /// <summary>
-        /// Accept a pending team invitation by raw token.
+        /// Accept a team invitation by the raw token from its link.
         /// </summary>
         /// <remarks>
         /// 
@@ -43,14 +43,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateTeamAcceptResponse</returns>
         ApiResponse<CreateTeamAcceptResponse> CreateTeamAcceptWithHttpInfo();
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL.
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateTeamInviteResponse</returns>
         CreateTeamInviteResponse CreateTeamInvite();
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL.
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
         /// <remarks>
         /// 
@@ -134,7 +134,7 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Accept a pending team invitation by raw token.
+        /// Accept a team invitation by the raw token from its link.
         /// </summary>
         /// <remarks>
         /// 
@@ -145,7 +145,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateTeamAcceptResponse> CreateTeamAcceptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Accept a pending team invitation by raw token.
+        /// Accept a team invitation by the raw token from its link.
         /// </summary>
         /// <remarks>
         /// 
@@ -155,7 +155,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateTeamAcceptResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateTeamAcceptResponse>> CreateTeamAcceptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL.
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
         /// <remarks>
         /// 
@@ -166,7 +166,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL.
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
         /// <remarks>
         /// 
@@ -382,7 +382,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept a pending team invitation by raw token. 
+        /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateTeamAcceptResponse</returns>
@@ -393,7 +393,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept a pending team invitation by raw token. 
+        /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateTeamAcceptResponse</returns>
@@ -444,7 +444,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept a pending team invitation by raw token. 
+        /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -456,7 +456,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept a pending team invitation by raw token. 
+        /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -510,7 +510,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL. 
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateTeamInviteResponse</returns>
@@ -521,7 +521,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL. 
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
@@ -572,7 +572,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL. 
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -584,7 +584,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Mint a team invitation; returns the one-time accept URL. 
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

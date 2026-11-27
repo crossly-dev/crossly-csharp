@@ -61,30 +61,86 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         ApiResponse<OkResponse> DeleteMileageWithHttpInfo(Guid id);
         /// <summary>
-        /// Annual mileage totals + IRS deduction.
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>GetMileageSummaryResponse</returns>
-        GetMileageSummaryResponse GetMileageSummary();
+        /// <returns>GetBookTaxProfileResponse</returns>
+        GetBookTaxProfileResponse GetBookTaxProfile();
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction.
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of GetMileageSummaryResponse</returns>
-        ApiResponse<GetMileageSummaryResponse> GetMileageSummaryWithHttpInfo();
+        /// <returns>ApiResponse of GetBookTaxProfileResponse</returns>
+        ApiResponse<GetBookTaxProfileResponse> GetBookTaxProfileWithHttpInfo();
         /// <summary>
-        /// Schedule C JSON for a tax year.
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <returns>GetMileageSummaryResponse</returns>
+        GetMileageSummaryResponse GetMileageSummary(int? year = default(int?));
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <returns>ApiResponse of GetMileageSummaryResponse</returns>
+        ApiResponse<GetMileageSummaryResponse> GetMileageSummaryWithHttpInfo(int? year = default(int?));
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderSalesTaxResponse</returns>
+        GetOrderSalesTaxResponse GetOrderSalesTax(Guid id);
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderSalesTaxResponse</returns>
+        ApiResponse<GetOrderSalesTaxResponse> GetOrderSalesTaxWithHttpInfo(Guid id);
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <returns>GetTaxSalesTaxResponse</returns>
+        GetTaxSalesTaxResponse GetTaxSalesTax(string from = default(string), string to = default(string));
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <returns>ApiResponse of GetTaxSalesTaxResponse</returns>
+        ApiResponse<GetTaxSalesTaxResponse> GetTaxSalesTaxWithHttpInfo(string from = default(string), string to = default(string));
+        /// <summary>
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetTaxScheduleCResponse</returns>
         GetTaxScheduleCResponse GetTaxScheduleC();
 
         /// <summary>
-        /// Schedule C JSON for a tax year.
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
         /// </summary>
         /// <remarks>
         /// 
@@ -93,21 +149,87 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetTaxScheduleCResponse</returns>
         ApiResponse<GetTaxScheduleCResponse> GetTaxScheduleCWithHttpInfo();
         /// <summary>
-        /// List mileage entries.
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <returns>ListMileageResponse</returns>
-        ListMileageResponse ListMileage();
+        ListMileageResponse ListMileage(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
 
         /// <summary>
-        /// List mileage entries.
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <returns>ApiResponse of ListMileageResponse</returns>
-        ApiResponse<ListMileageResponse> ListMileageWithHttpInfo();
+        ApiResponse<ListMileageResponse> ListMileageWithHttpInfo(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListTaxCrosslyCollectsResponse</returns>
+        ListTaxCrosslyCollectsResponse ListTaxCrosslyCollects();
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListTaxCrosslyCollectsResponse</returns>
+        ApiResponse<ListTaxCrosslyCollectsResponse> ListTaxCrosslyCollectsWithHttpInfo();
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ListTaxSalesTaxNotCollectedResponse</returns>
+        ListTaxSalesTaxNotCollectedResponse ListTaxSalesTaxNotCollected(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of ListTaxSalesTaxNotCollectedResponse</returns>
+        ApiResponse<ListTaxSalesTaxNotCollectedResponse> ListTaxSalesTaxNotCollectedWithHttpInfo(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBookTaxProfileResponse</returns>
+        GetBookTaxProfileResponse UpdateBookTaxProfile();
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBookTaxProfileResponse</returns>
+        ApiResponse<GetBookTaxProfileResponse> UpdateBookTaxProfileWithHttpInfo();
         /// <summary>
         /// Update a mileage entry.
         /// </summary>
@@ -180,28 +302,99 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteMileageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Annual mileage totals + IRS deduction.
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetMileageSummaryResponse</returns>
-        System.Threading.Tasks.Task<GetMileageSummaryResponse> GetMileageSummaryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetBookTaxProfileResponse</returns>
+        System.Threading.Tasks.Task<GetBookTaxProfileResponse> GetBookTaxProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction.
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetMileageSummaryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetMileageSummaryResponse>> GetMileageSummaryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetBookTaxProfileResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBookTaxProfileResponse>> GetBookTaxProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Schedule C JSON for a tax year.
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMileageSummaryResponse</returns>
+        System.Threading.Tasks.Task<GetMileageSummaryResponse> GetMileageSummaryAsync(int? year = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMileageSummaryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetMileageSummaryResponse>> GetMileageSummaryWithHttpInfoAsync(int? year = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderSalesTaxResponse</returns>
+        System.Threading.Tasks.Task<GetOrderSalesTaxResponse> GetOrderSalesTaxAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderSalesTaxResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderSalesTaxResponse>> GetOrderSalesTaxWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetTaxSalesTaxResponse</returns>
+        System.Threading.Tasks.Task<GetTaxSalesTaxResponse> GetTaxSalesTaxAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetTaxSalesTaxResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetTaxSalesTaxResponse>> GetTaxSalesTaxWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
         /// </summary>
         /// <remarks>
         /// 
@@ -212,7 +405,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetTaxScheduleCResponse> GetTaxScheduleCAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Schedule C JSON for a tax year.
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
         /// </summary>
         /// <remarks>
         /// 
@@ -222,26 +415,107 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetTaxScheduleCResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTaxScheduleCResponse>> GetTaxScheduleCWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List mileage entries.
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMileageResponse</returns>
-        System.Threading.Tasks.Task<ListMileageResponse> ListMileageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListMileageResponse> ListMileageAsync(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List mileage entries.
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListMileageResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListMileageResponse>> ListMileageWithHttpInfoAsync(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListMileageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListMileageResponse>> ListMileageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListTaxCrosslyCollectsResponse</returns>
+        System.Threading.Tasks.Task<ListTaxCrosslyCollectsResponse> ListTaxCrosslyCollectsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTaxCrosslyCollectsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListTaxCrosslyCollectsResponse>> ListTaxCrosslyCollectsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTaxSalesTaxNotCollectedResponse</returns>
+        System.Threading.Tasks.Task<ListTaxSalesTaxNotCollectedResponse> ListTaxSalesTaxNotCollectedAsync(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTaxSalesTaxNotCollectedResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListTaxSalesTaxNotCollectedResponse>> ListTaxSalesTaxNotCollectedWithHttpInfoAsync(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBookTaxProfileResponse</returns>
+        System.Threading.Tasks.Task<GetBookTaxProfileResponse> UpdateBookTaxProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBookTaxProfileResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBookTaxProfileResponse>> UpdateBookTaxProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update a mileage entry.
         /// </summary>
@@ -648,22 +922,22 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction. 
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>GetMileageSummaryResponse</returns>
-        public GetMileageSummaryResponse GetMileageSummary()
+        /// <returns>GetBookTaxProfileResponse</returns>
+        public GetBookTaxProfileResponse GetBookTaxProfile()
         {
-            net.crossly.Client.ApiResponse<GetMileageSummaryResponse> localVarResponse = GetMileageSummaryWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> localVarResponse = GetBookTaxProfileWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction. 
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of GetMileageSummaryResponse</returns>
-        public net.crossly.Client.ApiResponse<GetMileageSummaryResponse> GetMileageSummaryWithHttpInfo()
+        /// <returns>ApiResponse of GetBookTaxProfileResponse</returns>
+        public net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> GetBookTaxProfileWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -696,10 +970,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetMileageSummaryResponse>("/v1/mileage/summary", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetBookTaxProfileResponse>("/v1/books/tax-profile", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetMileageSummary", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetBookTaxProfile", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -710,24 +984,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction. 
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetMileageSummaryResponse</returns>
-        public async System.Threading.Tasks.Task<GetMileageSummaryResponse> GetMileageSummaryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetBookTaxProfileResponse</returns>
+        public async System.Threading.Tasks.Task<GetBookTaxProfileResponse> GetBookTaxProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetMileageSummaryResponse> localVarResponse = await GetMileageSummaryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> localVarResponse = await GetBookTaxProfileWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Annual mileage totals + IRS deduction. 
+        /// Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetMileageSummaryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetMileageSummaryResponse>> GetMileageSummaryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetBookTaxProfileResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBookTaxProfileResponse>> GetBookTaxProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -752,6 +1026,146 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBookTaxProfileResponse>("/v1/books/tax-profile", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBookTaxProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <returns>GetMileageSummaryResponse</returns>
+        public GetMileageSummaryResponse GetMileageSummary(int? year = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetMileageSummaryResponse> localVarResponse = GetMileageSummaryWithHttpInfo(year);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <returns>ApiResponse of GetMileageSummaryResponse</returns>
+        public net.crossly.Client.ApiResponse<GetMileageSummaryResponse> GetMileageSummaryWithHttpInfo(int? year = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetMileageSummaryResponse>("/v1/mileage/summary", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMileageSummary", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetMileageSummaryResponse</returns>
+        public async System.Threading.Tasks.Task<GetMileageSummaryResponse> GetMileageSummaryAsync(int? year = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetMileageSummaryResponse> localVarResponse = await GetMileageSummaryWithHttpInfoAsync(year, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Calendar tax year. Default the current year. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetMileageSummaryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetMileageSummaryResponse>> GetMileageSummaryWithHttpInfoAsync(int? year = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -776,7 +1190,293 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule C JSON for a tax year. 
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetOrderSalesTaxResponse</returns>
+        public GetOrderSalesTaxResponse GetOrderSalesTax(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> localVarResponse = GetOrderSalesTaxWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetOrderSalesTaxResponse</returns>
+        public net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> GetOrderSalesTaxWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetOrderSalesTaxResponse>("/v1/orders/{id}/sales-tax", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderSalesTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetOrderSalesTaxResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderSalesTaxResponse> GetOrderSalesTaxAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse> localVarResponse = await GetOrderSalesTaxWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who collected sales tax on one Crossly marketplace order, where, and the seller notice. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetOrderSalesTaxResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetOrderSalesTaxResponse>> GetOrderSalesTaxWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetOrderSalesTaxResponse>("/v1/orders/{id}/sales-tax", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderSalesTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <returns>GetTaxSalesTaxResponse</returns>
+        public GetTaxSalesTaxResponse GetTaxSalesTax(string from = default(string), string to = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetTaxSalesTaxResponse> localVarResponse = GetTaxSalesTaxWithHttpInfo(from, to);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <returns>ApiResponse of GetTaxSalesTaxResponse</returns>
+        public net.crossly.Client.ApiResponse<GetTaxSalesTaxResponse> GetTaxSalesTaxWithHttpInfo(string from = default(string), string to = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetTaxSalesTaxResponse>("/v1/tax/sales-tax", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxSalesTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetTaxSalesTaxResponse</returns>
+        public async System.Threading.Tasks.Task<GetTaxSalesTaxResponse> GetTaxSalesTaxAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetTaxSalesTaxResponse> localVarResponse = await GetTaxSalesTaxWithHttpInfoAsync(from, to, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from">YYYY-MM-DD, inclusive. Default 1 January this year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Default now. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetTaxSalesTaxResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetTaxSalesTaxResponse>> GetTaxSalesTaxWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTaxSalesTaxResponse>("/v1/tax/sales-tax", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxSalesTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetTaxScheduleCResponse</returns>
@@ -787,7 +1487,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule C JSON for a tax year. 
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetTaxScheduleCResponse</returns>
@@ -838,7 +1538,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule C JSON for a tax year. 
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -850,7 +1550,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule C JSON for a tax year. 
+        /// Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -904,22 +1604,32 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List mileage entries. 
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <returns>ListMileageResponse</returns>
-        public ListMileageResponse ListMileage()
+        public ListMileageResponse ListMileage(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
         {
-            net.crossly.Client.ApiResponse<ListMileageResponse> localVarResponse = ListMileageWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListMileageResponse> localVarResponse = ListMileageWithHttpInfo(year, from, to, page, limit);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List mileage entries. 
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <returns>ApiResponse of ListMileageResponse</returns>
-        public net.crossly.Client.ApiResponse<ListMileageResponse> ListMileageWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListMileageResponse> ListMileageWithHttpInfo(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -943,6 +1653,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -966,24 +1696,182 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List mileage entries. 
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMileageResponse</returns>
-        public async System.Threading.Tasks.Task<ListMileageResponse> ListMileageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListMileageResponse> ListMileageAsync(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListMileageResponse> localVarResponse = await ListMileageWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListMileageResponse> localVarResponse = await ListMileageWithHttpInfoAsync(year, from, to, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List mileage entries. 
+        /// List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year">Only trips dated in this calendar year. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive. Only trips on or before this date; from &lt;&#x3D; to. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="limit">Rows per page, default 100, clamped to 500. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListMileageResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMileageResponse>> ListMileageWithHttpInfoAsync(int? year = default(int?), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListMileageResponse>("/v1/mileage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListMileage", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListTaxCrosslyCollectsResponse</returns>
+        public ListTaxCrosslyCollectsResponse ListTaxCrosslyCollects()
+        {
+            net.crossly.Client.ApiResponse<ListTaxCrosslyCollectsResponse> localVarResponse = ListTaxCrosslyCollectsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListTaxCrosslyCollectsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListTaxCrosslyCollectsResponse> ListTaxCrosslyCollectsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListTaxCrosslyCollectsResponse>("/v1/tax/crossly-collects", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaxCrosslyCollects", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListMileageResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMileageResponse>> ListMileageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListTaxCrosslyCollectsResponse</returns>
+        public async System.Threading.Tasks.Task<ListTaxCrosslyCollectsResponse> ListTaxCrosslyCollectsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListTaxCrosslyCollectsResponse> localVarResponse = await ListTaxCrosslyCollectsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Where Crossly collects sales tax today (its active Stripe Tax registrations). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTaxCrosslyCollectsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListTaxCrosslyCollectsResponse>> ListTaxCrosslyCollectsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1017,11 +1905,315 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListMileageResponse>("/v1/mileage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTaxCrosslyCollectsResponse>("/v1/tax/crossly-collects", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListMileage", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListTaxCrosslyCollects", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ListTaxSalesTaxNotCollectedResponse</returns>
+        public ListTaxSalesTaxNotCollectedResponse ListTaxSalesTaxNotCollected(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListTaxSalesTaxNotCollectedResponse> localVarResponse = ListTaxSalesTaxNotCollectedWithHttpInfo(from, to, page, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of ListTaxSalesTaxNotCollectedResponse</returns>
+        public net.crossly.Client.ApiResponse<ListTaxSalesTaxNotCollectedResponse> ListTaxSalesTaxNotCollectedWithHttpInfo(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListTaxSalesTaxNotCollectedResponse>("/v1/tax/sales-tax/not-collected", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaxSalesTaxNotCollected", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTaxSalesTaxNotCollectedResponse</returns>
+        public async System.Threading.Tasks.Task<ListTaxSalesTaxNotCollectedResponse> ListTaxSalesTaxNotCollectedAsync(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListTaxSalesTaxNotCollectedResponse> localVarResponse = await ListTaxSalesTaxNotCollectedWithHttpInfoAsync(from, to, page, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The individual Crossly sales Crossly did not collect sales tax on, newest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTaxSalesTaxNotCollectedResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListTaxSalesTaxNotCollectedResponse>> ListTaxSalesTaxNotCollectedWithHttpInfoAsync(string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTaxSalesTaxNotCollectedResponse>("/v1/tax/sales-tax/not-collected", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaxSalesTaxNotCollected", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBookTaxProfileResponse</returns>
+        public GetBookTaxProfileResponse UpdateBookTaxProfile()
+        {
+            net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> localVarResponse = UpdateBookTaxProfileWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBookTaxProfileResponse</returns>
+        public net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> UpdateBookTaxProfileWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetBookTaxProfileResponse>("/v1/books/tax-profile", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBookTaxProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBookTaxProfileResponse</returns>
+        public async System.Threading.Tasks.Task<GetBookTaxProfileResponse> UpdateBookTaxProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetBookTaxProfileResponse> localVarResponse = await UpdateBookTaxProfileWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBookTaxProfileResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBookTaxProfileResponse>> UpdateBookTaxProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetBookTaxProfileResponse>("/v1/books/tax-profile", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBookTaxProfile", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

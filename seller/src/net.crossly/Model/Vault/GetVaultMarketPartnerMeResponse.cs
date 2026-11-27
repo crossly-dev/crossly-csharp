@@ -34,9 +34,20 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultMarketPartnerMeResponse" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected GetVaultMarketPartnerMeResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetVaultMarketPartnerMeResponse" /> class.
+        /// </summary>
         /// <param name="partnership">partnership.</param>
-        public GetVaultMarketPartnerMeResponse(GetVaultMarketPartnerMeResponsePartnership partnership = default(GetVaultMarketPartnerMeResponsePartnership))
+        /// <param name="identity">identity (required).</param>
+        public GetVaultMarketPartnerMeResponse(GetVaultMarketPartnerMeResponsePartnership partnership = default(GetVaultMarketPartnerMeResponsePartnership), GetVaultMarketPartnerMeResponseIdentity identity = default(GetVaultMarketPartnerMeResponseIdentity))
         {
+            // to ensure "identity" is required (not null)
+            if (identity == null) {
+                throw new ArgumentNullException("identity is a required property for GetVaultMarketPartnerMeResponse and cannot be null");
+            }
+            this.Identity = identity;
             this.Partnership = partnership;
         }
 
@@ -47,6 +58,12 @@ namespace net.crossly.Model
         public GetVaultMarketPartnerMeResponsePartnership Partnership { get; set; }
 
         /// <summary>
+        /// Gets or Sets Identity
+        /// </summary>
+        [DataMember(Name = "identity", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketPartnerMeResponseIdentity Identity { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -55,6 +72,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketPartnerMeResponse {\n");
             sb.Append("  Partnership: ").Append(Partnership).Append("\n");
+            sb.Append("  Identity: ").Append(Identity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,6 +112,11 @@ namespace net.crossly.Model
                     this.Partnership == input.Partnership ||
                     (this.Partnership != null &&
                     this.Partnership.Equals(input.Partnership))
+                ) && 
+                (
+                    this.Identity == input.Identity ||
+                    (this.Identity != null &&
+                    this.Identity.Equals(input.Identity))
                 );
         }
 
@@ -109,6 +132,10 @@ namespace net.crossly.Model
                 if (this.Partnership != null)
                 {
                     hashCode = (hashCode * 59) + this.Partnership.GetHashCode();
+                }
+                if (this.Identity != null)
+                {
+                    hashCode = (hashCode * 59) + this.Identity.GetHashCode();
                 }
                 return hashCode;
             }

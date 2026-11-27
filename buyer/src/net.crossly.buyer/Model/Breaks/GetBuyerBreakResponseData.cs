@@ -40,71 +40,71 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerBreakResponseData" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="assignedAt">assignedAt.</param>
         /// <param name="title">title (required).</param>
-        /// <param name="seller">seller (required).</param>
+        /// <param name="product">product.</param>
+        /// <param name="format">format (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="slug">slug.</param>
         /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="format">format (required).</param>
         /// <param name="streamId">streamId.</param>
-        /// <param name="seed">seed.</param>
-        /// <param name="product">product.</param>
-        /// <param name="seedCommit">seedCommit (required).</param>
+        /// <param name="seller">seller (required).</param>
         /// <param name="spots">spots (required).</param>
         /// <param name="spotsLeft">spotsLeft (required).</param>
+        /// <param name="seedCommit">seedCommit (required).</param>
+        /// <param name="seed">seed.</param>
         /// <param name="draw">draw.</param>
-        public GetBuyerBreakResponseData(string id = default(string), string createdAt = default(string), string status = default(string), string assignedAt = default(string), string title = default(string), GetBuyerBreakResponseDataSeller seller = default(GetBuyerBreakResponseDataSeller), string slug = default(string), decimal priceCents = default(decimal), string format = default(string), string streamId = default(string), string seed = default(string), string product = default(string), string seedCommit = default(string), List<GetBuyerBreakResponseDataSpots> spots = default(List<GetBuyerBreakResponseDataSpots>), decimal spotsLeft = default(decimal), List<GetBuyerBreakResponseDataDraw> draw = default(List<GetBuyerBreakResponseDataDraw>))
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="assignedAt">assignedAt.</param>
+        public GetBuyerBreakResponseData(string id = default(string), string title = default(string), string product = default(string), string format = default(string), string status = default(string), string slug = default(string), decimal priceCents = default(decimal), string streamId = default(string), GetBuyerBreakResponseDataSeller seller = default(GetBuyerBreakResponseDataSeller), List<GetBuyerBreakResponseDataSpots> spots = default(List<GetBuyerBreakResponseDataSpots>), decimal spotsLeft = default(decimal), string seedCommit = default(string), string seed = default(string), List<GetBuyerBreakResponseDataDraw> draw = default(List<GetBuyerBreakResponseDataDraw>), string createdAt = default(string), string assignedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerBreakResponseData and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for GetBuyerBreakResponseData and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for GetBuyerBreakResponseData and cannot be null");
-            }
-            this.Status = status;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for GetBuyerBreakResponseData and cannot be null");
             }
             this.Title = title;
-            // to ensure "seller" is required (not null)
-            if (seller == null) {
-                throw new ArgumentNullException("seller is a required property for GetBuyerBreakResponseData and cannot be null");
-            }
-            this.Seller = seller;
-            this.PriceCents = priceCents;
             // to ensure "format" is required (not null)
             if (format == null) {
                 throw new ArgumentNullException("format is a required property for GetBuyerBreakResponseData and cannot be null");
             }
             this.Format = format;
-            // to ensure "seedCommit" is required (not null)
-            if (seedCommit == null) {
-                throw new ArgumentNullException("seedCommit is a required property for GetBuyerBreakResponseData and cannot be null");
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for GetBuyerBreakResponseData and cannot be null");
             }
-            this.SeedCommit = seedCommit;
+            this.Status = status;
+            this.PriceCents = priceCents;
+            // to ensure "seller" is required (not null)
+            if (seller == null) {
+                throw new ArgumentNullException("seller is a required property for GetBuyerBreakResponseData and cannot be null");
+            }
+            this.Seller = seller;
             // to ensure "spots" is required (not null)
             if (spots == null) {
                 throw new ArgumentNullException("spots is a required property for GetBuyerBreakResponseData and cannot be null");
             }
             this.Spots = spots;
             this.SpotsLeft = spotsLeft;
-            this.AssignedAt = assignedAt;
+            // to ensure "seedCommit" is required (not null)
+            if (seedCommit == null) {
+                throw new ArgumentNullException("seedCommit is a required property for GetBuyerBreakResponseData and cannot be null");
+            }
+            this.SeedCommit = seedCommit;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for GetBuyerBreakResponseData and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            this.Product = product;
             this.Slug = slug;
             this.StreamId = streamId;
             this.Seed = seed;
-            this.Product = product;
             this.Draw = draw;
+            this.AssignedAt = assignedAt;
         }
 
         /// <summary>
@@ -114,34 +114,28 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AssignedAt
-        /// </summary>
-        [DataMember(Name = "assignedAt", EmitDefaultValue = true)]
-        public string AssignedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets Seller
+        /// Gets or Sets Product
         /// </summary>
-        [DataMember(Name = "seller", IsRequired = true, EmitDefaultValue = false)]
-        public GetBuyerBreakResponseDataSeller Seller { get; set; }
+        [DataMember(Name = "product", EmitDefaultValue = true)]
+        public string Product { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Format
+        /// </summary>
+        [DataMember(Name = "format", IsRequired = true, EmitDefaultValue = false)]
+        public string Format { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Slug
@@ -156,34 +150,16 @@ namespace net.crossly.buyer.Model
         public decimal PriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Format
-        /// </summary>
-        [DataMember(Name = "format", IsRequired = true, EmitDefaultValue = false)]
-        public string Format { get; set; }
-
-        /// <summary>
         /// Gets or Sets StreamId
         /// </summary>
         [DataMember(Name = "streamId", EmitDefaultValue = true)]
         public string StreamId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Seed
+        /// Gets or Sets Seller
         /// </summary>
-        [DataMember(Name = "seed", EmitDefaultValue = true)]
-        public string Seed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Product
-        /// </summary>
-        [DataMember(Name = "product", EmitDefaultValue = true)]
-        public string Product { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SeedCommit
-        /// </summary>
-        [DataMember(Name = "seedCommit", IsRequired = true, EmitDefaultValue = false)]
-        public string SeedCommit { get; set; }
+        [DataMember(Name = "seller", IsRequired = true, EmitDefaultValue = false)]
+        public GetBuyerBreakResponseDataSeller Seller { get; set; }
 
         /// <summary>
         /// Gets or Sets Spots
@@ -198,10 +174,34 @@ namespace net.crossly.buyer.Model
         public decimal SpotsLeft { get; set; }
 
         /// <summary>
+        /// Gets or Sets SeedCommit
+        /// </summary>
+        [DataMember(Name = "seedCommit", IsRequired = true, EmitDefaultValue = false)]
+        public string SeedCommit { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Seed
+        /// </summary>
+        [DataMember(Name = "seed", EmitDefaultValue = true)]
+        public string Seed { get; set; }
+
+        /// <summary>
         /// Gets or Sets Draw
         /// </summary>
         [DataMember(Name = "draw", EmitDefaultValue = true)]
         public List<GetBuyerBreakResponseDataDraw> Draw { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssignedAt
+        /// </summary>
+        [DataMember(Name = "assignedAt", EmitDefaultValue = true)]
+        public string AssignedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -212,21 +212,21 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerBreakResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  AssignedAt: ").Append(AssignedAt).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  Seller: ").Append(Seller).Append("\n");
+            sb.Append("  Product: ").Append(Product).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  StreamId: ").Append(StreamId).Append("\n");
-            sb.Append("  Seed: ").Append(Seed).Append("\n");
-            sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  SeedCommit: ").Append(SeedCommit).Append("\n");
+            sb.Append("  Seller: ").Append(Seller).Append("\n");
             sb.Append("  Spots: ").Append(Spots).Append("\n");
             sb.Append("  SpotsLeft: ").Append(SpotsLeft).Append("\n");
+            sb.Append("  SeedCommit: ").Append(SeedCommit).Append("\n");
+            sb.Append("  Seed: ").Append(Seed).Append("\n");
             sb.Append("  Draw: ").Append(Draw).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  AssignedAt: ").Append(AssignedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -268,29 +268,24 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.AssignedAt == input.AssignedAt ||
-                    (this.AssignedAt != null &&
-                    this.AssignedAt.Equals(input.AssignedAt))
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.Seller == input.Seller ||
-                    (this.Seller != null &&
-                    this.Seller.Equals(input.Seller))
+                    this.Product == input.Product ||
+                    (this.Product != null &&
+                    this.Product.Equals(input.Product))
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    (this.Format != null &&
+                    this.Format.Equals(input.Format))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
                     this.Slug == input.Slug ||
@@ -302,29 +297,14 @@ namespace net.crossly.buyer.Model
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
-                    this.Format == input.Format ||
-                    (this.Format != null &&
-                    this.Format.Equals(input.Format))
-                ) && 
-                (
                     this.StreamId == input.StreamId ||
                     (this.StreamId != null &&
                     this.StreamId.Equals(input.StreamId))
                 ) && 
                 (
-                    this.Seed == input.Seed ||
-                    (this.Seed != null &&
-                    this.Seed.Equals(input.Seed))
-                ) && 
-                (
-                    this.Product == input.Product ||
-                    (this.Product != null &&
-                    this.Product.Equals(input.Product))
-                ) && 
-                (
-                    this.SeedCommit == input.SeedCommit ||
-                    (this.SeedCommit != null &&
-                    this.SeedCommit.Equals(input.SeedCommit))
+                    this.Seller == input.Seller ||
+                    (this.Seller != null &&
+                    this.Seller.Equals(input.Seller))
                 ) && 
                 (
                     this.Spots == input.Spots ||
@@ -337,10 +317,30 @@ namespace net.crossly.buyer.Model
                     this.SpotsLeft.Equals(input.SpotsLeft)
                 ) && 
                 (
+                    this.SeedCommit == input.SeedCommit ||
+                    (this.SeedCommit != null &&
+                    this.SeedCommit.Equals(input.SeedCommit))
+                ) && 
+                (
+                    this.Seed == input.Seed ||
+                    (this.Seed != null &&
+                    this.Seed.Equals(input.Seed))
+                ) && 
+                (
                     this.Draw == input.Draw ||
                     this.Draw != null &&
                     input.Draw != null &&
                     this.Draw.SequenceEqual(input.Draw)
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.AssignedAt == input.AssignedAt ||
+                    (this.AssignedAt != null &&
+                    this.AssignedAt.Equals(input.AssignedAt))
                 );
         }
 
@@ -357,59 +357,59 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.AssignedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.AssignedAt.GetHashCode();
-                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.Seller != null)
+                if (this.Product != null)
                 {
-                    hashCode = (hashCode * 59) + this.Seller.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Product.GetHashCode();
+                }
+                if (this.Format != null)
+                {
+                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.Format != null)
-                {
-                    hashCode = (hashCode * 59) + this.Format.GetHashCode();
-                }
                 if (this.StreamId != null)
                 {
                     hashCode = (hashCode * 59) + this.StreamId.GetHashCode();
                 }
-                if (this.Seed != null)
+                if (this.Seller != null)
                 {
-                    hashCode = (hashCode * 59) + this.Seed.GetHashCode();
-                }
-                if (this.Product != null)
-                {
-                    hashCode = (hashCode * 59) + this.Product.GetHashCode();
-                }
-                if (this.SeedCommit != null)
-                {
-                    hashCode = (hashCode * 59) + this.SeedCommit.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Seller.GetHashCode();
                 }
                 if (this.Spots != null)
                 {
                     hashCode = (hashCode * 59) + this.Spots.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SpotsLeft.GetHashCode();
+                if (this.SeedCommit != null)
+                {
+                    hashCode = (hashCode * 59) + this.SeedCommit.GetHashCode();
+                }
+                if (this.Seed != null)
+                {
+                    hashCode = (hashCode * 59) + this.Seed.GetHashCode();
+                }
                 if (this.Draw != null)
                 {
                     hashCode = (hashCode * 59) + this.Draw.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.AssignedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssignedAt.GetHashCode();
                 }
                 return hashCode;
             }

@@ -64,16 +64,16 @@ namespace net.crossly.Model
         public enum ShippingSourceEnum
         {
             /// <summary>
-            /// Enum None for value: none
-            /// </summary>
-            [EnumMember(Value = "none")]
-            None = 1,
-
-            /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 2,
+            Unknown = 1,
+
+            /// <summary>
+            /// Enum None for value: none
+            /// </summary>
+            [EnumMember(Value = "none")]
+            None = 2,
 
             /// <summary>
             /// Enum Quoted for value: quoted

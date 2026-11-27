@@ -36,7 +36,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="stream">stream.</param>
         /// <param name="lot">lot.</param>
-        public GetWorldPlaceLiveResponseData(GetWorldPlaceLiveResponseDataStream stream = default(GetWorldPlaceLiveResponseDataStream), GetWorldPlaceLiveResponseDataLot lot = default(GetWorldPlaceLiveResponseDataLot))
+        public GetWorldPlaceLiveResponseData(GetWorldPlaceLiveResponseDataStream stream = default(GetWorldPlaceLiveResponseDataStream), GetMainStageResponseStreamLot lot = default(GetMainStageResponseStreamLot))
         {
             this.Stream = stream;
             this.Lot = lot;
@@ -52,7 +52,7 @@ namespace net.crossly.Model
         /// Gets or Sets Lot
         /// </summary>
         [DataMember(Name = "lot", EmitDefaultValue = true)]
-        public GetWorldPlaceLiveResponseDataLot Lot { get; set; }
+        public GetMainStageResponseStreamLot Lot { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

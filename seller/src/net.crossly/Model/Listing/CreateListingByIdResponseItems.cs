@@ -131,6 +131,8 @@ namespace net.crossly.Model
         /// <param name="automationBlockedRuleIds">automationBlockedRuleIds (required).</param>
         /// <param name="automationAssignedChainIds">automationAssignedChainIds (required).</param>
         /// <param name="automationBlockedChainIds">automationBlockedChainIds (required).</param>
+        /// <param name="workflowBlockedIds">Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; &#x60;find.listings&#x60; and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in (required).</param>
+        /// <param name="workflowAssignedIds">workflowAssignedIds (required).</param>
         /// <param name="hsCode">Harmonised System customs code — international shipping declarations..</param>
         /// <param name="countryOfOrigin">Customs country of origin. Distinct from the seller&#39;s location..</param>
         /// <param name="priceFloorCents">Never let a repricing rule go below this. On the ITEM because it is a fact about the thing owned, not about any one rule — \&quot;this jacket never goes below $45\&quot; should apply to every rule, and before this it was expressible only as one rule per jacket. Listings inherit when null..</param>
@@ -141,9 +143,12 @@ namespace net.crossly.Model
         /// <param name="source">Mirrors inventory_items.source. &#39;manual&#39; for every seller-created listing; external-stub.ts sets &#39;external_sale&#39; on the synthetic listing it fabricates for a sale detected on a platform id Crossly never listed — those rows have no real photos/description of their own (everything is lifted from the platform&#39;s sale payload) and are otherwise indistinguishable from a real listing in the UI. (required).</param>
         /// <param name="duplicateOfListingId">Set when import&#39;s bin-packing (see _import-one.ts) created THIS listing to hold a same-platform straggler it couldn&#39;t fit onto an existing candidate listing for the same physical item — points at the primary/first candidate. Purely informational: this listing is a real, independently listable/delistable row, not a shadow. Null for every ordinarily-created listing..</param>
         /// <param name="clientDraftId">UUID minted on a seller&#39;s machine for a draft written offline.  The idempotency key for desktop sync. The failure it guards is a POST that succeeds server-side whose reply is lost — the client cannot tell that from a failure, retries, and one item becomes two live listings against one piece of stock. Unique per user (partial index, migration 0268); null for every listing that did not come from an offline draft..</param>
+        /// <param name="attributedOauthAppId">The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. &#x60;attributedGrantId&#x60; pins the specific install whose agreed terms apply. See services/developer-earnings/..</param>
+        /// <param name="attributedGrantId">attributedGrantId.</param>
+        /// <param name="quotaBucket">Which quota this listing is counted in (migration 1064): &#39;app_allowance&#39; &#x3D; the attributed app&#39;s per-seller allowance (services/app-allowance/), &#39;plan&#39; &#x3D; the seller&#39;s plan, null &#x3D; created before allowances / by no app (plan rules). Stays &#39;app_allowance&#39; after an unlink (grandfathered, no longer counted)..</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public CreateListingByIdResponseItems(string effectiveTitle = default(string), string effectivePrice = default(string), string effectiveDescription = default(string), List<string> effectiveImages = default(List<string>), string effectiveBrand = default(string), string effectiveCondition = default(string), string effectiveSize = default(string), string effectiveSku = default(string), List<string> effectiveColor = default(List<string>), List<string> effectiveTags = default(List<string>), List<Dictionary<string, Object>> platformListings = default(List<Dictionary<string, Object>>), string inventoryItemId = default(string), string id = default(string), string userId = default(string), string name = default(string), string title = default(string), string description = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> images = default(List<string>), string videoUrl = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), string status = default(string), string condition = default(string), string gradeKey = default(string), ListGradingSubmissionsItemGrading grading = default(ListGradingSubmissionsItemGrading), string brand = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> tags = default(List<string>), string sku = default(string), bool isDigital = default(bool), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string source = default(string), string duplicateOfListingId = default(string), string clientDraftId = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public CreateListingByIdResponseItems(string effectiveTitle = default(string), string effectivePrice = default(string), string effectiveDescription = default(string), List<string> effectiveImages = default(List<string>), string effectiveBrand = default(string), string effectiveCondition = default(string), string effectiveSize = default(string), string effectiveSku = default(string), List<string> effectiveColor = default(List<string>), List<string> effectiveTags = default(List<string>), List<Dictionary<string, Object>> platformListings = default(List<Dictionary<string, Object>>), string inventoryItemId = default(string), string id = default(string), string userId = default(string), string name = default(string), string title = default(string), string description = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> images = default(List<string>), string videoUrl = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), string status = default(string), string condition = default(string), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string brand = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> tags = default(List<string>), string sku = default(string), bool isDigital = default(bool), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string source = default(string), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             // to ensure "effectiveTitle" is required (not null)
             if (effectiveTitle == null) {
@@ -230,6 +235,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("automationBlockedChainIds is a required property for CreateListingByIdResponseItems and cannot be null");
             }
             this.AutomationBlockedChainIds = automationBlockedChainIds;
+            // to ensure "workflowBlockedIds" is required (not null)
+            if (workflowBlockedIds == null) {
+                throw new ArgumentNullException("workflowBlockedIds is a required property for CreateListingByIdResponseItems and cannot be null");
+            }
+            this.WorkflowBlockedIds = workflowBlockedIds;
+            // to ensure "workflowAssignedIds" is required (not null)
+            if (workflowAssignedIds == null) {
+                throw new ArgumentNullException("workflowAssignedIds is a required property for CreateListingByIdResponseItems and cannot be null");
+            }
+            this.WorkflowAssignedIds = workflowAssignedIds;
             this.FloorIsNet = floorIsNet;
             // to ensure "source" is required (not null)
             if (source == null) {
@@ -283,6 +298,9 @@ namespace net.crossly.Model
             this.EbayAttributesEnrichedAt = ebayAttributesEnrichedAt;
             this.DuplicateOfListingId = duplicateOfListingId;
             this.ClientDraftId = clientDraftId;
+            this.AttributedOauthAppId = attributedOauthAppId;
+            this.AttributedGrantId = attributedGrantId;
+            this.QuotaBucket = quotaBucket;
         }
 
         /// <summary>
@@ -463,7 +481,7 @@ namespace net.crossly.Model
         /// Gets or Sets Grading
         /// </summary>
         [DataMember(Name = "grading", EmitDefaultValue = true)]
-        public ListGradingSubmissionsItemGrading Grading { get; set; }
+        public CreateBulkBatchItemResponseGrading Grading { get; set; }
 
         /// <summary>
         /// Gets or Sets Brand
@@ -640,6 +658,19 @@ namespace net.crossly.Model
         public List<string> AutomationBlockedChainIds { get; set; }
 
         /// <summary>
+        /// Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; &#x60;find.listings&#x60; and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in
+        /// </summary>
+        /// <value>Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; &#x60;find.listings&#x60; and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in</value>
+        [DataMember(Name = "workflowBlockedIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> WorkflowBlockedIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowAssignedIds
+        /// </summary>
+        [DataMember(Name = "workflowAssignedIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> WorkflowAssignedIds { get; set; }
+
+        /// <summary>
         /// Harmonised System customs code — international shipping declarations.
         /// </summary>
         /// <value>Harmonised System customs code — international shipping declarations.</value>
@@ -706,6 +737,26 @@ namespace net.crossly.Model
         /// <value>UUID minted on a seller&#39;s machine for a draft written offline.  The idempotency key for desktop sync. The failure it guards is a POST that succeeds server-side whose reply is lost — the client cannot tell that from a failure, retries, and one item becomes two live listings against one piece of stock. Unique per user (partial index, migration 0268); null for every listing that did not come from an offline draft.</value>
         [DataMember(Name = "clientDraftId", EmitDefaultValue = true)]
         public string ClientDraftId { get; set; }
+
+        /// <summary>
+        /// The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. &#x60;attributedGrantId&#x60; pins the specific install whose agreed terms apply. See services/developer-earnings/.
+        /// </summary>
+        /// <value>The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. &#x60;attributedGrantId&#x60; pins the specific install whose agreed terms apply. See services/developer-earnings/.</value>
+        [DataMember(Name = "attributedOauthAppId", EmitDefaultValue = true)]
+        public string AttributedOauthAppId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AttributedGrantId
+        /// </summary>
+        [DataMember(Name = "attributedGrantId", EmitDefaultValue = true)]
+        public string AttributedGrantId { get; set; }
+
+        /// <summary>
+        /// Which quota this listing is counted in (migration 1064): &#39;app_allowance&#39; &#x3D; the attributed app&#39;s per-seller allowance (services/app-allowance/), &#39;plan&#39; &#x3D; the seller&#39;s plan, null &#x3D; created before allowances / by no app (plan rules). Stays &#39;app_allowance&#39; after an unlink (grandfathered, no longer counted).
+        /// </summary>
+        /// <value>Which quota this listing is counted in (migration 1064): &#39;app_allowance&#39; &#x3D; the attributed app&#39;s per-seller allowance (services/app-allowance/), &#39;plan&#39; &#x3D; the seller&#39;s plan, null &#x3D; created before allowances / by no app (plan rules). Stays &#39;app_allowance&#39; after an unlink (grandfathered, no longer counted).</value>
+        [DataMember(Name = "quotaBucket", EmitDefaultValue = true)]
+        public string QuotaBucket { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -785,6 +836,8 @@ namespace net.crossly.Model
             sb.Append("  AutomationBlockedRuleIds: ").Append(AutomationBlockedRuleIds).Append("\n");
             sb.Append("  AutomationAssignedChainIds: ").Append(AutomationAssignedChainIds).Append("\n");
             sb.Append("  AutomationBlockedChainIds: ").Append(AutomationBlockedChainIds).Append("\n");
+            sb.Append("  WorkflowBlockedIds: ").Append(WorkflowBlockedIds).Append("\n");
+            sb.Append("  WorkflowAssignedIds: ").Append(WorkflowAssignedIds).Append("\n");
             sb.Append("  HsCode: ").Append(HsCode).Append("\n");
             sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
             sb.Append("  PriceFloorCents: ").Append(PriceFloorCents).Append("\n");
@@ -795,6 +848,9 @@ namespace net.crossly.Model
             sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  DuplicateOfListingId: ").Append(DuplicateOfListingId).Append("\n");
             sb.Append("  ClientDraftId: ").Append(ClientDraftId).Append("\n");
+            sb.Append("  AttributedOauthAppId: ").Append(AttributedOauthAppId).Append("\n");
+            sb.Append("  AttributedGrantId: ").Append(AttributedGrantId).Append("\n");
+            sb.Append("  QuotaBucket: ").Append(QuotaBucket).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -1131,6 +1187,18 @@ namespace net.crossly.Model
                     this.AutomationBlockedChainIds.SequenceEqual(input.AutomationBlockedChainIds)
                 ) && 
                 (
+                    this.WorkflowBlockedIds == input.WorkflowBlockedIds ||
+                    this.WorkflowBlockedIds != null &&
+                    input.WorkflowBlockedIds != null &&
+                    this.WorkflowBlockedIds.SequenceEqual(input.WorkflowBlockedIds)
+                ) && 
+                (
+                    this.WorkflowAssignedIds == input.WorkflowAssignedIds ||
+                    this.WorkflowAssignedIds != null &&
+                    input.WorkflowAssignedIds != null &&
+                    this.WorkflowAssignedIds.SequenceEqual(input.WorkflowAssignedIds)
+                ) && 
+                (
                     this.HsCode == input.HsCode ||
                     (this.HsCode != null &&
                     this.HsCode.Equals(input.HsCode))
@@ -1178,6 +1246,21 @@ namespace net.crossly.Model
                     this.ClientDraftId == input.ClientDraftId ||
                     (this.ClientDraftId != null &&
                     this.ClientDraftId.Equals(input.ClientDraftId))
+                ) && 
+                (
+                    this.AttributedOauthAppId == input.AttributedOauthAppId ||
+                    (this.AttributedOauthAppId != null &&
+                    this.AttributedOauthAppId.Equals(input.AttributedOauthAppId))
+                ) && 
+                (
+                    this.AttributedGrantId == input.AttributedGrantId ||
+                    (this.AttributedGrantId != null &&
+                    this.AttributedGrantId.Equals(input.AttributedGrantId))
+                ) && 
+                (
+                    this.QuotaBucket == input.QuotaBucket ||
+                    (this.QuotaBucket != null &&
+                    this.QuotaBucket.Equals(input.QuotaBucket))
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -1414,6 +1497,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.AutomationBlockedChainIds.GetHashCode();
                 }
+                if (this.WorkflowBlockedIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowBlockedIds.GetHashCode();
+                }
+                if (this.WorkflowAssignedIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowAssignedIds.GetHashCode();
+                }
                 if (this.HsCode != null)
                 {
                     hashCode = (hashCode * 59) + this.HsCode.GetHashCode();
@@ -1450,6 +1541,18 @@ namespace net.crossly.Model
                 if (this.ClientDraftId != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientDraftId.GetHashCode();
+                }
+                if (this.AttributedOauthAppId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttributedOauthAppId.GetHashCode();
+                }
+                if (this.AttributedGrantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttributedGrantId.GetHashCode();
+                }
+                if (this.QuotaBucket != null)
+                {
+                    hashCode = (hashCode * 59) + this.QuotaBucket.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

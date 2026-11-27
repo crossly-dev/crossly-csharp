@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Live = 1,
 
             /// <summary>
-            /// Enum Open for value: open
-            /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 2,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 3,
+            Cancelled = 2,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 3,
 
             /// <summary>
             /// Enum Ended for value: ended

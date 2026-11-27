@@ -42,16 +42,15 @@ namespace net.crossly.Model
         /// <param name="saleId">saleId (required).</param>
         /// <param name="platform">platform (required).</param>
         /// <param name="platformOrderId">platformOrderId.</param>
+        /// <param name="detailsPending">detailsPending (required).</param>
         /// <param name="salePrice">salePrice.</param>
         /// <param name="platformFee">platformFee.</param>
         /// <param name="shippingCost">shippingCost.</param>
         /// <param name="costOfGoods">costOfGoods.</param>
         /// <param name="netProfit">netProfit.</param>
-        /// <param name="detectedBy">detectedBy (required).</param>
-        /// <param name="detectedAt">detectedAt (required).</param>
         /// <param name="itemTitle">itemTitle.</param>
-        /// <param name="itemImage">itemImage (required).</param>
-        public GetAnalyticDashboardResponseRecentSales(string saleId = default(string), string platform = default(string), string platformOrderId = default(string), decimal? salePrice = default(decimal?), decimal? platformFee = default(decimal?), decimal? shippingCost = default(decimal?), decimal? costOfGoods = default(decimal?), decimal? netProfit = default(decimal?), string detectedBy = default(string), DateTime detectedAt = default(DateTime), string itemTitle = default(string), string itemImage = default(string))
+        /// <param name="itemImage">itemImage.</param>
+        public GetAnalyticDashboardResponseRecentSales(string saleId = default(string), string platform = default(string), string platformOrderId = default(string), bool detailsPending = default(bool), decimal? salePrice = default(decimal?), decimal? platformFee = default(decimal?), decimal? shippingCost = default(decimal?), decimal? costOfGoods = default(decimal?), decimal? netProfit = default(decimal?), string itemTitle = default(string), string itemImage = default(string))
         {
             // to ensure "saleId" is required (not null)
             if (saleId == null) {
@@ -63,17 +62,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("platform is a required property for GetAnalyticDashboardResponseRecentSales and cannot be null");
             }
             this.Platform = platform;
-            // to ensure "detectedBy" is required (not null)
-            if (detectedBy == null) {
-                throw new ArgumentNullException("detectedBy is a required property for GetAnalyticDashboardResponseRecentSales and cannot be null");
-            }
-            this.DetectedBy = detectedBy;
-            this.DetectedAt = detectedAt;
-            // to ensure "itemImage" is required (not null)
-            if (itemImage == null) {
-                throw new ArgumentNullException("itemImage is a required property for GetAnalyticDashboardResponseRecentSales and cannot be null");
-            }
-            this.ItemImage = itemImage;
+            this.DetailsPending = detailsPending;
             this.PlatformOrderId = platformOrderId;
             this.SalePrice = salePrice;
             this.PlatformFee = platformFee;
@@ -81,6 +70,7 @@ namespace net.crossly.Model
             this.CostOfGoods = costOfGoods;
             this.NetProfit = netProfit;
             this.ItemTitle = itemTitle;
+            this.ItemImage = itemImage;
         }
 
         /// <summary>
@@ -100,6 +90,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "platformOrderId", EmitDefaultValue = true)]
         public string PlatformOrderId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DetailsPending
+        /// </summary>
+        [DataMember(Name = "detailsPending", IsRequired = true, EmitDefaultValue = true)]
+        public bool DetailsPending { get; set; }
 
         /// <summary>
         /// Gets or Sets SalePrice
@@ -132,18 +128,6 @@ namespace net.crossly.Model
         public decimal? NetProfit { get; set; }
 
         /// <summary>
-        /// Gets or Sets DetectedBy
-        /// </summary>
-        [DataMember(Name = "detectedBy", IsRequired = true, EmitDefaultValue = false)]
-        public string DetectedBy { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DetectedAt
-        /// </summary>
-        [DataMember(Name = "detectedAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DetectedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets ItemTitle
         /// </summary>
         [DataMember(Name = "itemTitle", EmitDefaultValue = true)]
@@ -152,7 +136,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets ItemImage
         /// </summary>
-        [DataMember(Name = "itemImage", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemImage", EmitDefaultValue = true)]
         public string ItemImage { get; set; }
 
         /// <summary>
@@ -166,13 +150,12 @@ namespace net.crossly.Model
             sb.Append("  SaleId: ").Append(SaleId).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  PlatformOrderId: ").Append(PlatformOrderId).Append("\n");
+            sb.Append("  DetailsPending: ").Append(DetailsPending).Append("\n");
             sb.Append("  SalePrice: ").Append(SalePrice).Append("\n");
             sb.Append("  PlatformFee: ").Append(PlatformFee).Append("\n");
             sb.Append("  ShippingCost: ").Append(ShippingCost).Append("\n");
             sb.Append("  CostOfGoods: ").Append(CostOfGoods).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
-            sb.Append("  DetectedBy: ").Append(DetectedBy).Append("\n");
-            sb.Append("  DetectedAt: ").Append(DetectedAt).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
             sb.Append("  ItemImage: ").Append(ItemImage).Append("\n");
             sb.Append("}\n");
@@ -226,6 +209,10 @@ namespace net.crossly.Model
                     this.PlatformOrderId.Equals(input.PlatformOrderId))
                 ) && 
                 (
+                    this.DetailsPending == input.DetailsPending ||
+                    this.DetailsPending.Equals(input.DetailsPending)
+                ) && 
+                (
                     this.SalePrice == input.SalePrice ||
                     (this.SalePrice != null &&
                     this.SalePrice.Equals(input.SalePrice))
@@ -249,16 +236,6 @@ namespace net.crossly.Model
                     this.NetProfit == input.NetProfit ||
                     (this.NetProfit != null &&
                     this.NetProfit.Equals(input.NetProfit))
-                ) && 
-                (
-                    this.DetectedBy == input.DetectedBy ||
-                    (this.DetectedBy != null &&
-                    this.DetectedBy.Equals(input.DetectedBy))
-                ) && 
-                (
-                    this.DetectedAt == input.DetectedAt ||
-                    (this.DetectedAt != null &&
-                    this.DetectedAt.Equals(input.DetectedAt))
                 ) && 
                 (
                     this.ItemTitle == input.ItemTitle ||
@@ -293,6 +270,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.PlatformOrderId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DetailsPending.GetHashCode();
                 if (this.SalePrice != null)
                 {
                     hashCode = (hashCode * 59) + this.SalePrice.GetHashCode();
@@ -312,14 +290,6 @@ namespace net.crossly.Model
                 if (this.NetProfit != null)
                 {
                     hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
-                }
-                if (this.DetectedBy != null)
-                {
-                    hashCode = (hashCode * 59) + this.DetectedBy.GetHashCode();
-                }
-                if (this.DetectedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.DetectedAt.GetHashCode();
                 }
                 if (this.ItemTitle != null)
                 {

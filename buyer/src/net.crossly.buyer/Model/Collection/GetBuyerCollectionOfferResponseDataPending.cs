@@ -40,21 +40,21 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCollectionOfferResponseDataPending" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="cents">cents (required).</param>
-        public GetBuyerCollectionOfferResponseDataPending(string id = default(string), string status = default(string), decimal cents = default(decimal))
+        /// <param name="status">status (required).</param>
+        public GetBuyerCollectionOfferResponseDataPending(string id = default(string), decimal cents = default(decimal), string status = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerCollectionOfferResponseDataPending and cannot be null");
             }
             this.Id = id;
+            this.Cents = cents;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for GetBuyerCollectionOfferResponseDataPending and cannot be null");
             }
             this.Status = status;
-            this.Cents = cents;
         }
 
         /// <summary>
@@ -64,16 +64,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets Cents
         /// </summary>
         [DataMember(Name = "cents", IsRequired = true, EmitDefaultValue = false)]
         public decimal Cents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,8 +84,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionOfferResponseDataPending {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,13 +127,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Cents == input.Cents ||
+                    this.Cents.Equals(input.Cents)
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Cents == input.Cents ||
-                    this.Cents.Equals(input.Cents)
                 );
         }
 
@@ -150,11 +150,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Cents.GetHashCode();
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Cents.GetHashCode();
                 return hashCode;
             }
         }

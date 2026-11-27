@@ -44,34 +44,34 @@ namespace net.crossly.Model
             Draft = 1,
 
             /// <summary>
+            /// Enum Submitted for value: submitted
+            /// </summary>
+            [EnumMember(Value = "submitted")]
+            Submitted = 2,
+
+            /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 2,
+            Rejected = 3,
 
             /// <summary>
             /// Enum Withdrawn for value: withdrawn
             /// </summary>
             [EnumMember(Value = "withdrawn")]
-            Withdrawn = 3,
+            Withdrawn = 4,
 
             /// <summary>
             /// Enum Released for value: released
             /// </summary>
             [EnumMember(Value = "released")]
-            Released = 4,
+            Released = 5,
 
             /// <summary>
             /// Enum Waiting for value: waiting
             /// </summary>
             [EnumMember(Value = "waiting")]
-            Waiting = 5,
-
-            /// <summary>
-            /// Enum Submitted for value: submitted
-            /// </summary>
-            [EnumMember(Value = "submitted")]
-            Submitted = 6,
+            Waiting = 6,
 
             /// <summary>
             /// Enum NeedsInfo for value: needs_info

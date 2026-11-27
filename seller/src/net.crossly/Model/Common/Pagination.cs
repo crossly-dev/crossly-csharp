@@ -43,12 +43,14 @@ namespace net.crossly.Model
         /// <param name="limit">Rows per page. (required).</param>
         /// <param name="total">Total matching rows, when the endpoint counts them..</param>
         /// <param name="totalPages">Derived from total and limit..</param>
-        public Pagination(int page = default(int), int limit = default(int), int total = default(int), int totalPages = default(int))
+        /// <param name="pages">Deprecated alias of &#x60;totalPages&#x60;, sent only by GET /v1/inventory (its original name). Read &#x60;totalPages&#x60;..</param>
+        public Pagination(int page = default(int), int limit = default(int), int total = default(int), int totalPages = default(int), int pages = default(int))
         {
             this.Page = page;
             this.Limit = limit;
             this.Total = total;
             this.TotalPages = totalPages;
+            this.Pages = pages;
         }
 
         /// <summary>
@@ -80,6 +82,14 @@ namespace net.crossly.Model
         public int TotalPages { get; set; }
 
         /// <summary>
+        /// Deprecated alias of &#x60;totalPages&#x60;, sent only by GET /v1/inventory (its original name). Read &#x60;totalPages&#x60;.
+        /// </summary>
+        /// <value>Deprecated alias of &#x60;totalPages&#x60;, sent only by GET /v1/inventory (its original name). Read &#x60;totalPages&#x60;.</value>
+        [DataMember(Name = "pages", EmitDefaultValue = false)]
+        [Obsolete]
+        public int Pages { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -91,6 +101,7 @@ namespace net.crossly.Model
             sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
+            sb.Append("  Pages: ").Append(Pages).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -141,6 +152,10 @@ namespace net.crossly.Model
                 (
                     this.TotalPages == input.TotalPages ||
                     this.TotalPages.Equals(input.TotalPages)
+                ) && 
+                (
+                    this.Pages == input.Pages ||
+                    this.Pages.Equals(input.Pages)
                 );
         }
 
@@ -157,6 +172,7 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Limit.GetHashCode();
                 hashCode = (hashCode * 59) + this.Total.GetHashCode();
                 hashCode = (hashCode * 59) + this.TotalPages.GetHashCode();
+                hashCode = (hashCode * 59) + this.Pages.GetHashCode();
                 return hashCode;
             }
         }

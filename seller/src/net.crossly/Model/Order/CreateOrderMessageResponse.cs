@@ -41,8 +41,10 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="orderId">orderId (required).</param>
         /// <param name="sent">sent (required).</param>
-        /// <param name="platformConversationId">platformConversationId (required).</param>
-        public CreateOrderMessageResponse(string orderId = default(string), bool sent = default(bool), string platformConversationId = default(string))
+        /// <param name="relayed">True when the managing app was asked to send it (action authority)..</param>
+        /// <param name="commandId">The managing-app command id, on a relay..</param>
+        /// <param name="platformConversationId">platformConversationId.</param>
+        public CreateOrderMessageResponse(string orderId = default(string), bool sent = default(bool), bool? relayed = default(bool?), string commandId = default(string), string platformConversationId = default(string))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null) {
@@ -50,10 +52,8 @@ namespace net.crossly.Model
             }
             this.OrderId = orderId;
             this.Sent = sent;
-            // to ensure "platformConversationId" is required (not null)
-            if (platformConversationId == null) {
-                throw new ArgumentNullException("platformConversationId is a required property for CreateOrderMessageResponse and cannot be null");
-            }
+            this.Relayed = relayed;
+            this.CommandId = commandId;
             this.PlatformConversationId = platformConversationId;
         }
 
@@ -70,9 +70,23 @@ namespace net.crossly.Model
         public bool Sent { get; set; }
 
         /// <summary>
+        /// True when the managing app was asked to send it (action authority).
+        /// </summary>
+        /// <value>True when the managing app was asked to send it (action authority).</value>
+        [DataMember(Name = "relayed", EmitDefaultValue = true)]
+        public bool? Relayed { get; set; }
+
+        /// <summary>
+        /// The managing-app command id, on a relay.
+        /// </summary>
+        /// <value>The managing-app command id, on a relay.</value>
+        [DataMember(Name = "commandId", EmitDefaultValue = true)]
+        public string CommandId { get; set; }
+
+        /// <summary>
         /// Gets or Sets PlatformConversationId
         /// </summary>
-        [DataMember(Name = "platformConversationId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "platformConversationId", EmitDefaultValue = true)]
         public string PlatformConversationId { get; set; }
 
         /// <summary>
@@ -85,6 +99,8 @@ namespace net.crossly.Model
             sb.Append("class CreateOrderMessageResponse {\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Sent: ").Append(Sent).Append("\n");
+            sb.Append("  Relayed: ").Append(Relayed).Append("\n");
+            sb.Append("  CommandId: ").Append(CommandId).Append("\n");
             sb.Append("  PlatformConversationId: ").Append(PlatformConversationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -131,6 +147,16 @@ namespace net.crossly.Model
                     this.Sent.Equals(input.Sent)
                 ) && 
                 (
+                    this.Relayed == input.Relayed ||
+                    (this.Relayed != null &&
+                    this.Relayed.Equals(input.Relayed))
+                ) && 
+                (
+                    this.CommandId == input.CommandId ||
+                    (this.CommandId != null &&
+                    this.CommandId.Equals(input.CommandId))
+                ) && 
+                (
                     this.PlatformConversationId == input.PlatformConversationId ||
                     (this.PlatformConversationId != null &&
                     this.PlatformConversationId.Equals(input.PlatformConversationId))
@@ -151,6 +177,14 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Sent.GetHashCode();
+                if (this.Relayed != null)
+                {
+                    hashCode = (hashCode * 59) + this.Relayed.GetHashCode();
+                }
+                if (this.CommandId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CommandId.GetHashCode();
+                }
                 if (this.PlatformConversationId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformConversationId.GetHashCode();

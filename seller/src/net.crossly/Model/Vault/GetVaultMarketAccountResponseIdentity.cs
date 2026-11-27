@@ -41,9 +41,11 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="verified">verified (required).</param>
         /// <param name="status">status.</param>
-        public GetVaultMarketAccountResponseIdentity(bool verified = default(bool), string status = default(string))
+        /// <param name="retry">retry (required).</param>
+        public GetVaultMarketAccountResponseIdentity(bool verified = default(bool), string status = default(string), bool retry = default(bool))
         {
             this.Verified = verified;
+            this.Retry = retry;
             this.Status = status;
         }
 
@@ -60,6 +62,12 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or Sets Retry
+        /// </summary>
+        [DataMember(Name = "retry", IsRequired = true, EmitDefaultValue = true)]
+        public bool Retry { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -69,6 +77,7 @@ namespace net.crossly.Model
             sb.Append("class GetVaultMarketAccountResponseIdentity {\n");
             sb.Append("  Verified: ").Append(Verified).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Retry: ").Append(Retry).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,6 +121,10 @@ namespace net.crossly.Model
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Retry == input.Retry ||
+                    this.Retry.Equals(input.Retry)
                 );
         }
 
@@ -129,6 +142,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Retry.GetHashCode();
                 return hashCode;
             }
         }

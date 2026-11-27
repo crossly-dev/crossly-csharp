@@ -43,9 +43,11 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="triggerId">triggerId (required).</param>
+        /// <param name="triggerConfig">triggerConfig (required).</param>
         /// <param name="isActive">isActive (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public CreateWorkflowChainToggleResponseChain(string id = default(string), string userId = default(string), string name = default(string), string triggerId = default(string), bool isActive = default(bool), DateTime createdAt = default(DateTime))
+        /// <param name="workflowId">workflowId (required).</param>
+        public CreateWorkflowChainToggleResponseChain(string id = default(string), string userId = default(string), string name = default(string), string triggerId = default(string), Dictionary<string, Object> triggerConfig = default(Dictionary<string, Object>), bool isActive = default(bool), DateTime createdAt = default(DateTime), string workflowId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -67,8 +69,18 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("triggerId is a required property for CreateWorkflowChainToggleResponseChain and cannot be null");
             }
             this.TriggerId = triggerId;
+            // to ensure "triggerConfig" is required (not null)
+            if (triggerConfig == null) {
+                throw new ArgumentNullException("triggerConfig is a required property for CreateWorkflowChainToggleResponseChain and cannot be null");
+            }
+            this.TriggerConfig = triggerConfig;
             this.IsActive = isActive;
             this.CreatedAt = createdAt;
+            // to ensure "workflowId" is required (not null)
+            if (workflowId == null) {
+                throw new ArgumentNullException("workflowId is a required property for CreateWorkflowChainToggleResponseChain and cannot be null");
+            }
+            this.WorkflowId = workflowId;
         }
 
         /// <summary>
@@ -96,6 +108,12 @@ namespace net.crossly.Model
         public string TriggerId { get; set; }
 
         /// <summary>
+        /// Gets or Sets TriggerConfig
+        /// </summary>
+        [DataMember(Name = "triggerConfig", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> TriggerConfig { get; set; }
+
+        /// <summary>
         /// Gets or Sets IsActive
         /// </summary>
         [DataMember(Name = "isActive", IsRequired = true, EmitDefaultValue = true)]
@@ -106,6 +124,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
         public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowId
+        /// </summary>
+        [DataMember(Name = "workflowId", IsRequired = true, EmitDefaultValue = false)]
+        public string WorkflowId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,8 +143,10 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TriggerId: ").Append(TriggerId).Append("\n");
+            sb.Append("  TriggerConfig: ").Append(TriggerConfig).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -177,6 +203,12 @@ namespace net.crossly.Model
                     this.TriggerId.Equals(input.TriggerId))
                 ) && 
                 (
+                    this.TriggerConfig == input.TriggerConfig ||
+                    this.TriggerConfig != null &&
+                    input.TriggerConfig != null &&
+                    this.TriggerConfig.SequenceEqual(input.TriggerConfig)
+                ) && 
+                (
                     this.IsActive == input.IsActive ||
                     this.IsActive.Equals(input.IsActive)
                 ) && 
@@ -184,6 +216,11 @@ namespace net.crossly.Model
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
                 );
         }
 
@@ -212,10 +249,18 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.TriggerId.GetHashCode();
                 }
+                if (this.TriggerConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.TriggerConfig.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.WorkflowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
                 }
                 return hashCode;
             }

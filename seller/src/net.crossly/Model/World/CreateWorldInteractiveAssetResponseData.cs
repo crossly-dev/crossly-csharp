@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Png for value: png
-            /// </summary>
-            [EnumMember(Value = "png")]
-            Png = 1,
-
-            /// <summary>
             /// Enum Glb for value: glb
             /// </summary>
             [EnumMember(Value = "glb")]
-            Glb = 2,
+            Glb = 1,
+
+            /// <summary>
+            /// Enum Png for value: png
+            /// </summary>
+            [EnumMember(Value = "png")]
+            Png = 2,
 
             /// <summary>
             /// Enum Wav for value: wav

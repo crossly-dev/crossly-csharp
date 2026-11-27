@@ -39,19 +39,39 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAnalyticBookkeepingResponseAnnualTotals" /> class.
         /// </summary>
+        /// <param name="grossSales">grossSales (required).</param>
+        /// <param name="refunds">refunds (required).</param>
         /// <param name="revenue">revenue (required).</param>
         /// <param name="cogs">cogs (required).</param>
         /// <param name="platformFees">platformFees (required).</param>
         /// <param name="shippingCosts">shippingCosts (required).</param>
+        /// <param name="mileage">mileage (required).</param>
+        /// <param name="otherExpenses">otherExpenses (required).</param>
         /// <param name="netProfit">netProfit (required).</param>
-        public GetAnalyticBookkeepingResponseAnnualTotals(decimal revenue = default(decimal), decimal cogs = default(decimal), decimal platformFees = default(decimal), decimal shippingCosts = default(decimal), decimal netProfit = default(decimal))
+        public GetAnalyticBookkeepingResponseAnnualTotals(decimal grossSales = default(decimal), decimal refunds = default(decimal), decimal revenue = default(decimal), decimal cogs = default(decimal), decimal platformFees = default(decimal), decimal shippingCosts = default(decimal), decimal mileage = default(decimal), decimal otherExpenses = default(decimal), decimal netProfit = default(decimal))
         {
+            this.GrossSales = grossSales;
+            this.Refunds = refunds;
             this.Revenue = revenue;
             this.Cogs = cogs;
             this.PlatformFees = platformFees;
             this.ShippingCosts = shippingCosts;
+            this.Mileage = mileage;
+            this.OtherExpenses = otherExpenses;
             this.NetProfit = netProfit;
         }
+
+        /// <summary>
+        /// Gets or Sets GrossSales
+        /// </summary>
+        [DataMember(Name = "grossSales", IsRequired = true, EmitDefaultValue = false)]
+        public decimal GrossSales { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Refunds
+        /// </summary>
+        [DataMember(Name = "refunds", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Refunds { get; set; }
 
         /// <summary>
         /// Gets or Sets Revenue
@@ -78,6 +98,18 @@ namespace net.crossly.Model
         public decimal ShippingCosts { get; set; }
 
         /// <summary>
+        /// Gets or Sets Mileage
+        /// </summary>
+        [DataMember(Name = "mileage", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Mileage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OtherExpenses
+        /// </summary>
+        [DataMember(Name = "otherExpenses", IsRequired = true, EmitDefaultValue = false)]
+        public decimal OtherExpenses { get; set; }
+
+        /// <summary>
         /// Gets or Sets NetProfit
         /// </summary>
         [DataMember(Name = "netProfit", IsRequired = true, EmitDefaultValue = false)]
@@ -91,10 +123,14 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAnalyticBookkeepingResponseAnnualTotals {\n");
+            sb.Append("  GrossSales: ").Append(GrossSales).Append("\n");
+            sb.Append("  Refunds: ").Append(Refunds).Append("\n");
             sb.Append("  Revenue: ").Append(Revenue).Append("\n");
             sb.Append("  Cogs: ").Append(Cogs).Append("\n");
             sb.Append("  PlatformFees: ").Append(PlatformFees).Append("\n");
             sb.Append("  ShippingCosts: ").Append(ShippingCosts).Append("\n");
+            sb.Append("  Mileage: ").Append(Mileage).Append("\n");
+            sb.Append("  OtherExpenses: ").Append(OtherExpenses).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -132,6 +168,14 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.GrossSales == input.GrossSales ||
+                    this.GrossSales.Equals(input.GrossSales)
+                ) && 
+                (
+                    this.Refunds == input.Refunds ||
+                    this.Refunds.Equals(input.Refunds)
+                ) && 
+                (
                     this.Revenue == input.Revenue ||
                     this.Revenue.Equals(input.Revenue)
                 ) && 
@@ -148,6 +192,14 @@ namespace net.crossly.Model
                     this.ShippingCosts.Equals(input.ShippingCosts)
                 ) && 
                 (
+                    this.Mileage == input.Mileage ||
+                    this.Mileage.Equals(input.Mileage)
+                ) && 
+                (
+                    this.OtherExpenses == input.OtherExpenses ||
+                    this.OtherExpenses.Equals(input.OtherExpenses)
+                ) && 
+                (
                     this.NetProfit == input.NetProfit ||
                     this.NetProfit.Equals(input.NetProfit)
                 );
@@ -162,10 +214,14 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.GrossSales.GetHashCode();
+                hashCode = (hashCode * 59) + this.Refunds.GetHashCode();
                 hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
                 hashCode = (hashCode * 59) + this.Cogs.GetHashCode();
                 hashCode = (hashCode * 59) + this.PlatformFees.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingCosts.GetHashCode();
+                hashCode = (hashCode * 59) + this.Mileage.GetHashCode();
+                hashCode = (hashCode * 59) + this.OtherExpenses.GetHashCode();
                 hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
                 return hashCode;
             }

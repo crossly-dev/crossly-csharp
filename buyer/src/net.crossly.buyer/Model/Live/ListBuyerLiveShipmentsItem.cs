@@ -40,47 +40,47 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerLiveShipmentsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="orders">orders (required).</param>
-        /// <param name="carrier">carrier.</param>
-        /// <param name="trackingNumber">trackingNumber.</param>
-        /// <param name="labelUrl">labelUrl.</param>
         /// <param name="streamId">streamId (required).</param>
-        /// <param name="refundedPostageCents">refundedPostageCents (required).</param>
         /// <param name="streamTitle">streamTitle (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="buyerName">buyerName.</param>
-        public ListBuyerLiveShipmentsItem(string id = default(string), string status = default(string), List<ListBuyerLiveShipmentsItemOrders> orders = default(List<ListBuyerLiveShipmentsItemOrders>), string carrier = default(string), string trackingNumber = default(string), string labelUrl = default(string), string streamId = default(string), decimal refundedPostageCents = default(decimal), string streamTitle = default(string), string buyerName = default(string))
+        /// <param name="trackingNumber">trackingNumber.</param>
+        /// <param name="carrier">carrier.</param>
+        /// <param name="labelUrl">labelUrl.</param>
+        /// <param name="refundedPostageCents">refundedPostageCents (required).</param>
+        /// <param name="orders">orders (required).</param>
+        public ListBuyerLiveShipmentsItem(string id = default(string), string streamId = default(string), string streamTitle = default(string), string status = default(string), string buyerName = default(string), string trackingNumber = default(string), string carrier = default(string), string labelUrl = default(string), decimal refundedPostageCents = default(decimal), List<ListBuyerLiveShipmentsItemOrders> orders = default(List<ListBuyerLiveShipmentsItemOrders>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerLiveShipmentsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerLiveShipmentsItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "orders" is required (not null)
-            if (orders == null) {
-                throw new ArgumentNullException("orders is a required property for ListBuyerLiveShipmentsItem and cannot be null");
-            }
-            this.Orders = orders;
             // to ensure "streamId" is required (not null)
             if (streamId == null) {
                 throw new ArgumentNullException("streamId is a required property for ListBuyerLiveShipmentsItem and cannot be null");
             }
             this.StreamId = streamId;
-            this.RefundedPostageCents = refundedPostageCents;
             // to ensure "streamTitle" is required (not null)
             if (streamTitle == null) {
                 throw new ArgumentNullException("streamTitle is a required property for ListBuyerLiveShipmentsItem and cannot be null");
             }
             this.StreamTitle = streamTitle;
-            this.Carrier = carrier;
-            this.TrackingNumber = trackingNumber;
-            this.LabelUrl = labelUrl;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerLiveShipmentsItem and cannot be null");
+            }
+            this.Status = status;
+            this.RefundedPostageCents = refundedPostageCents;
+            // to ensure "orders" is required (not null)
+            if (orders == null) {
+                throw new ArgumentNullException("orders is a required property for ListBuyerLiveShipmentsItem and cannot be null");
+            }
+            this.Orders = orders;
             this.BuyerName = buyerName;
+            this.TrackingNumber = trackingNumber;
+            this.Carrier = carrier;
+            this.LabelUrl = labelUrl;
         }
 
         /// <summary>
@@ -90,46 +90,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Orders
-        /// </summary>
-        [DataMember(Name = "orders", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListBuyerLiveShipmentsItemOrders> Orders { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Carrier
-        /// </summary>
-        [DataMember(Name = "carrier", EmitDefaultValue = true)]
-        public string Carrier { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TrackingNumber
-        /// </summary>
-        [DataMember(Name = "trackingNumber", EmitDefaultValue = true)]
-        public string TrackingNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LabelUrl
-        /// </summary>
-        [DataMember(Name = "labelUrl", EmitDefaultValue = true)]
-        public string LabelUrl { get; set; }
-
-        /// <summary>
         /// Gets or Sets StreamId
         /// </summary>
         [DataMember(Name = "streamId", IsRequired = true, EmitDefaultValue = false)]
         public string StreamId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RefundedPostageCents
-        /// </summary>
-        [DataMember(Name = "refundedPostageCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal RefundedPostageCents { get; set; }
 
         /// <summary>
         /// Gets or Sets StreamTitle
@@ -138,10 +102,46 @@ namespace net.crossly.buyer.Model
         public string StreamTitle { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets BuyerName
         /// </summary>
         [DataMember(Name = "buyerName", EmitDefaultValue = true)]
         public string BuyerName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TrackingNumber
+        /// </summary>
+        [DataMember(Name = "trackingNumber", EmitDefaultValue = true)]
+        public string TrackingNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Carrier
+        /// </summary>
+        [DataMember(Name = "carrier", EmitDefaultValue = true)]
+        public string Carrier { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LabelUrl
+        /// </summary>
+        [DataMember(Name = "labelUrl", EmitDefaultValue = true)]
+        public string LabelUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RefundedPostageCents
+        /// </summary>
+        [DataMember(Name = "refundedPostageCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal RefundedPostageCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Orders
+        /// </summary>
+        [DataMember(Name = "orders", IsRequired = true, EmitDefaultValue = false)]
+        public List<ListBuyerLiveShipmentsItemOrders> Orders { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -152,15 +152,15 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerLiveShipmentsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Orders: ").Append(Orders).Append("\n");
-            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
-            sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
-            sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
             sb.Append("  StreamId: ").Append(StreamId).Append("\n");
-            sb.Append("  RefundedPostageCents: ").Append(RefundedPostageCents).Append("\n");
             sb.Append("  StreamTitle: ").Append(StreamTitle).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  BuyerName: ").Append(BuyerName).Append("\n");
+            sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
+            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
+            sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
+            sb.Append("  RefundedPostageCents: ").Append(RefundedPostageCents).Append("\n");
+            sb.Append("  Orders: ").Append(Orders).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -202,39 +202,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Orders == input.Orders ||
-                    this.Orders != null &&
-                    input.Orders != null &&
-                    this.Orders.SequenceEqual(input.Orders)
-                ) && 
-                (
-                    this.Carrier == input.Carrier ||
-                    (this.Carrier != null &&
-                    this.Carrier.Equals(input.Carrier))
-                ) && 
-                (
-                    this.TrackingNumber == input.TrackingNumber ||
-                    (this.TrackingNumber != null &&
-                    this.TrackingNumber.Equals(input.TrackingNumber))
-                ) && 
-                (
-                    this.LabelUrl == input.LabelUrl ||
-                    (this.LabelUrl != null &&
-                    this.LabelUrl.Equals(input.LabelUrl))
-                ) && 
-                (
                     this.StreamId == input.StreamId ||
                     (this.StreamId != null &&
                     this.StreamId.Equals(input.StreamId))
-                ) && 
-                (
-                    this.RefundedPostageCents == input.RefundedPostageCents ||
-                    this.RefundedPostageCents.Equals(input.RefundedPostageCents)
                 ) && 
                 (
                     this.StreamTitle == input.StreamTitle ||
@@ -242,9 +212,39 @@ namespace net.crossly.buyer.Model
                     this.StreamTitle.Equals(input.StreamTitle))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
                     this.BuyerName == input.BuyerName ||
                     (this.BuyerName != null &&
                     this.BuyerName.Equals(input.BuyerName))
+                ) && 
+                (
+                    this.TrackingNumber == input.TrackingNumber ||
+                    (this.TrackingNumber != null &&
+                    this.TrackingNumber.Equals(input.TrackingNumber))
+                ) && 
+                (
+                    this.Carrier == input.Carrier ||
+                    (this.Carrier != null &&
+                    this.Carrier.Equals(input.Carrier))
+                ) && 
+                (
+                    this.LabelUrl == input.LabelUrl ||
+                    (this.LabelUrl != null &&
+                    this.LabelUrl.Equals(input.LabelUrl))
+                ) && 
+                (
+                    this.RefundedPostageCents == input.RefundedPostageCents ||
+                    this.RefundedPostageCents.Equals(input.RefundedPostageCents)
+                ) && 
+                (
+                    this.Orders == input.Orders ||
+                    this.Orders != null &&
+                    input.Orders != null &&
+                    this.Orders.SequenceEqual(input.Orders)
                 );
         }
 
@@ -261,38 +261,38 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.StreamId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StreamId.GetHashCode();
+                }
+                if (this.StreamTitle != null)
+                {
+                    hashCode = (hashCode * 59) + this.StreamTitle.GetHashCode();
+                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.Orders != null)
+                if (this.BuyerName != null)
                 {
-                    hashCode = (hashCode * 59) + this.Orders.GetHashCode();
-                }
-                if (this.Carrier != null)
-                {
-                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BuyerName.GetHashCode();
                 }
                 if (this.TrackingNumber != null)
                 {
                     hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
                 }
+                if (this.Carrier != null)
+                {
+                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
+                }
                 if (this.LabelUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
                 }
-                if (this.StreamId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StreamId.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.RefundedPostageCents.GetHashCode();
-                if (this.StreamTitle != null)
+                if (this.Orders != null)
                 {
-                    hashCode = (hashCode * 59) + this.StreamTitle.GetHashCode();
-                }
-                if (this.BuyerName != null)
-                {
-                    hashCode = (hashCode * 59) + this.BuyerName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Orders.GetHashCode();
                 }
                 return hashCode;
             }

@@ -38,16 +38,16 @@ namespace net.crossly.buyer.Model
         public enum TierEnum
         {
             /// <summary>
-            /// Enum Identifier for value: identifier
-            /// </summary>
-            [EnumMember(Value = "identifier")]
-            Identifier = 1,
-
-            /// <summary>
             /// Enum None for value: none
             /// </summary>
             [EnumMember(Value = "none")]
-            None = 2,
+            None = 1,
+
+            /// <summary>
+            /// Enum Identifier for value: identifier
+            /// </summary>
+            [EnumMember(Value = "identifier")]
+            Identifier = 2,
 
             /// <summary>
             /// Enum Visual for value: visual

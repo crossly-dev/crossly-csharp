@@ -249,16 +249,16 @@ namespace net.crossly.Model
             None = 2,
 
             /// <summary>
-            /// Enum Awning for value: awning
-            /// </summary>
-            [EnumMember(Value = "awning")]
-            Awning = 3,
-
-            /// <summary>
             /// Enum Fascia for value: fascia
             /// </summary>
             [EnumMember(Value = "fascia")]
-            Fascia = 4,
+            Fascia = 3,
+
+            /// <summary>
+            /// Enum Awning for value: awning
+            /// </summary>
+            [EnumMember(Value = "awning")]
+            Awning = 4,
 
             /// <summary>
             /// Enum NeonFascia for value: neon_fascia
@@ -551,7 +551,7 @@ namespace net.crossly.Model
         /// <param name="signFont">The sign&#39;s typeface (sign-lettering.ts SIGN_FONTS): free, any of them; the letters are built in it with the sign style&#39;s finish. Unset &#x3D; the style&#39;s own..</param>
         /// <param name="windowMood">The street window&#39;s lighting preset (Wave 10.3): the stall moods (stall-decor.ts STALL_MOODS) lit behind the shop&#39;s window cards. Free..</param>
         /// <param name="source">How the cosmetic was obtained, for display and for support questions..</param>
-        public UpdateSpatialSceneCosmeticResponseData(string theme = default(string), WallEnum? wall = default(WallEnum?), FloorEnum? floor = default(FloorEnum?), string coveColour = default(string), decimal? coveIntensity = default(decimal?), List<UpdateSpatialSceneCosmeticResponseDataProps> props = default(List<UpdateSpatialSceneCosmeticResponseDataProps>), ShopfrontEnum? shopfront = default(ShopfrontEnum?), string shopfrontColour = default(string), FacadeEnum? facade = default(FacadeEnum?), SignStyleEnum? signStyle = default(SignStyleEnum?), SignFontEnum? signFont = default(SignFontEnum?), WindowMoodEnum? windowMood = default(WindowMoodEnum?), SourceEnum? source = default(SourceEnum?))
+        public UpdateSpatialSceneCosmeticResponseData(string theme = default(string), WallEnum? wall = default(WallEnum?), FloorEnum? floor = default(FloorEnum?), string coveColour = default(string), decimal? coveIntensity = default(decimal?), List<GetShowroomResponseDataRoomProps> props = default(List<GetShowroomResponseDataRoomProps>), ShopfrontEnum? shopfront = default(ShopfrontEnum?), string shopfrontColour = default(string), FacadeEnum? facade = default(FacadeEnum?), SignStyleEnum? signStyle = default(SignStyleEnum?), SignFontEnum? signFont = default(SignFontEnum?), WindowMoodEnum? windowMood = default(WindowMoodEnum?), SourceEnum? source = default(SourceEnum?))
         {
             this.Theme = theme;
             this.Wall = wall;
@@ -594,7 +594,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <value>Decorative props. Never containers — see CosmeticProp.</value>
         [DataMember(Name = "props", EmitDefaultValue = true)]
-        public List<UpdateSpatialSceneCosmeticResponseDataProps> Props { get; set; }
+        public List<GetShowroomResponseDataRoomProps> Props { get; set; }
 
         /// <summary>
         /// The awning&#39;s canvas colour, as hex.  Separate from &#x60;coveColour&#x60; on purpose. The cove is the light INSIDE a room and the awning is fabric seen from outside it; a seller who wants a warm room and a green awning should get both, and forcing one hex to serve two materials is how you end up with a shop lit like its own signage.  The mesh is authored a neutral mid-tone precisely so this can multiply over it without muddying.

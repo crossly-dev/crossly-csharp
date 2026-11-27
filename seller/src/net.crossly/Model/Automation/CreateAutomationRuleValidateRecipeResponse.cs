@@ -40,21 +40,17 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateAutomationRuleValidateRecipeResponse" /> class.
         /// </summary>
         /// <param name="valid">valid (required).</param>
-        /// <param name="error">error (required).</param>
-        /// <param name="details">details (required).</param>
-        public CreateAutomationRuleValidateRecipeResponse(bool valid = default(bool), string error = default(string), CreateAutomationRuleValidateRecipeResponseDetails details = default(CreateAutomationRuleValidateRecipeResponseDetails))
+        /// <param name="count">count (required).</param>
+        /// <param name="results">results (required).</param>
+        public CreateAutomationRuleValidateRecipeResponse(bool valid = default(bool), decimal count = default(decimal), List<CreateAutomationRuleValidateRecipeResponseResults> results = default(List<CreateAutomationRuleValidateRecipeResponseResults>))
         {
             this.Valid = valid;
-            // to ensure "error" is required (not null)
-            if (error == null) {
-                throw new ArgumentNullException("error is a required property for CreateAutomationRuleValidateRecipeResponse and cannot be null");
+            this.Count = count;
+            // to ensure "results" is required (not null)
+            if (results == null) {
+                throw new ArgumentNullException("results is a required property for CreateAutomationRuleValidateRecipeResponse and cannot be null");
             }
-            this.Error = error;
-            // to ensure "details" is required (not null)
-            if (details == null) {
-                throw new ArgumentNullException("details is a required property for CreateAutomationRuleValidateRecipeResponse and cannot be null");
-            }
-            this.Details = details;
+            this.Results = results;
         }
 
         /// <summary>
@@ -64,16 +60,16 @@ namespace net.crossly.Model
         public bool Valid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Error
+        /// Gets or Sets Count
         /// </summary>
-        [DataMember(Name = "error", IsRequired = true, EmitDefaultValue = false)]
-        public string Error { get; set; }
+        [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Count { get; set; }
 
         /// <summary>
-        /// Gets or Sets Details
+        /// Gets or Sets Results
         /// </summary>
-        [DataMember(Name = "details", IsRequired = true, EmitDefaultValue = false)]
-        public CreateAutomationRuleValidateRecipeResponseDetails Details { get; set; }
+        [DataMember(Name = "results", IsRequired = true, EmitDefaultValue = false)]
+        public List<CreateAutomationRuleValidateRecipeResponseResults> Results { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,8 +80,8 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAutomationRuleValidateRecipeResponse {\n");
             sb.Append("  Valid: ").Append(Valid).Append("\n");
-            sb.Append("  Error: ").Append(Error).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
+            sb.Append("  Count: ").Append(Count).Append("\n");
+            sb.Append("  Results: ").Append(Results).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -126,14 +122,14 @@ namespace net.crossly.Model
                     this.Valid.Equals(input.Valid)
                 ) && 
                 (
-                    this.Error == input.Error ||
-                    (this.Error != null &&
-                    this.Error.Equals(input.Error))
+                    this.Count == input.Count ||
+                    this.Count.Equals(input.Count)
                 ) && 
                 (
-                    this.Details == input.Details ||
-                    (this.Details != null &&
-                    this.Details.Equals(input.Details))
+                    this.Results == input.Results ||
+                    this.Results != null &&
+                    input.Results != null &&
+                    this.Results.SequenceEqual(input.Results)
                 );
         }
 
@@ -147,13 +143,10 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Valid.GetHashCode();
-                if (this.Error != null)
+                hashCode = (hashCode * 59) + this.Count.GetHashCode();
+                if (this.Results != null)
                 {
-                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
-                }
-                if (this.Details != null)
-                {
-                    hashCode = (hashCode * 59) + this.Details.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Results.GetHashCode();
                 }
                 return hashCode;
             }

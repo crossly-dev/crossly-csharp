@@ -35,15 +35,15 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetWorldCapabilityWearResponseDataPicks" /> class.
         /// </summary>
         /// <param name="body">body.</param>
-        /// <param name="legs">legs.</param>
         /// <param name="head">head.</param>
+        /// <param name="legs">legs.</param>
         /// <param name="feet">feet.</param>
         /// <param name="back">back.</param>
-        public GetWorldCapabilityWearResponseDataPicks(string body = default(string), string legs = default(string), string head = default(string), string feet = default(string), string back = default(string))
+        public GetWorldCapabilityWearResponseDataPicks(string body = default(string), string head = default(string), string legs = default(string), string feet = default(string), string back = default(string))
         {
             this.Body = body;
-            this.Legs = legs;
             this.Head = head;
+            this.Legs = legs;
             this.Feet = feet;
             this.Back = back;
         }
@@ -55,16 +55,16 @@ namespace net.crossly.Model
         public string Body { get; set; }
 
         /// <summary>
-        /// Gets or Sets Legs
-        /// </summary>
-        [DataMember(Name = "legs", EmitDefaultValue = true)]
-        public string Legs { get; set; }
-
-        /// <summary>
         /// Gets or Sets Head
         /// </summary>
         [DataMember(Name = "head", EmitDefaultValue = true)]
         public string Head { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Legs
+        /// </summary>
+        [DataMember(Name = "legs", EmitDefaultValue = true)]
+        public string Legs { get; set; }
 
         /// <summary>
         /// Gets or Sets Feet
@@ -87,8 +87,8 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetWorldCapabilityWearResponseDataPicks {\n");
             sb.Append("  Body: ").Append(Body).Append("\n");
-            sb.Append("  Legs: ").Append(Legs).Append("\n");
             sb.Append("  Head: ").Append(Head).Append("\n");
+            sb.Append("  Legs: ").Append(Legs).Append("\n");
             sb.Append("  Feet: ").Append(Feet).Append("\n");
             sb.Append("  Back: ").Append(Back).Append("\n");
             sb.Append("}\n");
@@ -132,14 +132,14 @@ namespace net.crossly.Model
                     this.Body.Equals(input.Body))
                 ) && 
                 (
-                    this.Legs == input.Legs ||
-                    (this.Legs != null &&
-                    this.Legs.Equals(input.Legs))
-                ) && 
-                (
                     this.Head == input.Head ||
                     (this.Head != null &&
                     this.Head.Equals(input.Head))
+                ) && 
+                (
+                    this.Legs == input.Legs ||
+                    (this.Legs != null &&
+                    this.Legs.Equals(input.Legs))
                 ) && 
                 (
                     this.Feet == input.Feet ||
@@ -166,13 +166,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
                 }
-                if (this.Legs != null)
-                {
-                    hashCode = (hashCode * 59) + this.Legs.GetHashCode();
-                }
                 if (this.Head != null)
                 {
                     hashCode = (hashCode * 59) + this.Head.GetHashCode();
+                }
+                if (this.Legs != null)
+                {
+                    hashCode = (hashCode * 59) + this.Legs.GetHashCode();
                 }
                 if (this.Feet != null)
                 {

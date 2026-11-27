@@ -40,20 +40,25 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetAnalyticItemResponseItems" /> class.
         /// </summary>
         /// <param name="saleId">saleId (required).</param>
+        /// <param name="inventoryItemId">inventoryItemId.</param>
+        /// <param name="listingId">listingId.</param>
+        /// <param name="platformListingId">platformListingId.</param>
+        /// <param name="imageUrl">imageUrl.</param>
         /// <param name="platform">platform (required).</param>
         /// <param name="platformOrderId">platformOrderId.</param>
         /// <param name="itemTitle">itemTitle.</param>
         /// <param name="itemBrand">itemBrand.</param>
         /// <param name="itemSku">itemSku.</param>
+        /// <param name="detailsPending">detailsPending (required).</param>
         /// <param name="salePrice">salePrice.</param>
         /// <param name="platformFee">platformFee.</param>
         /// <param name="shippingCost">shippingCost.</param>
         /// <param name="costOfGoods">costOfGoods.</param>
         /// <param name="netProfit">netProfit.</param>
-        /// <param name="marginPct">marginPct (required).</param>
+        /// <param name="marginPct">marginPct.</param>
         /// <param name="daysToSell">daysToSell.</param>
         /// <param name="detectedAt">detectedAt (required).</param>
-        public GetAnalyticItemResponseItems(string saleId = default(string), string platform = default(string), string platformOrderId = default(string), string itemTitle = default(string), string itemBrand = default(string), string itemSku = default(string), decimal? salePrice = default(decimal?), decimal? platformFee = default(decimal?), decimal? shippingCost = default(decimal?), decimal? costOfGoods = default(decimal?), decimal? netProfit = default(decimal?), decimal marginPct = default(decimal), decimal? daysToSell = default(decimal?), DateTime detectedAt = default(DateTime))
+        public GetAnalyticItemResponseItems(string saleId = default(string), string inventoryItemId = default(string), string listingId = default(string), string platformListingId = default(string), string imageUrl = default(string), string platform = default(string), string platformOrderId = default(string), string itemTitle = default(string), string itemBrand = default(string), string itemSku = default(string), bool detailsPending = default(bool), decimal? salePrice = default(decimal?), decimal? platformFee = default(decimal?), decimal? shippingCost = default(decimal?), decimal? costOfGoods = default(decimal?), decimal? netProfit = default(decimal?), decimal? marginPct = default(decimal?), decimal? daysToSell = default(decimal?), DateTime detectedAt = default(DateTime))
         {
             // to ensure "saleId" is required (not null)
             if (saleId == null) {
@@ -65,8 +70,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("platform is a required property for GetAnalyticItemResponseItems and cannot be null");
             }
             this.Platform = platform;
-            this.MarginPct = marginPct;
+            this.DetailsPending = detailsPending;
             this.DetectedAt = detectedAt;
+            this.InventoryItemId = inventoryItemId;
+            this.ListingId = listingId;
+            this.PlatformListingId = platformListingId;
+            this.ImageUrl = imageUrl;
             this.PlatformOrderId = platformOrderId;
             this.ItemTitle = itemTitle;
             this.ItemBrand = itemBrand;
@@ -76,6 +85,7 @@ namespace net.crossly.Model
             this.ShippingCost = shippingCost;
             this.CostOfGoods = costOfGoods;
             this.NetProfit = netProfit;
+            this.MarginPct = marginPct;
             this.DaysToSell = daysToSell;
         }
 
@@ -84,6 +94,30 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "saleId", IsRequired = true, EmitDefaultValue = false)]
         public string SaleId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InventoryItemId
+        /// </summary>
+        [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
+        public string InventoryItemId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListingId
+        /// </summary>
+        [DataMember(Name = "listingId", EmitDefaultValue = true)]
+        public string ListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlatformListingId
+        /// </summary>
+        [DataMember(Name = "platformListingId", EmitDefaultValue = true)]
+        public string PlatformListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImageUrl
+        /// </summary>
+        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Platform
@@ -114,6 +148,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "itemSku", EmitDefaultValue = true)]
         public string ItemSku { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DetailsPending
+        /// </summary>
+        [DataMember(Name = "detailsPending", IsRequired = true, EmitDefaultValue = true)]
+        public bool DetailsPending { get; set; }
 
         /// <summary>
         /// Gets or Sets SalePrice
@@ -148,8 +188,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets MarginPct
         /// </summary>
-        [DataMember(Name = "marginPct", IsRequired = true, EmitDefaultValue = false)]
-        public decimal MarginPct { get; set; }
+        [DataMember(Name = "marginPct", EmitDefaultValue = true)]
+        public decimal? MarginPct { get; set; }
 
         /// <summary>
         /// Gets or Sets DaysToSell
@@ -172,11 +212,16 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAnalyticItemResponseItems {\n");
             sb.Append("  SaleId: ").Append(SaleId).Append("\n");
+            sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
+            sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  PlatformOrderId: ").Append(PlatformOrderId).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
             sb.Append("  ItemBrand: ").Append(ItemBrand).Append("\n");
             sb.Append("  ItemSku: ").Append(ItemSku).Append("\n");
+            sb.Append("  DetailsPending: ").Append(DetailsPending).Append("\n");
             sb.Append("  SalePrice: ").Append(SalePrice).Append("\n");
             sb.Append("  PlatformFee: ").Append(PlatformFee).Append("\n");
             sb.Append("  ShippingCost: ").Append(ShippingCost).Append("\n");
@@ -226,6 +271,26 @@ namespace net.crossly.Model
                     this.SaleId.Equals(input.SaleId))
                 ) && 
                 (
+                    this.InventoryItemId == input.InventoryItemId ||
+                    (this.InventoryItemId != null &&
+                    this.InventoryItemId.Equals(input.InventoryItemId))
+                ) && 
+                (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
+                ) && 
+                (
+                    this.PlatformListingId == input.PlatformListingId ||
+                    (this.PlatformListingId != null &&
+                    this.PlatformListingId.Equals(input.PlatformListingId))
+                ) && 
+                (
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
                     this.Platform == input.Platform ||
                     (this.Platform != null &&
                     this.Platform.Equals(input.Platform))
@@ -249,6 +314,10 @@ namespace net.crossly.Model
                     this.ItemSku == input.ItemSku ||
                     (this.ItemSku != null &&
                     this.ItemSku.Equals(input.ItemSku))
+                ) && 
+                (
+                    this.DetailsPending == input.DetailsPending ||
+                    this.DetailsPending.Equals(input.DetailsPending)
                 ) && 
                 (
                     this.SalePrice == input.SalePrice ||
@@ -277,7 +346,8 @@ namespace net.crossly.Model
                 ) && 
                 (
                     this.MarginPct == input.MarginPct ||
-                    this.MarginPct.Equals(input.MarginPct)
+                    (this.MarginPct != null &&
+                    this.MarginPct.Equals(input.MarginPct))
                 ) && 
                 (
                     this.DaysToSell == input.DaysToSell ||
@@ -304,6 +374,22 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.SaleId.GetHashCode();
                 }
+                if (this.InventoryItemId != null)
+                {
+                    hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
+                }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                }
+                if (this.PlatformListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
+                }
+                if (this.ImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
+                }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
@@ -324,6 +410,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ItemSku.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DetailsPending.GetHashCode();
                 if (this.SalePrice != null)
                 {
                     hashCode = (hashCode * 59) + this.SalePrice.GetHashCode();
@@ -344,7 +431,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.MarginPct.GetHashCode();
+                if (this.MarginPct != null)
+                {
+                    hashCode = (hashCode * 59) + this.MarginPct.GetHashCode();
+                }
                 if (this.DaysToSell != null)
                 {
                     hashCode = (hashCode * 59) + this.DaysToSell.GetHashCode();

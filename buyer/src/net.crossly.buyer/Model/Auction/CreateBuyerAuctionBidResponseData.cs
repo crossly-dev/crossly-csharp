@@ -39,35 +39,21 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerAuctionBidResponseData" /> class.
         /// </summary>
-        /// <param name="endsAt">Possibly extended by anti-sniping. (required).</param>
-        /// <param name="currentBidCents">The price now, in cents, after proxy bidding resolved. (required).</param>
         /// <param name="ok">ok (required).</param>
         /// <param name="leading">false &#x3D; a standing proxy bid outbid you straight away. (required).</param>
-        public CreateBuyerAuctionBidResponseData(string endsAt = default(string), decimal currentBidCents = default(decimal), bool ok = default(bool), bool leading = default(bool))
+        /// <param name="currentBidCents">The price now, in cents, after proxy bidding resolved. (required).</param>
+        /// <param name="endsAt">Possibly extended by anti-sniping. (required).</param>
+        public CreateBuyerAuctionBidResponseData(bool ok = default(bool), bool leading = default(bool), decimal currentBidCents = default(decimal), string endsAt = default(string))
         {
+            this.Ok = ok;
+            this.Leading = leading;
+            this.CurrentBidCents = currentBidCents;
             // to ensure "endsAt" is required (not null)
             if (endsAt == null) {
                 throw new ArgumentNullException("endsAt is a required property for CreateBuyerAuctionBidResponseData and cannot be null");
             }
             this.EndsAt = endsAt;
-            this.CurrentBidCents = currentBidCents;
-            this.Ok = ok;
-            this.Leading = leading;
         }
-
-        /// <summary>
-        /// Possibly extended by anti-sniping.
-        /// </summary>
-        /// <value>Possibly extended by anti-sniping.</value>
-        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
-        public string EndsAt { get; set; }
-
-        /// <summary>
-        /// The price now, in cents, after proxy bidding resolved.
-        /// </summary>
-        /// <value>The price now, in cents, after proxy bidding resolved.</value>
-        [DataMember(Name = "currentBidCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal CurrentBidCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Ok
@@ -83,6 +69,20 @@ namespace net.crossly.buyer.Model
         public bool Leading { get; set; }
 
         /// <summary>
+        /// The price now, in cents, after proxy bidding resolved.
+        /// </summary>
+        /// <value>The price now, in cents, after proxy bidding resolved.</value>
+        [DataMember(Name = "currentBidCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CurrentBidCents { get; set; }
+
+        /// <summary>
+        /// Possibly extended by anti-sniping.
+        /// </summary>
+        /// <value>Possibly extended by anti-sniping.</value>
+        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
+        public string EndsAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -90,10 +90,10 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerAuctionBidResponseData {\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
-            sb.Append("  CurrentBidCents: ").Append(CurrentBidCents).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  Leading: ").Append(Leading).Append("\n");
+            sb.Append("  CurrentBidCents: ").Append(CurrentBidCents).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,21 +130,21 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.EndsAt == input.EndsAt ||
-                    (this.EndsAt != null &&
-                    this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
-                    this.CurrentBidCents == input.CurrentBidCents ||
-                    this.CurrentBidCents.Equals(input.CurrentBidCents)
-                ) && 
-                (
                     this.Ok == input.Ok ||
                     this.Ok.Equals(input.Ok)
                 ) && 
                 (
                     this.Leading == input.Leading ||
                     this.Leading.Equals(input.Leading)
+                ) && 
+                (
+                    this.CurrentBidCents == input.CurrentBidCents ||
+                    this.CurrentBidCents.Equals(input.CurrentBidCents)
+                ) && 
+                (
+                    this.EndsAt == input.EndsAt ||
+                    (this.EndsAt != null &&
+                    this.EndsAt.Equals(input.EndsAt))
                 );
         }
 
@@ -157,13 +157,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
+                hashCode = (hashCode * 59) + this.Leading.GetHashCode();
+                hashCode = (hashCode * 59) + this.CurrentBidCents.GetHashCode();
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.CurrentBidCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
-                hashCode = (hashCode * 59) + this.Leading.GetHashCode();
                 return hashCode;
             }
         }

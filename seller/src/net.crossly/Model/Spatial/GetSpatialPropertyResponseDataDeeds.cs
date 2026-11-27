@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
-            /// Enum Foreclosed for value: foreclosed
-            /// </summary>
-            [EnumMember(Value = "foreclosed")]
-            Foreclosed = 2,
-
-            /// <summary>
             /// Enum Grace for value: grace
             /// </summary>
             [EnumMember(Value = "grace")]
-            Grace = 3,
+            Grace = 2,
 
             /// <summary>
             /// Enum Delinquent for value: delinquent
             /// </summary>
             [EnumMember(Value = "delinquent")]
-            Delinquent = 4
+            Delinquent = 3,
+
+            /// <summary>
+            /// Enum Foreclosed for value: foreclosed
+            /// </summary>
+            [EnumMember(Value = "foreclosed")]
+            Foreclosed = 4
 
         }
 
@@ -78,6 +78,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetSpatialPropertyResponseDataDeeds" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="plotId">plotId (required).</param>
         /// <param name="address">address (required).</param>
         /// <param name="label">label (required).</param>
         /// <param name="priceCents">priceCents (required).</param>
@@ -87,13 +88,18 @@ namespace net.crossly.Model
         /// <param name="occupied">occupied (required).</param>
         /// <param name="lease">lease.</param>
         /// <param name="listing">listing.</param>
-        public GetSpatialPropertyResponseDataDeeds(string id = default(string), string address = default(string), string label = default(string), decimal priceCents = default(decimal), decimal maintenanceWeeklyCents = default(decimal), string paidThrough = default(string), StatusEnum status = default(StatusEnum), bool occupied = default(bool), GetSpatialPropertyResponseDataDeedsLease lease = default(GetSpatialPropertyResponseDataDeedsLease), GetSpatialPropertyResponseDataDeedsListing listing = default(GetSpatialPropertyResponseDataDeedsListing))
+        public GetSpatialPropertyResponseDataDeeds(string id = default(string), string plotId = default(string), string address = default(string), string label = default(string), decimal priceCents = default(decimal), decimal maintenanceWeeklyCents = default(decimal), string paidThrough = default(string), StatusEnum status = default(StatusEnum), bool occupied = default(bool), GetSpatialPropertyResponseDataDeedsLease lease = default(GetSpatialPropertyResponseDataDeedsLease), GetSpatialPropertyResponseDataDeedsListing listing = default(GetSpatialPropertyResponseDataDeedsListing))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetSpatialPropertyResponseDataDeeds and cannot be null");
             }
             this.Id = id;
+            // to ensure "plotId" is required (not null)
+            if (plotId == null) {
+                throw new ArgumentNullException("plotId is a required property for GetSpatialPropertyResponseDataDeeds and cannot be null");
+            }
+            this.PlotId = plotId;
             // to ensure "address" is required (not null)
             if (address == null) {
                 throw new ArgumentNullException("address is a required property for GetSpatialPropertyResponseDataDeeds and cannot be null");
@@ -122,6 +128,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlotId
+        /// </summary>
+        [DataMember(Name = "plotId", IsRequired = true, EmitDefaultValue = false)]
+        public string PlotId { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
@@ -180,6 +192,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetSpatialPropertyResponseDataDeeds {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  PlotId: ").Append(PlotId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
@@ -228,6 +241,11 @@ namespace net.crossly.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.PlotId == input.PlotId ||
+                    (this.PlotId != null &&
+                    this.PlotId.Equals(input.PlotId))
                 ) && 
                 (
                     this.Address == input.Address ||
@@ -284,6 +302,10 @@ namespace net.crossly.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.PlotId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlotId.GetHashCode();
                 }
                 if (this.Address != null)
                 {

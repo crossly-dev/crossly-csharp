@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Limit = 1,
 
             /// <summary>
-            /// Enum Normal for value: normal
-            /// </summary>
-            [EnumMember(Value = "normal")]
-            Normal = 2,
-
-            /// <summary>
             /// Enum Paused for value: paused
             /// </summary>
             [EnumMember(Value = "paused")]
-            Paused = 3
+            Paused = 2,
+
+            /// <summary>
+            /// Enum Normal for value: normal
+            /// </summary>
+            [EnumMember(Value = "normal")]
+            Normal = 3
 
         }
 

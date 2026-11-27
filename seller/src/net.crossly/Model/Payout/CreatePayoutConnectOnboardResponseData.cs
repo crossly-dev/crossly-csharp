@@ -68,8 +68,9 @@ namespace net.crossly.Model
         /// <param name="url">url (required).</param>
         /// <param name="country">country (required).</param>
         /// <param name="agreement">agreement (required).</param>
-        /// <param name="payoutsSupported">False when Stripe offers no way for Crossly to pay this account (see connect.ts). (required).</param>
-        public CreatePayoutConnectOnboardResponseData(string url = default(string), string country = default(string), AgreementEnum agreement = default(AgreementEnum), bool payoutsSupported = default(bool))
+        /// <param name="payoutsSupported">payoutsSupported (required).</param>
+        /// <param name="accountSource">accountSource (required).</param>
+        public CreatePayoutConnectOnboardResponseData(string url = default(string), string country = default(string), AgreementEnum agreement = default(AgreementEnum), bool payoutsSupported = default(bool), string accountSource = default(string))
         {
             // to ensure "url" is required (not null)
             if (url == null) {
@@ -83,6 +84,11 @@ namespace net.crossly.Model
             this.Country = country;
             this.Agreement = agreement;
             this.PayoutsSupported = payoutsSupported;
+            // to ensure "accountSource" is required (not null)
+            if (accountSource == null) {
+                throw new ArgumentNullException("accountSource is a required property for CreatePayoutConnectOnboardResponseData and cannot be null");
+            }
+            this.AccountSource = accountSource;
         }
 
         /// <summary>
@@ -98,11 +104,16 @@ namespace net.crossly.Model
         public string Country { get; set; }
 
         /// <summary>
-        /// False when Stripe offers no way for Crossly to pay this account (see connect.ts).
+        /// Gets or Sets PayoutsSupported
         /// </summary>
-        /// <value>False when Stripe offers no way for Crossly to pay this account (see connect.ts).</value>
         [DataMember(Name = "payoutsSupported", IsRequired = true, EmitDefaultValue = true)]
         public bool PayoutsSupported { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccountSource
+        /// </summary>
+        [DataMember(Name = "accountSource", IsRequired = true, EmitDefaultValue = false)]
+        public string AccountSource { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,6 +127,7 @@ namespace net.crossly.Model
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  Agreement: ").Append(Agreement).Append("\n");
             sb.Append("  PayoutsSupported: ").Append(PayoutsSupported).Append("\n");
+            sb.Append("  AccountSource: ").Append(AccountSource).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,6 +180,11 @@ namespace net.crossly.Model
                 (
                     this.PayoutsSupported == input.PayoutsSupported ||
                     this.PayoutsSupported.Equals(input.PayoutsSupported)
+                ) && 
+                (
+                    this.AccountSource == input.AccountSource ||
+                    (this.AccountSource != null &&
+                    this.AccountSource.Equals(input.AccountSource))
                 );
         }
 
@@ -190,6 +207,10 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.Agreement.GetHashCode();
                 hashCode = (hashCode * 59) + this.PayoutsSupported.GetHashCode();
+                if (this.AccountSource != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountSource.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -39,16 +39,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Unit for value: unit
-            /// </summary>
-            [EnumMember(Value = "unit")]
-            Unit = 1,
-
-            /// <summary>
             /// Enum Cash for value: cash
             /// </summary>
             [EnumMember(Value = "cash")]
-            Cash = 2
+            Cash = 1,
+
+            /// <summary>
+            /// Enum Unit for value: unit
+            /// </summary>
+            [EnumMember(Value = "unit")]
+            Unit = 2
 
         }
 
@@ -94,16 +94,16 @@ namespace net.crossly.Model
         public enum SideEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2
 
         }
 

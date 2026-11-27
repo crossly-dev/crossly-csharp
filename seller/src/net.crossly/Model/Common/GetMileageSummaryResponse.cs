@@ -41,15 +41,23 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="year">year (required).</param>
         /// <param name="ratePerMile">ratePerMile (required).</param>
+        /// <param name="rates">rates (required).</param>
         /// <param name="totalMiles">totalMiles (required).</param>
         /// <param name="deduction">deduction (required).</param>
+        /// <param name="deductionCents">deductionCents (required).</param>
         /// <param name="entryCount">entryCount (required).</param>
-        public GetMileageSummaryResponse(decimal year = default(decimal), decimal ratePerMile = default(decimal), decimal totalMiles = default(decimal), decimal deduction = default(decimal), decimal entryCount = default(decimal))
+        public GetMileageSummaryResponse(decimal year = default(decimal), decimal ratePerMile = default(decimal), List<GetMileageSummaryResponseRates> rates = default(List<GetMileageSummaryResponseRates>), decimal totalMiles = default(decimal), decimal deduction = default(decimal), decimal deductionCents = default(decimal), decimal entryCount = default(decimal))
         {
             this.Year = year;
             this.RatePerMile = ratePerMile;
+            // to ensure "rates" is required (not null)
+            if (rates == null) {
+                throw new ArgumentNullException("rates is a required property for GetMileageSummaryResponse and cannot be null");
+            }
+            this.Rates = rates;
             this.TotalMiles = totalMiles;
             this.Deduction = deduction;
+            this.DeductionCents = deductionCents;
             this.EntryCount = entryCount;
         }
 
@@ -66,6 +74,12 @@ namespace net.crossly.Model
         public decimal RatePerMile { get; set; }
 
         /// <summary>
+        /// Gets or Sets Rates
+        /// </summary>
+        [DataMember(Name = "rates", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetMileageSummaryResponseRates> Rates { get; set; }
+
+        /// <summary>
         /// Gets or Sets TotalMiles
         /// </summary>
         [DataMember(Name = "totalMiles", IsRequired = true, EmitDefaultValue = false)]
@@ -76,6 +90,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "deduction", IsRequired = true, EmitDefaultValue = false)]
         public decimal Deduction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeductionCents
+        /// </summary>
+        [DataMember(Name = "deductionCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal DeductionCents { get; set; }
 
         /// <summary>
         /// Gets or Sets EntryCount
@@ -93,8 +113,10 @@ namespace net.crossly.Model
             sb.Append("class GetMileageSummaryResponse {\n");
             sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("  RatePerMile: ").Append(RatePerMile).Append("\n");
+            sb.Append("  Rates: ").Append(Rates).Append("\n");
             sb.Append("  TotalMiles: ").Append(TotalMiles).Append("\n");
             sb.Append("  Deduction: ").Append(Deduction).Append("\n");
+            sb.Append("  DeductionCents: ").Append(DeductionCents).Append("\n");
             sb.Append("  EntryCount: ").Append(EntryCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -140,12 +162,22 @@ namespace net.crossly.Model
                     this.RatePerMile.Equals(input.RatePerMile)
                 ) && 
                 (
+                    this.Rates == input.Rates ||
+                    this.Rates != null &&
+                    input.Rates != null &&
+                    this.Rates.SequenceEqual(input.Rates)
+                ) && 
+                (
                     this.TotalMiles == input.TotalMiles ||
                     this.TotalMiles.Equals(input.TotalMiles)
                 ) && 
                 (
                     this.Deduction == input.Deduction ||
                     this.Deduction.Equals(input.Deduction)
+                ) && 
+                (
+                    this.DeductionCents == input.DeductionCents ||
+                    this.DeductionCents.Equals(input.DeductionCents)
                 ) && 
                 (
                     this.EntryCount == input.EntryCount ||
@@ -164,8 +196,13 @@ namespace net.crossly.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Year.GetHashCode();
                 hashCode = (hashCode * 59) + this.RatePerMile.GetHashCode();
+                if (this.Rates != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rates.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.TotalMiles.GetHashCode();
                 hashCode = (hashCode * 59) + this.Deduction.GetHashCode();
+                hashCode = (hashCode * 59) + this.DeductionCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.EntryCount.GetHashCode();
                 return hashCode;
             }

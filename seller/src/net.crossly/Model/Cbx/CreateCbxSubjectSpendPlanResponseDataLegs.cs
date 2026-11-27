@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum SourceEnum
         {
             /// <summary>
-            /// Enum Granted for value: granted
-            /// </summary>
-            [EnumMember(Value = "granted")]
-            Granted = 1,
-
-            /// <summary>
             /// Enum Earned for value: earned
             /// </summary>
             [EnumMember(Value = "earned")]
-            Earned = 2,
+            Earned = 1,
 
             /// <summary>
             /// Enum Connected for value: connected
             /// </summary>
             [EnumMember(Value = "connected")]
-            Connected = 3
+            Connected = 2,
+
+            /// <summary>
+            /// Enum Granted for value: granted
+            /// </summary>
+            [EnumMember(Value = "granted")]
+            Granted = 3
 
         }
 

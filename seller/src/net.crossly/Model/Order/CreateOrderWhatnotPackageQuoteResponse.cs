@@ -39,8 +39,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrderWhatnotPackageQuoteResponse" /> class.
         /// </summary>
-        /// <param name="costCents">costCents (required).</param>
-        /// <param name="error">error.</param>
+        /// <param name="costCents">Cents the platform charges for the change; 0 &#x3D; free. (required).</param>
+        /// <param name="error">The platform&#39;s refusal of this package, when it gives one..</param>
         public CreateOrderWhatnotPackageQuoteResponse(decimal costCents = default(decimal), string error = default(string))
         {
             this.CostCents = costCents;
@@ -48,14 +48,16 @@ namespace net.crossly.Model
         }
 
         /// <summary>
-        /// Gets or Sets CostCents
+        /// Cents the platform charges for the change; 0 &#x3D; free.
         /// </summary>
+        /// <value>Cents the platform charges for the change; 0 &#x3D; free.</value>
         [DataMember(Name = "costCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal CostCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Error
+        /// The platform&#39;s refusal of this package, when it gives one.
         /// </summary>
+        /// <value>The platform&#39;s refusal of this package, when it gives one.</value>
         [DataMember(Name = "error", EmitDefaultValue = true)]
         public string Error { get; set; }
 

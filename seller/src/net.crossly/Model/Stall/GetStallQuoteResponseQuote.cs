@@ -32,6 +32,38 @@ namespace net.crossly.Model
     public partial class GetStallQuoteResponseQuote : IEquatable<GetStallQuoteResponseQuote>, IValidatableObject
     {
         /// <summary>
+        /// Defines BoothKind
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum BoothKindEnum
+        {
+            /// <summary>
+            /// Enum Booth for value: booth
+            /// </summary>
+            [EnumMember(Value = "booth")]
+            Booth = 1,
+
+            /// <summary>
+            /// Enum Cart for value: cart
+            /// </summary>
+            [EnumMember(Value = "cart")]
+            Cart = 2,
+
+            /// <summary>
+            /// Enum Pavilion for value: pavilion
+            /// </summary>
+            [EnumMember(Value = "pavilion")]
+            Pavilion = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets BoothKind
+        /// </summary>
+        [DataMember(Name = "boothKind", IsRequired = true, EmitDefaultValue = false)]
+        public BoothKindEnum BoothKind { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetStallQuoteResponseQuote" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -46,9 +78,11 @@ namespace net.crossly.Model
         /// <param name="units">units (required).</param>
         /// <param name="quote">quote (required).</param>
         /// <param name="rails">rails (required).</param>
+        /// <param name="boothKind">boothKind (required).</param>
+        /// <param name="capacity">capacity (required).</param>
         /// <param name="bookable">bookable (required).</param>
         /// <param name="unbookableReason">unbookableReason.</param>
-        public GetStallQuoteResponseQuote(string street = default(string), decimal spotIndex = default(decimal), GetStallQuoteResponseQuoteOwner owner = default(GetStallQuoteResponseQuoteOwner), bool open = default(bool), List<GetStallQuoteResponseQuoteUnits> units = default(List<GetStallQuoteResponseQuoteUnits>), CreateStallBookResponseBookingQuote quote = default(CreateStallBookResponseBookingQuote), List<GetStallQuoteResponseQuoteRailsItem> rails = default(List<GetStallQuoteResponseQuoteRailsItem>), bool bookable = default(bool), string unbookableReason = default(string))
+        public GetStallQuoteResponseQuote(string street = default(string), decimal spotIndex = default(decimal), GetStallQuoteResponseQuoteOwner owner = default(GetStallQuoteResponseQuoteOwner), bool open = default(bool), List<GetStallQuoteResponseQuoteUnits> units = default(List<GetStallQuoteResponseQuoteUnits>), CreateStallBookResponseBookingQuote quote = default(CreateStallBookResponseBookingQuote), List<GetStallQuoteResponseQuoteRailsItem> rails = default(List<GetStallQuoteResponseQuoteRailsItem>), BoothKindEnum boothKind = default(BoothKindEnum), decimal capacity = default(decimal), bool bookable = default(bool), string unbookableReason = default(string))
         {
             // to ensure "street" is required (not null)
             if (street == null) {
@@ -77,6 +111,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("rails is a required property for GetStallQuoteResponseQuote and cannot be null");
             }
             this.Rails = rails;
+            this.BoothKind = boothKind;
+            this.Capacity = capacity;
             this.Bookable = bookable;
             this.UnbookableReason = unbookableReason;
         }
@@ -124,6 +160,12 @@ namespace net.crossly.Model
         public List<GetStallQuoteResponseQuoteRailsItem> Rails { get; set; }
 
         /// <summary>
+        /// Gets or Sets Capacity
+        /// </summary>
+        [DataMember(Name = "capacity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Capacity { get; set; }
+
+        /// <summary>
         /// Gets or Sets Bookable
         /// </summary>
         [DataMember(Name = "bookable", IsRequired = true, EmitDefaultValue = true)]
@@ -150,6 +192,8 @@ namespace net.crossly.Model
             sb.Append("  Units: ").Append(Units).Append("\n");
             sb.Append("  Quote: ").Append(Quote).Append("\n");
             sb.Append("  Rails: ").Append(Rails).Append("\n");
+            sb.Append("  BoothKind: ").Append(BoothKind).Append("\n");
+            sb.Append("  Capacity: ").Append(Capacity).Append("\n");
             sb.Append("  Bookable: ").Append(Bookable).Append("\n");
             sb.Append("  UnbookableReason: ").Append(UnbookableReason).Append("\n");
             sb.Append("}\n");
@@ -223,6 +267,14 @@ namespace net.crossly.Model
                     this.Rails.SequenceEqual(input.Rails)
                 ) && 
                 (
+                    this.BoothKind == input.BoothKind ||
+                    this.BoothKind.Equals(input.BoothKind)
+                ) && 
+                (
+                    this.Capacity == input.Capacity ||
+                    this.Capacity.Equals(input.Capacity)
+                ) && 
+                (
                     this.Bookable == input.Bookable ||
                     this.Bookable.Equals(input.Bookable)
                 ) && 
@@ -264,6 +316,8 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Rails.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.BoothKind.GetHashCode();
+                hashCode = (hashCode * 59) + this.Capacity.GetHashCode();
                 hashCode = (hashCode * 59) + this.Bookable.GetHashCode();
                 if (this.UnbookableReason != null)
                 {

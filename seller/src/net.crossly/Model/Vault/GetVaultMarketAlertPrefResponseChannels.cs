@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Email = 1,
 
             /// <summary>
-            /// Enum Webhook for value: webhook
-            /// </summary>
-            [EnumMember(Value = "webhook")]
-            Webhook = 2,
-
-            /// <summary>
             /// Enum Push for value: push
             /// </summary>
             [EnumMember(Value = "push")]
-            Push = 3,
+            Push = 2,
+
+            /// <summary>
+            /// Enum Webhook for value: webhook
+            /// </summary>
+            [EnumMember(Value = "webhook")]
+            Webhook = 3,
 
             /// <summary>
             /// Enum Telegram for value: telegram

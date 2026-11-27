@@ -76,22 +76,22 @@ namespace net.crossly.Model
         public enum FormEnum
         {
             /// <summary>
-            /// Enum Round for value: round
-            /// </summary>
-            [EnumMember(Value = "round")]
-            Round = 1,
-
-            /// <summary>
             /// Enum BullionCoin for value: bullion_coin
             /// </summary>
             [EnumMember(Value = "bullion_coin")]
-            BullionCoin = 2,
+            BullionCoin = 1,
 
             /// <summary>
             /// Enum Bar for value: bar
             /// </summary>
             [EnumMember(Value = "bar")]
-            Bar = 3
+            Bar = 2,
+
+            /// <summary>
+            /// Enum Round for value: round
+            /// </summary>
+            [EnumMember(Value = "round")]
+            Round = 3
 
         }
 
@@ -108,16 +108,16 @@ namespace net.crossly.Model
         public enum SizeEnum
         {
             /// <summary>
-            /// Enum Quarter for value: quarter
-            /// </summary>
-            [EnumMember(Value = "quarter")]
-            Quarter = 1,
-
-            /// <summary>
             /// Enum Fractional for value: fractional
             /// </summary>
             [EnumMember(Value = "fractional")]
-            Fractional = 2,
+            Fractional = 1,
+
+            /// <summary>
+            /// Enum Quarter for value: quarter
+            /// </summary>
+            [EnumMember(Value = "quarter")]
+            Quarter = 2,
 
             /// <summary>
             /// Enum Half for value: half

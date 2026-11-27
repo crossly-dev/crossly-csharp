@@ -100,7 +100,7 @@ namespace net.crossly.Model
         /// <param name="marketHref">marketHref (required).</param>
         /// <param name="me">me.</param>
         /// <param name="earlyAccess">earlyAccess.</param>
-        public ListVaultMarketOpeningItem(string slug = default(string), string title = default(string), string blurb = default(string), StatusEnum status = default(StatusEnum), string bookKey = default(string), ListVaultMarketOpeningItemKey key = default(ListVaultMarketOpeningItemKey), string name = default(string), string variantLabel = default(string), string imageUrl = default(string), string opensAt = default(string), decimal unitsOnShelf = default(decimal), decimal dealersQuoting = default(decimal), decimal waitlist = default(decimal), ListVaultMarketFeedItemMark mark = default(ListVaultMarketFeedItemMark), string marketHref = default(string), ListVaultMarketOpeningItemMe me = default(ListVaultMarketOpeningItemMe), ListVaultMarketOpeningItemEarlyAccess earlyAccess = default(ListVaultMarketOpeningItemEarlyAccess))
+        public ListVaultMarketOpeningItem(string slug = default(string), string title = default(string), string blurb = default(string), StatusEnum status = default(StatusEnum), string bookKey = default(string), ListVaultMarketOpeningItemKey key = default(ListVaultMarketOpeningItemKey), string name = default(string), string variantLabel = default(string), string imageUrl = default(string), string opensAt = default(string), decimal unitsOnShelf = default(decimal), decimal dealersQuoting = default(decimal), decimal waitlist = default(decimal), ListVaultMarketOpeningItemMark mark = default(ListVaultMarketOpeningItemMark), string marketHref = default(string), ListVaultMarketOpeningItemMe me = default(ListVaultMarketOpeningItemMe), ListVaultMarketOpeningItemEarlyAccess earlyAccess = default(ListVaultMarketOpeningItemEarlyAccess))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -221,7 +221,7 @@ namespace net.crossly.Model
         /// Gets or Sets Mark
         /// </summary>
         [DataMember(Name = "mark", IsRequired = true, EmitDefaultValue = false)]
-        public ListVaultMarketFeedItemMark Mark { get; set; }
+        public ListVaultMarketOpeningItemMark Mark { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketHref

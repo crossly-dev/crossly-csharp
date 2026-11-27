@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum BannerColourEnum
         {
             /// <summary>
-            /// Enum Red for value: red
+            /// Enum Blue for value: blue
             /// </summary>
-            [EnumMember(Value = "red")]
-            Red = 1,
+            [EnumMember(Value = "blue")]
+            Blue = 1,
 
             /// <summary>
             /// Enum Green for value: green
@@ -50,22 +50,22 @@ namespace net.crossly.Model
             Green = 2,
 
             /// <summary>
-            /// Enum Teal for value: teal
-            /// </summary>
-            [EnumMember(Value = "teal")]
-            Teal = 3,
-
-            /// <summary>
-            /// Enum Blue for value: blue
-            /// </summary>
-            [EnumMember(Value = "blue")]
-            Blue = 4,
-
-            /// <summary>
             /// Enum Purple for value: purple
             /// </summary>
             [EnumMember(Value = "purple")]
-            Purple = 5,
+            Purple = 3,
+
+            /// <summary>
+            /// Enum Red for value: red
+            /// </summary>
+            [EnumMember(Value = "red")]
+            Red = 4,
+
+            /// <summary>
+            /// Enum Teal for value: teal
+            /// </summary>
+            [EnumMember(Value = "teal")]
+            Teal = 5,
 
             /// <summary>
             /// Enum Cream for value: cream
@@ -74,16 +74,16 @@ namespace net.crossly.Model
             Cream = 6,
 
             /// <summary>
-            /// Enum Amber for value: amber
-            /// </summary>
-            [EnumMember(Value = "amber")]
-            Amber = 7,
-
-            /// <summary>
             /// Enum Ink for value: ink
             /// </summary>
             [EnumMember(Value = "ink")]
-            Ink = 8
+            Ink = 7,
+
+            /// <summary>
+            /// Enum Amber for value: amber
+            /// </summary>
+            [EnumMember(Value = "amber")]
+            Amber = 8
 
         }
 

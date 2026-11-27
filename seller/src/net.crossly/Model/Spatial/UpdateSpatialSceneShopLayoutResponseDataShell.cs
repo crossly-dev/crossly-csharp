@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum SizeEnum
         {
             /// <summary>
+            /// Enum Auto for value: auto
+            /// </summary>
+            [EnumMember(Value = "auto")]
+            Auto = 1,
+
+            /// <summary>
             /// Enum Standard for value: standard
             /// </summary>
             [EnumMember(Value = "standard")]
-            Standard = 1,
+            Standard = 2,
 
             /// <summary>
             /// Enum Large for value: large
             /// </summary>
             [EnumMember(Value = "large")]
-            Large = 2,
-
-            /// <summary>
-            /// Enum Auto for value: auto
-            /// </summary>
-            [EnumMember(Value = "auto")]
-            Auto = 3,
+            Large = 3,
 
             /// <summary>
             /// Enum Compact for value: compact

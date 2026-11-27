@@ -42,14 +42,14 @@ namespace net.crossly.buyer.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="token">token (required).</param>
+        /// <param name="ownerUserId">ownerUserId (required).</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="message">message.</param>
-        /// <param name="ownerUserId">ownerUserId (required).</param>
         /// <param name="wishlistId">wishlistId (required).</param>
+        /// <param name="token">token (required).</param>
         /// <param name="eventDate">eventDate.</param>
         /// <param name="shipAddressId">shipAddressId.</param>
-        public CreateBuyerRegistryResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string token = default(string), string kind = default(string), string message = default(string), string ownerUserId = default(string), string wishlistId = default(string), string eventDate = default(string), string shipAddressId = default(string))
+        public CreateBuyerRegistryResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string ownerUserId = default(string), string kind = default(string), string message = default(string), string wishlistId = default(string), string token = default(string), string eventDate = default(string), string shipAddressId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -58,26 +58,26 @@ namespace net.crossly.buyer.Model
             this.Id = id;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            // to ensure "token" is required (not null)
-            if (token == null) {
-                throw new ArgumentNullException("token is a required property for CreateBuyerRegistryResponseData and cannot be null");
-            }
-            this.Token = token;
-            // to ensure "kind" is required (not null)
-            if (kind == null) {
-                throw new ArgumentNullException("kind is a required property for CreateBuyerRegistryResponseData and cannot be null");
-            }
-            this.Kind = kind;
             // to ensure "ownerUserId" is required (not null)
             if (ownerUserId == null) {
                 throw new ArgumentNullException("ownerUserId is a required property for CreateBuyerRegistryResponseData and cannot be null");
             }
             this.OwnerUserId = ownerUserId;
+            // to ensure "kind" is required (not null)
+            if (kind == null) {
+                throw new ArgumentNullException("kind is a required property for CreateBuyerRegistryResponseData and cannot be null");
+            }
+            this.Kind = kind;
             // to ensure "wishlistId" is required (not null)
             if (wishlistId == null) {
                 throw new ArgumentNullException("wishlistId is a required property for CreateBuyerRegistryResponseData and cannot be null");
             }
             this.WishlistId = wishlistId;
+            // to ensure "token" is required (not null)
+            if (token == null) {
+                throw new ArgumentNullException("token is a required property for CreateBuyerRegistryResponseData and cannot be null");
+            }
+            this.Token = token;
             this.Message = message;
             this.EventDate = eventDate;
             this.ShipAddressId = shipAddressId;
@@ -102,10 +102,10 @@ namespace net.crossly.buyer.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// Gets or Sets OwnerUserId
         /// </summary>
-        [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = false)]
-        public string Token { get; set; }
+        [DataMember(Name = "ownerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string OwnerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets Kind
@@ -120,16 +120,16 @@ namespace net.crossly.buyer.Model
         public string Message { get; set; }
 
         /// <summary>
-        /// Gets or Sets OwnerUserId
-        /// </summary>
-        [DataMember(Name = "ownerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string OwnerUserId { get; set; }
-
-        /// <summary>
         /// Gets or Sets WishlistId
         /// </summary>
         [DataMember(Name = "wishlistId", IsRequired = true, EmitDefaultValue = false)]
         public string WishlistId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Token
+        /// </summary>
+        [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = false)]
+        public string Token { get; set; }
 
         /// <summary>
         /// Gets or Sets EventDate
@@ -154,11 +154,11 @@ namespace net.crossly.buyer.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
             sb.Append("  WishlistId: ").Append(WishlistId).Append("\n");
+            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  EventDate: ").Append(EventDate).Append("\n");
             sb.Append("  ShipAddressId: ").Append(ShipAddressId).Append("\n");
             sb.Append("}\n");
@@ -212,9 +212,9 @@ namespace net.crossly.buyer.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
+                    this.OwnerUserId == input.OwnerUserId ||
+                    (this.OwnerUserId != null &&
+                    this.OwnerUserId.Equals(input.OwnerUserId))
                 ) && 
                 (
                     this.Kind == input.Kind ||
@@ -227,14 +227,14 @@ namespace net.crossly.buyer.Model
                     this.Message.Equals(input.Message))
                 ) && 
                 (
-                    this.OwnerUserId == input.OwnerUserId ||
-                    (this.OwnerUserId != null &&
-                    this.OwnerUserId.Equals(input.OwnerUserId))
-                ) && 
-                (
                     this.WishlistId == input.WishlistId ||
                     (this.WishlistId != null &&
                     this.WishlistId.Equals(input.WishlistId))
+                ) && 
+                (
+                    this.Token == input.Token ||
+                    (this.Token != null &&
+                    this.Token.Equals(input.Token))
                 ) && 
                 (
                     this.EventDate == input.EventDate ||
@@ -269,9 +269,9 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
-                if (this.Token != null)
+                if (this.OwnerUserId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OwnerUserId.GetHashCode();
                 }
                 if (this.Kind != null)
                 {
@@ -281,13 +281,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();
                 }
-                if (this.OwnerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.OwnerUserId.GetHashCode();
-                }
                 if (this.WishlistId != null)
                 {
                     hashCode = (hashCode * 59) + this.WishlistId.GetHashCode();
+                }
+                if (this.Token != null)
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
                 if (this.EventDate != null)
                 {

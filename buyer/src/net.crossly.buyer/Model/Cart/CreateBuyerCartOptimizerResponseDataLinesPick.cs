@@ -39,14 +39,19 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCartOptimizerResponseDataLinesPick" /> class.
         /// </summary>
+        /// <param name="slug">slug (required).</param>
         /// <param name="title">title (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
-        /// <param name="slug">slug (required).</param>
         /// <param name="sellerName">sellerName.</param>
         /// <param name="unitCents">unitCents (required).</param>
         /// <param name="shipCents">shipCents (required).</param>
-        public CreateBuyerCartOptimizerResponseDataLinesPick(string title = default(string), string sellerUserId = default(string), string slug = default(string), string sellerName = default(string), decimal unitCents = default(decimal), decimal shipCents = default(decimal))
+        public CreateBuyerCartOptimizerResponseDataLinesPick(string slug = default(string), string title = default(string), string sellerUserId = default(string), string sellerName = default(string), decimal unitCents = default(decimal), decimal shipCents = default(decimal))
         {
+            // to ensure "slug" is required (not null)
+            if (slug == null) {
+                throw new ArgumentNullException("slug is a required property for CreateBuyerCartOptimizerResponseDataLinesPick and cannot be null");
+            }
+            this.Slug = slug;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for CreateBuyerCartOptimizerResponseDataLinesPick and cannot be null");
@@ -57,15 +62,16 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("sellerUserId is a required property for CreateBuyerCartOptimizerResponseDataLinesPick and cannot be null");
             }
             this.SellerUserId = sellerUserId;
-            // to ensure "slug" is required (not null)
-            if (slug == null) {
-                throw new ArgumentNullException("slug is a required property for CreateBuyerCartOptimizerResponseDataLinesPick and cannot be null");
-            }
-            this.Slug = slug;
             this.UnitCents = unitCents;
             this.ShipCents = shipCents;
             this.SellerName = sellerName;
         }
+
+        /// <summary>
+        /// Gets or Sets Slug
+        /// </summary>
+        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
+        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -78,12 +84,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string SellerUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
-        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerName
@@ -111,9 +111,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerCartOptimizerResponseDataLinesPick {\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
-            sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  SellerName: ").Append(SellerName).Append("\n");
             sb.Append("  UnitCents: ").Append(UnitCents).Append("\n");
             sb.Append("  ShipCents: ").Append(ShipCents).Append("\n");
@@ -153,6 +153,11 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
+                ) && 
+                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -161,11 +166,6 @@ namespace net.crossly.buyer.Model
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
                     this.SellerName == input.SellerName ||
@@ -191,6 +191,10 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Slug != null)
+                {
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -198,10 +202,6 @@ namespace net.crossly.buyer.Model
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
-                if (this.Slug != null)
-                {
-                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 if (this.SellerName != null)
                 {

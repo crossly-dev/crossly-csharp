@@ -30,8 +30,8 @@ namespace net.crossly.Api
         /// Cancel a pending account deletion.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>DeleteDropResponse</returns>
-        DeleteDropResponse CreateAccountCancelDeletion();
+        /// <returns>CreateAccountCancelDeletionResponse</returns>
+        CreateAccountCancelDeletionResponse CreateAccountCancelDeletion();
 
         /// <summary>
         /// Cancel a pending account deletion.
@@ -40,8 +40,29 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of DeleteDropResponse</returns>
-        ApiResponse<DeleteDropResponse> CreateAccountCancelDeletionWithHttpInfo();
+        /// <returns>ApiResponse of CreateAccountCancelDeletionResponse</returns>
+        ApiResponse<CreateAccountCancelDeletionResponse> CreateAccountCancelDeletionWithHttpInfo();
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+        /// </summary>
+        /// <remarks>
+        /// alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <returns>CreateWorldMatureVerifyResponse</returns>
+        CreateWorldMatureVerifyResponse CreateAccountIdentityVerificationStart(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest);
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+        /// </summary>
+        /// <remarks>
+        /// alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <returns>ApiResponse of CreateWorldMatureVerifyResponse</returns>
+        ApiResponse<CreateWorldMatureVerifyResponse> CreateAccountIdentityVerificationStartWithHttpInfo(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest);
         /// <summary>
         /// Revoke every browser auth session for this user.
         /// </summary>
@@ -59,14 +80,30 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateAccountLogoutAllResponse</returns>
         ApiResponse<CreateAccountLogoutAllResponse> CreateAccountLogoutAllWithHttpInfo();
         /// <summary>
-        /// Schedule account deletion after a grace period.
+        /// Confirm again a deletion paused because the account was in use.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateAccountReconfirmDeletionResponse</returns>
+        CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion();
+
+        /// <summary>
+        /// Confirm again a deletion paused because the account was in use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateAccountReconfirmDeletionResponse</returns>
+        ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo();
+        /// <summary>
+        /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateAccountRequestDeletionResponse</returns>
         CreateAccountRequestDeletionResponse CreateAccountRequestDeletion();
 
         /// <summary>
-        /// Schedule account deletion after a grace period.
+        /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
         /// <remarks>
         /// 
@@ -96,7 +133,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId"></param>
         /// <returns>SuccessResponse</returns>
-        SuccessResponse DeleteAuthSessionBySessionId(Guid sessionId);
+        SuccessResponse DeleteAuthSessionBySessionId(string sessionId);
 
         /// <summary>
         /// Revoke a single browser session by id.
@@ -107,7 +144,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId"></param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        ApiResponse<SuccessResponse> DeleteAuthSessionBySessionIdWithHttpInfo(Guid sessionId);
+        ApiResponse<SuccessResponse> DeleteAuthSessionBySessionIdWithHttpInfo(string sessionId);
         /// <summary>
         /// Disconnect a third-party app. Its tokens stop working immediately.
         /// </summary>
@@ -127,6 +164,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         ApiResponse<OkResponse> DeleteConnectedAppWithHttpInfo(string grantId);
         /// <summary>
+        /// What closing the account will and will not do, before you request it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountClosureChecklistResponse</returns>
+        GetAccountClosureChecklistResponse GetAccountClosureChecklist();
+
+        /// <summary>
+        /// What closing the account will and will not do, before you request it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountClosureChecklistResponse</returns>
+        ApiResponse<GetAccountClosureChecklistResponse> GetAccountClosureChecklistWithHttpInfo();
+        /// <summary>
         /// Get the currently-pending deletion request, if any.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -142,6 +195,25 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAccountDeletionStatusResponse</returns>
         ApiResponse<GetAccountDeletionStatusResponse> GetAccountDeletionStatusWithHttpInfo();
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID.
+        /// </summary>
+        /// <remarks>
+        /// status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountIdentityVerificationResponse</returns>
+        GetAccountIdentityVerificationResponse GetAccountIdentityVerification();
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID.
+        /// </summary>
+        /// <remarks>
+        /// status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountIdentityVerificationResponse</returns>
+        ApiResponse<GetAccountIdentityVerificationResponse> GetAccountIdentityVerificationWithHttpInfo();
         /// <summary>
         /// Identity check — authenticated user + PAT scopes + account state.
         /// </summary>
@@ -226,8 +298,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteDropResponse</returns>
-        System.Threading.Tasks.Task<DeleteDropResponse> CreateAccountCancelDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateAccountCancelDeletionResponse</returns>
+        System.Threading.Tasks.Task<CreateAccountCancelDeletionResponse> CreateAccountCancelDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel a pending account deletion.
@@ -237,8 +309,31 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteDropResponse>> CreateAccountCancelDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateAccountCancelDeletionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountCancelDeletionResponse>> CreateAccountCancelDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+        /// </summary>
+        /// <remarks>
+        /// alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorldMatureVerifyResponse</returns>
+        System.Threading.Tasks.Task<CreateWorldMatureVerifyResponse> CreateAccountIdentityVerificationStartAsync(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+        /// </summary>
+        /// <remarks>
+        /// alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorldMatureVerifyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldMatureVerifyResponse>> CreateAccountIdentityVerificationStartWithHttpInfoAsync(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Revoke every browser auth session for this user.
         /// </summary>
@@ -261,7 +356,28 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateAccountLogoutAllResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateAccountLogoutAllResponse>> CreateAccountLogoutAllWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Schedule account deletion after a grace period.
+        /// Confirm again a deletion paused because the account was in use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAccountReconfirmDeletionResponse</returns>
+        System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Confirm again a deletion paused because the account was in use.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAccountReconfirmDeletionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
         /// <remarks>
         /// 
@@ -272,7 +388,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Schedule account deletion after a grace period.
+        /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
         /// <remarks>
         /// 
@@ -312,7 +428,7 @@ namespace net.crossly.Api
         /// <param name="sessionId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        System.Threading.Tasks.Task<SuccessResponse> DeleteAuthSessionBySessionIdAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SuccessResponse> DeleteAuthSessionBySessionIdAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Revoke a single browser session by id.
@@ -324,7 +440,7 @@ namespace net.crossly.Api
         /// <param name="sessionId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteAuthSessionBySessionIdWithHttpInfoAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteAuthSessionBySessionIdWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Disconnect a third-party app. Its tokens stop working immediately.
         /// </summary>
@@ -349,6 +465,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteConnectedAppWithHttpInfoAsync(string grantId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// What closing the account will and will not do, before you request it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountClosureChecklistResponse</returns>
+        System.Threading.Tasks.Task<GetAccountClosureChecklistResponse> GetAccountClosureChecklistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What closing the account will and will not do, before you request it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountClosureChecklistResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountClosureChecklistResponse>> GetAccountClosureChecklistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Get the currently-pending deletion request, if any.
         /// </summary>
         /// <remarks>
@@ -369,6 +506,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAccountDeletionStatusResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAccountDeletionStatusResponse>> GetAccountDeletionStatusWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID.
+        /// </summary>
+        /// <remarks>
+        /// status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountIdentityVerificationResponse</returns>
+        System.Threading.Tasks.Task<GetAccountIdentityVerificationResponse> GetAccountIdentityVerificationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID.
+        /// </summary>
+        /// <remarks>
+        /// status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountIdentityVerificationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountIdentityVerificationResponse>> GetAccountIdentityVerificationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Identity check — authenticated user + PAT scopes + account state.
         /// </summary>
@@ -577,10 +735,10 @@ namespace net.crossly.Api
         /// Cancel a pending account deletion. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>DeleteDropResponse</returns>
-        public DeleteDropResponse CreateAccountCancelDeletion()
+        /// <returns>CreateAccountCancelDeletionResponse</returns>
+        public CreateAccountCancelDeletionResponse CreateAccountCancelDeletion()
         {
-            net.crossly.Client.ApiResponse<DeleteDropResponse> localVarResponse = CreateAccountCancelDeletionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAccountCancelDeletionResponse> localVarResponse = CreateAccountCancelDeletionWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -588,8 +746,8 @@ namespace net.crossly.Api
         /// Cancel a pending account deletion. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of DeleteDropResponse</returns>
-        public net.crossly.Client.ApiResponse<DeleteDropResponse> CreateAccountCancelDeletionWithHttpInfo()
+        /// <returns>ApiResponse of CreateAccountCancelDeletionResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAccountCancelDeletionResponse> CreateAccountCancelDeletionWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -622,7 +780,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<DeleteDropResponse>("/v1/account/cancel-deletion", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateAccountCancelDeletionResponse>("/v1/account/cancel-deletion", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAccountCancelDeletion", localVarResponse);
@@ -640,10 +798,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteDropResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteDropResponse> CreateAccountCancelDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateAccountCancelDeletionResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAccountCancelDeletionResponse> CreateAccountCancelDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DeleteDropResponse> localVarResponse = await CreateAccountCancelDeletionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAccountCancelDeletionResponse> localVarResponse = await CreateAccountCancelDeletionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -652,8 +810,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteDropResponse>> CreateAccountCancelDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateAccountCancelDeletionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountCancelDeletionResponse>> CreateAccountCancelDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -687,11 +845,159 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<DeleteDropResponse>("/v1/account/cancel-deletion", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAccountCancelDeletionResponse>("/v1/account/cancel-deletion", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAccountCancelDeletion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes. alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <returns>CreateWorldMatureVerifyResponse</returns>
+        public CreateWorldMatureVerifyResponse CreateAccountIdentityVerificationStart(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorldMatureVerifyResponse> localVarResponse = CreateAccountIdentityVerificationStartWithHttpInfo(createAccountIdentityVerificationStartRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes. alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <returns>ApiResponse of CreateWorldMatureVerifyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorldMatureVerifyResponse> CreateAccountIdentityVerificationStartWithHttpInfo(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest)
+        {
+            // verify the required parameter 'createAccountIdentityVerificationStartRequest' is set
+            if (createAccountIdentityVerificationStartRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAccountIdentityVerificationStartRequest' when calling AccountApi->CreateAccountIdentityVerificationStart");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAccountIdentityVerificationStartRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorldMatureVerifyResponse>("/v1/account/identity-verification/start", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountIdentityVerificationStart", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes. alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorldMatureVerifyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorldMatureVerifyResponse> CreateAccountIdentityVerificationStartAsync(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorldMatureVerifyResponse> localVarResponse = await CreateAccountIdentityVerificationStartWithHttpInfoAsync(createAccountIdentityVerificationStartRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes. alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountIdentityVerificationStartRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorldMatureVerifyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldMatureVerifyResponse>> CreateAccountIdentityVerificationStartWithHttpInfoAsync(CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createAccountIdentityVerificationStartRequest' is set
+            if (createAccountIdentityVerificationStartRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAccountIdentityVerificationStartRequest' when calling AccountApi->CreateAccountIdentityVerificationStart");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAccountIdentityVerificationStartRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorldMatureVerifyResponse>("/v1/account/identity-verification/start", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountIdentityVerificationStart", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -830,7 +1136,135 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule account deletion after a grace period. 
+        /// Confirm again a deletion paused because the account was in use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateAccountReconfirmDeletionResponse</returns>
+        public CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion()
+        {
+            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = CreateAccountReconfirmDeletionWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Confirm again a deletion paused because the account was in use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateAccountReconfirmDeletionResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAccountReconfirmDeletionResponse>("/v1/account/reconfirm-deletion", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountReconfirmDeletion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Confirm again a deletion paused because the account was in use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAccountReconfirmDeletionResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = await CreateAccountReconfirmDeletionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Confirm again a deletion paused because the account was in use. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAccountReconfirmDeletionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAccountReconfirmDeletionResponse>("/v1/account/reconfirm-deletion", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountReconfirmDeletion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateAccountRequestDeletionResponse</returns>
@@ -841,7 +1275,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule account deletion after a grace period. 
+        /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateAccountRequestDeletionResponse</returns>
@@ -892,7 +1326,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule account deletion after a grace period. 
+        /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -904,7 +1338,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Schedule account deletion after a grace period. 
+        /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1091,7 +1525,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId"></param>
         /// <returns>SuccessResponse</returns>
-        public SuccessResponse DeleteAuthSessionBySessionId(Guid sessionId)
+        public SuccessResponse DeleteAuthSessionBySessionId(string sessionId)
         {
             net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = DeleteAuthSessionBySessionIdWithHttpInfo(sessionId);
             return localVarResponse.Data;
@@ -1103,8 +1537,14 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId"></param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteAuthSessionBySessionIdWithHttpInfo(Guid sessionId)
+        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteAuthSessionBySessionIdWithHttpInfo(string sessionId)
         {
+            // verify the required parameter 'sessionId' is set
+            if (sessionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'sessionId' when calling AccountApi->DeleteAuthSessionBySessionId");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1157,7 +1597,7 @@ namespace net.crossly.Api
         /// <param name="sessionId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        public async System.Threading.Tasks.Task<SuccessResponse> DeleteAuthSessionBySessionIdAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SuccessResponse> DeleteAuthSessionBySessionIdAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await DeleteAuthSessionBySessionIdWithHttpInfoAsync(sessionId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1170,8 +1610,14 @@ namespace net.crossly.Api
         /// <param name="sessionId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteAuthSessionBySessionIdWithHttpInfoAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteAuthSessionBySessionIdWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'sessionId' is set
+            if (sessionId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'sessionId' when calling AccountApi->DeleteAuthSessionBySessionId");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1366,6 +1812,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// What closing the account will and will not do, before you request it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountClosureChecklistResponse</returns>
+        public GetAccountClosureChecklistResponse GetAccountClosureChecklist()
+        {
+            net.crossly.Client.ApiResponse<GetAccountClosureChecklistResponse> localVarResponse = GetAccountClosureChecklistWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What closing the account will and will not do, before you request it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountClosureChecklistResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAccountClosureChecklistResponse> GetAccountClosureChecklistWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAccountClosureChecklistResponse>("/v1/account/closure-checklist", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountClosureChecklist", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What closing the account will and will not do, before you request it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountClosureChecklistResponse</returns>
+        public async System.Threading.Tasks.Task<GetAccountClosureChecklistResponse> GetAccountClosureChecklistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAccountClosureChecklistResponse> localVarResponse = await GetAccountClosureChecklistWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What closing the account will and will not do, before you request it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountClosureChecklistResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAccountClosureChecklistResponse>> GetAccountClosureChecklistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountClosureChecklistResponse>("/v1/account/closure-checklist", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountClosureChecklist", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get the currently-pending deletion request, if any. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1484,6 +2058,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAccountDeletionStatus", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID. status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountIdentityVerificationResponse</returns>
+        public GetAccountIdentityVerificationResponse GetAccountIdentityVerification()
+        {
+            net.crossly.Client.ApiResponse<GetAccountIdentityVerificationResponse> localVarResponse = GetAccountIdentityVerificationWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID. status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountIdentityVerificationResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAccountIdentityVerificationResponse> GetAccountIdentityVerificationWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAccountIdentityVerificationResponse>("/v1/account/identity-verification", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountIdentityVerification", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID. status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountIdentityVerificationResponse</returns>
+        public async System.Threading.Tasks.Task<GetAccountIdentityVerificationResponse> GetAccountIdentityVerificationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAccountIdentityVerificationResponse> localVarResponse = await GetAccountIdentityVerificationWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your identity verification: one status for the whole account, read by every feature that needs ID. status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountIdentityVerificationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAccountIdentityVerificationResponse>> GetAccountIdentityVerificationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountIdentityVerificationResponse>("/v1/account/identity-verification", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountIdentityVerification", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -66,6 +66,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListVaultMarketFollowCopyWatchAlertsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="by">by (required).</param>
         /// <param name="side">side (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="limitCents">limitCents.</param>
@@ -78,13 +79,18 @@ namespace net.crossly.Model
         /// <param name="read">read (required).</param>
         /// <param name="stillResting">stillResting (required).</param>
         /// <param name="marketHref">marketHref (required).</param>
-        public ListVaultMarketFollowCopyWatchAlertsItem(string id = default(string), SideEnum side = default(SideEnum), decimal quantity = default(decimal), decimal? limitCents = default(decimal?), string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), string placedAt = default(string), string at = default(string), bool read = default(bool), bool stillResting = default(bool), string marketHref = default(string))
+        public ListVaultMarketFollowCopyWatchAlertsItem(string id = default(string), ListVaultMarketFollowCopyWatchAlertsItemBy by = default(ListVaultMarketFollowCopyWatchAlertsItemBy), SideEnum side = default(SideEnum), decimal quantity = default(decimal), decimal? limitCents = default(decimal?), string bookKey = default(string), string name = default(string), string label = default(string), string imageUrl = default(string), string placedAt = default(string), string at = default(string), bool read = default(bool), bool stillResting = default(bool), string marketHref = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListVaultMarketFollowCopyWatchAlertsItem and cannot be null");
             }
             this.Id = id;
+            // to ensure "by" is required (not null)
+            if (by == null) {
+                throw new ArgumentNullException("by is a required property for ListVaultMarketFollowCopyWatchAlertsItem and cannot be null");
+            }
+            this.By = by;
             this.Side = side;
             this.Quantity = quantity;
             // to ensure "bookKey" is required (not null)
@@ -120,6 +126,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets By
+        /// </summary>
+        [DataMember(Name = "by", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketFollowCopyWatchAlertsItemBy By { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -196,6 +208,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListVaultMarketFollowCopyWatchAlertsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  By: ").Append(By).Append("\n");
             sb.Append("  Side: ").Append(Side).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  LimitCents: ").Append(LimitCents).Append("\n");
@@ -247,6 +260,11 @@ namespace net.crossly.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.By == input.By ||
+                    (this.By != null &&
+                    this.By.Equals(input.By))
                 ) && 
                 (
                     this.Side == input.Side ||
@@ -318,6 +336,10 @@ namespace net.crossly.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.By != null)
+                {
+                    hashCode = (hashCode * 59) + this.By.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Side.GetHashCode();
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();

@@ -128,7 +128,7 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="requiredFields">requiredFields (required).</param>
         /// <param name="inlineAspects">inlineAspects (required).</param>
-        public GetTaxonomyRequiredFieldResponse(PlatformEnum platform = default(PlatformEnum), List<GetTaxonomyRequiredFieldResponseRequiredFields> requiredFields = default(List<GetTaxonomyRequiredFieldResponseRequiredFields>), List<GetTaxonomyCategoryAspectResponseAspects> inlineAspects = default(List<GetTaxonomyCategoryAspectResponseAspects>))
+        public GetTaxonomyRequiredFieldResponse(PlatformEnum platform = default(PlatformEnum), List<GetTaxonomyRequiredFieldResponseRequiredFields> requiredFields = default(List<GetTaxonomyRequiredFieldResponseRequiredFields>), List<GetTaxonomyRequiredFieldResponseInlineAspects> inlineAspects = default(List<GetTaxonomyRequiredFieldResponseInlineAspects>))
         {
             this.Platform = platform;
             // to ensure "requiredFields" is required (not null)
@@ -153,7 +153,7 @@ namespace net.crossly.Model
         /// Gets or Sets InlineAspects
         /// </summary>
         [DataMember(Name = "inlineAspects", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetTaxonomyCategoryAspectResponseAspects> InlineAspects { get; set; }
+        public List<GetTaxonomyRequiredFieldResponseInlineAspects> InlineAspects { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="name">name (required).</param>
         /// <param name="you">you (required).</param>
         /// <param name="room">room.</param>
-        public GetWorldCrewResponseDataMembers(string userId = default(string), string name = default(string), bool you = default(bool), NameSlug room = default(NameSlug))
+        public GetWorldCrewResponseDataMembers(string userId = default(string), string name = default(string), bool you = default(bool), NameSlug2 room = default(NameSlug2))
         {
             // to ensure "userId" is required (not null)
             if (userId == null) {
@@ -81,7 +81,7 @@ namespace net.crossly.Model
         /// Gets or Sets Room
         /// </summary>
         [DataMember(Name = "room", EmitDefaultValue = true)]
-        public NameSlug Room { get; set; }
+        public NameSlug2 Room { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

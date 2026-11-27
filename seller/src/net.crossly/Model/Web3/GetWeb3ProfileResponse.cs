@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum FamilyEnum
         {
             /// <summary>
-            /// Enum Evm for value: evm
-            /// </summary>
-            [EnumMember(Value = "evm")]
-            Evm = 1,
-
-            /// <summary>
             /// Enum Solana for value: solana
             /// </summary>
             [EnumMember(Value = "solana")]
-            Solana = 2
+            Solana = 1,
+
+            /// <summary>
+            /// Enum Evm for value: evm
+            /// </summary>
+            [EnumMember(Value = "evm")]
+            Evm = 2
 
         }
 

@@ -80,6 +80,9 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="description">description.</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="source">source (required).</param>
         /// <param name="sku">sku.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
@@ -105,9 +108,6 @@ namespace net.crossly.Model
         /// <param name="dimensionLIn">dimensionLIn.</param>
         /// <param name="dimensionWIn">dimensionWIn.</param>
         /// <param name="dimensionHIn">dimensionHIn.</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="source">source (required).</param>
-        /// <param name="description">description.</param>
         /// <param name="title">title.</param>
         /// <param name="descriptionHtml">descriptionHtml.</param>
         /// <param name="price">price.</param>
@@ -125,6 +125,8 @@ namespace net.crossly.Model
         /// <param name="automationBlockedRuleIds">automationBlockedRuleIds (required).</param>
         /// <param name="automationAssignedChainIds">automationAssignedChainIds (required).</param>
         /// <param name="automationBlockedChainIds">automationBlockedChainIds (required).</param>
+        /// <param name="workflowBlockedIds">workflowBlockedIds (required).</param>
+        /// <param name="workflowAssignedIds">workflowAssignedIds (required).</param>
         /// <param name="hsCode">hsCode.</param>
         /// <param name="countryOfOrigin">countryOfOrigin.</param>
         /// <param name="delistedAt">delistedAt.</param>
@@ -132,7 +134,10 @@ namespace net.crossly.Model
         /// <param name="ebayAttributesEnrichedAt">ebayAttributesEnrichedAt.</param>
         /// <param name="duplicateOfListingId">duplicateOfListingId.</param>
         /// <param name="clientDraftId">clientDraftId.</param>
-        public GetListingResponse(bool aiMedia = default(bool), bool aiMediaDetected = default(bool), List<GetListingResponsePlatformListings> platformListings = default(List<GetListingResponsePlatformListings>), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> images = default(List<string>), string videoUrl = default(string), List<string> tags = default(List<string>), string gradeKey = default(string), ListGradingSubmissionsItemGrading grading = default(ListGradingSubmissionsItemGrading), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string status = default(string), string source = default(string), string description = default(string), string title = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), bool isDigital = default(bool), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string duplicateOfListingId = default(string), string clientDraftId = default(string))
+        /// <param name="attributedOauthAppId">attributedOauthAppId.</param>
+        /// <param name="attributedGrantId">attributedGrantId.</param>
+        /// <param name="quotaBucket">quotaBucket.</param>
+        public GetListingResponse(bool aiMedia = default(bool), bool aiMediaDetected = default(bool), List<GetListingResponsePlatformListings> platformListings = default(List<GetListingResponsePlatformListings>), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string description = default(string), string status = default(string), string source = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> images = default(List<string>), string videoUrl = default(string), List<string> tags = default(List<string>), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string title = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), bool isDigital = default(bool), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string))
         {
             this.AiMedia = aiMedia;
             this.AiMediaDetected = aiMediaDetected;
@@ -153,6 +158,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for GetListingResponse and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for GetListingResponse and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "source" is required (not null)
+            if (source == null) {
+                throw new ArgumentNullException("source is a required property for GetListingResponse and cannot be null");
+            }
+            this.Source = source;
             this.Quantity = quantity;
             this.QuantityAvailable = quantityAvailable;
             // to ensure "color" is required (not null)
@@ -166,16 +181,6 @@ namespace net.crossly.Model
             }
             this.Tags = tags;
             this.FloorIsNet = floorIsNet;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for GetListingResponse and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "source" is required (not null)
-            if (source == null) {
-                throw new ArgumentNullException("source is a required property for GetListingResponse and cannot be null");
-            }
-            this.Source = source;
             // to ensure "aiMediaUrls" is required (not null)
             if (aiMediaUrls == null) {
                 throw new ArgumentNullException("aiMediaUrls is a required property for GetListingResponse and cannot be null");
@@ -209,8 +214,19 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("automationBlockedChainIds is a required property for GetListingResponse and cannot be null");
             }
             this.AutomationBlockedChainIds = automationBlockedChainIds;
+            // to ensure "workflowBlockedIds" is required (not null)
+            if (workflowBlockedIds == null) {
+                throw new ArgumentNullException("workflowBlockedIds is a required property for GetListingResponse and cannot be null");
+            }
+            this.WorkflowBlockedIds = workflowBlockedIds;
+            // to ensure "workflowAssignedIds" is required (not null)
+            if (workflowAssignedIds == null) {
+                throw new ArgumentNullException("workflowAssignedIds is a required property for GetListingResponse and cannot be null");
+            }
+            this.WorkflowAssignedIds = workflowAssignedIds;
             this.Brand = brand;
             this.Name = name;
+            this.Description = description;
             this.Sku = sku;
             this.Condition = condition;
             this.Size = size;
@@ -231,7 +247,6 @@ namespace net.crossly.Model
             this.DimensionLIn = dimensionLIn;
             this.DimensionWIn = dimensionWIn;
             this.DimensionHIn = dimensionHIn;
-            this.Description = description;
             this.Title = title;
             this.DescriptionHtml = descriptionHtml;
             this.Price = price;
@@ -247,6 +262,9 @@ namespace net.crossly.Model
             this.EbayAttributesEnrichedAt = ebayAttributesEnrichedAt;
             this.DuplicateOfListingId = duplicateOfListingId;
             this.ClientDraftId = clientDraftId;
+            this.AttributedOauthAppId = attributedOauthAppId;
+            this.AttributedGrantId = attributedGrantId;
+            this.QuotaBucket = quotaBucket;
         }
 
         /// <summary>
@@ -302,6 +320,24 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Source
+        /// </summary>
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        public string Source { get; set; }
 
         /// <summary>
         /// Gets or Sets Sku
@@ -409,7 +445,7 @@ namespace net.crossly.Model
         /// Gets or Sets Grading
         /// </summary>
         [DataMember(Name = "grading", EmitDefaultValue = true)]
-        public ListGradingSubmissionsItemGrading Grading { get; set; }
+        public CreateBulkBatchItemResponseGrading Grading { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceFloorCents
@@ -452,24 +488,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "dimensionHIn", EmitDefaultValue = true)]
         public string DimensionHIn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Source
-        /// </summary>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
-        public string Source { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -568,6 +586,18 @@ namespace net.crossly.Model
         public List<string> AutomationBlockedChainIds { get; set; }
 
         /// <summary>
+        /// Gets or Sets WorkflowBlockedIds
+        /// </summary>
+        [DataMember(Name = "workflowBlockedIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> WorkflowBlockedIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowAssignedIds
+        /// </summary>
+        [DataMember(Name = "workflowAssignedIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> WorkflowAssignedIds { get; set; }
+
+        /// <summary>
         /// Gets or Sets HsCode
         /// </summary>
         [DataMember(Name = "hsCode", EmitDefaultValue = true)]
@@ -610,6 +640,24 @@ namespace net.crossly.Model
         public string ClientDraftId { get; set; }
 
         /// <summary>
+        /// Gets or Sets AttributedOauthAppId
+        /// </summary>
+        [DataMember(Name = "attributedOauthAppId", EmitDefaultValue = true)]
+        public string AttributedOauthAppId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AttributedGrantId
+        /// </summary>
+        [DataMember(Name = "attributedGrantId", EmitDefaultValue = true)]
+        public string AttributedGrantId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets QuotaBucket
+        /// </summary>
+        [DataMember(Name = "quotaBucket", EmitDefaultValue = true)]
+        public string QuotaBucket { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -626,6 +674,9 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
@@ -651,9 +702,6 @@ namespace net.crossly.Model
             sb.Append("  DimensionLIn: ").Append(DimensionLIn).Append("\n");
             sb.Append("  DimensionWIn: ").Append(DimensionWIn).Append("\n");
             sb.Append("  DimensionHIn: ").Append(DimensionHIn).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Source: ").Append(Source).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  DescriptionHtml: ").Append(DescriptionHtml).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
@@ -671,6 +719,8 @@ namespace net.crossly.Model
             sb.Append("  AutomationBlockedRuleIds: ").Append(AutomationBlockedRuleIds).Append("\n");
             sb.Append("  AutomationAssignedChainIds: ").Append(AutomationAssignedChainIds).Append("\n");
             sb.Append("  AutomationBlockedChainIds: ").Append(AutomationBlockedChainIds).Append("\n");
+            sb.Append("  WorkflowBlockedIds: ").Append(WorkflowBlockedIds).Append("\n");
+            sb.Append("  WorkflowAssignedIds: ").Append(WorkflowAssignedIds).Append("\n");
             sb.Append("  HsCode: ").Append(HsCode).Append("\n");
             sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
             sb.Append("  DelistedAt: ").Append(DelistedAt).Append("\n");
@@ -678,6 +728,9 @@ namespace net.crossly.Model
             sb.Append("  EbayAttributesEnrichedAt: ").Append(EbayAttributesEnrichedAt).Append("\n");
             sb.Append("  DuplicateOfListingId: ").Append(DuplicateOfListingId).Append("\n");
             sb.Append("  ClientDraftId: ").Append(ClientDraftId).Append("\n");
+            sb.Append("  AttributedOauthAppId: ").Append(AttributedOauthAppId).Append("\n");
+            sb.Append("  AttributedGrantId: ").Append(AttributedGrantId).Append("\n");
+            sb.Append("  QuotaBucket: ").Append(QuotaBucket).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -756,6 +809,21 @@ namespace net.crossly.Model
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Source == input.Source ||
+                    (this.Source != null &&
+                    this.Source.Equals(input.Source))
                 ) && 
                 (
                     this.Sku == input.Sku ||
@@ -883,21 +951,6 @@ namespace net.crossly.Model
                     this.DimensionHIn.Equals(input.DimensionHIn))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -986,6 +1039,18 @@ namespace net.crossly.Model
                     this.AutomationBlockedChainIds.SequenceEqual(input.AutomationBlockedChainIds)
                 ) && 
                 (
+                    this.WorkflowBlockedIds == input.WorkflowBlockedIds ||
+                    this.WorkflowBlockedIds != null &&
+                    input.WorkflowBlockedIds != null &&
+                    this.WorkflowBlockedIds.SequenceEqual(input.WorkflowBlockedIds)
+                ) && 
+                (
+                    this.WorkflowAssignedIds == input.WorkflowAssignedIds ||
+                    this.WorkflowAssignedIds != null &&
+                    input.WorkflowAssignedIds != null &&
+                    this.WorkflowAssignedIds.SequenceEqual(input.WorkflowAssignedIds)
+                ) && 
+                (
                     this.HsCode == input.HsCode ||
                     (this.HsCode != null &&
                     this.HsCode.Equals(input.HsCode))
@@ -1019,6 +1084,21 @@ namespace net.crossly.Model
                     this.ClientDraftId == input.ClientDraftId ||
                     (this.ClientDraftId != null &&
                     this.ClientDraftId.Equals(input.ClientDraftId))
+                ) && 
+                (
+                    this.AttributedOauthAppId == input.AttributedOauthAppId ||
+                    (this.AttributedOauthAppId != null &&
+                    this.AttributedOauthAppId.Equals(input.AttributedOauthAppId))
+                ) && 
+                (
+                    this.AttributedGrantId == input.AttributedGrantId ||
+                    (this.AttributedGrantId != null &&
+                    this.AttributedGrantId.Equals(input.AttributedGrantId))
+                ) && 
+                (
+                    this.QuotaBucket == input.QuotaBucket ||
+                    (this.QuotaBucket != null &&
+                    this.QuotaBucket.Equals(input.QuotaBucket))
                 );
         }
 
@@ -1060,6 +1140,18 @@ namespace net.crossly.Model
                 if (this.UserId != null)
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Source != null)
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
                 }
                 if (this.Sku != null)
                 {
@@ -1152,18 +1244,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DimensionHIn.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Source != null)
-                {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
-                }
-                if (this.Description != null)
-                {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
-                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -1220,6 +1300,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.AutomationBlockedChainIds.GetHashCode();
                 }
+                if (this.WorkflowBlockedIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowBlockedIds.GetHashCode();
+                }
+                if (this.WorkflowAssignedIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowAssignedIds.GetHashCode();
+                }
                 if (this.HsCode != null)
                 {
                     hashCode = (hashCode * 59) + this.HsCode.GetHashCode();
@@ -1247,6 +1335,18 @@ namespace net.crossly.Model
                 if (this.ClientDraftId != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientDraftId.GetHashCode();
+                }
+                if (this.AttributedOauthAppId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttributedOauthAppId.GetHashCode();
+                }
+                if (this.AttributedGrantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttributedGrantId.GetHashCode();
+                }
+                if (this.QuotaBucket != null)
+                {
+                    hashCode = (hashCode * 59) + this.QuotaBucket.GetHashCode();
                 }
                 return hashCode;
             }

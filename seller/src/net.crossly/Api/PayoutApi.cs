@@ -48,6 +48,48 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreatePayoutConnectOnboardResponse</returns>
         ApiResponse<CreatePayoutConnectOnboardResponse> CreatePayoutConnectOnboardWithHttpInfo(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest);
         /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+        /// </summary>
+        /// <remarks>
+        /// Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <returns>CreatePayoutIdentityLinkResponse</returns>
+        CreatePayoutIdentityLinkResponse CreatePayoutIdentityLink(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest);
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+        /// </summary>
+        /// <remarks>
+        /// Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <returns>ApiResponse of CreatePayoutIdentityLinkResponse</returns>
+        ApiResponse<CreatePayoutIdentityLinkResponse> CreatePayoutIdentityLinkWithHttpInfo(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest);
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+        /// </summary>
+        /// <remarks>
+        /// amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <returns>CreatePayoutPayoutResponse</returns>
+        CreatePayoutPayoutResponse CreatePayoutPayout(CreatePayoutPayoutRequest createPayoutPayoutRequest);
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+        /// </summary>
+        /// <remarks>
+        /// amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <returns>ApiResponse of CreatePayoutPayoutResponse</returns>
+        ApiResponse<CreatePayoutPayoutResponse> CreatePayoutPayoutWithHttpInfo(CreatePayoutPayoutRequest createPayoutPayoutRequest);
+        /// <summary>
         /// Your Stripe payout account: status, country, agreement and payout currency.
         /// </summary>
         /// <remarks>
@@ -99,6 +141,46 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetPayoutGrossForNetResponse</returns>
         ApiResponse<GetPayoutGrossForNetResponse> GetPayoutGrossForNetWithHttpInfo();
         /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words.
+        /// </summary>
+        /// <remarks>
+        /// status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <returns>GetPayoutIdentityResponse</returns>
+        GetPayoutIdentityResponse GetPayoutIdentity(string fresh = default(string));
+
+        /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words.
+        /// </summary>
+        /// <remarks>
+        /// status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <returns>ApiResponse of GetPayoutIdentityResponse</returns>
+        ApiResponse<GetPayoutIdentityResponse> GetPayoutIdentityWithHttpInfo(string fresh = default(string));
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+        /// </summary>
+        /// <remarks>
+        /// connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetPayoutWalletResponse</returns>
+        GetPayoutWalletResponse GetPayoutWallet();
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+        /// </summary>
+        /// <remarks>
+        /// connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetPayoutWalletResponse</returns>
+        ApiResponse<GetPayoutWalletResponse> GetPayoutWalletWithHttpInfo();
+        /// <summary>
         /// Rank platforms by what they net at a given price. Defaults to connected ones.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -114,6 +196,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListPayoutCompareResponse</returns>
         ApiResponse<ListPayoutCompareResponse> ListPayoutCompareWithHttpInfo();
+        /// <summary>
+        /// Change the automatic payout schedule.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <returns>UpdatePayoutScheduleResponse</returns>
+        UpdatePayoutScheduleResponse UpdatePayoutSchedule(UpdatePayoutScheduleRequest updatePayoutScheduleRequest);
+
+        /// <summary>
+        /// Change the automatic payout schedule.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <returns>ApiResponse of UpdatePayoutScheduleResponse</returns>
+        ApiResponse<UpdatePayoutScheduleResponse> UpdatePayoutScheduleWithHttpInfo(UpdatePayoutScheduleRequest updatePayoutScheduleRequest);
         #endregion Synchronous Operations
     }
 
@@ -146,6 +246,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePayoutConnectOnboardResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatePayoutConnectOnboardResponse>> CreatePayoutConnectOnboardWithHttpInfoAsync(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+        /// </summary>
+        /// <remarks>
+        /// Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePayoutIdentityLinkResponse</returns>
+        System.Threading.Tasks.Task<CreatePayoutIdentityLinkResponse> CreatePayoutIdentityLinkAsync(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+        /// </summary>
+        /// <remarks>
+        /// Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePayoutIdentityLinkResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePayoutIdentityLinkResponse>> CreatePayoutIdentityLinkWithHttpInfoAsync(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+        /// </summary>
+        /// <remarks>
+        /// amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePayoutPayoutResponse</returns>
+        System.Threading.Tasks.Task<CreatePayoutPayoutResponse> CreatePayoutPayoutAsync(CreatePayoutPayoutRequest createPayoutPayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+        /// </summary>
+        /// <remarks>
+        /// amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePayoutPayoutResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePayoutPayoutResponse>> CreatePayoutPayoutWithHttpInfoAsync(CreatePayoutPayoutRequest createPayoutPayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your Stripe payout account: status, country, agreement and payout currency.
         /// </summary>
@@ -210,6 +356,50 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetPayoutGrossForNetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetPayoutGrossForNetResponse>> GetPayoutGrossForNetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words.
+        /// </summary>
+        /// <remarks>
+        /// status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPayoutIdentityResponse</returns>
+        System.Threading.Tasks.Task<GetPayoutIdentityResponse> GetPayoutIdentityAsync(string fresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words.
+        /// </summary>
+        /// <remarks>
+        /// status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPayoutIdentityResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPayoutIdentityResponse>> GetPayoutIdentityWithHttpInfoAsync(string fresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+        /// </summary>
+        /// <remarks>
+        /// connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPayoutWalletResponse</returns>
+        System.Threading.Tasks.Task<GetPayoutWalletResponse> GetPayoutWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+        /// </summary>
+        /// <remarks>
+        /// connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPayoutWalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPayoutWalletResponse>> GetPayoutWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Rank platforms by what they net at a given price. Defaults to connected ones.
         /// </summary>
         /// <remarks>
@@ -230,6 +420,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListPayoutCompareResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListPayoutCompareResponse>> ListPayoutCompareWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change the automatic payout schedule.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePayoutScheduleResponse</returns>
+        System.Threading.Tasks.Task<UpdatePayoutScheduleResponse> UpdatePayoutScheduleAsync(UpdatePayoutScheduleRequest updatePayoutScheduleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change the automatic payout schedule.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePayoutScheduleResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdatePayoutScheduleResponse>> UpdatePayoutScheduleWithHttpInfoAsync(UpdatePayoutScheduleRequest updatePayoutScheduleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -489,6 +702,302 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreatePayoutConnectOnboard", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs. Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <returns>CreatePayoutIdentityLinkResponse</returns>
+        public CreatePayoutIdentityLinkResponse CreatePayoutIdentityLink(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest)
+        {
+            net.crossly.Client.ApiResponse<CreatePayoutIdentityLinkResponse> localVarResponse = CreatePayoutIdentityLinkWithHttpInfo(createPayoutConnectOnboardRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs. Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <returns>ApiResponse of CreatePayoutIdentityLinkResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePayoutIdentityLinkResponse> CreatePayoutIdentityLinkWithHttpInfo(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest)
+        {
+            // verify the required parameter 'createPayoutConnectOnboardRequest' is set
+            if (createPayoutConnectOnboardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPayoutConnectOnboardRequest' when calling PayoutApi->CreatePayoutIdentityLink");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPayoutConnectOnboardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatePayoutIdentityLinkResponse>("/v1/payouts/identity/link", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePayoutIdentityLink", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs. Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePayoutIdentityLinkResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePayoutIdentityLinkResponse> CreatePayoutIdentityLinkAsync(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePayoutIdentityLinkResponse> localVarResponse = await CreatePayoutIdentityLinkWithHttpInfoAsync(createPayoutConnectOnboardRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs. Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutConnectOnboardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePayoutIdentityLinkResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePayoutIdentityLinkResponse>> CreatePayoutIdentityLinkWithHttpInfoAsync(CreatePayoutConnectOnboardRequest createPayoutConnectOnboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createPayoutConnectOnboardRequest' is set
+            if (createPayoutConnectOnboardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPayoutConnectOnboardRequest' when calling PayoutApi->CreatePayoutIdentityLink");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPayoutConnectOnboardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePayoutIdentityLinkResponse>("/v1/payouts/identity/link", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePayoutIdentityLink", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only). amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <returns>CreatePayoutPayoutResponse</returns>
+        public CreatePayoutPayoutResponse CreatePayoutPayout(CreatePayoutPayoutRequest createPayoutPayoutRequest)
+        {
+            net.crossly.Client.ApiResponse<CreatePayoutPayoutResponse> localVarResponse = CreatePayoutPayoutWithHttpInfo(createPayoutPayoutRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only). amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <returns>ApiResponse of CreatePayoutPayoutResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePayoutPayoutResponse> CreatePayoutPayoutWithHttpInfo(CreatePayoutPayoutRequest createPayoutPayoutRequest)
+        {
+            // verify the required parameter 'createPayoutPayoutRequest' is set
+            if (createPayoutPayoutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPayoutPayoutRequest' when calling PayoutApi->CreatePayoutPayout");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPayoutPayoutRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatePayoutPayoutResponse>("/v1/payout/payouts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePayoutPayout", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only). amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePayoutPayoutResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePayoutPayoutResponse> CreatePayoutPayoutAsync(CreatePayoutPayoutRequest createPayoutPayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePayoutPayoutResponse> localVarResponse = await CreatePayoutPayoutWithHttpInfoAsync(createPayoutPayoutRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only). amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPayoutPayoutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePayoutPayoutResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePayoutPayoutResponse>> CreatePayoutPayoutWithHttpInfoAsync(CreatePayoutPayoutRequest createPayoutPayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createPayoutPayoutRequest' is set
+            if (createPayoutPayoutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPayoutPayoutRequest' when calling PayoutApi->CreatePayoutPayout");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPayoutPayoutRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePayoutPayoutResponse>("/v1/payout/payouts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePayoutPayout", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -883,6 +1392,274 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words. status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <returns>GetPayoutIdentityResponse</returns>
+        public GetPayoutIdentityResponse GetPayoutIdentity(string fresh = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetPayoutIdentityResponse> localVarResponse = GetPayoutIdentityWithHttpInfo(fresh);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words. status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <returns>ApiResponse of GetPayoutIdentityResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPayoutIdentityResponse> GetPayoutIdentityWithHttpInfo(string fresh = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (fresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "fresh", fresh));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPayoutIdentityResponse>("/v1/payouts/identity", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPayoutIdentity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words. status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPayoutIdentityResponse</returns>
+        public async System.Threading.Tasks.Task<GetPayoutIdentityResponse> GetPayoutIdentityAsync(string fresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPayoutIdentityResponse> localVarResponse = await GetPayoutIdentityWithHttpInfoAsync(fresh, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stripe&#39;s verification of your payout account: status and what Stripe still needs, in plain words. status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe&#39;s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe&#39;s reason. Cached up to 60 s; fresh&#x3D;1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fresh"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPayoutIdentityResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPayoutIdentityResponse>> GetPayoutIdentityWithHttpInfoAsync(string fresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (fresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "fresh", fresh));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPayoutIdentityResponse>("/v1/payouts/identity", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPayoutIdentity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions. connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetPayoutWalletResponse</returns>
+        public GetPayoutWalletResponse GetPayoutWallet()
+        {
+            net.crossly.Client.ApiResponse<GetPayoutWalletResponse> localVarResponse = GetPayoutWalletWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions. connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetPayoutWalletResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPayoutWalletResponse> GetPayoutWalletWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPayoutWalletResponse>("/v1/payout/wallet", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPayoutWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions. connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPayoutWalletResponse</returns>
+        public async System.Threading.Tasks.Task<GetPayoutWalletResponse> GetPayoutWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPayoutWalletResponse> localVarResponse = await GetPayoutWalletWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions. connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPayoutWalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPayoutWalletResponse>> GetPayoutWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPayoutWalletResponse>("/v1/payout/wallet", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPayoutWallet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Rank platforms by what they net at a given price. Defaults to connected ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1001,6 +1778,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListPayoutCompare", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change the automatic payout schedule. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <returns>UpdatePayoutScheduleResponse</returns>
+        public UpdatePayoutScheduleResponse UpdatePayoutSchedule(UpdatePayoutScheduleRequest updatePayoutScheduleRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdatePayoutScheduleResponse> localVarResponse = UpdatePayoutScheduleWithHttpInfo(updatePayoutScheduleRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change the automatic payout schedule. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <returns>ApiResponse of UpdatePayoutScheduleResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatePayoutScheduleResponse> UpdatePayoutScheduleWithHttpInfo(UpdatePayoutScheduleRequest updatePayoutScheduleRequest)
+        {
+            // verify the required parameter 'updatePayoutScheduleRequest' is set
+            if (updatePayoutScheduleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePayoutScheduleRequest' when calling PayoutApi->UpdatePayoutSchedule");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updatePayoutScheduleRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdatePayoutScheduleResponse>("/v1/payout/schedule", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePayoutSchedule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change the automatic payout schedule. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePayoutScheduleResponse</returns>
+        public async System.Threading.Tasks.Task<UpdatePayoutScheduleResponse> UpdatePayoutScheduleAsync(UpdatePayoutScheduleRequest updatePayoutScheduleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdatePayoutScheduleResponse> localVarResponse = await UpdatePayoutScheduleWithHttpInfoAsync(updatePayoutScheduleRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change the automatic payout schedule. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePayoutScheduleRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePayoutScheduleResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatePayoutScheduleResponse>> UpdatePayoutScheduleWithHttpInfoAsync(UpdatePayoutScheduleRequest updatePayoutScheduleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updatePayoutScheduleRequest' is set
+            if (updatePayoutScheduleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePayoutScheduleRequest' when calling PayoutApi->UpdatePayoutSchedule");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updatePayoutScheduleRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdatePayoutScheduleResponse>("/v1/payout/schedule", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePayoutSchedule", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

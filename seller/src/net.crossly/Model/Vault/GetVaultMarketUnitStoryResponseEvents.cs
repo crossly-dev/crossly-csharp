@@ -38,52 +38,52 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Transfer for value: transfer
-            /// </summary>
-            [EnumMember(Value = "transfer")]
-            Transfer = 1,
-
-            /// <summary>
-            /// Enum Evidence for value: evidence
-            /// </summary>
-            [EnumMember(Value = "evidence")]
-            Evidence = 2,
-
-            /// <summary>
             /// Enum Sale for value: sale
             /// </summary>
             [EnumMember(Value = "sale")]
-            Sale = 3,
-
-            /// <summary>
-            /// Enum Graded for value: graded
-            /// </summary>
-            [EnumMember(Value = "graded")]
-            Graded = 4,
-
-            /// <summary>
-            /// Enum Pledged for value: pledged
-            /// </summary>
-            [EnumMember(Value = "pledged")]
-            Pledged = 5,
-
-            /// <summary>
-            /// Enum Released for value: released
-            /// </summary>
-            [EnumMember(Value = "released")]
-            Released = 6,
-
-            /// <summary>
-            /// Enum Received for value: received
-            /// </summary>
-            [EnumMember(Value = "received")]
-            Received = 7,
+            Sale = 1,
 
             /// <summary>
             /// Enum Receipt for value: receipt
             /// </summary>
             [EnumMember(Value = "receipt")]
-            Receipt = 8,
+            Receipt = 2,
+
+            /// <summary>
+            /// Enum Received for value: received
+            /// </summary>
+            [EnumMember(Value = "received")]
+            Received = 3,
+
+            /// <summary>
+            /// Enum Released for value: released
+            /// </summary>
+            [EnumMember(Value = "released")]
+            Released = 4,
+
+            /// <summary>
+            /// Enum Evidence for value: evidence
+            /// </summary>
+            [EnumMember(Value = "evidence")]
+            Evidence = 5,
+
+            /// <summary>
+            /// Enum Graded for value: graded
+            /// </summary>
+            [EnumMember(Value = "graded")]
+            Graded = 6,
+
+            /// <summary>
+            /// Enum Transfer for value: transfer
+            /// </summary>
+            [EnumMember(Value = "transfer")]
+            Transfer = 7,
+
+            /// <summary>
+            /// Enum Pledged for value: pledged
+            /// </summary>
+            [EnumMember(Value = "pledged")]
+            Pledged = 8,
 
             /// <summary>
             /// Enum Lent for value: lent
@@ -92,16 +92,16 @@ namespace net.crossly.Model
             Lent = 9,
 
             /// <summary>
-            /// Enum Recalled for value: recalled
-            /// </summary>
-            [EnumMember(Value = "recalled")]
-            Recalled = 10,
-
-            /// <summary>
             /// Enum Foreclosed for value: foreclosed
             /// </summary>
             [EnumMember(Value = "foreclosed")]
-            Foreclosed = 11,
+            Foreclosed = 10,
+
+            /// <summary>
+            /// Enum Recalled for value: recalled
+            /// </summary>
+            [EnumMember(Value = "recalled")]
+            Recalled = 11,
 
             /// <summary>
             /// Enum SentIn for value: sent_in
@@ -184,34 +184,34 @@ namespace net.crossly.Model
         public enum GroupEnum
         {
             /// <summary>
-            /// Enum Token for value: token
-            /// </summary>
-            [EnumMember(Value = "token")]
-            Token = 1,
-
-            /// <summary>
             /// Enum Grade for value: grade
             /// </summary>
             [EnumMember(Value = "grade")]
-            Grade = 2,
+            Grade = 1,
 
             /// <summary>
-            /// Enum Loan for value: loan
+            /// Enum Token for value: token
             /// </summary>
-            [EnumMember(Value = "loan")]
-            Loan = 3,
-
-            /// <summary>
-            /// Enum Hall for value: hall
-            /// </summary>
-            [EnumMember(Value = "hall")]
-            Hall = 4,
+            [EnumMember(Value = "token")]
+            Token = 2,
 
             /// <summary>
             /// Enum Receipt for value: receipt
             /// </summary>
             [EnumMember(Value = "receipt")]
-            Receipt = 5,
+            Receipt = 3,
+
+            /// <summary>
+            /// Enum Owner for value: owner
+            /// </summary>
+            [EnumMember(Value = "owner")]
+            Owner = 4,
+
+            /// <summary>
+            /// Enum Hall for value: hall
+            /// </summary>
+            [EnumMember(Value = "hall")]
+            Hall = 5,
 
             /// <summary>
             /// Enum Intake for value: intake
@@ -220,16 +220,16 @@ namespace net.crossly.Model
             Intake = 6,
 
             /// <summary>
-            /// Enum Owner for value: owner
-            /// </summary>
-            [EnumMember(Value = "owner")]
-            Owner = 7,
-
-            /// <summary>
             /// Enum Custody for value: custody
             /// </summary>
             [EnumMember(Value = "custody")]
-            Custody = 8
+            Custody = 7,
+
+            /// <summary>
+            /// Enum Loan for value: loan
+            /// </summary>
+            [EnumMember(Value = "loan")]
+            Loan = 8
 
         }
 

@@ -45,34 +45,34 @@ namespace net.crossly.Model
             Host = 1,
 
             /// <summary>
-            /// Enum Applied for value: applied
-            /// </summary>
-            [EnumMember(Value = "applied")]
-            Applied = 2,
-
-            /// <summary>
-            /// Enum Invited for value: invited
-            /// </summary>
-            [EnumMember(Value = "invited")]
-            Invited = 3,
-
-            /// <summary>
-            /// Enum Withdrawn for value: withdrawn
-            /// </summary>
-            [EnumMember(Value = "withdrawn")]
-            Withdrawn = 4,
-
-            /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 5,
+            Accepted = 2,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 6
+            Declined = 3,
+
+            /// <summary>
+            /// Enum Applied for value: applied
+            /// </summary>
+            [EnumMember(Value = "applied")]
+            Applied = 4,
+
+            /// <summary>
+            /// Enum Withdrawn for value: withdrawn
+            /// </summary>
+            [EnumMember(Value = "withdrawn")]
+            Withdrawn = 5,
+
+            /// <summary>
+            /// Enum Invited for value: invited
+            /// </summary>
+            [EnumMember(Value = "invited")]
+            Invited = 6
 
         }
 
@@ -107,7 +107,11 @@ namespace net.crossly.Model
         /// <param name="tableCount">tableCount (required).</param>
         /// <param name="exhibitorCount">How many stands are taken. A count, never a roster — see the docblock. (required).</param>
         /// <param name="publicSlug">The room it is held in, so a card can link straight into it..</param>
-        public ListWorldConventionMineItem(RoleEnum role = default(RoleEnum), decimal? tableIndex = default(decimal?), decimal? agreedEntryFeeCents = default(decimal?), decimal? agreedRevenueShareBps = default(decimal?), string id = default(string), string title = default(string), string categorySlug = default(string), DateTime startsAt = default(DateTime), DateTime endsAt = default(DateTime), string status = default(string), string entryModel = default(string), decimal? entryFeeCents = default(decimal?), decimal? revenueShareBps = default(decimal?), decimal tableCount = default(decimal), decimal exhibitorCount = default(decimal), string publicSlug = default(string))
+        /// <param name="tiered">A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page. (required).</param>
+        /// <param name="doorsOpenAt">When the doors open for visitors: the start (or when the host takes it live, if sooner). (required).</param>
+        /// <param name="yourDoorsOpenAt">For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are..</param>
+        /// <param name="doorsOpen">doorsOpen.</param>
+        public ListWorldConventionMineItem(RoleEnum role = default(RoleEnum), decimal? tableIndex = default(decimal?), decimal? agreedEntryFeeCents = default(decimal?), decimal? agreedRevenueShareBps = default(decimal?), string id = default(string), string title = default(string), string categorySlug = default(string), DateTime startsAt = default(DateTime), DateTime endsAt = default(DateTime), string status = default(string), string entryModel = default(string), decimal? entryFeeCents = default(decimal?), decimal? revenueShareBps = default(decimal?), decimal tableCount = default(decimal), decimal exhibitorCount = default(decimal), string publicSlug = default(string), bool tiered = default(bool), DateTime doorsOpenAt = default(DateTime), string yourDoorsOpenAt = default(string), bool? doorsOpen = default(bool?))
         {
             this.Role = role;
             // to ensure "id" is required (not null)
@@ -134,6 +138,8 @@ namespace net.crossly.Model
             this.EntryModel = entryModel;
             this.TableCount = tableCount;
             this.ExhibitorCount = exhibitorCount;
+            this.Tiered = tiered;
+            this.DoorsOpenAt = doorsOpenAt;
             this.TableIndex = tableIndex;
             this.AgreedEntryFeeCents = agreedEntryFeeCents;
             this.AgreedRevenueShareBps = agreedRevenueShareBps;
@@ -141,6 +147,8 @@ namespace net.crossly.Model
             this.EntryFeeCents = entryFeeCents;
             this.RevenueShareBps = revenueShareBps;
             this.PublicSlug = publicSlug;
+            this.YourDoorsOpenAt = yourDoorsOpenAt;
+            this.DoorsOpen = doorsOpen;
         }
 
         /// <summary>
@@ -238,6 +246,33 @@ namespace net.crossly.Model
         public string PublicSlug { get; set; }
 
         /// <summary>
+        /// A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+        /// </summary>
+        /// <value>A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.</value>
+        [DataMember(Name = "tiered", IsRequired = true, EmitDefaultValue = true)]
+        public bool Tiered { get; set; }
+
+        /// <summary>
+        /// When the doors open for visitors: the start (or when the host takes it live, if sooner).
+        /// </summary>
+        /// <value>When the doors open for visitors: the start (or when the host takes it live, if sooner).</value>
+        [DataMember(Name = "doorsOpenAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime DoorsOpenAt { get; set; }
+
+        /// <summary>
+        /// For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.
+        /// </summary>
+        /// <value>For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.</value>
+        [DataMember(Name = "yourDoorsOpenAt", EmitDefaultValue = true)]
+        public string YourDoorsOpenAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DoorsOpen
+        /// </summary>
+        [DataMember(Name = "doorsOpen", EmitDefaultValue = true)]
+        public bool? DoorsOpen { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -261,6 +296,10 @@ namespace net.crossly.Model
             sb.Append("  TableCount: ").Append(TableCount).Append("\n");
             sb.Append("  ExhibitorCount: ").Append(ExhibitorCount).Append("\n");
             sb.Append("  PublicSlug: ").Append(PublicSlug).Append("\n");
+            sb.Append("  Tiered: ").Append(Tiered).Append("\n");
+            sb.Append("  DoorsOpenAt: ").Append(DoorsOpenAt).Append("\n");
+            sb.Append("  YourDoorsOpenAt: ").Append(YourDoorsOpenAt).Append("\n");
+            sb.Append("  DoorsOpen: ").Append(DoorsOpen).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -372,6 +411,25 @@ namespace net.crossly.Model
                     this.PublicSlug == input.PublicSlug ||
                     (this.PublicSlug != null &&
                     this.PublicSlug.Equals(input.PublicSlug))
+                ) && 
+                (
+                    this.Tiered == input.Tiered ||
+                    this.Tiered.Equals(input.Tiered)
+                ) && 
+                (
+                    this.DoorsOpenAt == input.DoorsOpenAt ||
+                    (this.DoorsOpenAt != null &&
+                    this.DoorsOpenAt.Equals(input.DoorsOpenAt))
+                ) && 
+                (
+                    this.YourDoorsOpenAt == input.YourDoorsOpenAt ||
+                    (this.YourDoorsOpenAt != null &&
+                    this.YourDoorsOpenAt.Equals(input.YourDoorsOpenAt))
+                ) && 
+                (
+                    this.DoorsOpen == input.DoorsOpen ||
+                    (this.DoorsOpen != null &&
+                    this.DoorsOpen.Equals(input.DoorsOpen))
                 );
         }
 
@@ -438,6 +496,19 @@ namespace net.crossly.Model
                 if (this.PublicSlug != null)
                 {
                     hashCode = (hashCode * 59) + this.PublicSlug.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Tiered.GetHashCode();
+                if (this.DoorsOpenAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DoorsOpenAt.GetHashCode();
+                }
+                if (this.YourDoorsOpenAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.YourDoorsOpenAt.GetHashCode();
+                }
+                if (this.DoorsOpen != null)
+                {
+                    hashCode = (hashCode * 59) + this.DoorsOpen.GetHashCode();
                 }
                 return hashCode;
             }

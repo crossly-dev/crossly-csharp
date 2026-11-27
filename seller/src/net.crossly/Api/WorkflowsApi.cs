@@ -27,126 +27,777 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a multi-step workflow chain.
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <returns>CreateWorkflowResponse</returns>
+        CreateWorkflowResponse CreateWorkflow(CreateWorkflowRequest createWorkflowRequest);
+
+        /// <summary>
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowResponse</returns>
+        ApiResponse<CreateWorkflowResponse> CreateWorkflowWithHttpInfo(CreateWorkflowRequest createWorkflowRequest);
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>WorkflowResponse</returns>
+        WorkflowResponse CreateWorkflowActivate(Guid id);
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        ApiResponse<WorkflowResponse> CreateWorkflowActivateWithHttpInfo(Guid id);
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <returns>CreateWorkflowApprovalDecideResponse</returns>
+        CreateWorkflowApprovalDecideResponse CreateWorkflowApprovalDecide(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest);
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowApprovalDecideResponse</returns>
+        ApiResponse<CreateWorkflowApprovalDecideResponse> CreateWorkflowApprovalDecideWithHttpInfo(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest);
+        /// <summary>
+        /// Create a multi-step workflow chain.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>IdResponse</returns>
+        [Obsolete]
         IdResponse CreateWorkflowChain();
 
         /// <summary>
         /// Create a multi-step workflow chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of IdResponse</returns>
+        [Obsolete]
         ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo();
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         CreateWorkflowChainRunNowResponse CreateWorkflowChainRunNow(Guid id);
 
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         ApiResponse<CreateWorkflowChainRunNowResponse> CreateWorkflowChainRunNowWithHttpInfo(Guid id);
         /// <summary>
         /// Flip a workflow chain between active and inactive.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         CreateWorkflowChainToggleResponse CreateWorkflowChainToggle(Guid id);
 
         /// <summary>
         /// Flip a workflow chain between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         ApiResponse<CreateWorkflowChainToggleResponse> CreateWorkflowChainToggleWithHttpInfo(Guid id);
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>WorkflowResponse</returns>
+        WorkflowResponse CreateWorkflowDeactivate(Guid id);
+
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        ApiResponse<WorkflowResponse> CreateWorkflowDeactivateWithHttpInfo(Guid id);
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <returns>CreateWorkflowDuplicateResponse</returns>
+        CreateWorkflowDuplicateResponse CreateWorkflowDuplicate(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest);
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowDuplicateResponse</returns>
+        ApiResponse<CreateWorkflowDuplicateResponse> CreateWorkflowDuplicateWithHttpInfo(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest);
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <returns>CreateWorkflowExpressionPreviewResponse</returns>
+        CreateWorkflowExpressionPreviewResponse CreateWorkflowExpressionPreview(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest);
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowExpressionPreviewResponse</returns>
+        ApiResponse<CreateWorkflowExpressionPreviewResponse> CreateWorkflowExpressionPreviewWithHttpInfo(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest);
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <returns>CreateWorkflowImportResponse</returns>
+        CreateWorkflowImportResponse CreateWorkflowImport(Dictionary<string, Object> requestBody);
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <returns>ApiResponse of CreateWorkflowImportResponse</returns>
+        ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(Dictionary<string, Object> requestBody);
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <returns>CreateWorkflowRunResponse</returns>
+        CreateWorkflowRunResponse CreateWorkflowRun(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest);
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowRunResponse</returns>
+        ApiResponse<CreateWorkflowRunResponse> CreateWorkflowRunWithHttpInfo(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest);
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>CreateWorkflowRunCancelResponse</returns>
+        CreateWorkflowRunCancelResponse CreateWorkflowRunCancel(Guid runId);
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of CreateWorkflowRunCancelResponse</returns>
+        ApiResponse<CreateWorkflowRunCancelResponse> CreateWorkflowRunCancelWithHttpInfo(Guid runId);
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <returns>CreateWorkflowRunOnResponse</returns>
+        CreateWorkflowRunOnResponse CreateWorkflowRunOn(CreateWorkflowRunOnRequest createWorkflowRunOnRequest);
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowRunOnResponse</returns>
+        ApiResponse<CreateWorkflowRunOnResponse> CreateWorkflowRunOnWithHttpInfo(CreateWorkflowRunOnRequest createWorkflowRunOnRequest);
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>CreateWorkflowRunRetryResponse</returns>
+        CreateWorkflowRunRetryResponse CreateWorkflowRunRetry(Guid runId);
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of CreateWorkflowRunRetryResponse</returns>
+        ApiResponse<CreateWorkflowRunRetryResponse> CreateWorkflowRunRetryWithHttpInfo(Guid runId);
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <returns>CreateWorkflowSaleEndResponse</returns>
+        CreateWorkflowSaleEndResponse CreateWorkflowSaleEnd(Guid saleEventId);
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <returns>ApiResponse of CreateWorkflowSaleEndResponse</returns>
+        ApiResponse<CreateWorkflowSaleEndResponse> CreateWorkflowSaleEndWithHttpInfo(Guid saleEventId);
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <returns>CreateWorkflowResponse</returns>
+        CreateWorkflowResponse CreateWorkflowTemplateUse(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest);
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowResponse</returns>
+        ApiResponse<CreateWorkflowResponse> CreateWorkflowTemplateUseWithHttpInfo(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest);
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <returns>CreateWorkflowTestResponse</returns>
+        CreateWorkflowTestResponse CreateWorkflowTest(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest);
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowTestResponse</returns>
+        ApiResponse<CreateWorkflowTestResponse> CreateWorkflowTestWithHttpInfo(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest);
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <returns>CreateWorkflowValidateResponse</returns>
+        CreateWorkflowValidateResponse CreateWorkflowValidate(CreateWorkflowValidateRequest createWorkflowValidateRequest);
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowValidateResponse</returns>
+        ApiResponse<CreateWorkflowValidateResponse> CreateWorkflowValidateWithHttpInfo(CreateWorkflowValidateRequest createWorkflowValidateRequest);
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <returns>WorkflowResponse</returns>
+        WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v);
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v);
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <returns>CreateWorkflowWebhookRotateResponse</returns>
+        CreateWorkflowWebhookRotateResponse CreateWorkflowWebhookRotate(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest);
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowWebhookRotateResponse</returns>
+        ApiResponse<CreateWorkflowWebhookRotateResponse> CreateWorkflowWebhookRotateWithHttpInfo(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest);
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>DeleteWorkflowResponse</returns>
+        DeleteWorkflowResponse DeleteWorkflow(Guid id);
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of DeleteWorkflowResponse</returns>
+        ApiResponse<DeleteWorkflowResponse> DeleteWorkflowWithHttpInfo(Guid id);
         /// <summary>
         /// Delete a workflow chain (cascades steps + runs).
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         OkResponse DeleteWorkflowChain(Guid id);
 
         /// <summary>
         /// Delete a workflow chain (cascades steps + runs).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         ApiResponse<OkResponse> DeleteWorkflowChainWithHttpInfo(Guid id);
+        /// <summary>
+        /// Get one workflow with its full graph and current version.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>GetWorkflowResponse</returns>
+        GetWorkflowResponse GetWorkflow(Guid id);
+
+        /// <summary>
+        /// Get one workflow with its full graph and current version.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of GetWorkflowResponse</returns>
+        ApiResponse<GetWorkflowResponse> GetWorkflowWithHttpInfo(Guid id);
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWorkflowCatalogResponse</returns>
+        GetWorkflowCatalogResponse GetWorkflowCatalog();
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWorkflowCatalogResponse</returns>
+        ApiResponse<GetWorkflowCatalogResponse> GetWorkflowCatalogWithHttpInfo();
         /// <summary>
         /// Get one workflow chain with its steps.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetWorkflowChainResponse</returns>
+        [Obsolete]
         GetWorkflowChainResponse GetWorkflowChain(Guid id);
 
         /// <summary>
         /// Get one workflow chain with its steps.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetWorkflowChainResponse</returns>
+        [Obsolete]
         ApiResponse<GetWorkflowChainResponse> GetWorkflowChainWithHttpInfo(Guid id);
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <returns>GetWorkflowExportResponse</returns>
+        GetWorkflowExportResponse GetWorkflowExport(Guid id, string pinnedData = default(string));
+
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <returns>ApiResponse of GetWorkflowExportResponse</returns>
+        ApiResponse<GetWorkflowExportResponse> GetWorkflowExportWithHttpInfo(Guid id, string pinnedData = default(string));
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>GetWorkflowRunResponse</returns>
+        GetWorkflowRunResponse GetWorkflowRun(Guid runId);
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of GetWorkflowRunResponse</returns>
+        ApiResponse<GetWorkflowRunResponse> GetWorkflowRunWithHttpInfo(Guid runId);
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <returns>GetWorkflowRunNodeResponse</returns>
+        GetWorkflowRunNodeResponse GetWorkflowRunNode(Guid runId, string nodeId);
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <returns>ApiResponse of GetWorkflowRunNodeResponse</returns>
+        ApiResponse<GetWorkflowRunNodeResponse> GetWorkflowRunNodeWithHttpInfo(Guid runId, string nodeId);
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowApprovalsResponse</returns>
+        ListWorkflowApprovalsResponse ListWorkflowApprovals(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?));
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowApprovalsResponse</returns>
+        ApiResponse<ListWorkflowApprovalsResponse> ListWorkflowApprovalsWithHttpInfo(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?));
         /// <summary>
         /// List workflow chains with their step graph.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWorkflowChainsResponse</returns>
+        [Obsolete]
         ListWorkflowChainsResponse ListWorkflowChains();
 
         /// <summary>
         /// List workflow chains with their step graph.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWorkflowChainsResponse</returns>
+        [Obsolete]
         ApiResponse<ListWorkflowChainsResponse> ListWorkflowChainsWithHttpInfo();
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowRunsResponse</returns>
+        ListWorkflowRunsResponse ListWorkflowRuns(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?));
+
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowRunsResponse</returns>
+        ApiResponse<ListWorkflowRunsResponse> ListWorkflowRunsWithHttpInfo(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?));
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowRunsResponse</returns>
+        ListWorkflowRunsResponse ListWorkflowRuns2(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?));
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowRunsResponse</returns>
+        ApiResponse<ListWorkflowRunsResponse> ListWorkflowRuns2WithHttpInfo(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?));
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWorkflowSaleActiveResponse</returns>
+        ListWorkflowSaleActiveResponse ListWorkflowSaleActive();
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWorkflowSaleActiveResponse</returns>
+        ApiResponse<ListWorkflowSaleActiveResponse> ListWorkflowSaleActiveWithHttpInfo();
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <returns>ListWorkflowTemplatesResponse</returns>
+        ListWorkflowTemplatesResponse ListWorkflowTemplates(string category = default(string), string q = default(string));
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <returns>ApiResponse of ListWorkflowTemplatesResponse</returns>
+        ApiResponse<ListWorkflowTemplatesResponse> ListWorkflowTemplatesWithHttpInfo(string category = default(string), string q = default(string));
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ListWorkflowVersionsResponse</returns>
+        ListWorkflowVersionsResponse ListWorkflowVersions(Guid id);
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of ListWorkflowVersionsResponse</returns>
+        ApiResponse<ListWorkflowVersionsResponse> ListWorkflowVersionsWithHttpInfo(Guid id);
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <returns>ListWorkflowsResponse</returns>
+        ListWorkflowsResponse ListWorkflows(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string));
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <returns>ApiResponse of ListWorkflowsResponse</returns>
+        ApiResponse<ListWorkflowsResponse> ListWorkflowsWithHttpInfo(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string));
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <returns>WorkflowResponse</returns>
+        WorkflowResponse UpdateWorkflow(Guid id, UpdateWorkflowRequest updateWorkflowRequest);
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        ApiResponse<WorkflowResponse> UpdateWorkflowWithHttpInfo(Guid id, UpdateWorkflowRequest updateWorkflowRequest);
         /// <summary>
         /// Replace a workflow chain wholesale.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         OkResponse UpdateWorkflowChain(Guid id);
 
         /// <summary>
         /// Replace a workflow chain wholesale.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id);
         #endregion Synchronous Operations
     }
@@ -158,161 +809,946 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Create a multi-step workflow chain.
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowResponse> CreateWorkflowAsync(CreateWorkflowRequest createWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowResponse>> CreateWorkflowWithHttpInfoAsync(CreateWorkflowRequest createWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowActivateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> CreateWorkflowActivateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowApprovalDecideResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowApprovalDecideResponse> CreateWorkflowApprovalDecideAsync(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowApprovalDecideResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowApprovalDecideResponse>> CreateWorkflowApprovalDecideWithHttpInfoAsync(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Create a multi-step workflow chain.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a multi-step workflow chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateWorkflowChainRunNowResponse> CreateWorkflowChainRunNowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowChainRunNowResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateWorkflowChainRunNowResponse>> CreateWorkflowChainRunNowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Flip a workflow chain between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateWorkflowChainToggleResponse> CreateWorkflowChainToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Flip a workflow chain between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowChainToggleResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateWorkflowChainToggleResponse>> CreateWorkflowChainToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Delete a workflow chain (cascades steps + runs).
+        /// Pause a workflow: its triggers stop firing. Runs already started finish.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowDeactivateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> CreateWorkflowDeactivateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowDuplicateResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowDuplicateResponse> CreateWorkflowDuplicateAsync(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowDuplicateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowDuplicateResponse>> CreateWorkflowDuplicateWithHttpInfoAsync(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowExpressionPreviewResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowExpressionPreviewResponse> CreateWorkflowExpressionPreviewAsync(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowExpressionPreviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowExpressionPreviewResponse>> CreateWorkflowExpressionPreviewWithHttpInfoAsync(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowImportResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowRunResponse> CreateWorkflowRunAsync(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowRunResponse>> CreateWorkflowRunWithHttpInfoAsync(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunCancelResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowRunCancelResponse> CreateWorkflowRunCancelAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunCancelResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowRunCancelResponse>> CreateWorkflowRunCancelWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunOnResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowRunOnResponse> CreateWorkflowRunOnAsync(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunOnResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowRunOnResponse>> CreateWorkflowRunOnWithHttpInfoAsync(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunRetryResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowRunRetryResponse> CreateWorkflowRunRetryAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunRetryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowRunRetryResponse>> CreateWorkflowRunRetryWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowSaleEndResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowSaleEndResponse> CreateWorkflowSaleEndAsync(Guid saleEventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowSaleEndResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowSaleEndResponse>> CreateWorkflowSaleEndWithHttpInfoAsync(Guid saleEventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowResponse> CreateWorkflowTemplateUseAsync(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowResponse>> CreateWorkflowTemplateUseWithHttpInfoAsync(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowTestResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowTestResponse> CreateWorkflowTestAsync(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowTestResponse>> CreateWorkflowTestWithHttpInfoAsync(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowValidateResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowValidateResponse> CreateWorkflowValidateAsync(CreateWorkflowValidateRequest createWorkflowValidateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowValidateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowValidateResponse>> CreateWorkflowValidateWithHttpInfoAsync(CreateWorkflowValidateRequest createWorkflowValidateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowWebhookRotateResponse</returns>
+        System.Threading.Tasks.Task<CreateWorkflowWebhookRotateResponse> CreateWorkflowWebhookRotateAsync(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowWebhookRotateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowWebhookRotateResponse>> CreateWorkflowWebhookRotateWithHttpInfoAsync(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteWorkflowResponse</returns>
+        System.Threading.Tasks.Task<DeleteWorkflowResponse> DeleteWorkflowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteWorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteWorkflowResponse>> DeleteWorkflowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Delete a workflow chain (cascades steps + runs).
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<OkResponse> DeleteWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a workflow chain (cascades steps + runs).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get one workflow chain with its steps.
+        /// Get one workflow with its full graph and current version.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowResponse</returns>
+        System.Threading.Tasks.Task<GetWorkflowResponse> GetWorkflowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get one workflow with its full graph and current version.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowResponse>> GetWorkflowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowCatalogResponse</returns>
+        System.Threading.Tasks.Task<GetWorkflowCatalogResponse> GetWorkflowCatalogAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowCatalogResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowCatalogResponse>> GetWorkflowCatalogWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get one workflow chain with its steps.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorkflowChainResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetWorkflowChainResponse> GetWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get one workflow chain with its steps.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorkflowChainResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetWorkflowChainResponse>> GetWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List workflow chains with their step graph.
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowExportResponse</returns>
+        System.Threading.Tasks.Task<GetWorkflowExportResponse> GetWorkflowExportAsync(Guid id, string pinnedData = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowExportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowExportResponse>> GetWorkflowExportWithHttpInfoAsync(Guid id, string pinnedData = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowRunResponse</returns>
+        System.Threading.Tasks.Task<GetWorkflowRunResponse> GetWorkflowRunAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowRunResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowRunResponse>> GetWorkflowRunWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowRunNodeResponse</returns>
+        System.Threading.Tasks.Task<GetWorkflowRunNodeResponse> GetWorkflowRunNodeAsync(Guid runId, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowRunNodeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowRunNodeResponse>> GetWorkflowRunNodeWithHttpInfoAsync(Guid runId, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowApprovalsResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowApprovalsResponse> ListWorkflowApprovalsAsync(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowApprovalsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowApprovalsResponse>> ListWorkflowApprovalsWithHttpInfoAsync(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List workflow chains with their step graph.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWorkflowChainsResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListWorkflowChainsResponse> ListWorkflowChainsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List workflow chains with their step graph.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWorkflowChainsResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListWorkflowChainsResponse>> ListWorkflowChainsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Replace a workflow chain wholesale.
+        /// Run history of one workflow, newest first, with per-node status and item counts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowRunsResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowRunsResponse> ListWorkflowRunsAsync(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowRunsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowRunsResponse>> ListWorkflowRunsWithHttpInfoAsync(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowRunsResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowRunsResponse> ListWorkflowRuns2Async(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowRunsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowRunsResponse>> ListWorkflowRuns2WithHttpInfoAsync(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowSaleActiveResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowSaleActiveResponse> ListWorkflowSaleActiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowSaleActiveResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowSaleActiveResponse>> ListWorkflowSaleActiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowTemplatesResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowTemplatesResponse> ListWorkflowTemplatesAsync(string category = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowTemplatesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowTemplatesResponse>> ListWorkflowTemplatesWithHttpInfoAsync(string category = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowVersionsResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowVersionsResponse> ListWorkflowVersionsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowVersionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowVersionsResponse>> ListWorkflowVersionsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowsResponse</returns>
+        System.Threading.Tasks.Task<ListWorkflowsResponse> ListWorkflowsAsync(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowsResponse>> ListWorkflowsWithHttpInfoAsync(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        System.Threading.Tasks.Task<WorkflowResponse> UpdateWorkflowAsync(Guid id, UpdateWorkflowRequest updateWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> UpdateWorkflowWithHttpInfoAsync(Guid id, UpdateWorkflowRequest updateWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Replace a workflow chain wholesale.
+        /// </summary>
+        /// <remarks>
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace a workflow chain wholesale.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
@@ -435,10 +1871,447 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a multi-step workflow chain. 
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <returns>CreateWorkflowResponse</returns>
+        public CreateWorkflowResponse CreateWorkflow(CreateWorkflowRequest createWorkflowRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowResponse> localVarResponse = CreateWorkflowWithHttpInfo(createWorkflowRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowResponse> CreateWorkflowWithHttpInfo(CreateWorkflowRequest createWorkflowRequest)
+        {
+            // verify the required parameter 'createWorkflowRequest' is set
+            if (createWorkflowRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRequest' when calling WorkflowsApi->CreateWorkflow");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowResponse>("/v1/workflows", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowResponse> CreateWorkflowAsync(CreateWorkflowRequest createWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowResponse> localVarResponse = await CreateWorkflowWithHttpInfoAsync(createWorkflowRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a workflow: from blank ({ name, graph? }), from a template ({ from: \&quot;template\&quot;, templateId, setup?, activate? }) or from an export document ({ from: \&quot;import\&quot;, document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowResponse>> CreateWorkflowWithHttpInfoAsync(CreateWorkflowRequest createWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowRequest' is set
+            if (createWorkflowRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRequest' when calling WorkflowsApi->CreateWorkflow");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowResponse>("/v1/workflows", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>WorkflowResponse</returns>
+        public WorkflowResponse CreateWorkflowActivate(Guid id)
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = CreateWorkflowActivateWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<WorkflowResponse> CreateWorkflowActivateWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<WorkflowResponse>("/v1/workflows/{id}/activate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowActivate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowActivateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await CreateWorkflowActivateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> CreateWorkflowActivateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<WorkflowResponse>("/v1/workflows/{id}/activate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowActivate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <returns>CreateWorkflowApprovalDecideResponse</returns>
+        public CreateWorkflowApprovalDecideResponse CreateWorkflowApprovalDecide(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowApprovalDecideResponse> localVarResponse = CreateWorkflowApprovalDecideWithHttpInfo(id, createWorkflowApprovalDecideRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowApprovalDecideResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowApprovalDecideResponse> CreateWorkflowApprovalDecideWithHttpInfo(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest)
+        {
+            // verify the required parameter 'createWorkflowApprovalDecideRequest' is set
+            if (createWorkflowApprovalDecideRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowApprovalDecideRequest' when calling WorkflowsApi->CreateWorkflowApprovalDecide");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowApprovalDecideRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowApprovalDecideResponse>("/v1/workflow-approvals/{id}/decide", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowApprovalDecide", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowApprovalDecideResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowApprovalDecideResponse> CreateWorkflowApprovalDecideAsync(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowApprovalDecideResponse> localVarResponse = await CreateWorkflowApprovalDecideWithHttpInfoAsync(id, createWorkflowApprovalDecideRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Approval id from GET /v1/workflow-approvals.</param>
+        /// <param name="createWorkflowApprovalDecideRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowApprovalDecideResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowApprovalDecideResponse>> CreateWorkflowApprovalDecideWithHttpInfoAsync(Guid id, CreateWorkflowApprovalDecideRequest createWorkflowApprovalDecideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowApprovalDecideRequest' is set
+            if (createWorkflowApprovalDecideRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowApprovalDecideRequest' when calling WorkflowsApi->CreateWorkflowApprovalDecide");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowApprovalDecideRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowApprovalDecideResponse>("/v1/workflow-approvals/{id}/decide", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowApprovalDecide", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>IdResponse</returns>
+        [Obsolete]
         public IdResponse CreateWorkflowChain()
         {
             net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateWorkflowChainWithHttpInfo();
@@ -446,10 +2319,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a multi-step workflow chain. 
+        /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of IdResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -497,11 +2371,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a multi-step workflow chain. 
+        /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateWorkflowChainWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -509,11 +2384,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a multi-step workflow chain. 
+        /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -563,11 +2439,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Enqueue an ad-hoc run of a workflow chain. 
+        /// Enqueue an ad-hoc run of a workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         public CreateWorkflowChainRunNowResponse CreateWorkflowChainRunNow(Guid id)
         {
             net.crossly.Client.ApiResponse<CreateWorkflowChainRunNowResponse> localVarResponse = CreateWorkflowChainRunNowWithHttpInfo(id);
@@ -575,11 +2452,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Enqueue an ad-hoc run of a workflow chain. 
+        /// Enqueue an ad-hoc run of a workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateWorkflowChainRunNowResponse> CreateWorkflowChainRunNowWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -628,12 +2506,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Enqueue an ad-hoc run of a workflow chain. 
+        /// Enqueue an ad-hoc run of a workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowChainRunNowResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateWorkflowChainRunNowResponse> CreateWorkflowChainRunNowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateWorkflowChainRunNowResponse> localVarResponse = await CreateWorkflowChainRunNowWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -641,12 +2520,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Enqueue an ad-hoc run of a workflow chain. 
+        /// Enqueue an ad-hoc run of a workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowChainRunNowResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowChainRunNowResponse>> CreateWorkflowChainRunNowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -697,11 +2577,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip a workflow chain between active and inactive. 
+        /// Flip a workflow chain between active and inactive. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         public CreateWorkflowChainToggleResponse CreateWorkflowChainToggle(Guid id)
         {
             net.crossly.Client.ApiResponse<CreateWorkflowChainToggleResponse> localVarResponse = CreateWorkflowChainToggleWithHttpInfo(id);
@@ -709,11 +2590,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip a workflow chain between active and inactive. 
+        /// Flip a workflow chain between active and inactive. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateWorkflowChainToggleResponse> CreateWorkflowChainToggleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -762,12 +2644,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip a workflow chain between active and inactive. 
+        /// Flip a workflow chain between active and inactive. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowChainToggleResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateWorkflowChainToggleResponse> CreateWorkflowChainToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateWorkflowChainToggleResponse> localVarResponse = await CreateWorkflowChainToggleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -775,12 +2658,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip a workflow chain between active and inactive. 
+        /// Flip a workflow chain between active and inactive. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowChainToggleResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowChainToggleResponse>> CreateWorkflowChainToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -831,11 +2715,2214 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a workflow chain (cascades steps + runs). 
+        /// Pause a workflow: its triggers stop firing. Runs already started finish. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>WorkflowResponse</returns>
+        public WorkflowResponse CreateWorkflowDeactivate(Guid id)
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = CreateWorkflowDeactivateWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<WorkflowResponse> CreateWorkflowDeactivateWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<WorkflowResponse>("/v1/workflows/{id}/deactivate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowDeactivate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowDeactivateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await CreateWorkflowDeactivateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pause a workflow: its triggers stop firing. Runs already started finish. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> CreateWorkflowDeactivateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<WorkflowResponse>("/v1/workflows/{id}/deactivate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowDeactivate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <returns>CreateWorkflowDuplicateResponse</returns>
+        public CreateWorkflowDuplicateResponse CreateWorkflowDuplicate(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowDuplicateResponse> localVarResponse = CreateWorkflowDuplicateWithHttpInfo(id, createWorkflowDuplicateRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowDuplicateResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowDuplicateResponse> CreateWorkflowDuplicateWithHttpInfo(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest)
+        {
+            // verify the required parameter 'createWorkflowDuplicateRequest' is set
+            if (createWorkflowDuplicateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowDuplicateRequest' when calling WorkflowsApi->CreateWorkflowDuplicate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowDuplicateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowDuplicateResponse>("/v1/workflows/{id}/duplicate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowDuplicate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowDuplicateResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowDuplicateResponse> CreateWorkflowDuplicateAsync(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowDuplicateResponse> localVarResponse = await CreateWorkflowDuplicateWithHttpInfoAsync(id, createWorkflowDuplicateRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy a workflow (graph, description, tags) into a new paused workflow. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowDuplicateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowDuplicateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowDuplicateResponse>> CreateWorkflowDuplicateWithHttpInfoAsync(Guid id, CreateWorkflowDuplicateRequest createWorkflowDuplicateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowDuplicateRequest' is set
+            if (createWorkflowDuplicateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowDuplicateRequest' when calling WorkflowsApi->CreateWorkflowDuplicate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowDuplicateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowDuplicateResponse>("/v1/workflows/{id}/duplicate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowDuplicate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <returns>CreateWorkflowExpressionPreviewResponse</returns>
+        public CreateWorkflowExpressionPreviewResponse CreateWorkflowExpressionPreview(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowExpressionPreviewResponse> localVarResponse = CreateWorkflowExpressionPreviewWithHttpInfo(createWorkflowExpressionPreviewRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowExpressionPreviewResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowExpressionPreviewResponse> CreateWorkflowExpressionPreviewWithHttpInfo(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest)
+        {
+            // verify the required parameter 'createWorkflowExpressionPreviewRequest' is set
+            if (createWorkflowExpressionPreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowExpressionPreviewRequest' when calling WorkflowsApi->CreateWorkflowExpressionPreview");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowExpressionPreviewRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowExpressionPreviewResponse>("/v1/workflows/expressions/preview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowExpressionPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowExpressionPreviewResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowExpressionPreviewResponse> CreateWorkflowExpressionPreviewAsync(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowExpressionPreviewResponse> localVarResponse = await CreateWorkflowExpressionPreviewWithHttpInfoAsync(createWorkflowExpressionPreviewRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Resolve one param value (\&quot;{{ $json.priceCents * 0.9 }}\&quot;) with the engine&#39;s evaluator against an item, the trigger item, earlier nodes&#39; items or a stored run. A bad expression is an answer (ok&#x3D;false with the message), not an HTTP error. Changes nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowExpressionPreviewRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowExpressionPreviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowExpressionPreviewResponse>> CreateWorkflowExpressionPreviewWithHttpInfoAsync(CreateWorkflowExpressionPreviewRequest createWorkflowExpressionPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowExpressionPreviewRequest' is set
+            if (createWorkflowExpressionPreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowExpressionPreviewRequest' when calling WorkflowsApi->CreateWorkflowExpressionPreview");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowExpressionPreviewRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowExpressionPreviewResponse>("/v1/workflows/expressions/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowExpressionPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <returns>CreateWorkflowImportResponse</returns>
+        public CreateWorkflowImportResponse CreateWorkflowImport(Dictionary<string, Object> requestBody)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = CreateWorkflowImportWithHttpInfo(requestBody);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <returns>ApiResponse of CreateWorkflowImportResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(Dictionary<string, Object> requestBody)
+        {
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowsApi->CreateWorkflowImport");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = requestBody;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowImportResponse>("/v1/workflows/import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowImportResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = await CreateWorkflowImportWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowsApi->CreateWorkflowImport");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = requestBody;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowImportResponse>("/v1/workflows/import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <returns>CreateWorkflowRunResponse</returns>
+        public CreateWorkflowRunResponse CreateWorkflowRun(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunResponse> localVarResponse = CreateWorkflowRunWithHttpInfo(id, createWorkflowRunRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowRunResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowRunResponse> CreateWorkflowRunWithHttpInfo(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest)
+        {
+            // verify the required parameter 'createWorkflowRunRequest' is set
+            if (createWorkflowRunRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRunRequest' when calling WorkflowsApi->CreateWorkflowRun");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowRunRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowRunResponse>("/v1/workflows/{id}/run", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowRunResponse> CreateWorkflowRunAsync(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunResponse> localVarResponse = await CreateWorkflowRunWithHttpInfoAsync(id, createWorkflowRunRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowRunRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowRunResponse>> CreateWorkflowRunWithHttpInfoAsync(Guid id, CreateWorkflowRunRequest createWorkflowRunRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowRunRequest' is set
+            if (createWorkflowRunRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRunRequest' when calling WorkflowsApi->CreateWorkflowRun");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowRunRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowRunResponse>("/v1/workflows/{id}/run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>CreateWorkflowRunCancelResponse</returns>
+        public CreateWorkflowRunCancelResponse CreateWorkflowRunCancel(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunCancelResponse> localVarResponse = CreateWorkflowRunCancelWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of CreateWorkflowRunCancelResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowRunCancelResponse> CreateWorkflowRunCancelWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowRunCancelResponse>("/v1/workflow-runs/{runId}/cancel", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunCancel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunCancelResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowRunCancelResponse> CreateWorkflowRunCancelAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunCancelResponse> localVarResponse = await CreateWorkflowRunCancelWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel a queued, running or waiting run. 409 when it already finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunCancelResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowRunCancelResponse>> CreateWorkflowRunCancelWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowRunCancelResponse>("/v1/workflow-runs/{runId}/cancel", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunCancel", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <returns>CreateWorkflowRunOnResponse</returns>
+        public CreateWorkflowRunOnResponse CreateWorkflowRunOn(CreateWorkflowRunOnRequest createWorkflowRunOnRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunOnResponse> localVarResponse = CreateWorkflowRunOnWithHttpInfo(createWorkflowRunOnRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowRunOnResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowRunOnResponse> CreateWorkflowRunOnWithHttpInfo(CreateWorkflowRunOnRequest createWorkflowRunOnRequest)
+        {
+            // verify the required parameter 'createWorkflowRunOnRequest' is set
+            if (createWorkflowRunOnRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRunOnRequest' when calling WorkflowsApi->CreateWorkflowRunOn");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowRunOnRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowRunOnResponse>("/v1/workflows/run-on", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunOn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunOnResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowRunOnResponse> CreateWorkflowRunOnAsync(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunOnResponse> localVarResponse = await CreateWorkflowRunOnWithHttpInfoAsync(createWorkflowRunOnRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// \&quot;Run workflow on…\&quot;: the same as POST /v1/workflows/{id}/run with the workflow named in the body. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowRunOnRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunOnResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowRunOnResponse>> CreateWorkflowRunOnWithHttpInfoAsync(CreateWorkflowRunOnRequest createWorkflowRunOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowRunOnRequest' is set
+            if (createWorkflowRunOnRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowRunOnRequest' when calling WorkflowsApi->CreateWorkflowRunOn");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowRunOnRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowRunOnResponse>("/v1/workflows/run-on", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunOn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>CreateWorkflowRunRetryResponse</returns>
+        public CreateWorkflowRunRetryResponse CreateWorkflowRunRetry(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunRetryResponse> localVarResponse = CreateWorkflowRunRetryWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of CreateWorkflowRunRetryResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowRunRetryResponse> CreateWorkflowRunRetryWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowRunRetryResponse>("/v1/workflow-runs/{runId}/retry", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunRetry", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowRunRetryResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowRunRetryResponse> CreateWorkflowRunRetryAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowRunRetryResponse> localVarResponse = await CreateWorkflowRunRetryWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run&#39;s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowRunRetryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowRunRetryResponse>> CreateWorkflowRunRetryWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowRunRetryResponse>("/v1/workflow-runs/{runId}/retry", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowRunRetry", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <returns>CreateWorkflowSaleEndResponse</returns>
+        public CreateWorkflowSaleEndResponse CreateWorkflowSaleEnd(Guid saleEventId)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowSaleEndResponse> localVarResponse = CreateWorkflowSaleEndWithHttpInfo(saleEventId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <returns>ApiResponse of CreateWorkflowSaleEndResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowSaleEndResponse> CreateWorkflowSaleEndWithHttpInfo(Guid saleEventId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("saleEventId", net.crossly.Client.ClientUtils.ParameterToString(saleEventId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowSaleEndResponse>("/v1/workflows/sales/{saleEventId}/end", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowSaleEnd", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowSaleEndResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowSaleEndResponse> CreateWorkflowSaleEndAsync(Guid saleEventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowSaleEndResponse> localVarResponse = await CreateWorkflowSaleEndWithHttpInfoAsync(saleEventId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted &#x3D; how many listings were restored). 404 for a sale that is not yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="saleEventId">Sale id from GET /v1/workflows/sales/active.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowSaleEndResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowSaleEndResponse>> CreateWorkflowSaleEndWithHttpInfoAsync(Guid saleEventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("saleEventId", net.crossly.Client.ClientUtils.ParameterToString(saleEventId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowSaleEndResponse>("/v1/workflows/sales/{saleEventId}/end", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowSaleEnd", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <returns>CreateWorkflowResponse</returns>
+        public CreateWorkflowResponse CreateWorkflowTemplateUse(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowResponse> localVarResponse = CreateWorkflowTemplateUseWithHttpInfo(id, createWorkflowTemplateUseRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowResponse> CreateWorkflowTemplateUseWithHttpInfo(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling WorkflowsApi->CreateWorkflowTemplateUse");
+            }
+
+            // verify the required parameter 'createWorkflowTemplateUseRequest' is set
+            if (createWorkflowTemplateUseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowTemplateUseRequest' when calling WorkflowsApi->CreateWorkflowTemplateUse");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowTemplateUseRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowResponse>("/v1/workflows/templates/{id}/use", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowTemplateUse", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowResponse> CreateWorkflowTemplateUseAsync(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowResponse> localVarResponse = await CreateWorkflowTemplateUseWithHttpInfoAsync(id, createWorkflowTemplateUseRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a workflow from a template, filling its setup fields; activate&#x3D;true activates it when it validates. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Template id from GET /v1/workflows/templates.</param>
+        /// <param name="createWorkflowTemplateUseRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowResponse>> CreateWorkflowTemplateUseWithHttpInfoAsync(string id, CreateWorkflowTemplateUseRequest createWorkflowTemplateUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling WorkflowsApi->CreateWorkflowTemplateUse");
+            }
+
+            // verify the required parameter 'createWorkflowTemplateUseRequest' is set
+            if (createWorkflowTemplateUseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowTemplateUseRequest' when calling WorkflowsApi->CreateWorkflowTemplateUse");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowTemplateUseRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowResponse>("/v1/workflows/templates/{id}/use", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowTemplateUse", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <returns>CreateWorkflowTestResponse</returns>
+        public CreateWorkflowTestResponse CreateWorkflowTest(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowTestResponse> localVarResponse = CreateWorkflowTestWithHttpInfo(id, createWorkflowTestRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowTestResponse> CreateWorkflowTestWithHttpInfo(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest)
+        {
+            // verify the required parameter 'createWorkflowTestRequest' is set
+            if (createWorkflowTestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowTestRequest' when calling WorkflowsApi->CreateWorkflowTest");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowTestResponse>("/v1/workflows/{id}/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowTestResponse> CreateWorkflowTestAsync(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowTestResponse> localVarResponse = await CreateWorkflowTestWithHttpInfoAsync(id, createWorkflowTestRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test a workflow (the saved graph, or a draft graph you pass). mode&#x3D;test runs it for real, using pinned data where a node has it; mode&#x3D;dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="createWorkflowTestRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowTestResponse>> CreateWorkflowTestWithHttpInfoAsync(Guid id, CreateWorkflowTestRequest createWorkflowTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowTestRequest' is set
+            if (createWorkflowTestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowTestRequest' when calling WorkflowsApi->CreateWorkflowTest");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowTestResponse>("/v1/workflows/{id}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <returns>CreateWorkflowValidateResponse</returns>
+        public CreateWorkflowValidateResponse CreateWorkflowValidate(CreateWorkflowValidateRequest createWorkflowValidateRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowValidateResponse> localVarResponse = CreateWorkflowValidateWithHttpInfo(createWorkflowValidateRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowValidateResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowValidateResponse> CreateWorkflowValidateWithHttpInfo(CreateWorkflowValidateRequest createWorkflowValidateRequest)
+        {
+            // verify the required parameter 'createWorkflowValidateRequest' is set
+            if (createWorkflowValidateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowValidateRequest' when calling WorkflowsApi->CreateWorkflowValidate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowValidateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowValidateResponse>("/v1/workflows/validate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowValidate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowValidateResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowValidateResponse> CreateWorkflowValidateAsync(CreateWorkflowValidateRequest createWorkflowValidateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowValidateResponse> localVarResponse = await CreateWorkflowValidateWithHttpInfoAsync(createWorkflowValidateRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking&#x3D;true means activation would be refused. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowValidateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowValidateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowValidateResponse>> CreateWorkflowValidateWithHttpInfoAsync(CreateWorkflowValidateRequest createWorkflowValidateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createWorkflowValidateRequest' is set
+            if (createWorkflowValidateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowValidateRequest' when calling WorkflowsApi->CreateWorkflowValidate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createWorkflowValidateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowValidateResponse>("/v1/workflows/validate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowValidate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <returns>WorkflowResponse</returns>
+        public WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v)
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = CreateWorkflowVersionRestoreWithHttpInfo(id, v);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("v", net.crossly.Client.ClientUtils.ParameterToString(v)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<WorkflowResponse>("/v1/workflows/{id}/versions/{v}/restore", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowVersionRestore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await CreateWorkflowVersionRestoreWithHttpInfoAsync(id, v, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="v">The version number to restore.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("v", net.crossly.Client.ClientUtils.ParameterToString(v)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<WorkflowResponse>("/v1/workflows/{id}/versions/{v}/restore", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowVersionRestore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <returns>CreateWorkflowWebhookRotateResponse</returns>
+        public CreateWorkflowWebhookRotateResponse CreateWorkflowWebhookRotate(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowWebhookRotateResponse> localVarResponse = CreateWorkflowWebhookRotateWithHttpInfo(id, nodeId, createWorkflowWebhookRotateRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <returns>ApiResponse of CreateWorkflowWebhookRotateResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorkflowWebhookRotateResponse> CreateWorkflowWebhookRotateWithHttpInfo(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest)
+        {
+            // verify the required parameter 'nodeId' is set
+            if (nodeId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'nodeId' when calling WorkflowsApi->CreateWorkflowWebhookRotate");
+            }
+
+            // verify the required parameter 'createWorkflowWebhookRotateRequest' is set
+            if (createWorkflowWebhookRotateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowWebhookRotateRequest' when calling WorkflowsApi->CreateWorkflowWebhookRotate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("nodeId", net.crossly.Client.ClientUtils.ParameterToString(nodeId)); // path parameter
+            localVarRequestOptions.Data = createWorkflowWebhookRotateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWorkflowWebhookRotateResponse>("/v1/workflows/{id}/webhooks/{nodeId}/rotate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowWebhookRotate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWorkflowWebhookRotateResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorkflowWebhookRotateResponse> CreateWorkflowWebhookRotateAsync(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWorkflowWebhookRotateResponse> localVarResponse = await CreateWorkflowWebhookRotateWithHttpInfoAsync(id, nodeId, createWorkflowWebhookRotateRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="nodeId">The on.webhook trigger node id.</param>
+        /// <param name="createWorkflowWebhookRotateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWorkflowWebhookRotateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowWebhookRotateResponse>> CreateWorkflowWebhookRotateWithHttpInfoAsync(Guid id, string nodeId, CreateWorkflowWebhookRotateRequest createWorkflowWebhookRotateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'nodeId' is set
+            if (nodeId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'nodeId' when calling WorkflowsApi->CreateWorkflowWebhookRotate");
+            }
+
+            // verify the required parameter 'createWorkflowWebhookRotateRequest' is set
+            if (createWorkflowWebhookRotateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowWebhookRotateRequest' when calling WorkflowsApi->CreateWorkflowWebhookRotate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("nodeId", net.crossly.Client.ClientUtils.ParameterToString(nodeId)); // path parameter
+            localVarRequestOptions.Data = createWorkflowWebhookRotateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorkflowWebhookRotateResponse>("/v1/workflows/{id}/webhooks/{nodeId}/rotate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWorkflowWebhookRotate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>DeleteWorkflowResponse</returns>
+        public DeleteWorkflowResponse DeleteWorkflow(Guid id)
+        {
+            net.crossly.Client.ApiResponse<DeleteWorkflowResponse> localVarResponse = DeleteWorkflowWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of DeleteWorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteWorkflowResponse> DeleteWorkflowWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeleteWorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteWorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteWorkflowResponse> DeleteWorkflowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DeleteWorkflowResponse> localVarResponse = await DeleteWorkflowWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteWorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteWorkflowResponse>> DeleteWorkflowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteWorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a workflow chain (cascades steps + runs). Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         public OkResponse DeleteWorkflowChain(Guid id)
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = DeleteWorkflowChainWithHttpInfo(id);
@@ -843,11 +4930,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a workflow chain (cascades steps + runs). 
+        /// Delete a workflow chain (cascades steps + runs). Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<OkResponse> DeleteWorkflowChainWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -896,12 +4984,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a workflow chain (cascades steps + runs). 
+        /// Delete a workflow chain (cascades steps + runs). Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<OkResponse> DeleteWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await DeleteWorkflowChainWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -909,12 +4998,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a workflow chain (cascades steps + runs). 
+        /// Delete a workflow chain (cascades steps + runs). Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> DeleteWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -965,11 +5055,274 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one workflow chain with its steps. 
+        /// Get one workflow with its full graph and current version. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>GetWorkflowResponse</returns>
+        public GetWorkflowResponse GetWorkflow(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowResponse> localVarResponse = GetWorkflowWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get one workflow with its full graph and current version. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of GetWorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorkflowResponse> GetWorkflowWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get one workflow with its full graph and current version. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowResponse> GetWorkflowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowResponse> localVarResponse = await GetWorkflowWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get one workflow with its full graph and current version. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowResponse>> GetWorkflowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWorkflowCatalogResponse</returns>
+        public GetWorkflowCatalogResponse GetWorkflowCatalog()
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowCatalogResponse> localVarResponse = GetWorkflowCatalogWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWorkflowCatalogResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorkflowCatalogResponse> GetWorkflowCatalogWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowCatalogResponse>("/v1/workflows/catalog", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowCatalog", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowCatalogResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowCatalogResponse> GetWorkflowCatalogAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowCatalogResponse> localVarResponse = await GetWorkflowCatalogWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowCatalogResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowCatalogResponse>> GetWorkflowCatalogWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowCatalogResponse>("/v1/workflows/catalog", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowCatalog", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get one workflow chain with its steps. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetWorkflowChainResponse</returns>
+        [Obsolete]
         public GetWorkflowChainResponse GetWorkflowChain(Guid id)
         {
             net.crossly.Client.ApiResponse<GetWorkflowChainResponse> localVarResponse = GetWorkflowChainWithHttpInfo(id);
@@ -977,11 +5330,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one workflow chain with its steps. 
+        /// Get one workflow chain with its steps. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetWorkflowChainResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetWorkflowChainResponse> GetWorkflowChainWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1030,12 +5384,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one workflow chain with its steps. 
+        /// Get one workflow chain with its steps. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorkflowChainResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetWorkflowChainResponse> GetWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetWorkflowChainResponse> localVarResponse = await GetWorkflowChainWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -1043,12 +5398,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one workflow chain with its steps. 
+        /// Get one workflow chain with its steps. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorkflowChainResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowChainResponse>> GetWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -1099,10 +5455,619 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List workflow chains with their step graph. 
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <returns>GetWorkflowExportResponse</returns>
+        public GetWorkflowExportResponse GetWorkflowExport(Guid id, string pinnedData = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowExportResponse> localVarResponse = GetWorkflowExportWithHttpInfo(id, pinnedData);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <returns>ApiResponse of GetWorkflowExportResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorkflowExportResponse> GetWorkflowExportWithHttpInfo(Guid id, string pinnedData = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (pinnedData != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pinnedData", pinnedData));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowExportResponse>("/v1/workflows/{id}/export", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowExport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowExportResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowExportResponse> GetWorkflowExportAsync(Guid id, string pinnedData = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowExportResponse> localVarResponse = await GetWorkflowExportWithHttpInfoAsync(id, pinnedData, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData&#x3D;true. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="pinnedData">Keep the nodes&#39; pinned test data. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowExportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowExportResponse>> GetWorkflowExportWithHttpInfoAsync(Guid id, string pinnedData = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (pinnedData != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pinnedData", pinnedData));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowExportResponse>("/v1/workflows/{id}/export", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowExport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>GetWorkflowRunResponse</returns>
+        public GetWorkflowRunResponse GetWorkflowRun(Guid runId)
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowRunResponse> localVarResponse = GetWorkflowRunWithHttpInfo(runId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <returns>ApiResponse of GetWorkflowRunResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorkflowRunResponse> GetWorkflowRunWithHttpInfo(Guid runId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowRunResponse>("/v1/workflow-runs/{runId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowRunResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowRunResponse> GetWorkflowRunAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowRunResponse> localVarResponse = await GetWorkflowRunWithHttpInfoAsync(runId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowRunResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowRunResponse>> GetWorkflowRunWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowRunResponse>("/v1/workflow-runs/{runId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <returns>GetWorkflowRunNodeResponse</returns>
+        public GetWorkflowRunNodeResponse GetWorkflowRunNode(Guid runId, string nodeId)
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowRunNodeResponse> localVarResponse = GetWorkflowRunNodeWithHttpInfo(runId, nodeId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <returns>ApiResponse of GetWorkflowRunNodeResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorkflowRunNodeResponse> GetWorkflowRunNodeWithHttpInfo(Guid runId, string nodeId)
+        {
+            // verify the required parameter 'nodeId' is set
+            if (nodeId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'nodeId' when calling WorkflowsApi->GetWorkflowRunNode");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("nodeId", net.crossly.Client.ClientUtils.ParameterToString(nodeId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowRunNodeResponse>("/v1/workflow-runs/{runId}/nodes/{nodeId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowRunNode", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowRunNodeResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowRunNodeResponse> GetWorkflowRunNodeAsync(Guid runId, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorkflowRunNodeResponse> localVarResponse = await GetWorkflowRunNodeWithHttpInfoAsync(runId, nodeId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated&#x3D;true when cut). Data older than the retention window, or not kept by settings.saveSuccessData&#x3D;false, is pruned: that execution has input/output null and pruned&#x3D;true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">Workflow run id.</param>
+        /// <param name="nodeId">Node id within the run&#39;s graph.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowRunNodeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorkflowRunNodeResponse>> GetWorkflowRunNodeWithHttpInfoAsync(Guid runId, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'nodeId' is set
+            if (nodeId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'nodeId' when calling WorkflowsApi->GetWorkflowRunNode");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", net.crossly.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("nodeId", net.crossly.Client.ClientUtils.ParameterToString(nodeId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowRunNodeResponse>("/v1/workflow-runs/{runId}/nodes/{nodeId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowRunNode", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowApprovalsResponse</returns>
+        public ListWorkflowApprovalsResponse ListWorkflowApprovals(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowApprovalsResponse> localVarResponse = ListWorkflowApprovalsWithHttpInfo(status, workflowId, page, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowApprovalsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowApprovalsResponse> ListWorkflowApprovalsWithHttpInfo(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (workflowId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "workflowId", workflowId));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowApprovalsResponse>("/v1/workflow-approvals", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowApprovals", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowApprovalsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowApprovalsResponse> ListWorkflowApprovalsAsync(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowApprovalsResponse> localVarResponse = await ListWorkflowApprovalsWithHttpInfoAsync(status, workflowId, page, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Comma-separated: pending, approved, rejected, expired. Default pending. (optional)</param>
+        /// <param name="workflowId">Only approvals of this workflow. (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowApprovalsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowApprovalsResponse>> ListWorkflowApprovalsWithHttpInfoAsync(string status = default(string), Guid? workflowId = default(Guid?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (workflowId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "workflowId", workflowId));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowApprovalsResponse>("/v1/workflow-approvals", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowApprovals", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List workflow chains with their step graph. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWorkflowChainsResponse</returns>
+        [Obsolete]
         public ListWorkflowChainsResponse ListWorkflowChains()
         {
             net.crossly.Client.ApiResponse<ListWorkflowChainsResponse> localVarResponse = ListWorkflowChainsWithHttpInfo();
@@ -1110,10 +6075,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List workflow chains with their step graph. 
+        /// List workflow chains with their step graph. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWorkflowChainsResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListWorkflowChainsResponse> ListWorkflowChainsWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1161,11 +6127,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List workflow chains with their step graph. 
+        /// List workflow chains with their step graph. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWorkflowChainsResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListWorkflowChainsResponse> ListWorkflowChainsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListWorkflowChainsResponse> localVarResponse = await ListWorkflowChainsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -1173,11 +6140,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List workflow chains with their step graph. 
+        /// List workflow chains with their step graph. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWorkflowChainsResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowChainsResponse>> ListWorkflowChainsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -1227,11 +6195,1186 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Replace a workflow chain wholesale. 
+        /// Run history of one workflow, newest first, with per-node status and item counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowRunsResponse</returns>
+        public ListWorkflowRunsResponse ListWorkflowRuns(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> localVarResponse = ListWorkflowRunsWithHttpInfo(id, status, mode, since, until, page, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowRunsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> ListWorkflowRunsWithHttpInfo(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (mode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "mode", mode));
+            }
+            if (since != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "since", since));
+            }
+            if (until != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "until", until));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowRunsResponse>("/v1/workflows/{id}/runs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowRuns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowRunsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowRunsResponse> ListWorkflowRunsAsync(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> localVarResponse = await ListWorkflowRunsWithHttpInfoAsync(id, status, mode, since, until, page, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Run history of one workflow, newest first, with per-node status and item counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowRunsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowRunsResponse>> ListWorkflowRunsWithHttpInfoAsync(Guid id, string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (mode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "mode", mode));
+            }
+            if (since != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "since", since));
+            }
+            if (until != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "until", until));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowRunsResponse>("/v1/workflows/{id}/runs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowRuns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ListWorkflowRunsResponse</returns>
+        public ListWorkflowRunsResponse ListWorkflowRuns2(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> localVarResponse = ListWorkflowRuns2WithHttpInfo(workflowId, status, mode, since, until, page, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWorkflowRunsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> ListWorkflowRuns2WithHttpInfo(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (workflowId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "workflowId", workflowId));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (mode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "mode", mode));
+            }
+            if (since != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "since", since));
+            }
+            if (until != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "until", until));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowRunsResponse>("/v1/workflow-runs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowRuns2", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowRunsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowRunsResponse> ListWorkflowRuns2Async(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowRunsResponse> localVarResponse = await ListWorkflowRuns2WithHttpInfoAsync(workflowId, status, mode, since, until, page, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Runs of every workflow, newest first. Filter by workflow, status, mode and time. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="workflowId">Only runs of this workflow. (optional)</param>
+        /// <param name="status">Comma-separated run statuses: queued, running, waiting, succeeded, failed, cancelled. (optional)</param>
+        /// <param name="mode">live (triggers), test (editor test run) or dry (safe test: no writes). (optional)</param>
+        /// <param name="since">Runs queued at or after this time (ISO 8601). (optional)</param>
+        /// <param name="until">Runs queued at or before this time (ISO 8601). (optional)</param>
+        /// <param name="page">1-indexed page. (optional, default to 1)</param>
+        /// <param name="limit">Rows per page (1-100). (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowRunsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowRunsResponse>> ListWorkflowRuns2WithHttpInfoAsync(Guid? workflowId = default(Guid?), string status = default(string), string mode = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (workflowId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "workflowId", workflowId));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (mode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "mode", mode));
+            }
+            if (since != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "since", since));
+            }
+            if (until != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "until", until));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowRunsResponse>("/v1/workflow-runs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowRuns2", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWorkflowSaleActiveResponse</returns>
+        public ListWorkflowSaleActiveResponse ListWorkflowSaleActive()
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowSaleActiveResponse> localVarResponse = ListWorkflowSaleActiveWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWorkflowSaleActiveResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowSaleActiveResponse> ListWorkflowSaleActiveWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowSaleActiveResponse>("/v1/workflows/sales/active", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowSaleActive", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowSaleActiveResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowSaleActiveResponse> ListWorkflowSaleActiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowSaleActiveResponse> localVarResponse = await ListWorkflowSaleActiveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowSaleActiveResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowSaleActiveResponse>> ListWorkflowSaleActiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowSaleActiveResponse>("/v1/workflows/sales/active", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowSaleActive", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <returns>ListWorkflowTemplatesResponse</returns>
+        public ListWorkflowTemplatesResponse ListWorkflowTemplates(string category = default(string), string q = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowTemplatesResponse> localVarResponse = ListWorkflowTemplatesWithHttpInfo(category, q);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <returns>ApiResponse of ListWorkflowTemplatesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowTemplatesResponse> ListWorkflowTemplatesWithHttpInfo(string category = default(string), string q = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowTemplatesResponse>("/v1/workflows/templates", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowTemplates", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowTemplatesResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowTemplatesResponse> ListWorkflowTemplatesAsync(string category = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowTemplatesResponse> localVarResponse = await ListWorkflowTemplatesWithHttpInfoAsync(category, q, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \&quot;use\&quot; call asks for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="category">Exact template category, e.g. \&quot;Sales &amp; markdowns\&quot;. (optional)</param>
+        /// <param name="q">Matches name, description, category or tags. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowTemplatesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowTemplatesResponse>> ListWorkflowTemplatesWithHttpInfoAsync(string category = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowTemplatesResponse>("/v1/workflows/templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowTemplates", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ListWorkflowVersionsResponse</returns>
+        public ListWorkflowVersionsResponse ListWorkflowVersions(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowVersionsResponse> localVarResponse = ListWorkflowVersionsWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <returns>ApiResponse of ListWorkflowVersionsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowVersionsResponse> ListWorkflowVersionsWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowVersionsResponse>("/v1/workflows/{id}/versions", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowVersions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowVersionsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowVersionsResponse> ListWorkflowVersionsAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowVersionsResponse> localVarResponse = await ListWorkflowVersionsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowVersionsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowVersionsResponse>> ListWorkflowVersionsWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowVersionsResponse>("/v1/workflows/{id}/versions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowVersions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <returns>ListWorkflowsResponse</returns>
+        public ListWorkflowsResponse ListWorkflows(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowsResponse> localVarResponse = ListWorkflowsWithHttpInfo(active, tag, trigger, q, legacyRef);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <returns>ApiResponse of ListWorkflowsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWorkflowsResponse> ListWorkflowsWithHttpInfo(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (active != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "active", active));
+            }
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
+            if (trigger != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "trigger", trigger));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (legacyRef != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "legacyRef", legacyRef));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowsResponse>("/v1/workflows", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflows", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowsResponse> ListWorkflowsAsync(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWorkflowsResponse> localVarResponse = await ListWorkflowsWithHttpInfoAsync(active, tag, trigger, q, legacyRef, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="active">Only active (true) or paused (false) workflows. (optional)</param>
+        /// <param name="tag">Only workflows carrying this tag. (optional)</param>
+        /// <param name="trigger">Only workflows started by this trigger node type, e.g. on.listing.sold. (optional)</param>
+        /// <param name="q">Name contains (case-insensitive). (optional)</param>
+        /// <param name="legacyRef">The workflow an old automation became: rule:&lt;id&gt;, chain:&lt;id&gt; or sale_event:&lt;id&gt;. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorkflowsResponse>> ListWorkflowsWithHttpInfoAsync(string active = default(string), string tag = default(string), string trigger = default(string), string q = default(string), string legacyRef = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (active != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "active", active));
+            }
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
+            if (trigger != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "trigger", trigger));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (legacyRef != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "legacyRef", legacyRef));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowsResponse>("/v1/workflows", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflows", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <returns>WorkflowResponse</returns>
+        public WorkflowResponse UpdateWorkflow(Guid id, UpdateWorkflowRequest updateWorkflowRequest)
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = UpdateWorkflowWithHttpInfo(id, updateWorkflowRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <returns>ApiResponse of WorkflowResponse</returns>
+        public net.crossly.Client.ApiResponse<WorkflowResponse> UpdateWorkflowWithHttpInfo(Guid id, UpdateWorkflowRequest updateWorkflowRequest)
+        {
+            // verify the required parameter 'updateWorkflowRequest' is set
+            if (updateWorkflowRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWorkflowRequest' when calling WorkflowsApi->UpdateWorkflow");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateWorkflowRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<WorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of WorkflowResponse</returns>
+        public async System.Threading.Tasks.Task<WorkflowResponse> UpdateWorkflowAsync(Guid id, UpdateWorkflowRequest updateWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await UpdateWorkflowWithHttpInfoAsync(id, updateWorkflowRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Workflow id.</param>
+        /// <param name="updateWorkflowRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> UpdateWorkflowWithHttpInfoAsync(Guid id, UpdateWorkflowRequest updateWorkflowRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateWorkflowRequest' is set
+            if (updateWorkflowRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWorkflowRequest' when calling WorkflowsApi->UpdateWorkflow");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateWorkflowRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<WorkflowResponse>("/v1/workflows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWorkflow", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace a workflow chain wholesale. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         public OkResponse UpdateWorkflowChain(Guid id)
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateWorkflowChainWithHttpInfo(id);
@@ -1239,11 +7382,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Replace a workflow chain wholesale. 
+        /// Replace a workflow chain wholesale. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1292,12 +7436,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Replace a workflow chain wholesale. 
+        /// Replace a workflow chain wholesale. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateWorkflowChainWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -1305,12 +7450,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Replace a workflow chain wholesale. 
+        /// Replace a workflow chain wholesale. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 

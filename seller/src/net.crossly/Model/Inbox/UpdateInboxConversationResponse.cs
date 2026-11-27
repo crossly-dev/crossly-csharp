@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="UpdateInboxConversationResponse" /> class.
         /// </summary>
         /// <param name="conversation">conversation (required).</param>
-        public UpdateInboxConversationResponse(ListInboxItem conversation = default(ListInboxItem))
+        public UpdateInboxConversationResponse(UpdateInboxConversationResponseConversation conversation = default(UpdateInboxConversationResponseConversation))
         {
             // to ensure "conversation" is required (not null)
             if (conversation == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Conversation
         /// </summary>
         [DataMember(Name = "conversation", IsRequired = true, EmitDefaultValue = false)]
-        public ListInboxItem Conversation { get; set; }
+        public UpdateInboxConversationResponseConversation Conversation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

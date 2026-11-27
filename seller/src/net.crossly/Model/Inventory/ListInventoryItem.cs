@@ -32,6 +32,38 @@ namespace net.crossly.Model
     public partial class ListInventoryItem : IEquatable<ListInventoryItem>, IValidatableObject
     {
         /// <summary>
+        /// Defines VaultSellFrom
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum VaultSellFromEnum
+        {
+            /// <summary>
+            /// Enum VaultFirst for value: vault_first
+            /// </summary>
+            [EnumMember(Value = "vault_first")]
+            VaultFirst = 1,
+
+            /// <summary>
+            /// Enum WarehouseFirst for value: warehouse_first
+            /// </summary>
+            [EnumMember(Value = "warehouse_first")]
+            WarehouseFirst = 2,
+
+            /// <summary>
+            /// Enum Cheapest for value: cheapest
+            /// </summary>
+            [EnumMember(Value = "cheapest")]
+            Cheapest = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets VaultSellFrom
+        /// </summary>
+        [DataMember(Name = "vaultSellFrom", EmitDefaultValue = true)]
+        public VaultSellFromEnum? VaultSellFrom { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ListInventoryItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -44,10 +76,14 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="notes">notes.</param>
+        /// <param name="source">source (required).</param>
         /// <param name="sku">sku.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
         /// <param name="quantityReserved">quantityReserved (required).</param>
+        /// <param name="wholesaleReserve">wholesaleReserve (required).</param>
         /// <param name="quantitySold">quantitySold (required).</param>
         /// <param name="originalPrice">originalPrice.</param>
         /// <param name="condition">condition.</param>
@@ -66,7 +102,6 @@ namespace net.crossly.Model
         /// <param name="provenanceReceiptId">provenanceReceiptId.</param>
         /// <param name="tags">tags (required).</param>
         /// <param name="labels">labels (required).</param>
-        /// <param name="notes">notes.</param>
         /// <param name="customLabel">customLabel.</param>
         /// <param name="warehouseLocation">warehouseLocation.</param>
         /// <param name="storageBin">storageBin.</param>
@@ -74,10 +109,12 @@ namespace net.crossly.Model
         /// <param name="marketSkuId">marketSkuId.</param>
         /// <param name="marketVariantId">marketVariantId.</param>
         /// <param name="gradeKey">gradeKey.</param>
+        /// <param name="vaultSellFrom">vaultSellFrom.</param>
         /// <param name="grading">grading.</param>
         /// <param name="firstListedAt">firstListedAt.</param>
         /// <param name="includeTaxInLanded">includeTaxInLanded (required).</param>
         /// <param name="costBasisCents">costBasisCents.</param>
+        /// <param name="supplier">supplier.</param>
         /// <param name="priceFloorCents">priceFloorCents.</param>
         /// <param name="floorIsNet">floorIsNet (required).</param>
         /// <param name="acquiredAt">acquiredAt.</param>
@@ -87,10 +124,9 @@ namespace net.crossly.Model
         /// <param name="dimensionLIn">dimensionLIn.</param>
         /// <param name="dimensionWIn">dimensionWIn.</param>
         /// <param name="dimensionHIn">dimensionHIn.</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="source">source (required).</param>
+        /// <param name="allowanceAppId">allowanceAppId.</param>
         /// <param name="category">category.</param>
-        public ListInventoryItem(string id = default(string), string brand = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), decimal quantityReserved = default(decimal), decimal quantitySold = default(decimal), string originalPrice = default(string), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), string defaultTitle = default(string), List<string> images = default(List<string>), string videoUrl = default(string), string provenanceReceiptId = default(string), List<string> tags = default(List<string>), List<string> labels = default(List<string>), string notes = default(string), string customLabel = default(string), string warehouseLocation = default(string), string storageBin = default(string), string storageNote = default(string), string marketSkuId = default(string), string marketVariantId = default(string), string gradeKey = default(string), ListGradingSubmissionsItemGrading grading = default(ListGradingSubmissionsItemGrading), DateTime? firstListedAt = default(DateTime?), bool includeTaxInLanded = default(bool), decimal? costBasisCents = default(decimal?), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? acquiredAt = default(DateTime?), string acquiredSource = default(string), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string status = default(string), string source = default(string), MainSub category = default(MainSub))
+        public ListInventoryItem(string id = default(string), string brand = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string status = default(string), string notes = default(string), string source = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), decimal quantityReserved = default(decimal), decimal wholesaleReserve = default(decimal), decimal quantitySold = default(decimal), string originalPrice = default(string), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), string defaultTitle = default(string), List<string> images = default(List<string>), string videoUrl = default(string), string provenanceReceiptId = default(string), List<string> tags = default(List<string>), List<string> labels = default(List<string>), string customLabel = default(string), string warehouseLocation = default(string), string storageBin = default(string), string storageNote = default(string), string marketSkuId = default(string), string marketVariantId = default(string), string gradeKey = default(string), VaultSellFromEnum? vaultSellFrom = default(VaultSellFromEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), DateTime? firstListedAt = default(DateTime?), bool includeTaxInLanded = default(bool), decimal? costBasisCents = default(decimal?), ListInventoryItemSupplier supplier = default(ListInventoryItemSupplier), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? acquiredAt = default(DateTime?), string acquiredSource = default(string), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string allowanceAppId = default(string), MainSub category = default(MainSub))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -104,9 +140,20 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListInventoryItem and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListInventoryItem and cannot be null");
+            }
+            this.Status = status;
+            // to ensure "source" is required (not null)
+            if (source == null) {
+                throw new ArgumentNullException("source is a required property for ListInventoryItem and cannot be null");
+            }
+            this.Source = source;
             this.Quantity = quantity;
             this.QuantityAvailable = quantityAvailable;
             this.QuantityReserved = quantityReserved;
+            this.WholesaleReserve = wholesaleReserve;
             this.QuantitySold = quantitySold;
             // to ensure "color" is required (not null)
             if (color == null) {
@@ -135,17 +182,8 @@ namespace net.crossly.Model
             this.Labels = labels;
             this.IncludeTaxInLanded = includeTaxInLanded;
             this.FloorIsNet = floorIsNet;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListInventoryItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "source" is required (not null)
-            if (source == null) {
-                throw new ArgumentNullException("source is a required property for ListInventoryItem and cannot be null");
-            }
-            this.Source = source;
             this.Brand = brand;
+            this.Notes = notes;
             this.Sku = sku;
             this.OriginalPrice = originalPrice;
             this.Condition = condition;
@@ -159,7 +197,6 @@ namespace net.crossly.Model
             this.SizeSystem = sizeSystem;
             this.VideoUrl = videoUrl;
             this.ProvenanceReceiptId = provenanceReceiptId;
-            this.Notes = notes;
             this.CustomLabel = customLabel;
             this.WarehouseLocation = warehouseLocation;
             this.StorageBin = storageBin;
@@ -167,9 +204,11 @@ namespace net.crossly.Model
             this.MarketSkuId = marketSkuId;
             this.MarketVariantId = marketVariantId;
             this.GradeKey = gradeKey;
+            this.VaultSellFrom = vaultSellFrom;
             this.Grading = grading;
             this.FirstListedAt = firstListedAt;
             this.CostBasisCents = costBasisCents;
+            this.Supplier = supplier;
             this.PriceFloorCents = priceFloorCents;
             this.AcquiredAt = acquiredAt;
             this.AcquiredSource = acquiredSource;
@@ -178,6 +217,7 @@ namespace net.crossly.Model
             this.DimensionLIn = dimensionLIn;
             this.DimensionWIn = dimensionWIn;
             this.DimensionHIn = dimensionHIn;
+            this.AllowanceAppId = allowanceAppId;
             this.Category = category;
         }
 
@@ -212,6 +252,24 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Notes
+        /// </summary>
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
+        public string Notes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Source
+        /// </summary>
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        public string Source { get; set; }
+
+        /// <summary>
         /// Gets or Sets Sku
         /// </summary>
         [DataMember(Name = "sku", EmitDefaultValue = true)]
@@ -234,6 +292,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "quantityReserved", IsRequired = true, EmitDefaultValue = false)]
         public decimal QuantityReserved { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WholesaleReserve
+        /// </summary>
+        [DataMember(Name = "wholesaleReserve", IsRequired = true, EmitDefaultValue = false)]
+        public decimal WholesaleReserve { get; set; }
 
         /// <summary>
         /// Gets or Sets QuantitySold
@@ -344,12 +408,6 @@ namespace net.crossly.Model
         public List<string> Labels { get; set; }
 
         /// <summary>
-        /// Gets or Sets Notes
-        /// </summary>
-        [DataMember(Name = "notes", EmitDefaultValue = true)]
-        public string Notes { get; set; }
-
-        /// <summary>
         /// Gets or Sets CustomLabel
         /// </summary>
         [DataMember(Name = "customLabel", EmitDefaultValue = true)]
@@ -395,7 +453,7 @@ namespace net.crossly.Model
         /// Gets or Sets Grading
         /// </summary>
         [DataMember(Name = "grading", EmitDefaultValue = true)]
-        public ListGradingSubmissionsItemGrading Grading { get; set; }
+        public CreateBulkBatchItemResponseGrading Grading { get; set; }
 
         /// <summary>
         /// Gets or Sets FirstListedAt
@@ -414,6 +472,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "costBasisCents", EmitDefaultValue = true)]
         public decimal? CostBasisCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Supplier
+        /// </summary>
+        [DataMember(Name = "supplier", EmitDefaultValue = true)]
+        public ListInventoryItemSupplier Supplier { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceFloorCents
@@ -470,16 +534,10 @@ namespace net.crossly.Model
         public string DimensionHIn { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets AllowanceAppId
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Source
-        /// </summary>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
-        public string Source { get; set; }
+        [DataMember(Name = "allowanceAppId", EmitDefaultValue = true)]
+        public string AllowanceAppId { get; set; }
 
         /// <summary>
         /// Gets or Sets Category
@@ -500,10 +558,14 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
             sb.Append("  QuantityReserved: ").Append(QuantityReserved).Append("\n");
+            sb.Append("  WholesaleReserve: ").Append(WholesaleReserve).Append("\n");
             sb.Append("  QuantitySold: ").Append(QuantitySold).Append("\n");
             sb.Append("  OriginalPrice: ").Append(OriginalPrice).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
@@ -522,7 +584,6 @@ namespace net.crossly.Model
             sb.Append("  ProvenanceReceiptId: ").Append(ProvenanceReceiptId).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  CustomLabel: ").Append(CustomLabel).Append("\n");
             sb.Append("  WarehouseLocation: ").Append(WarehouseLocation).Append("\n");
             sb.Append("  StorageBin: ").Append(StorageBin).Append("\n");
@@ -530,10 +591,12 @@ namespace net.crossly.Model
             sb.Append("  MarketSkuId: ").Append(MarketSkuId).Append("\n");
             sb.Append("  MarketVariantId: ").Append(MarketVariantId).Append("\n");
             sb.Append("  GradeKey: ").Append(GradeKey).Append("\n");
+            sb.Append("  VaultSellFrom: ").Append(VaultSellFrom).Append("\n");
             sb.Append("  Grading: ").Append(Grading).Append("\n");
             sb.Append("  FirstListedAt: ").Append(FirstListedAt).Append("\n");
             sb.Append("  IncludeTaxInLanded: ").Append(IncludeTaxInLanded).Append("\n");
             sb.Append("  CostBasisCents: ").Append(CostBasisCents).Append("\n");
+            sb.Append("  Supplier: ").Append(Supplier).Append("\n");
             sb.Append("  PriceFloorCents: ").Append(PriceFloorCents).Append("\n");
             sb.Append("  FloorIsNet: ").Append(FloorIsNet).Append("\n");
             sb.Append("  AcquiredAt: ").Append(AcquiredAt).Append("\n");
@@ -543,8 +606,7 @@ namespace net.crossly.Model
             sb.Append("  DimensionLIn: ").Append(DimensionLIn).Append("\n");
             sb.Append("  DimensionWIn: ").Append(DimensionWIn).Append("\n");
             sb.Append("  DimensionHIn: ").Append(DimensionHIn).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  AllowanceAppId: ").Append(AllowanceAppId).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -607,6 +669,21 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Notes == input.Notes ||
+                    (this.Notes != null &&
+                    this.Notes.Equals(input.Notes))
+                ) && 
+                (
+                    this.Source == input.Source ||
+                    (this.Source != null &&
+                    this.Source.Equals(input.Source))
+                ) && 
+                (
                     this.Sku == input.Sku ||
                     (this.Sku != null &&
                     this.Sku.Equals(input.Sku))
@@ -622,6 +699,10 @@ namespace net.crossly.Model
                 (
                     this.QuantityReserved == input.QuantityReserved ||
                     this.QuantityReserved.Equals(input.QuantityReserved)
+                ) && 
+                (
+                    this.WholesaleReserve == input.WholesaleReserve ||
+                    this.WholesaleReserve.Equals(input.WholesaleReserve)
                 ) && 
                 (
                     this.QuantitySold == input.QuantitySold ||
@@ -717,11 +798,6 @@ namespace net.crossly.Model
                     this.Labels.SequenceEqual(input.Labels)
                 ) && 
                 (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
-                ) && 
-                (
                     this.CustomLabel == input.CustomLabel ||
                     (this.CustomLabel != null &&
                     this.CustomLabel.Equals(input.CustomLabel))
@@ -757,6 +833,10 @@ namespace net.crossly.Model
                     this.GradeKey.Equals(input.GradeKey))
                 ) && 
                 (
+                    this.VaultSellFrom == input.VaultSellFrom ||
+                    this.VaultSellFrom.Equals(input.VaultSellFrom)
+                ) && 
+                (
                     this.Grading == input.Grading ||
                     (this.Grading != null &&
                     this.Grading.Equals(input.Grading))
@@ -774,6 +854,11 @@ namespace net.crossly.Model
                     this.CostBasisCents == input.CostBasisCents ||
                     (this.CostBasisCents != null &&
                     this.CostBasisCents.Equals(input.CostBasisCents))
+                ) && 
+                (
+                    this.Supplier == input.Supplier ||
+                    (this.Supplier != null &&
+                    this.Supplier.Equals(input.Supplier))
                 ) && 
                 (
                     this.PriceFloorCents == input.PriceFloorCents ||
@@ -820,14 +905,9 @@ namespace net.crossly.Model
                     this.DimensionHIn.Equals(input.DimensionHIn))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
+                    this.AllowanceAppId == input.AllowanceAppId ||
+                    (this.AllowanceAppId != null &&
+                    this.AllowanceAppId.Equals(input.AllowanceAppId))
                 ) && 
                 (
                     this.Category == input.Category ||
@@ -865,6 +945,18 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Notes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                }
+                if (this.Source != null)
+                {
+                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
                 if (this.Sku != null)
                 {
                     hashCode = (hashCode * 59) + this.Sku.GetHashCode();
@@ -872,6 +964,7 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 hashCode = (hashCode * 59) + this.QuantityAvailable.GetHashCode();
                 hashCode = (hashCode * 59) + this.QuantityReserved.GetHashCode();
+                hashCode = (hashCode * 59) + this.WholesaleReserve.GetHashCode();
                 hashCode = (hashCode * 59) + this.QuantitySold.GetHashCode();
                 if (this.OriginalPrice != null)
                 {
@@ -941,10 +1034,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Labels.GetHashCode();
                 }
-                if (this.Notes != null)
-                {
-                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
-                }
                 if (this.CustomLabel != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomLabel.GetHashCode();
@@ -973,6 +1062,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.GradeKey.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.VaultSellFrom.GetHashCode();
                 if (this.Grading != null)
                 {
                     hashCode = (hashCode * 59) + this.Grading.GetHashCode();
@@ -985,6 +1075,10 @@ namespace net.crossly.Model
                 if (this.CostBasisCents != null)
                 {
                     hashCode = (hashCode * 59) + this.CostBasisCents.GetHashCode();
+                }
+                if (this.Supplier != null)
+                {
+                    hashCode = (hashCode * 59) + this.Supplier.GetHashCode();
                 }
                 if (this.PriceFloorCents != null)
                 {
@@ -1019,13 +1113,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DimensionHIn.GetHashCode();
                 }
-                if (this.Status != null)
+                if (this.AllowanceAppId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Source != null)
-                {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AllowanceAppId.GetHashCode();
                 }
                 if (this.Category != null)
                 {

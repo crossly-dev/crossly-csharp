@@ -64,22 +64,22 @@ namespace net.crossly.Model
         public enum FundingEnum
         {
             /// <summary>
+            /// Enum Vault for value: vault
+            /// </summary>
+            [EnumMember(Value = "vault")]
+            Vault = 1,
+
+            /// <summary>
             /// Enum Card for value: card
             /// </summary>
             [EnumMember(Value = "card")]
-            Card = 1,
+            Card = 2,
 
             /// <summary>
             /// Enum Custodian for value: custodian
             /// </summary>
             [EnumMember(Value = "custodian")]
-            Custodian = 2,
-
-            /// <summary>
-            /// Enum Vault for value: vault
-            /// </summary>
-            [EnumMember(Value = "vault")]
-            Vault = 3
+            Custodian = 3
 
         }
 
@@ -108,22 +108,22 @@ namespace net.crossly.Model
             Expired = 2,
 
             /// <summary>
+            /// Enum Drafted for value: drafted
+            /// </summary>
+            [EnumMember(Value = "drafted")]
+            Drafted = 3,
+
+            /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 3,
+            Rejected = 4,
 
             /// <summary>
             /// Enum Placing for value: placing
             /// </summary>
             [EnumMember(Value = "placing")]
-            Placing = 4,
-
-            /// <summary>
-            /// Enum Drafted for value: drafted
-            /// </summary>
-            [EnumMember(Value = "drafted")]
-            Drafted = 5,
+            Placing = 5,
 
             /// <summary>
             /// Enum Placed for value: placed

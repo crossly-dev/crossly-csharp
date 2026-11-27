@@ -43,7 +43,8 @@ namespace net.crossly.Model
         /// <param name="previous">previous (required).</param>
         /// <param name="comparison">comparison (required).</param>
         /// <param name="window">window (required).</param>
-        public GetInventorySellThroughResponseData(GetAnalyticDashboardResponseSellThrough current = default(GetAnalyticDashboardResponseSellThrough), GetAnalyticDashboardResponseSellThrough previous = default(GetAnalyticDashboardResponseSellThrough), GetInventorySellThroughResponseDataComparison comparison = default(GetInventorySellThroughResponseDataComparison), GetInventorySellThroughResponseDataWindow window = default(GetInventorySellThroughResponseDataWindow))
+        /// <param name="cohort">cohort (required).</param>
+        public GetInventorySellThroughResponseData(GetInventorySellThroughResponseDataCurrent current = default(GetInventorySellThroughResponseDataCurrent), GetInventorySellThroughResponseDataCurrent previous = default(GetInventorySellThroughResponseDataCurrent), GetInventorySellThroughResponseDataComparison comparison = default(GetInventorySellThroughResponseDataComparison), StartEnd window = default(StartEnd), GetAnalyticDashboardResponseSellThroughCohort cohort = default(GetAnalyticDashboardResponseSellThroughCohort))
         {
             // to ensure "current" is required (not null)
             if (current == null) {
@@ -65,19 +66,24 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("window is a required property for GetInventorySellThroughResponseData and cannot be null");
             }
             this.Window = window;
+            // to ensure "cohort" is required (not null)
+            if (cohort == null) {
+                throw new ArgumentNullException("cohort is a required property for GetInventorySellThroughResponseData and cannot be null");
+            }
+            this.Cohort = cohort;
         }
 
         /// <summary>
         /// Gets or Sets Current
         /// </summary>
         [DataMember(Name = "current", IsRequired = true, EmitDefaultValue = false)]
-        public GetAnalyticDashboardResponseSellThrough Current { get; set; }
+        public GetInventorySellThroughResponseDataCurrent Current { get; set; }
 
         /// <summary>
         /// Gets or Sets Previous
         /// </summary>
         [DataMember(Name = "previous", IsRequired = true, EmitDefaultValue = false)]
-        public GetAnalyticDashboardResponseSellThrough Previous { get; set; }
+        public GetInventorySellThroughResponseDataCurrent Previous { get; set; }
 
         /// <summary>
         /// Gets or Sets Comparison
@@ -89,7 +95,13 @@ namespace net.crossly.Model
         /// Gets or Sets Window
         /// </summary>
         [DataMember(Name = "window", IsRequired = true, EmitDefaultValue = false)]
-        public GetInventorySellThroughResponseDataWindow Window { get; set; }
+        public StartEnd Window { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cohort
+        /// </summary>
+        [DataMember(Name = "cohort", IsRequired = true, EmitDefaultValue = false)]
+        public GetAnalyticDashboardResponseSellThroughCohort Cohort { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,6 +115,7 @@ namespace net.crossly.Model
             sb.Append("  Previous: ").Append(Previous).Append("\n");
             sb.Append("  Comparison: ").Append(Comparison).Append("\n");
             sb.Append("  Window: ").Append(Window).Append("\n");
+            sb.Append("  Cohort: ").Append(Cohort).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -157,6 +170,11 @@ namespace net.crossly.Model
                     this.Window == input.Window ||
                     (this.Window != null &&
                     this.Window.Equals(input.Window))
+                ) && 
+                (
+                    this.Cohort == input.Cohort ||
+                    (this.Cohort != null &&
+                    this.Cohort.Equals(input.Cohort))
                 );
         }
 
@@ -184,6 +202,10 @@ namespace net.crossly.Model
                 if (this.Window != null)
                 {
                     hashCode = (hashCode * 59) + this.Window.GetHashCode();
+                }
+                if (this.Cohort != null)
+                {
+                    hashCode = (hashCode * 59) + this.Cohort.GetHashCode();
                 }
                 return hashCode;
             }

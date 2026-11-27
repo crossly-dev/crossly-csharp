@@ -42,7 +42,8 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="scheduledFor">scheduledFor (required).</param>
         /// <param name="graceDays">graceDays (required).</param>
-        public CreateAccountRequestDeletionResponse(string id = default(string), DateTime scheduledFor = default(DateTime), decimal graceDays = default(decimal))
+        /// <param name="subscriptionsEnding">subscriptionsEnding (required).</param>
+        public CreateAccountRequestDeletionResponse(string id = default(string), DateTime scheduledFor = default(DateTime), decimal graceDays = default(decimal), decimal subscriptionsEnding = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -51,6 +52,7 @@ namespace net.crossly.Model
             this.Id = id;
             this.ScheduledFor = scheduledFor;
             this.GraceDays = graceDays;
+            this.SubscriptionsEnding = subscriptionsEnding;
         }
 
         /// <summary>
@@ -72,6 +74,12 @@ namespace net.crossly.Model
         public decimal GraceDays { get; set; }
 
         /// <summary>
+        /// Gets or Sets SubscriptionsEnding
+        /// </summary>
+        [DataMember(Name = "subscriptionsEnding", IsRequired = true, EmitDefaultValue = false)]
+        public decimal SubscriptionsEnding { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ScheduledFor: ").Append(ScheduledFor).Append("\n");
             sb.Append("  GraceDays: ").Append(GraceDays).Append("\n");
+            sb.Append("  SubscriptionsEnding: ").Append(SubscriptionsEnding).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,6 +139,10 @@ namespace net.crossly.Model
                 (
                     this.GraceDays == input.GraceDays ||
                     this.GraceDays.Equals(input.GraceDays)
+                ) && 
+                (
+                    this.SubscriptionsEnding == input.SubscriptionsEnding ||
+                    this.SubscriptionsEnding.Equals(input.SubscriptionsEnding)
                 );
         }
 
@@ -151,6 +164,7 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.ScheduledFor.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.GraceDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.SubscriptionsEnding.GetHashCode();
                 return hashCode;
             }
         }

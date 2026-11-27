@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="platforms">platforms (required).</param>
         /// <param name="remainingPlatforms">remainingPlatforms (required).</param>
         /// <param name="jobIds">jobIds (required).</param>
-        /// <param name="bulkJobId">bulkJobId (required).</param>
+        /// <param name="bulkJobId">bulkJobId.</param>
         public CreateRestockPromptRepublishResponse(string message = default(string), List<string> platforms = default(List<string>), List<string> remainingPlatforms = default(List<string>), List<string> jobIds = default(List<string>), string bulkJobId = default(string))
         {
             // to ensure "message" is required (not null)
@@ -66,10 +66,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("jobIds is a required property for CreateRestockPromptRepublishResponse and cannot be null");
             }
             this.JobIds = jobIds;
-            // to ensure "bulkJobId" is required (not null)
-            if (bulkJobId == null) {
-                throw new ArgumentNullException("bulkJobId is a required property for CreateRestockPromptRepublishResponse and cannot be null");
-            }
             this.BulkJobId = bulkJobId;
         }
 
@@ -100,7 +96,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets BulkJobId
         /// </summary>
-        [DataMember(Name = "bulkJobId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "bulkJobId", EmitDefaultValue = true)]
         public string BulkJobId { get; set; }
 
         /// <summary>

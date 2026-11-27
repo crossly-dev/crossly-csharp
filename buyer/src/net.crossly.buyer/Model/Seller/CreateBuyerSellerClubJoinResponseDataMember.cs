@@ -39,41 +39,23 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerSellerClubJoinResponseDataMember" /> class.
         /// </summary>
-        /// <param name="tier">tier.</param>
-        /// <param name="joinedAt">joinedAt (required).</param>
-        /// <param name="discountBps">discountBps (required).</param>
         /// <param name="spendCents">spendCents (required).</param>
+        /// <param name="tier">tier.</param>
+        /// <param name="discountBps">discountBps (required).</param>
         /// <param name="next">next.</param>
-        public CreateBuyerSellerClubJoinResponseDataMember(string tier = default(string), string joinedAt = default(string), decimal discountBps = default(decimal), decimal spendCents = default(decimal), CreateBuyerSellerClubJoinResponseDataMemberNext next = default(CreateBuyerSellerClubJoinResponseDataMemberNext))
+        /// <param name="joinedAt">joinedAt (required).</param>
+        public CreateBuyerSellerClubJoinResponseDataMember(decimal spendCents = default(decimal), string tier = default(string), decimal discountBps = default(decimal), CreateBuyerSellerClubJoinResponseDataMemberNext next = default(CreateBuyerSellerClubJoinResponseDataMemberNext), string joinedAt = default(string))
         {
+            this.SpendCents = spendCents;
+            this.DiscountBps = discountBps;
             // to ensure "joinedAt" is required (not null)
             if (joinedAt == null) {
                 throw new ArgumentNullException("joinedAt is a required property for CreateBuyerSellerClubJoinResponseDataMember and cannot be null");
             }
             this.JoinedAt = joinedAt;
-            this.DiscountBps = discountBps;
-            this.SpendCents = spendCents;
             this.Tier = tier;
             this.Next = next;
         }
-
-        /// <summary>
-        /// Gets or Sets Tier
-        /// </summary>
-        [DataMember(Name = "tier", EmitDefaultValue = true)]
-        public string Tier { get; set; }
-
-        /// <summary>
-        /// Gets or Sets JoinedAt
-        /// </summary>
-        [DataMember(Name = "joinedAt", IsRequired = true, EmitDefaultValue = false)]
-        public string JoinedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DiscountBps
-        /// </summary>
-        [DataMember(Name = "discountBps", IsRequired = true, EmitDefaultValue = false)]
-        public decimal DiscountBps { get; set; }
 
         /// <summary>
         /// Gets or Sets SpendCents
@@ -82,10 +64,28 @@ namespace net.crossly.buyer.Model
         public decimal SpendCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets Tier
+        /// </summary>
+        [DataMember(Name = "tier", EmitDefaultValue = true)]
+        public string Tier { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DiscountBps
+        /// </summary>
+        [DataMember(Name = "discountBps", IsRequired = true, EmitDefaultValue = false)]
+        public decimal DiscountBps { get; set; }
+
+        /// <summary>
         /// Gets or Sets Next
         /// </summary>
         [DataMember(Name = "next", EmitDefaultValue = true)]
         public CreateBuyerSellerClubJoinResponseDataMemberNext Next { get; set; }
+
+        /// <summary>
+        /// Gets or Sets JoinedAt
+        /// </summary>
+        [DataMember(Name = "joinedAt", IsRequired = true, EmitDefaultValue = false)]
+        public string JoinedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,11 +95,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerSellerClubJoinResponseDataMember {\n");
-            sb.Append("  Tier: ").Append(Tier).Append("\n");
-            sb.Append("  JoinedAt: ").Append(JoinedAt).Append("\n");
-            sb.Append("  DiscountBps: ").Append(DiscountBps).Append("\n");
             sb.Append("  SpendCents: ").Append(SpendCents).Append("\n");
+            sb.Append("  Tier: ").Append(Tier).Append("\n");
+            sb.Append("  DiscountBps: ").Append(DiscountBps).Append("\n");
             sb.Append("  Next: ").Append(Next).Append("\n");
+            sb.Append("  JoinedAt: ").Append(JoinedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -136,27 +136,27 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.SpendCents == input.SpendCents ||
+                    this.SpendCents.Equals(input.SpendCents)
+                ) && 
+                (
                     this.Tier == input.Tier ||
                     (this.Tier != null &&
                     this.Tier.Equals(input.Tier))
-                ) && 
-                (
-                    this.JoinedAt == input.JoinedAt ||
-                    (this.JoinedAt != null &&
-                    this.JoinedAt.Equals(input.JoinedAt))
                 ) && 
                 (
                     this.DiscountBps == input.DiscountBps ||
                     this.DiscountBps.Equals(input.DiscountBps)
                 ) && 
                 (
-                    this.SpendCents == input.SpendCents ||
-                    this.SpendCents.Equals(input.SpendCents)
-                ) && 
-                (
                     this.Next == input.Next ||
                     (this.Next != null &&
                     this.Next.Equals(input.Next))
+                ) && 
+                (
+                    this.JoinedAt == input.JoinedAt ||
+                    (this.JoinedAt != null &&
+                    this.JoinedAt.Equals(input.JoinedAt))
                 );
         }
 
@@ -169,19 +169,19 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.SpendCents.GetHashCode();
                 if (this.Tier != null)
                 {
                     hashCode = (hashCode * 59) + this.Tier.GetHashCode();
                 }
-                if (this.JoinedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.JoinedAt.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.DiscountBps.GetHashCode();
-                hashCode = (hashCode * 59) + this.SpendCents.GetHashCode();
                 if (this.Next != null)
                 {
                     hashCode = (hashCode * 59) + this.Next.GetHashCode();
+                }
+                if (this.JoinedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.JoinedAt.GetHashCode();
                 }
                 return hashCode;
             }

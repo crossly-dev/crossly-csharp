@@ -38,10 +38,10 @@ namespace net.crossly.buyer.Model
         public enum VerdictEnum
         {
             /// <summary>
-            /// Enum High for value: high
+            /// Enum Good for value: good
             /// </summary>
-            [EnumMember(Value = "high")]
-            High = 1,
+            [EnumMember(Value = "good")]
+            Good = 1,
 
             /// <summary>
             /// Enum Fair for value: fair
@@ -50,10 +50,10 @@ namespace net.crossly.buyer.Model
             Fair = 2,
 
             /// <summary>
-            /// Enum Good for value: good
+            /// Enum High for value: high
             /// </summary>
-            [EnumMember(Value = "good")]
-            Good = 3,
+            [EnumMember(Value = "high")]
+            High = 3,
 
             /// <summary>
             /// Enum Great for value: great
@@ -78,20 +78,20 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCatalogListingPriceResponseDataPriceCheck" /> class.
         /// </summary>
         /// <param name="verdict">verdict (required).</param>
-        /// <param name="sales">sales (required).</param>
         /// <param name="medianCents">medianCents (required).</param>
-        /// <param name="days">days (required).</param>
         /// <param name="lowCents">lowCents (required).</param>
         /// <param name="highCents">highCents (required).</param>
+        /// <param name="sales">sales (required).</param>
+        /// <param name="days">days (required).</param>
         /// <param name="lastSoldAt">lastSoldAt (required).</param>
-        public GetBuyerCatalogListingPriceResponseDataPriceCheck(VerdictEnum verdict = default(VerdictEnum), decimal sales = default(decimal), decimal medianCents = default(decimal), decimal days = default(decimal), decimal lowCents = default(decimal), decimal highCents = default(decimal), string lastSoldAt = default(string))
+        public GetBuyerCatalogListingPriceResponseDataPriceCheck(VerdictEnum verdict = default(VerdictEnum), decimal medianCents = default(decimal), decimal lowCents = default(decimal), decimal highCents = default(decimal), decimal sales = default(decimal), decimal days = default(decimal), string lastSoldAt = default(string))
         {
             this.Verdict = verdict;
-            this.Sales = sales;
             this.MedianCents = medianCents;
-            this.Days = days;
             this.LowCents = lowCents;
             this.HighCents = highCents;
+            this.Sales = sales;
+            this.Days = days;
             // to ensure "lastSoldAt" is required (not null)
             if (lastSoldAt == null) {
                 throw new ArgumentNullException("lastSoldAt is a required property for GetBuyerCatalogListingPriceResponseDataPriceCheck and cannot be null");
@@ -100,22 +100,10 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Sales
-        /// </summary>
-        [DataMember(Name = "sales", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Sales { get; set; }
-
-        /// <summary>
         /// Gets or Sets MedianCents
         /// </summary>
         [DataMember(Name = "medianCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal MedianCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Days
-        /// </summary>
-        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Days { get; set; }
 
         /// <summary>
         /// Gets or Sets LowCents
@@ -128,6 +116,18 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "highCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal HighCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Sales
+        /// </summary>
+        [DataMember(Name = "sales", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Sales { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Days
+        /// </summary>
+        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Days { get; set; }
 
         /// <summary>
         /// Gets or Sets LastSoldAt
@@ -144,11 +144,11 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCatalogListingPriceResponseDataPriceCheck {\n");
             sb.Append("  Verdict: ").Append(Verdict).Append("\n");
-            sb.Append("  Sales: ").Append(Sales).Append("\n");
             sb.Append("  MedianCents: ").Append(MedianCents).Append("\n");
-            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  LowCents: ").Append(LowCents).Append("\n");
             sb.Append("  HighCents: ").Append(HighCents).Append("\n");
+            sb.Append("  Sales: ").Append(Sales).Append("\n");
+            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  LastSoldAt: ").Append(LastSoldAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -190,16 +190,8 @@ namespace net.crossly.buyer.Model
                     this.Verdict.Equals(input.Verdict)
                 ) && 
                 (
-                    this.Sales == input.Sales ||
-                    this.Sales.Equals(input.Sales)
-                ) && 
-                (
                     this.MedianCents == input.MedianCents ||
                     this.MedianCents.Equals(input.MedianCents)
-                ) && 
-                (
-                    this.Days == input.Days ||
-                    this.Days.Equals(input.Days)
                 ) && 
                 (
                     this.LowCents == input.LowCents ||
@@ -208,6 +200,14 @@ namespace net.crossly.buyer.Model
                 (
                     this.HighCents == input.HighCents ||
                     this.HighCents.Equals(input.HighCents)
+                ) && 
+                (
+                    this.Sales == input.Sales ||
+                    this.Sales.Equals(input.Sales)
+                ) && 
+                (
+                    this.Days == input.Days ||
+                    this.Days.Equals(input.Days)
                 ) && 
                 (
                     this.LastSoldAt == input.LastSoldAt ||
@@ -226,11 +226,11 @@ namespace net.crossly.buyer.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Verdict.GetHashCode();
-                hashCode = (hashCode * 59) + this.Sales.GetHashCode();
                 hashCode = (hashCode * 59) + this.MedianCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 hashCode = (hashCode * 59) + this.LowCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.HighCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sales.GetHashCode();
+                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 if (this.LastSoldAt != null)
                 {
                     hashCode = (hashCode * 59) + this.LastSoldAt.GetHashCode();

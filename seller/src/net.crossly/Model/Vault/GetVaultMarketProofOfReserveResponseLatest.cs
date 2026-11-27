@@ -48,7 +48,8 @@ namespace net.crossly.Model
         /// <param name="loansOpen">loansOpen (required).</param>
         /// <param name="totalInsuredCents">totalInsuredCents (required).</param>
         /// <param name="memo">memo (required).</param>
-        public GetVaultMarketProofOfReserveResponseLatest(string day = default(string), string root = default(string), decimal leafCount = default(decimal), decimal methodVersion = default(decimal), string builtAt = default(string), GetVaultMarketProofOfReserveByDayResponseUnits units = default(GetVaultMarketProofOfReserveByDayResponseUnits), decimal loansOpen = default(decimal), decimal totalInsuredCents = default(decimal), string memo = default(string))
+        /// <param name="anchor">anchor (required).</param>
+        public GetVaultMarketProofOfReserveResponseLatest(string day = default(string), string root = default(string), decimal leafCount = default(decimal), decimal methodVersion = default(decimal), string builtAt = default(string), GetVaultMarketProofOfReserveByDayResponseUnits units = default(GetVaultMarketProofOfReserveByDayResponseUnits), decimal loansOpen = default(decimal), decimal totalInsuredCents = default(decimal), string memo = default(string), GetVaultMarketProofOfReserveResponseLatestAnchor anchor = default(GetVaultMarketProofOfReserveResponseLatestAnchor))
         {
             // to ensure "day" is required (not null)
             if (day == null) {
@@ -79,6 +80,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("memo is a required property for GetVaultMarketProofOfReserveResponseLatest and cannot be null");
             }
             this.Memo = memo;
+            // to ensure "anchor" is required (not null)
+            if (anchor == null) {
+                throw new ArgumentNullException("anchor is a required property for GetVaultMarketProofOfReserveResponseLatest and cannot be null");
+            }
+            this.Anchor = anchor;
         }
 
         /// <summary>
@@ -136,6 +142,12 @@ namespace net.crossly.Model
         public string Memo { get; set; }
 
         /// <summary>
+        /// Gets or Sets Anchor
+        /// </summary>
+        [DataMember(Name = "anchor", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketProofOfReserveResponseLatestAnchor Anchor { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -152,6 +164,7 @@ namespace net.crossly.Model
             sb.Append("  LoansOpen: ").Append(LoansOpen).Append("\n");
             sb.Append("  TotalInsuredCents: ").Append(TotalInsuredCents).Append("\n");
             sb.Append("  Memo: ").Append(Memo).Append("\n");
+            sb.Append("  Anchor: ").Append(Anchor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -227,6 +240,11 @@ namespace net.crossly.Model
                     this.Memo == input.Memo ||
                     (this.Memo != null &&
                     this.Memo.Equals(input.Memo))
+                ) && 
+                (
+                    this.Anchor == input.Anchor ||
+                    (this.Anchor != null &&
+                    this.Anchor.Equals(input.Anchor))
                 );
         }
 
@@ -262,6 +280,10 @@ namespace net.crossly.Model
                 if (this.Memo != null)
                 {
                     hashCode = (hashCode * 59) + this.Memo.GetHashCode();
+                }
+                if (this.Anchor != null)
+                {
+                    hashCode = (hashCode * 59) + this.Anchor.GetHashCode();
                 }
                 return hashCode;
             }

@@ -39,33 +39,33 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerGiftFinderOptionResponseDataBudgets" /> class.
         /// </summary>
-        /// <param name="label">label (required).</param>
         /// <param name="key">key (required).</param>
-        public GetBuyerGiftFinderOptionResponseDataBudgets(string label = default(string), string key = default(string))
+        /// <param name="label">label (required).</param>
+        public GetBuyerGiftFinderOptionResponseDataBudgets(string key = default(string), string label = default(string))
         {
-            // to ensure "label" is required (not null)
-            if (label == null) {
-                throw new ArgumentNullException("label is a required property for GetBuyerGiftFinderOptionResponseDataBudgets and cannot be null");
-            }
-            this.Label = label;
             // to ensure "key" is required (not null)
             if (key == null) {
                 throw new ArgumentNullException("key is a required property for GetBuyerGiftFinderOptionResponseDataBudgets and cannot be null");
             }
             this.Key = key;
+            // to ensure "label" is required (not null)
+            if (label == null) {
+                throw new ArgumentNullException("label is a required property for GetBuyerGiftFinderOptionResponseDataBudgets and cannot be null");
+            }
+            this.Label = label;
         }
-
-        /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
-        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Key
         /// </summary>
         [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
+        public string Label { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +75,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerGiftFinderOptionResponseDataBudgets {\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -113,14 +113,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Label == input.Label ||
-                    (this.Label != null &&
-                    this.Label.Equals(input.Label))
-                ) && 
-                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.Label == input.Label ||
+                    (this.Label != null &&
+                    this.Label.Equals(input.Label))
                 );
         }
 
@@ -133,13 +133,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Label != null)
-                {
-                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.Label != null)
+                {
+                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
                 }
                 return hashCode;
             }

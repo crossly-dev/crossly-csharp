@@ -40,27 +40,27 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCaseResponseDataReturnShipment" /> class.
         /// </summary>
         /// <param name="trackingCode">trackingCode (required).</param>
-        /// <param name="updatedAt">updatedAt.</param>
-        /// <param name="status">status.</param>
         /// <param name="carrier">carrier.</param>
-        /// <param name="deliveredAt">deliveredAt.</param>
-        /// <param name="labelUrl">labelUrl.</param>
         /// <param name="trackingUrl">trackingUrl.</param>
+        /// <param name="labelUrl">labelUrl.</param>
+        /// <param name="status">status.</param>
         /// <param name="statusDetail">statusDetail.</param>
-        public GetBuyerCaseResponseDataReturnShipment(string trackingCode = default(string), string updatedAt = default(string), string status = default(string), string carrier = default(string), string deliveredAt = default(string), string labelUrl = default(string), string trackingUrl = default(string), string statusDetail = default(string))
+        /// <param name="updatedAt">updatedAt.</param>
+        /// <param name="deliveredAt">deliveredAt.</param>
+        public GetBuyerCaseResponseDataReturnShipment(string trackingCode = default(string), string carrier = default(string), string trackingUrl = default(string), string labelUrl = default(string), string status = default(string), string statusDetail = default(string), string updatedAt = default(string), string deliveredAt = default(string))
         {
             // to ensure "trackingCode" is required (not null)
             if (trackingCode == null) {
                 throw new ArgumentNullException("trackingCode is a required property for GetBuyerCaseResponseDataReturnShipment and cannot be null");
             }
             this.TrackingCode = trackingCode;
-            this.UpdatedAt = updatedAt;
-            this.Status = status;
             this.Carrier = carrier;
-            this.DeliveredAt = deliveredAt;
-            this.LabelUrl = labelUrl;
             this.TrackingUrl = trackingUrl;
+            this.LabelUrl = labelUrl;
+            this.Status = status;
             this.StatusDetail = statusDetail;
+            this.UpdatedAt = updatedAt;
+            this.DeliveredAt = deliveredAt;
         }
 
         /// <summary>
@@ -70,34 +70,10 @@ namespace net.crossly.buyer.Model
         public string TrackingCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets UpdatedAt
-        /// </summary>
-        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// Gets or Sets Carrier
         /// </summary>
         [DataMember(Name = "carrier", EmitDefaultValue = true)]
         public string Carrier { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DeliveredAt
-        /// </summary>
-        [DataMember(Name = "deliveredAt", EmitDefaultValue = true)]
-        public string DeliveredAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LabelUrl
-        /// </summary>
-        [DataMember(Name = "labelUrl", EmitDefaultValue = true)]
-        public string LabelUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets TrackingUrl
@@ -106,10 +82,34 @@ namespace net.crossly.buyer.Model
         public string TrackingUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets LabelUrl
+        /// </summary>
+        [DataMember(Name = "labelUrl", EmitDefaultValue = true)]
+        public string LabelUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets StatusDetail
         /// </summary>
         [DataMember(Name = "statusDetail", EmitDefaultValue = true)]
         public string StatusDetail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeliveredAt
+        /// </summary>
+        [DataMember(Name = "deliveredAt", EmitDefaultValue = true)]
+        public string DeliveredAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,13 +120,13 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCaseResponseDataReturnShipment {\n");
             sb.Append("  TrackingCode: ").Append(TrackingCode).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
-            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
-            sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
             sb.Append("  TrackingUrl: ").Append(TrackingUrl).Append("\n");
+            sb.Append("  LabelUrl: ").Append(LabelUrl).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StatusDetail: ").Append(StatusDetail).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,29 +168,9 @@ namespace net.crossly.buyer.Model
                     this.TrackingCode.Equals(input.TrackingCode))
                 ) && 
                 (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.Carrier == input.Carrier ||
                     (this.Carrier != null &&
                     this.Carrier.Equals(input.Carrier))
-                ) && 
-                (
-                    this.DeliveredAt == input.DeliveredAt ||
-                    (this.DeliveredAt != null &&
-                    this.DeliveredAt.Equals(input.DeliveredAt))
-                ) && 
-                (
-                    this.LabelUrl == input.LabelUrl ||
-                    (this.LabelUrl != null &&
-                    this.LabelUrl.Equals(input.LabelUrl))
                 ) && 
                 (
                     this.TrackingUrl == input.TrackingUrl ||
@@ -198,9 +178,29 @@ namespace net.crossly.buyer.Model
                     this.TrackingUrl.Equals(input.TrackingUrl))
                 ) && 
                 (
+                    this.LabelUrl == input.LabelUrl ||
+                    (this.LabelUrl != null &&
+                    this.LabelUrl.Equals(input.LabelUrl))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
                     this.StatusDetail == input.StatusDetail ||
                     (this.StatusDetail != null &&
                     this.StatusDetail.Equals(input.StatusDetail))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.DeliveredAt == input.DeliveredAt ||
+                    (this.DeliveredAt != null &&
+                    this.DeliveredAt.Equals(input.DeliveredAt))
                 );
         }
 
@@ -217,33 +217,33 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.TrackingCode.GetHashCode();
                 }
-                if (this.UpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.Carrier != null)
                 {
                     hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
-                }
-                if (this.DeliveredAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
-                }
-                if (this.LabelUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
                 }
                 if (this.TrackingUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.TrackingUrl.GetHashCode();
                 }
+                if (this.LabelUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LabelUrl.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
                 if (this.StatusDetail != null)
                 {
                     hashCode = (hashCode * 59) + this.StatusDetail.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                }
+                if (this.DeliveredAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
                 }
                 return hashCode;
             }

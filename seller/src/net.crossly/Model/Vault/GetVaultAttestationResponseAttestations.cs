@@ -38,34 +38,34 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum Other for value: other
+            /// </summary>
+            [EnumMember(Value = "other")]
+            Other = 1,
+
+            /// <summary>
             /// Enum PhysicalCount for value: physical_count
             /// </summary>
             [EnumMember(Value = "physical_count")]
-            PhysicalCount = 1,
+            PhysicalCount = 2,
 
             /// <summary>
             /// Enum InsuranceCertificate for value: insurance_certificate
             /// </summary>
             [EnumMember(Value = "insurance_certificate")]
-            InsuranceCertificate = 2,
+            InsuranceCertificate = 3,
 
             /// <summary>
             /// Enum Soc1Type2 for value: soc1_type2
             /// </summary>
             [EnumMember(Value = "soc1_type2")]
-            Soc1Type2 = 3,
+            Soc1Type2 = 4,
 
             /// <summary>
             /// Enum Soc2 for value: soc2
             /// </summary>
             [EnumMember(Value = "soc2")]
-            Soc2 = 4,
-
-            /// <summary>
-            /// Enum Other for value: other
-            /// </summary>
-            [EnumMember(Value = "other")]
-            Other = 5
+            Soc2 = 5
 
         }
 

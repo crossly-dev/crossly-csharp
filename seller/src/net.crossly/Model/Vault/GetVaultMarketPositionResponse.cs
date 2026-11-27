@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2
 
         }
 
@@ -104,7 +104,7 @@ namespace net.crossly.Model
         /// <param name="openedAt">openedAt.</param>
         /// <param name="closedAt">closedAt.</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public GetVaultMarketPositionResponse(List<GetVaultMarketPositionResponseLoans> loans = default(List<GetVaultMarketPositionResponseLoans>), List<Object> auctions = default(List<Object>), List<GetVaultMarketPositionResponseInstructions> instructions = default(List<GetVaultMarketPositionResponseInstructions>), List<GetVaultMarketPositionResponseLegs> legs = default(List<GetVaultMarketPositionResponseLegs>), List<GetVaultMarketPositionResponseSplits> splits = default(List<GetVaultMarketPositionResponseSplits>), string id = default(string), KindEnum kind = default(KindEnum), string status = default(string), string bookKey = default(string), string variantId = default(string), string condition = default(string), string gradeKey = default(string), decimal units = default(decimal), decimal? entryCents = default(decimal?), decimal? exitCents = default(decimal?), decimal? limitCents = default(decimal?), decimal leverageX100 = default(decimal), decimal collateralUsdCents = default(decimal), decimal collateralCbxValueCents = default(decimal), string collateralCbxBaseUnits = default(string), decimal loanCents = default(decimal), decimal proceedsCents = default(decimal), decimal feesOwedCents = default(decimal), decimal feesPaidCents = default(decimal), decimal interestOwedCents = default(decimal), decimal interestPaidCents = default(decimal), string tier = default(string), decimal? markCents = default(decimal?), decimal? healthBps = default(decimal?), string calledAt = default(string), decimal? unrealisedPnlCents = default(decimal?), decimal? realizedPnlCents = default(decimal?), string collateralState = default(string), bool settled = default(bool), bool needsOps = default(bool), decimal shortfallUnpaidCents = default(decimal), string openedAt = default(string), string closedAt = default(string), string createdAt = default(string))
+        public GetVaultMarketPositionResponse(List<GetVaultMarketPositionResponseLoans> loans = default(List<GetVaultMarketPositionResponseLoans>), List<GetVaultMarketPositionResponseAuctionsItem> auctions = default(List<GetVaultMarketPositionResponseAuctionsItem>), List<GetVaultMarketPositionResponseInstructions> instructions = default(List<GetVaultMarketPositionResponseInstructions>), List<GetVaultMarketPositionResponseLegs> legs = default(List<GetVaultMarketPositionResponseLegs>), List<GetVaultMarketPositionResponseSplits> splits = default(List<GetVaultMarketPositionResponseSplits>), string id = default(string), KindEnum kind = default(KindEnum), string status = default(string), string bookKey = default(string), string variantId = default(string), string condition = default(string), string gradeKey = default(string), decimal units = default(decimal), decimal? entryCents = default(decimal?), decimal? exitCents = default(decimal?), decimal? limitCents = default(decimal?), decimal leverageX100 = default(decimal), decimal collateralUsdCents = default(decimal), decimal collateralCbxValueCents = default(decimal), string collateralCbxBaseUnits = default(string), decimal loanCents = default(decimal), decimal proceedsCents = default(decimal), decimal feesOwedCents = default(decimal), decimal feesPaidCents = default(decimal), decimal interestOwedCents = default(decimal), decimal interestPaidCents = default(decimal), string tier = default(string), decimal? markCents = default(decimal?), decimal? healthBps = default(decimal?), string calledAt = default(string), decimal? unrealisedPnlCents = default(decimal?), decimal? realizedPnlCents = default(decimal?), string collateralState = default(string), bool settled = default(bool), bool needsOps = default(bool), decimal shortfallUnpaidCents = default(decimal), string openedAt = default(string), string closedAt = default(string), string createdAt = default(string))
         {
             // to ensure "loans" is required (not null)
             if (loans == null) {
@@ -209,7 +209,7 @@ namespace net.crossly.Model
         /// Gets or Sets Auctions
         /// </summary>
         [DataMember(Name = "auctions", IsRequired = true, EmitDefaultValue = false)]
-        public List<Object> Auctions { get; set; }
+        public List<GetVaultMarketPositionResponseAuctionsItem> Auctions { get; set; }
 
         /// <summary>
         /// Gets or Sets Instructions

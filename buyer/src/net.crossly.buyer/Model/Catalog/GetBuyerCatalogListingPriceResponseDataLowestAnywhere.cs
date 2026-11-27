@@ -40,13 +40,15 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerCatalogListingPriceResponseDataLowestAnywhere" /> class.
         /// </summary>
         /// <param name="platforms">platforms (required).</param>
-        public GetBuyerCatalogListingPriceResponseDataLowestAnywhere(List<string> platforms = default(List<string>))
+        /// <param name="platformNames">platformNames.</param>
+        public GetBuyerCatalogListingPriceResponseDataLowestAnywhere(List<string> platforms = default(List<string>), List<string> platformNames = default(List<string>))
         {
             // to ensure "platforms" is required (not null)
             if (platforms == null) {
                 throw new ArgumentNullException("platforms is a required property for GetBuyerCatalogListingPriceResponseDataLowestAnywhere and cannot be null");
             }
             this.Platforms = platforms;
+            this.PlatformNames = platformNames;
         }
 
         /// <summary>
@@ -54,6 +56,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "platforms", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Platforms { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlatformNames
+        /// </summary>
+        [DataMember(Name = "platformNames", EmitDefaultValue = true)]
+        public List<string> PlatformNames { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,6 +72,7 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCatalogListingPriceResponseDataLowestAnywhere {\n");
             sb.Append("  Platforms: ").Append(Platforms).Append("\n");
+            sb.Append("  PlatformNames: ").Append(PlatformNames).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,6 +113,12 @@ namespace net.crossly.buyer.Model
                     this.Platforms != null &&
                     input.Platforms != null &&
                     this.Platforms.SequenceEqual(input.Platforms)
+                ) && 
+                (
+                    this.PlatformNames == input.PlatformNames ||
+                    this.PlatformNames != null &&
+                    input.PlatformNames != null &&
+                    this.PlatformNames.SequenceEqual(input.PlatformNames)
                 );
         }
 
@@ -119,6 +134,10 @@ namespace net.crossly.buyer.Model
                 if (this.Platforms != null)
                 {
                     hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
+                }
+                if (this.PlatformNames != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlatformNames.GetHashCode();
                 }
                 return hashCode;
             }

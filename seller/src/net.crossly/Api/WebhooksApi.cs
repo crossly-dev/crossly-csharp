@@ -43,7 +43,27 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWebhookResponse</returns>
         ApiResponse<CreateWebhookResponse> CreateWebhookWithHttpInfo();
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook.
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <returns>CreateWebhookDeliveryRedeliverResponse</returns>
+        CreateWebhookDeliveryRedeliverResponse CreateWebhookDeliveryRedeliver(Guid id, Guid deliveryId);
+
+        /// <summary>
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <returns>ApiResponse of CreateWebhookDeliveryRedeliverResponse</returns>
+        ApiResponse<CreateWebhookDeliveryRedeliverResponse> CreateWebhookDeliveryRedeliverWithHttpInfo(Guid id, Guid deliveryId);
+        /// <summary>
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -51,7 +71,7 @@ namespace net.crossly.Api
         CreateWebhookTestResponse CreateWebhookTest(Guid id);
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook.
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <remarks>
         /// 
@@ -97,6 +117,28 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetWebhookStreamWithHttpInfo();
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListWebhookDeliveriesResponse</returns>
+        ListWebhookDeliveriesResponse ListWebhookDeliveries(Guid id, string status = default(string), int? limit = default(int?));
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWebhookDeliveriesResponse</returns>
+        ApiResponse<ListWebhookDeliveriesResponse> ListWebhookDeliveriesWithHttpInfo(Guid id, string status = default(string), int? limit = default(int?));
         /// <summary>
         /// List your registered webhook endpoints.
         /// </summary>
@@ -144,7 +186,32 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWebhookResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWebhookResponse>> CreateWebhookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook.
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWebhookDeliveryRedeliverResponse</returns>
+        System.Threading.Tasks.Task<CreateWebhookDeliveryRedeliverResponse> CreateWebhookDeliveryRedeliverAsync(Guid id, Guid deliveryId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWebhookDeliveryRedeliverResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWebhookDeliveryRedeliverResponse>> CreateWebhookDeliveryRedeliverWithHttpInfoAsync(Guid id, Guid deliveryId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <remarks>
         /// 
@@ -156,7 +223,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateWebhookTestResponse> CreateWebhookTestAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook.
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <remarks>
         /// 
@@ -210,6 +277,33 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> GetWebhookStreamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookDeliveriesResponse</returns>
+        System.Threading.Tasks.Task<ListWebhookDeliveriesResponse> ListWebhookDeliveriesAsync(Guid id, string status = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookDeliveriesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWebhookDeliveriesResponse>> ListWebhookDeliveriesWithHttpInfoAsync(Guid id, string status = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List your registered webhook endpoints.
         /// </summary>
@@ -480,7 +574,147 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook. 
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <returns>CreateWebhookDeliveryRedeliverResponse</returns>
+        public CreateWebhookDeliveryRedeliverResponse CreateWebhookDeliveryRedeliver(Guid id, Guid deliveryId)
+        {
+            net.crossly.Client.ApiResponse<CreateWebhookDeliveryRedeliverResponse> localVarResponse = CreateWebhookDeliveryRedeliverWithHttpInfo(id, deliveryId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <returns>ApiResponse of CreateWebhookDeliveryRedeliverResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWebhookDeliveryRedeliverResponse> CreateWebhookDeliveryRedeliverWithHttpInfo(Guid id, Guid deliveryId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("deliveryId", net.crossly.Client.ClientUtils.ParameterToString(deliveryId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWebhookDeliveryRedeliverResponse>("/v1/webhooks/{id}/deliveries/{deliveryId}/redeliver", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWebhookDeliveryRedeliver", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWebhookDeliveryRedeliverResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWebhookDeliveryRedeliverResponse> CreateWebhookDeliveryRedeliverAsync(Guid id, Guid deliveryId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWebhookDeliveryRedeliverResponse> localVarResponse = await CreateWebhookDeliveryRedeliverWithHttpInfoAsync(id, deliveryId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="deliveryId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWebhookDeliveryRedeliverResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookDeliveryRedeliverResponse>> CreateWebhookDeliveryRedeliverWithHttpInfoAsync(Guid id, Guid deliveryId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("deliveryId", net.crossly.Client.ClientUtils.ParameterToString(deliveryId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWebhookDeliveryRedeliverResponse>("/v1/webhooks/{id}/deliveries/{deliveryId}/redeliver", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWebhookDeliveryRedeliver", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -492,7 +726,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook. 
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -545,7 +779,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook. 
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -558,7 +792,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a synthetic test.ping delivery to one webhook. 
+        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -868,6 +1102,164 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetWebhookStream", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListWebhookDeliveriesResponse</returns>
+        public ListWebhookDeliveriesResponse ListWebhookDeliveries(Guid id, string status = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListWebhookDeliveriesResponse> localVarResponse = ListWebhookDeliveriesWithHttpInfo(id, status, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListWebhookDeliveriesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWebhookDeliveriesResponse> ListWebhookDeliveriesWithHttpInfo(Guid id, string status = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWebhookDeliveriesResponse>("/v1/webhooks/{id}/deliveries", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookDeliveries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookDeliveriesResponse</returns>
+        public async System.Threading.Tasks.Task<ListWebhookDeliveriesResponse> ListWebhookDeliveriesAsync(Guid id, string status = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWebhookDeliveriesResponse> localVarResponse = await ListWebhookDeliveriesWithHttpInfoAsync(id, status, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookDeliveriesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWebhookDeliveriesResponse>> ListWebhookDeliveriesWithHttpInfoAsync(Guid id, string status = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWebhookDeliveriesResponse>("/v1/webhooks/{id}/deliveries", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookDeliveries", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

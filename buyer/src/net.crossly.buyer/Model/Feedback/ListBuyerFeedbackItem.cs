@@ -40,41 +40,41 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerFeedbackItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="rating">rating (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="body">body.</param>
+        /// <param name="revisedAt">revisedAt.</param>
+        /// <param name="sellerReply">sellerReply.</param>
+        /// <param name="sellerRepliedAt">sellerRepliedAt.</param>
+        /// <param name="sellerName">sellerName.</param>
+        /// <param name="itemTitle">itemTitle.</param>
+        /// <param name="ratingAsDescribed">ratingAsDescribed.</param>
         /// <param name="ratingCommunication">ratingCommunication.</param>
         /// <param name="ratingShipSpeed">ratingShipSpeed.</param>
         /// <param name="ratingShipCost">ratingShipCost.</param>
-        /// <param name="ratingAsDescribed">ratingAsDescribed.</param>
-        /// <param name="sellerReply">sellerReply.</param>
-        /// <param name="sellerRepliedAt">sellerRepliedAt.</param>
-        /// <param name="revisedAt">revisedAt.</param>
-        /// <param name="itemTitle">itemTitle.</param>
-        /// <param name="sellerName">sellerName.</param>
-        public ListBuyerFeedbackItem(string id = default(string), string createdAt = default(string), decimal rating = default(decimal), string body = default(string), decimal? ratingCommunication = default(decimal?), decimal? ratingShipSpeed = default(decimal?), decimal? ratingShipCost = default(decimal?), decimal? ratingAsDescribed = default(decimal?), string sellerReply = default(string), string sellerRepliedAt = default(string), string revisedAt = default(string), string itemTitle = default(string), string sellerName = default(string))
+        public ListBuyerFeedbackItem(string id = default(string), decimal rating = default(decimal), string createdAt = default(string), string body = default(string), string revisedAt = default(string), string sellerReply = default(string), string sellerRepliedAt = default(string), string sellerName = default(string), string itemTitle = default(string), decimal? ratingAsDescribed = default(decimal?), decimal? ratingCommunication = default(decimal?), decimal? ratingShipSpeed = default(decimal?), decimal? ratingShipCost = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerFeedbackItem and cannot be null");
             }
             this.Id = id;
+            this.Rating = rating;
             // to ensure "createdAt" is required (not null)
             if (createdAt == null) {
                 throw new ArgumentNullException("createdAt is a required property for ListBuyerFeedbackItem and cannot be null");
             }
             this.CreatedAt = createdAt;
-            this.Rating = rating;
             this.Body = body;
+            this.RevisedAt = revisedAt;
+            this.SellerReply = sellerReply;
+            this.SellerRepliedAt = sellerRepliedAt;
+            this.SellerName = sellerName;
+            this.ItemTitle = itemTitle;
+            this.RatingAsDescribed = ratingAsDescribed;
             this.RatingCommunication = ratingCommunication;
             this.RatingShipSpeed = ratingShipSpeed;
             this.RatingShipCost = ratingShipCost;
-            this.RatingAsDescribed = ratingAsDescribed;
-            this.SellerReply = sellerReply;
-            this.SellerRepliedAt = sellerRepliedAt;
-            this.RevisedAt = revisedAt;
-            this.ItemTitle = itemTitle;
-            this.SellerName = sellerName;
         }
 
         /// <summary>
@@ -84,22 +84,58 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Rating
         /// </summary>
         [DataMember(Name = "rating", IsRequired = true, EmitDefaultValue = false)]
         public decimal Rating { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Body
         /// </summary>
         [DataMember(Name = "body", EmitDefaultValue = true)]
         public string Body { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RevisedAt
+        /// </summary>
+        [DataMember(Name = "revisedAt", EmitDefaultValue = true)]
+        public string RevisedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerReply
+        /// </summary>
+        [DataMember(Name = "sellerReply", EmitDefaultValue = true)]
+        public string SellerReply { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerRepliedAt
+        /// </summary>
+        [DataMember(Name = "sellerRepliedAt", EmitDefaultValue = true)]
+        public string SellerRepliedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerName
+        /// </summary>
+        [DataMember(Name = "sellerName", EmitDefaultValue = true)]
+        public string SellerName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemTitle
+        /// </summary>
+        [DataMember(Name = "itemTitle", EmitDefaultValue = true)]
+        public string ItemTitle { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RatingAsDescribed
+        /// </summary>
+        [DataMember(Name = "ratingAsDescribed", EmitDefaultValue = true)]
+        public decimal? RatingAsDescribed { get; set; }
 
         /// <summary>
         /// Gets or Sets RatingCommunication
@@ -120,42 +156,6 @@ namespace net.crossly.buyer.Model
         public decimal? RatingShipCost { get; set; }
 
         /// <summary>
-        /// Gets or Sets RatingAsDescribed
-        /// </summary>
-        [DataMember(Name = "ratingAsDescribed", EmitDefaultValue = true)]
-        public decimal? RatingAsDescribed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerReply
-        /// </summary>
-        [DataMember(Name = "sellerReply", EmitDefaultValue = true)]
-        public string SellerReply { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerRepliedAt
-        /// </summary>
-        [DataMember(Name = "sellerRepliedAt", EmitDefaultValue = true)]
-        public string SellerRepliedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RevisedAt
-        /// </summary>
-        [DataMember(Name = "revisedAt", EmitDefaultValue = true)]
-        public string RevisedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ItemTitle
-        /// </summary>
-        [DataMember(Name = "itemTitle", EmitDefaultValue = true)]
-        public string ItemTitle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerName
-        /// </summary>
-        [DataMember(Name = "sellerName", EmitDefaultValue = true)]
-        public string SellerName { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -164,18 +164,18 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerFeedbackItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Rating: ").Append(Rating).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("  RevisedAt: ").Append(RevisedAt).Append("\n");
+            sb.Append("  SellerReply: ").Append(SellerReply).Append("\n");
+            sb.Append("  SellerRepliedAt: ").Append(SellerRepliedAt).Append("\n");
+            sb.Append("  SellerName: ").Append(SellerName).Append("\n");
+            sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
+            sb.Append("  RatingAsDescribed: ").Append(RatingAsDescribed).Append("\n");
             sb.Append("  RatingCommunication: ").Append(RatingCommunication).Append("\n");
             sb.Append("  RatingShipSpeed: ").Append(RatingShipSpeed).Append("\n");
             sb.Append("  RatingShipCost: ").Append(RatingShipCost).Append("\n");
-            sb.Append("  RatingAsDescribed: ").Append(RatingAsDescribed).Append("\n");
-            sb.Append("  SellerReply: ").Append(SellerReply).Append("\n");
-            sb.Append("  SellerRepliedAt: ").Append(SellerRepliedAt).Append("\n");
-            sb.Append("  RevisedAt: ").Append(RevisedAt).Append("\n");
-            sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
-            sb.Append("  SellerName: ").Append(SellerName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -217,18 +217,48 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Rating == input.Rating ||
+                    this.Rating.Equals(input.Rating)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
-                    this.Rating == input.Rating ||
-                    this.Rating.Equals(input.Rating)
-                ) && 
-                (
                     this.Body == input.Body ||
                     (this.Body != null &&
                     this.Body.Equals(input.Body))
+                ) && 
+                (
+                    this.RevisedAt == input.RevisedAt ||
+                    (this.RevisedAt != null &&
+                    this.RevisedAt.Equals(input.RevisedAt))
+                ) && 
+                (
+                    this.SellerReply == input.SellerReply ||
+                    (this.SellerReply != null &&
+                    this.SellerReply.Equals(input.SellerReply))
+                ) && 
+                (
+                    this.SellerRepliedAt == input.SellerRepliedAt ||
+                    (this.SellerRepliedAt != null &&
+                    this.SellerRepliedAt.Equals(input.SellerRepliedAt))
+                ) && 
+                (
+                    this.SellerName == input.SellerName ||
+                    (this.SellerName != null &&
+                    this.SellerName.Equals(input.SellerName))
+                ) && 
+                (
+                    this.ItemTitle == input.ItemTitle ||
+                    (this.ItemTitle != null &&
+                    this.ItemTitle.Equals(input.ItemTitle))
+                ) && 
+                (
+                    this.RatingAsDescribed == input.RatingAsDescribed ||
+                    (this.RatingAsDescribed != null &&
+                    this.RatingAsDescribed.Equals(input.RatingAsDescribed))
                 ) && 
                 (
                     this.RatingCommunication == input.RatingCommunication ||
@@ -244,36 +274,6 @@ namespace net.crossly.buyer.Model
                     this.RatingShipCost == input.RatingShipCost ||
                     (this.RatingShipCost != null &&
                     this.RatingShipCost.Equals(input.RatingShipCost))
-                ) && 
-                (
-                    this.RatingAsDescribed == input.RatingAsDescribed ||
-                    (this.RatingAsDescribed != null &&
-                    this.RatingAsDescribed.Equals(input.RatingAsDescribed))
-                ) && 
-                (
-                    this.SellerReply == input.SellerReply ||
-                    (this.SellerReply != null &&
-                    this.SellerReply.Equals(input.SellerReply))
-                ) && 
-                (
-                    this.SellerRepliedAt == input.SellerRepliedAt ||
-                    (this.SellerRepliedAt != null &&
-                    this.SellerRepliedAt.Equals(input.SellerRepliedAt))
-                ) && 
-                (
-                    this.RevisedAt == input.RevisedAt ||
-                    (this.RevisedAt != null &&
-                    this.RevisedAt.Equals(input.RevisedAt))
-                ) && 
-                (
-                    this.ItemTitle == input.ItemTitle ||
-                    (this.ItemTitle != null &&
-                    this.ItemTitle.Equals(input.ItemTitle))
-                ) && 
-                (
-                    this.SellerName == input.SellerName ||
-                    (this.SellerName != null &&
-                    this.SellerName.Equals(input.SellerName))
                 );
         }
 
@@ -290,14 +290,38 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Rating.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Rating.GetHashCode();
                 if (this.Body != null)
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
+                }
+                if (this.RevisedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.RevisedAt.GetHashCode();
+                }
+                if (this.SellerReply != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerReply.GetHashCode();
+                }
+                if (this.SellerRepliedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerRepliedAt.GetHashCode();
+                }
+                if (this.SellerName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerName.GetHashCode();
+                }
+                if (this.ItemTitle != null)
+                {
+                    hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();
+                }
+                if (this.RatingAsDescribed != null)
+                {
+                    hashCode = (hashCode * 59) + this.RatingAsDescribed.GetHashCode();
                 }
                 if (this.RatingCommunication != null)
                 {
@@ -310,30 +334,6 @@ namespace net.crossly.buyer.Model
                 if (this.RatingShipCost != null)
                 {
                     hashCode = (hashCode * 59) + this.RatingShipCost.GetHashCode();
-                }
-                if (this.RatingAsDescribed != null)
-                {
-                    hashCode = (hashCode * 59) + this.RatingAsDescribed.GetHashCode();
-                }
-                if (this.SellerReply != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerReply.GetHashCode();
-                }
-                if (this.SellerRepliedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerRepliedAt.GetHashCode();
-                }
-                if (this.RevisedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RevisedAt.GetHashCode();
-                }
-                if (this.ItemTitle != null)
-                {
-                    hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();
-                }
-                if (this.SellerName != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerName.GetHashCode();
                 }
                 return hashCode;
             }

@@ -43,11 +43,11 @@ namespace net.crossly.buyer.Model
         /// <param name="followedAt">followedAt (required).</param>
         /// <param name="activeListings">activeListings (required).</param>
         /// <param name="newListings">Active listings put up since you last marked this seller seen. (required).</param>
+        /// <param name="username">username.</param>
         /// <param name="name">name.</param>
         /// <param name="avatarUrl">avatarUrl.</param>
-        /// <param name="username">username.</param>
         /// <param name="lastSeenAt">lastSeenAt.</param>
-        public ListBuyerFollowingSellersItem(string sellerUserId = default(string), string followedAt = default(string), decimal activeListings = default(decimal), decimal newListings = default(decimal), string name = default(string), string avatarUrl = default(string), string username = default(string), string lastSeenAt = default(string))
+        public ListBuyerFollowingSellersItem(string sellerUserId = default(string), string followedAt = default(string), decimal activeListings = default(decimal), decimal newListings = default(decimal), string username = default(string), string name = default(string), string avatarUrl = default(string), string lastSeenAt = default(string))
         {
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
@@ -61,9 +61,9 @@ namespace net.crossly.buyer.Model
             this.FollowedAt = followedAt;
             this.ActiveListings = activeListings;
             this.NewListings = newListings;
+            this.Username = username;
             this.Name = name;
             this.AvatarUrl = avatarUrl;
-            this.Username = username;
             this.LastSeenAt = lastSeenAt;
         }
 
@@ -93,6 +93,12 @@ namespace net.crossly.buyer.Model
         public decimal NewListings { get; set; }
 
         /// <summary>
+        /// Gets or Sets Username
+        /// </summary>
+        [DataMember(Name = "username", EmitDefaultValue = true)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = true)]
@@ -103,12 +109,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "avatarUrl", EmitDefaultValue = true)]
         public string AvatarUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets LastSeenAt
@@ -128,9 +128,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  FollowedAt: ").Append(FollowedAt).Append("\n");
             sb.Append("  ActiveListings: ").Append(ActiveListings).Append("\n");
             sb.Append("  NewListings: ").Append(NewListings).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  AvatarUrl: ").Append(AvatarUrl).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  LastSeenAt: ").Append(LastSeenAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -186,6 +186,11 @@ namespace net.crossly.buyer.Model
                     this.NewListings.Equals(input.NewListings)
                 ) && 
                 (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -194,11 +199,6 @@ namespace net.crossly.buyer.Model
                     this.AvatarUrl == input.AvatarUrl ||
                     (this.AvatarUrl != null &&
                     this.AvatarUrl.Equals(input.AvatarUrl))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 ) && 
                 (
                     this.LastSeenAt == input.LastSeenAt ||
@@ -226,6 +226,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.ActiveListings.GetHashCode();
                 hashCode = (hashCode * 59) + this.NewListings.GetHashCode();
+                if (this.Username != null)
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -233,10 +237,6 @@ namespace net.crossly.buyer.Model
                 if (this.AvatarUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.AvatarUrl.GetHashCode();
-                }
-                if (this.Username != null)
-                {
-                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
                 }
                 if (this.LastSeenAt != null)
                 {

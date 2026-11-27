@@ -41,10 +41,10 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="body">body (required).</param>
         /// <param name="me">me (required).</param>
-        public GetBuyerTogetherResponseDataMessages(string id = default(string), string name = default(string), string createdAt = default(string), string body = default(string), bool me = default(bool))
+        /// <param name="body">body (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        public GetBuyerTogetherResponseDataMessages(string id = default(string), string name = default(string), bool me = default(bool), string body = default(string), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -56,17 +56,17 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("name is a required property for GetBuyerTogetherResponseDataMessages and cannot be null");
             }
             this.Name = name;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for GetBuyerTogetherResponseDataMessages and cannot be null");
-            }
-            this.CreatedAt = createdAt;
+            this.Me = me;
             // to ensure "body" is required (not null)
             if (body == null) {
                 throw new ArgumentNullException("body is a required property for GetBuyerTogetherResponseDataMessages and cannot be null");
             }
             this.Body = body;
-            this.Me = me;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for GetBuyerTogetherResponseDataMessages and cannot be null");
+            }
+            this.CreatedAt = createdAt;
         }
 
         /// <summary>
@@ -82,10 +82,10 @@ namespace net.crossly.buyer.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets Me
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
+        [DataMember(Name = "me", IsRequired = true, EmitDefaultValue = true)]
+        public bool Me { get; set; }
 
         /// <summary>
         /// Gets or Sets Body
@@ -94,10 +94,10 @@ namespace net.crossly.buyer.Model
         public string Body { get; set; }
 
         /// <summary>
-        /// Gets or Sets Me
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "me", IsRequired = true, EmitDefaultValue = true)]
-        public bool Me { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,9 +109,9 @@ namespace net.crossly.buyer.Model
             sb.Append("class GetBuyerTogetherResponseDataMessages {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("  Me: ").Append(Me).Append("\n");
+            sb.Append("  Body: ").Append(Body).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -158,9 +158,8 @@ namespace net.crossly.buyer.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.Me == input.Me ||
+                    this.Me.Equals(input.Me)
                 ) && 
                 (
                     this.Body == input.Body ||
@@ -168,8 +167,9 @@ namespace net.crossly.buyer.Model
                     this.Body.Equals(input.Body))
                 ) && 
                 (
-                    this.Me == input.Me ||
-                    this.Me.Equals(input.Me)
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 );
         }
 
@@ -190,15 +190,15 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Me.GetHashCode();
                 if (this.Body != null)
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Me.GetHashCode();
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
                 return hashCode;
             }
         }

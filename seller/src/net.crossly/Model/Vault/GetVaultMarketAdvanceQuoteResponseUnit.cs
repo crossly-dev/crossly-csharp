@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum TierEnum
         {
             /// <summary>
-            /// Enum Standard for value: standard
-            /// </summary>
-            [EnumMember(Value = "standard")]
-            Standard = 1,
-
-            /// <summary>
             /// Enum Closed for value: closed
             /// </summary>
             [EnumMember(Value = "closed")]
-            Closed = 2,
+            Closed = 1,
+
+            /// <summary>
+            /// Enum Standard for value: standard
+            /// </summary>
+            [EnumMember(Value = "standard")]
+            Standard = 2,
 
             /// <summary>
             /// Enum Deep for value: deep

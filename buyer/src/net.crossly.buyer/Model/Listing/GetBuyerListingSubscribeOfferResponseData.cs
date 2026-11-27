@@ -39,27 +39,21 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerListingSubscribeOfferResponseData" /> class.
         /// </summary>
-        /// <param name="priceCents">priceCents (required).</param>
         /// <param name="discountBps">discountBps (required).</param>
         /// <param name="intervals">intervals (required).</param>
+        /// <param name="priceCents">priceCents (required).</param>
         /// <param name="subscribePriceCents">subscribePriceCents (required).</param>
-        public GetBuyerListingSubscribeOfferResponseData(decimal priceCents = default(decimal), decimal discountBps = default(decimal), List<decimal> intervals = default(List<decimal>), decimal subscribePriceCents = default(decimal))
+        public GetBuyerListingSubscribeOfferResponseData(decimal discountBps = default(decimal), List<decimal> intervals = default(List<decimal>), decimal priceCents = default(decimal), decimal subscribePriceCents = default(decimal))
         {
-            this.PriceCents = priceCents;
             this.DiscountBps = discountBps;
             // to ensure "intervals" is required (not null)
             if (intervals == null) {
                 throw new ArgumentNullException("intervals is a required property for GetBuyerListingSubscribeOfferResponseData and cannot be null");
             }
             this.Intervals = intervals;
+            this.PriceCents = priceCents;
             this.SubscribePriceCents = subscribePriceCents;
         }
-
-        /// <summary>
-        /// Gets or Sets PriceCents
-        /// </summary>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal PriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets DiscountBps
@@ -72,6 +66,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "intervals", IsRequired = true, EmitDefaultValue = false)]
         public List<decimal> Intervals { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PriceCents
+        /// </summary>
+        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets SubscribePriceCents
@@ -87,9 +87,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingSubscribeOfferResponseData {\n");
-            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  DiscountBps: ").Append(DiscountBps).Append("\n");
             sb.Append("  Intervals: ").Append(Intervals).Append("\n");
+            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  SubscribePriceCents: ").Append(SubscribePriceCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -127,10 +127,6 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.PriceCents == input.PriceCents ||
-                    this.PriceCents.Equals(input.PriceCents)
-                ) && 
-                (
                     this.DiscountBps == input.DiscountBps ||
                     this.DiscountBps.Equals(input.DiscountBps)
                 ) && 
@@ -139,6 +135,10 @@ namespace net.crossly.buyer.Model
                     this.Intervals != null &&
                     input.Intervals != null &&
                     this.Intervals.SequenceEqual(input.Intervals)
+                ) && 
+                (
+                    this.PriceCents == input.PriceCents ||
+                    this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
                     this.SubscribePriceCents == input.SubscribePriceCents ||
@@ -155,12 +155,12 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.DiscountBps.GetHashCode();
                 if (this.Intervals != null)
                 {
                     hashCode = (hashCode * 59) + this.Intervals.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.SubscribePriceCents.GetHashCode();
                 return hashCode;
             }

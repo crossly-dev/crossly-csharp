@@ -39,21 +39,21 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerWishlistMembersItem" /> class.
         /// </summary>
-        /// <param name="name">name (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="name">name (required).</param>
         /// <param name="joinedAt">joinedAt (required).</param>
-        public ListBuyerWishlistMembersItem(string name = default(string), string userId = default(string), string joinedAt = default(string))
+        public ListBuyerWishlistMembersItem(string userId = default(string), string name = default(string), string joinedAt = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for ListBuyerWishlistMembersItem and cannot be null");
-            }
-            this.Name = name;
             // to ensure "userId" is required (not null)
             if (userId == null) {
                 throw new ArgumentNullException("userId is a required property for ListBuyerWishlistMembersItem and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for ListBuyerWishlistMembersItem and cannot be null");
+            }
+            this.Name = name;
             // to ensure "joinedAt" is required (not null)
             if (joinedAt == null) {
                 throw new ArgumentNullException("joinedAt is a required property for ListBuyerWishlistMembersItem and cannot be null");
@@ -62,16 +62,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets or Sets UserId
         /// </summary>
         [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets JoinedAt
@@ -87,8 +87,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerWishlistMembersItem {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  JoinedAt: ").Append(JoinedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,14 +126,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.JoinedAt == input.JoinedAt ||
@@ -151,13 +151,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
                 if (this.UserId != null)
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 if (this.JoinedAt != null)
                 {

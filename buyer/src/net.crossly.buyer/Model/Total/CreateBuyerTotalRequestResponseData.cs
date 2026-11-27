@@ -39,29 +39,29 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerTotalRequestResponseData" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
         /// <param name="ok">ok (required).</param>
-        public CreateBuyerTotalRequestResponseData(string id = default(string), bool ok = default(bool))
+        /// <param name="id">id (required).</param>
+        public CreateBuyerTotalRequestResponseData(bool ok = default(bool), string id = default(string))
         {
+            this.Ok = ok;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for CreateBuyerTotalRequestResponseData and cannot be null");
             }
             this.Id = id;
-            this.Ok = ok;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Ok
         /// </summary>
         [DataMember(Name = "ok", IsRequired = true, EmitDefaultValue = true)]
         public bool Ok { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        public string Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +71,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerTotalRequestResponseData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,13 +109,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Ok == input.Ok ||
+                    this.Ok.Equals(input.Ok)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Ok == input.Ok ||
-                    this.Ok.Equals(input.Ok)
                 );
         }
 
@@ -128,11 +128,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 return hashCode;
             }
         }

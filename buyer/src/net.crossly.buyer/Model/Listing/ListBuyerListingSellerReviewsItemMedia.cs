@@ -39,33 +39,33 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerListingSellerReviewsItemMedia" /> class.
         /// </summary>
-        /// <param name="url">url (required).</param>
         /// <param name="kind">kind (required).</param>
-        public ListBuyerListingSellerReviewsItemMedia(string url = default(string), string kind = default(string))
+        /// <param name="url">url (required).</param>
+        public ListBuyerListingSellerReviewsItemMedia(string kind = default(string), string url = default(string))
         {
-            // to ensure "url" is required (not null)
-            if (url == null) {
-                throw new ArgumentNullException("url is a required property for ListBuyerListingSellerReviewsItemMedia and cannot be null");
-            }
-            this.Url = url;
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for ListBuyerListingSellerReviewsItemMedia and cannot be null");
             }
             this.Kind = kind;
+            // to ensure "url" is required (not null)
+            if (url == null) {
+                throw new ArgumentNullException("url is a required property for ListBuyerListingSellerReviewsItemMedia and cannot be null");
+            }
+            this.Url = url;
         }
-
-        /// <summary>
-        /// Gets or Sets Url
-        /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
         public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Url
+        /// </summary>
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
+        public string Url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +75,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerListingSellerReviewsItemMedia {\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -113,14 +113,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.Url == input.Url ||
+                    (this.Url != null &&
+                    this.Url.Equals(input.Url))
                 );
         }
 
@@ -133,13 +133,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Url != null)
-                {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
-                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
+                if (this.Url != null)
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
                 return hashCode;
             }

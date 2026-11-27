@@ -43,10 +43,10 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="salePrice">salePrice.</param>
         /// <param name="netProfit">netProfit.</param>
-        /// <param name="detectedAt">detectedAt (required).</param>
+        /// <param name="revenue">revenue (required).</param>
         /// <param name="itemTitle">itemTitle.</param>
-        /// <param name="itemImage">itemImage (required).</param>
-        public GetAnalyticDashboardResponseTop5ItemsByRevenue(string saleId = default(string), string platform = default(string), decimal? salePrice = default(decimal?), decimal? netProfit = default(decimal?), DateTime detectedAt = default(DateTime), string itemTitle = default(string), string itemImage = default(string))
+        /// <param name="itemImage">itemImage.</param>
+        public GetAnalyticDashboardResponseTop5ItemsByRevenue(string saleId = default(string), string platform = default(string), decimal? salePrice = default(decimal?), decimal? netProfit = default(decimal?), decimal revenue = default(decimal), string itemTitle = default(string), string itemImage = default(string))
         {
             // to ensure "saleId" is required (not null)
             if (saleId == null) {
@@ -58,15 +58,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("platform is a required property for GetAnalyticDashboardResponseTop5ItemsByRevenue and cannot be null");
             }
             this.Platform = platform;
-            this.DetectedAt = detectedAt;
-            // to ensure "itemImage" is required (not null)
-            if (itemImage == null) {
-                throw new ArgumentNullException("itemImage is a required property for GetAnalyticDashboardResponseTop5ItemsByRevenue and cannot be null");
-            }
-            this.ItemImage = itemImage;
+            this.Revenue = revenue;
             this.SalePrice = salePrice;
             this.NetProfit = netProfit;
             this.ItemTitle = itemTitle;
+            this.ItemImage = itemImage;
         }
 
         /// <summary>
@@ -94,10 +90,10 @@ namespace net.crossly.Model
         public decimal? NetProfit { get; set; }
 
         /// <summary>
-        /// Gets or Sets DetectedAt
+        /// Gets or Sets Revenue
         /// </summary>
-        [DataMember(Name = "detectedAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DetectedAt { get; set; }
+        [DataMember(Name = "revenue", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Revenue { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemTitle
@@ -108,7 +104,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets ItemImage
         /// </summary>
-        [DataMember(Name = "itemImage", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "itemImage", EmitDefaultValue = true)]
         public string ItemImage { get; set; }
 
         /// <summary>
@@ -123,7 +119,7 @@ namespace net.crossly.Model
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  SalePrice: ").Append(SalePrice).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
-            sb.Append("  DetectedAt: ").Append(DetectedAt).Append("\n");
+            sb.Append("  Revenue: ").Append(Revenue).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
             sb.Append("  ItemImage: ").Append(ItemImage).Append("\n");
             sb.Append("}\n");
@@ -182,9 +178,8 @@ namespace net.crossly.Model
                     this.NetProfit.Equals(input.NetProfit))
                 ) && 
                 (
-                    this.DetectedAt == input.DetectedAt ||
-                    (this.DetectedAt != null &&
-                    this.DetectedAt.Equals(input.DetectedAt))
+                    this.Revenue == input.Revenue ||
+                    this.Revenue.Equals(input.Revenue)
                 ) && 
                 (
                     this.ItemTitle == input.ItemTitle ||
@@ -223,10 +218,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
                 }
-                if (this.DetectedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.DetectedAt.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
                 if (this.ItemTitle != null)
                 {
                     hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();

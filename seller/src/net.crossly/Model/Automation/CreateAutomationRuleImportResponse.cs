@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="created">created (required).</param>
         /// <param name="errors">errors (required).</param>
-        public CreateAutomationRuleImportResponse(List<CreateAutomationRuleImportResponseCreated> created = default(List<CreateAutomationRuleImportResponseCreated>), List<CreateAutomationRuleImportResponseErrors> errors = default(List<CreateAutomationRuleImportResponseErrors>))
+        public CreateAutomationRuleImportResponse(List<IdName> created = default(List<IdName>), List<CreateAutomationRuleImportResponseErrors> errors = default(List<CreateAutomationRuleImportResponseErrors>))
         {
             // to ensure "created" is required (not null)
             if (created == null) {
@@ -59,7 +59,7 @@ namespace net.crossly.Model
         /// Gets or Sets Created
         /// </summary>
         [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateAutomationRuleImportResponseCreated> Created { get; set; }
+        public List<IdName> Created { get; set; }
 
         /// <summary>
         /// Gets or Sets Errors

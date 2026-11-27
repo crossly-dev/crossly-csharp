@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum OutcomeEnum
         {
             /// <summary>
-            /// Enum Fired for value: fired
-            /// </summary>
-            [EnumMember(Value = "fired")]
-            Fired = 1,
-
-            /// <summary>
             /// Enum Coverage for value: coverage
             /// </summary>
             [EnumMember(Value = "coverage")]
-            Coverage = 2,
+            Coverage = 1,
+
+            /// <summary>
+            /// Enum Cadence for value: cadence
+            /// </summary>
+            [EnumMember(Value = "cadence")]
+            Cadence = 2,
 
             /// <summary>
             /// Enum NoPrice for value: no_price
@@ -56,28 +56,28 @@ namespace net.crossly.Model
             NoPrice = 3,
 
             /// <summary>
+            /// Enum Inactive for value: inactive
+            /// </summary>
+            [EnumMember(Value = "inactive")]
+            Inactive = 4,
+
+            /// <summary>
+            /// Enum Fired for value: fired
+            /// </summary>
+            [EnumMember(Value = "fired")]
+            Fired = 5,
+
+            /// <summary>
             /// Enum BelowThreshold for value: below_threshold
             /// </summary>
             [EnumMember(Value = "below_threshold")]
-            BelowThreshold = 4,
-
-            /// <summary>
-            /// Enum Cadence for value: cadence
-            /// </summary>
-            [EnumMember(Value = "cadence")]
-            Cadence = 5,
+            BelowThreshold = 6,
 
             /// <summary>
             /// Enum NoRecipients for value: no_recipients
             /// </summary>
             [EnumMember(Value = "no_recipients")]
-            NoRecipients = 6,
-
-            /// <summary>
-            /// Enum Inactive for value: inactive
-            /// </summary>
-            [EnumMember(Value = "inactive")]
-            Inactive = 7
+            NoRecipients = 7
 
         }
 

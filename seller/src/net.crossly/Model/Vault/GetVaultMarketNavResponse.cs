@@ -44,8 +44,9 @@ namespace net.crossly.Model
         /// <param name="currency">currency (required).</param>
         /// <param name="totals">totals (required).</param>
         /// <param name="holdings">holdings (required).</param>
+        /// <param name="options">options.</param>
         /// <param name="policy">policy (required).</param>
-        public GetVaultMarketNavResponse(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string asOf = default(string), string currency = default(string), GetVaultMarketNavResponseTotals totals = default(GetVaultMarketNavResponseTotals), List<GetVaultMarketNavResponseHoldings> holdings = default(List<GetVaultMarketNavResponseHoldings>), List<string> policy = default(List<string>))
+        public GetVaultMarketNavResponse(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount account = default(CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount), string asOf = default(string), string currency = default(string), GetVaultMarketNavResponseTotals totals = default(GetVaultMarketNavResponseTotals), List<GetVaultMarketNavResponseHoldings> holdings = default(List<GetVaultMarketNavResponseHoldings>), GetVaultMarketNavResponseOptions options = default(GetVaultMarketNavResponseOptions), List<string> policy = default(List<string>))
         {
             // to ensure "account" is required (not null)
             if (account == null) {
@@ -77,6 +78,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("policy is a required property for GetVaultMarketNavResponse and cannot be null");
             }
             this.Policy = policy;
+            this.Options = options;
         }
 
         /// <summary>
@@ -110,6 +112,12 @@ namespace net.crossly.Model
         public List<GetVaultMarketNavResponseHoldings> Holdings { get; set; }
 
         /// <summary>
+        /// Gets or Sets Options
+        /// </summary>
+        [DataMember(Name = "options", EmitDefaultValue = true)]
+        public GetVaultMarketNavResponseOptions Options { get; set; }
+
+        /// <summary>
         /// Gets or Sets Policy
         /// </summary>
         [DataMember(Name = "policy", IsRequired = true, EmitDefaultValue = false)]
@@ -128,6 +136,7 @@ namespace net.crossly.Model
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Totals: ").Append(Totals).Append("\n");
             sb.Append("  Holdings: ").Append(Holdings).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -191,6 +200,11 @@ namespace net.crossly.Model
                     this.Holdings.SequenceEqual(input.Holdings)
                 ) && 
                 (
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
+                ) && 
+                (
                     this.Policy == input.Policy ||
                     this.Policy != null &&
                     input.Policy != null &&
@@ -226,6 +240,10 @@ namespace net.crossly.Model
                 if (this.Holdings != null)
                 {
                     hashCode = (hashCode * 59) + this.Holdings.GetHashCode();
+                }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
                 }
                 if (this.Policy != null)
                 {

@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Invited for value: invited
-            /// </summary>
-            [EnumMember(Value = "invited")]
-            Invited = 1,
-
-            /// <summary>
-            /// Enum Withdrawn for value: withdrawn
-            /// </summary>
-            [EnumMember(Value = "withdrawn")]
-            Withdrawn = 2,
-
-            /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 3,
+            Accepted = 1,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 4
+            Declined = 2,
+
+            /// <summary>
+            /// Enum Withdrawn for value: withdrawn
+            /// </summary>
+            [EnumMember(Value = "withdrawn")]
+            Withdrawn = 3,
+
+            /// <summary>
+            /// Enum Invited for value: invited
+            /// </summary>
+            [EnumMember(Value = "invited")]
+            Invited = 4
 
         }
 

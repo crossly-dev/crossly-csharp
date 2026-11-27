@@ -40,45 +40,40 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerCasesItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="purchaseId">purchaseId (required).</param>
         /// <param name="reason">inr, snad, counterfeit, damaged, wrong_item, other. (required).</param>
         /// <param name="state">state (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="kind">not_received | return | problem. (required).</param>
-        /// <param name="purchaseId">purchaseId (required).</param>
         /// <param name="closed">closed (required).</param>
         /// <param name="yourTurn">The case is waiting on you. (required).</param>
-        /// <param name="resolvedAt">resolvedAt.</param>
-        /// <param name="buyerPaidCents">What you paid for the order, in cents..</param>
         /// <param name="awaitingParty">awaitingParty.</param>
         /// <param name="escalateAfter">escalateAfter.</param>
         /// <param name="offeredRefundCents">A refund on the table, in cents..</param>
         /// <param name="resolvedRefundCents">resolvedRefundCents.</param>
+        /// <param name="resolvedAt">resolvedAt.</param>
         /// <param name="returnLabelUrl">returnLabelUrl.</param>
         /// <param name="returnTrackingCode">returnTrackingCode.</param>
         /// <param name="returnTrackingCarrier">returnTrackingCarrier.</param>
         /// <param name="returnTrackingStatus">returnTrackingStatus.</param>
         /// <param name="returnDeliveredAt">returnDeliveredAt.</param>
+        /// <param name="buyerPaidCents">What you paid for the order, in cents..</param>
         /// <param name="itemTitle">itemTitle.</param>
         /// <param name="itemThumbnail">itemThumbnail.</param>
         /// <param name="sellerName">sellerName.</param>
-        public ListBuyerCasesItem(string id = default(string), string createdAt = default(string), string updatedAt = default(string), string reason = default(string), string state = default(string), string kind = default(string), string purchaseId = default(string), bool closed = default(bool), bool yourTurn = default(bool), string resolvedAt = default(string), decimal? buyerPaidCents = default(decimal?), string awaitingParty = default(string), string escalateAfter = default(string), decimal? offeredRefundCents = default(decimal?), decimal? resolvedRefundCents = default(decimal?), string returnLabelUrl = default(string), string returnTrackingCode = default(string), string returnTrackingCarrier = default(string), string returnTrackingStatus = default(string), string returnDeliveredAt = default(string), string itemTitle = default(string), string itemThumbnail = default(string), string sellerName = default(string))
+        public ListBuyerCasesItem(string id = default(string), string purchaseId = default(string), string reason = default(string), string state = default(string), string createdAt = default(string), string updatedAt = default(string), string kind = default(string), bool closed = default(bool), bool yourTurn = default(bool), string awaitingParty = default(string), string escalateAfter = default(string), decimal? offeredRefundCents = default(decimal?), decimal? resolvedRefundCents = default(decimal?), string resolvedAt = default(string), string returnLabelUrl = default(string), string returnTrackingCode = default(string), string returnTrackingCarrier = default(string), string returnTrackingStatus = default(string), string returnDeliveredAt = default(string), decimal? buyerPaidCents = default(decimal?), string itemTitle = default(string), string itemThumbnail = default(string), string sellerName = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerCasesItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerCasesItem and cannot be null");
+            // to ensure "purchaseId" is required (not null)
+            if (purchaseId == null) {
+                throw new ArgumentNullException("purchaseId is a required property for ListBuyerCasesItem and cannot be null");
             }
-            this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null) {
-                throw new ArgumentNullException("updatedAt is a required property for ListBuyerCasesItem and cannot be null");
-            }
-            this.UpdatedAt = updatedAt;
+            this.PurchaseId = purchaseId;
             // to ensure "reason" is required (not null)
             if (reason == null) {
                 throw new ArgumentNullException("reason is a required property for ListBuyerCasesItem and cannot be null");
@@ -89,29 +84,34 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("state is a required property for ListBuyerCasesItem and cannot be null");
             }
             this.State = state;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerCasesItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null) {
+                throw new ArgumentNullException("updatedAt is a required property for ListBuyerCasesItem and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for ListBuyerCasesItem and cannot be null");
             }
             this.Kind = kind;
-            // to ensure "purchaseId" is required (not null)
-            if (purchaseId == null) {
-                throw new ArgumentNullException("purchaseId is a required property for ListBuyerCasesItem and cannot be null");
-            }
-            this.PurchaseId = purchaseId;
             this.Closed = closed;
             this.YourTurn = yourTurn;
-            this.ResolvedAt = resolvedAt;
-            this.BuyerPaidCents = buyerPaidCents;
             this.AwaitingParty = awaitingParty;
             this.EscalateAfter = escalateAfter;
             this.OfferedRefundCents = offeredRefundCents;
             this.ResolvedRefundCents = resolvedRefundCents;
+            this.ResolvedAt = resolvedAt;
             this.ReturnLabelUrl = returnLabelUrl;
             this.ReturnTrackingCode = returnTrackingCode;
             this.ReturnTrackingCarrier = returnTrackingCarrier;
             this.ReturnTrackingStatus = returnTrackingStatus;
             this.ReturnDeliveredAt = returnDeliveredAt;
+            this.BuyerPaidCents = buyerPaidCents;
             this.ItemTitle = itemTitle;
             this.ItemThumbnail = itemThumbnail;
             this.SellerName = sellerName;
@@ -124,16 +124,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets PurchaseId
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UpdatedAt
-        /// </summary>
-        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
-        public string UpdatedAt { get; set; }
+        [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
+        public string PurchaseId { get; set; }
 
         /// <summary>
         /// inr, snad, counterfeit, damaged, wrong_item, other.
@@ -149,17 +143,23 @@ namespace net.crossly.buyer.Model
         public string State { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = false)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
         /// not_received | return | problem.
         /// </summary>
         /// <value>not_received | return | problem.</value>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
         public string Kind { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PurchaseId
-        /// </summary>
-        [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
-        public string PurchaseId { get; set; }
 
         /// <summary>
         /// Gets or Sets Closed
@@ -173,19 +173,6 @@ namespace net.crossly.buyer.Model
         /// <value>The case is waiting on you.</value>
         [DataMember(Name = "yourTurn", IsRequired = true, EmitDefaultValue = true)]
         public bool YourTurn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ResolvedAt
-        /// </summary>
-        [DataMember(Name = "resolvedAt", EmitDefaultValue = true)]
-        public string ResolvedAt { get; set; }
-
-        /// <summary>
-        /// What you paid for the order, in cents.
-        /// </summary>
-        /// <value>What you paid for the order, in cents.</value>
-        [DataMember(Name = "buyerPaidCents", EmitDefaultValue = true)]
-        public decimal? BuyerPaidCents { get; set; }
 
         /// <summary>
         /// Gets or Sets AwaitingParty
@@ -211,6 +198,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "resolvedRefundCents", EmitDefaultValue = true)]
         public decimal? ResolvedRefundCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ResolvedAt
+        /// </summary>
+        [DataMember(Name = "resolvedAt", EmitDefaultValue = true)]
+        public string ResolvedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ReturnLabelUrl
@@ -243,6 +236,13 @@ namespace net.crossly.buyer.Model
         public string ReturnDeliveredAt { get; set; }
 
         /// <summary>
+        /// What you paid for the order, in cents.
+        /// </summary>
+        /// <value>What you paid for the order, in cents.</value>
+        [DataMember(Name = "buyerPaidCents", EmitDefaultValue = true)]
+        public decimal? BuyerPaidCents { get; set; }
+
+        /// <summary>
         /// Gets or Sets ItemTitle
         /// </summary>
         [DataMember(Name = "itemTitle", EmitDefaultValue = true)]
@@ -269,25 +269,25 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerCasesItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
             sb.Append("  Closed: ").Append(Closed).Append("\n");
             sb.Append("  YourTurn: ").Append(YourTurn).Append("\n");
-            sb.Append("  ResolvedAt: ").Append(ResolvedAt).Append("\n");
-            sb.Append("  BuyerPaidCents: ").Append(BuyerPaidCents).Append("\n");
             sb.Append("  AwaitingParty: ").Append(AwaitingParty).Append("\n");
             sb.Append("  EscalateAfter: ").Append(EscalateAfter).Append("\n");
             sb.Append("  OfferedRefundCents: ").Append(OfferedRefundCents).Append("\n");
             sb.Append("  ResolvedRefundCents: ").Append(ResolvedRefundCents).Append("\n");
+            sb.Append("  ResolvedAt: ").Append(ResolvedAt).Append("\n");
             sb.Append("  ReturnLabelUrl: ").Append(ReturnLabelUrl).Append("\n");
             sb.Append("  ReturnTrackingCode: ").Append(ReturnTrackingCode).Append("\n");
             sb.Append("  ReturnTrackingCarrier: ").Append(ReturnTrackingCarrier).Append("\n");
             sb.Append("  ReturnTrackingStatus: ").Append(ReturnTrackingStatus).Append("\n");
             sb.Append("  ReturnDeliveredAt: ").Append(ReturnDeliveredAt).Append("\n");
+            sb.Append("  BuyerPaidCents: ").Append(BuyerPaidCents).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
             sb.Append("  ItemThumbnail: ").Append(ItemThumbnail).Append("\n");
             sb.Append("  SellerName: ").Append(SellerName).Append("\n");
@@ -332,14 +332,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
+                    this.PurchaseId == input.PurchaseId ||
+                    (this.PurchaseId != null &&
+                    this.PurchaseId.Equals(input.PurchaseId))
                 ) && 
                 (
                     this.Reason == input.Reason ||
@@ -352,14 +347,19 @@ namespace net.crossly.buyer.Model
                     this.State.Equals(input.State))
                 ) && 
                 (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
-                ) && 
-                (
-                    this.PurchaseId == input.PurchaseId ||
-                    (this.PurchaseId != null &&
-                    this.PurchaseId.Equals(input.PurchaseId))
                 ) && 
                 (
                     this.Closed == input.Closed ||
@@ -368,16 +368,6 @@ namespace net.crossly.buyer.Model
                 (
                     this.YourTurn == input.YourTurn ||
                     this.YourTurn.Equals(input.YourTurn)
-                ) && 
-                (
-                    this.ResolvedAt == input.ResolvedAt ||
-                    (this.ResolvedAt != null &&
-                    this.ResolvedAt.Equals(input.ResolvedAt))
-                ) && 
-                (
-                    this.BuyerPaidCents == input.BuyerPaidCents ||
-                    (this.BuyerPaidCents != null &&
-                    this.BuyerPaidCents.Equals(input.BuyerPaidCents))
                 ) && 
                 (
                     this.AwaitingParty == input.AwaitingParty ||
@@ -398,6 +388,11 @@ namespace net.crossly.buyer.Model
                     this.ResolvedRefundCents == input.ResolvedRefundCents ||
                     (this.ResolvedRefundCents != null &&
                     this.ResolvedRefundCents.Equals(input.ResolvedRefundCents))
+                ) && 
+                (
+                    this.ResolvedAt == input.ResolvedAt ||
+                    (this.ResolvedAt != null &&
+                    this.ResolvedAt.Equals(input.ResolvedAt))
                 ) && 
                 (
                     this.ReturnLabelUrl == input.ReturnLabelUrl ||
@@ -423,6 +418,11 @@ namespace net.crossly.buyer.Model
                     this.ReturnDeliveredAt == input.ReturnDeliveredAt ||
                     (this.ReturnDeliveredAt != null &&
                     this.ReturnDeliveredAt.Equals(input.ReturnDeliveredAt))
+                ) && 
+                (
+                    this.BuyerPaidCents == input.BuyerPaidCents ||
+                    (this.BuyerPaidCents != null &&
+                    this.BuyerPaidCents.Equals(input.BuyerPaidCents))
                 ) && 
                 (
                     this.ItemTitle == input.ItemTitle ||
@@ -454,13 +454,9 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
+                if (this.PurchaseId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.UpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
                 }
                 if (this.Reason != null)
                 {
@@ -470,24 +466,20 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();
                 }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
-                if (this.PurchaseId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.Closed.GetHashCode();
                 hashCode = (hashCode * 59) + this.YourTurn.GetHashCode();
-                if (this.ResolvedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ResolvedAt.GetHashCode();
-                }
-                if (this.BuyerPaidCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.BuyerPaidCents.GetHashCode();
-                }
                 if (this.AwaitingParty != null)
                 {
                     hashCode = (hashCode * 59) + this.AwaitingParty.GetHashCode();
@@ -503,6 +495,10 @@ namespace net.crossly.buyer.Model
                 if (this.ResolvedRefundCents != null)
                 {
                     hashCode = (hashCode * 59) + this.ResolvedRefundCents.GetHashCode();
+                }
+                if (this.ResolvedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ResolvedAt.GetHashCode();
                 }
                 if (this.ReturnLabelUrl != null)
                 {
@@ -523,6 +519,10 @@ namespace net.crossly.buyer.Model
                 if (this.ReturnDeliveredAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ReturnDeliveredAt.GetHashCode();
+                }
+                if (this.BuyerPaidCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuyerPaidCents.GetHashCode();
                 }
                 if (this.ItemTitle != null)
                 {

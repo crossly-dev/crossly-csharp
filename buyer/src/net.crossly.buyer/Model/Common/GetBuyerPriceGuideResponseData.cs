@@ -39,13 +39,13 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerPriceGuideResponseData" /> class.
         /// </summary>
+        /// <param name="count">count (required).</param>
         /// <param name="medianCents">medianCents.</param>
         /// <param name="p25Cents">p25Cents.</param>
         /// <param name="p75Cents">p75Cents.</param>
-        /// <param name="count">count (required).</param>
         /// <param name="byMonth">byMonth (required).</param>
         /// <param name="recent">recent (required).</param>
-        public GetBuyerPriceGuideResponseData(decimal? medianCents = default(decimal?), decimal? p25Cents = default(decimal?), decimal? p75Cents = default(decimal?), decimal count = default(decimal), List<Dictionary<string, Object>> byMonth = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> recent = default(List<Dictionary<string, Object>>))
+        public GetBuyerPriceGuideResponseData(decimal count = default(decimal), decimal? medianCents = default(decimal?), decimal? p25Cents = default(decimal?), decimal? p75Cents = default(decimal?), List<Dictionary<string, Object>> byMonth = default(List<Dictionary<string, Object>>), List<Dictionary<string, Object>> recent = default(List<Dictionary<string, Object>>))
         {
             this.Count = count;
             // to ensure "byMonth" is required (not null)
@@ -64,6 +64,12 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
+        /// Gets or Sets Count
+        /// </summary>
+        [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Count { get; set; }
+
+        /// <summary>
         /// Gets or Sets MedianCents
         /// </summary>
         [DataMember(Name = "medianCents", EmitDefaultValue = true)]
@@ -80,12 +86,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "p75Cents", EmitDefaultValue = true)]
         public decimal? P75Cents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Count
-        /// </summary>
-        [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Count { get; set; }
 
         /// <summary>
         /// Gets or Sets ByMonth
@@ -107,10 +107,10 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPriceGuideResponseData {\n");
+            sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  MedianCents: ").Append(MedianCents).Append("\n");
             sb.Append("  P25Cents: ").Append(P25Cents).Append("\n");
             sb.Append("  P75Cents: ").Append(P75Cents).Append("\n");
-            sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  ByMonth: ").Append(ByMonth).Append("\n");
             sb.Append("  Recent: ").Append(Recent).Append("\n");
             sb.Append("}\n");
@@ -149,6 +149,10 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Count == input.Count ||
+                    this.Count.Equals(input.Count)
+                ) && 
+                (
                     this.MedianCents == input.MedianCents ||
                     (this.MedianCents != null &&
                     this.MedianCents.Equals(input.MedianCents))
@@ -162,10 +166,6 @@ namespace net.crossly.buyer.Model
                     this.P75Cents == input.P75Cents ||
                     (this.P75Cents != null &&
                     this.P75Cents.Equals(input.P75Cents))
-                ) && 
-                (
-                    this.Count == input.Count ||
-                    this.Count.Equals(input.Count)
                 ) && 
                 (
                     this.ByMonth == input.ByMonth ||
@@ -190,6 +190,7 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Count.GetHashCode();
                 if (this.MedianCents != null)
                 {
                     hashCode = (hashCode * 59) + this.MedianCents.GetHashCode();
@@ -202,7 +203,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.P75Cents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Count.GetHashCode();
                 if (this.ByMonth != null)
                 {
                     hashCode = (hashCode * 59) + this.ByMonth.GetHashCode();

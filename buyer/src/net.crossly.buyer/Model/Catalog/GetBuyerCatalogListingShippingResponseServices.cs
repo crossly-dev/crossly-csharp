@@ -46,7 +46,10 @@ namespace net.crossly.buyer.Model
         /// <param name="costType">costType (required).</param>
         /// <param name="minDays">minDays.</param>
         /// <param name="maxDays">maxDays.</param>
-        public GetBuyerCatalogListingShippingResponseServices(string id = default(string), string name = default(string), decimal cents = default(decimal), string scope = default(string), string costType = default(string), decimal? minDays = default(decimal?), decimal? maxDays = default(decimal?))
+        /// <param name="carrier">Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside &#x60;cents&#x60;..</param>
+        /// <param name="carrierService">carrierService.</param>
+        /// <param name="handlingFeeCents">handlingFeeCents.</param>
+        public GetBuyerCatalogListingShippingResponseServices(string id = default(string), string name = default(string), decimal cents = default(decimal), string scope = default(string), string costType = default(string), decimal? minDays = default(decimal?), decimal? maxDays = default(decimal?), string carrier = default(string), string carrierService = default(string), decimal? handlingFeeCents = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -71,6 +74,9 @@ namespace net.crossly.buyer.Model
             this.CostType = costType;
             this.MinDays = minDays;
             this.MaxDays = maxDays;
+            this.Carrier = carrier;
+            this.CarrierService = carrierService;
+            this.HandlingFeeCents = handlingFeeCents;
         }
 
         /// <summary>
@@ -116,6 +122,25 @@ namespace net.crossly.buyer.Model
         public decimal? MaxDays { get; set; }
 
         /// <summary>
+        /// Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside &#x60;cents&#x60;.
+        /// </summary>
+        /// <value>Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside &#x60;cents&#x60;.</value>
+        [DataMember(Name = "carrier", EmitDefaultValue = true)]
+        public string Carrier { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CarrierService
+        /// </summary>
+        [DataMember(Name = "carrierService", EmitDefaultValue = true)]
+        public string CarrierService { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HandlingFeeCents
+        /// </summary>
+        [DataMember(Name = "handlingFeeCents", EmitDefaultValue = true)]
+        public decimal? HandlingFeeCents { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -130,6 +155,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  CostType: ").Append(CostType).Append("\n");
             sb.Append("  MinDays: ").Append(MinDays).Append("\n");
             sb.Append("  MaxDays: ").Append(MaxDays).Append("\n");
+            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
+            sb.Append("  CarrierService: ").Append(CarrierService).Append("\n");
+            sb.Append("  HandlingFeeCents: ").Append(HandlingFeeCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -198,6 +226,21 @@ namespace net.crossly.buyer.Model
                     this.MaxDays == input.MaxDays ||
                     (this.MaxDays != null &&
                     this.MaxDays.Equals(input.MaxDays))
+                ) && 
+                (
+                    this.Carrier == input.Carrier ||
+                    (this.Carrier != null &&
+                    this.Carrier.Equals(input.Carrier))
+                ) && 
+                (
+                    this.CarrierService == input.CarrierService ||
+                    (this.CarrierService != null &&
+                    this.CarrierService.Equals(input.CarrierService))
+                ) && 
+                (
+                    this.HandlingFeeCents == input.HandlingFeeCents ||
+                    (this.HandlingFeeCents != null &&
+                    this.HandlingFeeCents.Equals(input.HandlingFeeCents))
                 );
         }
 
@@ -234,6 +277,18 @@ namespace net.crossly.buyer.Model
                 if (this.MaxDays != null)
                 {
                     hashCode = (hashCode * 59) + this.MaxDays.GetHashCode();
+                }
+                if (this.Carrier != null)
+                {
+                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
+                }
+                if (this.CarrierService != null)
+                {
+                    hashCode = (hashCode * 59) + this.CarrierService.GetHashCode();
+                }
+                if (this.HandlingFeeCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.HandlingFeeCents.GetHashCode();
                 }
                 return hashCode;
             }

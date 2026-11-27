@@ -40,41 +40,57 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="SpatialSceneResponseData" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="userId">userId (required).</param>
+        /// <param name="kind">&#39;collection&#39; | &#39;warehouse&#39;  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf. (required).</param>
+        /// <param name="categorySlug">NULL for warehouses and for the generic catch-all room..</param>
+        /// <param name="name">name (required).</param>
+        /// <param name="publicSlug">Public share handle. NULL until someone chooses to share..</param>
+        /// <param name="visibility">&#39;private&#39; | &#39;unlisted&#39; | &#39;public&#39;  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection. (required).</param>
+        /// <param name="settings">settings (required).</param>
+        /// <param name="storefrontId">kind&#x3D;&#39;shop&#39;: the store this showroom belongs to (0830). NULL &#x3D; a legacy row of the default store..</param>
+        /// <param name="showroomPosition">1147 kind&#x3D;&#39;shop&#39;: a store&#39;s showrooms in order; 0 &#x3D; its primary (one per store, the unique index below). (required).</param>
+        /// <param name="autoIncludeInventory">1147 kind&#x3D;&#39;shop&#39;: opt-in, stand every live item automatically. Off &#x3D; only what is pinned shows. (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="inventoryItemId">inventoryItemId (required).</param>
-        /// <param name="sceneId">sceneId (required).</param>
-        /// <param name="inventoryUnitId">inventoryUnitId.</param>
-        /// <param name="nodeId">nodeId (required).</param>
-        /// <param name="slotIndex">slotIndex (required).</param>
-        /// <param name="pinned">pinned (required).</param>
-        public SpatialSceneResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string inventoryItemId = default(string), string sceneId = default(string), string inventoryUnitId = default(string), string nodeId = default(string), decimal slotIndex = default(decimal), bool pinned = default(bool))
+        public SpatialSceneResponseData(string id = default(string), string userId = default(string), string kind = default(string), string categorySlug = default(string), string name = default(string), string publicSlug = default(string), string visibility = default(string), SpatialSceneResponseDataSettings settings = default(SpatialSceneResponseDataSettings), string storefrontId = default(string), decimal showroomPosition = default(decimal), bool autoIncludeInventory = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for SpatialSceneResponseData and cannot be null");
             }
             this.Id = id;
+            // to ensure "userId" is required (not null)
+            if (userId == null) {
+                throw new ArgumentNullException("userId is a required property for SpatialSceneResponseData and cannot be null");
+            }
+            this.UserId = userId;
+            // to ensure "kind" is required (not null)
+            if (kind == null) {
+                throw new ArgumentNullException("kind is a required property for SpatialSceneResponseData and cannot be null");
+            }
+            this.Kind = kind;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for SpatialSceneResponseData and cannot be null");
+            }
+            this.Name = name;
+            // to ensure "visibility" is required (not null)
+            if (visibility == null) {
+                throw new ArgumentNullException("visibility is a required property for SpatialSceneResponseData and cannot be null");
+            }
+            this.Visibility = visibility;
+            // to ensure "settings" is required (not null)
+            if (settings == null) {
+                throw new ArgumentNullException("settings is a required property for SpatialSceneResponseData and cannot be null");
+            }
+            this.Settings = settings;
+            this.ShowroomPosition = showroomPosition;
+            this.AutoIncludeInventory = autoIncludeInventory;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            // to ensure "inventoryItemId" is required (not null)
-            if (inventoryItemId == null) {
-                throw new ArgumentNullException("inventoryItemId is a required property for SpatialSceneResponseData and cannot be null");
-            }
-            this.InventoryItemId = inventoryItemId;
-            // to ensure "sceneId" is required (not null)
-            if (sceneId == null) {
-                throw new ArgumentNullException("sceneId is a required property for SpatialSceneResponseData and cannot be null");
-            }
-            this.SceneId = sceneId;
-            // to ensure "nodeId" is required (not null)
-            if (nodeId == null) {
-                throw new ArgumentNullException("nodeId is a required property for SpatialSceneResponseData and cannot be null");
-            }
-            this.NodeId = nodeId;
-            this.SlotIndex = slotIndex;
-            this.Pinned = pinned;
-            this.InventoryUnitId = inventoryUnitId;
+            this.CategorySlug = categorySlug;
+            this.PublicSlug = publicSlug;
+            this.StorefrontId = storefrontId;
         }
 
         /// <summary>
@@ -82,6 +98,73 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// &#39;collection&#39; | &#39;warehouse&#39;  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf.
+        /// </summary>
+        /// <value>&#39;collection&#39; | &#39;warehouse&#39;  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf.</value>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// NULL for warehouses and for the generic catch-all room.
+        /// </summary>
+        /// <value>NULL for warehouses and for the generic catch-all room.</value>
+        [DataMember(Name = "categorySlug", EmitDefaultValue = true)]
+        public string CategorySlug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Public share handle. NULL until someone chooses to share.
+        /// </summary>
+        /// <value>Public share handle. NULL until someone chooses to share.</value>
+        [DataMember(Name = "publicSlug", EmitDefaultValue = true)]
+        public string PublicSlug { get; set; }
+
+        /// <summary>
+        /// &#39;private&#39; | &#39;unlisted&#39; | &#39;public&#39;  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection.
+        /// </summary>
+        /// <value>&#39;private&#39; | &#39;unlisted&#39; | &#39;public&#39;  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection.</value>
+        [DataMember(Name = "visibility", IsRequired = true, EmitDefaultValue = false)]
+        public string Visibility { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Settings
+        /// </summary>
+        [DataMember(Name = "settings", IsRequired = true, EmitDefaultValue = false)]
+        public SpatialSceneResponseDataSettings Settings { get; set; }
+
+        /// <summary>
+        /// kind&#x3D;&#39;shop&#39;: the store this showroom belongs to (0830). NULL &#x3D; a legacy row of the default store.
+        /// </summary>
+        /// <value>kind&#x3D;&#39;shop&#39;: the store this showroom belongs to (0830). NULL &#x3D; a legacy row of the default store.</value>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// 1147 kind&#x3D;&#39;shop&#39;: a store&#39;s showrooms in order; 0 &#x3D; its primary (one per store, the unique index below).
+        /// </summary>
+        /// <value>1147 kind&#x3D;&#39;shop&#39;: a store&#39;s showrooms in order; 0 &#x3D; its primary (one per store, the unique index below).</value>
+        [DataMember(Name = "showroomPosition", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ShowroomPosition { get; set; }
+
+        /// <summary>
+        /// 1147 kind&#x3D;&#39;shop&#39;: opt-in, stand every live item automatically. Off &#x3D; only what is pinned shows.
+        /// </summary>
+        /// <value>1147 kind&#x3D;&#39;shop&#39;: opt-in, stand every live item automatically. Off &#x3D; only what is pinned shows.</value>
+        [DataMember(Name = "autoIncludeInventory", IsRequired = true, EmitDefaultValue = true)]
+        public bool AutoIncludeInventory { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -96,42 +179,6 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets InventoryItemId
-        /// </summary>
-        [DataMember(Name = "inventoryItemId", IsRequired = true, EmitDefaultValue = false)]
-        public string InventoryItemId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SceneId
-        /// </summary>
-        [DataMember(Name = "sceneId", IsRequired = true, EmitDefaultValue = false)]
-        public string SceneId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InventoryUnitId
-        /// </summary>
-        [DataMember(Name = "inventoryUnitId", EmitDefaultValue = true)]
-        public string InventoryUnitId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NodeId
-        /// </summary>
-        [DataMember(Name = "nodeId", IsRequired = true, EmitDefaultValue = false)]
-        public string NodeId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SlotIndex
-        /// </summary>
-        [DataMember(Name = "slotIndex", IsRequired = true, EmitDefaultValue = false)]
-        public decimal SlotIndex { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Pinned
-        /// </summary>
-        [DataMember(Name = "pinned", IsRequired = true, EmitDefaultValue = true)]
-        public bool Pinned { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -140,14 +187,18 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SpatialSceneResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  CategorySlug: ").Append(CategorySlug).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PublicSlug: ").Append(PublicSlug).Append("\n");
+            sb.Append("  Visibility: ").Append(Visibility).Append("\n");
+            sb.Append("  Settings: ").Append(Settings).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  ShowroomPosition: ").Append(ShowroomPosition).Append("\n");
+            sb.Append("  AutoIncludeInventory: ").Append(AutoIncludeInventory).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
-            sb.Append("  SceneId: ").Append(SceneId).Append("\n");
-            sb.Append("  InventoryUnitId: ").Append(InventoryUnitId).Append("\n");
-            sb.Append("  NodeId: ").Append(NodeId).Append("\n");
-            sb.Append("  SlotIndex: ").Append(SlotIndex).Append("\n");
-            sb.Append("  Pinned: ").Append(Pinned).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -189,6 +240,54 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.CategorySlug == input.CategorySlug ||
+                    (this.CategorySlug != null &&
+                    this.CategorySlug.Equals(input.CategorySlug))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.PublicSlug == input.PublicSlug ||
+                    (this.PublicSlug != null &&
+                    this.PublicSlug.Equals(input.PublicSlug))
+                ) && 
+                (
+                    this.Visibility == input.Visibility ||
+                    (this.Visibility != null &&
+                    this.Visibility.Equals(input.Visibility))
+                ) && 
+                (
+                    this.Settings == input.Settings ||
+                    (this.Settings != null &&
+                    this.Settings.Equals(input.Settings))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.ShowroomPosition == input.ShowroomPosition ||
+                    this.ShowroomPosition.Equals(input.ShowroomPosition)
+                ) && 
+                (
+                    this.AutoIncludeInventory == input.AutoIncludeInventory ||
+                    this.AutoIncludeInventory.Equals(input.AutoIncludeInventory)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -197,34 +296,6 @@ namespace net.crossly.Model
                     this.UpdatedAt == input.UpdatedAt ||
                     (this.UpdatedAt != null &&
                     this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.InventoryItemId == input.InventoryItemId ||
-                    (this.InventoryItemId != null &&
-                    this.InventoryItemId.Equals(input.InventoryItemId))
-                ) && 
-                (
-                    this.SceneId == input.SceneId ||
-                    (this.SceneId != null &&
-                    this.SceneId.Equals(input.SceneId))
-                ) && 
-                (
-                    this.InventoryUnitId == input.InventoryUnitId ||
-                    (this.InventoryUnitId != null &&
-                    this.InventoryUnitId.Equals(input.InventoryUnitId))
-                ) && 
-                (
-                    this.NodeId == input.NodeId ||
-                    (this.NodeId != null &&
-                    this.NodeId.Equals(input.NodeId))
-                ) && 
-                (
-                    this.SlotIndex == input.SlotIndex ||
-                    this.SlotIndex.Equals(input.SlotIndex)
-                ) && 
-                (
-                    this.Pinned == input.Pinned ||
-                    this.Pinned.Equals(input.Pinned)
                 );
         }
 
@@ -241,6 +312,40 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.UserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.Kind != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
+                if (this.CategorySlug != null)
+                {
+                    hashCode = (hashCode * 59) + this.CategorySlug.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.PublicSlug != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublicSlug.GetHashCode();
+                }
+                if (this.Visibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.Visibility.GetHashCode();
+                }
+                if (this.Settings != null)
+                {
+                    hashCode = (hashCode * 59) + this.Settings.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ShowroomPosition.GetHashCode();
+                hashCode = (hashCode * 59) + this.AutoIncludeInventory.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
@@ -249,24 +354,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
-                if (this.InventoryItemId != null)
-                {
-                    hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
-                }
-                if (this.SceneId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SceneId.GetHashCode();
-                }
-                if (this.InventoryUnitId != null)
-                {
-                    hashCode = (hashCode * 59) + this.InventoryUnitId.GetHashCode();
-                }
-                if (this.NodeId != null)
-                {
-                    hashCode = (hashCode * 59) + this.NodeId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.SlotIndex.GetHashCode();
-                hashCode = (hashCode * 59) + this.Pinned.GetHashCode();
                 return hashCode;
             }
         }

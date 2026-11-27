@@ -40,36 +40,36 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerListingSellerReviewsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="item">item (required).</param>
-        /// <param name="body">body.</param>
         /// <param name="rating">rating (required).</param>
-        /// <param name="sellerReply">sellerReply.</param>
+        /// <param name="body">body.</param>
         /// <param name="media">media (required).</param>
+        /// <param name="sellerReply">sellerReply.</param>
         /// <param name="reviewer">reviewer.</param>
-        public ListBuyerListingSellerReviewsItem(string id = default(string), string createdAt = default(string), ListBuyerListingSellerReviewsItemItem item = default(ListBuyerListingSellerReviewsItemItem), string body = default(string), decimal rating = default(decimal), string sellerReply = default(string), List<ListBuyerListingSellerReviewsItemMedia> media = default(List<ListBuyerListingSellerReviewsItemMedia>), string reviewer = default(string))
+        /// <param name="item">item (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        public ListBuyerListingSellerReviewsItem(string id = default(string), decimal rating = default(decimal), string body = default(string), List<ListBuyerListingSellerReviewsItemMedia> media = default(List<ListBuyerListingSellerReviewsItemMedia>), string sellerReply = default(string), string reviewer = default(string), ListBuyerListingSellerReviewsItemItem item = default(ListBuyerListingSellerReviewsItemItem), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "item" is required (not null)
-            if (item == null) {
-                throw new ArgumentNullException("item is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
-            }
-            this.Item = item;
             this.Rating = rating;
             // to ensure "media" is required (not null)
             if (media == null) {
                 throw new ArgumentNullException("media is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
             }
             this.Media = media;
+            // to ensure "item" is required (not null)
+            if (item == null) {
+                throw new ArgumentNullException("item is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
+            }
+            this.Item = item;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerListingSellerReviewsItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             this.Body = body;
             this.SellerReply = sellerReply;
             this.Reviewer = reviewer;
@@ -82,16 +82,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets Rating
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Item
-        /// </summary>
-        [DataMember(Name = "item", IsRequired = true, EmitDefaultValue = false)]
-        public ListBuyerListingSellerReviewsItemItem Item { get; set; }
+        [DataMember(Name = "rating", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Rating { get; set; }
 
         /// <summary>
         /// Gets or Sets Body
@@ -100,10 +94,10 @@ namespace net.crossly.buyer.Model
         public string Body { get; set; }
 
         /// <summary>
-        /// Gets or Sets Rating
+        /// Gets or Sets Media
         /// </summary>
-        [DataMember(Name = "rating", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Rating { get; set; }
+        [DataMember(Name = "media", IsRequired = true, EmitDefaultValue = false)]
+        public List<ListBuyerListingSellerReviewsItemMedia> Media { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerReply
@@ -112,16 +106,22 @@ namespace net.crossly.buyer.Model
         public string SellerReply { get; set; }
 
         /// <summary>
-        /// Gets or Sets Media
-        /// </summary>
-        [DataMember(Name = "media", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListBuyerListingSellerReviewsItemMedia> Media { get; set; }
-
-        /// <summary>
         /// Gets or Sets Reviewer
         /// </summary>
         [DataMember(Name = "reviewer", EmitDefaultValue = true)]
         public string Reviewer { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Item
+        /// </summary>
+        [DataMember(Name = "item", IsRequired = true, EmitDefaultValue = false)]
+        public ListBuyerListingSellerReviewsItemItem Item { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,13 +132,13 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerListingSellerReviewsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Item: ").Append(Item).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("  Rating: ").Append(Rating).Append("\n");
-            sb.Append("  SellerReply: ").Append(SellerReply).Append("\n");
+            sb.Append("  Body: ").Append(Body).Append("\n");
             sb.Append("  Media: ").Append(Media).Append("\n");
+            sb.Append("  SellerReply: ").Append(SellerReply).Append("\n");
             sb.Append("  Reviewer: ").Append(Reviewer).Append("\n");
+            sb.Append("  Item: ").Append(Item).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -180,28 +180,13 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.Item == input.Item ||
-                    (this.Item != null &&
-                    this.Item.Equals(input.Item))
+                    this.Rating == input.Rating ||
+                    this.Rating.Equals(input.Rating)
                 ) && 
                 (
                     this.Body == input.Body ||
                     (this.Body != null &&
                     this.Body.Equals(input.Body))
-                ) && 
-                (
-                    this.Rating == input.Rating ||
-                    this.Rating.Equals(input.Rating)
-                ) && 
-                (
-                    this.SellerReply == input.SellerReply ||
-                    (this.SellerReply != null &&
-                    this.SellerReply.Equals(input.SellerReply))
                 ) && 
                 (
                     this.Media == input.Media ||
@@ -210,9 +195,24 @@ namespace net.crossly.buyer.Model
                     this.Media.SequenceEqual(input.Media)
                 ) && 
                 (
+                    this.SellerReply == input.SellerReply ||
+                    (this.SellerReply != null &&
+                    this.SellerReply.Equals(input.SellerReply))
+                ) && 
+                (
                     this.Reviewer == input.Reviewer ||
                     (this.Reviewer != null &&
                     this.Reviewer.Equals(input.Reviewer))
+                ) && 
+                (
+                    this.Item == input.Item ||
+                    (this.Item != null &&
+                    this.Item.Equals(input.Item))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 );
         }
 
@@ -229,30 +229,30 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
-                }
-                if (this.Item != null)
-                {
-                    hashCode = (hashCode * 59) + this.Item.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Rating.GetHashCode();
                 if (this.Body != null)
                 {
                     hashCode = (hashCode * 59) + this.Body.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Rating.GetHashCode();
-                if (this.SellerReply != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerReply.GetHashCode();
                 }
                 if (this.Media != null)
                 {
                     hashCode = (hashCode * 59) + this.Media.GetHashCode();
                 }
+                if (this.SellerReply != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerReply.GetHashCode();
+                }
                 if (this.Reviewer != null)
                 {
                     hashCode = (hashCode * 59) + this.Reviewer.GetHashCode();
+                }
+                if (this.Item != null)
+                {
+                    hashCode = (hashCode * 59) + this.Item.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 return hashCode;
             }

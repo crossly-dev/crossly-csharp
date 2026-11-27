@@ -42,15 +42,18 @@ namespace net.crossly.Model
         /// <param name="revenue">revenue (required).</param>
         /// <param name="profit">profit (required).</param>
         /// <param name="soldItemsCount">soldItemsCount (required).</param>
+        /// <param name="pendingDetailsCount">\&quot;N sales pending details\&quot;: in the period, not in revenue/profit/avg. (required).</param>
         /// <param name="cancelledCount">cancelledCount (required).</param>
         /// <param name="cancelRate">cancelRate (required).</param>
         /// <param name="refundedAmount">refundedAmount (required).</param>
         /// <param name="refundedCount">refundedCount (required).</param>
         /// <param name="listedItemsCount">listedItemsCount (required).</param>
         /// <param name="avgSalePrice">avgSalePrice (required).</param>
-        /// <param name="sellThroughRate">sellThroughRate.</param>
+        /// <param name="sellThroughRate">0–100 (legacy unit). The full cohort is &#x60;sellThroughCohort&#x60;..</param>
         /// <param name="sellThrough">sellThrough (required).</param>
+        /// <param name="sellThroughCohort">sellThroughCohort (required).</param>
         /// <param name="avgDaysToSell">avgDaysToSell.</param>
+        /// <param name="medianDaysToSell">medianDaysToSell.</param>
         /// <param name="salesByPlatform">salesByPlatform (required).</param>
         /// <param name="avgSalePriceByPlatform">avgSalePriceByPlatform (required).</param>
         /// <param name="revenueByDay">revenueByDay (required).</param>
@@ -60,7 +63,8 @@ namespace net.crossly.Model
         /// <param name="top5ItemsByRevenue">top5ItemsByRevenue (required).</param>
         /// <param name="recentSales">recentSales (required).</param>
         /// <param name="availableLabels">availableLabels (required).</param>
-        public GetAnalyticDashboardResponse(GetAnalyticDashboardResponseRevenue revenue = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue profit = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue soldItemsCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue cancelledCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseCancelRate cancelRate = default(GetAnalyticDashboardResponseCancelRate), GetAnalyticDashboardResponseRevenue refundedAmount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue refundedCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue listedItemsCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue avgSalePrice = default(GetAnalyticDashboardResponseRevenue), decimal? sellThroughRate = default(decimal?), GetAnalyticDashboardResponseSellThrough sellThrough = default(GetAnalyticDashboardResponseSellThrough), decimal? avgDaysToSell = default(decimal?), List<GetAnalyticDashboardResponseSalesByPlatform> salesByPlatform = default(List<GetAnalyticDashboardResponseSalesByPlatform>), List<GetAnalyticDashboardResponseAvgSalePriceByPlatform> avgSalePriceByPlatform = default(List<GetAnalyticDashboardResponseAvgSalePriceByPlatform>), List<GetAnalyticDashboardResponseRevenueByDay> revenueByDay = default(List<GetAnalyticDashboardResponseRevenueByDay>), List<GetAnalyticDashboardResponseTopCategories> topCategories = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTopCategories> topSubcategories = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTopCategories> topBrands = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTop5ItemsByRevenue> top5ItemsByRevenue = default(List<GetAnalyticDashboardResponseTop5ItemsByRevenue>), List<GetAnalyticDashboardResponseRecentSales> recentSales = default(List<GetAnalyticDashboardResponseRecentSales>), List<string> availableLabels = default(List<string>))
+        /// <param name="period">period (required).</param>
+        public GetAnalyticDashboardResponse(GetAnalyticDashboardResponseRevenue revenue = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue profit = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue soldItemsCount = default(GetAnalyticDashboardResponseRevenue), decimal pendingDetailsCount = default(decimal), GetAnalyticDashboardResponseRevenue cancelledCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseCancelRate cancelRate = default(GetAnalyticDashboardResponseCancelRate), GetAnalyticDashboardResponseRevenue refundedAmount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue refundedCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue listedItemsCount = default(GetAnalyticDashboardResponseRevenue), GetAnalyticDashboardResponseRevenue avgSalePrice = default(GetAnalyticDashboardResponseRevenue), decimal? sellThroughRate = default(decimal?), GetAnalyticDashboardResponseSellThrough sellThrough = default(GetAnalyticDashboardResponseSellThrough), GetAnalyticDashboardResponseSellThroughCohort sellThroughCohort = default(GetAnalyticDashboardResponseSellThroughCohort), decimal? avgDaysToSell = default(decimal?), decimal? medianDaysToSell = default(decimal?), List<GetAnalyticDashboardResponseSalesByPlatform> salesByPlatform = default(List<GetAnalyticDashboardResponseSalesByPlatform>), List<GetAnalyticDashboardResponseAvgSalePriceByPlatform> avgSalePriceByPlatform = default(List<GetAnalyticDashboardResponseAvgSalePriceByPlatform>), List<GetAnalyticDashboardResponseRevenueByDay> revenueByDay = default(List<GetAnalyticDashboardResponseRevenueByDay>), List<GetAnalyticDashboardResponseTopCategories> topCategories = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTopCategories> topSubcategories = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTopCategories> topBrands = default(List<GetAnalyticDashboardResponseTopCategories>), List<GetAnalyticDashboardResponseTop5ItemsByRevenue> top5ItemsByRevenue = default(List<GetAnalyticDashboardResponseTop5ItemsByRevenue>), List<GetAnalyticDashboardResponseRecentSales> recentSales = default(List<GetAnalyticDashboardResponseRecentSales>), List<string> availableLabels = default(List<string>), GetAnalyticDashboardResponsePeriod period = default(GetAnalyticDashboardResponsePeriod))
         {
             // to ensure "revenue" is required (not null)
             if (revenue == null) {
@@ -77,6 +81,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("soldItemsCount is a required property for GetAnalyticDashboardResponse and cannot be null");
             }
             this.SoldItemsCount = soldItemsCount;
+            this.PendingDetailsCount = pendingDetailsCount;
             // to ensure "cancelledCount" is required (not null)
             if (cancelledCount == null) {
                 throw new ArgumentNullException("cancelledCount is a required property for GetAnalyticDashboardResponse and cannot be null");
@@ -112,6 +117,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("sellThrough is a required property for GetAnalyticDashboardResponse and cannot be null");
             }
             this.SellThrough = sellThrough;
+            // to ensure "sellThroughCohort" is required (not null)
+            if (sellThroughCohort == null) {
+                throw new ArgumentNullException("sellThroughCohort is a required property for GetAnalyticDashboardResponse and cannot be null");
+            }
+            this.SellThroughCohort = sellThroughCohort;
             // to ensure "salesByPlatform" is required (not null)
             if (salesByPlatform == null) {
                 throw new ArgumentNullException("salesByPlatform is a required property for GetAnalyticDashboardResponse and cannot be null");
@@ -157,8 +167,14 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("availableLabels is a required property for GetAnalyticDashboardResponse and cannot be null");
             }
             this.AvailableLabels = availableLabels;
+            // to ensure "period" is required (not null)
+            if (period == null) {
+                throw new ArgumentNullException("period is a required property for GetAnalyticDashboardResponse and cannot be null");
+            }
+            this.Period = period;
             this.SellThroughRate = sellThroughRate;
             this.AvgDaysToSell = avgDaysToSell;
+            this.MedianDaysToSell = medianDaysToSell;
         }
 
         /// <summary>
@@ -178,6 +194,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "soldItemsCount", IsRequired = true, EmitDefaultValue = false)]
         public GetAnalyticDashboardResponseRevenue SoldItemsCount { get; set; }
+
+        /// <summary>
+        /// \&quot;N sales pending details\&quot;: in the period, not in revenue/profit/avg.
+        /// </summary>
+        /// <value>\&quot;N sales pending details\&quot;: in the period, not in revenue/profit/avg.</value>
+        [DataMember(Name = "pendingDetailsCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PendingDetailsCount { get; set; }
 
         /// <summary>
         /// Gets or Sets CancelledCount
@@ -216,8 +239,9 @@ namespace net.crossly.Model
         public GetAnalyticDashboardResponseRevenue AvgSalePrice { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellThroughRate
+        /// 0–100 (legacy unit). The full cohort is &#x60;sellThroughCohort&#x60;.
         /// </summary>
+        /// <value>0–100 (legacy unit). The full cohort is &#x60;sellThroughCohort&#x60;.</value>
         [DataMember(Name = "sellThroughRate", EmitDefaultValue = true)]
         public decimal? SellThroughRate { get; set; }
 
@@ -228,10 +252,22 @@ namespace net.crossly.Model
         public GetAnalyticDashboardResponseSellThrough SellThrough { get; set; }
 
         /// <summary>
+        /// Gets or Sets SellThroughCohort
+        /// </summary>
+        [DataMember(Name = "sellThroughCohort", IsRequired = true, EmitDefaultValue = false)]
+        public GetAnalyticDashboardResponseSellThroughCohort SellThroughCohort { get; set; }
+
+        /// <summary>
         /// Gets or Sets AvgDaysToSell
         /// </summary>
         [DataMember(Name = "avgDaysToSell", EmitDefaultValue = true)]
         public decimal? AvgDaysToSell { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MedianDaysToSell
+        /// </summary>
+        [DataMember(Name = "medianDaysToSell", EmitDefaultValue = true)]
+        public decimal? MedianDaysToSell { get; set; }
 
         /// <summary>
         /// Gets or Sets SalesByPlatform
@@ -288,6 +324,12 @@ namespace net.crossly.Model
         public List<string> AvailableLabels { get; set; }
 
         /// <summary>
+        /// Gets or Sets Period
+        /// </summary>
+        [DataMember(Name = "period", IsRequired = true, EmitDefaultValue = false)]
+        public GetAnalyticDashboardResponsePeriod Period { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -298,6 +340,7 @@ namespace net.crossly.Model
             sb.Append("  Revenue: ").Append(Revenue).Append("\n");
             sb.Append("  Profit: ").Append(Profit).Append("\n");
             sb.Append("  SoldItemsCount: ").Append(SoldItemsCount).Append("\n");
+            sb.Append("  PendingDetailsCount: ").Append(PendingDetailsCount).Append("\n");
             sb.Append("  CancelledCount: ").Append(CancelledCount).Append("\n");
             sb.Append("  CancelRate: ").Append(CancelRate).Append("\n");
             sb.Append("  RefundedAmount: ").Append(RefundedAmount).Append("\n");
@@ -306,7 +349,9 @@ namespace net.crossly.Model
             sb.Append("  AvgSalePrice: ").Append(AvgSalePrice).Append("\n");
             sb.Append("  SellThroughRate: ").Append(SellThroughRate).Append("\n");
             sb.Append("  SellThrough: ").Append(SellThrough).Append("\n");
+            sb.Append("  SellThroughCohort: ").Append(SellThroughCohort).Append("\n");
             sb.Append("  AvgDaysToSell: ").Append(AvgDaysToSell).Append("\n");
+            sb.Append("  MedianDaysToSell: ").Append(MedianDaysToSell).Append("\n");
             sb.Append("  SalesByPlatform: ").Append(SalesByPlatform).Append("\n");
             sb.Append("  AvgSalePriceByPlatform: ").Append(AvgSalePriceByPlatform).Append("\n");
             sb.Append("  RevenueByDay: ").Append(RevenueByDay).Append("\n");
@@ -316,6 +361,7 @@ namespace net.crossly.Model
             sb.Append("  Top5ItemsByRevenue: ").Append(Top5ItemsByRevenue).Append("\n");
             sb.Append("  RecentSales: ").Append(RecentSales).Append("\n");
             sb.Append("  AvailableLabels: ").Append(AvailableLabels).Append("\n");
+            sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -367,6 +413,10 @@ namespace net.crossly.Model
                     this.SoldItemsCount.Equals(input.SoldItemsCount))
                 ) && 
                 (
+                    this.PendingDetailsCount == input.PendingDetailsCount ||
+                    this.PendingDetailsCount.Equals(input.PendingDetailsCount)
+                ) && 
+                (
                     this.CancelledCount == input.CancelledCount ||
                     (this.CancelledCount != null &&
                     this.CancelledCount.Equals(input.CancelledCount))
@@ -407,9 +457,19 @@ namespace net.crossly.Model
                     this.SellThrough.Equals(input.SellThrough))
                 ) && 
                 (
+                    this.SellThroughCohort == input.SellThroughCohort ||
+                    (this.SellThroughCohort != null &&
+                    this.SellThroughCohort.Equals(input.SellThroughCohort))
+                ) && 
+                (
                     this.AvgDaysToSell == input.AvgDaysToSell ||
                     (this.AvgDaysToSell != null &&
                     this.AvgDaysToSell.Equals(input.AvgDaysToSell))
+                ) && 
+                (
+                    this.MedianDaysToSell == input.MedianDaysToSell ||
+                    (this.MedianDaysToSell != null &&
+                    this.MedianDaysToSell.Equals(input.MedianDaysToSell))
                 ) && 
                 (
                     this.SalesByPlatform == input.SalesByPlatform ||
@@ -464,6 +524,11 @@ namespace net.crossly.Model
                     this.AvailableLabels != null &&
                     input.AvailableLabels != null &&
                     this.AvailableLabels.SequenceEqual(input.AvailableLabels)
+                ) && 
+                (
+                    this.Period == input.Period ||
+                    (this.Period != null &&
+                    this.Period.Equals(input.Period))
                 );
         }
 
@@ -488,6 +553,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.SoldItemsCount.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PendingDetailsCount.GetHashCode();
                 if (this.CancelledCount != null)
                 {
                     hashCode = (hashCode * 59) + this.CancelledCount.GetHashCode();
@@ -520,9 +586,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.SellThrough.GetHashCode();
                 }
+                if (this.SellThroughCohort != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellThroughCohort.GetHashCode();
+                }
                 if (this.AvgDaysToSell != null)
                 {
                     hashCode = (hashCode * 59) + this.AvgDaysToSell.GetHashCode();
+                }
+                if (this.MedianDaysToSell != null)
+                {
+                    hashCode = (hashCode * 59) + this.MedianDaysToSell.GetHashCode();
                 }
                 if (this.SalesByPlatform != null)
                 {
@@ -559,6 +633,10 @@ namespace net.crossly.Model
                 if (this.AvailableLabels != null)
                 {
                     hashCode = (hashCode * 59) + this.AvailableLabels.GetHashCode();
+                }
+                if (this.Period != null)
+                {
+                    hashCode = (hashCode * 59) + this.Period.GetHashCode();
                 }
                 return hashCode;
             }

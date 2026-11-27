@@ -64,34 +64,34 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Void for value: void
+            /// </summary>
+            [EnumMember(Value = "void")]
+            Void = 1,
+
+            /// <summary>
             /// Enum Pledged for value: pledged
             /// </summary>
             [EnumMember(Value = "pledged")]
-            Pledged = 1,
+            Pledged = 2,
 
             /// <summary>
             /// Enum Issued for value: issued
             /// </summary>
             [EnumMember(Value = "issued")]
-            Issued = 2,
+            Issued = 3,
 
             /// <summary>
             /// Enum Transferred for value: transferred
             /// </summary>
             [EnumMember(Value = "transferred")]
-            Transferred = 3,
+            Transferred = 4,
 
             /// <summary>
             /// Enum Surrendered for value: surrendered
             /// </summary>
             [EnumMember(Value = "surrendered")]
-            Surrendered = 4,
-
-            /// <summary>
-            /// Enum Void for value: void
-            /// </summary>
-            [EnumMember(Value = "void")]
-            Void = 5
+            Surrendered = 5
 
         }
 

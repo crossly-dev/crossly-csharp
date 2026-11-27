@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Skipped = 1,
 
             /// <summary>
-            /// Enum Failed for value: failed
-            /// </summary>
-            [EnumMember(Value = "failed")]
-            Failed = 2,
-
-            /// <summary>
             /// Enum Published for value: published
             /// </summary>
             [EnumMember(Value = "published")]
-            Published = 3
+            Published = 2,
+
+            /// <summary>
+            /// Enum Failed for value: failed
+            /// </summary>
+            [EnumMember(Value = "failed")]
+            Failed = 3
 
         }
 

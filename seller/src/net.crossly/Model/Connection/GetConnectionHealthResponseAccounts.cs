@@ -38,34 +38,34 @@ namespace net.crossly.Model
         public enum StateEnum
         {
             /// <summary>
-            /// Enum Stale for value: stale
-            /// </summary>
-            [EnumMember(Value = "stale")]
-            Stale = 1,
-
-            /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 2,
-
-            /// <summary>
-            /// Enum Healthy for value: healthy
-            /// </summary>
-            [EnumMember(Value = "healthy")]
-            Healthy = 3,
+            Unknown = 1,
 
             /// <summary>
             /// Enum Unmonitored for value: unmonitored
             /// </summary>
             [EnumMember(Value = "unmonitored")]
-            Unmonitored = 4,
+            Unmonitored = 2,
 
             /// <summary>
             /// Enum Disconnected for value: disconnected
             /// </summary>
             [EnumMember(Value = "disconnected")]
-            Disconnected = 5,
+            Disconnected = 3,
+
+            /// <summary>
+            /// Enum Healthy for value: healthy
+            /// </summary>
+            [EnumMember(Value = "healthy")]
+            Healthy = 4,
+
+            /// <summary>
+            /// Enum Stale for value: stale
+            /// </summary>
+            [EnumMember(Value = "stale")]
+            Stale = 5,
 
             /// <summary>
             /// Enum PartialBlank for value: partial_blank
@@ -112,10 +112,10 @@ namespace net.crossly.Model
         public enum SeverityEnum
         {
             /// <summary>
-            /// Enum Error for value: error
+            /// Enum Info for value: info
             /// </summary>
-            [EnumMember(Value = "error")]
-            Error = 1,
+            [EnumMember(Value = "info")]
+            Info = 1,
 
             /// <summary>
             /// Enum Unknown for value: unknown
@@ -124,10 +124,10 @@ namespace net.crossly.Model
             Unknown = 2,
 
             /// <summary>
-            /// Enum Ok for value: ok
+            /// Enum Error for value: error
             /// </summary>
-            [EnumMember(Value = "ok")]
-            Ok = 3,
+            [EnumMember(Value = "error")]
+            Error = 3,
 
             /// <summary>
             /// Enum Warn for value: warn
@@ -136,10 +136,10 @@ namespace net.crossly.Model
             Warn = 4,
 
             /// <summary>
-            /// Enum Info for value: info
+            /// Enum Ok for value: ok
             /// </summary>
-            [EnumMember(Value = "info")]
-            Info = 5
+            [EnumMember(Value = "ok")]
+            Ok = 5
 
         }
 

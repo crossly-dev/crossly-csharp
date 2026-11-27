@@ -42,13 +42,15 @@ namespace net.crossly.Model
         /// <param name="problems">problems (required).</param>
         /// <param name="problemCount">problemCount (required).</param>
         /// <param name="maxRows">maxRows (required).</param>
-        /// <param name="created">created (required).</param>
-        /// <param name="updated">updated (required).</param>
-        /// <param name="usable">Rows that mapped cleanly. &#x60;created + updated&#x60; when not a dry run. (required).</param>
+        /// <param name="created">New items written — or, on a dry run, that WOULD be written. (required).</param>
+        /// <param name="updated">Existing items updated by SKU — or, on a dry run, that would be. (required).</param>
+        /// <param name="usable">Rows that can be imported: &#x60;created + updated + skippedOverLimit&#x60;. Zero means the file has nothing usable in it. (required).</param>
         /// <param name="totalRows">totalRows (required).</param>
         /// <param name="listingsCreated">listingsCreated (required).</param>
+        /// <param name="skippedOverLimit">New rows left out because the monthly item limit was reached. (required).</param>
+        /// <param name="capacity">capacity (required).</param>
         /// <param name="dryRun">True when nothing was written — a preview pass. (required).</param>
-        public CreateInventoryCsvImportResponse(List<CreateInventoryCsvImportResponseProblems> problems = default(List<CreateInventoryCsvImportResponseProblems>), decimal problemCount = default(decimal), decimal maxRows = default(decimal), decimal created = default(decimal), decimal updated = default(decimal), decimal usable = default(decimal), decimal totalRows = default(decimal), decimal listingsCreated = default(decimal), bool dryRun = default(bool))
+        public CreateInventoryCsvImportResponse(List<CreateInventoryCsvImportResponseProblems> problems = default(List<CreateInventoryCsvImportResponseProblems>), decimal problemCount = default(decimal), decimal maxRows = default(decimal), decimal created = default(decimal), decimal updated = default(decimal), decimal usable = default(decimal), decimal totalRows = default(decimal), decimal listingsCreated = default(decimal), decimal skippedOverLimit = default(decimal), CreateInventoryCsvImportResponseCapacity capacity = default(CreateInventoryCsvImportResponseCapacity), bool dryRun = default(bool))
         {
             // to ensure "problems" is required (not null)
             if (problems == null) {
@@ -62,6 +64,12 @@ namespace net.crossly.Model
             this.Usable = usable;
             this.TotalRows = totalRows;
             this.ListingsCreated = listingsCreated;
+            this.SkippedOverLimit = skippedOverLimit;
+            // to ensure "capacity" is required (not null)
+            if (capacity == null) {
+                throw new ArgumentNullException("capacity is a required property for CreateInventoryCsvImportResponse and cannot be null");
+            }
+            this.Capacity = capacity;
             this.DryRun = dryRun;
         }
 
@@ -84,21 +92,23 @@ namespace net.crossly.Model
         public decimal MaxRows { get; set; }
 
         /// <summary>
-        /// Gets or Sets Created
+        /// New items written — or, on a dry run, that WOULD be written.
         /// </summary>
+        /// <value>New items written — or, on a dry run, that WOULD be written.</value>
         [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = false)]
         public decimal Created { get; set; }
 
         /// <summary>
-        /// Gets or Sets Updated
+        /// Existing items updated by SKU — or, on a dry run, that would be.
         /// </summary>
+        /// <value>Existing items updated by SKU — or, on a dry run, that would be.</value>
         [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = false)]
         public decimal Updated { get; set; }
 
         /// <summary>
-        /// Rows that mapped cleanly. &#x60;created + updated&#x60; when not a dry run.
+        /// Rows that can be imported: &#x60;created + updated + skippedOverLimit&#x60;. Zero means the file has nothing usable in it.
         /// </summary>
-        /// <value>Rows that mapped cleanly. &#x60;created + updated&#x60; when not a dry run.</value>
+        /// <value>Rows that can be imported: &#x60;created + updated + skippedOverLimit&#x60;. Zero means the file has nothing usable in it.</value>
         [DataMember(Name = "usable", IsRequired = true, EmitDefaultValue = false)]
         public decimal Usable { get; set; }
 
@@ -113,6 +123,19 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "listingsCreated", IsRequired = true, EmitDefaultValue = false)]
         public decimal ListingsCreated { get; set; }
+
+        /// <summary>
+        /// New rows left out because the monthly item limit was reached.
+        /// </summary>
+        /// <value>New rows left out because the monthly item limit was reached.</value>
+        [DataMember(Name = "skippedOverLimit", IsRequired = true, EmitDefaultValue = false)]
+        public decimal SkippedOverLimit { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Capacity
+        /// </summary>
+        [DataMember(Name = "capacity", IsRequired = true, EmitDefaultValue = false)]
+        public CreateInventoryCsvImportResponseCapacity Capacity { get; set; }
 
         /// <summary>
         /// True when nothing was written — a preview pass.
@@ -137,6 +160,8 @@ namespace net.crossly.Model
             sb.Append("  Usable: ").Append(Usable).Append("\n");
             sb.Append("  TotalRows: ").Append(TotalRows).Append("\n");
             sb.Append("  ListingsCreated: ").Append(ListingsCreated).Append("\n");
+            sb.Append("  SkippedOverLimit: ").Append(SkippedOverLimit).Append("\n");
+            sb.Append("  Capacity: ").Append(Capacity).Append("\n");
             sb.Append("  DryRun: ").Append(DryRun).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -208,6 +233,15 @@ namespace net.crossly.Model
                     this.ListingsCreated.Equals(input.ListingsCreated)
                 ) && 
                 (
+                    this.SkippedOverLimit == input.SkippedOverLimit ||
+                    this.SkippedOverLimit.Equals(input.SkippedOverLimit)
+                ) && 
+                (
+                    this.Capacity == input.Capacity ||
+                    (this.Capacity != null &&
+                    this.Capacity.Equals(input.Capacity))
+                ) && 
+                (
                     this.DryRun == input.DryRun ||
                     this.DryRun.Equals(input.DryRun)
                 );
@@ -233,6 +267,11 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Usable.GetHashCode();
                 hashCode = (hashCode * 59) + this.TotalRows.GetHashCode();
                 hashCode = (hashCode * 59) + this.ListingsCreated.GetHashCode();
+                hashCode = (hashCode * 59) + this.SkippedOverLimit.GetHashCode();
+                if (this.Capacity != null)
+                {
+                    hashCode = (hashCode * 59) + this.Capacity.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.DryRun.GetHashCode();
                 return hashCode;
             }

@@ -80,17 +80,14 @@ namespace net.crossly.Model
         /// <param name="shop">shop (required).</param>
         /// <param name="home">home.</param>
         /// <param name="suggested">suggested.</param>
-        /// <param name="canMove">canMove (required).</param>
-        /// <param name="move">move.</param>
         /// <param name="options">options (required).</param>
-        public GetSpatialShopNeighbourhoodResponseData(Object shop = default(Object), Object home = default(Object), SuggestedEnum? suggested = default(SuggestedEnum?), bool canMove = default(bool), Object move = default(Object), List<ListNeighbourhoodsItem> options = default(List<ListNeighbourhoodsItem>))
+        public GetSpatialShopNeighbourhoodResponseData(Object shop = default(Object), Object home = default(Object), SuggestedEnum? suggested = default(SuggestedEnum?), List<ListNeighbourhoodsItem> options = default(List<ListNeighbourhoodsItem>))
         {
             // to ensure "shop" is required (not null)
             if (shop == null) {
                 throw new ArgumentNullException("shop is a required property for GetSpatialShopNeighbourhoodResponseData and cannot be null");
             }
             this.Shop = shop;
-            this.CanMove = canMove;
             // to ensure "options" is required (not null)
             if (options == null) {
                 throw new ArgumentNullException("options is a required property for GetSpatialShopNeighbourhoodResponseData and cannot be null");
@@ -98,7 +95,6 @@ namespace net.crossly.Model
             this.Options = options;
             this.Home = home;
             this.Suggested = suggested;
-            this.Move = move;
         }
 
         /// <summary>
@@ -112,18 +108,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "home", EmitDefaultValue = true)]
         public Object Home { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CanMove
-        /// </summary>
-        [DataMember(Name = "canMove", IsRequired = true, EmitDefaultValue = true)]
-        public bool CanMove { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Move
-        /// </summary>
-        [DataMember(Name = "move", EmitDefaultValue = true)]
-        public Object Move { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
@@ -142,8 +126,6 @@ namespace net.crossly.Model
             sb.Append("  Shop: ").Append(Shop).Append("\n");
             sb.Append("  Home: ").Append(Home).Append("\n");
             sb.Append("  Suggested: ").Append(Suggested).Append("\n");
-            sb.Append("  CanMove: ").Append(CanMove).Append("\n");
-            sb.Append("  Move: ").Append(Move).Append("\n");
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -195,15 +177,6 @@ namespace net.crossly.Model
                     this.Suggested.Equals(input.Suggested)
                 ) && 
                 (
-                    this.CanMove == input.CanMove ||
-                    this.CanMove.Equals(input.CanMove)
-                ) && 
-                (
-                    this.Move == input.Move ||
-                    (this.Move != null &&
-                    this.Move.Equals(input.Move))
-                ) && 
-                (
                     this.Options == input.Options ||
                     this.Options != null &&
                     input.Options != null &&
@@ -229,11 +202,6 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Home.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Suggested.GetHashCode();
-                hashCode = (hashCode * 59) + this.CanMove.GetHashCode();
-                if (this.Move != null)
-                {
-                    hashCode = (hashCode * 59) + this.Move.GetHashCode();
-                }
                 if (this.Options != null)
                 {
                     hashCode = (hashCode * 59) + this.Options.GetHashCode();

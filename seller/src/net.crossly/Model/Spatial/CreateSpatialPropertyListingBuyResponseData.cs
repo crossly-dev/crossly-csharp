@@ -34,46 +34,73 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSpatialPropertyListingBuyResponseData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateSpatialPropertyListingBuyResponseData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateSpatialPropertyListingBuyResponseData" /> class.
-        /// </summary>
-        /// <param name="deedId">deedId (required).</param>
-        /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="paidThrough">paidThrough (required).</param>
-        public CreateSpatialPropertyListingBuyResponseData(string deedId = default(string), decimal priceCents = default(decimal), string paidThrough = default(string))
+        /// <param name="done">done.</param>
+        /// <param name="paymentId">paymentId.</param>
+        /// <param name="requiresAction">requiresAction.</param>
+        /// <param name="clientSecret">clientSecret.</param>
+        /// <param name="deedId">deedId.</param>
+        /// <param name="priceCents">priceCents.</param>
+        /// <param name="paidThrough">paidThrough.</param>
+        /// <param name="placed">placed.</param>
+        public CreateSpatialPropertyListingBuyResponseData(bool done = default(bool), string paymentId = default(string), bool requiresAction = default(bool), string clientSecret = default(string), string deedId = default(string), decimal priceCents = default(decimal), string paidThrough = default(string), CreateWorldMarketPlotRentResponseDataOneOf2Placed placed = default(CreateWorldMarketPlotRentResponseDataOneOf2Placed))
         {
-            // to ensure "deedId" is required (not null)
-            if (deedId == null) {
-                throw new ArgumentNullException("deedId is a required property for CreateSpatialPropertyListingBuyResponseData and cannot be null");
-            }
+            this.Done = done;
+            this.PaymentId = paymentId;
+            this.RequiresAction = requiresAction;
+            this.ClientSecret = clientSecret;
             this.DeedId = deedId;
             this.PriceCents = priceCents;
-            // to ensure "paidThrough" is required (not null)
-            if (paidThrough == null) {
-                throw new ArgumentNullException("paidThrough is a required property for CreateSpatialPropertyListingBuyResponseData and cannot be null");
-            }
             this.PaidThrough = paidThrough;
+            this.Placed = placed;
         }
+
+        /// <summary>
+        /// Gets or Sets Done
+        /// </summary>
+        [DataMember(Name = "done", EmitDefaultValue = true)]
+        public bool Done { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PaymentId
+        /// </summary>
+        [DataMember(Name = "paymentId", EmitDefaultValue = false)]
+        public string PaymentId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RequiresAction
+        /// </summary>
+        [DataMember(Name = "requiresAction", EmitDefaultValue = true)]
+        public bool RequiresAction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientSecret
+        /// </summary>
+        [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or Sets DeedId
         /// </summary>
-        [DataMember(Name = "deedId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "deedId", EmitDefaultValue = false)]
         public string DeedId { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceCents
         /// </summary>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "priceCents", EmitDefaultValue = false)]
         public decimal PriceCents { get; set; }
 
         /// <summary>
         /// Gets or Sets PaidThrough
         /// </summary>
-        [DataMember(Name = "paidThrough", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "paidThrough", EmitDefaultValue = false)]
         public string PaidThrough { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Placed
+        /// </summary>
+        [DataMember(Name = "placed", EmitDefaultValue = true)]
+        public CreateWorldMarketPlotRentResponseDataOneOf2Placed Placed { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,9 +110,14 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateSpatialPropertyListingBuyResponseData {\n");
+            sb.Append("  Done: ").Append(Done).Append("\n");
+            sb.Append("  PaymentId: ").Append(PaymentId).Append("\n");
+            sb.Append("  RequiresAction: ").Append(RequiresAction).Append("\n");
+            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  DeedId: ").Append(DeedId).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  PaidThrough: ").Append(PaidThrough).Append("\n");
+            sb.Append("  Placed: ").Append(Placed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +154,24 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Done == input.Done ||
+                    this.Done.Equals(input.Done)
+                ) && 
+                (
+                    this.PaymentId == input.PaymentId ||
+                    (this.PaymentId != null &&
+                    this.PaymentId.Equals(input.PaymentId))
+                ) && 
+                (
+                    this.RequiresAction == input.RequiresAction ||
+                    this.RequiresAction.Equals(input.RequiresAction)
+                ) && 
+                (
+                    this.ClientSecret == input.ClientSecret ||
+                    (this.ClientSecret != null &&
+                    this.ClientSecret.Equals(input.ClientSecret))
+                ) && 
+                (
                     this.DeedId == input.DeedId ||
                     (this.DeedId != null &&
                     this.DeedId.Equals(input.DeedId))
@@ -134,6 +184,11 @@ namespace net.crossly.Model
                     this.PaidThrough == input.PaidThrough ||
                     (this.PaidThrough != null &&
                     this.PaidThrough.Equals(input.PaidThrough))
+                ) && 
+                (
+                    this.Placed == input.Placed ||
+                    (this.Placed != null &&
+                    this.Placed.Equals(input.Placed))
                 );
         }
 
@@ -146,6 +201,16 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Done.GetHashCode();
+                if (this.PaymentId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RequiresAction.GetHashCode();
+                if (this.ClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.DeedId != null)
                 {
                     hashCode = (hashCode * 59) + this.DeedId.GetHashCode();
@@ -154,6 +219,10 @@ namespace net.crossly.Model
                 if (this.PaidThrough != null)
                 {
                     hashCode = (hashCode * 59) + this.PaidThrough.GetHashCode();
+                }
+                if (this.Placed != null)
+                {
+                    hashCode = (hashCode * 59) + this.Placed.GetHashCode();
                 }
                 return hashCode;
             }

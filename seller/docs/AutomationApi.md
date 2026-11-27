@@ -28,6 +28,8 @@ Method | HTTP request | Description
 
 Create an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -101,6 +103,8 @@ This endpoint does not need any parameter.
 > CreateAutomationRuleImportResponse CreateAutomationRuleImport (bool? activate = null)
 
 Import one or more rules from recipe JSON (single or bundle).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```csharp
@@ -180,6 +184,8 @@ Name | Type | Description  | Notes
 
 Fire an automation rule immediately.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -254,9 +260,11 @@ Name | Type | Description  | Notes
 
 <a name="createautomationruletoggle"></a>
 # **CreateAutomationRuleToggle**
-> UpdateAutomationRuleResponse CreateAutomationRuleToggle (Guid id)
+> GetAutomationRuleResponse CreateAutomationRuleToggle (Guid id)
 
 Flip an automation rule between active and inactive.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```csharp
@@ -283,7 +291,7 @@ namespace Example
             try
             {
                 // Flip an automation rule between active and inactive.
-                UpdateAutomationRuleResponse result = apiInstance.CreateAutomationRuleToggle(id);
+                GetAutomationRuleResponse result = apiInstance.CreateAutomationRuleToggle(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -305,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 
@@ -335,6 +343,8 @@ Name | Type | Description  | Notes
 > CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe ()
 
 Dry-run validate one or more recipes against the live catalog.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```csharp
@@ -566,6 +576,8 @@ Name | Type | Description  | Notes
 
 Delete an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -718,6 +730,8 @@ This endpoint does not need any parameter.
 
 Get a single automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -796,6 +810,8 @@ Name | Type | Description  | Notes
 
 Export the user's full rule library as a portable recipe bundle.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -869,6 +885,8 @@ This endpoint does not need any parameter.
 > GetAutomationRuleExportByIdResponse GetAutomationRuleExportById (Guid id)
 
 Export a single automation rule as a portable recipe.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```csharp
@@ -948,6 +966,8 @@ Name | Type | Description  | Notes
 
 List automation rules.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -1021,6 +1041,8 @@ This endpoint does not need any parameter.
 > ListAutomationRunsResponse ListAutomationRuns (Guid? ruleId = null, Guid? chainId = null, int? limit = null)
 
 Per-fire history for automation rules and workflow chain runs.
+
+Deprecated: use /v1/workflow-runs.
 
 ### Example
 ```csharp
@@ -1174,9 +1196,11 @@ This endpoint does not need any parameter.
 
 <a name="updateautomationrule"></a>
 # **UpdateAutomationRule**
-> UpdateAutomationRuleResponse UpdateAutomationRule (Guid id)
+> GetAutomationRuleResponse UpdateAutomationRule (Guid id)
 
 Update an automation rule (full replace).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 ```csharp
@@ -1203,7 +1227,7 @@ namespace Example
             try
             {
                 // Update an automation rule (full replace).
-                UpdateAutomationRuleResponse result = apiInstance.UpdateAutomationRule(id);
+                GetAutomationRuleResponse result = apiInstance.UpdateAutomationRule(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1225,7 +1249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 

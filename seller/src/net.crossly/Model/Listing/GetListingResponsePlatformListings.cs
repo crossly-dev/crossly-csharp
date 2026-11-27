@@ -32,6 +32,114 @@ namespace net.crossly.Model
     public partial class GetListingResponsePlatformListings : IEquatable<GetListingResponsePlatformListings>, IValidatableObject
     {
         /// <summary>
+        /// Defines Origin
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum OriginEnum
+        {
+            /// <summary>
+            /// Enum Unknown for value: unknown
+            /// </summary>
+            [EnumMember(Value = "unknown")]
+            Unknown = 1,
+
+            /// <summary>
+            /// Enum Published for value: published
+            /// </summary>
+            [EnumMember(Value = "published")]
+            Published = 2,
+
+            /// <summary>
+            /// Enum Imported for value: imported
+            /// </summary>
+            [EnumMember(Value = "imported")]
+            Imported = 3,
+
+            /// <summary>
+            /// Enum ExternalStub for value: external_stub
+            /// </summary>
+            [EnumMember(Value = "external_stub")]
+            ExternalStub = 4,
+
+            /// <summary>
+            /// Enum AppLinked for value: app_linked
+            /// </summary>
+            [EnumMember(Value = "app_linked")]
+            AppLinked = 5
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Origin
+        /// </summary>
+        [DataMember(Name = "origin", IsRequired = true, EmitDefaultValue = false)]
+        public OriginEnum Origin { get; set; }
+        /// <summary>
+        /// Defines ViewsSemantics
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ViewsSemanticsEnum
+        {
+            /// <summary>
+            /// Enum Lifetime for value: lifetime
+            /// </summary>
+            [EnumMember(Value = "lifetime")]
+            Lifetime = 1,
+
+            /// <summary>
+            /// Enum Rolling7d for value: rolling7d
+            /// </summary>
+            [EnumMember(Value = "rolling7d")]
+            Rolling7d = 2,
+
+            /// <summary>
+            /// Enum Rolling30d for value: rolling30d
+            /// </summary>
+            [EnumMember(Value = "rolling30d")]
+            Rolling30d = 3,
+
+            /// <summary>
+            /// Enum Clicks for value: clicks
+            /// </summary>
+            [EnumMember(Value = "clicks")]
+            Clicks = 4
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets ViewsSemantics
+        /// </summary>
+        [DataMember(Name = "viewsSemantics", EmitDefaultValue = true)]
+        public ViewsSemanticsEnum? ViewsSemantics { get; set; }
+        /// <summary>
+        /// Defines DelistState
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DelistStateEnum
+        {
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 1,
+
+            /// <summary>
+            /// Enum Failed for value: failed
+            /// </summary>
+            [EnumMember(Value = "failed")]
+            Failed = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets DelistState
+        /// </summary>
+        [DataMember(Name = "delistState", EmitDefaultValue = true)]
+        public DelistStateEnum? DelistState { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetListingResponsePlatformListings" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,17 +149,19 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        /// <param name="status">status (required).</param>
         /// <param name="platform">platform (required).</param>
-        /// <param name="errorMessage">errorMessage.</param>
-        /// <param name="listingId">listingId (required).</param>
-        /// <param name="marketplaceId">marketplaceId.</param>
         /// <param name="accountSlot">accountSlot (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="marketplaceId">marketplaceId.</param>
+        /// <param name="origin">origin (required).</param>
+        /// <param name="views">views (required).</param>
+        /// <param name="favorites">favorites (required).</param>
+        /// <param name="quantity">quantity (required).</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
         /// <param name="currency">currency.</param>
         /// <param name="delistedAt">delistedAt.</param>
         /// <param name="soldAt">soldAt.</param>
+        /// <param name="listingId">listingId (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="platformListingUrl">platformListingUrl.</param>
         /// <param name="stockLocation">stockLocation (required).</param>
@@ -59,13 +169,22 @@ namespace net.crossly.Model
         /// <param name="sharedAt">sharedAt.</param>
         /// <param name="delistReason">delistReason.</param>
         /// <param name="lastCheckedAt">lastCheckedAt.</param>
-        /// <param name="views">views (required).</param>
-        /// <param name="favorites">favorites (required).</param>
         /// <param name="commentsCount">commentsCount (required).</param>
+        /// <param name="impressions">impressions.</param>
+        /// <param name="ctrBps">ctrBps.</param>
+        /// <param name="viewsSemantics">viewsSemantics.</param>
         /// <param name="lastStatsSyncedAt">lastStatsSyncedAt.</param>
+        /// <param name="errorMessage">errorMessage.</param>
+        /// <param name="delistRequestedAt">delistRequestedAt.</param>
+        /// <param name="delistRequestedReason">delistRequestedReason.</param>
+        /// <param name="delistFailedAt">delistFailedAt.</param>
+        /// <param name="delistError">delistError.</param>
+        /// <param name="delistErrorCode">delistErrorCode.</param>
         /// <param name="listedPrice">listedPrice.</param>
         /// <param name="crosslyPriceUsdCents">crosslyPriceUsdCents.</param>
         /// <param name="crosslyPriceFxAsOf">crosslyPriceFxAsOf.</param>
+        /// <param name="bundlePromo">bundlePromo.</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="hashtags">hashtags.</param>
         /// <param name="isDraft">isDraft (required).</param>
         /// <param name="scheduledPublishAt">scheduledPublishAt.</param>
@@ -85,7 +204,6 @@ namespace net.crossly.Model
         /// <param name="bestOfferAutoDeclineCents">bestOfferAutoDeclineCents.</param>
         /// <param name="aestheticTags">aestheticTags.</param>
         /// <param name="personalization">personalization.</param>
-        /// <param name="digitalFile">digitalFile.</param>
         /// <param name="tryDays">tryDays.</param>
         /// <param name="tryFeeCents">tryFeeCents.</param>
         /// <param name="subscribeDiscountBps">subscribeDiscountBps.</param>
@@ -125,7 +243,9 @@ namespace net.crossly.Model
         /// <param name="verificationFailed">verificationFailed (required).</param>
         /// <param name="detailsPending">detailsPending (required).</param>
         /// <param name="publishedOverrides">publishedOverrides.</param>
-        public GetListingResponsePlatformListings(string id = default(string), string userId = default(string), decimal quantity = default(decimal), string status = default(string), string platform = default(string), string errorMessage = default(string), string listingId = default(string), string marketplaceId = default(string), decimal accountSlot = default(decimal), string inventoryItemId = default(string), string currency = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), string platformListingId = default(string), string platformListingUrl = default(string), string stockLocation = default(string), DateTime? listedAt = default(DateTime?), DateTime? sharedAt = default(DateTime?), string delistReason = default(string), DateTime? lastCheckedAt = default(DateTime?), decimal views = default(decimal), decimal favorites = default(decimal), decimal commentsCount = default(decimal), DateTime? lastStatsSyncedAt = default(DateTime?), string listedPrice = default(string), decimal? crosslyPriceUsdCents = default(decimal?), string crosslyPriceFxAsOf = default(string), List<string> hashtags = default(List<string>), bool isDraft = default(bool), DateTime? scheduledPublishAt = default(DateTime?), bool isDutchAuction = default(bool), decimal? dutchStartCents = default(decimal?), decimal? dutchFloorCents = default(decimal?), DateTime? dutchEndsAt = default(DateTime?), bool isPreOrder = default(bool), string expectedShipBy = default(string), decimal? preorderDepositPercentBps = default(decimal?), DateTime? boostedAt = default(DateTime?), string imageCaption = default(string), decimal? durationDays = default(decimal?), DateTime? endsAt = default(DateTime?), bool bestOfferEnabled = default(bool), decimal? bestOfferAutoAcceptCents = default(decimal?), decimal? bestOfferAutoDeclineCents = default(decimal?), List<string> aestheticTags = default(List<string>), GetInventoryResponsePlatformListingsPersonalization personalization = default(GetInventoryResponsePlatformListingsPersonalization), GetInventoryResponsePlatformListingsDigitalFile digitalFile = default(GetInventoryResponsePlatformListingsDigitalFile), decimal? tryDays = default(decimal?), decimal? tryFeeCents = default(decimal?), decimal? subscribeDiscountBps = default(decimal?), GetInventoryResponsePlatformListingsMeasurements measurements = default(GetInventoryResponsePlatformListingsMeasurements), bool allowsLocalPickup = default(bool), decimal? pickupRadiusMiles = default(decimal?), string pickupLat = default(string), string pickupLng = default(string), string refurbishedTier = default(string), decimal? refurbWarrantyMonths = default(decimal?), decimal? refurbBatteryPct = default(decimal?), string charitySlug = default(string), decimal? charityPercentBps = default(decimal?), string crosslyReturnPolicyId = default(string), string crosslyShippingPolicyId = default(string), string crosslyPaymentPolicyId = default(string), decimal? retailPriceCents = default(decimal?), List<string> restrictedCountries = default(List<string>), decimal? auctionExtendSeconds = default(decimal?), string authenticationProviderSlug = default(string), bool authenticationRequired = default(bool), bool hasVariants = default(bool), string charityId = default(string), decimal minOrderQuantity = default(decimal), decimal? wholesaleUnitPriceCents = default(decimal?), decimal? wholesaleMinQuantity = default(decimal?), decimal? auctionReserveCents = default(decimal?), bool isGtc = default(bool), decimal handlingTimeDays = default(decimal), string itemLocation = default(string), string itemLocationZip = default(string), string itemLocationCountry = default(string), string declaredShippingCost = default(string), string returnPolicyText = default(string), DateTime? lastDriftCheckedAt = default(DateTime?), string web3OrderId = default(string), bool verificationFailed = default(bool), bool detailsPending = default(bool), Dictionary<string, Object> publishedOverrides = default(Dictionary<string, Object>))
+        /// <param name="delistState">delistState.</param>
+        /// <param name="unmatchedSale">unmatchedSale.</param>
+        public GetListingResponsePlatformListings(string id = default(string), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string status = default(string), string marketplaceId = default(string), OriginEnum origin = default(OriginEnum), decimal views = default(decimal), decimal favorites = default(decimal), decimal quantity = default(decimal), string inventoryItemId = default(string), string currency = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), string listingId = default(string), string platformListingId = default(string), string platformListingUrl = default(string), string stockLocation = default(string), DateTime? listedAt = default(DateTime?), DateTime? sharedAt = default(DateTime?), string delistReason = default(string), DateTime? lastCheckedAt = default(DateTime?), decimal commentsCount = default(decimal), decimal? impressions = default(decimal?), decimal? ctrBps = default(decimal?), ViewsSemanticsEnum? viewsSemantics = default(ViewsSemanticsEnum?), DateTime? lastStatsSyncedAt = default(DateTime?), string errorMessage = default(string), DateTime? delistRequestedAt = default(DateTime?), string delistRequestedReason = default(string), DateTime? delistFailedAt = default(DateTime?), string delistError = default(string), string delistErrorCode = default(string), string listedPrice = default(string), decimal? crosslyPriceUsdCents = default(decimal?), string crosslyPriceFxAsOf = default(string), GetInventoryResponsePlatformListingsBundlePromo bundlePromo = default(GetInventoryResponsePlatformListingsBundlePromo), string storefrontId = default(string), List<string> hashtags = default(List<string>), bool isDraft = default(bool), DateTime? scheduledPublishAt = default(DateTime?), bool isDutchAuction = default(bool), decimal? dutchStartCents = default(decimal?), decimal? dutchFloorCents = default(decimal?), DateTime? dutchEndsAt = default(DateTime?), bool isPreOrder = default(bool), string expectedShipBy = default(string), decimal? preorderDepositPercentBps = default(decimal?), DateTime? boostedAt = default(DateTime?), string imageCaption = default(string), decimal? durationDays = default(decimal?), DateTime? endsAt = default(DateTime?), bool bestOfferEnabled = default(bool), decimal? bestOfferAutoAcceptCents = default(decimal?), decimal? bestOfferAutoDeclineCents = default(decimal?), List<string> aestheticTags = default(List<string>), GetInventoryResponsePlatformListingsPersonalization personalization = default(GetInventoryResponsePlatformListingsPersonalization), decimal? tryDays = default(decimal?), decimal? tryFeeCents = default(decimal?), decimal? subscribeDiscountBps = default(decimal?), GetInventoryResponsePlatformListingsMeasurements measurements = default(GetInventoryResponsePlatformListingsMeasurements), bool allowsLocalPickup = default(bool), decimal? pickupRadiusMiles = default(decimal?), string pickupLat = default(string), string pickupLng = default(string), string refurbishedTier = default(string), decimal? refurbWarrantyMonths = default(decimal?), decimal? refurbBatteryPct = default(decimal?), string charitySlug = default(string), decimal? charityPercentBps = default(decimal?), string crosslyReturnPolicyId = default(string), string crosslyShippingPolicyId = default(string), string crosslyPaymentPolicyId = default(string), decimal? retailPriceCents = default(decimal?), List<string> restrictedCountries = default(List<string>), decimal? auctionExtendSeconds = default(decimal?), string authenticationProviderSlug = default(string), bool authenticationRequired = default(bool), bool hasVariants = default(bool), string charityId = default(string), decimal minOrderQuantity = default(decimal), decimal? wholesaleUnitPriceCents = default(decimal?), decimal? wholesaleMinQuantity = default(decimal?), decimal? auctionReserveCents = default(decimal?), bool isGtc = default(bool), decimal handlingTimeDays = default(decimal), string itemLocation = default(string), string itemLocationZip = default(string), string itemLocationCountry = default(string), string declaredShippingCost = default(string), string returnPolicyText = default(string), DateTime? lastDriftCheckedAt = default(DateTime?), string web3OrderId = default(string), bool verificationFailed = default(bool), bool detailsPending = default(bool), Dictionary<string, Object> publishedOverrides = default(Dictionary<string, Object>), DelistStateEnum? delistState = default(DelistStateEnum?), GetListingResponsePlatformListingsUnmatchedSale unmatchedSale = default(GetListingResponsePlatformListingsUnmatchedSale))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -137,23 +257,26 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for GetListingResponsePlatformListings and cannot be null");
             }
             this.UserId = userId;
-            this.Quantity = quantity;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for GetListingResponsePlatformListings and cannot be null");
-            }
-            this.Status = status;
             // to ensure "platform" is required (not null)
             if (platform == null) {
                 throw new ArgumentNullException("platform is a required property for GetListingResponsePlatformListings and cannot be null");
             }
             this.Platform = platform;
+            this.AccountSlot = accountSlot;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for GetListingResponsePlatformListings and cannot be null");
+            }
+            this.Status = status;
+            this.Origin = origin;
+            this.Views = views;
+            this.Favorites = favorites;
+            this.Quantity = quantity;
             // to ensure "listingId" is required (not null)
             if (listingId == null) {
                 throw new ArgumentNullException("listingId is a required property for GetListingResponsePlatformListings and cannot be null");
             }
             this.ListingId = listingId;
-            this.AccountSlot = accountSlot;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for GetListingResponsePlatformListings and cannot be null");
@@ -164,8 +287,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("stockLocation is a required property for GetListingResponsePlatformListings and cannot be null");
             }
             this.StockLocation = stockLocation;
-            this.Views = views;
-            this.Favorites = favorites;
             this.CommentsCount = commentsCount;
             this.IsDraft = isDraft;
             this.IsDutchAuction = isDutchAuction;
@@ -179,7 +300,6 @@ namespace net.crossly.Model
             this.HandlingTimeDays = handlingTimeDays;
             this.VerificationFailed = verificationFailed;
             this.DetailsPending = detailsPending;
-            this.ErrorMessage = errorMessage;
             this.MarketplaceId = marketplaceId;
             this.InventoryItemId = inventoryItemId;
             this.Currency = currency;
@@ -190,10 +310,21 @@ namespace net.crossly.Model
             this.SharedAt = sharedAt;
             this.DelistReason = delistReason;
             this.LastCheckedAt = lastCheckedAt;
+            this.Impressions = impressions;
+            this.CtrBps = ctrBps;
+            this.ViewsSemantics = viewsSemantics;
             this.LastStatsSyncedAt = lastStatsSyncedAt;
+            this.ErrorMessage = errorMessage;
+            this.DelistRequestedAt = delistRequestedAt;
+            this.DelistRequestedReason = delistRequestedReason;
+            this.DelistFailedAt = delistFailedAt;
+            this.DelistError = delistError;
+            this.DelistErrorCode = delistErrorCode;
             this.ListedPrice = listedPrice;
             this.CrosslyPriceUsdCents = crosslyPriceUsdCents;
             this.CrosslyPriceFxAsOf = crosslyPriceFxAsOf;
+            this.BundlePromo = bundlePromo;
+            this.StorefrontId = storefrontId;
             this.Hashtags = hashtags;
             this.ScheduledPublishAt = scheduledPublishAt;
             this.DutchStartCents = dutchStartCents;
@@ -209,7 +340,6 @@ namespace net.crossly.Model
             this.BestOfferAutoDeclineCents = bestOfferAutoDeclineCents;
             this.AestheticTags = aestheticTags;
             this.Personalization = personalization;
-            this.DigitalFile = digitalFile;
             this.TryDays = tryDays;
             this.TryFeeCents = tryFeeCents;
             this.SubscribeDiscountBps = subscribeDiscountBps;
@@ -241,6 +371,8 @@ namespace net.crossly.Model
             this.LastDriftCheckedAt = lastDriftCheckedAt;
             this.Web3OrderId = web3OrderId;
             this.PublishedOverrides = publishedOverrides;
+            this.DelistState = delistState;
+            this.UnmatchedSale = unmatchedSale;
         }
 
         /// <summary>
@@ -256,10 +388,16 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// Gets or Sets Platform
         /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Quantity { get; set; }
+        [DataMember(Name = "platform", IsRequired = true, EmitDefaultValue = false)]
+        public string Platform { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccountSlot
+        /// </summary>
+        [DataMember(Name = "accountSlot", IsRequired = true, EmitDefaultValue = false)]
+        public decimal AccountSlot { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -268,34 +406,28 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Platform
-        /// </summary>
-        [DataMember(Name = "platform", IsRequired = true, EmitDefaultValue = false)]
-        public string Platform { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ErrorMessage
-        /// </summary>
-        [DataMember(Name = "errorMessage", EmitDefaultValue = true)]
-        public string ErrorMessage { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ListingId
-        /// </summary>
-        [DataMember(Name = "listingId", IsRequired = true, EmitDefaultValue = false)]
-        public string ListingId { get; set; }
-
-        /// <summary>
         /// Gets or Sets MarketplaceId
         /// </summary>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccountSlot
+        /// Gets or Sets Views
         /// </summary>
-        [DataMember(Name = "accountSlot", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AccountSlot { get; set; }
+        [DataMember(Name = "views", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Views { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Favorites
+        /// </summary>
+        [DataMember(Name = "favorites", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Favorites { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quantity
+        /// </summary>
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets InventoryItemId
@@ -320,6 +452,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "soldAt", EmitDefaultValue = true)]
         public DateTime? SoldAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListingId
+        /// </summary>
+        [DataMember(Name = "listingId", IsRequired = true, EmitDefaultValue = false)]
+        public string ListingId { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -364,28 +502,64 @@ namespace net.crossly.Model
         public DateTime? LastCheckedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Views
-        /// </summary>
-        [DataMember(Name = "views", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Views { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Favorites
-        /// </summary>
-        [DataMember(Name = "favorites", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Favorites { get; set; }
-
-        /// <summary>
         /// Gets or Sets CommentsCount
         /// </summary>
         [DataMember(Name = "commentsCount", IsRequired = true, EmitDefaultValue = false)]
         public decimal CommentsCount { get; set; }
 
         /// <summary>
+        /// Gets or Sets Impressions
+        /// </summary>
+        [DataMember(Name = "impressions", EmitDefaultValue = true)]
+        public decimal? Impressions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CtrBps
+        /// </summary>
+        [DataMember(Name = "ctrBps", EmitDefaultValue = true)]
+        public decimal? CtrBps { get; set; }
+
+        /// <summary>
         /// Gets or Sets LastStatsSyncedAt
         /// </summary>
         [DataMember(Name = "lastStatsSyncedAt", EmitDefaultValue = true)]
         public DateTime? LastStatsSyncedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ErrorMessage
+        /// </summary>
+        [DataMember(Name = "errorMessage", EmitDefaultValue = true)]
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DelistRequestedAt
+        /// </summary>
+        [DataMember(Name = "delistRequestedAt", EmitDefaultValue = true)]
+        public DateTime? DelistRequestedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DelistRequestedReason
+        /// </summary>
+        [DataMember(Name = "delistRequestedReason", EmitDefaultValue = true)]
+        public string DelistRequestedReason { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DelistFailedAt
+        /// </summary>
+        [DataMember(Name = "delistFailedAt", EmitDefaultValue = true)]
+        public DateTime? DelistFailedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DelistError
+        /// </summary>
+        [DataMember(Name = "delistError", EmitDefaultValue = true)]
+        public string DelistError { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DelistErrorCode
+        /// </summary>
+        [DataMember(Name = "delistErrorCode", EmitDefaultValue = true)]
+        public string DelistErrorCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ListedPrice
@@ -404,6 +578,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "crosslyPriceFxAsOf", EmitDefaultValue = true)]
         public string CrosslyPriceFxAsOf { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BundlePromo
+        /// </summary>
+        [DataMember(Name = "bundlePromo", EmitDefaultValue = true)]
+        public GetInventoryResponsePlatformListingsBundlePromo BundlePromo { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets Hashtags
@@ -518,12 +704,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "personalization", EmitDefaultValue = true)]
         public GetInventoryResponsePlatformListingsPersonalization Personalization { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DigitalFile
-        /// </summary>
-        [DataMember(Name = "digitalFile", EmitDefaultValue = true)]
-        public GetInventoryResponsePlatformListingsDigitalFile DigitalFile { get; set; }
 
         /// <summary>
         /// Gets or Sets TryDays
@@ -760,6 +940,12 @@ namespace net.crossly.Model
         public Dictionary<string, Object> PublishedOverrides { get; set; }
 
         /// <summary>
+        /// Gets or Sets UnmatchedSale
+        /// </summary>
+        [DataMember(Name = "unmatchedSale", EmitDefaultValue = true)]
+        public GetListingResponsePlatformListingsUnmatchedSale UnmatchedSale { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -769,17 +955,19 @@ namespace net.crossly.Model
             sb.Append("class GetListingResponsePlatformListings {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
-            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
-            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
+            sb.Append("  Origin: ").Append(Origin).Append("\n");
+            sb.Append("  Views: ").Append(Views).Append("\n");
+            sb.Append("  Favorites: ").Append(Favorites).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  DelistedAt: ").Append(DelistedAt).Append("\n");
             sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  PlatformListingUrl: ").Append(PlatformListingUrl).Append("\n");
             sb.Append("  StockLocation: ").Append(StockLocation).Append("\n");
@@ -787,13 +975,22 @@ namespace net.crossly.Model
             sb.Append("  SharedAt: ").Append(SharedAt).Append("\n");
             sb.Append("  DelistReason: ").Append(DelistReason).Append("\n");
             sb.Append("  LastCheckedAt: ").Append(LastCheckedAt).Append("\n");
-            sb.Append("  Views: ").Append(Views).Append("\n");
-            sb.Append("  Favorites: ").Append(Favorites).Append("\n");
             sb.Append("  CommentsCount: ").Append(CommentsCount).Append("\n");
+            sb.Append("  Impressions: ").Append(Impressions).Append("\n");
+            sb.Append("  CtrBps: ").Append(CtrBps).Append("\n");
+            sb.Append("  ViewsSemantics: ").Append(ViewsSemantics).Append("\n");
             sb.Append("  LastStatsSyncedAt: ").Append(LastStatsSyncedAt).Append("\n");
+            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
+            sb.Append("  DelistRequestedAt: ").Append(DelistRequestedAt).Append("\n");
+            sb.Append("  DelistRequestedReason: ").Append(DelistRequestedReason).Append("\n");
+            sb.Append("  DelistFailedAt: ").Append(DelistFailedAt).Append("\n");
+            sb.Append("  DelistError: ").Append(DelistError).Append("\n");
+            sb.Append("  DelistErrorCode: ").Append(DelistErrorCode).Append("\n");
             sb.Append("  ListedPrice: ").Append(ListedPrice).Append("\n");
             sb.Append("  CrosslyPriceUsdCents: ").Append(CrosslyPriceUsdCents).Append("\n");
             sb.Append("  CrosslyPriceFxAsOf: ").Append(CrosslyPriceFxAsOf).Append("\n");
+            sb.Append("  BundlePromo: ").Append(BundlePromo).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Hashtags: ").Append(Hashtags).Append("\n");
             sb.Append("  IsDraft: ").Append(IsDraft).Append("\n");
             sb.Append("  ScheduledPublishAt: ").Append(ScheduledPublishAt).Append("\n");
@@ -813,7 +1010,6 @@ namespace net.crossly.Model
             sb.Append("  BestOfferAutoDeclineCents: ").Append(BestOfferAutoDeclineCents).Append("\n");
             sb.Append("  AestheticTags: ").Append(AestheticTags).Append("\n");
             sb.Append("  Personalization: ").Append(Personalization).Append("\n");
-            sb.Append("  DigitalFile: ").Append(DigitalFile).Append("\n");
             sb.Append("  TryDays: ").Append(TryDays).Append("\n");
             sb.Append("  TryFeeCents: ").Append(TryFeeCents).Append("\n");
             sb.Append("  SubscribeDiscountBps: ").Append(SubscribeDiscountBps).Append("\n");
@@ -853,6 +1049,8 @@ namespace net.crossly.Model
             sb.Append("  VerificationFailed: ").Append(VerificationFailed).Append("\n");
             sb.Append("  DetailsPending: ").Append(DetailsPending).Append("\n");
             sb.Append("  PublishedOverrides: ").Append(PublishedOverrides).Append("\n");
+            sb.Append("  DelistState: ").Append(DelistState).Append("\n");
+            sb.Append("  UnmatchedSale: ").Append(UnmatchedSale).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -899,8 +1097,13 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
+                    this.Platform == input.Platform ||
+                    (this.Platform != null &&
+                    this.Platform.Equals(input.Platform))
+                ) && 
+                (
+                    this.AccountSlot == input.AccountSlot ||
+                    this.AccountSlot.Equals(input.AccountSlot)
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -908,28 +1111,25 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.Platform == input.Platform ||
-                    (this.Platform != null &&
-                    this.Platform.Equals(input.Platform))
-                ) && 
-                (
-                    this.ErrorMessage == input.ErrorMessage ||
-                    (this.ErrorMessage != null &&
-                    this.ErrorMessage.Equals(input.ErrorMessage))
-                ) && 
-                (
-                    this.ListingId == input.ListingId ||
-                    (this.ListingId != null &&
-                    this.ListingId.Equals(input.ListingId))
-                ) && 
-                (
                     this.MarketplaceId == input.MarketplaceId ||
                     (this.MarketplaceId != null &&
                     this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
-                    this.AccountSlot == input.AccountSlot ||
-                    this.AccountSlot.Equals(input.AccountSlot)
+                    this.Origin == input.Origin ||
+                    this.Origin.Equals(input.Origin)
+                ) && 
+                (
+                    this.Views == input.Views ||
+                    this.Views.Equals(input.Views)
+                ) && 
+                (
+                    this.Favorites == input.Favorites ||
+                    this.Favorites.Equals(input.Favorites)
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
                 ) && 
                 (
                     this.InventoryItemId == input.InventoryItemId ||
@@ -950,6 +1150,11 @@ namespace net.crossly.Model
                     this.SoldAt == input.SoldAt ||
                     (this.SoldAt != null &&
                     this.SoldAt.Equals(input.SoldAt))
+                ) && 
+                (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
                 ) && 
                 (
                     this.PlatformListingId == input.PlatformListingId ||
@@ -987,21 +1192,57 @@ namespace net.crossly.Model
                     this.LastCheckedAt.Equals(input.LastCheckedAt))
                 ) && 
                 (
-                    this.Views == input.Views ||
-                    this.Views.Equals(input.Views)
-                ) && 
-                (
-                    this.Favorites == input.Favorites ||
-                    this.Favorites.Equals(input.Favorites)
-                ) && 
-                (
                     this.CommentsCount == input.CommentsCount ||
                     this.CommentsCount.Equals(input.CommentsCount)
+                ) && 
+                (
+                    this.Impressions == input.Impressions ||
+                    (this.Impressions != null &&
+                    this.Impressions.Equals(input.Impressions))
+                ) && 
+                (
+                    this.CtrBps == input.CtrBps ||
+                    (this.CtrBps != null &&
+                    this.CtrBps.Equals(input.CtrBps))
+                ) && 
+                (
+                    this.ViewsSemantics == input.ViewsSemantics ||
+                    this.ViewsSemantics.Equals(input.ViewsSemantics)
                 ) && 
                 (
                     this.LastStatsSyncedAt == input.LastStatsSyncedAt ||
                     (this.LastStatsSyncedAt != null &&
                     this.LastStatsSyncedAt.Equals(input.LastStatsSyncedAt))
+                ) && 
+                (
+                    this.ErrorMessage == input.ErrorMessage ||
+                    (this.ErrorMessage != null &&
+                    this.ErrorMessage.Equals(input.ErrorMessage))
+                ) && 
+                (
+                    this.DelistRequestedAt == input.DelistRequestedAt ||
+                    (this.DelistRequestedAt != null &&
+                    this.DelistRequestedAt.Equals(input.DelistRequestedAt))
+                ) && 
+                (
+                    this.DelistRequestedReason == input.DelistRequestedReason ||
+                    (this.DelistRequestedReason != null &&
+                    this.DelistRequestedReason.Equals(input.DelistRequestedReason))
+                ) && 
+                (
+                    this.DelistFailedAt == input.DelistFailedAt ||
+                    (this.DelistFailedAt != null &&
+                    this.DelistFailedAt.Equals(input.DelistFailedAt))
+                ) && 
+                (
+                    this.DelistError == input.DelistError ||
+                    (this.DelistError != null &&
+                    this.DelistError.Equals(input.DelistError))
+                ) && 
+                (
+                    this.DelistErrorCode == input.DelistErrorCode ||
+                    (this.DelistErrorCode != null &&
+                    this.DelistErrorCode.Equals(input.DelistErrorCode))
                 ) && 
                 (
                     this.ListedPrice == input.ListedPrice ||
@@ -1017,6 +1258,16 @@ namespace net.crossly.Model
                     this.CrosslyPriceFxAsOf == input.CrosslyPriceFxAsOf ||
                     (this.CrosslyPriceFxAsOf != null &&
                     this.CrosslyPriceFxAsOf.Equals(input.CrosslyPriceFxAsOf))
+                ) && 
+                (
+                    this.BundlePromo == input.BundlePromo ||
+                    (this.BundlePromo != null &&
+                    this.BundlePromo.Equals(input.BundlePromo))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.Hashtags == input.Hashtags ||
@@ -1110,11 +1361,6 @@ namespace net.crossly.Model
                     this.Personalization == input.Personalization ||
                     (this.Personalization != null &&
                     this.Personalization.Equals(input.Personalization))
-                ) && 
-                (
-                    this.DigitalFile == input.DigitalFile ||
-                    (this.DigitalFile != null &&
-                    this.DigitalFile.Equals(input.DigitalFile))
                 ) && 
                 (
                     this.TryDays == input.TryDays ||
@@ -1304,6 +1550,15 @@ namespace net.crossly.Model
                     this.PublishedOverrides != null &&
                     input.PublishedOverrides != null &&
                     this.PublishedOverrides.SequenceEqual(input.PublishedOverrides)
+                ) && 
+                (
+                    this.DelistState == input.DelistState ||
+                    this.DelistState.Equals(input.DelistState)
+                ) && 
+                (
+                    this.UnmatchedSale == input.UnmatchedSale ||
+                    (this.UnmatchedSale != null &&
+                    this.UnmatchedSale.Equals(input.UnmatchedSale))
                 );
         }
 
@@ -1324,28 +1579,23 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
                 if (this.Platform != null)
                 {
                     hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
-                if (this.ErrorMessage != null)
+                hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
+                if (this.Status != null)
                 {
-                    hashCode = (hashCode * 59) + this.ErrorMessage.GetHashCode();
-                }
-                if (this.ListingId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.MarketplaceId != null)
                 {
                     hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
+                hashCode = (hashCode * 59) + this.Origin.GetHashCode();
+                hashCode = (hashCode * 59) + this.Views.GetHashCode();
+                hashCode = (hashCode * 59) + this.Favorites.GetHashCode();
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.InventoryItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
@@ -1361,6 +1611,10 @@ namespace net.crossly.Model
                 if (this.SoldAt != null)
                 {
                     hashCode = (hashCode * 59) + this.SoldAt.GetHashCode();
+                }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
                 }
                 if (this.PlatformListingId != null)
                 {
@@ -1390,12 +1644,43 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LastCheckedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Views.GetHashCode();
-                hashCode = (hashCode * 59) + this.Favorites.GetHashCode();
                 hashCode = (hashCode * 59) + this.CommentsCount.GetHashCode();
+                if (this.Impressions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Impressions.GetHashCode();
+                }
+                if (this.CtrBps != null)
+                {
+                    hashCode = (hashCode * 59) + this.CtrBps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ViewsSemantics.GetHashCode();
                 if (this.LastStatsSyncedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.LastStatsSyncedAt.GetHashCode();
+                }
+                if (this.ErrorMessage != null)
+                {
+                    hashCode = (hashCode * 59) + this.ErrorMessage.GetHashCode();
+                }
+                if (this.DelistRequestedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DelistRequestedAt.GetHashCode();
+                }
+                if (this.DelistRequestedReason != null)
+                {
+                    hashCode = (hashCode * 59) + this.DelistRequestedReason.GetHashCode();
+                }
+                if (this.DelistFailedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DelistFailedAt.GetHashCode();
+                }
+                if (this.DelistError != null)
+                {
+                    hashCode = (hashCode * 59) + this.DelistError.GetHashCode();
+                }
+                if (this.DelistErrorCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.DelistErrorCode.GetHashCode();
                 }
                 if (this.ListedPrice != null)
                 {
@@ -1408,6 +1693,14 @@ namespace net.crossly.Model
                 if (this.CrosslyPriceFxAsOf != null)
                 {
                     hashCode = (hashCode * 59) + this.CrosslyPriceFxAsOf.GetHashCode();
+                }
+                if (this.BundlePromo != null)
+                {
+                    hashCode = (hashCode * 59) + this.BundlePromo.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.Hashtags != null)
                 {
@@ -1472,10 +1765,6 @@ namespace net.crossly.Model
                 if (this.Personalization != null)
                 {
                     hashCode = (hashCode * 59) + this.Personalization.GetHashCode();
-                }
-                if (this.DigitalFile != null)
-                {
-                    hashCode = (hashCode * 59) + this.DigitalFile.GetHashCode();
                 }
                 if (this.TryDays != null)
                 {
@@ -1608,6 +1897,11 @@ namespace net.crossly.Model
                 if (this.PublishedOverrides != null)
                 {
                     hashCode = (hashCode * 59) + this.PublishedOverrides.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DelistState.GetHashCode();
+                if (this.UnmatchedSale != null)
+                {
+                    hashCode = (hashCode * 59) + this.UnmatchedSale.GetHashCode();
                 }
                 return hashCode;
             }

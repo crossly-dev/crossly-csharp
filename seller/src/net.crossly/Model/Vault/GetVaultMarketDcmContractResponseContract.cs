@@ -70,16 +70,16 @@ namespace net.crossly.Model
         public enum OptionTypeEnum
         {
             /// <summary>
-            /// Enum Call for value: call
-            /// </summary>
-            [EnumMember(Value = "call")]
-            Call = 1,
-
-            /// <summary>
             /// Enum Put for value: put
             /// </summary>
             [EnumMember(Value = "put")]
-            Put = 2
+            Put = 1,
+
+            /// <summary>
+            /// Enum Call for value: call
+            /// </summary>
+            [EnumMember(Value = "call")]
+            Call = 2
 
         }
 

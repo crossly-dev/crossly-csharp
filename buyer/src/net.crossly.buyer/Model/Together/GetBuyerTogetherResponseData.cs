@@ -40,35 +40,36 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerTogetherResponseData" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="code">code (required).</param>
+        /// <param name="name">name (required).</param>
+        /// <param name="isHost">isHost (required).</param>
+        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="members">members (required).</param>
         /// <param name="items">items (required).</param>
         /// <param name="messages">messages (required).</param>
-        /// <param name="isHost">isHost (required).</param>
-        public GetBuyerTogetherResponseData(string id = default(string), string name = default(string), string endsAt = default(string), string code = default(string), List<GetBuyerTogetherResponseDataMembers> members = default(List<GetBuyerTogetherResponseDataMembers>), List<GetBuyerTogetherResponseDataItems> items = default(List<GetBuyerTogetherResponseDataItems>), List<GetBuyerTogetherResponseDataMessages> messages = default(List<GetBuyerTogetherResponseDataMessages>), bool isHost = default(bool))
+        public GetBuyerTogetherResponseData(string id = default(string), string code = default(string), string name = default(string), bool isHost = default(bool), string endsAt = default(string), List<GetBuyerTogetherResponseDataMembers> members = default(List<GetBuyerTogetherResponseDataMembers>), List<GetBuyerTogetherResponseDataItems> items = default(List<GetBuyerTogetherResponseDataItems>), List<GetBuyerTogetherResponseDataMessages> messages = default(List<GetBuyerTogetherResponseDataMessages>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerTogetherResponseData and cannot be null");
             }
             this.Id = id;
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for GetBuyerTogetherResponseData and cannot be null");
-            }
-            this.Name = name;
-            // to ensure "endsAt" is required (not null)
-            if (endsAt == null) {
-                throw new ArgumentNullException("endsAt is a required property for GetBuyerTogetherResponseData and cannot be null");
-            }
-            this.EndsAt = endsAt;
             // to ensure "code" is required (not null)
             if (code == null) {
                 throw new ArgumentNullException("code is a required property for GetBuyerTogetherResponseData and cannot be null");
             }
             this.Code = code;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for GetBuyerTogetherResponseData and cannot be null");
+            }
+            this.Name = name;
+            this.IsHost = isHost;
+            // to ensure "endsAt" is required (not null)
+            if (endsAt == null) {
+                throw new ArgumentNullException("endsAt is a required property for GetBuyerTogetherResponseData and cannot be null");
+            }
+            this.EndsAt = endsAt;
             // to ensure "members" is required (not null)
             if (members == null) {
                 throw new ArgumentNullException("members is a required property for GetBuyerTogetherResponseData and cannot be null");
@@ -84,7 +85,6 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("messages is a required property for GetBuyerTogetherResponseData and cannot be null");
             }
             this.Messages = messages;
-            this.IsHost = isHost;
         }
 
         /// <summary>
@@ -94,22 +94,28 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
+        public string Code { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsHost
+        /// </summary>
+        [DataMember(Name = "isHost", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsHost { get; set; }
+
+        /// <summary>
         /// Gets or Sets EndsAt
         /// </summary>
         [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
         public string EndsAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
-        public string Code { get; set; }
 
         /// <summary>
         /// Gets or Sets Members
@@ -130,12 +136,6 @@ namespace net.crossly.buyer.Model
         public List<GetBuyerTogetherResponseDataMessages> Messages { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsHost
-        /// </summary>
-        [DataMember(Name = "isHost", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsHost { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -144,13 +144,13 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerTogetherResponseData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  IsHost: ").Append(IsHost).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Members: ").Append(Members).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Messages: ").Append(Messages).Append("\n");
-            sb.Append("  IsHost: ").Append(IsHost).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -192,19 +192,23 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.IsHost == input.IsHost ||
+                    this.IsHost.Equals(input.IsHost)
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
                 ) && 
                 (
                     this.Members == input.Members ||
@@ -223,10 +227,6 @@ namespace net.crossly.buyer.Model
                     this.Messages != null &&
                     input.Messages != null &&
                     this.Messages.SequenceEqual(input.Messages)
-                ) && 
-                (
-                    this.IsHost == input.IsHost ||
-                    this.IsHost.Equals(input.IsHost)
                 );
         }
 
@@ -243,17 +243,18 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.Code != null)
+                {
+                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsHost.GetHashCode();
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
-                }
-                if (this.Code != null)
-                {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
                 }
                 if (this.Members != null)
                 {
@@ -267,7 +268,6 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Messages.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsHost.GetHashCode();
                 return hashCode;
             }
         }

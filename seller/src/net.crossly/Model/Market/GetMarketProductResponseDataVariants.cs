@@ -42,16 +42,16 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="label">label (required).</param>
         /// <param name="sortKey">sortKey (required).</param>
+        /// <param name="skuId">skuId (required).</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="externalSource">externalSource.</param>
         /// <param name="externalSyncedAt">externalSyncedAt.</param>
         /// <param name="lastSaleCents">lastSaleCents.</param>
         /// <param name="tradesCount">tradesCount (required).</param>
-        /// <param name="skuId">skuId (required).</param>
         /// <param name="lastSaleAt">lastSaleAt.</param>
         /// <param name="bestBidCents">bestBidCents.</param>
         /// <param name="bestAskCents">bestAskCents.</param>
-        public GetMarketProductResponseDataVariants(string id = default(string), string label = default(string), decimal sortKey = default(decimal), string externalId = default(string), string externalSource = default(string), DateTime? externalSyncedAt = default(DateTime?), decimal? lastSaleCents = default(decimal?), decimal tradesCount = default(decimal), string skuId = default(string), DateTime? lastSaleAt = default(DateTime?), decimal? bestBidCents = default(decimal?), decimal? bestAskCents = default(decimal?))
+        public GetMarketProductResponseDataVariants(string id = default(string), string label = default(string), decimal sortKey = default(decimal), string skuId = default(string), string externalId = default(string), string externalSource = default(string), DateTime? externalSyncedAt = default(DateTime?), decimal? lastSaleCents = default(decimal?), decimal tradesCount = default(decimal), DateTime? lastSaleAt = default(DateTime?), decimal? bestBidCents = default(decimal?), decimal? bestAskCents = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -64,12 +64,12 @@ namespace net.crossly.Model
             }
             this.Label = label;
             this.SortKey = sortKey;
-            this.TradesCount = tradesCount;
             // to ensure "skuId" is required (not null)
             if (skuId == null) {
                 throw new ArgumentNullException("skuId is a required property for GetMarketProductResponseDataVariants and cannot be null");
             }
             this.SkuId = skuId;
+            this.TradesCount = tradesCount;
             this.ExternalId = externalId;
             this.ExternalSource = externalSource;
             this.ExternalSyncedAt = externalSyncedAt;
@@ -96,6 +96,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "sortKey", IsRequired = true, EmitDefaultValue = false)]
         public decimal SortKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SkuId
+        /// </summary>
+        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
+        public string SkuId { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
@@ -128,12 +134,6 @@ namespace net.crossly.Model
         public decimal TradesCount { get; set; }
 
         /// <summary>
-        /// Gets or Sets SkuId
-        /// </summary>
-        [DataMember(Name = "skuId", IsRequired = true, EmitDefaultValue = false)]
-        public string SkuId { get; set; }
-
-        /// <summary>
         /// Gets or Sets LastSaleAt
         /// </summary>
         [DataMember(Name = "lastSaleAt", EmitDefaultValue = true)]
@@ -162,12 +162,12 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  SortKey: ").Append(SortKey).Append("\n");
+            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  ExternalSource: ").Append(ExternalSource).Append("\n");
             sb.Append("  ExternalSyncedAt: ").Append(ExternalSyncedAt).Append("\n");
             sb.Append("  LastSaleCents: ").Append(LastSaleCents).Append("\n");
             sb.Append("  TradesCount: ").Append(TradesCount).Append("\n");
-            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
             sb.Append("  LastSaleAt: ").Append(LastSaleAt).Append("\n");
             sb.Append("  BestBidCents: ").Append(BestBidCents).Append("\n");
             sb.Append("  BestAskCents: ").Append(BestAskCents).Append("\n");
@@ -221,6 +221,11 @@ namespace net.crossly.Model
                     this.SortKey.Equals(input.SortKey)
                 ) && 
                 (
+                    this.SkuId == input.SkuId ||
+                    (this.SkuId != null &&
+                    this.SkuId.Equals(input.SkuId))
+                ) && 
+                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
@@ -243,11 +248,6 @@ namespace net.crossly.Model
                 (
                     this.TradesCount == input.TradesCount ||
                     this.TradesCount.Equals(input.TradesCount)
-                ) && 
-                (
-                    this.SkuId == input.SkuId ||
-                    (this.SkuId != null &&
-                    this.SkuId.Equals(input.SkuId))
                 ) && 
                 (
                     this.LastSaleAt == input.LastSaleAt ||
@@ -284,6 +284,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Label.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SortKey.GetHashCode();
+                if (this.SkuId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
+                }
                 if (this.ExternalId != null)
                 {
                     hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
@@ -301,10 +305,6 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.LastSaleCents.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.TradesCount.GetHashCode();
-                if (this.SkuId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
-                }
                 if (this.LastSaleAt != null)
                 {
                     hashCode = (hashCode * 59) + this.LastSaleAt.GetHashCode();

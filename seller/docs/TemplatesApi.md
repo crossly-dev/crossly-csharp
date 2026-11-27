@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**DeleteMeTemplateShare**](TemplatesApi.md#deletemetemplateshare) | **DELETE** /v1/me/templates/{id}/share | Revoke a template share link.
 [**GetMeTemplate**](TemplatesApi.md#getmetemplate) | **GET** /v1/me/templates/{id} | Fetch one template in full.
 [**GetMeTemplateSuggest**](TemplatesApi.md#getmetemplatesuggest) | **GET** /v1/me/templates/suggest | The seller&#39;s default template for a category.
+[**GetPublicTemplate**](TemplatesApi.md#getpublictemplate) | **GET** /v1/public/templates/{token} | A shared template by its share token (public, no auth).
 [**ListMeTemplates**](TemplatesApi.md#listmetemplates) | **GET** /v1/me/templates | List the seller&#39;s templates.
 [**UpdateMeTemplate**](TemplatesApi.md#updatemetemplate) | **PATCH** /v1/me/templates/{id} | Patch a template.
 
@@ -614,6 +615,81 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getpublictemplate"></a>
+# **GetPublicTemplate**
+> GetPublicTemplateResponse GetPublicTemplate (string token)
+
+A shared template by its share token (public, no auth).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetPublicTemplateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            var apiInstance = new TemplatesApi(config);
+            var token = "token_example";  // string | 
+
+            try
+            {
+                // A shared template by its share token (public, no auth).
+                GetPublicTemplateResponse result = apiInstance.GetPublicTemplate(token);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TemplatesApi.GetPublicTemplate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **string**|  | 
+
+### Return type
+
+**GetPublicTemplateResponse**
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

@@ -44,7 +44,12 @@ namespace net.crossly.Model
         /// <param name="revenue">revenue (required).</param>
         /// <param name="fees">fees (required).</param>
         /// <param name="netProfit">netProfit (required).</param>
-        public GetAnalyticByPlatformResponseBreakdown(string platform = default(string), decimal sales = default(decimal), decimal revenue = default(decimal), decimal fees = default(decimal), decimal netProfit = default(decimal))
+        /// <param name="pendingDetailsCount">pendingDetailsCount (required).</param>
+        /// <param name="netSalesCents">netSalesCents (required).</param>
+        /// <param name="feesCents">feesCents (required).</param>
+        /// <param name="netProfitCents">netProfitCents (required).</param>
+        /// <param name="share">share (required).</param>
+        public GetAnalyticByPlatformResponseBreakdown(string platform = default(string), decimal sales = default(decimal), decimal revenue = default(decimal), decimal fees = default(decimal), decimal netProfit = default(decimal), decimal pendingDetailsCount = default(decimal), decimal netSalesCents = default(decimal), decimal feesCents = default(decimal), decimal netProfitCents = default(decimal), decimal share = default(decimal))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
@@ -55,6 +60,11 @@ namespace net.crossly.Model
             this.Revenue = revenue;
             this.Fees = fees;
             this.NetProfit = netProfit;
+            this.PendingDetailsCount = pendingDetailsCount;
+            this.NetSalesCents = netSalesCents;
+            this.FeesCents = feesCents;
+            this.NetProfitCents = netProfitCents;
+            this.Share = share;
         }
 
         /// <summary>
@@ -88,6 +98,36 @@ namespace net.crossly.Model
         public decimal NetProfit { get; set; }
 
         /// <summary>
+        /// Gets or Sets PendingDetailsCount
+        /// </summary>
+        [DataMember(Name = "pendingDetailsCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PendingDetailsCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetSalesCents
+        /// </summary>
+        [DataMember(Name = "netSalesCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal NetSalesCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FeesCents
+        /// </summary>
+        [DataMember(Name = "feesCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal FeesCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetProfitCents
+        /// </summary>
+        [DataMember(Name = "netProfitCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal NetProfitCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Share
+        /// </summary>
+        [DataMember(Name = "share", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Share { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +140,11 @@ namespace net.crossly.Model
             sb.Append("  Revenue: ").Append(Revenue).Append("\n");
             sb.Append("  Fees: ").Append(Fees).Append("\n");
             sb.Append("  NetProfit: ").Append(NetProfit).Append("\n");
+            sb.Append("  PendingDetailsCount: ").Append(PendingDetailsCount).Append("\n");
+            sb.Append("  NetSalesCents: ").Append(NetSalesCents).Append("\n");
+            sb.Append("  FeesCents: ").Append(FeesCents).Append("\n");
+            sb.Append("  NetProfitCents: ").Append(NetProfitCents).Append("\n");
+            sb.Append("  Share: ").Append(Share).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +200,26 @@ namespace net.crossly.Model
                 (
                     this.NetProfit == input.NetProfit ||
                     this.NetProfit.Equals(input.NetProfit)
+                ) && 
+                (
+                    this.PendingDetailsCount == input.PendingDetailsCount ||
+                    this.PendingDetailsCount.Equals(input.PendingDetailsCount)
+                ) && 
+                (
+                    this.NetSalesCents == input.NetSalesCents ||
+                    this.NetSalesCents.Equals(input.NetSalesCents)
+                ) && 
+                (
+                    this.FeesCents == input.FeesCents ||
+                    this.FeesCents.Equals(input.FeesCents)
+                ) && 
+                (
+                    this.NetProfitCents == input.NetProfitCents ||
+                    this.NetProfitCents.Equals(input.NetProfitCents)
+                ) && 
+                (
+                    this.Share == input.Share ||
+                    this.Share.Equals(input.Share)
                 );
         }
 
@@ -175,6 +240,11 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
                 hashCode = (hashCode * 59) + this.Fees.GetHashCode();
                 hashCode = (hashCode * 59) + this.NetProfit.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingDetailsCount.GetHashCode();
+                hashCode = (hashCode * 59) + this.NetSalesCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.FeesCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.NetProfitCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Share.GetHashCode();
                 return hashCode;
             }
         }

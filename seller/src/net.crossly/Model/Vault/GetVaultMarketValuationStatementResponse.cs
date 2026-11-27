@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum PurposeEnum
         {
             /// <summary>
-            /// Enum Insurance for value: insurance
-            /// </summary>
-            [EnumMember(Value = "insurance")]
-            Insurance = 1,
-
-            /// <summary>
             /// Enum Appraisal for value: appraisal
             /// </summary>
             [EnumMember(Value = "appraisal")]
-            Appraisal = 2
+            Appraisal = 1,
+
+            /// <summary>
+            /// Enum Insurance for value: insurance
+            /// </summary>
+            [EnumMember(Value = "insurance")]
+            Insurance = 2
 
         }
 
@@ -85,7 +85,8 @@ namespace net.crossly.Model
         /// <param name="notes">notes (required).</param>
         /// <param name="verifyUrl">verifyUrl.</param>
         /// <param name="venue">venue (required).</param>
-        public GetVaultMarketValuationStatementResponse(bool issued = default(bool), string hash = default(string), GetVaultMarketValuationStatementResponseSeal seal = default(GetVaultMarketValuationStatementResponseSeal), GetVaultMarketValuationStatementResponseVerify verify = default(GetVaultMarketValuationStatementResponseVerify), string kind = default(string), string version = default(string), string id = default(string), PurposeEnum purpose = default(PurposeEnum), string title = default(string), string asOf = default(string), string issuedAt = default(string), CreateVaultMarketValuationStatementResponseAccount account = default(CreateVaultMarketValuationStatementResponseAccount), string preparedFor = default(string), string policyRef = default(string), List<CreateVaultMarketValuationStatementResponseUnits> units = default(List<CreateVaultMarketValuationStatementResponseUnits>), CreateVaultMarketValuationStatementResponseTotals totals = default(CreateVaultMarketValuationStatementResponseTotals), List<string> methodology = default(List<string>), List<string> notes = default(List<string>), string verifyUrl = default(string), string venue = default(string))
+        /// <param name="shares">shares.</param>
+        public GetVaultMarketValuationStatementResponse(bool issued = default(bool), string hash = default(string), GetVaultMarketValuationStatementResponseSeal seal = default(GetVaultMarketValuationStatementResponseSeal), GetVaultMarketValuationStatementResponseVerify verify = default(GetVaultMarketValuationStatementResponseVerify), string kind = default(string), string version = default(string), string id = default(string), PurposeEnum purpose = default(PurposeEnum), string title = default(string), string asOf = default(string), string issuedAt = default(string), CreateVaultMarketValuationStatementResponseAccount account = default(CreateVaultMarketValuationStatementResponseAccount), string preparedFor = default(string), string policyRef = default(string), List<CreateVaultMarketValuationStatementResponseUnits> units = default(List<CreateVaultMarketValuationStatementResponseUnits>), CreateVaultMarketValuationStatementResponseTotals totals = default(CreateVaultMarketValuationStatementResponseTotals), List<string> methodology = default(List<string>), List<string> notes = default(List<string>), string verifyUrl = default(string), string venue = default(string), CreateVaultMarketValuationStatementResponseShares shares = default(CreateVaultMarketValuationStatementResponseShares))
         {
             this.Issued = issued;
             // to ensure "hash" is required (not null)
@@ -163,6 +164,7 @@ namespace net.crossly.Model
             this.PreparedFor = preparedFor;
             this.PolicyRef = policyRef;
             this.VerifyUrl = verifyUrl;
+            this.Shares = shares;
         }
 
         /// <summary>
@@ -280,6 +282,12 @@ namespace net.crossly.Model
         public string Venue { get; set; }
 
         /// <summary>
+        /// Gets or Sets Shares
+        /// </summary>
+        [DataMember(Name = "shares", EmitDefaultValue = true)]
+        public CreateVaultMarketValuationStatementResponseShares Shares { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -307,6 +315,7 @@ namespace net.crossly.Model
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  VerifyUrl: ").Append(VerifyUrl).Append("\n");
             sb.Append("  Venue: ").Append(Venue).Append("\n");
+            sb.Append("  Shares: ").Append(Shares).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -442,6 +451,11 @@ namespace net.crossly.Model
                     this.Venue == input.Venue ||
                     (this.Venue != null &&
                     this.Venue.Equals(input.Venue))
+                ) && 
+                (
+                    this.Shares == input.Shares ||
+                    (this.Shares != null &&
+                    this.Shares.Equals(input.Shares))
                 );
         }
 
@@ -527,6 +541,10 @@ namespace net.crossly.Model
                 if (this.Venue != null)
                 {
                     hashCode = (hashCode * 59) + this.Venue.GetHashCode();
+                }
+                if (this.Shares != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shares.GetHashCode();
                 }
                 return hashCode;
             }

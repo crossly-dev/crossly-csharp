@@ -39,35 +39,35 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerListingFitResponseDataChartRows" /> class.
         /// </summary>
-        /// <param name="label">label (required).</param>
         /// <param name="key">key (required).</param>
+        /// <param name="label">label (required).</param>
         /// <param name="inches">inches (required).</param>
-        public GetBuyerListingFitResponseDataChartRows(string label = default(string), string key = default(string), decimal inches = default(decimal))
+        public GetBuyerListingFitResponseDataChartRows(string key = default(string), string label = default(string), decimal inches = default(decimal))
         {
-            // to ensure "label" is required (not null)
-            if (label == null) {
-                throw new ArgumentNullException("label is a required property for GetBuyerListingFitResponseDataChartRows and cannot be null");
-            }
-            this.Label = label;
             // to ensure "key" is required (not null)
             if (key == null) {
                 throw new ArgumentNullException("key is a required property for GetBuyerListingFitResponseDataChartRows and cannot be null");
             }
             this.Key = key;
+            // to ensure "label" is required (not null)
+            if (label == null) {
+                throw new ArgumentNullException("label is a required property for GetBuyerListingFitResponseDataChartRows and cannot be null");
+            }
+            this.Label = label;
             this.Inches = inches;
         }
-
-        /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
-        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Key
         /// </summary>
         [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name = "label", IsRequired = true, EmitDefaultValue = false)]
+        public string Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Inches
@@ -83,8 +83,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerListingFitResponseDataChartRows {\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Inches: ").Append(Inches).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,14 +122,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Label == input.Label ||
-                    (this.Label != null &&
-                    this.Label.Equals(input.Label))
-                ) && 
-                (
                     this.Key == input.Key ||
                     (this.Key != null &&
                     this.Key.Equals(input.Key))
+                ) && 
+                (
+                    this.Label == input.Label ||
+                    (this.Label != null &&
+                    this.Label.Equals(input.Label))
                 ) && 
                 (
                     this.Inches == input.Inches ||
@@ -146,13 +146,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Label != null)
-                {
-                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
                 if (this.Key != null)
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
+                }
+                if (this.Label != null)
+                {
+                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Inches.GetHashCode();
                 return hashCode;

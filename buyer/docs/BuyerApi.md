@@ -25,14 +25,19 @@ Method | HTTP request | Description
 [**CreateBuyerCatalogListingRental**](BuyerApi.md#createbuyercataloglistingrental) | **POST** /v1/buyer/catalog/listings/{slug}/rental | Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
 [**CreateBuyerCatalogListingRentalQuote**](BuyerApi.md#createbuyercataloglistingrentalquote) | **POST** /v1/buyer/catalog/listings/{slug}/rental/quote | Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
 [**CreateBuyerCatalogListingVideoRequest**](BuyerApi.md#createbuyercataloglistingvideorequest) | **POST** /v1/buyer/catalog/listings/{slug}/video-requests | Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
+[**CreateBuyerCompany**](BuyerApi.md#createbuyercompany) | **POST** /v1/buyer/company | Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+[**CreateBuyerCompanyApproval**](BuyerApi.md#createbuyercompanyapproval) | **POST** /v1/buyer/company/approvals | Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+[**CreateBuyerCompanyApprovalDecide**](BuyerApi.md#createbuyercompanyapprovaldecide) | **POST** /v1/buyer/company/approvals/{id}/decide | Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+[**CreateBuyerCompanyMember**](BuyerApi.md#createbuyercompanymember) | **POST** /v1/buyer/company/members | Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
 [**CreateBuyerConversationInvite**](BuyerApi.md#createbuyerconversationinvite) | **POST** /v1/buyer/conversations/{id}/invite | Invite a friend into a chat with a seller: a single-use link (7 days) that makes whoever opens it a guest who can read and post. Only the thread’s buyer can invite; at most 5 guests.
 [**CreateBuyerConversationJoin**](BuyerApi.md#createbuyerconversationjoin) | **POST** /v1/buyer/conversations/join/{token} | Join a chat you were invited into, as a guest.
+[**CreateBuyerEventRsvp**](BuyerApi.md#createbuyereventrsvp) | **POST** /v1/buyer/events/{slug}/rsvp | RSVP to an event: going (counts against its capacity) or interested.
 [**CreateBuyerFeedback**](BuyerApi.md#createbuyerfeedback) | **POST** /v1/buyer/feedback | Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
 [**CreateBuyerFitRef**](BuyerApi.md#createbuyerfitref) | **POST** /v1/buyer/fit/refs | Save a reference garment (flat measurements, inches) to compare listings against.
 [**CreateBuyerFollowingSellerSeen**](BuyerApi.md#createbuyerfollowingsellerseen) | **POST** /v1/buyer/following/sellers/seen | Clear the \&quot;new listings\&quot; count on a followed seller, or on all of them.
 [**CreateBuyerGiftCard**](BuyerApi.md#createbuyergiftcard) | **POST** /v1/buyer/gift-cards | Start a gift card purchase.
 [**CreateBuyerGiftCardRedeem**](BuyerApi.md#createbuyergiftcardredeem) | **POST** /v1/buyer/gift-cards/redeem | Redeem a gift card code into your own balance.
-[**CreateBuyerGroupBuyJoin**](BuyerApi.md#createbuyergroupbuyjoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+[**CreateBuyerGroupBuyJoin**](BuyerApi.md#createbuyergroupbuyjoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. &#x60;linkToken&#x60; opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 [**CreateBuyerGroupBuyLeave**](BuyerApi.md#createbuyergroupbuyleave) | **POST** /v1/buyer/group-buys/{id}/leave | Leave a group buy and release your hold.
 [**CreateBuyerHunt**](BuyerApi.md#createbuyerhunt) | **POST** /v1/buyer/hunts | Start a buyer-agent hunt — over a search (filters), or auto-buy on one listing (listingSlug: buy it once its price, sale applied, is within maxPriceCents). &#x60;offer&#x60; and &#x60;buy&#x60; modes also need buyer:checkout:write, and the budget is checked against this key’s spending controls.
 [**CreateBuyerInstantOfferAccept**](BuyerApi.md#createbuyerinstantofferaccept) | **POST** /v1/buyer/instant-offers/{id}/accept | Accept Crossly’s instant offer on a collection item. Ops then send a prepaid label; the store credit is paid once the item arrives and checks out.
@@ -53,22 +58,28 @@ Method | HTTP request | Description
 [**CreateBuyerPackFairnessRotate**](BuyerApi.md#createbuyerpackfairnessrotate) | **POST** /v1/buyer/packs/fairness/rotate | Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
 [**CreateBuyerPackOpen**](BuyerApi.md#createbuyerpackopen) | **POST** /v1/buyer/packs/{slug}/open | Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
 [**CreateBuyerPackOpeningSellBack**](BuyerApi.md#createbuyerpackopeningsellback) | **POST** /v1/buyer/pack-openings/{id}/sell-back | Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
-[**CreateBuyerPassportClaim**](BuyerApi.md#createbuyerpassportclaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+[**CreateBuyerPassportClaim**](BuyerApi.md#createbuyerpassportclaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 [**CreateBuyerProtectionPlanCancel**](BuyerApi.md#createbuyerprotectionplancancel) | **POST** /v1/buyer/protection-plans/{id}/cancel | Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
-[**CreateBuyerPurchaseDownload**](BuyerApi.md#createbuyerpurchasedownload) | **POST** /v1/buyer/purchases/{id}/download | A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
 [**CreateBuyerPurchaseFit**](BuyerApi.md#createbuyerpurchasefit) | **POST** /v1/buyer/purchases/{id}/fit | Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
 [**CreateBuyerPurchaseReturn**](BuyerApi.md#createbuyerpurchasereturn) | **POST** /v1/buyer/purchases/{id}/return | Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
 [**CreateBuyerRegistry**](BuyerApi.md#createbuyerregistry) | **POST** /v1/buyer/registries | Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
 [**CreateBuyerRegistryGiftThanked**](BuyerApi.md#createbuyerregistrygiftthanked) | **POST** /v1/buyer/registries/{id}/gifts/{giftId}/thanked | Tick a gift as thanked (or untick it).
 [**CreateBuyerRentalArrivalPhoto**](BuyerApi.md#createbuyerrentalarrivalphoto) | **POST** /v1/buyer/rentals/{id}/arrival-photos | Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
+[**CreateBuyerRentalBuyout**](BuyerApi.md#createbuyerrentalbuyout) | **POST** /v1/buyer/rentals/{id}/buyout | Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
 [**CreateBuyerRentalCancel**](BuyerApi.md#createbuyerrentalcancel) | **POST** /v1/buyer/rentals/{id}/cancel | Cancel a rental that has not shipped: everything is refunded.
 [**CreateBuyerRentalClaimResponse**](BuyerApi.md#createbuyerrentalclaimresponse) | **POST** /v1/buyer/rentals/{id}/claim-response | Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
+[**CreateBuyerRentalDelivered**](BuyerApi.md#createbuyerrentaldelivered) | **POST** /v1/buyer/rentals/{id}/delivered | Confirm your rental arrived.
+[**CreateBuyerRentalExtension**](BuyerApi.md#createbuyerrentalextension) | **POST** /v1/buyer/rentals/{id}/extensions | Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+[**CreateBuyerRentalExtensionPay**](BuyerApi.md#createbuyerrentalextensionpay) | **POST** /v1/buyer/rentals/{id}/extensions/{extensionId}/pay | Pay for an extension the seller approved → clientSecret.
 [**CreateBuyerRentalIdentityStart**](BuyerApi.md#createbuyerrentalidentitystart) | **POST** /v1/buyer/rentals/identity/start | Start the ID check renting needs (Stripe Identity: photo ID + selfie). Open &#x60;url&#x60; (hosted) or use &#x60;clientSecret&#x60; with Stripe.js.
+[**CreateBuyerRentalReturnShipped**](BuyerApi.md#createbuyerrentalreturnshipped) | **POST** /v1/buyer/rentals/{id}/return-shipped | Say you sent your rental back (optionally with photos).
 [**CreateBuyerReturnCancel**](BuyerApi.md#createbuyerreturncancel) | **POST** /v1/buyer/returns/{id}/cancel | Cancel a return before it ships.
 [**CreateBuyerReturnTracking**](BuyerApi.md#createbuyerreturntracking) | **POST** /v1/buyer/returns/{id}/tracking | Add tracking to a return you shipped on your own label.
 [**CreateBuyerSellerClubJoin**](BuyerApi.md#createbuyersellerclubjoin) | **POST** /v1/buyer/sellers/{sellerUserId}/club/join | Join a seller’s loyalty club (free). Your tier’s discount then applies to their items — the best of it and any other rate you have with them, never stacked.
+[**CreateBuyerSellerLoyaltyJoin**](BuyerApi.md#createbuyersellerloyaltyjoin) | **POST** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
 [**CreateBuyerSellerReport**](BuyerApi.md#createbuyersellerreport) | **POST** /v1/buyer/sellers/{username}/report | Report a seller to Crossly’s trust team.
 [**CreateBuyerSplitCancel**](BuyerApi.md#createbuyersplitcancel) | **POST** /v1/buyer/splits/{id}/cancel | Cancel a split you organised; every held share is released.
+[**CreateBuyerStoreReport**](BuyerApi.md#createbuyerstorereport) | **POST** /v1/buyer/stores/{slug}/report | Report a store to Crossly’s trust team.
 [**CreateBuyerTogether**](BuyerApi.md#createbuyertogether) | **POST** /v1/buyer/together | Start a shop-together room.
 [**CreateBuyerTogetherItem**](BuyerApi.md#createbuyertogetheritem) | **POST** /v1/buyer/together/{code}/items | Add a listing to a shop-together board.
 [**CreateBuyerTogetherItemVote**](BuyerApi.md#createbuyertogetheritemvote) | **POST** /v1/buyer/together/{code}/items/{id}/vote | Vote an item on a room’s board up (1), down (-1) or clear (0).
@@ -79,6 +90,14 @@ Method | HTTP request | Description
 [**CreateBuyerVaultList**](BuyerApi.md#createbuyervaultlist) | **POST** /v1/buyer/vault/{id}/list | Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
 [**CreateBuyerVaultUnlist**](BuyerApi.md#createbuyervaultunlist) | **POST** /v1/buyer/vault/{id}/unlist | Take a vault item off the market; it stays stored.
 [**CreateBuyerVaultWithdraw**](BuyerApi.md#createbuyervaultwithdraw) | **POST** /v1/buyer/vault/{id}/withdraw | Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
+[**CreateBuyerWholesaleCatalogApply**](BuyerApi.md#createbuyerwholesalecatalogapply) | **POST** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+[**CreateBuyerWholesaleFreightRequest**](BuyerApi.md#createbuyerwholesalefreightrequest) | **POST** /v1/buyer/wholesale/freight-requests | Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+[**CreateBuyerWholesaleInvoicePayLink**](BuyerApi.md#createbuyerwholesaleinvoicepaylink) | **POST** /v1/buyer/wholesale/invoices/{id}/pay-link | A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+[**CreateBuyerWholesaleOrderSheet**](BuyerApi.md#createbuyerwholesaleordersheet) | **POST** /v1/buyer/wholesale/order-sheets | Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+[**CreateBuyerWholesaleQuote**](BuyerApi.md#createbuyerwholesalequote) | **POST** /v1/buyer/wholesale/quotes | Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+[**CreateBuyerWholesaleQuoteAccept**](BuyerApi.md#createbuyerwholesalequoteaccept) | **POST** /v1/buyer/wholesale/quotes/{id}/accept | Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line&#39;s quantity drops the lock). Paying happens at checkout on Crossly.
+[**CreateBuyerWholesaleQuoteWithdraw**](BuyerApi.md#createbuyerwholesalequotewithdraw) | **POST** /v1/buyer/wholesale/quotes/{id}/withdraw | Withdraw a quote request that is still requested or answered.
+[**CreateBuyerWholesaleUploadValidate**](BuyerApi.md#createbuyerwholesaleuploadvalidate) | **POST** /v1/buyer/wholesale/upload/validate | Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
 [**CreateBuyerWishlist**](BuyerApi.md#createbuyerwishlist) | **POST** /v1/buyer/wishlists | Create a wishlist.
 [**CreateBuyerWishlistInvite**](BuyerApi.md#createbuyerwishlistinvite) | **POST** /v1/buyer/wishlists/{id}/invite | Share a wishlist with a co-editor: a single-use link (14 days). Members add and remove items; only the owner renames, deletes or removes members. At most 20.
 [**CreateBuyerWishlistItem**](BuyerApi.md#createbuyerwishlistitem) | **POST** /v1/buyer/wishlists/{id}/items | Add a listing to a wishlist.
@@ -89,8 +108,12 @@ Method | HTTP request | Description
 [**DeleteBuyerBreakSpotHold**](BuyerApi.md#deletebuyerbreakspothold) | **DELETE** /v1/buyer/breaks/{id}/spots/{spotId}/hold | Release a break spot you hold.
 [**DeleteBuyerCartItem**](BuyerApi.md#deletebuyercartitem) | **DELETE** /v1/buyer/cart/items/{id} | Remove a line from your cart.
 [**DeleteBuyerCartSaved**](BuyerApi.md#deletebuyercartsaved) | **DELETE** /v1/buyer/cart/saved/{id} | Remove an item from saved-for-later. Returns the remaining list.
+[**DeleteBuyerCompanyMember**](BuyerApi.md#deletebuyercompanymember) | **DELETE** /v1/buyer/company/members/{id} | Remove a member or cancel an invite (owner), or leave the company (your own member id).
 [**DeleteBuyerConversationGuest**](BuyerApi.md#deletebuyerconversationguest) | **DELETE** /v1/buyer/conversations/{id}/guests/{userId} | Remove a guest (the thread’s buyer), or leave (a guest, with your own user id).
+[**DeleteBuyerCreationReview**](BuyerApi.md#deletebuyercreationreview) | **DELETE** /v1/buyer/creations/{format}/{id}/review | Remove your review of a creation (its vote leaves the rating with it).
+[**DeleteBuyerEventRsvp**](BuyerApi.md#deletebuyereventrsvp) | **DELETE** /v1/buyer/events/{slug}/rsvp | Take back your RSVP.
 [**DeleteBuyerFitRef**](BuyerApi.md#deletebuyerfitref) | **DELETE** /v1/buyer/fit/refs/{id} | Delete a reference garment.
+[**DeleteBuyerHomeGuestbook**](BuyerApi.md#deletebuyerhomeguestbook) | **DELETE** /v1/buyer/home/guestbook/{id} | Hide a line from your home’s guestbook.
 [**DeleteBuyerMarketBid**](BuyerApi.md#deletebuyermarketbid) | **DELETE** /v1/buyer/market/bids/{id} | Cancel a resting market bid.
 [**DeleteBuyerMarketWatch**](BuyerApi.md#deletebuyermarketwatch) | **DELETE** /v1/buyer/market/watches/{id} | Stop watching a market variant.
 [**DeleteBuyerOffer**](BuyerApi.md#deletebuyeroffer) | **DELETE** /v1/buyer/offers/{id} | Withdraw an offer you made that the seller has not answered.
@@ -98,9 +121,11 @@ Method | HTTP request | Description
 [**DeleteBuyerRecentlyViewed2**](BuyerApi.md#deletebuyerrecentlyviewed2) | **DELETE** /v1/buyer/recently-viewed | Clear your recently viewed list.
 [**DeleteBuyerRegistry**](BuyerApi.md#deletebuyerregistry) | **DELETE** /v1/buyer/registries/{id} | Delete a registry (and the wishlist behind it).
 [**DeleteBuyerSellerClubJoin**](BuyerApi.md#deletebuyersellerclubjoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/club/join | Leave a seller’s loyalty club.
+[**DeleteBuyerSellerLoyaltyJoin**](BuyerApi.md#deletebuyersellerloyaltyjoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Leave a seller’s loyalty club.
 [**DeleteBuyerTogetherItem**](BuyerApi.md#deletebuyertogetheritem) | **DELETE** /v1/buyer/together/{code}/items/{id} | Take an item you added off a room’s board.
 [**DeleteBuyerTotalRequest**](BuyerApi.md#deletebuyertotalrequest) | **DELETE** /v1/buyer/total-requests/{id} | Cancel a total request you made.
 [**DeleteBuyerTryOn**](BuyerApi.md#deletebuyertryon) | **DELETE** /v1/buyer/try-ons/{id} | Delete a try-on and its images — or pass &#x60;all&#x60; to delete every photo and result.
+[**DeleteBuyerWholesaleOrderSheet**](BuyerApi.md#deletebuyerwholesaleordersheet) | **DELETE** /v1/buyer/wholesale/order-sheets/{id} | Delete an order sheet.
 [**DeleteBuyerWishlist**](BuyerApi.md#deletebuyerwishlist) | **DELETE** /v1/buyer/wishlists/{id} | Delete a wishlist and everything on it.
 [**DeleteBuyerWishlistItem**](BuyerApi.md#deletebuyerwishlistitem) | **DELETE** /v1/buyer/wishlists/{id}/items/{slug} | Take a listing off a wishlist.
 [**DeleteBuyerWishlistMember**](BuyerApi.md#deletebuyerwishlistmember) | **DELETE** /v1/buyer/wishlists/{id}/members/{userId} | Remove a co-editor (the owner), or leave a list shared with you (your own user id).
@@ -116,9 +141,14 @@ Method | HTTP request | Description
 [**GetBuyerCheckoutUsdc**](BuyerApi.md#getbuyercheckoutusdc) | **GET** /v1/buyer/checkout/usdc | Whether Crossly takes USDC (Stripe stablecoin payments: Solana, Ethereum, Base, Polygon), and its per-order limit. Paying needs the buyer’s wallet, so it happens in the browser checkout, never unattended.
 [**GetBuyerCollectionOffer**](BuyerApi.md#getbuyercollectionoffer) | **GET** /v1/buyer/collection/{id}/offer | What an item in your collection would fetch now: the top open bid on the market for the same variant, condition and grade, and Crossly’s instant offer in store credit when that is switched on (a quote valid for a limited time).
 [**GetBuyerCollectionSet**](BuyerApi.md#getbuyercollectionset) | **GET** /v1/buyer/collection/sets/{category}/{brand}/{model} | One set: every piece (owned or missing, with its lowest ask on the market), what completing it would cost now, and the leaderboard of collectors who opted in, with your rank.
+[**GetBuyerCompany**](BuyerApi.md#getbuyercompany) | **GET** /v1/buyer/company | Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+[**GetBuyerCreation**](BuyerApi.md#getbuyercreation) | **GET** /v1/buyer/creations/{format}/{id} | A live creation&#39;s public page: its rating breakdown, recent reviews and whether you can review it.
 [**GetBuyerCreator**](BuyerApi.md#getbuyercreator) | **GET** /v1/buyer/creators/{handle} | A creator storefront: profile, affiliate code, and shelves of live picks.
+[**GetBuyerEvent**](BuyerApi.md#getbuyerevent) | **GET** /v1/buyer/events/{slug} | A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
 [**GetBuyerFitVocabulary**](BuyerApi.md#getbuyerfitvocabulary) | **GET** /v1/buyer/fit/vocabulary | Garment kinds and the measurements each takes.
 [**GetBuyerGiftFinderOption**](BuyerApi.md#getbuyergiftfinderoption) | **GET** /v1/buyer/gift-finder/options | The gift finder’s questions: recipients, interests, budgets.
+[**GetBuyerHome**](BuyerApi.md#getbuyerhome) | **GET** /v1/buyer/home | Your home in Crossly World (made on first read).
+[**GetBuyerHomePlaceable**](BuyerApi.md#getbuyerhomeplaceable) | **GET** /v1/buyer/home/placeable | What you could place in your home: your items and delivered furniture.
 [**GetBuyerImpact**](BuyerApi.md#getbuyerimpact) | **GET** /v1/buyer/impact | The sourced footprint your secondhand purchases avoided.
 [**GetBuyerLayaway**](BuyerApi.md#getbuyerlayaway) | **GET** /v1/buyer/layaways/{id} | One layaway and its schedule.
 [**GetBuyerListingAudioSummary**](BuyerApi.md#getbuyerlistingaudiosummary) | **GET** /v1/buyer/listings/{slug}/audio-summary | A spoken summary of a listing (accessibility): the text, built only from the listing’s own fields and the seller’s description, and the recording of it when one exists.
@@ -139,7 +169,7 @@ Method | HTTP request | Description
 [**GetBuyerPack**](BuyerApi.md#getbuyerpack) | **GET** /v1/buyer/packs/{slug} | One pack: tiers and odds, items left, expected value, the chase items still in it.
 [**GetBuyerPackFairness**](BuyerApi.md#getbuyerpackfairness) | **GET** /v1/buyer/packs/fairness | Your provably-fair seeds: the active server-seed commitment (sha256), your client seed and nonce, and every retired seed in full so past openings can be re-run.
 [**GetBuyerParty**](BuyerApi.md#getbuyerparty) | **GET** /v1/buyer/parties/{slug} | One shopping party.
-[**GetBuyerPassport**](BuyerApi.md#getbuyerpassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+[**GetBuyerPassport**](BuyerApi.md#getbuyerpassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 [**GetBuyerPreference**](BuyerApi.md#getbuyerpreference) | **GET** /v1/buyer/preferences | The shopping profile derived from that activity.
 [**GetBuyerPriceGuide**](BuyerApi.md#getbuyerpriceguide) | **GET** /v1/buyer/price-guide | What matching items actually sold for on Crossly: median, quartiles, by month, and recent sales. Needs q, brand or category.
 [**GetBuyerProfile**](BuyerApi.md#getbuyerprofile) | **GET** /v1/buyer/profile | Your Crossly shopping profile — name, email, saved address, Bucks balance.
@@ -149,14 +179,38 @@ Method | HTTP request | Description
 [**GetBuyerPurchaseStory**](BuyerApi.md#getbuyerpurchasestory) | **GET** /v1/buyer/purchases/{id}/story | Your owner story on a purchase, passed on to the next owner if you resell it.
 [**GetBuyerRegistry**](BuyerApi.md#getbuyerregistry) | **GET** /v1/buyer/registries/{id} | One of your registries: items with how many are wanted and bought.
 [**GetBuyerRegistryByToken**](BuyerApi.md#getbuyerregistrybytoken) | **GET** /v1/buyer/registry/{token} | A registry as a guest sees it: items, how many are still wanted, and whether it can ship. Never the address.
+[**GetBuyerRental**](BuyerApi.md#getbuyerrental) | **GET** /v1/buyer/rentals/{id} | One of your rentals: timeline, payments, the return label, extension and buy-out terms.
 [**GetBuyerRentalEligibility**](BuyerApi.md#getbuyerrentaleligibility) | **GET** /v1/buyer/rentals/eligibility | Can you rent right now: ID-verified (a photo ID and a matching selfie, once), the verified name rentals ship to, and your standing (one rental at a time until your first comes back; none after one that never did).
 [**GetBuyerSellerClub**](BuyerApi.md#getbuyersellerclub) | **GET** /v1/buyer/sellers/{sellerUserId}/club | A seller’s loyalty club: its tiers (spend threshold, discount, perks) and your standing. null when the seller has none.
+[**GetBuyerSellerLoyalty**](BuyerApi.md#getbuyersellerloyalty) | **GET** /v1/buyer/sellers/{sellerUserId}/loyalty | A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
 [**GetBuyerSellerTrust**](BuyerApi.md#getbuyersellertrust) | **GET** /v1/buyer/sellers/{username}/trust | Seller at a glance: member since, completed sales, independent rating, typical handling time, dispute rate, trust tier, badges — and the plain sentences the profile shows.
 [**GetBuyerTogether**](BuyerApi.md#getbuyertogether) | **GET** /v1/buyer/together/{code} | A shop-together room: members, the board with votes, and chat.
 [**GetBuyerVaultMarketHistory**](BuyerApi.md#getbuyervaultmarkethistory) | **GET** /v1/buyer/vault-markets/history | Your Vault Markets value by day at the marks (oldest first, today live) over &#x60;days&#x60; (default 90), and today’s change against yesterday’s close.
 [**GetBuyerVaultMarketIndex**](BuyerApi.md#getbuyervaultmarketindex) | **GET** /v1/buyer/vault-markets/indexes/{slug} | One index with its published daily closes (oldest first, &#x60;days&#x60; default 365) and its level now.
 [**GetBuyerVaultMarketInstantExit**](BuyerApi.md#getbuyervaultmarketinstantexit) | **GET** /v1/buyer/vault-markets/instant-exit/{id} | The Instant Exit quote for one vault unit you hold, and whether it can be sold now.
+[**GetBuyerVaultMarketOptionAnalytic**](BuyerApi.md#getbuyervaultmarketoptionanalytic) | **GET** /v1/buyer/vault-markets/options/analytics/{underlying} | Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+[**GetBuyerVaultMarketOptionChain**](BuyerApi.md#getbuyervaultmarketoptionchain) | **GET** /v1/buyer/vault-markets/options/chain/{underlying} | The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+[**GetBuyerVaultMarketOptionIv**](BuyerApi.md#getbuyervaultmarketoptioniv) | **GET** /v1/buyer/vault-markets/options/iv/{underlying} | The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+[**GetBuyerVaultMarketOptionPosition**](BuyerApi.md#getbuyervaultmarketoptionposition) | **GET** /v1/buyer/vault-markets/options/positions | Your fractional options positions with their marks, P&amp;L and Greeks (open by default; &#x60;status&#x60; all for closed and settled too). Read only.
+[**GetBuyerVaultMarketOptionRisk**](BuyerApi.md#getbuyervaultmarketoptionrisk) | **GET** /v1/buyer/vault-markets/options/risk | Your options portfolio Greeks, a scenario&#39;s P&amp;L (&#x60;priceShift&#x60;, &#x60;volShift&#x60;, &#x60;daysForward&#x60;) and the beta-weighted delta against an index. Read only.
+[**GetBuyerVaultMarketPredictionBoard**](BuyerApi.md#getbuyervaultmarketpredictionboard) | **GET** /v1/buyer/vault-markets/predictions/board | The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+[**GetBuyerVaultMarketPredictionEvent**](BuyerApi.md#getbuyervaultmarketpredictionevent) | **GET** /v1/buyer/vault-markets/predictions/events/{id} | One expiry’s markets with your holdings in each and their real worst and best case across them.
+[**GetBuyerVaultMarketPredictionLeaderboard**](BuyerApi.md#getbuyervaultmarketpredictionleaderboard) | **GET** /v1/buyer/vault-markets/predictions/leaderboard | Opt-in forecaster leaderboards (&#x60;period&#x60; week | month | all; &#x60;metric&#x60; pnl | accuracy | brier; &#x60;venue&#x60; live | paper).
+[**GetBuyerVaultMarketPredictionMarket**](BuyerApi.md#getbuyervaultmarketpredictionmarket) | **GET** /v1/buyer/vault-markets/predictions/markets/{id} | One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+[**GetBuyerVaultMarketPredictionMarketHistory**](BuyerApi.md#getbuyervaultmarketpredictionmarkethistory) | **GET** /v1/buyer/vault-markets/predictions/markets/{id}/history | A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (&#x60;range&#x60; 1d, 1w, 1m, all; &#x60;venue&#x60; live or paper).
+[**GetBuyerVaultMarketShare**](BuyerApi.md#getbuyervaultmarketshare) | **GET** /v1/buyer/vault-markets/shares | Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+[**GetBuyerVaultMarketShareBasket**](BuyerApi.md#getbuyervaultmarketsharebasket) | **GET** /v1/buyer/vault-markets/shares/baskets/{id} | One theme basket: its series, weights and prices, and your holdings against them.
+[**GetBuyerVaultMarketShareSery**](BuyerApi.md#getbuyervaultmarketsharesery) | **GET** /v1/buyer/vault-markets/shares/series/{id} | One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+[**GetBuyerVaultMarketShareSeryHistory**](BuyerApi.md#getbuyervaultmarketshareseryhistory) | **GET** /v1/buyer/vault-markets/shares/series/{id}/history | A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+[**GetBuyerVaultMarketShareSeryPerk**](BuyerApi.md#getbuyervaultmarketshareseryperk) | **GET** /v1/buyer/vault-markets/shares/series/{id}/perks | Your holder perks on a series: badge, visit links, viewing days and your bookings.
 [**GetBuyerVaultMarketWorth**](BuyerApi.md#getbuyervaultmarketworth) | **GET** /v1/buyer/vault-markets/worth | What your vault is worth now: value at the market prices (marks come only from trades) split into reliable and indicative marks, cost and P&amp;L, today’s change, and an estimate of what the units free to sell would fetch from the bids resting on the book now. Read only.
+[**GetBuyerWholesaleCart**](BuyerApi.md#getbuyerwholesalecart) | **GET** /v1/buyer/wholesale/cart | Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+[**GetBuyerWholesaleCatalogApply**](BuyerApi.md#getbuyerwholesalecatalogapply) | **GET** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | The application form for a store&#39;s wholesale catalog: the seller&#39;s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable&#x3D;false for a catalog you cannot apply to.
+[**GetBuyerWholesaleDrop**](BuyerApi.md#getbuyerwholesaledrop) | **GET** /v1/buyer/wholesale/drops/{id} | One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+[**GetBuyerWholesaleInvoicePayQuote**](BuyerApi.md#getbuyerwholesaleinvoicepayquote) | **GET** /v1/buyer/wholesale/invoices/{id}/pay-quote | What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+[**GetBuyerWholesaleOrderSheet**](BuyerApi.md#getbuyerwholesaleordersheet) | **GET** /v1/buyer/wholesale/order-sheets/{id} | One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+[**GetBuyerWholesaleQuote**](BuyerApi.md#getbuyerwholesalequote) | **GET** /v1/buyer/wholesale/quotes/{id} | One of your quotes with its items, the seller&#39;s prices and expiry.
+[**GetBuyerWholesaleReorder**](BuyerApi.md#getbuyerwholesalereorder) | **GET** /v1/buyer/wholesale/reorder/{id} | Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
 [**ListBuyerActivity**](BuyerApi.md#listbuyeractivity) | **GET** /v1/buyer/activity | What this buyer has compared lately.
 [**ListBuyerAuctionBids**](BuyerApi.md#listbuyerauctionbids) | **GET** /v1/buyer/auctions/{slug}/bids | An auction’s bid history, highest first, bidders anonymised.
 [**ListBuyerAuctions**](BuyerApi.md#listbuyerauctions) | **GET** /v1/buyer/auctions | Auctions you have bid in — bidding, won or lost (last 100).
@@ -170,8 +224,11 @@ Method | HTTP request | Description
 [**ListBuyerCatalogListingVideos**](BuyerApi.md#listbuyercataloglistingvideos) | **GET** /v1/buyer/catalog/listings/{slug}/videos | Videos the seller recorded for this item on request, newest first, with the question each one answers.
 [**ListBuyerClubs**](BuyerApi.md#listbuyerclubs) | **GET** /v1/buyer/clubs | Sellers’ loyalty clubs you belong to: your spend with each, your tier and its discount, and the next tier.
 [**ListBuyerCollectionSets**](BuyerApi.md#listbuyercollectionsets) | **GET** /v1/buyer/collection/sets | Sets you are collecting — a catalogue brand + model you own at least two pieces of — with owned / total and percent complete, most complete first; and whether you show on set leaderboards.
+[**ListBuyerCompanyApprovals**](BuyerApi.md#listbuyercompanyapprovals) | **GET** /v1/buyer/company/approvals | Spend approval requests (owners and accounts payable see all; others their own). ?status&#x3D;pending|approved|declined|used|expired.
 [**ListBuyerConsolidations**](BuyerApi.md#listbuyerconsolidations) | **GET** /v1/buyer/consolidations | Your ship-together orders: parcels at the hub, and the one box out.
 [**ListBuyerConversationGuests**](BuyerApi.md#listbuyerconversationguests) | **GET** /v1/buyer/conversations/{id}/guests | Guests in a chat.
+[**ListBuyerCreationReviewable**](BuyerApi.md#listbuyercreationreviewable) | **GET** /v1/buyer/creations/reviewable | Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+[**ListBuyerEvents**](BuyerApi.md#listbuyerevents) | **GET** /v1/buyer/events | Upcoming and live seller events across Crossly, soonest first.
 [**ListBuyerFeedback**](BuyerApi.md#listbuyerfeedback) | **GET** /v1/buyer/feedback | Feedback you have left sellers, newest first — with the ids you revise by.
 [**ListBuyerFeedbackPending**](BuyerApi.md#listbuyerfeedbackpending) | **GET** /v1/buyer/feedback/pending | Orders from the last 60 days that are on their way or arrived and still need your feedback.
 [**ListBuyerFitRefs**](BuyerApi.md#listbuyerfitrefs) | **GET** /v1/buyer/fit/refs | Your saved reference garments for fit comparison.
@@ -180,6 +237,8 @@ Method | HTTP request | Description
 [**ListBuyerGiftCards**](BuyerApi.md#listbuyergiftcards) | **GET** /v1/buyer/gift-cards | Gift cards you bought, newest first.
 [**ListBuyerGiftFinder**](BuyerApi.md#listbuyergiftfinder) | **GET** /v1/buyer/gift-finder | Live listings for a recipient, interest and budget.
 [**ListBuyerGiftSent**](BuyerApi.md#listbuyergiftsent) | **GET** /v1/buyer/gifts/sent | Items you sent as gifts: whether the teaser went out, whether it arrived and was opened, and any thank-you. Send one with &#x60;gift&#x60; on checkout.
+[**ListBuyerHomeBuilders**](BuyerApi.md#listbuyerhomebuilders) | **GET** /v1/buyer/home/builders | Your co-builders: friends who may arrange your home with you.
+[**ListBuyerHomeBuilding**](BuyerApi.md#listbuyerhomebuilding) | **GET** /v1/buyer/homes/building | The homes you co-build, to visit and arrange.
 [**ListBuyerHotspots**](BuyerApi.md#listbuyerhotspots) | **GET** /v1/buyer/hotspots | Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
 [**ListBuyerHunts**](BuyerApi.md#listbuyerhunts) | **GET** /v1/buyer/hunts | Your buyer-agent hunts and what they did.
 [**ListBuyerInstantOffers**](BuyerApi.md#listbuyerinstantoffers) | **GET** /v1/buyer/instant-offers | Your instant offers: live quotes, accepted ones awaiting a label, approved ones (with the prepaid label) and paid ones.
@@ -188,6 +247,7 @@ Method | HTTP request | Description
 [**ListBuyerListingSellerReviews**](BuyerApi.md#listbuyerlistingsellerreviews) | **GET** /v1/buyer/listings/{slug}/seller-reviews | The seller’s public reviews: summary, text, photos, replies.
 [**ListBuyerLiveShipments**](BuyerApi.md#listbuyerliveshipments) | **GET** /v1/buyer/live-shipments | Your one-box-per-show shipments: every order won in a show ships together, and postage is charged once (the rest refunded when it ships).
 [**ListBuyerLiveStreamLineup**](BuyerApi.md#listbuyerlivestreamlineup) | **GET** /v1/buyer/live-streams/{id}/lineup | What a live show will sell, in order: each item, its price, and whether it is still available.
+[**ListBuyerLoyalty**](BuyerApi.md#listbuyerloyalty) | **GET** /v1/buyer/loyalty | Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
 [**ListBuyerMarketBids**](BuyerApi.md#listbuyermarketbids) | **GET** /v1/buyer/market/bids | Your resting market bids.
 [**ListBuyerMarketWatches**](BuyerApi.md#listbuyermarketwatches) | **GET** /v1/buyer/market/watches | Market variants you watch, with the price you are waiting for.
 [**ListBuyerOffers**](BuyerApi.md#listbuyeroffers) | **GET** /v1/buyer/offers | Offers you have made, newest first (last 100).
@@ -196,6 +256,7 @@ Method | HTTP request | Description
 [**ListBuyerPacks**](BuyerApi.md#listbuyerpacks) | **GET** /v1/buyer/packs | Packs you can open: price, every tier with its published odds, what is left in it and its value range, and the expected value of one opening.
 [**ListBuyerParties**](BuyerApi.md#listbuyerparties) | **GET** /v1/buyer/parties | Themed shopping parties, live and upcoming.
 [**ListBuyerPartyListings**](BuyerApi.md#listbuyerpartylistings) | **GET** /v1/buyer/parties/{slug}/listings | Listings shared to a party, featured first.
+[**ListBuyerPaymentMethods**](BuyerApi.md#listbuyerpaymentmethods) | **GET** /v1/buyer/payment-methods | Your saved cards, the default first.
 [**ListBuyerPickupPoints**](BuyerApi.md#listbuyerpickuppoints) | **GET** /v1/buyer/pickup-points | Carrier pickup points (UPS Access Point / FedEx Hold at Location) near an address; pass one as &#x60;pickupPoint&#x60; to POST /v1/buyer/checkout.
 [**ListBuyerProtectionPlans**](BuyerApi.md#listbuyerprotectionplans) | **GET** /v1/buyer/protection-plans | Your protection plans (bought at checkout with &#x60;protection&#x60;): status, term, coverage, contract id, and any refund.
 [**ListBuyerRegistries**](BuyerApi.md#listbuyerregistries) | **GET** /v1/buyer/registries | Your gift registries.
@@ -205,6 +266,7 @@ Method | HTTP request | Description
 [**ListBuyerSizeMemoryPrompts**](BuyerApi.md#listbuyersizememoryprompts) | **GET** /v1/buyer/size-memory/prompts | Delivered orders with a size that you haven’t said how they fit (the last 60 days).
 [**ListBuyerSizeMemorySizes**](BuyerApi.md#listbuyersizememorysizes) | **GET** /v1/buyer/size-memory/sizes | The sizes learned from what you bought and kept, by kind of item (shoes, tops, bottoms, dresses, outerwear) and department.
 [**ListBuyerSplits**](BuyerApi.md#listbuyersplits) | **GET** /v1/buyer/splits | Purchases you split, with each share’s status.
+[**ListBuyerStoreListings**](BuyerApi.md#listbuyerstorelistings) | **GET** /v1/buyer/stores/{slug}/listings | A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
 [**ListBuyerSubscriptions**](BuyerApi.md#listbuyersubscriptions) | **GET** /v1/buyer/subscriptions | Your subscribe &amp; save standing orders.
 [**ListBuyerTogether**](BuyerApi.md#listbuyertogether) | **GET** /v1/buyer/together | Shop-together rooms you are in.
 [**ListBuyerTotalRequests**](BuyerApi.md#listbuyertotalrequests) | **GET** /v1/buyer/total-requests | Your combined-shipping total requests, newest per seller.
@@ -213,20 +275,51 @@ Method | HTTP request | Description
 [**ListBuyerVaultMarketHoldings**](BuyerApi.md#listbuyervaultmarketholdings) | **GET** /v1/buyer/vault-markets/holdings | Each unit you hold in the vault at its market price, with the mark’s quality (A or B reliable, C indicative, none), cost, P&amp;L and where it stands (stored, listed, lent, pledged, at the grader); &#x60;meta&#x60; carries the totals and the units you have out on loan.
 [**ListBuyerVaultMarketIndexes**](BuyerApi.md#listbuyervaultmarketindexes) | **GET** /v1/buyer/vault-markets/indexes | Crossly indexes over vault book keys (category, brand, curated, composite, segment, and your own), each with its level now and change since the last daily close. Index levels are valued only from the book’s marks.
 [**ListBuyerVaultMarketInstantExit**](BuyerApi.md#listbuyervaultmarketinstantexit) | **GET** /v1/buyer/vault-markets/instant-exit | Instant Exit quotes for what you hold, one per book key: the best resting bid (yours left out), its share of the mark, the bid levels, units held and which are free to sell, and why a key cannot be sold instantly. A quote, not an order.
+[**ListBuyerVaultMarketOptionCombos**](BuyerApi.md#listbuyervaultmarketoptioncombos) | **GET** /v1/buyer/vault-markets/options/combos | Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+[**ListBuyerVaultMarketOptionNotices**](BuyerApi.md#listbuyervaultmarketoptionnotices) | **GET** /v1/buyer/vault-markets/options/notices | Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+[**ListBuyerVaultMarketOptionSeries**](BuyerApi.md#listbuyervaultmarketoptionseries) | **GET** /v1/buyer/vault-markets/options/series | Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+[**ListBuyerVaultMarketOptionStrategies**](BuyerApi.md#listbuyervaultmarketoptionstrategies) | **GET** /v1/buyer/vault-markets/options/strategies | The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+[**ListBuyerVaultMarketPredictionComments**](BuyerApi.md#listbuyervaultmarketpredictioncomments) | **GET** /v1/buyer/vault-markets/predictions/comments | A prediction market’s (or series’) discussion thread. Read only.
+[**ListBuyerVaultMarketPredictionMarkets**](BuyerApi.md#listbuyervaultmarketpredictionmarkets) | **GET** /v1/buyer/vault-markets/predictions/markets | \&quot;Will it hit?\&quot; prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market&#39;s own price, display only).
+[**ListBuyerVaultMarketPredictionPositions**](BuyerApi.md#listbuyervaultmarketpredictionpositions) | **GET** /v1/buyer/vault-markets/predictions/positions | Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+[**ListBuyerVaultMarketShareAutoInvest**](BuyerApi.md#listbuyervaultmarketshareautoinvest) | **GET** /v1/buyer/vault-markets/shares/auto-invest | Your recurring Vault Shares auto-invest plans.
+[**ListBuyerVaultMarketShareBaskets**](BuyerApi.md#listbuyervaultmarketsharebaskets) | **GET** /v1/buyer/vault-markets/shares/baskets | Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+[**ListBuyerVaultMarketShareDrops**](BuyerApi.md#listbuyervaultmarketsharedrops) | **GET** /v1/buyer/vault-markets/shares/drops | Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+[**ListBuyerVaultMarketShareGifts**](BuyerApi.md#listbuyervaultmarketsharegifts) | **GET** /v1/buyer/vault-markets/shares/gifts | Vault Shares gifts you sent or were offered.
+[**ListBuyerVaultMarketShareSeries**](BuyerApi.md#listbuyervaultmarketshareseries) | **GET** /v1/buyer/vault-markets/shares/series | Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
 [**ListBuyerVaultMarketWatchlist**](BuyerApi.md#listbuyervaultmarketwatchlist) | **GET** /v1/buyer/vault-markets/watchlist | The book keys you watch, with mark and its quality, 24 h and 7 d change, and the last 30 daily marks.
 [**ListBuyerVideoRequests**](BuyerApi.md#listbuyervideorequests) | **GET** /v1/buyer/video-requests | Your video requests and their answers.
+[**ListBuyerWalletPerks**](BuyerApi.md#listbuyerwalletperks) | **GET** /v1/buyer/wallet/perks | The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+[**ListBuyerWholesaleDrops**](BuyerApi.md#listbuyerwholesaledrops) | **GET** /v1/buyer/wholesale/drops | Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook &#x3D; reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+[**ListBuyerWholesaleFreightRequests**](BuyerApi.md#listbuyerwholesalefreightrequests) | **GET** /v1/buyer/wholesale/freight-requests | Your freight (LTL) quote requests to sellers, with the seller&#39;s figure in cents once quoted.
+[**ListBuyerWholesaleOrderSheets**](BuyerApi.md#listbuyerwholesaleordersheets) | **GET** /v1/buyer/wholesale/order-sheets | Your saved wholesale order sheets (one seller each), newest first.
+[**ListBuyerWholesaleOrders**](BuyerApi.md#listbuyerwholesaleorders) | **GET** /v1/buyer/wholesale/orders | Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+[**ListBuyerWholesalePrebooks**](BuyerApi.md#listbuyerwholesaleprebooks) | **GET** /v1/buyer/wholesale/prebooks | Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+[**ListBuyerWholesaleQuotes**](BuyerApi.md#listbuyerwholesalequotes) | **GET** /v1/buyer/wholesale/quotes | Your requests for a quote (RFQ) to wholesale sellers. ?status&#x3D;open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+[**ListBuyerWholesaleStatement**](BuyerApi.md#listbuyerwholesalestatement) | **GET** /v1/buyer/wholesale/statement | Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+[**ListBuyerWholesaleSuppliers**](BuyerApi.md#listbuyerwholesalesuppliers) | **GET** /v1/buyer/wholesale/suppliers | The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
 [**ListBuyerWishlistItems**](BuyerApi.md#listbuyerwishlistitems) | **GET** /v1/buyer/wishlists/{id}/items | What is on one wishlist.
 [**ListBuyerWishlistMembers**](BuyerApi.md#listbuyerwishlistmembers) | **GET** /v1/buyer/wishlists/{id}/members | Co-editors of a shared wishlist.
 [**ListBuyerWishlists**](BuyerApi.md#listbuyerwishlists) | **GET** /v1/buyer/wishlists | Your wishlists.
 [**UpdateBuyerBoard**](BuyerApi.md#updatebuyerboard) | **PATCH** /v1/buyer/boards/{id} | Rename a board, change its description, or make it public / private.
 [**UpdateBuyerBoardLayout**](BuyerApi.md#updatebuyerboardlayout) | **PUT** /v1/buyer/boards/{id}/layout | Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
 [**UpdateBuyerCollectionSetLeaderboard**](BuyerApi.md#updatebuyercollectionsetleaderboard) | **PUT** /v1/buyer/collection/sets/leaderboard | Show or hide yourself (by your public handle) on set leaderboards.
+[**UpdateBuyerCompany**](BuyerApi.md#updatebuyercompany) | **PATCH** /v1/buyer/company | Rename the company or change its tax id / website (owner).
+[**UpdateBuyerCompanyAddress**](BuyerApi.md#updatebuyercompanyaddress) | **PUT** /v1/buyer/company/addresses | Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+[**UpdateBuyerCompanyMember**](BuyerApi.md#updatebuyercompanymember) | **PATCH** /v1/buyer/company/members/{id} | Change a member&#39;s role or approval limit (owner). The last owner stays an owner.
+[**UpdateBuyerCreationReview**](BuyerApi.md#updatebuyercreationreview) | **PUT** /v1/buyer/creations/{format}/{id}/review | Review a creation you bought (or change your review): 1-5 stars and an optional comment.
 [**UpdateBuyerFeedback**](BuyerApi.md#updatebuyerfeedback) | **PATCH** /v1/buyer/feedback/{id} | Revise feedback you left, within 60 days.
+[**UpdateBuyerHome**](BuyerApi.md#updatebuyerhome) | **PATCH** /v1/buyer/home | Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+[**UpdateBuyerHomeBuilder**](BuyerApi.md#updatebuyerhomebuilder) | **PUT** /v1/buyer/home/builders | Set your co-builders (friends only, at most 4).
+[**UpdateBuyerHomeLayout**](BuyerApi.md#updatebuyerhomelayout) | **PUT** /v1/buyer/home/layout | Arrange your home: the whole layout, checked against what you own.
 [**UpdateBuyerHunt**](BuyerApi.md#updatebuyerhunt) | **PATCH** /v1/buyer/hunts/{id} | Pause, resume or stop a hunt.
+[**UpdateBuyerPaymentMethodDefault**](BuyerApi.md#updatebuyerpaymentmethoddefault) | **PUT** /v1/buyer/payment-methods/{id}/default | Make one of your saved cards the default.
 [**UpdateBuyerPurchaseStory**](BuyerApi.md#updatebuyerpurchasestory) | **PUT** /v1/buyer/purchases/{id}/story | Write your owner story (280 characters); it travels with the item if you resell it.
 [**UpdateBuyerRegistry**](BuyerApi.md#updatebuyerregistry) | **PATCH** /v1/buyer/registries/{id} | Edit a registry: title, kind, date, message, ship-to address.
 [**UpdateBuyerRegistryItem**](BuyerApi.md#updatebuyerregistryitem) | **PUT** /v1/buyer/registries/{id}/items/{platformListingId} | How many of an item you want (1–50).
 [**UpdateBuyerSubscription**](BuyerApi.md#updatebuyersubscription) | **PATCH** /v1/buyer/subscriptions/{id} | Pause, resume, skip the next delivery, change the interval, or cancel.
+[**UpdateBuyerWholesaleCartPo**](BuyerApi.md#updatebuyerwholesalecartpo) | **PUT** /v1/buyer/wholesale/cart/po | Set the PO reference for one seller&#39;s group of your cart: { sellerUserId, poReference } (empty clears it).
+[**UpdateBuyerWholesaleOrderSheet**](BuyerApi.md#updatebuyerwholesaleordersheet) | **PATCH** /v1/buyer/wholesale/order-sheets/{id} | Rename an order sheet, change its PO reference or note, or replace its lines.
 [**UpdateBuyerWishlist**](BuyerApi.md#updatebuyerwishlist) | **PATCH** /v1/buyer/wishlists/{id} | Rename a wishlist, or make it public / private.
 
 
@@ -1890,6 +1983,306 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createbuyercompany"></a>
+# **CreateBuyerCompany**
+> BuyerCompanyResponse CreateBuyerCompany ()
+
+Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerCompanyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+                BuyerCompanyResponse result = apiInstance.CreateBuyerCompany();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerCompany: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyercompanyapproval"></a>
+# **CreateBuyerCompanyApproval**
+> CreateBuyerCompanyApprovalResponse CreateBuyerCompanyApproval ()
+
+Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerCompanyApprovalExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+                CreateBuyerCompanyApprovalResponse result = apiInstance.CreateBuyerCompanyApproval();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerCompanyApproval: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyercompanyapprovaldecide"></a>
+# **CreateBuyerCompanyApprovalDecide**
+> CreateBuyerCompanyApprovalResponse CreateBuyerCompanyApprovalDecide (string id)
+
+Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerCompanyApprovalDecideExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+                CreateBuyerCompanyApprovalResponse result = apiInstance.CreateBuyerCompanyApprovalDecide(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerCompanyApprovalDecide: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyercompanymember"></a>
+# **CreateBuyerCompanyMember**
+> BuyerCompanyResponse CreateBuyerCompanyMember ()
+
+Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerCompanyMemberExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+                BuyerCompanyResponse result = apiInstance.CreateBuyerCompanyMember();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerCompanyMember: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createbuyerconversationinvite"></a>
 # **CreateBuyerConversationInvite**
 > CreateBuyerWishlistInviteResponse CreateBuyerConversationInvite (string id)
@@ -2022,6 +2415,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerConversationJoinResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyereventrsvp"></a>
+# **CreateBuyerEventRsvp**
+> CreateBuyerEventRsvpResponse CreateBuyerEventRsvp (string slug)
+
+RSVP to an event: going (counts against its capacity) or interested.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerEventRsvpExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var slug = "slug_example";  // string | 
+
+            try
+            {
+                // RSVP to an event: going (counts against its capacity) or interested.
+                CreateBuyerEventRsvpResponse result = apiInstance.CreateBuyerEventRsvp(slug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerEventRsvp: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  | 
+
+### Return type
+
+**CreateBuyerEventRsvpResponse**
 
 ### Authorization
 
@@ -2442,7 +2913,7 @@ Name | Type | Description  | Notes
 # **CreateBuyerGroupBuyJoin**
 > CreateBuyerGroupBuyJoinResponse CreateBuyerGroupBuyJoin (string id)
 
-Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. `linkToken` opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 
 ### Example
 ```csharp
@@ -2468,7 +2939,7 @@ namespace Example
 
             try
             {
-                // Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+                // Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. `linkToken` opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
                 CreateBuyerGroupBuyJoinResponse result = apiInstance.CreateBuyerGroupBuyJoin(id);
                 Debug.WriteLine(result);
             }
@@ -4078,7 +4549,7 @@ Name | Type | Description  | Notes
 # **CreateBuyerPassportClaim**
 > GetBuyerPassportResponse CreateBuyerPassportClaim (string code)
 
-Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 
 ### Example
 ```csharp
@@ -4104,7 +4575,7 @@ namespace Example
 
             try
             {
-                // Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+                // Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
                 GetBuyerPassportResponse result = apiInstance.CreateBuyerPassportClaim(code);
                 Debug.WriteLine(result);
             }
@@ -4206,84 +4677,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerProtectionPlanCancelResponse**
-
-### Authorization
-
-[BuyerOAuth](../README.md#BuyerOAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Error |  -  |
-| **401** | Error |  -  |
-| **403** | Error |  -  |
-| **404** | Error |  -  |
-| **429** | Error |  -  |
-| **500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-<a name="createbuyerpurchasedownload"></a>
-# **CreateBuyerPurchaseDownload**
-> CreateBuyerPurchaseDownloadResponse CreateBuyerPurchaseDownload (string id)
-
-A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using net.crossly.buyer.Api;
-using net.crossly.buyer.Client;
-using net.crossly.buyer.Model;
-
-namespace Example
-{
-    public class CreateBuyerPurchaseDownloadExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://crossly.net/api";
-            // Configure Bearer token for authorization: BuyerOAuth
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
-            var apiInstance = new BuyerApi(config);
-            var id = "id_example";  // string | 
-
-            try
-            {
-                // A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-                CreateBuyerPurchaseDownloadResponse result = apiInstance.CreateBuyerPurchaseDownload(id);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BuyerApi.CreateBuyerPurchaseDownload: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  | 
-
-### Return type
-
-**CreateBuyerPurchaseDownloadResponse**
 
 ### Authorization
 
@@ -4620,7 +5013,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerrentalarrivalphoto"></a>
 # **CreateBuyerRentalArrivalPhoto**
-> CreateBuyerRentalArrivalPhotoResponse CreateBuyerRentalArrivalPhoto (string id)
+> BuyerRentalResponse CreateBuyerRentalArrivalPhoto (string id)
 
 Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
 
@@ -4649,7 +5042,7 @@ namespace Example
             try
             {
                 // Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
-                CreateBuyerRentalArrivalPhotoResponse result = apiInstance.CreateBuyerRentalArrivalPhoto(id);
+                BuyerRentalResponse result = apiInstance.CreateBuyerRentalArrivalPhoto(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4671,7 +5064,85 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBuyerRentalArrivalPhotoResponse**
+**BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerrentalbuyout"></a>
+# **CreateBuyerRentalBuyout**
+> CreateBuyerRentalBuyoutResponse CreateBuyerRentalBuyout (string id)
+
+Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerRentalBuyoutExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+                CreateBuyerRentalBuyoutResponse result = apiInstance.CreateBuyerRentalBuyout(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerRentalBuyout: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateBuyerRentalBuyoutResponse**
 
 ### Authorization
 
@@ -4852,6 +5323,242 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createbuyerrentaldelivered"></a>
+# **CreateBuyerRentalDelivered**
+> BuyerRentalResponse CreateBuyerRentalDelivered (string id)
+
+Confirm your rental arrived.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerRentalDeliveredExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Confirm your rental arrived.
+                BuyerRentalResponse result = apiInstance.CreateBuyerRentalDelivered(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerRentalDelivered: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerrentalextension"></a>
+# **CreateBuyerRentalExtension**
+> CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension (string id)
+
+Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerRentalExtensionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+                CreateBuyerRentalExtensionResponse result = apiInstance.CreateBuyerRentalExtension(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerRentalExtension: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateBuyerRentalExtensionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerrentalextensionpay"></a>
+# **CreateBuyerRentalExtensionPay**
+> CreateBuyerRentalExtensionPayResponse CreateBuyerRentalExtensionPay (string id, string extensionId)
+
+Pay for an extension the seller approved → clientSecret.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerRentalExtensionPayExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+            var extensionId = "extensionId_example";  // string | 
+
+            try
+            {
+                // Pay for an extension the seller approved → clientSecret.
+                CreateBuyerRentalExtensionPayResponse result = apiInstance.CreateBuyerRentalExtensionPay(id, extensionId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerRentalExtensionPay: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **extensionId** | **string**|  | 
+
+### Return type
+
+**CreateBuyerRentalExtensionPayResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createbuyerrentalidentitystart"></a>
 # **CreateBuyerRentalIdentityStart**
 > CreateBuyerRentalIdentityStartResponse CreateBuyerRentalIdentityStart ()
@@ -4902,6 +5609,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateBuyerRentalIdentityStartResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerrentalreturnshipped"></a>
+# **CreateBuyerRentalReturnShipped**
+> BuyerRentalResponse CreateBuyerRentalReturnShipped (string id)
+
+Say you sent your rental back (optionally with photos).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerRentalReturnShippedExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Say you sent your rental back (optionally with photos).
+                BuyerRentalResponse result = apiInstance.CreateBuyerRentalReturnShipped(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerRentalReturnShipped: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerRentalResponse**
 
 ### Authorization
 
@@ -5160,9 +5945,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createbuyersellerloyaltyjoin"></a>
+# **CreateBuyerSellerLoyaltyJoin**
+> GetBuyerSellerLoyaltyResponse CreateBuyerSellerLoyaltyJoin (string sellerUserId)
+
+Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerSellerLoyaltyJoinExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var sellerUserId = "sellerUserId_example";  // string | 
+
+            try
+            {
+                // Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+                GetBuyerSellerLoyaltyResponse result = apiInstance.CreateBuyerSellerLoyaltyJoin(sellerUserId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerSellerLoyaltyJoin: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **string**|  | 
+
+### Return type
+
+**GetBuyerSellerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createbuyersellerreport"></a>
 # **CreateBuyerSellerReport**
-> CreateBuyerSellerReportResponse CreateBuyerSellerReport (string username, CreateBuyerSellerReportRequest createBuyerSellerReportRequest)
+> CreateBuyerStoreReportResponse CreateBuyerSellerReport (string username, CreateBuyerSellerReportRequest createBuyerSellerReportRequest)
 
 Report a seller to Crossly’s trust team.
 
@@ -5194,7 +6057,7 @@ namespace Example
             try
             {
                 // Report a seller to Crossly’s trust team.
-                CreateBuyerSellerReportResponse result = apiInstance.CreateBuyerSellerReport(username, createBuyerSellerReportRequest);
+                CreateBuyerStoreReportResponse result = apiInstance.CreateBuyerSellerReport(username, createBuyerSellerReportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5217,7 +6080,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBuyerSellerReportResponse**
+**CreateBuyerStoreReportResponse**
 
 ### Authorization
 
@@ -5304,6 +6167,88 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerstorereport"></a>
+# **CreateBuyerStoreReport**
+> CreateBuyerStoreReportResponse CreateBuyerStoreReport (string slug, CreateBuyerSellerReportRequest createBuyerSellerReportRequest)
+
+Report a store to Crossly’s trust team.
+
+Files against whoever runs the store. A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerStoreReportExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var slug = "slug_example";  // string | The store’s slug (its /shop/s/<slug> address).
+            var createBuyerSellerReportRequest = new CreateBuyerSellerReportRequest(); // CreateBuyerSellerReportRequest | 
+
+            try
+            {
+                // Report a store to Crossly’s trust team.
+                CreateBuyerStoreReportResponse result = apiInstance.CreateBuyerStoreReport(slug, createBuyerSellerReportRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerStoreReport: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**| The store’s slug (its /shop/s/&lt;slug&gt; address). | 
+ **createBuyerSellerReportRequest** | **CreateBuyerSellerReportRequest**|  | 
+
+### Return type
+
+**CreateBuyerStoreReportResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6076,6 +7021,616 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateBuyerVaultWithdrawResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesalecatalogapply"></a>
+# **CreateBuyerWholesaleCatalogApply**
+> CreateBuyerWholesaleCatalogApplyResponse CreateBuyerWholesaleCatalogApply (string storeSlug, string catalogSlug)
+
+Apply to a store's wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller's requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleCatalogApplyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var storeSlug = "storeSlug_example";  // string | 
+            var catalogSlug = "catalogSlug_example";  // string | 
+
+            try
+            {
+                // Apply to a store's wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller's requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+                CreateBuyerWholesaleCatalogApplyResponse result = apiInstance.CreateBuyerWholesaleCatalogApply(storeSlug, catalogSlug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleCatalogApply: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeSlug** | **string**|  | 
+ **catalogSlug** | **string**|  | 
+
+### Return type
+
+**CreateBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesalefreightrequest"></a>
+# **CreateBuyerWholesaleFreightRequest**
+> CreateBuyerWholesaleFreightRequestResponse CreateBuyerWholesaleFreightRequest ()
+
+Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleFreightRequestExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+                CreateBuyerWholesaleFreightRequestResponse result = apiInstance.CreateBuyerWholesaleFreightRequest();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleFreightRequest: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerWholesaleFreightRequestResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesaleinvoicepaylink"></a>
+# **CreateBuyerWholesaleInvoicePayLink**
+> CreateBuyerWholesaleInvoicePayLinkResponse CreateBuyerWholesaleInvoicePayLink (string id)
+
+A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleInvoicePayLinkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+                CreateBuyerWholesaleInvoicePayLinkResponse result = apiInstance.CreateBuyerWholesaleInvoicePayLink(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleInvoicePayLink: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateBuyerWholesaleInvoicePayLinkResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesaleordersheet"></a>
+# **CreateBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse CreateBuyerWholesaleOrderSheet ()
+
+Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleOrderSheetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+                BuyerWholesaleOrderSheetResponse result = apiInstance.CreateBuyerWholesaleOrderSheet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleOrderSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesalequote"></a>
+# **CreateBuyerWholesaleQuote**
+> BuyerWholesaleQuoteResponse CreateBuyerWholesaleQuote ()
+
+Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleQuoteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+                BuyerWholesaleQuoteResponse result = apiInstance.CreateBuyerWholesaleQuote();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleQuote: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesalequoteaccept"></a>
+# **CreateBuyerWholesaleQuoteAccept**
+> CreateBuyerWholesaleQuoteAcceptResponse CreateBuyerWholesaleQuoteAccept (string id)
+
+Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line's quantity drops the lock). Paying happens at checkout on Crossly.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleQuoteAcceptExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line's quantity drops the lock). Paying happens at checkout on Crossly.
+                CreateBuyerWholesaleQuoteAcceptResponse result = apiInstance.CreateBuyerWholesaleQuoteAccept(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleQuoteAccept: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateBuyerWholesaleQuoteAcceptResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesalequotewithdraw"></a>
+# **CreateBuyerWholesaleQuoteWithdraw**
+> BuyerWholesaleQuoteResponse CreateBuyerWholesaleQuoteWithdraw (string id)
+
+Withdraw a quote request that is still requested or answered.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleQuoteWithdrawExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Withdraw a quote request that is still requested or answered.
+                BuyerWholesaleQuoteResponse result = apiInstance.CreateBuyerWholesaleQuoteWithdraw(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleQuoteWithdraw: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerwholesaleuploadvalidate"></a>
+# **CreateBuyerWholesaleUploadValidate**
+> CreateBuyerWholesaleUploadValidateResponse CreateBuyerWholesaleUploadValidate ()
+
+Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerWholesaleUploadValidateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+                CreateBuyerWholesaleUploadValidateResponse result = apiInstance.CreateBuyerWholesaleUploadValidate();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerWholesaleUploadValidate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateBuyerWholesaleUploadValidateResponse**
 
 ### Authorization
 
@@ -6889,6 +8444,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="deletebuyercompanymember"></a>
+# **DeleteBuyerCompanyMember**
+> BuyerCompanyResponse DeleteBuyerCompanyMember (string id)
+
+Remove a member or cancel an invite (owner), or leave the company (your own member id).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerCompanyMemberExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Remove a member or cancel an invite (owner), or leave the company (your own member id).
+                BuyerCompanyResponse result = apiInstance.DeleteBuyerCompanyMember(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerCompanyMember: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="deletebuyerconversationguest"></a>
 # **DeleteBuyerConversationGuest**
 > BuyerResponse DeleteBuyerConversationGuest (string id, string userId)
@@ -6941,6 +8574,164 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **userId** | **string**|  | 
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deletebuyercreationreview"></a>
+# **DeleteBuyerCreationReview**
+> BuyerResponse DeleteBuyerCreationReview (string format, string id)
+
+Remove your review of a creation (its vote leaves the rating with it).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerCreationReviewExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var format = "wearable";  // string | The creation format.
+            var id = "id_example";  // string | The creation id (a card is <setId>.<slug>).
+
+            try
+            {
+                // Remove your review of a creation (its vote leaves the rating with it).
+                BuyerResponse result = apiInstance.DeleteBuyerCreationReview(format, id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerCreationReview: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. | 
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). | 
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deletebuyereventrsvp"></a>
+# **DeleteBuyerEventRsvp**
+> BuyerResponse DeleteBuyerEventRsvp (string slug)
+
+Take back your RSVP.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerEventRsvpExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var slug = "slug_example";  // string | 
+
+            try
+            {
+                // Take back your RSVP.
+                BuyerResponse result = apiInstance.DeleteBuyerEventRsvp(slug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerEventRsvp: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  | 
 
 ### Return type
 
@@ -7038,6 +8829,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deletebuyerhomeguestbook"></a>
+# **DeleteBuyerHomeGuestbook**
+> void DeleteBuyerHomeGuestbook (string id)
+
+Hide a line from your home’s guestbook.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerHomeGuestbookExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Hide a line from your home’s guestbook.
+                apiInstance.DeleteBuyerHomeGuestbook(id);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerHomeGuestbook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content — the request succeeded and there is no body. |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -7593,6 +9461,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="deletebuyersellerloyaltyjoin"></a>
+# **DeleteBuyerSellerLoyaltyJoin**
+> BuyerResponse DeleteBuyerSellerLoyaltyJoin (string sellerUserId)
+
+Leave a seller’s loyalty club.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerSellerLoyaltyJoinExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var sellerUserId = "sellerUserId_example";  // string | 
+
+            try
+            {
+                // Leave a seller’s loyalty club.
+                BuyerResponse result = apiInstance.DeleteBuyerSellerLoyaltyJoin(sellerUserId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerSellerLoyaltyJoin: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **string**|  | 
+
+### Return type
+
+**BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="deletebuyertogetheritem"></a>
 # **DeleteBuyerTogetherItem**
 > BuyerResponse DeleteBuyerTogetherItem (string code, string id)
@@ -7805,6 +9751,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **DeleteBuyerTryOnResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deletebuyerwholesaleordersheet"></a>
+# **DeleteBuyerWholesaleOrderSheet**
+> DeleteBuyerWholesaleOrderSheetResponse DeleteBuyerWholesaleOrderSheet (string id)
+
+Delete an order sheet.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class DeleteBuyerWholesaleOrderSheetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Delete an order sheet.
+                DeleteBuyerWholesaleOrderSheetResponse result = apiInstance.DeleteBuyerWholesaleOrderSheet(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.DeleteBuyerWholesaleOrderSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**DeleteBuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 
@@ -8999,6 +11023,160 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getbuyercompany"></a>
+# **GetBuyerCompany**
+> BuyerCompanyResponse GetBuyerCompany ()
+
+Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerCompanyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+                BuyerCompanyResponse result = apiInstance.GetBuyerCompany();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerCompany: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyercreation"></a>
+# **GetBuyerCreation**
+> GetBuyerCreationResponse GetBuyerCreation (string format, string id)
+
+A live creation's public page: its rating breakdown, recent reviews and whether you can review it.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerCreationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var format = "wearable";  // string | The creation format.
+            var id = "id_example";  // string | The creation id (a card is <setId>.<slug>).
+
+            try
+            {
+                // A live creation's public page: its rating breakdown, recent reviews and whether you can review it.
+                GetBuyerCreationResponse result = apiInstance.GetBuyerCreation(format, id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerCreation: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. | 
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). | 
+
+### Return type
+
+**GetBuyerCreationResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getbuyercreator"></a>
 # **GetBuyerCreator**
 > GetBuyerCreatorResponse GetBuyerCreator (string handle)
@@ -9053,6 +11231,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetBuyerCreatorResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerevent"></a>
+# **GetBuyerEvent**
+> GetBuyerEventResponse GetBuyerEvent (string slug)
+
+A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerEventExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var slug = "slug_example";  // string | 
+
+            try
+            {
+                // A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+                GetBuyerEventResponse result = apiInstance.GetBuyerEvent(slug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerEvent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  | 
+
+### Return type
+
+**GetBuyerEventResponse**
 
 ### Authorization
 
@@ -9201,6 +11457,154 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetBuyerGiftFinderOptionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerhome"></a>
+# **GetBuyerHome**
+> BuyerHomeResponse GetBuyerHome ()
+
+Your home in Crossly World (made on first read).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerHomeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your home in Crossly World (made on first read).
+                BuyerHomeResponse result = apiInstance.GetBuyerHome();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerHome: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerhomeplaceable"></a>
+# **GetBuyerHomePlaceable**
+> GetBuyerHomePlaceableResponse GetBuyerHomePlaceable ()
+
+What you could place in your home: your items and delivered furniture.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerHomePlaceableExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // What you could place in your home: your items and delivered furniture.
+                GetBuyerHomePlaceableResponse result = apiInstance.GetBuyerHomePlaceable();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerHomePlaceable: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerHomePlaceableResponse**
 
 ### Authorization
 
@@ -10783,7 +13187,7 @@ Name | Type | Description  | Notes
 # **GetBuyerPassport**
 > GetBuyerPassportResponse GetBuyerPassport (string code)
 
-What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 
 ### Example
 ```csharp
@@ -10809,7 +13213,7 @@ namespace Example
 
             try
             {
-                // What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+                // What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
                 GetBuyerPassportResponse result = apiInstance.GetBuyerPassport(code);
                 Debug.WriteLine(result);
             }
@@ -11549,6 +13953,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getbuyerrental"></a>
+# **GetBuyerRental**
+> GetBuyerRentalResponse GetBuyerRental (string id)
+
+One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerRentalExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+                GetBuyerRentalResponse result = apiInstance.GetBuyerRental(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerRental: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getbuyerrentaleligibility"></a>
 # **GetBuyerRentalEligibility**
 > GetBuyerRentalEligibilityResponse GetBuyerRentalEligibility ()
@@ -11677,6 +14159,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetBuyerSellerClubResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyersellerloyalty"></a>
+# **GetBuyerSellerLoyalty**
+> GetBuyerSellerLoyaltyResponse GetBuyerSellerLoyalty (string sellerUserId)
+
+A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerSellerLoyaltyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var sellerUserId = "sellerUserId_example";  // string | 
+
+            try
+            {
+                // A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+                GetBuyerSellerLoyaltyResponse result = apiInstance.GetBuyerSellerLoyalty(sellerUserId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerSellerLoyalty: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **string**|  | 
+
+### Return type
+
+**GetBuyerSellerLoyaltyResponse**
 
 ### Authorization
 
@@ -12087,6 +14647,1156 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getbuyervaultmarketoptionanalytic"></a>
+# **GetBuyerVaultMarketOptionAnalytic**
+> GetBuyerVaultMarketOptionAnalyticResponse GetBuyerVaultMarketOptionAnalytic (string underlying)
+
+Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketOptionAnalyticExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var underlying = "underlying_example";  // string | 
+
+            try
+            {
+                // Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+                GetBuyerVaultMarketOptionAnalyticResponse result = apiInstance.GetBuyerVaultMarketOptionAnalytic(underlying);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketOptionAnalytic: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketOptionAnalyticResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketoptionchain"></a>
+# **GetBuyerVaultMarketOptionChain**
+> GetBuyerVaultMarketOptionChainResponse GetBuyerVaultMarketOptionChain (string underlying)
+
+The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketOptionChainExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var underlying = "underlying_example";  // string | 
+
+            try
+            {
+                // The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+                GetBuyerVaultMarketOptionChainResponse result = apiInstance.GetBuyerVaultMarketOptionChain(underlying);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketOptionChain: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketOptionChainResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketoptioniv"></a>
+# **GetBuyerVaultMarketOptionIv**
+> GetBuyerVaultMarketOptionIvResponse GetBuyerVaultMarketOptionIv (string underlying)
+
+The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketOptionIvExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var underlying = "underlying_example";  // string | 
+
+            try
+            {
+                // The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+                GetBuyerVaultMarketOptionIvResponse result = apiInstance.GetBuyerVaultMarketOptionIv(underlying);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketOptionIv: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketOptionIvResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketoptionposition"></a>
+# **GetBuyerVaultMarketOptionPosition**
+> GetBuyerVaultMarketOptionPositionResponse GetBuyerVaultMarketOptionPosition ()
+
+Your fractional options positions with their marks, P&L and Greeks (open by default; `status` all for closed and settled too). Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketOptionPositionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your fractional options positions with their marks, P&L and Greeks (open by default; `status` all for closed and settled too). Read only.
+                GetBuyerVaultMarketOptionPositionResponse result = apiInstance.GetBuyerVaultMarketOptionPosition();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketOptionPosition: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketOptionPositionResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketoptionrisk"></a>
+# **GetBuyerVaultMarketOptionRisk**
+> GetBuyerVaultMarketOptionRiskResponse GetBuyerVaultMarketOptionRisk ()
+
+Your options portfolio Greeks, a scenario's P&L (`priceShift`, `volShift`, `daysForward`) and the beta-weighted delta against an index. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketOptionRiskExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your options portfolio Greeks, a scenario's P&L (`priceShift`, `volShift`, `daysForward`) and the beta-weighted delta against an index. Read only.
+                GetBuyerVaultMarketOptionRiskResponse result = apiInstance.GetBuyerVaultMarketOptionRisk();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketOptionRisk: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketOptionRiskResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketpredictionboard"></a>
+# **GetBuyerVaultMarketPredictionBoard**
+> GetBuyerVaultMarketPredictionBoardResponse GetBuyerVaultMarketPredictionBoard ()
+
+The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketPredictionBoardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+                GetBuyerVaultMarketPredictionBoardResponse result = apiInstance.GetBuyerVaultMarketPredictionBoard();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketPredictionBoard: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketPredictionBoardResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketpredictionevent"></a>
+# **GetBuyerVaultMarketPredictionEvent**
+> GetBuyerVaultMarketPredictionEventResponse GetBuyerVaultMarketPredictionEvent (string id)
+
+One expiry’s markets with your holdings in each and their real worst and best case across them.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketPredictionEventExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One expiry’s markets with your holdings in each and their real worst and best case across them.
+                GetBuyerVaultMarketPredictionEventResponse result = apiInstance.GetBuyerVaultMarketPredictionEvent(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketPredictionEvent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketPredictionEventResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketpredictionleaderboard"></a>
+# **GetBuyerVaultMarketPredictionLeaderboard**
+> GetBuyerVaultMarketPredictionLeaderboardResponse GetBuyerVaultMarketPredictionLeaderboard ()
+
+Opt-in forecaster leaderboards (`period` week | month | all; `metric` pnl | accuracy | brier; `venue` live | paper).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketPredictionLeaderboardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Opt-in forecaster leaderboards (`period` week | month | all; `metric` pnl | accuracy | brier; `venue` live | paper).
+                GetBuyerVaultMarketPredictionLeaderboardResponse result = apiInstance.GetBuyerVaultMarketPredictionLeaderboard();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketPredictionLeaderboard: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketPredictionLeaderboardResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketpredictionmarket"></a>
+# **GetBuyerVaultMarketPredictionMarket**
+> GetBuyerVaultMarketPredictionMarketResponse GetBuyerVaultMarketPredictionMarket (string id)
+
+One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketPredictionMarketExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+                GetBuyerVaultMarketPredictionMarketResponse result = apiInstance.GetBuyerVaultMarketPredictionMarket(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketPredictionMarket: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketPredictionMarketResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketpredictionmarkethistory"></a>
+# **GetBuyerVaultMarketPredictionMarketHistory**
+> GetBuyerVaultMarketPredictionMarketHistoryResponse GetBuyerVaultMarketPredictionMarketHistory (string id)
+
+A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (`range` 1d, 1w, 1m, all; `venue` live or paper).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketPredictionMarketHistoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (`range` 1d, 1w, 1m, all; `venue` live or paper).
+                GetBuyerVaultMarketPredictionMarketHistoryResponse result = apiInstance.GetBuyerVaultMarketPredictionMarketHistory(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketPredictionMarketHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketPredictionMarketHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketshare"></a>
+# **GetBuyerVaultMarketShare**
+> GetBuyerVaultMarketShareResponse GetBuyerVaultMarketShare ()
+
+Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketShareExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+                GetBuyerVaultMarketShareResponse result = apiInstance.GetBuyerVaultMarketShare();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketShare: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerVaultMarketShareResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketsharebasket"></a>
+# **GetBuyerVaultMarketShareBasket**
+> GetBuyerVaultMarketShareBasketResponse GetBuyerVaultMarketShareBasket (string id)
+
+One theme basket: its series, weights and prices, and your holdings against them.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketShareBasketExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One theme basket: its series, weights and prices, and your holdings against them.
+                GetBuyerVaultMarketShareBasketResponse result = apiInstance.GetBuyerVaultMarketShareBasket(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketShareBasket: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketShareBasketResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketsharesery"></a>
+# **GetBuyerVaultMarketShareSery**
+> GetBuyerVaultMarketShareSeryResponse GetBuyerVaultMarketShareSery (string id)
+
+One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketShareSeryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+                GetBuyerVaultMarketShareSeryResponse result = apiInstance.GetBuyerVaultMarketShareSery(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketShareSery: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketshareseryhistory"></a>
+# **GetBuyerVaultMarketShareSeryHistory**
+> GetBuyerVaultMarketShareSeryHistoryResponse GetBuyerVaultMarketShareSeryHistory (string id)
+
+A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketShareSeryHistoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+                GetBuyerVaultMarketShareSeryHistoryResponse result = apiInstance.GetBuyerVaultMarketShareSeryHistory(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketShareSeryHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyervaultmarketshareseryperk"></a>
+# **GetBuyerVaultMarketShareSeryPerk**
+> GetBuyerVaultMarketShareSeryPerkResponse GetBuyerVaultMarketShareSeryPerk (string id)
+
+Your holder perks on a series: badge, visit links, viewing days and your bookings.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerVaultMarketShareSeryPerkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Your holder perks on a series: badge, visit links, viewing days and your bookings.
+                GetBuyerVaultMarketShareSeryPerkResponse result = apiInstance.GetBuyerVaultMarketShareSeryPerk(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerVaultMarketShareSeryPerk: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerVaultMarketShareSeryPerkResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getbuyervaultmarketworth"></a>
 # **GetBuyerVaultMarketWorth**
 > GetBuyerVaultMarketWorthResponse GetBuyerVaultMarketWorth ()
@@ -12137,6 +15847,550 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetBuyerVaultMarketWorthResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesalecart"></a>
+# **GetBuyerWholesaleCart**
+> GetBuyerWholesaleCartResponse GetBuyerWholesaleCart ()
+
+Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleCartExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+                GetBuyerWholesaleCartResponse result = apiInstance.GetBuyerWholesaleCart();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleCart: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerWholesaleCartResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesalecatalogapply"></a>
+# **GetBuyerWholesaleCatalogApply**
+> GetBuyerWholesaleCatalogApplyResponse GetBuyerWholesaleCatalogApply (string storeSlug, string catalogSlug)
+
+The application form for a store's wholesale catalog: the seller's requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable=false for a catalog you cannot apply to.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleCatalogApplyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var storeSlug = "storeSlug_example";  // string | 
+            var catalogSlug = "catalogSlug_example";  // string | 
+
+            try
+            {
+                // The application form for a store's wholesale catalog: the seller's requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable=false for a catalog you cannot apply to.
+                GetBuyerWholesaleCatalogApplyResponse result = apiInstance.GetBuyerWholesaleCatalogApply(storeSlug, catalogSlug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleCatalogApply: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storeSlug** | **string**|  | 
+ **catalogSlug** | **string**|  | 
+
+### Return type
+
+**GetBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesaledrop"></a>
+# **GetBuyerWholesaleDrop**
+> GetBuyerWholesaleDropResponse GetBuyerWholesaleDrop (string id)
+
+One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleDropExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+                GetBuyerWholesaleDropResponse result = apiInstance.GetBuyerWholesaleDrop(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleDrop: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerWholesaleDropResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesaleinvoicepayquote"></a>
+# **GetBuyerWholesaleInvoicePayQuote**
+> GetBuyerWholesaleInvoicePayQuoteResponse GetBuyerWholesaleInvoicePayQuote (string id)
+
+What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleInvoicePayQuoteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+                GetBuyerWholesaleInvoicePayQuoteResponse result = apiInstance.GetBuyerWholesaleInvoicePayQuote(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleInvoicePayQuote: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerWholesaleInvoicePayQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesaleordersheet"></a>
+# **GetBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse GetBuyerWholesaleOrderSheet (string id)
+
+One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleOrderSheetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+                BuyerWholesaleOrderSheetResponse result = apiInstance.GetBuyerWholesaleOrderSheet(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleOrderSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesalequote"></a>
+# **GetBuyerWholesaleQuote**
+> BuyerWholesaleQuoteResponse GetBuyerWholesaleQuote (string id)
+
+One of your quotes with its items, the seller's prices and expiry.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleQuoteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One of your quotes with its items, the seller's prices and expiry.
+                BuyerWholesaleQuoteResponse result = apiInstance.GetBuyerWholesaleQuote(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleQuote: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerwholesalereorder"></a>
+# **GetBuyerWholesaleReorder**
+> GetBuyerWholesaleReorderResponse GetBuyerWholesaleReorder (string id)
+
+Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerWholesaleReorderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+                GetBuyerWholesaleReorderResponse result = apiInstance.GetBuyerWholesaleReorder(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerWholesaleReorder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerWholesaleReorderResponse**
 
 ### Authorization
 
@@ -13155,6 +17409,80 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listbuyercompanyapprovals"></a>
+# **ListBuyerCompanyApprovals**
+> BuyerResponse3 ListBuyerCompanyApprovals ()
+
+Spend approval requests (owners and accounts payable see all; others their own). ?status=pending|approved|declined|used|expired.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerCompanyApprovalsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Spend approval requests (owners and accounts payable see all; others their own). ?status=pending|approved|declined|used|expired.
+                BuyerResponse3 result = apiInstance.ListBuyerCompanyApprovals();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerCompanyApprovals: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listbuyerconsolidations"></a>
 # **ListBuyerConsolidations**
 > BuyerResponse3 ListBuyerConsolidations ()
@@ -13283,6 +17611,158 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListBuyerWishlistMembersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyercreationreviewable"></a>
+# **ListBuyerCreationReviewable**
+> ListBuyerCreationReviewableResponse ListBuyerCreationReviewable (string purchaseRef = null)
+
+Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerCreationReviewableExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var purchaseRef = "purchaseRef_example";  // string | Only the creation this purchase bought. (optional) 
+
+            try
+            {
+                // Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+                ListBuyerCreationReviewableResponse result = apiInstance.ListBuyerCreationReviewable(purchaseRef);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerCreationReviewable: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **purchaseRef** | **string**| Only the creation this purchase bought. | [optional] 
+
+### Return type
+
+**ListBuyerCreationReviewableResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerevents"></a>
+# **ListBuyerEvents**
+> ListBuyerEventsResponse ListBuyerEvents ()
+
+Upcoming and live seller events across Crossly, soonest first.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerEventsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Upcoming and live seller events across Crossly, soonest first.
+                ListBuyerEventsResponse result = apiInstance.ListBuyerEvents();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerEvents: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerEventsResponse**
 
 ### Authorization
 
@@ -13879,6 +18359,154 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListBuyerGiftSentResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerhomebuilders"></a>
+# **ListBuyerHomeBuilders**
+> ListBuyerHomeBuildersResponse ListBuyerHomeBuilders ()
+
+Your co-builders: friends who may arrange your home with you.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerHomeBuildersExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your co-builders: friends who may arrange your home with you.
+                ListBuyerHomeBuildersResponse result = apiInstance.ListBuyerHomeBuilders();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerHomeBuilders: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerhomebuilding"></a>
+# **ListBuyerHomeBuilding**
+> ListBuyerHomeBuildingResponse ListBuyerHomeBuilding ()
+
+The homes you co-build, to visit and arrange.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerHomeBuildingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // The homes you co-build, to visit and arrange.
+                ListBuyerHomeBuildingResponse result = apiInstance.ListBuyerHomeBuilding();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerHomeBuilding: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildingResponse**
 
 ### Authorization
 
@@ -14507,6 +19135,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listbuyerloyalty"></a>
+# **ListBuyerLoyalty**
+> ListBuyerLoyaltyResponse ListBuyerLoyalty ()
+
+Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerLoyaltyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+                ListBuyerLoyaltyResponse result = apiInstance.ListBuyerLoyalty();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerLoyalty: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listbuyermarketbids"></a>
 # **ListBuyerMarketBids**
 > BuyerResponse3 ListBuyerMarketBids ()
@@ -15091,6 +19793,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerpaymentmethods"></a>
+# **ListBuyerPaymentMethods**
+> ListBuyerPaymentMethodsResponse ListBuyerPaymentMethods ()
+
+Your saved cards, the default first.
+
+Brand, last 4, expiry and whether it is your default. The `id` is what checkout and auction bids take as `paymentMethodId`.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerPaymentMethodsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your saved cards, the default first.
+                ListBuyerPaymentMethodsResponse result = apiInstance.ListBuyerPaymentMethods();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerPaymentMethods: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerPaymentMethodsResponse**
 
 ### Authorization
 
@@ -15785,6 +20563,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listbuyerstorelistings"></a>
+# **ListBuyerStoreListings**
+> ListBuyerStoreListingsResponse ListBuyerStoreListings (string slug)
+
+A store's live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerStoreListingsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var slug = "slug_example";  // string | 
+
+            try
+            {
+                // A store's live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+                ListBuyerStoreListingsResponse result = apiInstance.ListBuyerStoreListings(slug);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerStoreListings: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  | 
+
+### Return type
+
+**ListBuyerStoreListingsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listbuyersubscriptions"></a>
 # **ListBuyerSubscriptions**
 > ListBuyerSubscriptionsResponse ListBuyerSubscriptions ()
@@ -16379,6 +21235,894 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listbuyervaultmarketoptioncombos"></a>
+# **ListBuyerVaultMarketOptionCombos**
+> ListBuyerVaultMarketOptionCombosResponse ListBuyerVaultMarketOptionCombos ()
+
+Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketOptionCombosExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+                ListBuyerVaultMarketOptionCombosResponse result = apiInstance.ListBuyerVaultMarketOptionCombos();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketOptionCombos: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionCombosResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketoptionnotices"></a>
+# **ListBuyerVaultMarketOptionNotices**
+> ListBuyerVaultMarketOptionNoticesResponse ListBuyerVaultMarketOptionNotices ()
+
+Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketOptionNoticesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+                ListBuyerVaultMarketOptionNoticesResponse result = apiInstance.ListBuyerVaultMarketOptionNotices();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketOptionNotices: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionNoticesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketoptionseries"></a>
+# **ListBuyerVaultMarketOptionSeries**
+> ListBuyerVaultMarketOptionSeriesResponse ListBuyerVaultMarketOptionSeries ()
+
+Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketOptionSeriesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+                ListBuyerVaultMarketOptionSeriesResponse result = apiInstance.ListBuyerVaultMarketOptionSeries();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketOptionSeries: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketoptionstrategies"></a>
+# **ListBuyerVaultMarketOptionStrategies**
+> ListBuyerVaultMarketOptionStrategiesResponse ListBuyerVaultMarketOptionStrategies ()
+
+The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketOptionStrategiesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+                ListBuyerVaultMarketOptionStrategiesResponse result = apiInstance.ListBuyerVaultMarketOptionStrategies();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketOptionStrategies: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketOptionStrategiesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketpredictioncomments"></a>
+# **ListBuyerVaultMarketPredictionComments**
+> ListBuyerVaultMarketPredictionCommentsResponse ListBuyerVaultMarketPredictionComments ()
+
+A prediction market’s (or series’) discussion thread. Read only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketPredictionCommentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // A prediction market’s (or series’) discussion thread. Read only.
+                ListBuyerVaultMarketPredictionCommentsResponse result = apiInstance.ListBuyerVaultMarketPredictionComments();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketPredictionComments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionCommentsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketpredictionmarkets"></a>
+# **ListBuyerVaultMarketPredictionMarkets**
+> ListBuyerVaultMarketPredictionMarketsResponse ListBuyerVaultMarketPredictionMarkets ()
+
+\"Will it hit?\" prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market's own price, display only).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketPredictionMarketsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // \"Will it hit?\" prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market's own price, display only).
+                ListBuyerVaultMarketPredictionMarketsResponse result = apiInstance.ListBuyerVaultMarketPredictionMarkets();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketPredictionMarkets: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionMarketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketpredictionpositions"></a>
+# **ListBuyerVaultMarketPredictionPositions**
+> ListBuyerVaultMarketPredictionPositionsResponse ListBuyerVaultMarketPredictionPositions ()
+
+Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketPredictionPositionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+                ListBuyerVaultMarketPredictionPositionsResponse result = apiInstance.ListBuyerVaultMarketPredictionPositions();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketPredictionPositions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketPredictionPositionsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketshareautoinvest"></a>
+# **ListBuyerVaultMarketShareAutoInvest**
+> ListBuyerVaultMarketShareAutoInvestResponse ListBuyerVaultMarketShareAutoInvest ()
+
+Your recurring Vault Shares auto-invest plans.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketShareAutoInvestExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your recurring Vault Shares auto-invest plans.
+                ListBuyerVaultMarketShareAutoInvestResponse result = apiInstance.ListBuyerVaultMarketShareAutoInvest();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketShareAutoInvest: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareAutoInvestResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketsharebaskets"></a>
+# **ListBuyerVaultMarketShareBaskets**
+> ListBuyerVaultMarketShareBasketsResponse ListBuyerVaultMarketShareBaskets ()
+
+Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketShareBasketsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+                ListBuyerVaultMarketShareBasketsResponse result = apiInstance.ListBuyerVaultMarketShareBaskets();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketShareBaskets: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareBasketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketsharedrops"></a>
+# **ListBuyerVaultMarketShareDrops**
+> ListBuyerVaultMarketShareDropsResponse ListBuyerVaultMarketShareDrops ()
+
+Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketShareDropsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+                ListBuyerVaultMarketShareDropsResponse result = apiInstance.ListBuyerVaultMarketShareDrops();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketShareDrops: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketsharegifts"></a>
+# **ListBuyerVaultMarketShareGifts**
+> ListBuyerVaultMarketShareGiftsResponse ListBuyerVaultMarketShareGifts ()
+
+Vault Shares gifts you sent or were offered.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketShareGiftsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Vault Shares gifts you sent or were offered.
+                ListBuyerVaultMarketShareGiftsResponse result = apiInstance.ListBuyerVaultMarketShareGifts();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketShareGifts: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareGiftsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyervaultmarketshareseries"></a>
+# **ListBuyerVaultMarketShareSeries**
+> ListBuyerVaultMarketShareSeriesResponse ListBuyerVaultMarketShareSeries ()
+
+Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerVaultMarketShareSeriesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+                ListBuyerVaultMarketShareSeriesResponse result = apiInstance.ListBuyerVaultMarketShareSeries();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerVaultMarketShareSeries: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerVaultMarketShareSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listbuyervaultmarketwatchlist"></a>
 # **ListBuyerVaultMarketWatchlist**
 > ListBuyerVaultMarketWatchlistResponse ListBuyerVaultMarketWatchlist ()
@@ -16503,6 +22247,672 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListBuyerVideoRequestsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwalletperks"></a>
+# **ListBuyerWalletPerks**
+> ListBuyerWalletPerksResponse ListBuyerWalletPerks ()
+
+The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWalletPerksExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+                ListBuyerWalletPerksResponse result = apiInstance.ListBuyerWalletPerks();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWalletPerks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWalletPerksResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesaledrops"></a>
+# **ListBuyerWholesaleDrops**
+> ListBuyerWholesaleDropsResponse ListBuyerWholesaleDrops ()
+
+Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook = reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleDropsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook = reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+                ListBuyerWholesaleDropsResponse result = apiInstance.ListBuyerWholesaleDrops();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleDrops: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWholesaleDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesalefreightrequests"></a>
+# **ListBuyerWholesaleFreightRequests**
+> BuyerResponse3 ListBuyerWholesaleFreightRequests ()
+
+Your freight (LTL) quote requests to sellers, with the seller's figure in cents once quoted.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleFreightRequestsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your freight (LTL) quote requests to sellers, with the seller's figure in cents once quoted.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleFreightRequests();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleFreightRequests: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesaleordersheets"></a>
+# **ListBuyerWholesaleOrderSheets**
+> BuyerResponse3 ListBuyerWholesaleOrderSheets ()
+
+Your saved wholesale order sheets (one seller each), newest first.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleOrderSheetsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your saved wholesale order sheets (one seller each), newest first.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleOrderSheets();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleOrderSheets: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesaleorders"></a>
+# **ListBuyerWholesaleOrders**
+> BuyerResponse3 ListBuyerWholesaleOrders ()
+
+Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleOrdersExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleOrders();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleOrders: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesaleprebooks"></a>
+# **ListBuyerWholesalePrebooks**
+> ListBuyerWholesalePrebooksResponse ListBuyerWholesalePrebooks ()
+
+Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesalePrebooksExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+                ListBuyerWholesalePrebooksResponse result = apiInstance.ListBuyerWholesalePrebooks();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesalePrebooks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerWholesalePrebooksResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesalequotes"></a>
+# **ListBuyerWholesaleQuotes**
+> BuyerResponse3 ListBuyerWholesaleQuotes ()
+
+Your requests for a quote (RFQ) to wholesale sellers. ?status=open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleQuotesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your requests for a quote (RFQ) to wholesale sellers. ?status=open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleQuotes();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleQuotes: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesalestatement"></a>
+# **ListBuyerWholesaleStatement**
+> BuyerResponse3 ListBuyerWholesaleStatement ()
+
+Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleStatementExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleStatement();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleStatement: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerwholesalesuppliers"></a>
+# **ListBuyerWholesaleSuppliers**
+> BuyerResponse3 ListBuyerWholesaleSuppliers ()
+
+The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerWholesaleSuppliersExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+                BuyerResponse3 result = apiInstance.ListBuyerWholesaleSuppliers();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerWholesaleSuppliers: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerResponse3**
 
 ### Authorization
 
@@ -16987,6 +23397,316 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="updatebuyercompany"></a>
+# **UpdateBuyerCompany**
+> BuyerCompanyResponse UpdateBuyerCompany ()
+
+Rename the company or change its tax id / website (owner).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerCompanyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Rename the company or change its tax id / website (owner).
+                BuyerCompanyResponse result = apiInstance.UpdateBuyerCompany();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerCompany: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyercompanyaddress"></a>
+# **UpdateBuyerCompanyAddress**
+> BuyerCompanyResponse UpdateBuyerCompanyAddress ()
+
+Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerCompanyAddressExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+                BuyerCompanyResponse result = apiInstance.UpdateBuyerCompanyAddress();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerCompanyAddress: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyercompanymember"></a>
+# **UpdateBuyerCompanyMember**
+> BuyerCompanyResponse UpdateBuyerCompanyMember (string id)
+
+Change a member's role or approval limit (owner). The last owner stays an owner.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerCompanyMemberExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Change a member's role or approval limit (owner). The last owner stays an owner.
+                BuyerCompanyResponse result = apiInstance.UpdateBuyerCompanyMember(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerCompanyMember: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyercreationreview"></a>
+# **UpdateBuyerCreationReview**
+> UpdateBuyerCreationReviewResponse UpdateBuyerCreationReview (string format, string id, UpdateBuyerCreationReviewRequest updateBuyerCreationReviewRequest)
+
+Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+
+Only a buyer of it may review it (a bought copy, or a pack that held the card). One review per creation; a second call replaces it. The comment is moderated.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerCreationReviewExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var format = "wearable";  // string | The creation format.
+            var id = "id_example";  // string | The creation id (a card is <setId>.<slug>).
+            var updateBuyerCreationReviewRequest = new UpdateBuyerCreationReviewRequest(); // UpdateBuyerCreationReviewRequest | 
+
+            try
+            {
+                // Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+                UpdateBuyerCreationReviewResponse result = apiInstance.UpdateBuyerCreationReview(format, id, updateBuyerCreationReviewRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerCreationReview: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. | 
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). | 
+ **updateBuyerCreationReviewRequest** | **UpdateBuyerCreationReviewRequest**|  | 
+
+### Return type
+
+**UpdateBuyerCreationReviewResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatebuyerfeedback"></a>
 # **UpdateBuyerFeedback**
 > BuyerResponse UpdateBuyerFeedback (Guid id, UpdateBuyerFeedbackRequest updateBuyerFeedbackRequest)
@@ -17069,6 +23789,228 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="updatebuyerhome"></a>
+# **UpdateBuyerHome**
+> BuyerHomeResponse UpdateBuyerHome ()
+
+Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerHomeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+                BuyerHomeResponse result = apiInstance.UpdateBuyerHome();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerHome: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerhomebuilder"></a>
+# **UpdateBuyerHomeBuilder**
+> ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder ()
+
+Set your co-builders (friends only, at most 4).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerHomeBuilderExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Set your co-builders (friends only, at most 4).
+                ListBuyerHomeBuildersResponse result = apiInstance.UpdateBuyerHomeBuilder();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerHomeBuilder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerhomelayout"></a>
+# **UpdateBuyerHomeLayout**
+> BuyerHomeResponse UpdateBuyerHomeLayout ()
+
+Arrange your home: the whole layout, checked against what you own.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerHomeLayoutExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Arrange your home: the whole layout, checked against what you own.
+                BuyerHomeResponse result = apiInstance.UpdateBuyerHomeLayout();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerHomeLayout: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatebuyerhunt"></a>
 # **UpdateBuyerHunt**
 > BuyerResponse UpdateBuyerHunt (string id)
@@ -17123,6 +24065,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerpaymentmethoddefault"></a>
+# **UpdateBuyerPaymentMethodDefault**
+> UpdateBuyerPaymentMethodDefaultResponse UpdateBuyerPaymentMethodDefault (string id)
+
+Make one of your saved cards the default.
+
+The default is the card express checkout offers first. Only your own saved card: any other id is a 404.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerPaymentMethodDefaultExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Make one of your saved cards the default.
+                UpdateBuyerPaymentMethodDefaultResponse result = apiInstance.UpdateBuyerPaymentMethodDefault(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerPaymentMethodDefault: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**UpdateBuyerPaymentMethodDefaultResponse**
 
 ### Authorization
 
@@ -17437,6 +24459,158 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerwholesalecartpo"></a>
+# **UpdateBuyerWholesaleCartPo**
+> UpdateBuyerWholesaleCartPoResponse UpdateBuyerWholesaleCartPo ()
+
+Set the PO reference for one seller's group of your cart: { sellerUserId, poReference } (empty clears it).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerWholesaleCartPoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Set the PO reference for one seller's group of your cart: { sellerUserId, poReference } (empty clears it).
+                UpdateBuyerWholesaleCartPoResponse result = apiInstance.UpdateBuyerWholesaleCartPo();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerWholesaleCartPo: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**UpdateBuyerWholesaleCartPoResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerwholesaleordersheet"></a>
+# **UpdateBuyerWholesaleOrderSheet**
+> BuyerWholesaleOrderSheetResponse UpdateBuyerWholesaleOrderSheet (string id)
+
+Rename an order sheet, change its PO reference or note, or replace its lines.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerWholesaleOrderSheetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Rename an order sheet, change its PO reference or note, or replace its lines.
+                BuyerWholesaleOrderSheetResponse result = apiInstance.UpdateBuyerWholesaleOrderSheet(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerWholesaleOrderSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**BuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 

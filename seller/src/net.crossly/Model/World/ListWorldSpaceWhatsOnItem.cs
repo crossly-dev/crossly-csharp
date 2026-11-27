@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum PlaceEnum
         {
             /// <summary>
+            /// Enum Stage for value: stage
+            /// </summary>
+            [EnumMember(Value = "stage")]
+            Stage = 1,
+
+            /// <summary>
             /// Enum Street for value: street
             /// </summary>
             [EnumMember(Value = "street")]
-            Street = 1,
+            Street = 2,
 
             /// <summary>
             /// Enum Festival for value: festival
             /// </summary>
             [EnumMember(Value = "festival")]
-            Festival = 2,
+            Festival = 3,
 
             /// <summary>
             /// Enum Space for value: space
             /// </summary>
             [EnumMember(Value = "space")]
-            Space = 3,
-
-            /// <summary>
-            /// Enum Stage for value: stage
-            /// </summary>
-            [EnumMember(Value = "stage")]
-            Stage = 4
+            Space = 4
 
         }
 

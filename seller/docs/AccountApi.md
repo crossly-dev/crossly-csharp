@@ -5,12 +5,16 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccountCancelDeletion**](AccountApi.md#createaccountcanceldeletion) | **POST** /v1/account/cancel-deletion | Cancel a pending account deletion.
+[**CreateAccountIdentityVerificationStart**](AccountApi.md#createaccountidentityverificationstart) | **POST** /v1/account/identity-verification/start | Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
 [**CreateAccountLogoutAll**](AccountApi.md#createaccountlogoutall) | **POST** /v1/account/logout-all | Revoke every browser auth session for this user.
-[**CreateAccountRequestDeletion**](AccountApi.md#createaccountrequestdeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period.
+[**CreateAccountReconfirmDeletion**](AccountApi.md#createaccountreconfirmdeletion) | **POST** /v1/account/reconfirm-deletion | Confirm again a deletion paused because the account was in use.
+[**CreateAccountRequestDeletion**](AccountApi.md#createaccountrequestdeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period. Requires confirmEmail.
 [**DeleteAuthSession**](AccountApi.md#deleteauthsession) | **DELETE** /v1/auth/sessions | Revoke all active browser sessions.
 [**DeleteAuthSessionBySessionId**](AccountApi.md#deleteauthsessionbysessionid) | **DELETE** /v1/auth/sessions/{sessionId} | Revoke a single browser session by id.
 [**DeleteConnectedApp**](AccountApi.md#deleteconnectedapp) | **DELETE** /v1/connected-apps/{grantId} | Disconnect a third-party app. Its tokens stop working immediately.
+[**GetAccountClosureChecklist**](AccountApi.md#getaccountclosurechecklist) | **GET** /v1/account/closure-checklist | What closing the account will and will not do, before you request it.
 [**GetAccountDeletionStatus**](AccountApi.md#getaccountdeletionstatus) | **GET** /v1/account/deletion-status | Get the currently-pending deletion request, if any.
+[**GetAccountIdentityVerification**](AccountApi.md#getaccountidentityverification) | **GET** /v1/account/identity-verification | Your identity verification: one status for the whole account, read by every feature that needs ID.
 [**GetMe**](AccountApi.md#getme) | **GET** /v1/me | Identity check — authenticated user + PAT scopes + account state.
 [**GetMembership**](AccountApi.md#getmembership) | **GET** /v1/membership | The caller&#39;s Crossly One membership status and benefits.
 [**ListAuthSessions**](AccountApi.md#listauthsessions) | **GET** /v1/auth/sessions | List active browser auth sessions.
@@ -19,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="createaccountcanceldeletion"></a>
 # **CreateAccountCancelDeletion**
-> DeleteDropResponse CreateAccountCancelDeletion ()
+> CreateAccountCancelDeletionResponse CreateAccountCancelDeletion ()
 
 Cancel a pending account deletion.
 
@@ -47,7 +51,7 @@ namespace Example
             try
             {
                 // Cancel a pending account deletion.
-                DeleteDropResponse result = apiInstance.CreateAccountCancelDeletion();
+                CreateAccountCancelDeletionResponse result = apiInstance.CreateAccountCancelDeletion();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -66,7 +70,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**DeleteDropResponse**
+**CreateAccountCancelDeletionResponse**
 
 ### Authorization
 
@@ -75,6 +79,86 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createaccountidentityverificationstart"></a>
+# **CreateAccountIdentityVerificationStart**
+> CreateWorldMatureVerifyResponse CreateAccountIdentityVerificationStart (CreateAccountIdentityVerificationStartRequest createAccountIdentityVerificationStartRequest)
+
+Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+
+alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateAccountIdentityVerificationStartExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+            var createAccountIdentityVerificationStartRequest = new CreateAccountIdentityVerificationStartRequest(); // CreateAccountIdentityVerificationStartRequest | 
+
+            try
+            {
+                // Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+                CreateWorldMatureVerifyResponse result = apiInstance.CreateAccountIdentityVerificationStart(createAccountIdentityVerificationStartRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.CreateAccountIdentityVerificationStart: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAccountIdentityVerificationStartRequest** | **CreateAccountIdentityVerificationStartRequest**|  | 
+
+### Return type
+
+**CreateWorldMatureVerifyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -165,11 +249,85 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createaccountreconfirmdeletion"></a>
+# **CreateAccountReconfirmDeletion**
+> CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion ()
+
+Confirm again a deletion paused because the account was in use.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateAccountReconfirmDeletionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                // Confirm again a deletion paused because the account was in use.
+                CreateAccountReconfirmDeletionResponse result = apiInstance.CreateAccountReconfirmDeletion();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.CreateAccountReconfirmDeletion: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateAccountReconfirmDeletionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createaccountrequestdeletion"></a>
 # **CreateAccountRequestDeletion**
 > CreateAccountRequestDeletionResponse CreateAccountRequestDeletion ()
 
-Schedule account deletion after a grace period.
+Schedule account deletion after a grace period. Requires confirmEmail.
 
 ### Example
 ```csharp
@@ -194,7 +352,7 @@ namespace Example
 
             try
             {
-                // Schedule account deletion after a grace period.
+                // Schedule account deletion after a grace period. Requires confirmEmail.
                 CreateAccountRequestDeletionResponse result = apiInstance.CreateAccountRequestDeletion();
                 Debug.WriteLine(result);
             }
@@ -315,7 +473,7 @@ This endpoint does not need any parameter.
 
 <a name="deleteauthsessionbysessionid"></a>
 # **DeleteAuthSessionBySessionId**
-> SuccessResponse DeleteAuthSessionBySessionId (Guid sessionId)
+> SuccessResponse DeleteAuthSessionBySessionId (string sessionId)
 
 Revoke a single browser session by id.
 
@@ -339,7 +497,7 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AccountApi(config);
-            var sessionId = "sessionId_example";  // Guid | 
+            var sessionId = "sessionId_example";  // string | 
 
             try
             {
@@ -362,7 +520,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sessionId** | **Guid**|  | 
+ **sessionId** | **string**|  | 
 
 ### Return type
 
@@ -469,6 +627,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getaccountclosurechecklist"></a>
+# **GetAccountClosureChecklist**
+> GetAccountClosureChecklistResponse GetAccountClosureChecklist ()
+
+What closing the account will and will not do, before you request it.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetAccountClosureChecklistExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                // What closing the account will and will not do, before you request it.
+                GetAccountClosureChecklistResponse result = apiInstance.GetAccountClosureChecklist();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.GetAccountClosureChecklist: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountClosureChecklistResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getaccountdeletionstatus"></a>
 # **GetAccountDeletionStatus**
 > GetAccountDeletionStatusResponse GetAccountDeletionStatus ()
@@ -519,6 +751,82 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetAccountDeletionStatusResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getaccountidentityverification"></a>
+# **GetAccountIdentityVerification**
+> GetAccountIdentityVerificationResponse GetAccountIdentityVerification ()
+
+Your identity verification: one status for the whole account, read by every feature that needs ID.
+
+status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetAccountIdentityVerificationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                // Your identity verification: one status for the whole account, read by every feature that needs ID.
+                GetAccountIdentityVerificationResponse result = apiInstance.GetAccountIdentityVerification();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.GetAccountIdentityVerification: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountIdentityVerificationResponse**
 
 ### Authorization
 

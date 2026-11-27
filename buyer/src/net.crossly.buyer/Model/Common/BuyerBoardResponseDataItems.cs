@@ -39,47 +39,35 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BuyerBoardResponseDataItems" /> class.
         /// </summary>
-        /// <param name="available">available (required).</param>
-        /// <param name="title">title.</param>
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="slug">slug.</param>
+        /// <param name="title">title.</param>
         /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="note">note.</param>
         /// <param name="imageUrl">imageUrl.</param>
+        /// <param name="available">available (required).</param>
         /// <param name="x">x (required).</param>
         /// <param name="y">y (required).</param>
         /// <param name="w">w (required).</param>
         /// <param name="z">z (required).</param>
-        public BuyerBoardResponseDataItems(bool available = default(bool), string title = default(string), string platformListingId = default(string), string slug = default(string), decimal priceCents = default(decimal), string note = default(string), string imageUrl = default(string), decimal x = default(decimal), decimal y = default(decimal), decimal w = default(decimal), decimal z = default(decimal))
+        /// <param name="note">note.</param>
+        public BuyerBoardResponseDataItems(string platformListingId = default(string), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), bool available = default(bool), decimal x = default(decimal), decimal y = default(decimal), decimal w = default(decimal), decimal z = default(decimal), string note = default(string))
         {
-            this.Available = available;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for BuyerBoardResponseDataItems and cannot be null");
             }
             this.PlatformListingId = platformListingId;
             this.PriceCents = priceCents;
+            this.Available = available;
             this.X = x;
             this.Y = y;
             this.W = w;
             this.Z = z;
-            this.Title = title;
             this.Slug = slug;
-            this.Note = note;
+            this.Title = title;
             this.ImageUrl = imageUrl;
+            this.Note = note;
         }
-
-        /// <summary>
-        /// Gets or Sets Available
-        /// </summary>
-        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
-        public bool Available { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -94,22 +82,28 @@ namespace net.crossly.buyer.Model
         public string Slug { get; set; }
 
         /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
+
+        /// <summary>
         /// Gets or Sets PriceCents
         /// </summary>
         [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal PriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Note
-        /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
-
-        /// <summary>
         /// Gets or Sets ImageUrl
         /// </summary>
         [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
         public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Available
+        /// </summary>
+        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
+        public bool Available { get; set; }
 
         /// <summary>
         /// Gets or Sets X
@@ -136,6 +130,12 @@ namespace net.crossly.buyer.Model
         public decimal Z { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -143,17 +143,17 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BuyerBoardResponseDataItems {\n");
-            sb.Append("  Available: ").Append(Available).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
             sb.Append("  W: ").Append(W).Append("\n");
             sb.Append("  Z: ").Append(Z).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -190,15 +190,6 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Available == input.Available ||
-                    this.Available.Equals(input.Available)
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
@@ -209,18 +200,22 @@ namespace net.crossly.buyer.Model
                     this.Slug.Equals(input.Slug))
                 ) && 
                 (
-                    this.PriceCents == input.PriceCents ||
-                    this.PriceCents.Equals(input.PriceCents)
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
+                    this.PriceCents == input.PriceCents ||
+                    this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
                     this.ImageUrl == input.ImageUrl ||
                     (this.ImageUrl != null &&
                     this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
+                    this.Available == input.Available ||
+                    this.Available.Equals(input.Available)
                 ) && 
                 (
                     this.X == input.X ||
@@ -237,6 +232,11 @@ namespace net.crossly.buyer.Model
                 (
                     this.Z == input.Z ||
                     this.Z.Equals(input.Z)
+                ) && 
+                (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
                 );
         }
 
@@ -249,11 +249,6 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Available.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
@@ -262,19 +257,24 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.Note != null)
+                if (this.Title != null)
                 {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.ImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 hashCode = (hashCode * 59) + this.X.GetHashCode();
                 hashCode = (hashCode * 59) + this.Y.GetHashCode();
                 hashCode = (hashCode * 59) + this.W.GetHashCode();
                 hashCode = (hashCode * 59) + this.Z.GetHashCode();
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 return hashCode;
             }
         }

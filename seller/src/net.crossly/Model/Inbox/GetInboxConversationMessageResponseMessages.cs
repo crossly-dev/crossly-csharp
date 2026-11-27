@@ -32,6 +32,50 @@ namespace net.crossly.Model
     public partial class GetInboxConversationMessageResponseMessages : IEquatable<GetInboxConversationMessageResponseMessages>, IValidatableObject
     {
         /// <summary>
+        /// Defines OfferStatus
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum OfferStatusEnum
+        {
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 1,
+
+            /// <summary>
+            /// Enum Accepted for value: accepted
+            /// </summary>
+            [EnumMember(Value = "accepted")]
+            Accepted = 2,
+
+            /// <summary>
+            /// Enum Declined for value: declined
+            /// </summary>
+            [EnumMember(Value = "declined")]
+            Declined = 3,
+
+            /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 4,
+
+            /// <summary>
+            /// Enum Voided for value: voided
+            /// </summary>
+            [EnumMember(Value = "voided")]
+            Voided = 5
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets OfferStatus
+        /// </summary>
+        [DataMember(Name = "offerStatus", EmitDefaultValue = true)]
+        public OfferStatusEnum? OfferStatus { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetInboxConversationMessageResponseMessages" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -52,7 +96,9 @@ namespace net.crossly.Model
         /// <param name="aiScamScore">aiScamScore.</param>
         /// <param name="aiSuggestedReply">aiSuggestedReply.</param>
         /// <param name="aiTriagedAt">aiTriagedAt.</param>
-        public GetInboxConversationMessageResponseMessages(string id = default(string), string conversationId = default(string), string platformMessageId = default(string), string sender = default(string), string body = default(string), List<string> attachments = default(List<string>), DateTime sentAt = default(DateTime), DateTime? syncedAt = default(DateTime?), string aiIntent = default(string), string aiUrgency = default(string), decimal? aiScamScore = default(decimal?), string aiSuggestedReply = default(string), DateTime? aiTriagedAt = default(DateTime?))
+        /// <param name="offerAmount">offerAmount.</param>
+        /// <param name="offerStatus">offerStatus.</param>
+        public GetInboxConversationMessageResponseMessages(string id = default(string), string conversationId = default(string), string platformMessageId = default(string), string sender = default(string), string body = default(string), List<string> attachments = default(List<string>), DateTime sentAt = default(DateTime), DateTime? syncedAt = default(DateTime?), string aiIntent = default(string), string aiUrgency = default(string), decimal? aiScamScore = default(decimal?), string aiSuggestedReply = default(string), DateTime? aiTriagedAt = default(DateTime?), string offerAmount = default(string), OfferStatusEnum? offerStatus = default(OfferStatusEnum?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -79,6 +125,8 @@ namespace net.crossly.Model
             this.AiScamScore = aiScamScore;
             this.AiSuggestedReply = aiSuggestedReply;
             this.AiTriagedAt = aiTriagedAt;
+            this.OfferAmount = offerAmount;
+            this.OfferStatus = offerStatus;
         }
 
         /// <summary>
@@ -160,6 +208,12 @@ namespace net.crossly.Model
         public DateTime? AiTriagedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets OfferAmount
+        /// </summary>
+        [DataMember(Name = "offerAmount", EmitDefaultValue = true)]
+        public string OfferAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -180,6 +234,8 @@ namespace net.crossly.Model
             sb.Append("  AiScamScore: ").Append(AiScamScore).Append("\n");
             sb.Append("  AiSuggestedReply: ").Append(AiSuggestedReply).Append("\n");
             sb.Append("  AiTriagedAt: ").Append(AiTriagedAt).Append("\n");
+            sb.Append("  OfferAmount: ").Append(OfferAmount).Append("\n");
+            sb.Append("  OfferStatus: ").Append(OfferStatus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -280,6 +336,15 @@ namespace net.crossly.Model
                     this.AiTriagedAt == input.AiTriagedAt ||
                     (this.AiTriagedAt != null &&
                     this.AiTriagedAt.Equals(input.AiTriagedAt))
+                ) && 
+                (
+                    this.OfferAmount == input.OfferAmount ||
+                    (this.OfferAmount != null &&
+                    this.OfferAmount.Equals(input.OfferAmount))
+                ) && 
+                (
+                    this.OfferStatus == input.OfferStatus ||
+                    this.OfferStatus.Equals(input.OfferStatus)
                 );
         }
 
@@ -344,6 +409,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.AiTriagedAt.GetHashCode();
                 }
+                if (this.OfferAmount != null)
+                {
+                    hashCode = (hashCode * 59) + this.OfferAmount.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.OfferStatus.GetHashCode();
                 return hashCode;
             }
         }

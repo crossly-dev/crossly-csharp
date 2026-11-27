@@ -38,40 +38,40 @@ namespace net.crossly.Model
         public enum ThemeEnum
         {
             /// <summary>
-            /// Enum Storybook for value: storybook
-            /// </summary>
-            [EnumMember(Value = "storybook")]
-            Storybook = 1,
-
-            /// <summary>
             /// Enum Studio for value: studio
             /// </summary>
             [EnumMember(Value = "studio")]
-            Studio = 2,
+            Studio = 1,
 
             /// <summary>
             /// Enum Noir for value: noir
             /// </summary>
             [EnumMember(Value = "noir")]
-            Noir = 3,
+            Noir = 2,
 
             /// <summary>
             /// Enum Daylight for value: daylight
             /// </summary>
             [EnumMember(Value = "daylight")]
-            Daylight = 4,
+            Daylight = 3,
 
             /// <summary>
             /// Enum Vitrine for value: vitrine
             /// </summary>
             [EnumMember(Value = "vitrine")]
-            Vitrine = 5,
+            Vitrine = 4,
 
             /// <summary>
             /// Enum Street for value: street
             /// </summary>
             [EnumMember(Value = "street")]
-            Street = 6
+            Street = 5,
+
+            /// <summary>
+            /// Enum Storybook for value: storybook
+            /// </summary>
+            [EnumMember(Value = "storybook")]
+            Storybook = 6
 
         }
 

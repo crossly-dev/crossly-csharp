@@ -39,17 +39,16 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerLiveStreamLineupItem" /> class.
         /// </summary>
-        /// <param name="available">available (required).</param>
-        /// <param name="title">title.</param>
         /// <param name="platformListingId">platformListingId (required).</param>
         /// <param name="position">position (required).</param>
         /// <param name="slug">slug.</param>
+        /// <param name="title">title.</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="imageUrl">imageUrl.</param>
+        /// <param name="available">available (required).</param>
         /// <param name="pinned">pinned (required).</param>
-        public ListBuyerLiveStreamLineupItem(bool available = default(bool), string title = default(string), string platformListingId = default(string), decimal position = default(decimal), string slug = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), bool pinned = default(bool))
+        public ListBuyerLiveStreamLineupItem(string platformListingId = default(string), decimal position = default(decimal), string slug = default(string), string title = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), bool available = default(bool), bool pinned = default(bool))
         {
-            this.Available = available;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListBuyerLiveStreamLineupItem and cannot be null");
@@ -57,23 +56,12 @@ namespace net.crossly.buyer.Model
             this.PlatformListingId = platformListingId;
             this.Position = position;
             this.PriceCents = priceCents;
+            this.Available = available;
             this.Pinned = pinned;
-            this.Title = title;
             this.Slug = slug;
+            this.Title = title;
             this.ImageUrl = imageUrl;
         }
-
-        /// <summary>
-        /// Gets or Sets Available
-        /// </summary>
-        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
-        public bool Available { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -94,6 +82,12 @@ namespace net.crossly.buyer.Model
         public string Slug { get; set; }
 
         /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
+
+        /// <summary>
         /// Gets or Sets PriceCents
         /// </summary>
         [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
@@ -104,6 +98,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
         public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Available
+        /// </summary>
+        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
+        public bool Available { get; set; }
 
         /// <summary>
         /// Gets or Sets Pinned
@@ -119,13 +119,13 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerLiveStreamLineupItem {\n");
-            sb.Append("  Available: ").Append(Available).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("  Pinned: ").Append(Pinned).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -163,15 +163,6 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Available == input.Available ||
-                    this.Available.Equals(input.Available)
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
@@ -186,6 +177,11 @@ namespace net.crossly.buyer.Model
                     this.Slug.Equals(input.Slug))
                 ) && 
                 (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
+                ) && 
+                (
                     this.PriceCents == input.PriceCents ||
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
@@ -193,6 +189,10 @@ namespace net.crossly.buyer.Model
                     this.ImageUrl == input.ImageUrl ||
                     (this.ImageUrl != null &&
                     this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
+                    this.Available == input.Available ||
+                    this.Available.Equals(input.Available)
                 ) && 
                 (
                     this.Pinned == input.Pinned ||
@@ -209,11 +209,6 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Available.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
@@ -223,11 +218,16 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.ImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 hashCode = (hashCode * 59) + this.Pinned.GetHashCode();
                 return hashCode;
             }

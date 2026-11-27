@@ -46,7 +46,8 @@ namespace net.crossly.Model
         /// <param name="live">live.</param>
         /// <param name="upcoming">upcoming (required).</param>
         /// <param name="stream">stream.</param>
-        public GetMainStageResponse(string slug = default(string), string name = default(string), decimal capacity = default(decimal), decimal here = default(decimal), GetMainStageResponseLive live = default(GetMainStageResponseLive), List<GetMainStageResponseUpcoming> upcoming = default(List<GetMainStageResponseUpcoming>), GetMainStageResponseStream stream = default(GetMainStageResponseStream))
+        /// <param name="house">house (required).</param>
+        public GetMainStageResponse(string slug = default(string), string name = default(string), decimal capacity = default(decimal), decimal here = default(decimal), GetMainStageResponseLive live = default(GetMainStageResponseLive), List<GetMainStageResponseUpcoming> upcoming = default(List<GetMainStageResponseUpcoming>), GetMainStageResponseStream stream = default(GetMainStageResponseStream), GetMainStageResponseHouse house = default(GetMainStageResponseHouse))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -65,6 +66,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("upcoming is a required property for GetMainStageResponse and cannot be null");
             }
             this.Upcoming = upcoming;
+            // to ensure "house" is required (not null)
+            if (house == null) {
+                throw new ArgumentNullException("house is a required property for GetMainStageResponse and cannot be null");
+            }
+            this.House = house;
             this.Live = live;
             this.Stream = stream;
         }
@@ -113,6 +119,12 @@ namespace net.crossly.Model
         public GetMainStageResponseStream Stream { get; set; }
 
         /// <summary>
+        /// Gets or Sets House
+        /// </summary>
+        [DataMember(Name = "house", IsRequired = true, EmitDefaultValue = false)]
+        public GetMainStageResponseHouse House { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,6 +139,7 @@ namespace net.crossly.Model
             sb.Append("  Live: ").Append(Live).Append("\n");
             sb.Append("  Upcoming: ").Append(Upcoming).Append("\n");
             sb.Append("  Stream: ").Append(Stream).Append("\n");
+            sb.Append("  House: ").Append(House).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -195,6 +208,11 @@ namespace net.crossly.Model
                     this.Stream == input.Stream ||
                     (this.Stream != null &&
                     this.Stream.Equals(input.Stream))
+                ) && 
+                (
+                    this.House == input.House ||
+                    (this.House != null &&
+                    this.House.Equals(input.House))
                 );
         }
 
@@ -228,6 +246,10 @@ namespace net.crossly.Model
                 if (this.Stream != null)
                 {
                     hashCode = (hashCode * 59) + this.Stream.GetHashCode();
+                }
+                if (this.House != null)
+                {
+                    hashCode = (hashCode * 59) + this.House.GetHashCode();
                 }
                 return hashCode;
             }

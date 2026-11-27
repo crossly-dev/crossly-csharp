@@ -10,7 +10,8 @@ Method | HTTP request | Description
 [**CreateInventoryBulkArchive**](InventoryApi.md#createinventorybulkarchive) | **POST** /v1/inventory/bulk-archive | Bulk archive inventory items (soft).
 [**CreateInventoryBulkDelete**](InventoryApi.md#createinventorybulkdelete) | **POST** /v1/inventory/bulk-delete | Bulk delete inventory items (delinks listings).
 [**CreateInventoryBulkLabel**](InventoryApi.md#createinventorybulklabel) | **POST** /v1/inventory/bulk-labels | Bulk add/remove labels on inventory items.
-[**CreateInventoryBulkQuantity**](InventoryApi.md#createinventorybulkquantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, syncing live listings.
+[**CreateInventoryBulkQuantity**](InventoryApi.md#createinventorybulkquantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+[**CreateInventoryBulkRestore**](InventoryApi.md#createinventorybulkrestore) | **POST** /v1/inventory/bulk-restore | Restore archived inventory items (status returns to active, or sold_out when no stock).
 [**CreateInventoryCatalogMatchRefresh**](InventoryApi.md#createinventorycatalogmatchrefresh) | **POST** /v1/inventory/{id}/catalog-matches/refresh | Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
 [**CreateInventoryCsvExport**](InventoryApi.md#createinventorycsvexport) | **POST** /v1/inventory/csv/export | Export inventory as CSV. Round-trips back through csv/import.
 [**CreateInventoryCsvImport**](InventoryApi.md#createinventorycsvimport) | **POST** /v1/inventory/csv/import | Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
@@ -34,18 +35,21 @@ Method | HTTP request | Description
 [**CreateSpatialStreetRequestFound**](InventoryApi.md#createspatialstreetrequestfound) | **POST** /v1/spatial/streets/requests/{id}/found | Found an approved street, in CBX.
 [**DeleteInventory**](InventoryApi.md#deleteinventory) | **DELETE** /v1/inventory/{id} | Soft-archive an inventory item.
 [**DeleteSpatialStreetPlot**](InventoryApi.md#deletespatialstreetplot) | **DELETE** /v1/spatial/streets/{slug}/plot | Take your shop off a street.
+[**GetAnalyticInventory**](InventoryApi.md#getanalyticinventory) | **GET** /v1/analytics/inventory | Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+[**GetGameEventSummary**](InventoryApi.md#getgameeventsummary) | **GET** /v1/games/events/{eventId}/summary | The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+[**GetGameHuntBuild**](InventoryApi.md#getgamehuntbuild) | **GET** /v1/games/hunts/{id}/build | One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
 [**GetGameLeaderboard**](InventoryApi.md#getgameleaderboard) | **GET** /v1/games/leaderboards | Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all - - rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
 [**GetHome**](InventoryApi.md#gethome) | **GET** /v1/homes/{slug} | A home by its address, as you may see it: open homes to anybody, friends-only homes to mutual follows, locked homes to their owner. 404 when you may not enter.
 [**GetHomeMine**](InventoryApi.md#gethomemine) | **GET** /v1/homes/mine | Your Crossly World home: its address, privacy (open / friends / locked), theme, the room, the layout (each piece with what it shows - - things you no longer own are left out at read time) and the guestbook. Made on first read.
 [**GetInventory**](InventoryApi.md#getinventory) | **GET** /v1/inventory/{id} | Get one inventory item with platform listings.
-[**GetInventoryAging**](InventoryApi.md#getinventoryaging) | **GET** /v1/inventory/aging | Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+[**GetInventoryAging**](InventoryApi.md#getinventoryaging) | **GET** /v1/inventory/aging | Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 [**GetInventoryCatalogMatch**](InventoryApi.md#getinventorycatalogmatch) | **GET** /v1/inventory/{id}/catalog-matches | One inventory item&#39;s catalog binding (if confirmed) and its pending match suggestions.
 [**GetInventoryFacet**](InventoryApi.md#getinventoryfacet) | **GET** /v1/inventory/facets | Distinct brands + categories across this user&#39;s inventory.
 [**GetInventoryLabel**](InventoryApi.md#getinventorylabel) | **GET** /v1/inventory/labels | List every distinct label across this user&#39;s inventory.
 [**GetInventoryLabelStat**](InventoryApi.md#getinventorylabelstat) | **GET** /v1/inventory/labels/stats | List distinct labels with usage counts + colors.
-[**GetInventorySellThrough**](InventoryApi.md#getinventorysellthrough) | **GET** /v1/inventory/sell-through | Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+[**GetInventorySellThrough**](InventoryApi.md#getinventorysellthrough) | **GET** /v1/inventory/sell-through | Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 [**GetInventorySkuExist**](InventoryApi.md#getinventoryskuexist) | **GET** /v1/inventory/sku-exists | Check whether a SKU is already in use on this user&#39;s inventory.
-[**GetInventoryValueHistory**](InventoryApi.md#getinventoryvaluehistory) | **GET** /v1/inventory/value-history | Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+[**GetInventoryValueHistory**](InventoryApi.md#getinventoryvaluehistory) | **GET** /v1/inventory/value-history | Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 [**GetMainStage**](InventoryApi.md#getmainstage) | **GET** /v1/main-stage | The Crossly World Main Stage right now: the live show (title, kind, host lineup), the stream on its big screen while a lineup host is on air, how many people are there (it holds 64 per copy and opens copies as it fills) and what is on next.
 [**GetPetMine**](InventoryApi.md#getpetmine) | **GET** /v1/pets/mine | Your Crossly World pets: every kind (cat, dog, slab bot) with whether you own it, when it was earned and the ways to earn it (a quest or a reputation level - - pets are never sold), plus the pet walking beside you and the one greeting visitors at your shop door.
 [**GetReputation**](InventoryApi.md#getreputation) | **GET** /v1/reputation/{profile} | Somebody&#39;s public reputation levels by their storefront handle: the level on each track and their nameplate badge. 404 for an unknown handle.
@@ -64,12 +68,14 @@ Method | HTTP request | Description
 [**GetSpatialStreet**](InventoryApi.md#getspatialstreet) | **GET** /v1/spatial/streets/{slug} | A street: every plot and the shop open on each.
 [**GetSpatialStreetFounding**](InventoryApi.md#getspatialstreetfounding) | **GET** /v1/spatial/streets/founding | What founding a street costs.
 [**GetSpatialStreetPlotQuote**](InventoryApi.md#getspatialstreetplotquote) | **GET** /v1/spatial/streets/{slug}/plots/{number}/quote | What a plot costs.
+[**GetWorldPulse**](InventoryApi.md#getworldpulse) | **GET** /v1/world/pulse | Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
 [**GetWorldRoomFunnel**](InventoryApi.md#getworldroomfunnel) | **GET** /v1/world/rooms/{sceneId}/funnel | Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
 [**GetWorldShelf**](InventoryApi.md#getworldshelf) | **GET** /v1/world/shelf/{listingSlug} | Where a Crossly listing sits on a shelf in a public room right now (roomSlug, roomName, itemId), or data:null when it is in no room.
 [**GetWorldSkusCheapest**](InventoryApi.md#getworldskuscheapest) | **GET** /v1/world/skus/{skuId}/cheapest | The cheapest copy of a catalogue piece for sale on Crossly now, matched by the catalogue id (listingSlug, priceCents, and the room and item when it stands on a shelf), or data:null.
 [**ListCatalogMatches**](InventoryApi.md#listcatalogmatches) | **GET** /v1/catalog-matches | Pending catalog-match suggestions: inventory items that look like a catalog product, awaiting your confirm.
 [**ListFestivals**](InventoryApi.md#listfestivals) | **GET** /v1/festivals | Live and upcoming Crossly World festivals, soonest first: a weekend when every street wears one decor and the festival quest line (limited pins) counts. meta.live is the festival on now, if any.
 [**ListGameBreakUpcoming**](InventoryApi.md#listgamebreakupcoming) | **GET** /v1/games/breaks/upcoming | Pack breaks staged on shop stages in Crossly World, live first then soonest: the break, its shop, start time, spots (taken or not, buyer masked), hits revealed so far, and buyUrl - - the break&#39;s page on crossly.net, the only place a spot is bought (null once every spot has sold).
+[**ListGameHuntMine**](InventoryApi.md#listgamehuntmine) | **GET** /v1/games/hunts/mine | Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
 [**ListGameHunts**](InventoryApi.md#listgamehunts) | **GET** /v1/games/hunts | Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug - - for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; - - never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
 [**ListGameResultMine**](InventoryApi.md#listgameresultmine) | **GET** /v1/games/results/mine | Your market-game results, newest first: game (price_guess, price_guess_solo, hunt, speed_trade, break_host), the round/hunt/trade/break id, score, whether you won, Bucks prize in cents (0 while prizes are pins only) and detail. meta.unlocks lists the hunt coupons you earned (with their codes); meta.hits the break hits pulled for spots you bought, with the order each ships with.
 [**ListHomeMineBuilders**](InventoryApi.md#listhomeminebuilders) | **GET** /v1/homes/mine/builders | Your co-builders: friends you let rearrange your home in the world (move, turn, take out your things, add free furniture; never your bought pieces). Each: userId, name, friends (false once the friendship ended: listed but powerless).
@@ -560,7 +566,9 @@ This endpoint does not need any parameter.
 # **CreateInventoryBulkQuantity**
 > CreateInventoryBulkQuantityResponse CreateInventoryBulkQuantity ()
 
-Set / add / subtract stock across many items, syncing live listings.
+Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+
+Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
 
 ### Example
 ```csharp
@@ -585,7 +593,7 @@ namespace Example
 
             try
             {
-                // Set / add / subtract stock across many items, syncing live listings.
+                // Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
                 CreateInventoryBulkQuantityResponse result = apiInstance.CreateInventoryBulkQuantity();
                 Debug.WriteLine(result);
             }
@@ -606,6 +614,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateInventoryBulkQuantityResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createinventorybulkrestore"></a>
+# **CreateInventoryBulkRestore**
+> CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore ()
+
+Restore archived inventory items (status returns to active, or sold_out when no stock).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateInventoryBulkRestoreExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+
+            try
+            {
+                // Restore archived inventory items (status returns to active, or sold_out when no stock).
+                CreateInventoryBulkRestoreResponse result = apiInstance.CreateInventoryBulkRestore();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.CreateInventoryBulkRestore: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateInventoryBulkRestoreResponse**
 
 ### Authorization
 
@@ -858,7 +940,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorylabelrename"></a>
 # **CreateInventoryLabelRename**
-> CreateInventoryLabelRenameResponse CreateInventoryLabelRename ()
+> UpdatedResponse CreateInventoryLabelRename ()
 
 Rename a label across every inventory item.
 
@@ -886,7 +968,7 @@ namespace Example
             try
             {
                 // Rename a label across every inventory item.
-                CreateInventoryLabelRenameResponse result = apiInstance.CreateInventoryLabelRename();
+                UpdatedResponse result = apiInstance.CreateInventoryLabelRename();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -905,7 +987,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**CreateInventoryLabelRenameResponse**
+**UpdatedResponse**
 
 ### Authorization
 
@@ -1402,7 +1484,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialpropertyleaseaccept"></a>
 # **CreateSpatialPropertyLeaseAccept**
-> CreateSpatialPropertyLeaseAcceptResponse CreateSpatialPropertyLeaseAccept (string id)
+> CreateWorldMarketPlotRentResponse CreateSpatialPropertyLeaseAccept (string id)
 
 Take a plot on lease.
 
@@ -1433,7 +1515,7 @@ namespace Example
             try
             {
                 // Take a plot on lease.
-                CreateSpatialPropertyLeaseAcceptResponse result = apiInstance.CreateSpatialPropertyLeaseAccept(id);
+                CreateWorldMarketPlotRentResponse result = apiInstance.CreateSpatialPropertyLeaseAccept(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1455,7 +1537,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateSpatialPropertyLeaseAcceptResponse**
+**CreateWorldMarketPlotRentResponse**
 
 ### Authorization
 
@@ -1486,7 +1568,7 @@ Name | Type | Description  | Notes
 
 End a lease (owner or tenant).
 
-The tenant's shop gets a free Main Street address again.
+The tenant's showroom leaves the plot.
 
 ### Example
 ```csharp
@@ -2436,6 +2518,262 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getanalyticinventory"></a>
+# **GetAnalyticInventory**
+> GetAnalyticInventoryResponse GetAnalyticInventory (string range = null, string from = null, string to = null, string compare = null, string cmpFrom = null, string cmpTo = null, string labels = null, string platforms = null, string category = null, string brand = null, string tz = null, int? maturity = null)
+
+Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetAnalyticInventoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var range = "7d";  // string | Reporting window. Default 30d. custom needs from and to. (optional) 
+            var from = "from_example";  // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional) 
+            var to = "to_example";  // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional) 
+            var compare = "prev";  // string | Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional) 
+            var cmpFrom = "cmpFrom_example";  // string | YYYY-MM-DD. Only with compare=custom. (optional) 
+            var cmpTo = "cmpTo_example";  // string | YYYY-MM-DD. Only with compare=custom. (optional) 
+            var labels = "labels_example";  // string | Comma-separated inventory labels (any of them). (optional) 
+            var platforms = "platforms_example";  // string | Comma-separated platform ids. (optional) 
+            var category = "category_example";  // string | Canonical main-category key. (optional) 
+            var brand = "brand_example";  // string | Brand name. (optional) 
+            var tz = "tz_example";  // string | IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional) 
+            var maturity = 30;  // int? | Days an item has to sell within to count as sold in the cohort. Default 30. (optional) 
+
+            try
+            {
+                // Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+                GetAnalyticInventoryResponse result = apiInstance.GetAnalyticInventory(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.GetAnalyticInventory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **range** | **string**| Reporting window. Default 30d. custom needs from and to. | [optional] 
+ **from** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional] 
+ **to** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional] 
+ **compare** | **string**| Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). | [optional] 
+ **cmpFrom** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional] 
+ **cmpTo** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional] 
+ **labels** | **string**| Comma-separated inventory labels (any of them). | [optional] 
+ **platforms** | **string**| Comma-separated platform ids. | [optional] 
+ **category** | **string**| Canonical main-category key. | [optional] 
+ **brand** | **string**| Brand name. | [optional] 
+ **tz** | **string**| IANA time zone for day boundaries. Default UTC. An invalid name is a 400. | [optional] 
+ **maturity** | **int?**| Days an item has to sell within to count as sold in the cohort. Default 30. | [optional] 
+
+### Return type
+
+**GetAnalyticInventoryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getgameeventsummary"></a>
+# **GetGameEventSummary**
+> GetGameEventSummaryResponse GetGameEventSummary (Guid eventId)
+
+The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetGameEventSummaryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var eventId = "eventId_example";  // Guid | 
+
+            try
+            {
+                // The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+                GetGameEventSummaryResponse result = apiInstance.GetGameEventSummary(eventId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.GetGameEventSummary: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventId** | **Guid**|  | 
+
+### Return type
+
+**GetGameEventSummaryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getgamehuntbuild"></a>
+# **GetGameHuntBuild**
+> GetGameHuntBuildResponse GetGameHuntBuild (Guid id)
+
+One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetGameHuntBuildExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+                GetGameHuntBuildResponse result = apiInstance.GetGameHuntBuild(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.GetGameHuntBuild: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**GetGameHuntBuildResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getgameleaderboard"></a>
 # **GetGameLeaderboard**
 > GetGameLeaderboardResponse GetGameLeaderboard ()
@@ -2744,7 +3082,7 @@ Name | Type | Description  | Notes
 # **GetInventoryAging**
 > GetInventoryAgingResponse GetInventoryAging ()
 
-Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 
 ### Example
 ```csharp
@@ -2769,7 +3107,7 @@ namespace Example
 
             try
             {
-                // Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+                // Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
                 GetInventoryAgingResponse result = apiInstance.GetInventoryAging();
                 Debug.WriteLine(result);
             }
@@ -3118,7 +3456,7 @@ This endpoint does not need any parameter.
 # **GetInventorySellThrough**
 > GetInventorySellThroughResponse GetInventorySellThrough ()
 
-Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 
 ### Example
 ```csharp
@@ -3143,7 +3481,7 @@ namespace Example
 
             try
             {
-                // Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+                // Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
                 GetInventorySellThroughResponse result = apiInstance.GetInventorySellThrough();
                 Debug.WriteLine(result);
             }
@@ -3270,7 +3608,7 @@ Name | Type | Description  | Notes
 # **GetInventoryValueHistory**
 > GetInventoryValueHistoryResponse GetInventoryValueHistory ()
 
-Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 
 ### Example
 ```csharp
@@ -3295,7 +3633,7 @@ namespace Example
 
             try
             {
-                // Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+                // Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
                 GetInventoryValueHistoryResponse result = apiInstance.GetInventoryValueHistory();
                 Debug.WriteLine(result);
             }
@@ -4740,6 +5078,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getworldpulse"></a>
+# **GetWorldPulse**
+> GetWorldPulseResponse GetWorldPulse ()
+
+Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetWorldPulseExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+
+            try
+            {
+                // Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.
+                GetWorldPulseResponse result = apiInstance.GetWorldPulse();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.GetWorldPulse: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetWorldPulseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getworldroomfunnel"></a>
 # **GetWorldRoomFunnel**
 > GetWorldRoomFunnelResponse GetWorldRoomFunnel (Guid sceneId, int? days = null)
@@ -5204,6 +5616,80 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listgamehuntmine"></a>
+# **ListGameHuntMine**
+> ListGameHuntMineResponse ListGameHuntMine ()
+
+Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListGameHuntMineExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+
+            try
+            {
+                // Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+                ListGameHuntMineResponse result = apiInstance.ListGameHuntMine();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.ListGameHuntMine: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListGameHuntMineResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listgamehunts"></a>
 # **ListGameHunts**
 > ListGameHuntsResponse ListGameHunts (string place = null)
@@ -5506,7 +5992,7 @@ This endpoint does not need any parameter.
 
 <a name="listinventory"></a>
 # **ListInventory**
-> ListInventoryResponse ListInventory (int? page = null, int? limit = null, string search = null, string status = null, string kind = null, string platforms = null, string platformMode = null)
+> ListInventoryResponse ListInventory (int? page = null, int? limit = null, string search = null, string status = null, string kind = null, string platforms = null, string platformMode = null, string sku = null, DateTime? updatedSince = null)
 
 List inventory items.
 
@@ -5537,11 +6023,13 @@ namespace Example
             var kind = "physical";  // string | Physical goods or Web3 assets (NFTs). Omit for both. (optional) 
             var platforms = "platforms_example";  // string | Comma-separated marketplaces, e.g. \"ebay,vinted\". Items live (an active listing) on any of them. (optional) 
             var platformMode = "listed";  // string | \"not_listed\" inverts `platforms`: items live on none of them. Default \"listed\". (optional) 
+            var sku = "sku_example";  // string | Exact SKU match: look up the row a supplier product maps to. (optional) 
+            var updatedSince = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional) 
 
             try
             {
                 // List inventory items.
-                ListInventoryResponse result = apiInstance.ListInventory(page, limit, search, status, kind, platforms, platformMode);
+                ListInventoryResponse result = apiInstance.ListInventory(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5566,6 +6054,8 @@ Name | Type | Description  | Notes
  **kind** | **string**| Physical goods or Web3 assets (NFTs). Omit for both. | [optional] 
  **platforms** | **string**| Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. | [optional] 
  **platformMode** | **string**| \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. | [optional] 
+ **sku** | **string**| Exact SKU match: look up the row a supplier product maps to. | [optional] 
+ **updatedSince** | **DateTime?**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional] 
 
 ### Return type
 

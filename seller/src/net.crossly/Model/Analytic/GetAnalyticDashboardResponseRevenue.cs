@@ -42,10 +42,16 @@ namespace net.crossly.Model
         /// <param name="current">current (required).</param>
         /// <param name="previous">previous (required).</param>
         /// <param name="pctChange">pctChange.</param>
-        public GetAnalyticDashboardResponseRevenue(decimal current = default(decimal), decimal previous = default(decimal), decimal? pctChange = default(decimal?))
+        /// <param name="delta">delta (required).</param>
+        public GetAnalyticDashboardResponseRevenue(decimal current = default(decimal), decimal previous = default(decimal), decimal? pctChange = default(decimal?), GetAnalyticOverviewResponseDataKpisNetSalesDelta delta = default(GetAnalyticOverviewResponseDataKpisNetSalesDelta))
         {
             this.Current = current;
             this.Previous = previous;
+            // to ensure "delta" is required (not null)
+            if (delta == null) {
+                throw new ArgumentNullException("delta is a required property for GetAnalyticDashboardResponseRevenue and cannot be null");
+            }
+            this.Delta = delta;
             this.PctChange = pctChange;
         }
 
@@ -68,6 +74,12 @@ namespace net.crossly.Model
         public decimal? PctChange { get; set; }
 
         /// <summary>
+        /// Gets or Sets Delta
+        /// </summary>
+        [DataMember(Name = "delta", IsRequired = true, EmitDefaultValue = false)]
+        public GetAnalyticOverviewResponseDataKpisNetSalesDelta Delta { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -78,6 +90,7 @@ namespace net.crossly.Model
             sb.Append("  Current: ").Append(Current).Append("\n");
             sb.Append("  Previous: ").Append(Previous).Append("\n");
             sb.Append("  PctChange: ").Append(PctChange).Append("\n");
+            sb.Append("  Delta: ").Append(Delta).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,6 +138,11 @@ namespace net.crossly.Model
                     this.PctChange == input.PctChange ||
                     (this.PctChange != null &&
                     this.PctChange.Equals(input.PctChange))
+                ) && 
+                (
+                    this.Delta == input.Delta ||
+                    (this.Delta != null &&
+                    this.Delta.Equals(input.Delta))
                 );
         }
 
@@ -142,6 +160,10 @@ namespace net.crossly.Model
                 if (this.PctChange != null)
                 {
                     hashCode = (hashCode * 59) + this.PctChange.GetHashCode();
+                }
+                if (this.Delta != null)
+                {
+                    hashCode = (hashCode * 59) + this.Delta.GetHashCode();
                 }
                 return hashCode;
             }

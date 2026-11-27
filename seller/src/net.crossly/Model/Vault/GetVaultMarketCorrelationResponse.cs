@@ -49,7 +49,7 @@ namespace net.crossly.Model
         /// <param name="rho">rho (required).</param>
         /// <param name="n">n (required).</param>
         /// <param name="asOf">asOf (required).</param>
-        public GetVaultMarketCorrelationResponse(string label = default(string), bool derived = default(bool), decimal weeks = default(decimal), decimal minPairWeeks = default(decimal), bool insufficient = default(bool), string reason = default(string), List<SlugName> indexes = default(List<SlugName>), List<List<decimal?>> rho = default(List<List<decimal?>>), List<List<decimal>> n = default(List<List<decimal>>), string asOf = default(string))
+        public GetVaultMarketCorrelationResponse(string label = default(string), bool derived = default(bool), decimal weeks = default(decimal), decimal minPairWeeks = default(decimal), bool insufficient = default(bool), string reason = default(string), List<NameSlug> indexes = default(List<NameSlug>), List<List<decimal?>> rho = default(List<List<decimal?>>), List<List<decimal>> n = default(List<List<decimal>>), string asOf = default(string))
         {
             // to ensure "label" is required (not null)
             if (label == null) {
@@ -123,7 +123,7 @@ namespace net.crossly.Model
         /// Gets or Sets Indexes
         /// </summary>
         [DataMember(Name = "indexes", IsRequired = true, EmitDefaultValue = false)]
-        public List<SlugName> Indexes { get; set; }
+        public List<NameSlug> Indexes { get; set; }
 
         /// <summary>
         /// Gets or Sets Rho

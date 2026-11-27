@@ -39,11 +39,17 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetWeb3LaunchToolResponse" /> class.
         /// </summary>
+        /// <param name="royalties">royalties (required).</param>
         /// <param name="allowlist">allowlist (required).</param>
         /// <param name="art">art (required).</param>
         /// <param name="supply">supply (required).</param>
-        public GetWeb3LaunchToolResponse(GetWeb3LaunchToolResponseAllowlist allowlist = default(GetWeb3LaunchToolResponseAllowlist), GetWeb3LaunchToolResponseArt art = default(GetWeb3LaunchToolResponseArt), GetWeb3LaunchToolResponseSupply supply = default(GetWeb3LaunchToolResponseSupply))
+        public GetWeb3LaunchToolResponse(GetWeb3LaunchToolResponseRoyalties royalties = default(GetWeb3LaunchToolResponseRoyalties), GetWeb3LaunchToolResponseAllowlist allowlist = default(GetWeb3LaunchToolResponseAllowlist), GetWeb3LaunchToolResponseArt art = default(GetWeb3LaunchToolResponseArt), GetWeb3LaunchToolResponseSupply supply = default(GetWeb3LaunchToolResponseSupply))
         {
+            // to ensure "royalties" is required (not null)
+            if (royalties == null) {
+                throw new ArgumentNullException("royalties is a required property for GetWeb3LaunchToolResponse and cannot be null");
+            }
+            this.Royalties = royalties;
             // to ensure "allowlist" is required (not null)
             if (allowlist == null) {
                 throw new ArgumentNullException("allowlist is a required property for GetWeb3LaunchToolResponse and cannot be null");
@@ -60,6 +66,12 @@ namespace net.crossly.Model
             }
             this.Supply = supply;
         }
+
+        /// <summary>
+        /// Gets or Sets Royalties
+        /// </summary>
+        [DataMember(Name = "royalties", IsRequired = true, EmitDefaultValue = false)]
+        public GetWeb3LaunchToolResponseRoyalties Royalties { get; set; }
 
         /// <summary>
         /// Gets or Sets Allowlist
@@ -87,6 +99,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetWeb3LaunchToolResponse {\n");
+            sb.Append("  Royalties: ").Append(Royalties).Append("\n");
             sb.Append("  Allowlist: ").Append(Allowlist).Append("\n");
             sb.Append("  Art: ").Append(Art).Append("\n");
             sb.Append("  Supply: ").Append(Supply).Append("\n");
@@ -126,6 +139,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Royalties == input.Royalties ||
+                    (this.Royalties != null &&
+                    this.Royalties.Equals(input.Royalties))
+                ) && 
+                (
                     this.Allowlist == input.Allowlist ||
                     (this.Allowlist != null &&
                     this.Allowlist.Equals(input.Allowlist))
@@ -151,6 +169,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Royalties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Royalties.GetHashCode();
+                }
                 if (this.Allowlist != null)
                 {
                     hashCode = (hashCode * 59) + this.Allowlist.GetHashCode();

@@ -35,15 +35,13 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetOauthInitResponse" /> class.
         /// </summary>
         /// <param name="url">url.</param>
-        /// <param name="correlationId">correlationId.</param>
         /// <param name="oneShot">oneShot.</param>
         /// <param name="status">status.</param>
         /// <param name="requestUrl">requestUrl.</param>
         /// <param name="message">message.</param>
-        public GetOauthInitResponse(string url = default(string), string correlationId = default(string), bool oneShot = default(bool), string status = default(string), string requestUrl = default(string), string message = default(string))
+        public GetOauthInitResponse(string url = default(string), bool oneShot = default(bool), string status = default(string), string requestUrl = default(string), string message = default(string))
         {
             this.Url = url;
-            this.CorrelationId = correlationId;
             this.OneShot = oneShot;
             this.Status = status;
             this.RequestUrl = requestUrl;
@@ -55,12 +53,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false)]
         public string Url { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CorrelationId
-        /// </summary>
-        [DataMember(Name = "correlationId", EmitDefaultValue = false)]
-        public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets OneShot
@@ -95,7 +87,6 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetOauthInitResponse {\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  CorrelationId: ").Append(CorrelationId).Append("\n");
             sb.Append("  OneShot: ").Append(OneShot).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  RequestUrl: ").Append(RequestUrl).Append("\n");
@@ -141,11 +132,6 @@ namespace net.crossly.Model
                     this.Url.Equals(input.Url))
                 ) && 
                 (
-                    this.CorrelationId == input.CorrelationId ||
-                    (this.CorrelationId != null &&
-                    this.CorrelationId.Equals(input.CorrelationId))
-                ) && 
-                (
                     this.OneShot == input.OneShot ||
                     this.OneShot.Equals(input.OneShot)
                 ) && 
@@ -178,10 +164,6 @@ namespace net.crossly.Model
                 if (this.Url != null)
                 {
                     hashCode = (hashCode * 59) + this.Url.GetHashCode();
-                }
-                if (this.CorrelationId != null)
-                {
-                    hashCode = (hashCode * 59) + this.CorrelationId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.OneShot.GetHashCode();
                 if (this.Status != null)

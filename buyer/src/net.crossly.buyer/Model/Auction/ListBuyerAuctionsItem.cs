@@ -41,16 +41,16 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="title">title (required).</param>
         /// <param name="bidCount">bidCount (required).</param>
-        /// <param name="paid">paid (required).</param>
         /// <param name="leading">leading (required).</param>
-        /// <param name="status">status.</param>
-        /// <param name="endsAt">endsAt.</param>
+        /// <param name="paid">paid (required).</param>
         /// <param name="slug">slug.</param>
-        /// <param name="currentCents">Current high bid, in cents..</param>
         /// <param name="thumbnail">thumbnail.</param>
+        /// <param name="endsAt">endsAt.</param>
+        /// <param name="status">status.</param>
+        /// <param name="currentCents">Current high bid, in cents..</param>
         /// <param name="myMaxCents">Your highest maximum (proxy) bid, in cents..</param>
         /// <param name="winningCents">Hammer price once the auction closed, in cents..</param>
-        public ListBuyerAuctionsItem(string title = default(string), decimal bidCount = default(decimal), bool paid = default(bool), bool leading = default(bool), string status = default(string), string endsAt = default(string), string slug = default(string), decimal? currentCents = default(decimal?), string thumbnail = default(string), decimal? myMaxCents = default(decimal?), decimal? winningCents = default(decimal?))
+        public ListBuyerAuctionsItem(string title = default(string), decimal bidCount = default(decimal), bool leading = default(bool), bool paid = default(bool), string slug = default(string), string thumbnail = default(string), string endsAt = default(string), string status = default(string), decimal? currentCents = default(decimal?), decimal? myMaxCents = default(decimal?), decimal? winningCents = default(decimal?))
         {
             // to ensure "title" is required (not null)
             if (title == null) {
@@ -58,13 +58,13 @@ namespace net.crossly.buyer.Model
             }
             this.Title = title;
             this.BidCount = bidCount;
-            this.Paid = paid;
             this.Leading = leading;
-            this.Status = status;
-            this.EndsAt = endsAt;
+            this.Paid = paid;
             this.Slug = slug;
-            this.CurrentCents = currentCents;
             this.Thumbnail = thumbnail;
+            this.EndsAt = endsAt;
+            this.Status = status;
+            this.CurrentCents = currentCents;
             this.MyMaxCents = myMaxCents;
             this.WinningCents = winningCents;
         }
@@ -82,28 +82,16 @@ namespace net.crossly.buyer.Model
         public decimal BidCount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Paid
-        /// </summary>
-        [DataMember(Name = "paid", IsRequired = true, EmitDefaultValue = true)]
-        public bool Paid { get; set; }
-
-        /// <summary>
         /// Gets or Sets Leading
         /// </summary>
         [DataMember(Name = "leading", IsRequired = true, EmitDefaultValue = true)]
         public bool Leading { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Paid
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EndsAt
-        /// </summary>
-        [DataMember(Name = "endsAt", EmitDefaultValue = true)]
-        public string EndsAt { get; set; }
+        [DataMember(Name = "paid", IsRequired = true, EmitDefaultValue = true)]
+        public bool Paid { get; set; }
 
         /// <summary>
         /// Gets or Sets Slug
@@ -112,17 +100,29 @@ namespace net.crossly.buyer.Model
         public string Slug { get; set; }
 
         /// <summary>
+        /// Gets or Sets Thumbnail
+        /// </summary>
+        [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
+        public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EndsAt
+        /// </summary>
+        [DataMember(Name = "endsAt", EmitDefaultValue = true)]
+        public string EndsAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Current high bid, in cents.
         /// </summary>
         /// <value>Current high bid, in cents.</value>
         [DataMember(Name = "currentCents", EmitDefaultValue = true)]
         public decimal? CurrentCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Thumbnail
-        /// </summary>
-        [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
-        public string Thumbnail { get; set; }
 
         /// <summary>
         /// Your highest maximum (proxy) bid, in cents.
@@ -148,13 +148,13 @@ namespace net.crossly.buyer.Model
             sb.Append("class ListBuyerAuctionsItem {\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  BidCount: ").Append(BidCount).Append("\n");
-            sb.Append("  Paid: ").Append(Paid).Append("\n");
             sb.Append("  Leading: ").Append(Leading).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  Paid: ").Append(Paid).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
-            sb.Append("  CurrentCents: ").Append(CurrentCents).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  CurrentCents: ").Append(CurrentCents).Append("\n");
             sb.Append("  MyMaxCents: ").Append(MyMaxCents).Append("\n");
             sb.Append("  WinningCents: ").Append(WinningCents).Append("\n");
             sb.Append("}\n");
@@ -202,22 +202,12 @@ namespace net.crossly.buyer.Model
                     this.BidCount.Equals(input.BidCount)
                 ) && 
                 (
-                    this.Paid == input.Paid ||
-                    this.Paid.Equals(input.Paid)
-                ) && 
-                (
                     this.Leading == input.Leading ||
                     this.Leading.Equals(input.Leading)
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.EndsAt == input.EndsAt ||
-                    (this.EndsAt != null &&
-                    this.EndsAt.Equals(input.EndsAt))
+                    this.Paid == input.Paid ||
+                    this.Paid.Equals(input.Paid)
                 ) && 
                 (
                     this.Slug == input.Slug ||
@@ -225,14 +215,24 @@ namespace net.crossly.buyer.Model
                     this.Slug.Equals(input.Slug))
                 ) && 
                 (
-                    this.CurrentCents == input.CurrentCents ||
-                    (this.CurrentCents != null &&
-                    this.CurrentCents.Equals(input.CurrentCents))
-                ) && 
-                (
                     this.Thumbnail == input.Thumbnail ||
                     (this.Thumbnail != null &&
                     this.Thumbnail.Equals(input.Thumbnail))
+                ) && 
+                (
+                    this.EndsAt == input.EndsAt ||
+                    (this.EndsAt != null &&
+                    this.EndsAt.Equals(input.EndsAt))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.CurrentCents == input.CurrentCents ||
+                    (this.CurrentCents != null &&
+                    this.CurrentCents.Equals(input.CurrentCents))
                 ) && 
                 (
                     this.MyMaxCents == input.MyMaxCents ||
@@ -260,27 +260,27 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BidCount.GetHashCode();
-                hashCode = (hashCode * 59) + this.Paid.GetHashCode();
                 hashCode = (hashCode * 59) + this.Leading.GetHashCode();
-                if (this.Status != null)
+                hashCode = (hashCode * 59) + this.Paid.GetHashCode();
+                if (this.Slug != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Thumbnail != null)
+                {
+                    hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
                 }
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
-                if (this.Slug != null)
+                if (this.Status != null)
                 {
-                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 if (this.CurrentCents != null)
                 {
                     hashCode = (hashCode * 59) + this.CurrentCents.GetHashCode();
-                }
-                if (this.Thumbnail != null)
-                {
-                    hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
                 }
                 if (this.MyMaxCents != null)
                 {

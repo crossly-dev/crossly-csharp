@@ -39,11 +39,17 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListVaultMarketFollowFollowingItem" /> class.
         /// </summary>
+        /// <param name="person">person (required).</param>
         /// <param name="since">since.</param>
         /// <param name="shares">shares (required).</param>
         /// <param name="copyWatching">copyWatching (required).</param>
-        public ListVaultMarketFollowFollowingItem(string since = default(string), ListVaultMarketFollowFollowingItemShares shares = default(ListVaultMarketFollowFollowingItemShares), bool copyWatching = default(bool))
+        public ListVaultMarketFollowFollowingItem(ListVaultMarketFollowFollowingItemPerson person = default(ListVaultMarketFollowFollowingItemPerson), string since = default(string), ListVaultMarketFollowFollowingItemShares shares = default(ListVaultMarketFollowFollowingItemShares), bool copyWatching = default(bool))
         {
+            // to ensure "person" is required (not null)
+            if (person == null) {
+                throw new ArgumentNullException("person is a required property for ListVaultMarketFollowFollowingItem and cannot be null");
+            }
+            this.Person = person;
             // to ensure "shares" is required (not null)
             if (shares == null) {
                 throw new ArgumentNullException("shares is a required property for ListVaultMarketFollowFollowingItem and cannot be null");
@@ -52,6 +58,12 @@ namespace net.crossly.Model
             this.CopyWatching = copyWatching;
             this.Since = since;
         }
+
+        /// <summary>
+        /// Gets or Sets Person
+        /// </summary>
+        [DataMember(Name = "person", IsRequired = true, EmitDefaultValue = false)]
+        public ListVaultMarketFollowFollowingItemPerson Person { get; set; }
 
         /// <summary>
         /// Gets or Sets Since
@@ -79,6 +91,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListVaultMarketFollowFollowingItem {\n");
+            sb.Append("  Person: ").Append(Person).Append("\n");
             sb.Append("  Since: ").Append(Since).Append("\n");
             sb.Append("  Shares: ").Append(Shares).Append("\n");
             sb.Append("  CopyWatching: ").Append(CopyWatching).Append("\n");
@@ -118,6 +131,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Person == input.Person ||
+                    (this.Person != null &&
+                    this.Person.Equals(input.Person))
+                ) && 
+                (
                     this.Since == input.Since ||
                     (this.Since != null &&
                     this.Since.Equals(input.Since))
@@ -142,6 +160,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Person != null)
+                {
+                    hashCode = (hashCode * 59) + this.Person.GetHashCode();
+                }
                 if (this.Since != null)
                 {
                     hashCode = (hashCode * 59) + this.Since.GetHashCode();

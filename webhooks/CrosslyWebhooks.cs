@@ -21,14 +21,14 @@ namespace Crossly.Webhooks;
 ///   fail and the usual fix is to stop verifying. In ASP.NET Core enable
 ///   buffering and read the raw stream, or bind to <c>byte[]</c>.</item>
 ///   <item>Comparing with <c>==</c>. String equality returns early on the first
-///   differing char; <see cref="CryptographicOperations.FixedTimeEquals"/> does
-///   not.</item>
+///   differing char; the byte compare below does not.</item>
 ///   <item>Ignoring the timestamp. Without it a captured request replays
 ///   forever. The timestamp is INSIDE the signed message, so it cannot be
 ///   edited to look fresh.</item>
 /// </list>
 ///
-/// <para>No package references beyond the BCL. Returns the raw body rather than
+/// <para>Builds for netstandard2.0 and newer with C# 10 or later (file-scoped
+/// namespace, nullable annotations). No package references beyond the BCL. Returns the raw body rather than
 /// a deserialised object — this has no opinion about your event types, and
 /// picking one would make it un-droppable into half the projects that need
 /// it.</para>
@@ -82,8 +82,8 @@ public static class CrosslyWebhooks
             var eq = part.IndexOf('=');
             if (eq < 0) continue;
 
-            var key = part[..eq].Trim();
-            var value = part[(eq + 1)..].Trim();
+            var key = part.Substring(0, eq).Trim();
+            var value = part.Substring(eq + 1).Trim();
 
             if (key == "t")
             {
@@ -104,7 +104,7 @@ public static class CrosslyWebhooks
 
         if (!haveTimestamp || string.IsNullOrEmpty(provided))
         {
-            var preview = signatureHeader.Length > 60 ? signatureHeader[..60] : signatureHeader;
+            var preview = signatureHeader.Length > 60 ? signatureHeader.Substring(0, 60) : signatureHeader;
             throw new VerificationException(
                 "malformed_header",
                 $"Could not parse Crossly-Signature: expected \"t=<unix>,v1=<hex>\", got \"{preview}\".");
@@ -113,11 +113,10 @@ public static class CrosslyWebhooks
         var body = Encoding.UTF8.GetString(rawBody);
         var expected = HmacHex(secret, $"{timestamp}.{body}");
 
-        // FixedTimeEquals is the BCL's constant-time compare. It returns false
-        // on a length mismatch rather than throwing, which a truncated
-        // signature produces.
-        if (!CryptographicOperations.FixedTimeEquals(
-                Encoding.UTF8.GetBytes(expected), Encoding.UTF8.GetBytes(provided)))
+        // Constant-time: no early exit on the first differing byte. A length
+        // mismatch (a truncated signature) is rejected up front; the length of
+        // a hex SHA-256 is public anyway.
+        if (!FixedTimeEquals(Encoding.UTF8.GetBytes(expected), Encoding.UTF8.GetBytes(provided)))
         {
             throw new VerificationException(
                 "bad_signature",
@@ -142,8 +141,25 @@ public static class CrosslyWebhooks
 
     private static string HmacHex(string secret, string message)
     {
-        using var mac = new HMACSHA256(Encoding.UTF8.GetBytes(secret));
-        var digest = mac.ComputeHash(Encoding.UTF8.GetBytes(message));
-        return Convert.ToHexString(digest).ToLowerInvariant();
+        using (var mac = new HMACSHA256(Encoding.UTF8.GetBytes(secret)))
+        {
+            var digest = mac.ComputeHash(Encoding.UTF8.GetBytes(message));
+            var hex = new StringBuilder(digest.Length * 2);
+            foreach (var b in digest) hex.Append(b.ToString("x2", CultureInfo.InvariantCulture));
+            return hex.ToString();
+        }
+    }
+
+    // CryptographicOperations.FixedTimeEquals is .NET Core 2.1+; this file also
+    // builds for netstandard2.0 (.NET Framework 4.6.1+, Mono, Unity).
+    [System.Runtime.CompilerServices.MethodImpl(
+        System.Runtime.CompilerServices.MethodImplOptions.NoInlining
+        | System.Runtime.CompilerServices.MethodImplOptions.NoOptimization)]
+    private static bool FixedTimeEquals(byte[] a, byte[] b)
+    {
+        if (a.Length != b.Length) return false;
+        var diff = 0;
+        for (var i = 0; i < a.Length; i++) diff |= a[i] ^ b[i];
+        return diff == 0;
     }
 }

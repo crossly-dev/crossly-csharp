@@ -40,43 +40,43 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerPartiesItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="slug">slug (required).</param>
-        /// <param name="startsAt">startsAt (required).</param>
         /// <param name="theme">theme (required).</param>
-        public ListBuyerPartiesItem(string id = default(string), string status = default(string), string endsAt = default(string), string slug = default(string), string startsAt = default(string), string theme = default(string))
+        /// <param name="startsAt">startsAt (required).</param>
+        /// <param name="endsAt">endsAt (required).</param>
+        /// <param name="status">status (required).</param>
+        public ListBuyerPartiesItem(string id = default(string), string slug = default(string), string theme = default(string), string startsAt = default(string), string endsAt = default(string), string status = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerPartiesItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerPartiesItem and cannot be null");
-            }
-            this.Status = status;
-            // to ensure "endsAt" is required (not null)
-            if (endsAt == null) {
-                throw new ArgumentNullException("endsAt is a required property for ListBuyerPartiesItem and cannot be null");
-            }
-            this.EndsAt = endsAt;
             // to ensure "slug" is required (not null)
             if (slug == null) {
                 throw new ArgumentNullException("slug is a required property for ListBuyerPartiesItem and cannot be null");
             }
             this.Slug = slug;
-            // to ensure "startsAt" is required (not null)
-            if (startsAt == null) {
-                throw new ArgumentNullException("startsAt is a required property for ListBuyerPartiesItem and cannot be null");
-            }
-            this.StartsAt = startsAt;
             // to ensure "theme" is required (not null)
             if (theme == null) {
                 throw new ArgumentNullException("theme is a required property for ListBuyerPartiesItem and cannot be null");
             }
             this.Theme = theme;
+            // to ensure "startsAt" is required (not null)
+            if (startsAt == null) {
+                throw new ArgumentNullException("startsAt is a required property for ListBuyerPartiesItem and cannot be null");
+            }
+            this.StartsAt = startsAt;
+            // to ensure "endsAt" is required (not null)
+            if (endsAt == null) {
+                throw new ArgumentNullException("endsAt is a required property for ListBuyerPartiesItem and cannot be null");
+            }
+            this.EndsAt = endsAt;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerPartiesItem and cannot be null");
+            }
+            this.Status = status;
         }
 
         /// <summary>
@@ -86,22 +86,16 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EndsAt
-        /// </summary>
-        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
-        public string EndsAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Slug
         /// </summary>
         [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
         public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Theme
+        /// </summary>
+        [DataMember(Name = "theme", IsRequired = true, EmitDefaultValue = false)]
+        public string Theme { get; set; }
 
         /// <summary>
         /// Gets or Sets StartsAt
@@ -110,10 +104,16 @@ namespace net.crossly.buyer.Model
         public string StartsAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Theme
+        /// Gets or Sets EndsAt
         /// </summary>
-        [DataMember(Name = "theme", IsRequired = true, EmitDefaultValue = false)]
-        public string Theme { get; set; }
+        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
+        public string EndsAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,11 +124,11 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerPartiesItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
-            sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
             sb.Append("  Theme: ").Append(Theme).Append("\n");
+            sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,19 +170,14 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.EndsAt == input.EndsAt ||
-                    (this.EndsAt != null &&
-                    this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Theme == input.Theme ||
+                    (this.Theme != null &&
+                    this.Theme.Equals(input.Theme))
                 ) && 
                 (
                     this.StartsAt == input.StartsAt ||
@@ -190,9 +185,14 @@ namespace net.crossly.buyer.Model
                     this.StartsAt.Equals(input.StartsAt))
                 ) && 
                 (
-                    this.Theme == input.Theme ||
-                    (this.Theme != null &&
-                    this.Theme.Equals(input.Theme))
+                    this.EndsAt == input.EndsAt ||
+                    (this.EndsAt != null &&
+                    this.EndsAt.Equals(input.EndsAt))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -209,25 +209,25 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.EndsAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
-                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Theme != null)
+                {
+                    hashCode = (hashCode * 59) + this.Theme.GetHashCode();
                 }
                 if (this.StartsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartsAt.GetHashCode();
                 }
-                if (this.Theme != null)
+                if (this.EndsAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.Theme.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 return hashCode;
             }

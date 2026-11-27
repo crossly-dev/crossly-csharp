@@ -44,28 +44,28 @@ namespace net.crossly.buyer.Model
             None = 1,
 
             /// <summary>
-            /// Enum Confirm for value: confirm
-            /// </summary>
-            [EnumMember(Value = "confirm")]
-            Confirm = 2,
-
-            /// <summary>
             /// Enum Save for value: save
             /// </summary>
             [EnumMember(Value = "save")]
-            Save = 3,
+            Save = 2,
 
             /// <summary>
             /// Enum BuyCrossly for value: buy_crossly
             /// </summary>
             [EnumMember(Value = "buy_crossly")]
-            BuyCrossly = 4,
+            BuyCrossly = 3,
 
             /// <summary>
             /// Enum BuyOffsite for value: buy_offsite
             /// </summary>
             [EnumMember(Value = "buy_offsite")]
-            BuyOffsite = 5
+            BuyOffsite = 4,
+
+            /// <summary>
+            /// Enum Confirm for value: confirm
+            /// </summary>
+            [EnumMember(Value = "confirm")]
+            Confirm = 5
 
         }
 

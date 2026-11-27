@@ -39,18 +39,23 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSpatialSceneNodeResponseData" /> class.
         /// </summary>
+        /// <param name="transform">transform (required).</param>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="transform">transform (required).</param>
         /// <param name="label">label.</param>
         /// <param name="sort">sort (required).</param>
-        /// <param name="segment">segment.</param>
         /// <param name="sceneId">sceneId (required).</param>
         /// <param name="parentId">parentId.</param>
         /// <param name="unitKey">unitKey (required).</param>
-        public CreateSpatialSceneNodeResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), CreateSpatialSceneNodeResponseDataTransform transform = default(CreateSpatialSceneNodeResponseDataTransform), string label = default(string), decimal sort = default(decimal), string segment = default(string), string sceneId = default(string), string parentId = default(string), string unitKey = default(string))
+        /// <param name="segment">segment.</param>
+        public CreateSpatialSceneNodeResponseData(CreateSpatialSceneNodeResponseDataTransform transform = default(CreateSpatialSceneNodeResponseDataTransform), string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string label = default(string), decimal sort = default(decimal), string sceneId = default(string), string parentId = default(string), string unitKey = default(string), string segment = default(string))
         {
+            // to ensure "transform" is required (not null)
+            if (transform == null) {
+                throw new ArgumentNullException("transform is a required property for CreateSpatialSceneNodeResponseData and cannot be null");
+            }
+            this.Transform = transform;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for CreateSpatialSceneNodeResponseData and cannot be null");
@@ -58,11 +63,6 @@ namespace net.crossly.Model
             this.Id = id;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            // to ensure "transform" is required (not null)
-            if (transform == null) {
-                throw new ArgumentNullException("transform is a required property for CreateSpatialSceneNodeResponseData and cannot be null");
-            }
-            this.Transform = transform;
             this.Sort = sort;
             // to ensure "sceneId" is required (not null)
             if (sceneId == null) {
@@ -75,9 +75,15 @@ namespace net.crossly.Model
             }
             this.UnitKey = unitKey;
             this.Label = label;
-            this.Segment = segment;
             this.ParentId = parentId;
+            this.Segment = segment;
         }
+
+        /// <summary>
+        /// Gets or Sets Transform
+        /// </summary>
+        [DataMember(Name = "transform", IsRequired = true, EmitDefaultValue = false)]
+        public CreateSpatialSceneNodeResponseDataTransform Transform { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -98,12 +104,6 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Transform
-        /// </summary>
-        [DataMember(Name = "transform", IsRequired = true, EmitDefaultValue = false)]
-        public CreateSpatialSceneNodeResponseDataTransform Transform { get; set; }
-
-        /// <summary>
         /// Gets or Sets Label
         /// </summary>
         [DataMember(Name = "label", EmitDefaultValue = true)]
@@ -114,12 +114,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "sort", IsRequired = true, EmitDefaultValue = false)]
         public decimal Sort { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Segment
-        /// </summary>
-        [DataMember(Name = "segment", EmitDefaultValue = true)]
-        public string Segment { get; set; }
 
         /// <summary>
         /// Gets or Sets SceneId
@@ -140,6 +134,12 @@ namespace net.crossly.Model
         public string UnitKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets Segment
+        /// </summary>
+        [DataMember(Name = "segment", EmitDefaultValue = true)]
+        public string Segment { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,16 +147,16 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateSpatialSceneNodeResponseData {\n");
+            sb.Append("  Transform: ").Append(Transform).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Transform: ").Append(Transform).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Sort: ").Append(Sort).Append("\n");
-            sb.Append("  Segment: ").Append(Segment).Append("\n");
             sb.Append("  SceneId: ").Append(SceneId).Append("\n");
             sb.Append("  ParentId: ").Append(ParentId).Append("\n");
             sb.Append("  UnitKey: ").Append(UnitKey).Append("\n");
+            sb.Append("  Segment: ").Append(Segment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -193,6 +193,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Transform == input.Transform ||
+                    (this.Transform != null &&
+                    this.Transform.Equals(input.Transform))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -208,11 +213,6 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
-                    this.Transform == input.Transform ||
-                    (this.Transform != null &&
-                    this.Transform.Equals(input.Transform))
-                ) && 
-                (
                     this.Label == input.Label ||
                     (this.Label != null &&
                     this.Label.Equals(input.Label))
@@ -220,11 +220,6 @@ namespace net.crossly.Model
                 (
                     this.Sort == input.Sort ||
                     this.Sort.Equals(input.Sort)
-                ) && 
-                (
-                    this.Segment == input.Segment ||
-                    (this.Segment != null &&
-                    this.Segment.Equals(input.Segment))
                 ) && 
                 (
                     this.SceneId == input.SceneId ||
@@ -240,6 +235,11 @@ namespace net.crossly.Model
                     this.UnitKey == input.UnitKey ||
                     (this.UnitKey != null &&
                     this.UnitKey.Equals(input.UnitKey))
+                ) && 
+                (
+                    this.Segment == input.Segment ||
+                    (this.Segment != null &&
+                    this.Segment.Equals(input.Segment))
                 );
         }
 
@@ -252,6 +252,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Transform != null)
+                {
+                    hashCode = (hashCode * 59) + this.Transform.GetHashCode();
+                }
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -264,19 +268,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
-                if (this.Transform != null)
-                {
-                    hashCode = (hashCode * 59) + this.Transform.GetHashCode();
-                }
                 if (this.Label != null)
                 {
                     hashCode = (hashCode * 59) + this.Label.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Sort.GetHashCode();
-                if (this.Segment != null)
-                {
-                    hashCode = (hashCode * 59) + this.Segment.GetHashCode();
-                }
                 if (this.SceneId != null)
                 {
                     hashCode = (hashCode * 59) + this.SceneId.GetHashCode();
@@ -288,6 +284,10 @@ namespace net.crossly.Model
                 if (this.UnitKey != null)
                 {
                     hashCode = (hashCode * 59) + this.UnitKey.GetHashCode();
+                }
+                if (this.Segment != null)
+                {
+                    hashCode = (hashCode * 59) + this.Segment.GetHashCode();
                 }
                 return hashCode;
             }

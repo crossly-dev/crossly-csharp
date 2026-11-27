@@ -44,16 +44,16 @@ namespace net.crossly.buyer.Model
             Verified = 1,
 
             /// <summary>
-            /// Enum NotFound for value: not_found
-            /// </summary>
-            [EnumMember(Value = "not_found")]
-            NotFound = 2,
-
-            /// <summary>
             /// Enum Mismatch for value: mismatch
             /// </summary>
             [EnumMember(Value = "mismatch")]
-            Mismatch = 3,
+            Mismatch = 2,
+
+            /// <summary>
+            /// Enum NotFound for value: not_found
+            /// </summary>
+            [EnumMember(Value = "not_found")]
+            NotFound = 3,
 
             /// <summary>
             /// Enum Unchecked for value: unchecked

@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum EventEnum
         {
             /// <summary>
-            /// Enum Listing for value: listing
+            /// Enum Sale for value: sale
             /// </summary>
-            [EnumMember(Value = "listing")]
-            Listing = 1,
+            [EnumMember(Value = "sale")]
+            Sale = 1,
 
             /// <summary>
             /// Enum Offer for value: offer
@@ -50,10 +50,10 @@ namespace net.crossly.Model
             Offer = 2,
 
             /// <summary>
-            /// Enum Sale for value: sale
+            /// Enum Listing for value: listing
             /// </summary>
-            [EnumMember(Value = "sale")]
-            Sale = 3,
+            [EnumMember(Value = "listing")]
+            Listing = 3,
 
             /// <summary>
             /// Enum Cancel for value: cancel

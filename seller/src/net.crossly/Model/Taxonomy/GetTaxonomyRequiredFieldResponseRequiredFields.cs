@@ -75,11 +75,11 @@ namespace net.crossly.Model
         /// <param name="enumValues">enumValues.</param>
         /// <param name="label">label (required).</param>
         /// <param name="key">key (required).</param>
-        /// <param name="required">required (required).</param>
         /// <param name="hint">hint.</param>
+        /// <param name="required">required (required).</param>
         /// <param name="master">master (required).</param>
         /// <param name="selectionOnly">selectionOnly (required).</param>
-        public GetTaxonomyRequiredFieldResponseRequiredFields(DataTypeEnum dataType = default(DataTypeEnum), List<string> enumValues = default(List<string>), string label = default(string), string key = default(string), bool required = default(bool), string hint = default(string), bool master = default(bool), bool selectionOnly = default(bool))
+        public GetTaxonomyRequiredFieldResponseRequiredFields(DataTypeEnum dataType = default(DataTypeEnum), List<string> enumValues = default(List<string>), string label = default(string), string key = default(string), string hint = default(string), bool required = default(bool), bool master = default(bool), bool selectionOnly = default(bool))
         {
             this.DataType = dataType;
             // to ensure "label" is required (not null)
@@ -118,16 +118,16 @@ namespace net.crossly.Model
         public string Key { get; set; }
 
         /// <summary>
-        /// Gets or Sets Required
-        /// </summary>
-        [DataMember(Name = "required", IsRequired = true, EmitDefaultValue = true)]
-        public bool Required { get; set; }
-
-        /// <summary>
         /// Gets or Sets Hint
         /// </summary>
         [DataMember(Name = "hint", EmitDefaultValue = true)]
         public string Hint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Required
+        /// </summary>
+        [DataMember(Name = "required", IsRequired = true, EmitDefaultValue = true)]
+        public bool Required { get; set; }
 
         /// <summary>
         /// Gets or Sets Master
@@ -153,8 +153,8 @@ namespace net.crossly.Model
             sb.Append("  EnumValues: ").Append(EnumValues).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
-            sb.Append("  Required: ").Append(Required).Append("\n");
             sb.Append("  Hint: ").Append(Hint).Append("\n");
+            sb.Append("  Required: ").Append(Required).Append("\n");
             sb.Append("  Master: ").Append(Master).Append("\n");
             sb.Append("  SelectionOnly: ").Append(SelectionOnly).Append("\n");
             sb.Append("}\n");
@@ -213,13 +213,13 @@ namespace net.crossly.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
-                    this.Required == input.Required ||
-                    this.Required.Equals(input.Required)
-                ) && 
-                (
                     this.Hint == input.Hint ||
                     (this.Hint != null &&
                     this.Hint.Equals(input.Hint))
+                ) && 
+                (
+                    this.Required == input.Required ||
+                    this.Required.Equals(input.Required)
                 ) && 
                 (
                     this.Master == input.Master ||
@@ -253,11 +253,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Key.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Required.GetHashCode();
                 if (this.Hint != null)
                 {
                     hashCode = (hashCode * 59) + this.Hint.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Required.GetHashCode();
                 hashCode = (hashCode * 59) + this.Master.GetHashCode();
                 hashCode = (hashCode * 59) + this.SelectionOnly.GetHashCode();
                 return hashCode;

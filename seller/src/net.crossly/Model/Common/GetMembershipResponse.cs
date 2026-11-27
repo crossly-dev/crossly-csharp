@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum TierEnum
         {
             /// <summary>
-            /// Enum Classic for value: classic
-            /// </summary>
-            [EnumMember(Value = "classic")]
-            Classic = 1,
-
-            /// <summary>
             /// Enum Pro for value: pro
             /// </summary>
             [EnumMember(Value = "pro")]
-            Pro = 2
+            Pro = 1,
+
+            /// <summary>
+            /// Enum Classic for value: classic
+            /// </summary>
+            [EnumMember(Value = "classic")]
+            Classic = 2
 
         }
 
@@ -69,12 +69,14 @@ namespace net.crossly.Model
         /// <param name="active">active (required).</param>
         /// <param name="startedAt">startedAt.</param>
         /// <param name="endsAt">endsAt.</param>
-        public GetMembershipResponse(TierEnum? tier = default(TierEnum?), bool active = default(bool), DateTime? startedAt = default(DateTime?), DateTime? endsAt = default(DateTime?))
+        /// <param name="benefits">benefits.</param>
+        public GetMembershipResponse(TierEnum? tier = default(TierEnum?), bool active = default(bool), DateTime? startedAt = default(DateTime?), DateTime? endsAt = default(DateTime?), GetMembershipResponseBenefits benefits = default(GetMembershipResponseBenefits))
         {
             this.Active = active;
             this.Tier = tier;
             this.StartedAt = startedAt;
             this.EndsAt = endsAt;
+            this.Benefits = benefits;
         }
 
         /// <summary>
@@ -96,6 +98,12 @@ namespace net.crossly.Model
         public DateTime? EndsAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Benefits
+        /// </summary>
+        [DataMember(Name = "benefits", EmitDefaultValue = true)]
+        public GetMembershipResponseBenefits Benefits { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,6 +115,7 @@ namespace net.crossly.Model
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  Benefits: ").Append(Benefits).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,6 +168,11 @@ namespace net.crossly.Model
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
+                ) && 
+                (
+                    this.Benefits == input.Benefits ||
+                    (this.Benefits != null &&
+                    this.Benefits.Equals(input.Benefits))
                 );
         }
 
@@ -180,6 +194,10 @@ namespace net.crossly.Model
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
+                }
+                if (this.Benefits != null)
+                {
+                    hashCode = (hashCode * 59) + this.Benefits.GetHashCode();
                 }
                 return hashCode;
             }

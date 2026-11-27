@@ -107,6 +107,29 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetPatternResponse</returns>
         ApiResponse<GetPatternResponse> GetPatternWithHttpInfo();
         /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas.
+        /// </summary>
+        /// <remarks>
+        /// Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <returns>GetReferencePostalResponse</returns>
+        GetReferencePostalResponse GetReferencePostal(string country, string code);
+
+        /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas.
+        /// </summary>
+        /// <remarks>
+        /// Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <returns>ApiResponse of GetReferencePostalResponse</returns>
+        ApiResponse<GetReferencePostalResponse> GetReferencePostalWithHttpInfo(string country, string code);
+        /// <summary>
         /// Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -173,6 +196,29 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListReferenceCountriesResponse</returns>
         ApiResponse<ListReferenceCountriesResponse> ListReferenceCountriesWithHttpInfo();
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules.
+        /// </summary>
+        /// <remarks>
+        /// Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <returns>ListReferenceMetrosResponse</returns>
+        ListReferenceMetrosResponse ListReferenceMetros(string q, int? limit = default(int?));
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules.
+        /// </summary>
+        /// <remarks>
+        /// Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <returns>ApiResponse of ListReferenceMetrosResponse</returns>
+        ApiResponse<ListReferenceMetrosResponse> ListReferenceMetrosWithHttpInfo(string q, int? limit = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -288,6 +334,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetPatternResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetPatternResponse>> GetPatternWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas.
+        /// </summary>
+        /// <remarks>
+        /// Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetReferencePostalResponse</returns>
+        System.Threading.Tasks.Task<GetReferencePostalResponse> GetReferencePostalAsync(string country, string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas.
+        /// </summary>
+        /// <remarks>
+        /// Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetReferencePostalResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetReferencePostalResponse>> GetReferencePostalWithHttpInfoAsync(string country, string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
         /// </summary>
         /// <remarks>
@@ -371,6 +442,31 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListReferenceCountriesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListReferenceCountriesResponse>> ListReferenceCountriesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules.
+        /// </summary>
+        /// <remarks>
+        /// Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListReferenceMetrosResponse</returns>
+        System.Threading.Tasks.Task<ListReferenceMetrosResponse> ListReferenceMetrosAsync(string q, int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules.
+        /// </summary>
+        /// <remarks>
+        /// Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListReferenceMetrosResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListReferenceMetrosResponse>> ListReferenceMetrosWithHttpInfoAsync(string q, int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1132,6 +1228,170 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas. Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <returns>GetReferencePostalResponse</returns>
+        public GetReferencePostalResponse GetReferencePostal(string country, string code)
+        {
+            net.crossly.Client.ApiResponse<GetReferencePostalResponse> localVarResponse = GetReferencePostalWithHttpInfo(country, code);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas. Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <returns>ApiResponse of GetReferencePostalResponse</returns>
+        public net.crossly.Client.ApiResponse<GetReferencePostalResponse> GetReferencePostalWithHttpInfo(string country, string code)
+        {
+            // verify the required parameter 'country' is set
+            if (country == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'country' when calling ReferenceApi->GetReferencePostal");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'code' when calling ReferenceApi->GetReferencePostal");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("country", net.crossly.Client.ClientUtils.ParameterToString(country)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", net.crossly.Client.ClientUtils.ParameterToString(code)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetReferencePostalResponse>("/v1/reference/postal/{country}/{code}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetReferencePostal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas. Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetReferencePostalResponse</returns>
+        public async System.Threading.Tasks.Task<GetReferencePostalResponse> GetReferencePostalAsync(string country, string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetReferencePostalResponse> localVarResponse = await GetReferencePostalWithHttpInfoAsync(country, code, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Look up a postal code: canonical shape, state and US metro areas. Every country gets its canonical shape and &#x60;valid&#x60;. A US ZIP (territories normalize to country US with &#x60;territory&#x60;) also gets state, county FIPS and CBSA/CSA. &#x60;metroStatus&#x60; is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="country"></param>
+        /// <param name="code"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetReferencePostalResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetReferencePostalResponse>> GetReferencePostalWithHttpInfoAsync(string country, string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'country' is set
+            if (country == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'country' when calling ReferenceApi->GetReferencePostal");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'code' when calling ReferenceApi->GetReferencePostal");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("country", net.crossly.Client.ClientUtils.ParameterToString(country)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", net.crossly.Client.ClientUtils.ParameterToString(code)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetReferencePostalResponse>("/v1/reference/postal/{country}/{code}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetReferencePostal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1634,6 +1894,164 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListReferenceCountries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules. Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <returns>ListReferenceMetrosResponse</returns>
+        public ListReferenceMetrosResponse ListReferenceMetros(string q, int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListReferenceMetrosResponse> localVarResponse = ListReferenceMetrosWithHttpInfo(q, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules. Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <returns>ApiResponse of ListReferenceMetrosResponse</returns>
+        public net.crossly.Client.ApiResponse<ListReferenceMetrosResponse> ListReferenceMetrosWithHttpInfo(string q, int? limit = default(int?))
+        {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling ReferenceApi->ListReferenceMetros");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListReferenceMetrosResponse>("/v1/reference/metros", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListReferenceMetros", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules. Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListReferenceMetrosResponse</returns>
+        public async System.Threading.Tasks.Task<ListReferenceMetrosResponse> ListReferenceMetrosAsync(string q, int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListReferenceMetrosResponse> localVarResponse = await ListReferenceMetrosWithHttpInfoAsync(q, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Search US metro areas (CSA / CBSA) for location rules. Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. &#x60;q&#x60; needs 2+ characters. &#x60;meta.datasetAvailable&#x60; is false when the census dataset is not loaded, in which case no metro rule can match.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
+        /// <param name="limit"> (optional, default to 20)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListReferenceMetrosResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListReferenceMetrosResponse>> ListReferenceMetrosWithHttpInfoAsync(string q, int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling ReferenceApi->ListReferenceMetros");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListReferenceMetrosResponse>("/v1/reference/metros", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListReferenceMetros", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

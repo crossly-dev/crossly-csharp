@@ -27,6 +27,76 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>AnalyticExperimentResponse</returns>
+        AnalyticExperimentResponse CreateAnalyticExperiment();
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentWithHttpInfo();
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        AnalyticExperimentResponse CreateAnalyticExperimentDeclare(string id);
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentDeclareWithHttpInfo(string id);
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        AnalyticExperimentResponse CreateAnalyticExperimentStop(string id);
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentStopWithHttpInfo(string id);
+        /// <summary>
+        /// Delete an experiment. The listings are untouched.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>DeleteStoryResponse</returns>
+        DeleteStoryResponse DeleteAnalyticExperiment(string id);
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        ApiResponse<DeleteStoryResponse> DeleteAnalyticExperimentWithHttpInfo(string id);
+        /// <summary>
         /// Monthly P&amp;L + per-platform breakdown for a calendar year.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -43,21 +113,49 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAnalyticBookkeepingResponse</returns>
         ApiResponse<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingWithHttpInfo();
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days.
+        /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>GetAnalyticByPlatformResponse</returns>
-        GetAnalyticByPlatformResponse GetAnalyticByPlatform();
+        GetAnalyticByPlatformResponse GetAnalyticByPlatform(int? days = default(int?), string tz = default(string));
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days.
+        /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticByPlatformResponse</returns>
-        ApiResponse<GetAnalyticByPlatformResponse> GetAnalyticByPlatformWithHttpInfo();
+        ApiResponse<GetAnalyticByPlatformResponse> GetAnalyticByPlatformWithHttpInfo(int? days = default(int?), string tz = default(string));
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <returns>GetAnalyticCompareResponse</returns>
+        GetAnalyticCompareResponse GetAnalyticCompare(string ids, string align = default(string), string platform = default(string), string tz = default(string));
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticCompareResponse</returns>
+        ApiResponse<GetAnalyticCompareResponse> GetAnalyticCompareWithHttpInfo(string ids, string align = default(string), string platform = default(string), string tz = default(string));
         /// <summary>
         /// Composite dashboard: KPIs + breakdowns + recent activity.
         /// </summary>
@@ -75,6 +173,86 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAnalyticDashboardResponse</returns>
         ApiResponse<GetAnalyticDashboardResponse> GetAnalyticDashboardWithHttpInfo();
         /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <returns>GetAnalyticExperimentResponse</returns>
+        GetAnalyticExperimentResponse GetAnalyticExperiment(string status = default(string), int? page = default(int?), int? size = default(int?));
+
+        /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticExperimentResponse</returns>
+        ApiResponse<GetAnalyticExperimentResponse> GetAnalyticExperimentWithHttpInfo(string status = default(string), int? page = default(int?), int? size = default(int?));
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <returns>GetAnalyticExperimentByIdResponse</returns>
+        GetAnalyticExperimentByIdResponse GetAnalyticExperimentById(string id);
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <returns>ApiResponse of GetAnalyticExperimentByIdResponse</returns>
+        ApiResponse<GetAnalyticExperimentByIdResponse> GetAnalyticExperimentByIdWithHttpInfo(string id);
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>GetAnalyticInventoryResponse</returns>
+        GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
+        ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
+        /// <summary>
         /// Per-item P&amp;L for sold inventory.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -91,39 +269,357 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAnalyticItemResponse</returns>
         ApiResponse<GetAnalyticItemResponse> GetAnalyticItemWithHttpInfo();
         /// <summary>
-        /// Headline KPIs for the last N days.
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <returns>GetAnalyticItemByListingIdResponse</returns>
+        GetAnalyticItemByListingIdResponse GetAnalyticItemByListingId(string listingId, string by = default(string), string tz = default(string));
+
+        /// <summary>
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticItemByListingIdResponse</returns>
+        ApiResponse<GetAnalyticItemByListingIdResponse> GetAnalyticItemByListingIdWithHttpInfo(string listingId, string by = default(string), string tz = default(string));
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <returns>GetAnalyticMarketplaceResponse</returns>
+        GetAnalyticMarketplaceResponse GetAnalyticMarketplace(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string));
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticMarketplaceResponse</returns>
+        ApiResponse<GetAnalyticMarketplaceResponse> GetAnalyticMarketplaceWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string));
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>GetAnalyticMarketplaceByPlatformResponse</returns>
+        GetAnalyticMarketplaceByPlatformResponse GetAnalyticMarketplaceByPlatform(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string));
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticMarketplaceByPlatformResponse</returns>
+        ApiResponse<GetAnalyticMarketplaceByPlatformResponse> GetAnalyticMarketplaceByPlatformWithHttpInfo(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string));
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <returns>GetAnalyticOverviewResponse</returns>
+        GetAnalyticOverviewResponse GetAnalyticOverview(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string));
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticOverviewResponse</returns>
+        ApiResponse<GetAnalyticOverviewResponse> GetAnalyticOverviewWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string));
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <returns>GetAnalyticPerformanceResponse</returns>
+        GetAnalyticPerformanceResponse GetAnalyticPerformance(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?));
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticPerformanceResponse</returns>
+        ApiResponse<GetAnalyticPerformanceResponse> GetAnalyticPerformanceWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?));
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <returns>GetAnalyticProgramResponse</returns>
+        GetAnalyticProgramResponse GetAnalyticProgram(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string));
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticProgramResponse</returns>
+        ApiResponse<GetAnalyticProgramResponse> GetAnalyticProgramWithHttpInfo(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string));
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <returns>GetAnalyticSegmentResponse</returns>
+        GetAnalyticSegmentResponse GetAnalyticSegment(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string));
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticSegmentResponse</returns>
+        ApiResponse<GetAnalyticSegmentResponse> GetAnalyticSegmentWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string));
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>GetAnalyticSegmentByKeyResponse</returns>
+        GetAnalyticSegmentByKeyResponse GetAnalyticSegmentByKey(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string));
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticSegmentByKeyResponse</returns>
+        ApiResponse<GetAnalyticSegmentByKeyResponse> GetAnalyticSegmentByKeyWithHttpInfo(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string));
+        /// <summary>
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>GetAnalyticSummaryResponse</returns>
-        GetAnalyticSummaryResponse GetAnalyticSummary(int? days = default(int?));
+        GetAnalyticSummaryResponse GetAnalyticSummary(int? days = default(int?), string tz = default(string));
 
         /// <summary>
-        /// Headline KPIs for the last N days.
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticSummaryResponse</returns>
-        ApiResponse<GetAnalyticSummaryResponse> GetAnalyticSummaryWithHttpInfo(int? days = default(int?));
+        ApiResponse<GetAnalyticSummaryResponse> GetAnalyticSummaryWithHttpInfo(int? days = default(int?), string tz = default(string));
         /// <summary>
-        /// Daily sales + revenue series for the last N days.
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>GetAnalyticTimeseryResponse</returns>
-        GetAnalyticTimeseryResponse GetAnalyticTimesery();
+        GetAnalyticTimeseryResponse GetAnalyticTimesery(int? days = default(int?), string tz = default(string));
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days.
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticTimeseryResponse</returns>
-        ApiResponse<GetAnalyticTimeseryResponse> GetAnalyticTimeseryWithHttpInfo();
+        ApiResponse<GetAnalyticTimeseryResponse> GetAnalyticTimeseryWithHttpInfo(int? days = default(int?), string tz = default(string));
         /// <summary>
         /// Today&#39;s checklist + 14-day activity streak.
         /// </summary>
@@ -141,21 +637,41 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAnalyticTodayResponse</returns>
         ApiResponse<GetAnalyticTodayResponse> GetAnalyticTodayWithHttpInfo();
         /// <summary>
-        /// Platform velocity + margin insight (90-day window).
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ListInsightByPlatformResponse</returns>
-        ListInsightByPlatformResponse ListInsightByPlatform();
+        ListInsightByPlatformResponse ListInsightByPlatform(string tz = default(string));
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window).
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of ListInsightByPlatformResponse</returns>
-        ApiResponse<ListInsightByPlatformResponse> ListInsightByPlatformWithHttpInfo();
+        ApiResponse<ListInsightByPlatformResponse> ListInsightByPlatformWithHttpInfo(string tz = default(string));
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        AnalyticExperimentResponse UpdateAnalyticExperiment(string id);
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        ApiResponse<AnalyticExperimentResponse> UpdateAnalyticExperimentWithHttpInfo(string id);
         #endregion Synchronous Operations
     }
 
@@ -165,6 +681,96 @@ namespace net.crossly.Api
     public interface IAnalyticsApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentDeclareAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentDeclareWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentStopAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentStopWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Delete an experiment. The listings are untouched.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteStoryResponse</returns>
+        System.Threading.Tasks.Task<DeleteStoryResponse> DeleteAnalyticExperimentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteStoryResponse>> DeleteAnalyticExperimentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Monthly P&amp;L + per-platform breakdown for a calendar year.
         /// </summary>
@@ -187,26 +793,59 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAnalyticBookkeepingResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAnalyticBookkeepingResponse>> GetAnalyticBookkeepingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days.
+        /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticByPlatformResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticByPlatformResponse> GetAnalyticByPlatformAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticByPlatformResponse> GetAnalyticByPlatformAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days.
+        /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticByPlatformResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticByPlatformResponse>> GetAnalyticByPlatformWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticByPlatformResponse>> GetAnalyticByPlatformWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticCompareResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticCompareResponse> GetAnalyticCompareAsync(string ids, string align = default(string), string platform = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticCompareResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticCompareResponse>> GetAnalyticCompareWithHttpInfoAsync(string ids, string align = default(string), string platform = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Composite dashboard: KPIs + breakdowns + recent activity.
         /// </summary>
@@ -229,6 +868,101 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAnalyticDashboardResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAnalyticDashboardResponse>> GetAnalyticDashboardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticExperimentResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticExperimentResponse> GetAnalyticExperimentAsync(string status = default(string), int? page = default(int?), int? size = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticExperimentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticExperimentResponse>> GetAnalyticExperimentWithHttpInfoAsync(string status = default(string), int? page = default(int?), int? size = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticExperimentByIdResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticExperimentByIdResponse> GetAnalyticExperimentByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticExperimentByIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticExperimentByIdResponse>> GetAnalyticExperimentByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticInventoryResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Per-item P&amp;L for sold inventory.
         /// </summary>
         /// <remarks>
@@ -250,49 +984,407 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAnalyticItemResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAnalyticItemResponse>> GetAnalyticItemWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Headline KPIs for the last N days.
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticItemByListingIdResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticItemByListingIdResponse> GetAnalyticItemByListingIdAsync(string listingId, string by = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticItemByListingIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticItemByListingIdResponse>> GetAnalyticItemByListingIdWithHttpInfoAsync(string listingId, string by = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticMarketplaceResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticMarketplaceResponse> GetAnalyticMarketplaceAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticMarketplaceResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticMarketplaceResponse>> GetAnalyticMarketplaceWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticMarketplaceByPlatformResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticMarketplaceByPlatformResponse> GetAnalyticMarketplaceByPlatformAsync(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticMarketplaceByPlatformResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticMarketplaceByPlatformResponse>> GetAnalyticMarketplaceByPlatformWithHttpInfoAsync(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticOverviewResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticOverviewResponse> GetAnalyticOverviewAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticOverviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticOverviewResponse>> GetAnalyticOverviewWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticPerformanceResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticPerformanceResponse> GetAnalyticPerformanceAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticPerformanceResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticPerformanceResponse>> GetAnalyticPerformanceWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticProgramResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticProgramResponse> GetAnalyticProgramAsync(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticProgramResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticProgramResponse>> GetAnalyticProgramWithHttpInfoAsync(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticSegmentResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticSegmentResponse> GetAnalyticSegmentAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticSegmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticSegmentResponse>> GetAnalyticSegmentWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticSegmentByKeyResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticSegmentByKeyResponse> GetAnalyticSegmentByKeyAsync(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticSegmentByKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticSegmentByKeyResponse>> GetAnalyticSegmentByKeyWithHttpInfoAsync(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticSummaryResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticSummaryResponse> GetAnalyticSummaryAsync(int? days = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticSummaryResponse> GetAnalyticSummaryAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Headline KPIs for the last N days.
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticSummaryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticSummaryResponse>> GetAnalyticSummaryWithHttpInfoAsync(int? days = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticSummaryResponse>> GetAnalyticSummaryWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Daily sales + revenue series for the last N days.
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticTimeseryResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticTimeseryResponse> GetAnalyticTimeseryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticTimeseryResponse> GetAnalyticTimeseryAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days.
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticTimeseryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticTimeseryResponse>> GetAnalyticTimeseryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticTimeseryResponse>> GetAnalyticTimeseryWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Today&#39;s checklist + 14-day activity streak.
         /// </summary>
@@ -315,26 +1407,51 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAnalyticTodayResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAnalyticTodayResponse>> GetAnalyticTodayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Platform velocity + margin insight (90-day window).
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInsightByPlatformResponse</returns>
-        System.Threading.Tasks.Task<ListInsightByPlatformResponse> ListInsightByPlatformAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListInsightByPlatformResponse> ListInsightByPlatformAsync(string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window).
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInsightByPlatformResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInsightByPlatformResponse>> ListInsightByPlatformWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListInsightByPlatformResponse>> ListInsightByPlatformWithHttpInfoAsync(string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        System.Threading.Tasks.Task<AnalyticExperimentResponse> UpdateAnalyticExperimentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AnalyticExperimentResponse>> UpdateAnalyticExperimentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -453,6 +1570,572 @@ namespace net.crossly.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>AnalyticExperimentResponse</returns>
+        public AnalyticExperimentResponse CreateAnalyticExperiment()
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = CreateAnalyticExperimentWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        public net.crossly.Client.ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AnalyticExperimentResponse>("/v1/analytics/experiments", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        public async System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = await CreateAnalyticExperimentWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AnalyticExperimentResponse>("/v1/analytics/experiments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        public AnalyticExperimentResponse CreateAnalyticExperimentDeclare(string id)
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = CreateAnalyticExperimentDeclareWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        public net.crossly.Client.ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentDeclareWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->CreateAnalyticExperimentDeclare");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}/declare", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperimentDeclare", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        public async System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentDeclareAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = await CreateAnalyticExperimentDeclareWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentDeclareWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->CreateAnalyticExperimentDeclare");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}/declare", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperimentDeclare", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        public AnalyticExperimentResponse CreateAnalyticExperimentStop(string id)
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = CreateAnalyticExperimentStopWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        public net.crossly.Client.ApiResponse<AnalyticExperimentResponse> CreateAnalyticExperimentStopWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->CreateAnalyticExperimentStop");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}/stop", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperimentStop", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        public async System.Threading.Tasks.Task<AnalyticExperimentResponse> CreateAnalyticExperimentStopAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = await CreateAnalyticExperimentStopWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop an experiment: no more data is counted after now. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<AnalyticExperimentResponse>> CreateAnalyticExperimentStopWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->CreateAnalyticExperimentStop");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}/stop", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAnalyticExperimentStop", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>DeleteStoryResponse</returns>
+        public DeleteStoryResponse DeleteAnalyticExperiment(string id)
+        {
+            net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = DeleteAnalyticExperimentWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteStoryResponse> DeleteAnalyticExperimentWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->DeleteAnalyticExperiment");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeleteStoryResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteStoryResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteStoryResponse> DeleteAnalyticExperimentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = await DeleteAnalyticExperimentWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete an experiment. The listings are untouched. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteStoryResponse>> DeleteAnalyticExperimentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->DeleteAnalyticExperiment");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteStoryResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -584,22 +2267,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days. 
+        /// Sales, net sales, fees and net profit by platform for the last N days. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>GetAnalyticByPlatformResponse</returns>
-        public GetAnalyticByPlatformResponse GetAnalyticByPlatform()
+        public GetAnalyticByPlatformResponse GetAnalyticByPlatform(int? days = default(int?), string tz = default(string))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> localVarResponse = GetAnalyticByPlatformWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> localVarResponse = GetAnalyticByPlatformWithHttpInfo(days, tz);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days. 
+        /// Sales, net sales, fees and net profit by platform for the last N days. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticByPlatformResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> GetAnalyticByPlatformWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> GetAnalyticByPlatformWithHttpInfo(int? days = default(int?), string tz = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -623,6 +2310,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -646,24 +2341,28 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days. 
+        /// Sales, net sales, fees and net profit by platform for the last N days. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticByPlatformResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticByPlatformResponse> GetAnalyticByPlatformAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticByPlatformResponse> GetAnalyticByPlatformAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> localVarResponse = await GetAnalyticByPlatformWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse> localVarResponse = await GetAnalyticByPlatformWithHttpInfoAsync(days, tz, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Sales + revenue grouped by platform for the last N days. 
+        /// Sales, net sales, fees and net profit by platform for the last N days. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticByPlatformResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse>> GetAnalyticByPlatformWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticByPlatformResponse>> GetAnalyticByPlatformWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -688,6 +2387,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -702,6 +2409,188 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAnalyticByPlatform", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <returns>GetAnalyticCompareResponse</returns>
+        public GetAnalyticCompareResponse GetAnalyticCompare(string ids, string align = default(string), string platform = default(string), string tz = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticCompareResponse> localVarResponse = GetAnalyticCompareWithHttpInfo(ids, align, platform, tz);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticCompareResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticCompareResponse> GetAnalyticCompareWithHttpInfo(string ids, string align = default(string), string platform = default(string), string tz = default(string))
+        {
+            // verify the required parameter 'ids' is set
+            if (ids == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'ids' when calling AnalyticsApi->GetAnalyticCompare");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            if (align != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "align", align));
+            }
+            if (platform != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticCompareResponse>("/v1/analytics/compare", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticCompare", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticCompareResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticCompareResponse> GetAnalyticCompareAsync(string ids, string align = default(string), string platform = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticCompareResponse> localVarResponse = await GetAnalyticCompareWithHttpInfoAsync(ids, align, platform, tz, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ids">Comma-separated listing ids, 2 to 4. The first is arm A.</param>
+        /// <param name="align">age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)</param>
+        /// <param name="platform">Restrict engagement to one channel (platform id). (optional)</param>
+        /// <param name="tz">IANA time zone. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticCompareResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticCompareResponse>> GetAnalyticCompareWithHttpInfoAsync(string ids, string align = default(string), string platform = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'ids' is set
+            if (ids == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'ids' when calling AnalyticsApi->GetAnalyticCompare");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            if (align != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "align", align));
+            }
+            if (platform != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticCompareResponse>("/v1/analytics/compare", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticCompare", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -840,6 +2729,588 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <returns>GetAnalyticExperimentResponse</returns>
+        public GetAnalyticExperimentResponse GetAnalyticExperiment(string status = default(string), int? page = default(int?), int? size = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticExperimentResponse> localVarResponse = GetAnalyticExperimentWithHttpInfo(status, page, size);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticExperimentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticExperimentResponse> GetAnalyticExperimentWithHttpInfo(string status = default(string), int? page = default(int?), int? size = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (size != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticExperimentResponse>("/v1/analytics/experiments", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticExperimentResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticExperimentResponse> GetAnalyticExperimentAsync(string status = default(string), int? page = default(int?), int? size = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticExperimentResponse> localVarResponse = await GetAnalyticExperimentWithHttpInfoAsync(status, page, size, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your listing A/B experiments, newest first, with status, days running and the current verdict. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status">Default all. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 20. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticExperimentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticExperimentResponse>> GetAnalyticExperimentWithHttpInfoAsync(string status = default(string), int? page = default(int?), int? size = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (size != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticExperimentResponse>("/v1/analytics/experiments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <returns>GetAnalyticExperimentByIdResponse</returns>
+        public GetAnalyticExperimentByIdResponse GetAnalyticExperimentById(string id)
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticExperimentByIdResponse> localVarResponse = GetAnalyticExperimentByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <returns>ApiResponse of GetAnalyticExperimentByIdResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticExperimentByIdResponse> GetAnalyticExperimentByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->GetAnalyticExperimentById");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticExperimentByIdResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticExperimentById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticExperimentByIdResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticExperimentByIdResponse> GetAnalyticExperimentByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticExperimentByIdResponse> localVarResponse = await GetAnalyticExperimentByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticExperimentByIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticExperimentByIdResponse>> GetAnalyticExperimentByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->GetAnalyticExperimentById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticExperimentByIdResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticExperimentById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>GetAnalyticInventoryResponse</returns>
+        public GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = GetAnalyticInventoryWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (maturity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticInventoryResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = await GetAnalyticInventoryWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (maturity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Per-item P&amp;L for sold inventory. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -968,24 +3439,2184 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Headline KPIs for the last N days. 
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
-        /// <returns>GetAnalyticSummaryResponse</returns>
-        public GetAnalyticSummaryResponse GetAnalyticSummary(int? days = default(int?))
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <returns>GetAnalyticItemByListingIdResponse</returns>
+        public GetAnalyticItemByListingIdResponse GetAnalyticItemByListingId(string listingId, string by = default(string), string tz = default(string))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> localVarResponse = GetAnalyticSummaryWithHttpInfo(days);
+            net.crossly.Client.ApiResponse<GetAnalyticItemByListingIdResponse> localVarResponse = GetAnalyticItemByListingIdWithHttpInfo(listingId, by, tz);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Headline KPIs for the last N days. 
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticItemByListingIdResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticItemByListingIdResponse> GetAnalyticItemByListingIdWithHttpInfo(string listingId, string by = default(string), string tz = default(string))
+        {
+            // verify the required parameter 'listingId' is set
+            if (listingId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'listingId' when calling AnalyticsApi->GetAnalyticItemByListingId");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            if (by != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "by", by));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticItemByListingIdResponse>("/v1/analytics/items/{listingId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticItemByListingId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticItemByListingIdResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticItemByListingIdResponse> GetAnalyticItemByListingIdAsync(string listingId, string by = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticItemByListingIdResponse> localVarResponse = await GetAnalyticItemByListingIdWithHttpInfoAsync(listingId, by, tz, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listingId">A listings.id you own (or an inventory item id with by&#x3D;inventory).</param>
+        /// <param name="by">inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticItemByListingIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticItemByListingIdResponse>> GetAnalyticItemByListingIdWithHttpInfoAsync(string listingId, string by = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'listingId' is set
+            if (listingId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'listingId' when calling AnalyticsApi->GetAnalyticItemByListingId");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            if (by != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "by", by));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticItemByListingIdResponse>("/v1/analytics/items/{listingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticItemByListingId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <returns>GetAnalyticMarketplaceResponse</returns>
+        public GetAnalyticMarketplaceResponse GetAnalyticMarketplace(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticMarketplaceResponse> localVarResponse = GetAnalyticMarketplaceWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticMarketplaceResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticMarketplaceResponse> GetAnalyticMarketplaceWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (vs != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "vs", vs));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticMarketplaceResponse>("/v1/analytics/marketplaces", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticMarketplace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticMarketplaceResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticMarketplaceResponse> GetAnalyticMarketplaceAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticMarketplaceResponse> localVarResponse = await GetAnalyticMarketplaceWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, vs, sort, dir, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="vs">Comma-separated 2-3 platform ids for the head-to-head. (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticMarketplaceResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticMarketplaceResponse>> GetAnalyticMarketplaceWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string vs = default(string), string sort = default(string), string dir = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (vs != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "vs", vs));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticMarketplaceResponse>("/v1/analytics/marketplaces", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticMarketplace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>GetAnalyticMarketplaceByPlatformResponse</returns>
+        public GetAnalyticMarketplaceByPlatformResponse GetAnalyticMarketplaceByPlatform(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticMarketplaceByPlatformResponse> localVarResponse = GetAnalyticMarketplaceByPlatformWithHttpInfo(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticMarketplaceByPlatformResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticMarketplaceByPlatformResponse> GetAnalyticMarketplaceByPlatformWithHttpInfo(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string))
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AnalyticsApi->GetAnalyticMarketplaceByPlatform");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticMarketplaceByPlatformResponse>("/v1/analytics/marketplaces/{platform}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticMarketplaceByPlatform", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticMarketplaceByPlatformResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticMarketplaceByPlatformResponse> GetAnalyticMarketplaceByPlatformAsync(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticMarketplaceByPlatformResponse> localVarResponse = await GetAnalyticMarketplaceByPlatformWithHttpInfoAsync(platform, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform">A platform id, e.g. ebay, poshmark.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticMarketplaceByPlatformResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticMarketplaceByPlatformResponse>> GetAnalyticMarketplaceByPlatformWithHttpInfoAsync(string platform, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AnalyticsApi->GetAnalyticMarketplaceByPlatform");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticMarketplaceByPlatformResponse>("/v1/analytics/marketplaces/{platform}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticMarketplaceByPlatform", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <returns>GetAnalyticOverviewResponse</returns>
+        public GetAnalyticOverviewResponse GetAnalyticOverview(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticOverviewResponse> localVarResponse = GetAnalyticOverviewWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticOverviewResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticOverviewResponse> GetAnalyticOverviewWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (stores != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "stores", stores));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticOverviewResponse>("/v1/analytics/overview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticOverview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticOverviewResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticOverviewResponse> GetAnalyticOverviewAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticOverviewResponse> localVarResponse = await GetAnalyticOverviewWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, stores, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="stores">Comma-separated store ids. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticOverviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticOverviewResponse>> GetAnalyticOverviewWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string stores = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (stores != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "stores", stores));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticOverviewResponse>("/v1/analytics/overview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticOverview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <returns>GetAnalyticPerformanceResponse</returns>
+        public GetAnalyticPerformanceResponse GetAnalyticPerformance(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticPerformanceResponse> localVarResponse = GetAnalyticPerformanceWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticPerformanceResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticPerformanceResponse> GetAnalyticPerformanceWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (size != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+            }
+            if (minDays != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minDays", minDays));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticPerformanceResponse>("/v1/analytics/performance", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticPerformance", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticPerformanceResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticPerformanceResponse> GetAnalyticPerformanceAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticPerformanceResponse> localVarResponse = await GetAnalyticPerformanceWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, status, q, sort, dir, page, size, minDays, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="status">unsold &#x3D; listed at least minDays with no completed sale. (optional)</param>
+        /// <param name="q">Title, SKU or brand contains. (optional)</param>
+        /// <param name="sort">Default lastActivity. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="page">1-indexed page. Default 1. (optional)</param>
+        /// <param name="size">Rows per page. Default 50. (optional)</param>
+        /// <param name="minDays">Minimum days listed (for status&#x3D;unsold). Default 0. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticPerformanceResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticPerformanceResponse>> GetAnalyticPerformanceWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string status = default(string), string q = default(string), string sort = default(string), string dir = default(string), int? page = default(int?), int? size = default(int?), int? minDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (size != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+            }
+            if (minDays != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minDays", minDays));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticPerformanceResponse>("/v1/analytics/performance", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticPerformance", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <returns>GetAnalyticProgramResponse</returns>
+        public GetAnalyticProgramResponse GetAnalyticProgram(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticProgramResponse> localVarResponse = GetAnalyticProgramWithHttpInfo(program, from, to, by);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticProgramResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticProgramResponse> GetAnalyticProgramWithHttpInfo(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string))
+        {
+            // verify the required parameter 'program' is set
+            if (program == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'program' when calling AnalyticsApi->GetAnalyticProgram");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("program", net.crossly.Client.ClientUtils.ParameterToString(program)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (by != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "by", by));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticProgramResponse>("/v1/analytics/programs/{program}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticProgram", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticProgramResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticProgramResponse> GetAnalyticProgramAsync(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticProgramResponse> localVarResponse = await GetAnalyticProgramWithHttpInfoAsync(program, from, to, by, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="program"></param>
+        /// <param name="from">First UTC day (YYYY-MM-DD), inclusive. (optional)</param>
+        /// <param name="to">Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)</param>
+        /// <param name="by">Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticProgramResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticProgramResponse>> GetAnalyticProgramWithHttpInfoAsync(string program, DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string by = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'program' is set
+            if (program == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'program' when calling AnalyticsApi->GetAnalyticProgram");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("program", net.crossly.Client.ClientUtils.ParameterToString(program)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (by != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "by", by));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticProgramResponse>("/v1/analytics/programs/{program}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticProgram", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <returns>GetAnalyticSegmentResponse</returns>
+        public GetAnalyticSegmentResponse GetAnalyticSegment(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticSegmentResponse> localVarResponse = GetAnalyticSegmentWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticSegmentResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticSegmentResponse> GetAnalyticSegmentWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (dim != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dim", dim));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+            if (minN != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minN", minN));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticSegmentResponse>("/v1/analytics/segments", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticSegment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticSegmentResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticSegmentResponse> GetAnalyticSegmentAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticSegmentResponse> localVarResponse = await GetAnalyticSegmentWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, dim, sort, dir, minN, q, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="dim">category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)</param>
+        /// <param name="sort">Default netSales. (optional)</param>
+        /// <param name="dir">Default desc. (optional)</param>
+        /// <param name="minN">Minimum sample for a row to count as a winner or loser. Default 3. (optional)</param>
+        /// <param name="q">Segment label contains. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticSegmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticSegmentResponse>> GetAnalyticSegmentWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), string dim = default(string), string sort = default(string), string dir = default(string), int? minN = default(int?), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (dim != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dim", dim));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (dir != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "dir", dir));
+            }
+            if (minN != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minN", minN));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticSegmentResponse>("/v1/analytics/segments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticSegment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>GetAnalyticSegmentByKeyResponse</returns>
+        public GetAnalyticSegmentByKeyResponse GetAnalyticSegmentByKey(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticSegmentByKeyResponse> localVarResponse = GetAnalyticSegmentByKeyWithHttpInfo(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticSegmentByKeyResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticSegmentByKeyResponse> GetAnalyticSegmentByKeyWithHttpInfo(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string))
+        {
+            // verify the required parameter 'dim' is set
+            if (dim == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'dim' when calling AnalyticsApi->GetAnalyticSegmentByKey");
+            }
+
+            // verify the required parameter 'key' is set
+            if (key == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'key' when calling AnalyticsApi->GetAnalyticSegmentByKey");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("dim", net.crossly.Client.ClientUtils.ParameterToString(dim)); // path parameter
+            localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticSegmentByKeyResponse>("/v1/analytics/segments/{dim}/{key}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticSegmentByKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticSegmentByKeyResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticSegmentByKeyResponse> GetAnalyticSegmentByKeyAsync(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticSegmentByKeyResponse> localVarResponse = await GetAnalyticSegmentByKeyWithHttpInfoAsync(dim, key, range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dim">One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+).</param>
+        /// <param name="key">The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.</param>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticSegmentByKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticSegmentByKeyResponse>> GetAnalyticSegmentByKeyWithHttpInfoAsync(string dim, string key, string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'dim' is set
+            if (dim == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'dim' when calling AnalyticsApi->GetAnalyticSegmentByKey");
+            }
+
+            // verify the required parameter 'key' is set
+            if (key == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'key' when calling AnalyticsApi->GetAnalyticSegmentByKey");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("dim", net.crossly.Client.ClientUtils.ParameterToString(dim)); // path parameter
+            localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticSegmentByKeyResponse>("/v1/analytics/segments/{dim}/{key}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticSegmentByKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
+        /// <returns>GetAnalyticSummaryResponse</returns>
+        public GetAnalyticSummaryResponse GetAnalyticSummary(int? days = default(int?), string tz = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> localVarResponse = GetAnalyticSummaryWithHttpInfo(days, tz);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticSummaryResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> GetAnalyticSummaryWithHttpInfo(int? days = default(int?))
+        public net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> GetAnalyticSummaryWithHttpInfo(int? days = default(int?), string tz = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1012,6 +5643,10 @@ namespace net.crossly.Api
             if (days != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
             }
 
             // authentication (PersonalAccessToken) required
@@ -1036,26 +5671,28 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Headline KPIs for the last N days. 
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticSummaryResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticSummaryResponse> GetAnalyticSummaryAsync(int? days = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticSummaryResponse> GetAnalyticSummaryAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> localVarResponse = await GetAnalyticSummaryWithHttpInfoAsync(days, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse> localVarResponse = await GetAnalyticSummaryWithHttpInfoAsync(days, tz, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Headline KPIs for the last N days. 
+        /// Headline KPIs for the last N days (the same numbers as the analytics overview). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days"> (optional, default to 30)</param>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticSummaryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse>> GetAnalyticSummaryWithHttpInfoAsync(int? days = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticSummaryResponse>> GetAnalyticSummaryWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1083,6 +5720,10 @@ namespace net.crossly.Api
             if (days != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
             }
 
             // authentication (PersonalAccessToken) required
@@ -1108,22 +5749,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days. 
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>GetAnalyticTimeseryResponse</returns>
-        public GetAnalyticTimeseryResponse GetAnalyticTimesery()
+        public GetAnalyticTimeseryResponse GetAnalyticTimesery(int? days = default(int?), string tz = default(string))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> localVarResponse = GetAnalyticTimeseryWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> localVarResponse = GetAnalyticTimeseryWithHttpInfo(days, tz);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days. 
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of GetAnalyticTimeseryResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> GetAnalyticTimeseryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> GetAnalyticTimeseryWithHttpInfo(int? days = default(int?), string tz = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1147,6 +5792,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1170,24 +5823,28 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days. 
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticTimeseryResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticTimeseryResponse> GetAnalyticTimeseryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticTimeseryResponse> GetAnalyticTimeseryAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> localVarResponse = await GetAnalyticTimeseryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse> localVarResponse = await GetAnalyticTimeseryWithHttpInfoAsync(days, tz, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Daily sales + revenue series for the last N days. 
+        /// Sales and net sales over the last N days, zero-filled, one row per calendar day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days">Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticTimeseryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse>> GetAnalyticTimeseryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticTimeseryResponse>> GetAnalyticTimeseryWithHttpInfoAsync(int? days = default(int?), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1212,6 +5869,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1364,22 +6029,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window). 
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ListInsightByPlatformResponse</returns>
-        public ListInsightByPlatformResponse ListInsightByPlatform()
+        public ListInsightByPlatformResponse ListInsightByPlatform(string tz = default(string))
         {
-            net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> localVarResponse = ListInsightByPlatformWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> localVarResponse = ListInsightByPlatformWithHttpInfo(tz);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window). 
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <returns>ApiResponse of ListInsightByPlatformResponse</returns>
-        public net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> ListInsightByPlatformWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> ListInsightByPlatformWithHttpInfo(string tz = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1403,6 +6070,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1426,24 +6097,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window). 
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInsightByPlatformResponse</returns>
-        public async System.Threading.Tasks.Task<ListInsightByPlatformResponse> ListInsightByPlatformAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListInsightByPlatformResponse> ListInsightByPlatformAsync(string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> localVarResponse = await ListInsightByPlatformWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListInsightByPlatformResponse> localVarResponse = await ListInsightByPlatformWithHttpInfoAsync(tz, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Platform velocity + margin insight (90-day window). 
+        /// Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInsightByPlatformResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInsightByPlatformResponse>> ListInsightByPlatformWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInsightByPlatformResponse>> ListInsightByPlatformWithHttpInfoAsync(string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1468,6 +6141,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1482,6 +6159,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListInsightByPlatform", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>AnalyticExperimentResponse</returns>
+        public AnalyticExperimentResponse UpdateAnalyticExperiment(string id)
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = UpdateAnalyticExperimentWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <returns>ApiResponse of AnalyticExperimentResponse</returns>
+        public net.crossly.Client.ApiResponse<AnalyticExperimentResponse> UpdateAnalyticExperimentWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->UpdateAnalyticExperiment");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAnalyticExperiment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AnalyticExperimentResponse</returns>
+        public async System.Threading.Tasks.Task<AnalyticExperimentResponse> UpdateAnalyticExperimentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<AnalyticExperimentResponse> localVarResponse = await UpdateAnalyticExperimentWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rename an experiment or change its hypothesis, notes or planned end. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The experiment id (a uuid; any other id is a 404).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AnalyticExperimentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<AnalyticExperimentResponse>> UpdateAnalyticExperimentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AnalyticsApi->UpdateAnalyticExperiment");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<AnalyticExperimentResponse>("/v1/analytics/experiments/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAnalyticExperiment", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

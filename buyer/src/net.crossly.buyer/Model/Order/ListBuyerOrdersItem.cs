@@ -40,10 +40,11 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerOrdersItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="orderNumber">orderNumber.</param>
         /// <param name="status">status (required).</param>
         /// <param name="buyerPaidCents">buyerPaidCents (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListBuyerOrdersItem(string id = default(string), string status = default(string), decimal buyerPaidCents = default(decimal), DateTime createdAt = default(DateTime))
+        public ListBuyerOrdersItem(string id = default(string), string orderNumber = default(string), string status = default(string), decimal buyerPaidCents = default(decimal), DateTime createdAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -57,6 +58,7 @@ namespace net.crossly.buyer.Model
             this.Status = status;
             this.BuyerPaidCents = buyerPaidCents;
             this.CreatedAt = createdAt;
+            this.OrderNumber = orderNumber;
         }
 
         /// <summary>
@@ -64,6 +66,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderNumber
+        /// </summary>
+        [DataMember(Name = "orderNumber", EmitDefaultValue = true)]
+        public string OrderNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -92,6 +100,7 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerOrdersItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  OrderNumber: ").Append(OrderNumber).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  BuyerPaidCents: ").Append(BuyerPaidCents).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -136,6 +145,11 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.OrderNumber == input.OrderNumber ||
+                    (this.OrderNumber != null &&
+                    this.OrderNumber.Equals(input.OrderNumber))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -163,6 +177,10 @@ namespace net.crossly.buyer.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.OrderNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderNumber.GetHashCode();
                 }
                 if (this.Status != null)
                 {

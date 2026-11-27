@@ -42,26 +42,34 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="cancelledAt">cancelledAt.</param>
+        /// <param name="days">days (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="shippedAt">shippedAt.</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="deliveredAt">deliveredAt.</param>
+        /// <param name="cancelledAt">cancelledAt.</param>
+        /// <param name="orderId">orderId.</param>
+        /// <param name="inspectedAt">inspectedAt.</param>
         /// <param name="stripePaymentIntentId">stripePaymentIntentId.</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="payoutAccountId">payoutAccountId.</param>
         /// <param name="crosslyFeeCents">crosslyFeeCents (required).</param>
         /// <param name="shippingCents">shippingCents (required).</param>
         /// <param name="returnLabelUrl">returnLabelUrl.</param>
         /// <param name="closedAt">closedAt.</param>
-        /// <param name="outboundLabelUrl">outboundLabelUrl.</param>
+        /// <param name="approvedAt">approvedAt.</param>
+        /// <param name="terms">terms (required).</param>
         /// <param name="depositCents">depositCents (required).</param>
+        /// <param name="outboundLabelUrl">outboundLabelUrl.</param>
         /// <param name="claimedAt">claimedAt.</param>
+        /// <param name="fulfilment">fulfilment (required).</param>
         /// <param name="shipTo">shipTo (required).</param>
-        /// <param name="outboundTracking">outboundTracking.</param>
         /// <param name="renterUserId">renterUserId (required).</param>
         /// <param name="startDate">startDate (required).</param>
         /// <param name="endDate">endDate (required).</param>
-        /// <param name="days">days (required).</param>
         /// <param name="rentCents">rentCents (required).</param>
         /// <param name="shipFrom">shipFrom.</param>
+        /// <param name="outboundTracking">outboundTracking.</param>
         /// <param name="returnTracking">returnTracking.</param>
         /// <param name="returnedAt">returnedAt.</param>
         /// <param name="claimCents">claimCents (required).</param>
@@ -72,7 +80,22 @@ namespace net.crossly.Model
         /// <param name="approvalDueAt">approvalDueAt.</param>
         /// <param name="conditionPhotosOut">conditionPhotosOut (required).</param>
         /// <param name="conditionPhotosIn">conditionPhotosIn (required).</param>
-        public RentalResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), DateTime? cancelledAt = default(DateTime?), string platformListingId = default(string), DateTime? shippedAt = default(DateTime?), string sellerUserId = default(string), string stripePaymentIntentId = default(string), decimal crosslyFeeCents = default(decimal), decimal shippingCents = default(decimal), string returnLabelUrl = default(string), DateTime? closedAt = default(DateTime?), string outboundLabelUrl = default(string), decimal depositCents = default(decimal), DateTime? claimedAt = default(DateTime?), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string outboundTracking = default(string), string renterUserId = default(string), string startDate = default(string), string endDate = default(string), decimal days = default(decimal), decimal rentCents = default(decimal), Dictionary<string, Object> shipFrom = default(Dictionary<string, Object>), string returnTracking = default(string), DateTime? returnedAt = default(DateTime?), decimal claimCents = default(decimal), string claimNote = default(string), List<string> claimPhotos = default(List<string>), bool claimDisputed = default(bool), decimal depositRefundedCents = default(decimal), DateTime? approvalDueAt = default(DateTime?), List<string> conditionPhotosOut = default(List<string>), List<string> conditionPhotosIn = default(List<string>))
+        /// <param name="unitIndex">unitIndex (required).</param>
+        /// <param name="charges">charges (required).</param>
+        /// <param name="damageWaiver">damageWaiver (required).</param>
+        /// <param name="cleaningFeeCents">cleaningFeeCents (required).</param>
+        /// <param name="damageWaiverCents">damageWaiverCents (required).</param>
+        /// <param name="lateFeeCents">lateFeeCents (required).</param>
+        /// <param name="rentRefundedCents">rentRefundedCents (required).</param>
+        /// <param name="payoutTiming">payoutTiming (required).</param>
+        /// <param name="payoutReleasedAt">payoutReleasedAt.</param>
+        /// <param name="returnShippedAt">returnShippedAt.</param>
+        /// <param name="conditionPhotosReturn">conditionPhotosReturn (required).</param>
+        /// <param name="inspection">inspection (required).</param>
+        /// <param name="boughtOutAt">boughtOutAt.</param>
+        /// <param name="buyoutCents">buyoutCents.</param>
+        /// <param name="notReturnedAt">notReturnedAt.</param>
+        public RentalResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), decimal days = default(decimal), string platformListingId = default(string), string storefrontId = default(string), DateTime? shippedAt = default(DateTime?), DateTime? deliveredAt = default(DateTime?), DateTime? cancelledAt = default(DateTime?), string orderId = default(string), DateTime? inspectedAt = default(DateTime?), string stripePaymentIntentId = default(string), string sellerUserId = default(string), string payoutAccountId = default(string), decimal crosslyFeeCents = default(decimal), decimal shippingCents = default(decimal), string returnLabelUrl = default(string), DateTime? closedAt = default(DateTime?), DateTime? approvedAt = default(DateTime?), Dictionary<string, Object> terms = default(Dictionary<string, Object>), decimal depositCents = default(decimal), string outboundLabelUrl = default(string), DateTime? claimedAt = default(DateTime?), string fulfilment = default(string), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string renterUserId = default(string), string startDate = default(string), string endDate = default(string), decimal rentCents = default(decimal), Dictionary<string, Object> shipFrom = default(Dictionary<string, Object>), string outboundTracking = default(string), string returnTracking = default(string), DateTime? returnedAt = default(DateTime?), decimal claimCents = default(decimal), string claimNote = default(string), List<string> claimPhotos = default(List<string>), bool claimDisputed = default(bool), decimal depositRefundedCents = default(decimal), DateTime? approvalDueAt = default(DateTime?), List<string> conditionPhotosOut = default(List<string>), List<string> conditionPhotosIn = default(List<string>), decimal unitIndex = default(decimal), Dictionary<string, Object> charges = default(Dictionary<string, Object>), bool damageWaiver = default(bool), decimal cleaningFeeCents = default(decimal), decimal damageWaiverCents = default(decimal), decimal lateFeeCents = default(decimal), decimal rentRefundedCents = default(decimal), string payoutTiming = default(string), DateTime? payoutReleasedAt = default(DateTime?), DateTime? returnShippedAt = default(DateTime?), List<string> conditionPhotosReturn = default(List<string>), List<RentalResponseDataInspection> inspection = default(List<RentalResponseDataInspection>), DateTime? boughtOutAt = default(DateTime?), decimal? buyoutCents = default(decimal?), DateTime? notReturnedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -85,6 +108,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for RentalResponseData and cannot be null");
             }
             this.Status = status;
+            this.Days = days;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for RentalResponseData and cannot be null");
@@ -97,7 +121,17 @@ namespace net.crossly.Model
             this.SellerUserId = sellerUserId;
             this.CrosslyFeeCents = crosslyFeeCents;
             this.ShippingCents = shippingCents;
+            // to ensure "terms" is required (not null)
+            if (terms == null) {
+                throw new ArgumentNullException("terms is a required property for RentalResponseData and cannot be null");
+            }
+            this.Terms = terms;
             this.DepositCents = depositCents;
+            // to ensure "fulfilment" is required (not null)
+            if (fulfilment == null) {
+                throw new ArgumentNullException("fulfilment is a required property for RentalResponseData and cannot be null");
+            }
+            this.Fulfilment = fulfilment;
             // to ensure "shipTo" is required (not null)
             if (shipTo == null) {
                 throw new ArgumentNullException("shipTo is a required property for RentalResponseData and cannot be null");
@@ -118,7 +152,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("endDate is a required property for RentalResponseData and cannot be null");
             }
             this.EndDate = endDate;
-            this.Days = days;
             this.RentCents = rentCents;
             this.ClaimCents = claimCents;
             // to ensure "claimPhotos" is required (not null)
@@ -138,19 +171,56 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("conditionPhotosIn is a required property for RentalResponseData and cannot be null");
             }
             this.ConditionPhotosIn = conditionPhotosIn;
-            this.CancelledAt = cancelledAt;
+            this.UnitIndex = unitIndex;
+            // to ensure "charges" is required (not null)
+            if (charges == null) {
+                throw new ArgumentNullException("charges is a required property for RentalResponseData and cannot be null");
+            }
+            this.Charges = charges;
+            this.DamageWaiver = damageWaiver;
+            this.CleaningFeeCents = cleaningFeeCents;
+            this.DamageWaiverCents = damageWaiverCents;
+            this.LateFeeCents = lateFeeCents;
+            this.RentRefundedCents = rentRefundedCents;
+            // to ensure "payoutTiming" is required (not null)
+            if (payoutTiming == null) {
+                throw new ArgumentNullException("payoutTiming is a required property for RentalResponseData and cannot be null");
+            }
+            this.PayoutTiming = payoutTiming;
+            // to ensure "conditionPhotosReturn" is required (not null)
+            if (conditionPhotosReturn == null) {
+                throw new ArgumentNullException("conditionPhotosReturn is a required property for RentalResponseData and cannot be null");
+            }
+            this.ConditionPhotosReturn = conditionPhotosReturn;
+            // to ensure "inspection" is required (not null)
+            if (inspection == null) {
+                throw new ArgumentNullException("inspection is a required property for RentalResponseData and cannot be null");
+            }
+            this.Inspection = inspection;
+            this.StorefrontId = storefrontId;
             this.ShippedAt = shippedAt;
+            this.DeliveredAt = deliveredAt;
+            this.CancelledAt = cancelledAt;
+            this.OrderId = orderId;
+            this.InspectedAt = inspectedAt;
             this.StripePaymentIntentId = stripePaymentIntentId;
+            this.PayoutAccountId = payoutAccountId;
             this.ReturnLabelUrl = returnLabelUrl;
             this.ClosedAt = closedAt;
+            this.ApprovedAt = approvedAt;
             this.OutboundLabelUrl = outboundLabelUrl;
             this.ClaimedAt = claimedAt;
-            this.OutboundTracking = outboundTracking;
             this.ShipFrom = shipFrom;
+            this.OutboundTracking = outboundTracking;
             this.ReturnTracking = returnTracking;
             this.ReturnedAt = returnedAt;
             this.ClaimNote = claimNote;
             this.ApprovalDueAt = approvalDueAt;
+            this.PayoutReleasedAt = payoutReleasedAt;
+            this.ReturnShippedAt = returnShippedAt;
+            this.BoughtOutAt = boughtOutAt;
+            this.BuyoutCents = buyoutCents;
+            this.NotReturnedAt = notReturnedAt;
         }
 
         /// <summary>
@@ -172,10 +242,10 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets CancelledAt
+        /// Gets or Sets Days
         /// </summary>
-        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
-        public DateTime? CancelledAt { get; set; }
+        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Days { get; set; }
 
         /// <summary>
         /// Gets or Sets PlatformListingId
@@ -184,10 +254,46 @@ namespace net.crossly.Model
         public string PlatformListingId { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets ShippedAt
         /// </summary>
         [DataMember(Name = "shippedAt", EmitDefaultValue = true)]
         public DateTime? ShippedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeliveredAt
+        /// </summary>
+        [DataMember(Name = "deliveredAt", EmitDefaultValue = true)]
+        public DateTime? DeliveredAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CancelledAt
+        /// </summary>
+        [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
+        public DateTime? CancelledAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderId
+        /// </summary>
+        [DataMember(Name = "orderId", EmitDefaultValue = true)]
+        public string OrderId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InspectedAt
+        /// </summary>
+        [DataMember(Name = "inspectedAt", EmitDefaultValue = true)]
+        public DateTime? InspectedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StripePaymentIntentId
+        /// </summary>
+        [DataMember(Name = "stripePaymentIntentId", EmitDefaultValue = true)]
+        public string StripePaymentIntentId { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerUserId
@@ -196,10 +302,10 @@ namespace net.crossly.Model
         public string SellerUserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets StripePaymentIntentId
+        /// Gets or Sets PayoutAccountId
         /// </summary>
-        [DataMember(Name = "stripePaymentIntentId", EmitDefaultValue = true)]
-        public string StripePaymentIntentId { get; set; }
+        [DataMember(Name = "payoutAccountId", EmitDefaultValue = true)]
+        public string PayoutAccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets CrosslyFeeCents
@@ -226,10 +332,16 @@ namespace net.crossly.Model
         public DateTime? ClosedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets OutboundLabelUrl
+        /// Gets or Sets ApprovedAt
         /// </summary>
-        [DataMember(Name = "outboundLabelUrl", EmitDefaultValue = true)]
-        public string OutboundLabelUrl { get; set; }
+        [DataMember(Name = "approvedAt", EmitDefaultValue = true)]
+        public DateTime? ApprovedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Terms
+        /// </summary>
+        [DataMember(Name = "terms", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Terms { get; set; }
 
         /// <summary>
         /// Gets or Sets DepositCents
@@ -238,22 +350,28 @@ namespace net.crossly.Model
         public decimal DepositCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets OutboundLabelUrl
+        /// </summary>
+        [DataMember(Name = "outboundLabelUrl", EmitDefaultValue = true)]
+        public string OutboundLabelUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets ClaimedAt
         /// </summary>
         [DataMember(Name = "claimedAt", EmitDefaultValue = true)]
         public DateTime? ClaimedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Fulfilment
+        /// </summary>
+        [DataMember(Name = "fulfilment", IsRequired = true, EmitDefaultValue = false)]
+        public string Fulfilment { get; set; }
+
+        /// <summary>
         /// Gets or Sets ShipTo
         /// </summary>
         [DataMember(Name = "shipTo", IsRequired = true, EmitDefaultValue = false)]
         public Dictionary<string, Object> ShipTo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OutboundTracking
-        /// </summary>
-        [DataMember(Name = "outboundTracking", EmitDefaultValue = true)]
-        public string OutboundTracking { get; set; }
 
         /// <summary>
         /// Gets or Sets RenterUserId
@@ -274,12 +392,6 @@ namespace net.crossly.Model
         public string EndDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Days
-        /// </summary>
-        [DataMember(Name = "days", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Days { get; set; }
-
-        /// <summary>
         /// Gets or Sets RentCents
         /// </summary>
         [DataMember(Name = "rentCents", IsRequired = true, EmitDefaultValue = false)]
@@ -290,6 +402,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "shipFrom", EmitDefaultValue = true)]
         public Dictionary<string, Object> ShipFrom { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OutboundTracking
+        /// </summary>
+        [DataMember(Name = "outboundTracking", EmitDefaultValue = true)]
+        public string OutboundTracking { get; set; }
 
         /// <summary>
         /// Gets or Sets ReturnTracking
@@ -352,6 +470,96 @@ namespace net.crossly.Model
         public List<string> ConditionPhotosIn { get; set; }
 
         /// <summary>
+        /// Gets or Sets UnitIndex
+        /// </summary>
+        [DataMember(Name = "unitIndex", IsRequired = true, EmitDefaultValue = false)]
+        public decimal UnitIndex { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Charges
+        /// </summary>
+        [DataMember(Name = "charges", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Charges { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DamageWaiver
+        /// </summary>
+        [DataMember(Name = "damageWaiver", IsRequired = true, EmitDefaultValue = true)]
+        public bool DamageWaiver { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CleaningFeeCents
+        /// </summary>
+        [DataMember(Name = "cleaningFeeCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal CleaningFeeCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DamageWaiverCents
+        /// </summary>
+        [DataMember(Name = "damageWaiverCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal DamageWaiverCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LateFeeCents
+        /// </summary>
+        [DataMember(Name = "lateFeeCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal LateFeeCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RentRefundedCents
+        /// </summary>
+        [DataMember(Name = "rentRefundedCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal RentRefundedCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PayoutTiming
+        /// </summary>
+        [DataMember(Name = "payoutTiming", IsRequired = true, EmitDefaultValue = false)]
+        public string PayoutTiming { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PayoutReleasedAt
+        /// </summary>
+        [DataMember(Name = "payoutReleasedAt", EmitDefaultValue = true)]
+        public DateTime? PayoutReleasedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReturnShippedAt
+        /// </summary>
+        [DataMember(Name = "returnShippedAt", EmitDefaultValue = true)]
+        public DateTime? ReturnShippedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConditionPhotosReturn
+        /// </summary>
+        [DataMember(Name = "conditionPhotosReturn", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> ConditionPhotosReturn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Inspection
+        /// </summary>
+        [DataMember(Name = "inspection", IsRequired = true, EmitDefaultValue = false)]
+        public List<RentalResponseDataInspection> Inspection { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BoughtOutAt
+        /// </summary>
+        [DataMember(Name = "boughtOutAt", EmitDefaultValue = true)]
+        public DateTime? BoughtOutAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BuyoutCents
+        /// </summary>
+        [DataMember(Name = "buyoutCents", EmitDefaultValue = true)]
+        public decimal? BuyoutCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NotReturnedAt
+        /// </summary>
+        [DataMember(Name = "notReturnedAt", EmitDefaultValue = true)]
+        public DateTime? NotReturnedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -362,26 +570,34 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
+            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  ShippedAt: ").Append(ShippedAt).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
+            sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  InspectedAt: ").Append(InspectedAt).Append("\n");
             sb.Append("  StripePaymentIntentId: ").Append(StripePaymentIntentId).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  PayoutAccountId: ").Append(PayoutAccountId).Append("\n");
             sb.Append("  CrosslyFeeCents: ").Append(CrosslyFeeCents).Append("\n");
             sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
             sb.Append("  ReturnLabelUrl: ").Append(ReturnLabelUrl).Append("\n");
             sb.Append("  ClosedAt: ").Append(ClosedAt).Append("\n");
-            sb.Append("  OutboundLabelUrl: ").Append(OutboundLabelUrl).Append("\n");
+            sb.Append("  ApprovedAt: ").Append(ApprovedAt).Append("\n");
+            sb.Append("  Terms: ").Append(Terms).Append("\n");
             sb.Append("  DepositCents: ").Append(DepositCents).Append("\n");
+            sb.Append("  OutboundLabelUrl: ").Append(OutboundLabelUrl).Append("\n");
             sb.Append("  ClaimedAt: ").Append(ClaimedAt).Append("\n");
+            sb.Append("  Fulfilment: ").Append(Fulfilment).Append("\n");
             sb.Append("  ShipTo: ").Append(ShipTo).Append("\n");
-            sb.Append("  OutboundTracking: ").Append(OutboundTracking).Append("\n");
             sb.Append("  RenterUserId: ").Append(RenterUserId).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
-            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  RentCents: ").Append(RentCents).Append("\n");
             sb.Append("  ShipFrom: ").Append(ShipFrom).Append("\n");
+            sb.Append("  OutboundTracking: ").Append(OutboundTracking).Append("\n");
             sb.Append("  ReturnTracking: ").Append(ReturnTracking).Append("\n");
             sb.Append("  ReturnedAt: ").Append(ReturnedAt).Append("\n");
             sb.Append("  ClaimCents: ").Append(ClaimCents).Append("\n");
@@ -392,6 +608,21 @@ namespace net.crossly.Model
             sb.Append("  ApprovalDueAt: ").Append(ApprovalDueAt).Append("\n");
             sb.Append("  ConditionPhotosOut: ").Append(ConditionPhotosOut).Append("\n");
             sb.Append("  ConditionPhotosIn: ").Append(ConditionPhotosIn).Append("\n");
+            sb.Append("  UnitIndex: ").Append(UnitIndex).Append("\n");
+            sb.Append("  Charges: ").Append(Charges).Append("\n");
+            sb.Append("  DamageWaiver: ").Append(DamageWaiver).Append("\n");
+            sb.Append("  CleaningFeeCents: ").Append(CleaningFeeCents).Append("\n");
+            sb.Append("  DamageWaiverCents: ").Append(DamageWaiverCents).Append("\n");
+            sb.Append("  LateFeeCents: ").Append(LateFeeCents).Append("\n");
+            sb.Append("  RentRefundedCents: ").Append(RentRefundedCents).Append("\n");
+            sb.Append("  PayoutTiming: ").Append(PayoutTiming).Append("\n");
+            sb.Append("  PayoutReleasedAt: ").Append(PayoutReleasedAt).Append("\n");
+            sb.Append("  ReturnShippedAt: ").Append(ReturnShippedAt).Append("\n");
+            sb.Append("  ConditionPhotosReturn: ").Append(ConditionPhotosReturn).Append("\n");
+            sb.Append("  Inspection: ").Append(Inspection).Append("\n");
+            sb.Append("  BoughtOutAt: ").Append(BoughtOutAt).Append("\n");
+            sb.Append("  BuyoutCents: ").Append(BuyoutCents).Append("\n");
+            sb.Append("  NotReturnedAt: ").Append(NotReturnedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -443,9 +674,8 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.CancelledAt == input.CancelledAt ||
-                    (this.CancelledAt != null &&
-                    this.CancelledAt.Equals(input.CancelledAt))
+                    this.Days == input.Days ||
+                    this.Days.Equals(input.Days)
                 ) && 
                 (
                     this.PlatformListingId == input.PlatformListingId ||
@@ -453,9 +683,39 @@ namespace net.crossly.Model
                     this.PlatformListingId.Equals(input.PlatformListingId))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.ShippedAt == input.ShippedAt ||
                     (this.ShippedAt != null &&
                     this.ShippedAt.Equals(input.ShippedAt))
+                ) && 
+                (
+                    this.DeliveredAt == input.DeliveredAt ||
+                    (this.DeliveredAt != null &&
+                    this.DeliveredAt.Equals(input.DeliveredAt))
+                ) && 
+                (
+                    this.CancelledAt == input.CancelledAt ||
+                    (this.CancelledAt != null &&
+                    this.CancelledAt.Equals(input.CancelledAt))
+                ) && 
+                (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
+                ) && 
+                (
+                    this.InspectedAt == input.InspectedAt ||
+                    (this.InspectedAt != null &&
+                    this.InspectedAt.Equals(input.InspectedAt))
+                ) && 
+                (
+                    this.StripePaymentIntentId == input.StripePaymentIntentId ||
+                    (this.StripePaymentIntentId != null &&
+                    this.StripePaymentIntentId.Equals(input.StripePaymentIntentId))
                 ) && 
                 (
                     this.SellerUserId == input.SellerUserId ||
@@ -463,9 +723,9 @@ namespace net.crossly.Model
                     this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
-                    this.StripePaymentIntentId == input.StripePaymentIntentId ||
-                    (this.StripePaymentIntentId != null &&
-                    this.StripePaymentIntentId.Equals(input.StripePaymentIntentId))
+                    this.PayoutAccountId == input.PayoutAccountId ||
+                    (this.PayoutAccountId != null &&
+                    this.PayoutAccountId.Equals(input.PayoutAccountId))
                 ) && 
                 (
                     this.CrosslyFeeCents == input.CrosslyFeeCents ||
@@ -486,13 +746,24 @@ namespace net.crossly.Model
                     this.ClosedAt.Equals(input.ClosedAt))
                 ) && 
                 (
-                    this.OutboundLabelUrl == input.OutboundLabelUrl ||
-                    (this.OutboundLabelUrl != null &&
-                    this.OutboundLabelUrl.Equals(input.OutboundLabelUrl))
+                    this.ApprovedAt == input.ApprovedAt ||
+                    (this.ApprovedAt != null &&
+                    this.ApprovedAt.Equals(input.ApprovedAt))
+                ) && 
+                (
+                    this.Terms == input.Terms ||
+                    this.Terms != null &&
+                    input.Terms != null &&
+                    this.Terms.SequenceEqual(input.Terms)
                 ) && 
                 (
                     this.DepositCents == input.DepositCents ||
                     this.DepositCents.Equals(input.DepositCents)
+                ) && 
+                (
+                    this.OutboundLabelUrl == input.OutboundLabelUrl ||
+                    (this.OutboundLabelUrl != null &&
+                    this.OutboundLabelUrl.Equals(input.OutboundLabelUrl))
                 ) && 
                 (
                     this.ClaimedAt == input.ClaimedAt ||
@@ -500,15 +771,15 @@ namespace net.crossly.Model
                     this.ClaimedAt.Equals(input.ClaimedAt))
                 ) && 
                 (
+                    this.Fulfilment == input.Fulfilment ||
+                    (this.Fulfilment != null &&
+                    this.Fulfilment.Equals(input.Fulfilment))
+                ) && 
+                (
                     this.ShipTo == input.ShipTo ||
                     this.ShipTo != null &&
                     input.ShipTo != null &&
                     this.ShipTo.SequenceEqual(input.ShipTo)
-                ) && 
-                (
-                    this.OutboundTracking == input.OutboundTracking ||
-                    (this.OutboundTracking != null &&
-                    this.OutboundTracking.Equals(input.OutboundTracking))
                 ) && 
                 (
                     this.RenterUserId == input.RenterUserId ||
@@ -526,10 +797,6 @@ namespace net.crossly.Model
                     this.EndDate.Equals(input.EndDate))
                 ) && 
                 (
-                    this.Days == input.Days ||
-                    this.Days.Equals(input.Days)
-                ) && 
-                (
                     this.RentCents == input.RentCents ||
                     this.RentCents.Equals(input.RentCents)
                 ) && 
@@ -538,6 +805,11 @@ namespace net.crossly.Model
                     this.ShipFrom != null &&
                     input.ShipFrom != null &&
                     this.ShipFrom.SequenceEqual(input.ShipFrom)
+                ) && 
+                (
+                    this.OutboundTracking == input.OutboundTracking ||
+                    (this.OutboundTracking != null &&
+                    this.OutboundTracking.Equals(input.OutboundTracking))
                 ) && 
                 (
                     this.ReturnTracking == input.ReturnTracking ||
@@ -588,6 +860,78 @@ namespace net.crossly.Model
                     this.ConditionPhotosIn != null &&
                     input.ConditionPhotosIn != null &&
                     this.ConditionPhotosIn.SequenceEqual(input.ConditionPhotosIn)
+                ) && 
+                (
+                    this.UnitIndex == input.UnitIndex ||
+                    this.UnitIndex.Equals(input.UnitIndex)
+                ) && 
+                (
+                    this.Charges == input.Charges ||
+                    this.Charges != null &&
+                    input.Charges != null &&
+                    this.Charges.SequenceEqual(input.Charges)
+                ) && 
+                (
+                    this.DamageWaiver == input.DamageWaiver ||
+                    this.DamageWaiver.Equals(input.DamageWaiver)
+                ) && 
+                (
+                    this.CleaningFeeCents == input.CleaningFeeCents ||
+                    this.CleaningFeeCents.Equals(input.CleaningFeeCents)
+                ) && 
+                (
+                    this.DamageWaiverCents == input.DamageWaiverCents ||
+                    this.DamageWaiverCents.Equals(input.DamageWaiverCents)
+                ) && 
+                (
+                    this.LateFeeCents == input.LateFeeCents ||
+                    this.LateFeeCents.Equals(input.LateFeeCents)
+                ) && 
+                (
+                    this.RentRefundedCents == input.RentRefundedCents ||
+                    this.RentRefundedCents.Equals(input.RentRefundedCents)
+                ) && 
+                (
+                    this.PayoutTiming == input.PayoutTiming ||
+                    (this.PayoutTiming != null &&
+                    this.PayoutTiming.Equals(input.PayoutTiming))
+                ) && 
+                (
+                    this.PayoutReleasedAt == input.PayoutReleasedAt ||
+                    (this.PayoutReleasedAt != null &&
+                    this.PayoutReleasedAt.Equals(input.PayoutReleasedAt))
+                ) && 
+                (
+                    this.ReturnShippedAt == input.ReturnShippedAt ||
+                    (this.ReturnShippedAt != null &&
+                    this.ReturnShippedAt.Equals(input.ReturnShippedAt))
+                ) && 
+                (
+                    this.ConditionPhotosReturn == input.ConditionPhotosReturn ||
+                    this.ConditionPhotosReturn != null &&
+                    input.ConditionPhotosReturn != null &&
+                    this.ConditionPhotosReturn.SequenceEqual(input.ConditionPhotosReturn)
+                ) && 
+                (
+                    this.Inspection == input.Inspection ||
+                    this.Inspection != null &&
+                    input.Inspection != null &&
+                    this.Inspection.SequenceEqual(input.Inspection)
+                ) && 
+                (
+                    this.BoughtOutAt == input.BoughtOutAt ||
+                    (this.BoughtOutAt != null &&
+                    this.BoughtOutAt.Equals(input.BoughtOutAt))
+                ) && 
+                (
+                    this.BuyoutCents == input.BuyoutCents ||
+                    (this.BuyoutCents != null &&
+                    this.BuyoutCents.Equals(input.BuyoutCents))
+                ) && 
+                (
+                    this.NotReturnedAt == input.NotReturnedAt ||
+                    (this.NotReturnedAt != null &&
+                    this.NotReturnedAt.Equals(input.NotReturnedAt))
                 );
         }
 
@@ -612,25 +956,46 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.CancelledAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.ShippedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ShippedAt.GetHashCode();
                 }
-                if (this.SellerUserId != null)
+                if (this.DeliveredAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
+                }
+                if (this.CancelledAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
+                }
+                if (this.OrderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
+                if (this.InspectedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.InspectedAt.GetHashCode();
                 }
                 if (this.StripePaymentIntentId != null)
                 {
                     hashCode = (hashCode * 59) + this.StripePaymentIntentId.GetHashCode();
+                }
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
+                if (this.PayoutAccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PayoutAccountId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CrosslyFeeCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
@@ -642,22 +1007,30 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ClosedAt.GetHashCode();
                 }
+                if (this.ApprovedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApprovedAt.GetHashCode();
+                }
+                if (this.Terms != null)
+                {
+                    hashCode = (hashCode * 59) + this.Terms.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
                 if (this.OutboundLabelUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.OutboundLabelUrl.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
                 if (this.ClaimedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ClaimedAt.GetHashCode();
                 }
+                if (this.Fulfilment != null)
+                {
+                    hashCode = (hashCode * 59) + this.Fulfilment.GetHashCode();
+                }
                 if (this.ShipTo != null)
                 {
                     hashCode = (hashCode * 59) + this.ShipTo.GetHashCode();
-                }
-                if (this.OutboundTracking != null)
-                {
-                    hashCode = (hashCode * 59) + this.OutboundTracking.GetHashCode();
                 }
                 if (this.RenterUserId != null)
                 {
@@ -671,11 +1044,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.EndDate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 hashCode = (hashCode * 59) + this.RentCents.GetHashCode();
                 if (this.ShipFrom != null)
                 {
                     hashCode = (hashCode * 59) + this.ShipFrom.GetHashCode();
+                }
+                if (this.OutboundTracking != null)
+                {
+                    hashCode = (hashCode * 59) + this.OutboundTracking.GetHashCode();
                 }
                 if (this.ReturnTracking != null)
                 {
@@ -707,6 +1083,48 @@ namespace net.crossly.Model
                 if (this.ConditionPhotosIn != null)
                 {
                     hashCode = (hashCode * 59) + this.ConditionPhotosIn.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.UnitIndex.GetHashCode();
+                if (this.Charges != null)
+                {
+                    hashCode = (hashCode * 59) + this.Charges.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DamageWaiver.GetHashCode();
+                hashCode = (hashCode * 59) + this.CleaningFeeCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.DamageWaiverCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.LateFeeCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.RentRefundedCents.GetHashCode();
+                if (this.PayoutTiming != null)
+                {
+                    hashCode = (hashCode * 59) + this.PayoutTiming.GetHashCode();
+                }
+                if (this.PayoutReleasedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PayoutReleasedAt.GetHashCode();
+                }
+                if (this.ReturnShippedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnShippedAt.GetHashCode();
+                }
+                if (this.ConditionPhotosReturn != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConditionPhotosReturn.GetHashCode();
+                }
+                if (this.Inspection != null)
+                {
+                    hashCode = (hashCode * 59) + this.Inspection.GetHashCode();
+                }
+                if (this.BoughtOutAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.BoughtOutAt.GetHashCode();
+                }
+                if (this.BuyoutCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuyoutCents.GetHashCode();
+                }
+                if (this.NotReturnedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotReturnedAt.GetHashCode();
                 }
                 return hashCode;
             }

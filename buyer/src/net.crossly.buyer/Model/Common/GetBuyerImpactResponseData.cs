@@ -39,29 +39,17 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerImpactResponseData" /> class.
         /// </summary>
-        /// <param name="co2Kg">co2Kg (required).</param>
-        /// <param name="waterL">waterL (required).</param>
         /// <param name="itemsBought">itemsBought (required).</param>
         /// <param name="itemsWithFigures">itemsWithFigures (required).</param>
-        public GetBuyerImpactResponseData(decimal co2Kg = default(decimal), decimal waterL = default(decimal), decimal itemsBought = default(decimal), decimal itemsWithFigures = default(decimal))
+        /// <param name="co2Kg">co2Kg (required).</param>
+        /// <param name="waterL">waterL (required).</param>
+        public GetBuyerImpactResponseData(decimal itemsBought = default(decimal), decimal itemsWithFigures = default(decimal), decimal co2Kg = default(decimal), decimal waterL = default(decimal))
         {
-            this.Co2Kg = co2Kg;
-            this.WaterL = waterL;
             this.ItemsBought = itemsBought;
             this.ItemsWithFigures = itemsWithFigures;
+            this.Co2Kg = co2Kg;
+            this.WaterL = waterL;
         }
-
-        /// <summary>
-        /// Gets or Sets Co2Kg
-        /// </summary>
-        [DataMember(Name = "co2Kg", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Co2Kg { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WaterL
-        /// </summary>
-        [DataMember(Name = "waterL", IsRequired = true, EmitDefaultValue = false)]
-        public decimal WaterL { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemsBought
@@ -76,6 +64,18 @@ namespace net.crossly.buyer.Model
         public decimal ItemsWithFigures { get; set; }
 
         /// <summary>
+        /// Gets or Sets Co2Kg
+        /// </summary>
+        [DataMember(Name = "co2Kg", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Co2Kg { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WaterL
+        /// </summary>
+        [DataMember(Name = "waterL", IsRequired = true, EmitDefaultValue = false)]
+        public decimal WaterL { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,10 +83,10 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerImpactResponseData {\n");
-            sb.Append("  Co2Kg: ").Append(Co2Kg).Append("\n");
-            sb.Append("  WaterL: ").Append(WaterL).Append("\n");
             sb.Append("  ItemsBought: ").Append(ItemsBought).Append("\n");
             sb.Append("  ItemsWithFigures: ").Append(ItemsWithFigures).Append("\n");
+            sb.Append("  Co2Kg: ").Append(Co2Kg).Append("\n");
+            sb.Append("  WaterL: ").Append(WaterL).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,20 +123,20 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Co2Kg == input.Co2Kg ||
-                    this.Co2Kg.Equals(input.Co2Kg)
-                ) && 
-                (
-                    this.WaterL == input.WaterL ||
-                    this.WaterL.Equals(input.WaterL)
-                ) && 
-                (
                     this.ItemsBought == input.ItemsBought ||
                     this.ItemsBought.Equals(input.ItemsBought)
                 ) && 
                 (
                     this.ItemsWithFigures == input.ItemsWithFigures ||
                     this.ItemsWithFigures.Equals(input.ItemsWithFigures)
+                ) && 
+                (
+                    this.Co2Kg == input.Co2Kg ||
+                    this.Co2Kg.Equals(input.Co2Kg)
+                ) && 
+                (
+                    this.WaterL == input.WaterL ||
+                    this.WaterL.Equals(input.WaterL)
                 );
         }
 
@@ -149,10 +149,10 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Co2Kg.GetHashCode();
-                hashCode = (hashCode * 59) + this.WaterL.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemsBought.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemsWithFigures.GetHashCode();
+                hashCode = (hashCode * 59) + this.Co2Kg.GetHashCode();
+                hashCode = (hashCode * 59) + this.WaterL.GetHashCode();
                 return hashCode;
             }
         }

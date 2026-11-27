@@ -39,31 +39,31 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerOrderPriceProtectionResponseData" /> class.
         /// </summary>
-        /// <param name="active">active (required).</param>
         /// <param name="until">until (required).</param>
+        /// <param name="active">active (required).</param>
         /// <param name="creditedCents">creditedCents (required).</param>
-        public GetBuyerOrderPriceProtectionResponseData(bool active = default(bool), string until = default(string), decimal creditedCents = default(decimal))
+        public GetBuyerOrderPriceProtectionResponseData(string until = default(string), bool active = default(bool), decimal creditedCents = default(decimal))
         {
-            this.Active = active;
             // to ensure "until" is required (not null)
             if (until == null) {
                 throw new ArgumentNullException("until is a required property for GetBuyerOrderPriceProtectionResponseData and cannot be null");
             }
             this.Until = until;
+            this.Active = active;
             this.CreditedCents = creditedCents;
         }
-
-        /// <summary>
-        /// Gets or Sets Active
-        /// </summary>
-        [DataMember(Name = "active", IsRequired = true, EmitDefaultValue = true)]
-        public bool Active { get; set; }
 
         /// <summary>
         /// Gets or Sets Until
         /// </summary>
         [DataMember(Name = "until", IsRequired = true, EmitDefaultValue = false)]
         public string Until { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Active
+        /// </summary>
+        [DataMember(Name = "active", IsRequired = true, EmitDefaultValue = true)]
+        public bool Active { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditedCents
@@ -79,8 +79,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerOrderPriceProtectionResponseData {\n");
-            sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Until: ").Append(Until).Append("\n");
+            sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  CreditedCents: ").Append(CreditedCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,13 +118,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Active == input.Active ||
-                    this.Active.Equals(input.Active)
-                ) && 
-                (
                     this.Until == input.Until ||
                     (this.Until != null &&
                     this.Until.Equals(input.Until))
+                ) && 
+                (
+                    this.Active == input.Active ||
+                    this.Active.Equals(input.Active)
                 ) && 
                 (
                     this.CreditedCents == input.CreditedCents ||
@@ -141,11 +141,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Active.GetHashCode();
                 if (this.Until != null)
                 {
                     hashCode = (hashCode * 59) + this.Until.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Active.GetHashCode();
                 hashCode = (hashCode * 59) + this.CreditedCents.GetHashCode();
                 return hashCode;
             }

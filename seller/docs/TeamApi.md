@@ -4,8 +4,8 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTeamAccept**](TeamApi.md#createteamaccept) | **POST** /v1/team/accept | Accept a pending team invitation by raw token.
-[**CreateTeamInvite**](TeamApi.md#createteaminvite) | **POST** /v1/team/invite | Mint a team invitation; returns the one-time accept URL.
+[**CreateTeamAccept**](TeamApi.md#createteamaccept) | **POST** /v1/team/accept | Accept a team invitation by the raw token from its link.
+[**CreateTeamInvite**](TeamApi.md#createteaminvite) | **POST** /v1/team/invite | Issue a team invitation; returns the one-time accept URL (nothing is emailed).
 [**CreateTeamLeave**](TeamApi.md#createteamleave) | **POST** /v1/team/leave | Leave every team this user is currently a member of.
 [**CreateTeamRevoke**](TeamApi.md#createteamrevoke) | **POST** /v1/team/revoke | Revoke a pending invite OR an active team member.
 [**GetTeam**](TeamApi.md#getteam) | **GET** /v1/team | List pending team invitations + active members.
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 # **CreateTeamAccept**
 > CreateTeamAcceptResponse CreateTeamAccept ()
 
-Accept a pending team invitation by raw token.
+Accept a team invitation by the raw token from its link.
 
 ### Example
 ```csharp
@@ -41,7 +41,7 @@ namespace Example
 
             try
             {
-                // Accept a pending team invitation by raw token.
+                // Accept a team invitation by the raw token from its link.
                 CreateTeamAcceptResponse result = apiInstance.CreateTeamAccept();
                 Debug.WriteLine(result);
             }
@@ -90,7 +90,7 @@ This endpoint does not need any parameter.
 # **CreateTeamInvite**
 > CreateTeamInviteResponse CreateTeamInvite ()
 
-Mint a team invitation; returns the one-time accept URL.
+Issue a team invitation; returns the one-time accept URL (nothing is emailed).
 
 ### Example
 ```csharp
@@ -115,7 +115,7 @@ namespace Example
 
             try
             {
-                // Mint a team invitation; returns the one-time accept URL.
+                // Issue a team invitation; returns the one-time accept URL (nothing is emailed).
                 CreateTeamInviteResponse result = apiInstance.CreateTeamInvite();
                 Debug.WriteLine(result);
             }

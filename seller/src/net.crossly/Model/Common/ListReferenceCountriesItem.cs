@@ -50,7 +50,7 @@ namespace net.crossly.Model
         /// <param name="stateLabel">stateLabel (required).</param>
         /// <param name="subdivisions">subdivisions.</param>
         /// <param name="embargoed">embargoed (required).</param>
-        public ListReferenceCountriesItem(string code = default(string), string name = default(string), string currency = default(string), List<string> regions = default(List<string>), bool hasPostal = default(bool), bool postalRequired = default(bool), string postalLabel = default(string), bool stateRequired = default(bool), string stateLabel = default(string), List<ListReferenceCountriesItemSubdivisions> subdivisions = default(List<ListReferenceCountriesItemSubdivisions>), bool embargoed = default(bool))
+        public ListReferenceCountriesItem(string code = default(string), string name = default(string), string currency = default(string), List<string> regions = default(List<string>), bool hasPostal = default(bool), bool postalRequired = default(bool), string postalLabel = default(string), bool stateRequired = default(bool), string stateLabel = default(string), List<CodeName> subdivisions = default(List<CodeName>), bool embargoed = default(bool))
         {
             // to ensure "code" is required (not null)
             if (code == null) {
@@ -147,7 +147,7 @@ namespace net.crossly.Model
         /// Gets or Sets Subdivisions
         /// </summary>
         [DataMember(Name = "subdivisions", EmitDefaultValue = true)]
-        public List<ListReferenceCountriesItemSubdivisions> Subdivisions { get; set; }
+        public List<CodeName> Subdivisions { get; set; }
 
         /// <summary>
         /// Gets or Sets Embargoed

@@ -57,8 +57,10 @@ namespace net.crossly.Model
         /// <param name="talliedAt">talliedAt.</param>
         /// <param name="vetoedReason">vetoedReason.</param>
         /// <param name="charityGoalId">charityGoalId.</param>
+        /// <param name="proposalKind">proposalKind (required).</param>
+        /// <param name="_params">_params.</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListDaoProposalsItem(string id = default(string), string title = default(string), string body = default(string), string beneficiaryKind = default(string), string beneficiaryNote = default(string), string requestedBaseUnits = default(string), string status = default(string), string totalVotingPower = default(string), string powerFor = default(string), string powerAgainst = default(string), string powerAbstain = default(string), decimal quorumBps = default(decimal), decimal passThresholdBps = default(decimal), string opensAt = default(string), string closesAt = default(string), string talliedAt = default(string), string vetoedReason = default(string), string charityGoalId = default(string), string createdAt = default(string))
+        public ListDaoProposalsItem(string id = default(string), string title = default(string), string body = default(string), string beneficiaryKind = default(string), string beneficiaryNote = default(string), string requestedBaseUnits = default(string), string status = default(string), string totalVotingPower = default(string), string powerFor = default(string), string powerAgainst = default(string), string powerAbstain = default(string), decimal quorumBps = default(decimal), decimal passThresholdBps = default(decimal), string opensAt = default(string), string closesAt = default(string), string talliedAt = default(string), string vetoedReason = default(string), string charityGoalId = default(string), string proposalKind = default(string), Dictionary<string, Object> _params = default(Dictionary<string, Object>), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -107,6 +109,11 @@ namespace net.crossly.Model
             this.PowerAbstain = powerAbstain;
             this.QuorumBps = quorumBps;
             this.PassThresholdBps = passThresholdBps;
+            // to ensure "proposalKind" is required (not null)
+            if (proposalKind == null) {
+                throw new ArgumentNullException("proposalKind is a required property for ListDaoProposalsItem and cannot be null");
+            }
+            this.ProposalKind = proposalKind;
             // to ensure "createdAt" is required (not null)
             if (createdAt == null) {
                 throw new ArgumentNullException("createdAt is a required property for ListDaoProposalsItem and cannot be null");
@@ -119,6 +126,7 @@ namespace net.crossly.Model
             this.TalliedAt = talliedAt;
             this.VetoedReason = vetoedReason;
             this.CharityGoalId = charityGoalId;
+            this.Params = _params;
         }
 
         /// <summary>
@@ -230,6 +238,18 @@ namespace net.crossly.Model
         public string CharityGoalId { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProposalKind
+        /// </summary>
+        [DataMember(Name = "proposalKind", IsRequired = true, EmitDefaultValue = false)]
+        public string ProposalKind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Params
+        /// </summary>
+        [DataMember(Name = "params", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Params { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -261,6 +281,8 @@ namespace net.crossly.Model
             sb.Append("  TalliedAt: ").Append(TalliedAt).Append("\n");
             sb.Append("  VetoedReason: ").Append(VetoedReason).Append("\n");
             sb.Append("  CharityGoalId: ").Append(CharityGoalId).Append("\n");
+            sb.Append("  ProposalKind: ").Append(ProposalKind).Append("\n");
+            sb.Append("  Params: ").Append(Params).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -386,6 +408,17 @@ namespace net.crossly.Model
                     this.CharityGoalId.Equals(input.CharityGoalId))
                 ) && 
                 (
+                    this.ProposalKind == input.ProposalKind ||
+                    (this.ProposalKind != null &&
+                    this.ProposalKind.Equals(input.ProposalKind))
+                ) && 
+                (
+                    this.Params == input.Params ||
+                    this.Params != null &&
+                    input.Params != null &&
+                    this.Params.SequenceEqual(input.Params)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -466,6 +499,14 @@ namespace net.crossly.Model
                 if (this.CharityGoalId != null)
                 {
                     hashCode = (hashCode * 59) + this.CharityGoalId.GetHashCode();
+                }
+                if (this.ProposalKind != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProposalKind.GetHashCode();
+                }
+                if (this.Params != null)
+                {
+                    hashCode = (hashCode * 59) + this.Params.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

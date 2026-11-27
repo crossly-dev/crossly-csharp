@@ -43,14 +43,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateInboxAiSuggestResponse</returns>
         ApiResponse<CreateInboxAiSuggestResponse> CreateInboxAiSuggestWithHttpInfo();
         /// <summary>
-        /// Create a canned response.
+        /// Create a canned response (added to the end of the list).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateInboxCannedResponseResponse</returns>
         CreateInboxCannedResponseResponse CreateInboxCannedResponse();
 
         /// <summary>
-        /// Create a canned response.
+        /// Create a canned response (added to the end of the list).
         /// </summary>
         /// <remarks>
         /// 
@@ -163,6 +163,26 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateInboxReplyResponse</returns>
         ApiResponse<CreateInboxReplyResponse> CreateInboxReplyWithHttpInfo(Guid id);
         /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <returns>CreateInboxSendOfferResponse</returns>
+        CreateInboxSendOfferResponse CreateInboxSendOffer(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest);
+
+        /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <returns>ApiResponse of CreateInboxSendOfferResponse</returns>
+        ApiResponse<CreateInboxSendOfferResponse> CreateInboxSendOfferWithHttpInfo(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest);
+        /// <summary>
         /// Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -219,8 +239,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderDisputeResponse</returns>
-        CreateOrderDisputeResponse DeleteInboxCannedResponse(Guid id);
+        /// <returns></returns>
+        void DeleteInboxCannedResponse(Guid id);
 
         /// <summary>
         /// Delete a canned response.
@@ -230,10 +250,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderDisputeResponse</returns>
-        ApiResponse<CreateOrderDisputeResponse> DeleteInboxCannedResponseWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteInboxCannedResponseWithHttpInfo(Guid id);
         /// <summary>
-        /// Get one conversation with its messages.
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -241,7 +261,7 @@ namespace net.crossly.Api
         GetInboxResponse GetInbox(Guid id);
 
         /// <summary>
-        /// Get one conversation with its messages.
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
         /// </summary>
         /// <remarks>
         /// 
@@ -251,14 +271,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetInboxResponse</returns>
         ApiResponse<GetInboxResponse> GetInboxWithHttpInfo(Guid id);
         /// <summary>
-        /// List canned responses.
+        /// List canned responses in the seller&#39;s order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInboxCannedResponseResponse</returns>
         GetInboxCannedResponseResponse GetInboxCannedResponse();
 
         /// <summary>
-        /// List canned responses.
+        /// List canned responses in the seller&#39;s order.
         /// </summary>
         /// <remarks>
         /// 
@@ -285,14 +305,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetInboxConversationMessageResponse</returns>
         ApiResponse<GetInboxConversationMessageResponse> GetInboxConversationMessageWithHttpInfo(Guid id);
         /// <summary>
-        /// Sidebar badge: unread conversation count.
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateWeb3LaunchArtResponse</returns>
         CreateWeb3LaunchArtResponse GetInboxConversationUnreadCount();
 
         /// <summary>
-        /// Sidebar badge: unread conversation count.
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers).
         /// </summary>
         /// <remarks>
         /// 
@@ -301,16 +321,33 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWeb3LaunchArtResponse</returns>
         ApiResponse<CreateWeb3LaunchArtResponse> GetInboxConversationUnreadCountWithHttpInfo();
         /// <summary>
-        /// List conversations.
+        /// Inbox badges: unread and needs-reply, split into conversations and offers.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetInboxCountResponse</returns>
+        GetInboxCountResponse GetInboxCount();
+
+        /// <summary>
+        /// Inbox badges: unread and needs-reply, split into conversations and offers.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetInboxCountResponse</returns>
+        ApiResponse<GetInboxCountResponse> GetInboxCountWithHttpInfo();
+        /// <summary>
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <returns>ListInboxResponse</returns>
-        ListInboxResponse ListInbox(int? page = default(int?), int? limit = default(int?));
+        ListInboxResponse ListInbox(int? page = default(int?), int? limit = default(int?), string filter = default(string));
 
         /// <summary>
-        /// List conversations.
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
         /// </summary>
         /// <remarks>
         /// 
@@ -318,8 +355,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <returns>ApiResponse of ListInboxResponse</returns>
-        ApiResponse<ListInboxResponse> ListInboxWithHttpInfo(int? page = default(int?), int? limit = default(int?));
+        ApiResponse<ListInboxResponse> ListInboxWithHttpInfo(int? page = default(int?), int? limit = default(int?), string filter = default(string));
         /// <summary>
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all.
         /// </summary>
@@ -354,6 +392,27 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
         ApiResponse<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseWithHttpInfo(Guid id);
+        /// <summary>
+        /// Reorder canned responses.
+        /// </summary>
+        /// <remarks>
+        /// Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <returns>GetInboxCannedResponseResponse</returns>
+        GetInboxCannedResponseResponse UpdateInboxCannedResponseOrder(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest);
+
+        /// <summary>
+        /// Reorder canned responses.
+        /// </summary>
+        /// <remarks>
+        /// Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <returns>ApiResponse of GetInboxCannedResponseResponse</returns>
+        ApiResponse<GetInboxCannedResponseResponse> UpdateInboxCannedResponseOrderWithHttpInfo(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest);
         /// <summary>
         /// Mark read / change status / close conversation.
         /// </summary>
@@ -403,7 +462,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateInboxAiSuggestResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateInboxAiSuggestResponse>> CreateInboxAiSuggestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Create a canned response.
+        /// Create a canned response (added to the end of the list).
         /// </summary>
         /// <remarks>
         /// 
@@ -414,7 +473,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> CreateInboxCannedResponseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create a canned response.
+        /// Create a canned response (added to the end of the list).
         /// </summary>
         /// <remarks>
         /// 
@@ -558,6 +617,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateInboxReplyResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateInboxReplyResponse>> CreateInboxReplyWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateInboxSendOfferResponse</returns>
+        System.Threading.Tasks.Task<CreateInboxSendOfferResponse> CreateInboxSendOfferAsync(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInboxSendOfferResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxSendOfferResponse>> CreateInboxSendOfferWithHttpInfoAsync(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
         /// </summary>
         /// <remarks>
@@ -633,8 +717,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderDisputeResponse</returns>
-        System.Threading.Tasks.Task<CreateOrderDisputeResponse> DeleteInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a canned response.
@@ -645,10 +729,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderDisputeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateOrderDisputeResponse>> DeleteInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get one conversation with its messages.
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
         /// </summary>
         /// <remarks>
         /// 
@@ -660,7 +744,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetInboxResponse> GetInboxAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get one conversation with its messages.
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
         /// </summary>
         /// <remarks>
         /// 
@@ -671,7 +755,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetInboxResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetInboxResponse>> GetInboxWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List canned responses.
+        /// List canned responses in the seller&#39;s order.
         /// </summary>
         /// <remarks>
         /// 
@@ -682,7 +766,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetInboxCannedResponseResponse> GetInboxCannedResponseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List canned responses.
+        /// List canned responses in the seller&#39;s order.
         /// </summary>
         /// <remarks>
         /// 
@@ -715,7 +799,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetInboxConversationMessageResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetInboxConversationMessageResponse>> GetInboxConversationMessageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Sidebar badge: unread conversation count.
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers).
         /// </summary>
         /// <remarks>
         /// 
@@ -726,7 +810,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateWeb3LaunchArtResponse> GetInboxConversationUnreadCountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sidebar badge: unread conversation count.
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers).
         /// </summary>
         /// <remarks>
         /// 
@@ -736,20 +820,28 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWeb3LaunchArtResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWeb3LaunchArtResponse>> GetInboxConversationUnreadCountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List conversations.
+        /// Inbox badges: unread and needs-reply, split into conversations and offers.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListInboxResponse</returns>
-        System.Threading.Tasks.Task<ListInboxResponse> ListInboxAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetInboxCountResponse</returns>
+        System.Threading.Tasks.Task<GetInboxCountResponse> GetInboxCountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List conversations.
+        /// Inbox badges: unread and needs-reply, split into conversations and offers.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetInboxCountResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetInboxCountResponse>> GetInboxCountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
         /// </summary>
         /// <remarks>
         /// 
@@ -757,9 +849,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListInboxResponse</returns>
+        System.Threading.Tasks.Task<ListInboxResponse> ListInboxAsync(int? page = default(int?), int? limit = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInboxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInboxResponse>> ListInboxWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListInboxResponse>> ListInboxWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all.
         /// </summary>
@@ -804,6 +911,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxCannedResponseResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateInboxCannedResponseResponse>> UpdateInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Reorder canned responses.
+        /// </summary>
+        /// <remarks>
+        /// Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetInboxCannedResponseResponse</returns>
+        System.Threading.Tasks.Task<GetInboxCannedResponseResponse> UpdateInboxCannedResponseOrderAsync(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Reorder canned responses.
+        /// </summary>
+        /// <remarks>
+        /// Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetInboxCannedResponseResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetInboxCannedResponseResponse>> UpdateInboxCannedResponseOrderWithHttpInfoAsync(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Mark read / change status / close conversation.
         /// </summary>
@@ -1076,7 +1206,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a canned response. 
+        /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateInboxCannedResponseResponse</returns>
@@ -1087,7 +1217,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a canned response. 
+        /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
@@ -1138,7 +1268,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a canned response. 
+        /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1150,7 +1280,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a canned response. 
+        /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1996,6 +2126,160 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <returns>CreateInboxSendOfferResponse</returns>
+        public CreateInboxSendOfferResponse CreateInboxSendOffer(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateInboxSendOfferResponse> localVarResponse = CreateInboxSendOfferWithHttpInfo(id, createInboxSendOfferRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <returns>ApiResponse of CreateInboxSendOfferResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateInboxSendOfferResponse> CreateInboxSendOfferWithHttpInfo(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest)
+        {
+            // verify the required parameter 'createInboxSendOfferRequest' is set
+            if (createInboxSendOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxSendOfferRequest' when calling InboxApi->CreateInboxSendOffer");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxSendOfferRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateInboxSendOfferResponse>("/v1/inbox/{id}/send-offer", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInboxSendOffer", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateInboxSendOfferResponse</returns>
+        public async System.Threading.Tasks.Task<CreateInboxSendOfferResponse> CreateInboxSendOfferAsync(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateInboxSendOfferResponse> localVarResponse = await CreateInboxSendOfferWithHttpInfoAsync(id, createInboxSendOfferRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createInboxSendOfferRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInboxSendOfferResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxSendOfferResponse>> CreateInboxSendOfferWithHttpInfoAsync(Guid id, CreateInboxSendOfferRequest createInboxSendOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createInboxSendOfferRequest' is set
+            if (createInboxSendOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxSendOfferRequest' when calling InboxApi->CreateInboxSendOffer");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxSendOfferRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInboxSendOfferResponse>("/v1/inbox/{id}/send-offer", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInboxSendOffer", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2420,11 +2704,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateOrderDisputeResponse</returns>
-        public CreateOrderDisputeResponse DeleteInboxCannedResponse(Guid id)
+        /// <returns></returns>
+        public void DeleteInboxCannedResponse(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateOrderDisputeResponse> localVarResponse = DeleteInboxCannedResponseWithHttpInfo(id);
-            return localVarResponse.Data;
+            DeleteInboxCannedResponseWithHttpInfo(id);
         }
 
         /// <summary>
@@ -2432,8 +2715,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateOrderDisputeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateOrderDisputeResponse> DeleteInboxCannedResponseWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public net.crossly.Client.ApiResponse<Object> DeleteInboxCannedResponseWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2467,7 +2750,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<CreateOrderDisputeResponse>("/v1/inbox/canned-responses/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/inbox/canned-responses/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteInboxCannedResponse", localVarResponse);
@@ -2486,11 +2769,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateOrderDisputeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateOrderDisputeResponse> DeleteInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateOrderDisputeResponse> localVarResponse = await DeleteInboxCannedResponseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteInboxCannedResponseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -2499,8 +2781,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateOrderDisputeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderDisputeResponse>> DeleteInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<Object>> DeleteInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2535,7 +2817,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<CreateOrderDisputeResponse>("/v1/inbox/canned-responses/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/inbox/canned-responses/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2550,7 +2832,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one conversation with its messages. 
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2562,7 +2844,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one conversation with its messages. 
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2615,7 +2897,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one conversation with its messages. 
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2628,7 +2910,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one conversation with its messages. 
+        /// Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2684,7 +2966,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List canned responses. 
+        /// List canned responses in the seller&#39;s order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInboxCannedResponseResponse</returns>
@@ -2695,7 +2977,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List canned responses. 
+        /// List canned responses in the seller&#39;s order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetInboxCannedResponseResponse</returns>
@@ -2746,7 +3028,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List canned responses. 
+        /// List canned responses in the seller&#39;s order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2758,7 +3040,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List canned responses. 
+        /// List canned responses in the seller&#39;s order. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2946,7 +3228,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sidebar badge: unread conversation count. 
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateWeb3LaunchArtResponse</returns>
@@ -2957,7 +3239,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sidebar badge: unread conversation count. 
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateWeb3LaunchArtResponse</returns>
@@ -3008,7 +3290,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sidebar badge: unread conversation count. 
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -3020,7 +3302,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Sidebar badge: unread conversation count. 
+        /// Unread conversation count (threads only; /v1/inbox/counts adds offers). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -3074,26 +3356,156 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List conversations. 
+        /// Inbox badges: unread and needs-reply, split into conversations and offers. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional, default to 25)</param>
-        /// <returns>ListInboxResponse</returns>
-        public ListInboxResponse ListInbox(int? page = default(int?), int? limit = default(int?))
+        /// <returns>GetInboxCountResponse</returns>
+        public GetInboxCountResponse GetInboxCount()
         {
-            net.crossly.Client.ApiResponse<ListInboxResponse> localVarResponse = ListInboxWithHttpInfo(page, limit);
+            net.crossly.Client.ApiResponse<GetInboxCountResponse> localVarResponse = GetInboxCountWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List conversations. 
+        /// Inbox badges: unread and needs-reply, split into conversations and offers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetInboxCountResponse</returns>
+        public net.crossly.Client.ApiResponse<GetInboxCountResponse> GetInboxCountWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetInboxCountResponse>("/v1/inbox/counts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetInboxCount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Inbox badges: unread and needs-reply, split into conversations and offers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetInboxCountResponse</returns>
+        public async System.Threading.Tasks.Task<GetInboxCountResponse> GetInboxCountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetInboxCountResponse> localVarResponse = await GetInboxCountWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Inbox badges: unread and needs-reply, split into conversations and offers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetInboxCountResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInboxCountResponse>> GetInboxCountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetInboxCountResponse>("/v1/inbox/counts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetInboxCount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
+        /// <returns>ListInboxResponse</returns>
+        public ListInboxResponse ListInbox(int? page = default(int?), int? limit = default(int?), string filter = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListInboxResponse> localVarResponse = ListInboxWithHttpInfo(page, limit, filter);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <returns>ApiResponse of ListInboxResponse</returns>
-        public net.crossly.Client.ApiResponse<ListInboxResponse> ListInboxWithHttpInfo(int? page = default(int?), int? limit = default(int?))
+        public net.crossly.Client.ApiResponse<ListInboxResponse> ListInboxWithHttpInfo(int? page = default(int?), int? limit = default(int?), string filter = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3124,6 +3536,10 @@ namespace net.crossly.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             // authentication (PersonalAccessToken) required
@@ -3148,28 +3564,30 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List conversations. 
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInboxResponse</returns>
-        public async System.Threading.Tasks.Task<ListInboxResponse> ListInboxAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListInboxResponse> ListInboxAsync(int? page = default(int?), int? limit = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListInboxResponse> localVarResponse = await ListInboxWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListInboxResponse> localVarResponse = await ListInboxWithHttpInfoAsync(page, limit, filter, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List conversations. 
+        /// List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page"> (optional, default to 1)</param>
         /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="filter">unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInboxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInboxResponse>> ListInboxWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInboxResponse>> ListInboxWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3201,6 +3619,10 @@ namespace net.crossly.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             // authentication (PersonalAccessToken) required
@@ -3478,6 +3900,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateInboxCannedResponse", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Reorder canned responses. Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <returns>GetInboxCannedResponseResponse</returns>
+        public GetInboxCannedResponseResponse UpdateInboxCannedResponseOrder(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest)
+        {
+            net.crossly.Client.ApiResponse<GetInboxCannedResponseResponse> localVarResponse = UpdateInboxCannedResponseOrderWithHttpInfo(updateInboxCannedResponseOrderRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reorder canned responses. Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <returns>ApiResponse of GetInboxCannedResponseResponse</returns>
+        public net.crossly.Client.ApiResponse<GetInboxCannedResponseResponse> UpdateInboxCannedResponseOrderWithHttpInfo(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest)
+        {
+            // verify the required parameter 'updateInboxCannedResponseOrderRequest' is set
+            if (updateInboxCannedResponseOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxCannedResponseOrderRequest' when calling InboxApi->UpdateInboxCannedResponseOrder");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateInboxCannedResponseOrderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetInboxCannedResponseResponse>("/v1/inbox/canned-responses/order", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInboxCannedResponseOrder", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Reorder canned responses. Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetInboxCannedResponseResponse</returns>
+        public async System.Threading.Tasks.Task<GetInboxCannedResponseResponse> UpdateInboxCannedResponseOrderAsync(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetInboxCannedResponseResponse> localVarResponse = await UpdateInboxCannedResponseOrderWithHttpInfoAsync(updateInboxCannedResponseOrderRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reorder canned responses. Pass EVERY canned response id in the new order (first &#x3D; top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateInboxCannedResponseOrderRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetInboxCannedResponseResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInboxCannedResponseResponse>> UpdateInboxCannedResponseOrderWithHttpInfoAsync(UpdateInboxCannedResponseOrderRequest updateInboxCannedResponseOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateInboxCannedResponseOrderRequest' is set
+            if (updateInboxCannedResponseOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxCannedResponseOrderRequest' when calling InboxApi->UpdateInboxCannedResponseOrder");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateInboxCannedResponseOrderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetInboxCannedResponseResponse>("/v1/inbox/canned-responses/order", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInboxCannedResponseOrder", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

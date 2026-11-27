@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Method = 1,
 
             /// <summary>
-            /// Enum Halt for value: halt
-            /// </summary>
-            [EnumMember(Value = "halt")]
-            Halt = 2,
-
-            /// <summary>
             /// Enum Resume for value: resume
             /// </summary>
             [EnumMember(Value = "resume")]
-            Resume = 3,
+            Resume = 2,
+
+            /// <summary>
+            /// Enum Halt for value: halt
+            /// </summary>
+            [EnumMember(Value = "halt")]
+            Halt = 3,
 
             /// <summary>
             /// Enum ExcludeKey for value: exclude_key

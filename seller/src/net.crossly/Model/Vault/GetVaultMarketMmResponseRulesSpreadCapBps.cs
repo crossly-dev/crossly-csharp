@@ -39,17 +39,23 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultMarketMmResponseRulesSpreadCapBps" /> class.
         /// </summary>
+        /// <param name="c">c (required).</param>
         /// <param name="a">a (required).</param>
         /// <param name="b">b (required).</param>
-        /// <param name="c">c (required).</param>
         /// <param name="d">d (required).</param>
-        public GetVaultMarketMmResponseRulesSpreadCapBps(decimal a = default(decimal), decimal b = default(decimal), decimal c = default(decimal), decimal d = default(decimal))
+        public GetVaultMarketMmResponseRulesSpreadCapBps(decimal c = default(decimal), decimal a = default(decimal), decimal b = default(decimal), decimal d = default(decimal))
         {
+            this.C = c;
             this.A = a;
             this.B = b;
-            this.C = c;
             this.D = d;
         }
+
+        /// <summary>
+        /// Gets or Sets C
+        /// </summary>
+        [DataMember(Name = "C", IsRequired = true, EmitDefaultValue = false)]
+        public decimal C { get; set; }
 
         /// <summary>
         /// Gets or Sets A
@@ -62,12 +68,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "B", IsRequired = true, EmitDefaultValue = false)]
         public decimal B { get; set; }
-
-        /// <summary>
-        /// Gets or Sets C
-        /// </summary>
-        [DataMember(Name = "C", IsRequired = true, EmitDefaultValue = false)]
-        public decimal C { get; set; }
 
         /// <summary>
         /// Gets or Sets D
@@ -83,9 +83,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketMmResponseRulesSpreadCapBps {\n");
+            sb.Append("  C: ").Append(C).Append("\n");
             sb.Append("  A: ").Append(A).Append("\n");
             sb.Append("  B: ").Append(B).Append("\n");
-            sb.Append("  C: ").Append(C).Append("\n");
             sb.Append("  D: ").Append(D).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -123,16 +123,16 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.C == input.C ||
+                    this.C.Equals(input.C)
+                ) && 
+                (
                     this.A == input.A ||
                     this.A.Equals(input.A)
                 ) && 
                 (
                     this.B == input.B ||
                     this.B.Equals(input.B)
-                ) && 
-                (
-                    this.C == input.C ||
-                    this.C.Equals(input.C)
                 ) && 
                 (
                     this.D == input.D ||
@@ -149,9 +149,9 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.C.GetHashCode();
                 hashCode = (hashCode * 59) + this.A.GetHashCode();
                 hashCode = (hashCode * 59) + this.B.GetHashCode();
-                hashCode = (hashCode * 59) + this.C.GetHashCode();
                 hashCode = (hashCode * 59) + this.D.GetHashCode();
                 return hashCode;
             }

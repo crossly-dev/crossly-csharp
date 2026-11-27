@@ -35,14 +35,14 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerPurchaseDeliveryResponseData" /> class.
         /// </summary>
         /// <param name="pickupPoint">pickupPoint.</param>
-        /// <param name="carrier">carrier.</param>
         /// <param name="trackingNumber">trackingNumber.</param>
+        /// <param name="carrier">carrier.</param>
         /// <param name="consolidation">consolidation.</param>
-        public GetBuyerPurchaseDeliveryResponseData(Dictionary<string, Object> pickupPoint = default(Dictionary<string, Object>), string carrier = default(string), string trackingNumber = default(string), Dictionary<string, Object> consolidation = default(Dictionary<string, Object>))
+        public GetBuyerPurchaseDeliveryResponseData(Dictionary<string, Object> pickupPoint = default(Dictionary<string, Object>), string trackingNumber = default(string), string carrier = default(string), Dictionary<string, Object> consolidation = default(Dictionary<string, Object>))
         {
             this.PickupPoint = pickupPoint;
-            this.Carrier = carrier;
             this.TrackingNumber = trackingNumber;
+            this.Carrier = carrier;
             this.Consolidation = consolidation;
         }
 
@@ -53,16 +53,16 @@ namespace net.crossly.buyer.Model
         public Dictionary<string, Object> PickupPoint { get; set; }
 
         /// <summary>
-        /// Gets or Sets Carrier
-        /// </summary>
-        [DataMember(Name = "carrier", EmitDefaultValue = true)]
-        public string Carrier { get; set; }
-
-        /// <summary>
         /// Gets or Sets TrackingNumber
         /// </summary>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = true)]
         public string TrackingNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Carrier
+        /// </summary>
+        [DataMember(Name = "carrier", EmitDefaultValue = true)]
+        public string Carrier { get; set; }
 
         /// <summary>
         /// Gets or Sets Consolidation
@@ -79,8 +79,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPurchaseDeliveryResponseData {\n");
             sb.Append("  PickupPoint: ").Append(PickupPoint).Append("\n");
-            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
+            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  Consolidation: ").Append(Consolidation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -124,14 +124,14 @@ namespace net.crossly.buyer.Model
                     this.PickupPoint.SequenceEqual(input.PickupPoint)
                 ) && 
                 (
-                    this.Carrier == input.Carrier ||
-                    (this.Carrier != null &&
-                    this.Carrier.Equals(input.Carrier))
-                ) && 
-                (
                     this.TrackingNumber == input.TrackingNumber ||
                     (this.TrackingNumber != null &&
                     this.TrackingNumber.Equals(input.TrackingNumber))
+                ) && 
+                (
+                    this.Carrier == input.Carrier ||
+                    (this.Carrier != null &&
+                    this.Carrier.Equals(input.Carrier))
                 ) && 
                 (
                     this.Consolidation == input.Consolidation ||
@@ -154,13 +154,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.PickupPoint.GetHashCode();
                 }
-                if (this.Carrier != null)
-                {
-                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
-                }
                 if (this.TrackingNumber != null)
                 {
                     hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
+                }
+                if (this.Carrier != null)
+                {
+                    hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
                 }
                 if (this.Consolidation != null)
                 {

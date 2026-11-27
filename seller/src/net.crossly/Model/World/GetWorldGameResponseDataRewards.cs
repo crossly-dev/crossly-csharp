@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Item = 1,
 
             /// <summary>
+            /// Enum Cosm for value: cosm
+            /// </summary>
+            [EnumMember(Value = "cosm")]
+            Cosm = 2,
+
+            /// <summary>
             /// Enum Decor for value: decor
             /// </summary>
             [EnumMember(Value = "decor")]
-            Decor = 2,
+            Decor = 3,
 
             /// <summary>
             /// Enum Cbx for value: cbx
             /// </summary>
             [EnumMember(Value = "cbx")]
-            Cbx = 3,
-
-            /// <summary>
-            /// Enum Cosm for value: cosm
-            /// </summary>
-            [EnumMember(Value = "cosm")]
-            Cosm = 4,
+            Cbx = 4,
 
             /// <summary>
             /// Enum Pin for value: pin

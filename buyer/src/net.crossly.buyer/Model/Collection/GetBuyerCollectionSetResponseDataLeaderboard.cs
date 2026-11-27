@@ -39,31 +39,31 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCollectionSetResponseDataLeaderboard" /> class.
         /// </summary>
-        /// <param name="name">name (required).</param>
         /// <param name="rank">rank (required).</param>
+        /// <param name="name">name (required).</param>
         /// <param name="owned">owned (required).</param>
-        public GetBuyerCollectionSetResponseDataLeaderboard(string name = default(string), decimal rank = default(decimal), decimal owned = default(decimal))
+        public GetBuyerCollectionSetResponseDataLeaderboard(decimal rank = default(decimal), string name = default(string), decimal owned = default(decimal))
         {
+            this.Rank = rank;
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for GetBuyerCollectionSetResponseDataLeaderboard and cannot be null");
             }
             this.Name = name;
-            this.Rank = rank;
             this.Owned = owned;
         }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Rank
         /// </summary>
         [DataMember(Name = "rank", IsRequired = true, EmitDefaultValue = false)]
         public decimal Rank { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Owned
@@ -79,8 +79,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionSetResponseDataLeaderboard {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Rank: ").Append(Rank).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Owned: ").Append(Owned).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,13 +118,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Rank == input.Rank ||
+                    this.Rank.Equals(input.Rank)
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Rank == input.Rank ||
-                    this.Rank.Equals(input.Rank)
                 ) && 
                 (
                     this.Owned == input.Owned ||
@@ -141,11 +141,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Rank.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Rank.GetHashCode();
                 hashCode = (hashCode * 59) + this.Owned.GetHashCode();
                 return hashCode;
             }

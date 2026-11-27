@@ -34,41 +34,56 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateSpatialPropertyLeaseRentResponseData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateSpatialPropertyLeaseRentResponseData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateSpatialPropertyLeaseRentResponseData" /> class.
-        /// </summary>
-        /// <param name="paidThrough">paidThrough (required).</param>
-        /// <param name="waived">waived (required).</param>
-        /// <param name="paidCents">paidCents (required).</param>
-        public CreateSpatialPropertyLeaseRentResponseData(string paidThrough = default(string), bool waived = default(bool), decimal paidCents = default(decimal))
+        /// <param name="requiresAction">requiresAction.</param>
+        /// <param name="paymentId">paymentId.</param>
+        /// <param name="clientSecret">clientSecret.</param>
+        /// <param name="paidThrough">paidThrough.</param>
+        /// <param name="waived">waived.</param>
+        /// <param name="paidCents">paidCents.</param>
+        public CreateSpatialPropertyLeaseRentResponseData(bool requiresAction = default(bool), string paymentId = default(string), string clientSecret = default(string), string paidThrough = default(string), bool waived = default(bool), decimal paidCents = default(decimal))
         {
-            // to ensure "paidThrough" is required (not null)
-            if (paidThrough == null) {
-                throw new ArgumentNullException("paidThrough is a required property for CreateSpatialPropertyLeaseRentResponseData and cannot be null");
-            }
+            this.RequiresAction = requiresAction;
+            this.PaymentId = paymentId;
+            this.ClientSecret = clientSecret;
             this.PaidThrough = paidThrough;
             this.Waived = waived;
             this.PaidCents = paidCents;
         }
 
         /// <summary>
+        /// Gets or Sets RequiresAction
+        /// </summary>
+        [DataMember(Name = "requiresAction", EmitDefaultValue = true)]
+        public bool RequiresAction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PaymentId
+        /// </summary>
+        [DataMember(Name = "paymentId", EmitDefaultValue = false)]
+        public string PaymentId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClientSecret
+        /// </summary>
+        [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
+        public string ClientSecret { get; set; }
+
+        /// <summary>
         /// Gets or Sets PaidThrough
         /// </summary>
-        [DataMember(Name = "paidThrough", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "paidThrough", EmitDefaultValue = false)]
         public string PaidThrough { get; set; }
 
         /// <summary>
         /// Gets or Sets Waived
         /// </summary>
-        [DataMember(Name = "waived", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "waived", EmitDefaultValue = true)]
         public bool Waived { get; set; }
 
         /// <summary>
         /// Gets or Sets PaidCents
         /// </summary>
-        [DataMember(Name = "paidCents", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "paidCents", EmitDefaultValue = false)]
         public decimal PaidCents { get; set; }
 
         /// <summary>
@@ -79,6 +94,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateSpatialPropertyLeaseRentResponseData {\n");
+            sb.Append("  RequiresAction: ").Append(RequiresAction).Append("\n");
+            sb.Append("  PaymentId: ").Append(PaymentId).Append("\n");
+            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  PaidThrough: ").Append(PaidThrough).Append("\n");
             sb.Append("  Waived: ").Append(Waived).Append("\n");
             sb.Append("  PaidCents: ").Append(PaidCents).Append("\n");
@@ -118,6 +136,20 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.RequiresAction == input.RequiresAction ||
+                    this.RequiresAction.Equals(input.RequiresAction)
+                ) && 
+                (
+                    this.PaymentId == input.PaymentId ||
+                    (this.PaymentId != null &&
+                    this.PaymentId.Equals(input.PaymentId))
+                ) && 
+                (
+                    this.ClientSecret == input.ClientSecret ||
+                    (this.ClientSecret != null &&
+                    this.ClientSecret.Equals(input.ClientSecret))
+                ) && 
+                (
                     this.PaidThrough == input.PaidThrough ||
                     (this.PaidThrough != null &&
                     this.PaidThrough.Equals(input.PaidThrough))
@@ -141,6 +173,15 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.RequiresAction.GetHashCode();
+                if (this.PaymentId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentId.GetHashCode();
+                }
+                if (this.ClientSecret != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
                 if (this.PaidThrough != null)
                 {
                     hashCode = (hashCode * 59) + this.PaidThrough.GetHashCode();

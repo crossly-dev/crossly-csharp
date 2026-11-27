@@ -5,9 +5,11 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWebhook**](WebhooksApi.md#createwebhook) | **POST** /v1/webhooks | Register a webhook endpoint (returns the signing secret once).
-[**CreateWebhookTest**](WebhooksApi.md#createwebhooktest) | **POST** /v1/webhooks/{id}/test | Fire a synthetic test.ping delivery to one webhook.
+[**CreateWebhookDeliveryRedeliver**](WebhooksApi.md#createwebhookdeliveryredeliver) | **POST** /v1/webhooks/{id}/deliveries/{deliveryId}/redeliver | Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+[**CreateWebhookTest**](WebhooksApi.md#createwebhooktest) | **POST** /v1/webhooks/{id}/test | Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
 [**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /v1/webhooks/{id} | Delete a webhook endpoint.
 [**GetWebhookStream**](WebhooksApi.md#getwebhookstream) | **GET** /v1/webhooks/stream | Stream this account&#39;s webhook events as they happen (SSE).
+[**ListWebhookDeliveries**](WebhooksApi.md#listwebhookdeliveries) | **GET** /v1/webhooks/{id}/deliveries | List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
 [**ListWebhooks**](WebhooksApi.md#listwebhooks) | **GET** /v1/webhooks | List your registered webhook endpoints.
 
 
@@ -85,11 +87,91 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createwebhookdeliveryredeliver"></a>
+# **CreateWebhookDeliveryRedeliver**
+> CreateWebhookDeliveryRedeliverResponse CreateWebhookDeliveryRedeliver (Guid id, Guid deliveryId)
+
+Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateWebhookDeliveryRedeliverExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+            var id = "id_example";  // Guid | 
+            var deliveryId = "deliveryId_example";  // Guid | 
+
+            try
+            {
+                // Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+                CreateWebhookDeliveryRedeliverResponse result = apiInstance.CreateWebhookDeliveryRedeliver(id, deliveryId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.CreateWebhookDeliveryRedeliver: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **deliveryId** | **Guid**|  | 
+
+### Return type
+
+**CreateWebhookDeliveryRedeliverResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createwebhooktest"></a>
 # **CreateWebhookTest**
 > CreateWebhookTestResponse CreateWebhookTest (Guid id)
 
-Fire a synthetic test.ping delivery to one webhook.
+Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
 
 ### Example
 ```csharp
@@ -115,7 +197,7 @@ namespace Example
 
             try
             {
-                // Fire a synthetic test.ping delivery to one webhook.
+                // Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
                 CreateWebhookTestResponse result = apiInstance.CreateWebhookTest(id);
                 Debug.WriteLine(result);
             }
@@ -308,6 +390,88 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | A server-sent event stream. |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listwebhookdeliveries"></a>
+# **ListWebhookDeliveries**
+> ListWebhookDeliveriesResponse ListWebhookDeliveries (Guid id, string status = null, int? limit = null)
+
+List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListWebhookDeliveriesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+            var id = "id_example";  // Guid | 
+            var status = "pending";  // string |  (optional) 
+            var limit = 25;  // int? |  (optional)  (default to 25)
+
+            try
+            {
+                // List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+                ListWebhookDeliveriesResponse result = apiInstance.ListWebhookDeliveries(id, status, limit);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.ListWebhookDeliveries: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **status** | **string**|  | [optional] 
+ **limit** | **int?**|  | [optional] [default to 25]
+
+### Return type
+
+**ListWebhookDeliveriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |

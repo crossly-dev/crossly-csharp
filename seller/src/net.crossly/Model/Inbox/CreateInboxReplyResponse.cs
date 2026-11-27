@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum DeliveryStatusEnum
         {
             /// <summary>
-            /// Enum Failed for value: failed
+            /// Enum Sending for value: sending
             /// </summary>
-            [EnumMember(Value = "failed")]
-            Failed = 1,
+            [EnumMember(Value = "sending")]
+            Sending = 1,
 
             /// <summary>
             /// Enum Sent for value: sent
@@ -50,10 +50,10 @@ namespace net.crossly.Model
             Sent = 2,
 
             /// <summary>
-            /// Enum Sending for value: sending
+            /// Enum Failed for value: failed
             /// </summary>
-            [EnumMember(Value = "sending")]
-            Sending = 3
+            [EnumMember(Value = "failed")]
+            Failed = 3
 
         }
 

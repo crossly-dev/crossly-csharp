@@ -39,10 +39,10 @@ namespace net.crossly.buyer.Model
         public enum ToneEnum
         {
             /// <summary>
-            /// Enum Good for value: good
+            /// Enum Neutral for value: neutral
             /// </summary>
-            [EnumMember(Value = "good")]
-            Good = 1,
+            [EnumMember(Value = "neutral")]
+            Neutral = 1,
 
             /// <summary>
             /// Enum Warn for value: warn
@@ -51,10 +51,10 @@ namespace net.crossly.buyer.Model
             Warn = 2,
 
             /// <summary>
-            /// Enum Neutral for value: neutral
+            /// Enum Good for value: good
             /// </summary>
-            [EnumMember(Value = "neutral")]
-            Neutral = 3
+            [EnumMember(Value = "good")]
+            Good = 3
 
         }
 

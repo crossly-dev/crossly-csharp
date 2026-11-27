@@ -71,22 +71,22 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Flagged for value: flagged
-            /// </summary>
-            [EnumMember(Value = "flagged")]
-            Flagged = 1,
-
-            /// <summary>
             /// Enum Review for value: review
             /// </summary>
             [EnumMember(Value = "review")]
-            Review = 2,
+            Review = 1,
 
             /// <summary>
             /// Enum Clear for value: clear
             /// </summary>
             [EnumMember(Value = "clear")]
-            Clear = 3,
+            Clear = 2,
+
+            /// <summary>
+            /// Enum Flagged for value: flagged
+            /// </summary>
+            [EnumMember(Value = "flagged")]
+            Flagged = 3,
 
             /// <summary>
             /// Enum Disputed for value: disputed

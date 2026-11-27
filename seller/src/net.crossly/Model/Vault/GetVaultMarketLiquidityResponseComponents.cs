@@ -38,34 +38,34 @@ namespace net.crossly.Model
         public enum NameEnum
         {
             /// <summary>
-            /// Enum SpreadBps for value: spreadBps
-            /// </summary>
-            [EnumMember(Value = "spreadBps")]
-            SpreadBps = 1,
-
-            /// <summary>
             /// Enum Trades30d for value: trades30d
             /// </summary>
             [EnumMember(Value = "trades30d")]
-            Trades30d = 2,
+            Trades30d = 1,
 
             /// <summary>
             /// Enum Trades90d for value: trades90d
             /// </summary>
             [EnumMember(Value = "trades90d")]
-            Trades90d = 3,
+            Trades90d = 2,
 
             /// <summary>
             /// Enum Counterparties90d for value: counterparties90d
             /// </summary>
             [EnumMember(Value = "counterparties90d")]
-            Counterparties90d = 4,
+            Counterparties90d = 3,
 
             /// <summary>
             /// Enum MedianGapDays for value: medianGapDays
             /// </summary>
             [EnumMember(Value = "medianGapDays")]
-            MedianGapDays = 5,
+            MedianGapDays = 4,
+
+            /// <summary>
+            /// Enum SpreadBps for value: spreadBps
+            /// </summary>
+            [EnumMember(Value = "spreadBps")]
+            SpreadBps = 5,
 
             /// <summary>
             /// Enum TwoSidedShare for value: twoSidedShare
@@ -106,16 +106,16 @@ namespace net.crossly.Model
         public enum BetterEnum
         {
             /// <summary>
-            /// Enum High for value: high
-            /// </summary>
-            [EnumMember(Value = "high")]
-            High = 1,
-
-            /// <summary>
             /// Enum Low for value: low
             /// </summary>
             [EnumMember(Value = "low")]
-            Low = 2
+            Low = 1,
+
+            /// <summary>
+            /// Enum High for value: high
+            /// </summary>
+            [EnumMember(Value = "high")]
+            High = 2
 
         }
 

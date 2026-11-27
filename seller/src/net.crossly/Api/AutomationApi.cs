@@ -29,88 +29,113 @@ namespace net.crossly.Api
         /// <summary>
         /// Create an automation rule.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListAutomationRulesItem</returns>
+        [Obsolete]
         ListAutomationRulesItem CreateAutomationRule();
 
         /// <summary>
         /// Create an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListAutomationRulesItem</returns>
+        [Obsolete]
         ApiResponse<ListAutomationRulesItem> CreateAutomationRuleWithHttpInfo();
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         CreateAutomationRuleImportResponse CreateAutomationRuleImport(bool? activate = default(bool?));
 
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(bool? activate = default(bool?));
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         CreateAutomationRuleRunNowResponse CreateAutomationRuleRunNow(Guid id);
 
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         ApiResponse<CreateAutomationRuleRunNowResponse> CreateAutomationRuleRunNowWithHttpInfo(Guid id);
         /// <summary>
         /// Flip an automation rule between active and inactive.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UpdateAutomationRuleResponse</returns>
-        UpdateAutomationRuleResponse CreateAutomationRuleToggle(Guid id);
+        /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
+        GetAutomationRuleResponse CreateAutomationRuleToggle(Guid id);
 
         /// <summary>
         /// Flip an automation rule between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UpdateAutomationRuleResponse</returns>
-        ApiResponse<UpdateAutomationRuleResponse> CreateAutomationRuleToggleWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        ApiResponse<GetAutomationRuleResponse> CreateAutomationRuleToggleWithHttpInfo(Guid id);
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe();
 
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo();
         /// <summary>
         /// Apply a pending reprice proposal: the recorded price goes to the recorded platform listing. Proposals older than three days expire instead.
@@ -151,20 +176,25 @@ namespace net.crossly.Api
         /// <summary>
         /// Delete an automation rule.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         OkResponse DeleteAutomationRule(Guid id);
 
         /// <summary>
         /// Delete an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         ApiResponse<OkResponse> DeleteAutomationRuleWithHttpInfo(Guid id);
         /// <summary>
         /// Supported triggerType / actionType / conditionType values for automation rules.
@@ -185,92 +215,117 @@ namespace net.crossly.Api
         /// <summary>
         /// Get a single automation rule.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
         GetAutomationRuleResponse GetAutomationRule(Guid id);
 
         /// <summary>
         /// Get a single automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
         ApiResponse<GetAutomationRuleResponse> GetAutomationRuleWithHttpInfo(Guid id);
         /// <summary>
         /// Export the user&#39;s full rule library as a portable recipe bundle.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         GetAutomationRuleExportResponse GetAutomationRuleExport();
 
         /// <summary>
         /// Export the user&#39;s full rule library as a portable recipe bundle.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         ApiResponse<GetAutomationRuleExportResponse> GetAutomationRuleExportWithHttpInfo();
         /// <summary>
         /// Export a single automation rule as a portable recipe.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         GetAutomationRuleExportByIdResponse GetAutomationRuleExportById(Guid id);
 
         /// <summary>
         /// Export a single automation rule as a portable recipe.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         ApiResponse<GetAutomationRuleExportByIdResponse> GetAutomationRuleExportByIdWithHttpInfo(Guid id);
         /// <summary>
         /// List automation rules.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListAutomationRulesResponse</returns>
+        [Obsolete]
         ListAutomationRulesResponse ListAutomationRules();
 
         /// <summary>
         /// List automation rules.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListAutomationRulesResponse</returns>
+        [Obsolete]
         ApiResponse<ListAutomationRulesResponse> ListAutomationRulesWithHttpInfo();
         /// <summary>
         /// Per-fire history for automation rules and workflow chain runs.
         /// </summary>
+        /// <remarks>
+        /// Deprecated: use /v1/workflow-runs.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
         /// <param name="chainId"> (optional)</param>
         /// <param name="limit"> (optional, default to 100)</param>
         /// <returns>ListAutomationRunsResponse</returns>
+        [Obsolete]
         ListAutomationRunsResponse ListAutomationRuns(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?));
 
         /// <summary>
         /// Per-fire history for automation rules and workflow chain runs.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: use /v1/workflow-runs.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
         /// <param name="chainId"> (optional)</param>
         /// <param name="limit"> (optional, default to 100)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
+        [Obsolete]
         ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?));
         /// <summary>
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
@@ -291,21 +346,26 @@ namespace net.crossly.Api
         /// <summary>
         /// Update an automation rule (full replace).
         /// </summary>
+        /// <remarks>
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UpdateAutomationRuleResponse</returns>
-        UpdateAutomationRuleResponse UpdateAutomationRule(Guid id);
+        /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
+        GetAutomationRuleResponse UpdateAutomationRule(Guid id);
 
         /// <summary>
         /// Update an automation rule (full replace).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UpdateAutomationRuleResponse</returns>
-        ApiResponse<UpdateAutomationRuleResponse> UpdateAutomationRuleWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        ApiResponse<GetAutomationRuleResponse> UpdateAutomationRuleWithHttpInfo(Guid id);
         #endregion Synchronous Operations
     }
 
@@ -319,112 +379,122 @@ namespace net.crossly.Api
         /// Create an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRulesItem</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListAutomationRulesItem> CreateAutomationRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRulesItem)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListAutomationRulesItem>> CreateAutomationRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleImportResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateAutomationRuleRunNowResponse> CreateAutomationRuleRunNowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleRunNowResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleRunNowResponse>> CreateAutomationRuleRunNowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Flip an automation rule between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateAutomationRuleResponse</returns>
-        System.Threading.Tasks.Task<UpdateAutomationRuleResponse> CreateAutomationRuleToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<GetAutomationRuleResponse> CreateAutomationRuleToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Flip an automation rule between active and inactive.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateAutomationRuleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateAutomationRuleResponse>> CreateAutomationRuleToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleResponse>> CreateAutomationRuleToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleValidateRecipeResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply a pending reprice proposal: the recorded price goes to the recorded platform listing. Proposals older than three days expire instead.
@@ -476,24 +546,26 @@ namespace net.crossly.Api
         /// Delete an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<OkResponse> DeleteAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete an automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Supported triggerType / actionType / conditionType values for automation rules.
@@ -520,95 +592,103 @@ namespace net.crossly.Api
         /// Get a single automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetAutomationRuleResponse> GetAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a single automation rule.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleResponse>> GetAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Export the user&#39;s full rule library as a portable recipe bundle.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetAutomationRuleExportResponse> GetAutomationRuleExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Export the user&#39;s full rule library as a portable recipe bundle.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleExportResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleExportResponse>> GetAutomationRuleExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Export a single automation rule as a portable recipe.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetAutomationRuleExportByIdResponse> GetAutomationRuleExportByIdAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Export a single automation rule as a portable recipe.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleExportByIdResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleExportByIdResponse>> GetAutomationRuleExportByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List automation rules.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRulesResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListAutomationRulesResponse> ListAutomationRulesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List automation rules.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRulesResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListAutomationRulesResponse>> ListAutomationRulesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Per-fire history for automation rules and workflow chain runs.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: use /v1/workflow-runs.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
@@ -616,13 +696,14 @@ namespace net.crossly.Api
         /// <param name="limit"> (optional, default to 100)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Per-fire history for automation rules and workflow chain runs.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: use /v1/workflow-runs.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
@@ -630,6 +711,7 @@ namespace net.crossly.Api
         /// <param name="limit"> (optional, default to 100)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
@@ -656,25 +738,27 @@ namespace net.crossly.Api
         /// Update an automation rule (full replace).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateAutomationRuleResponse</returns>
-        System.Threading.Tasks.Task<UpdateAutomationRuleResponse> UpdateAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<GetAutomationRuleResponse> UpdateAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update an automation rule (full replace).
         /// </summary>
         /// <remarks>
-        /// 
+        /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateAutomationRuleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateAutomationRuleResponse>> UpdateAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleResponse>> UpdateAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -796,10 +880,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create an automation rule. 
+        /// Create an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListAutomationRulesItem</returns>
+        [Obsolete]
         public ListAutomationRulesItem CreateAutomationRule()
         {
             net.crossly.Client.ApiResponse<ListAutomationRulesItem> localVarResponse = CreateAutomationRuleWithHttpInfo();
@@ -807,10 +892,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create an automation rule. 
+        /// Create an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListAutomationRulesItem</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListAutomationRulesItem> CreateAutomationRuleWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -858,11 +944,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create an automation rule. 
+        /// Create an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRulesItem</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListAutomationRulesItem> CreateAutomationRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListAutomationRulesItem> localVarResponse = await CreateAutomationRuleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -870,11 +957,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create an automation rule. 
+        /// Create an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRulesItem)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListAutomationRulesItem>> CreateAutomationRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -924,11 +1012,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Import one or more rules from recipe JSON (single or bundle). 
+        /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         public CreateAutomationRuleImportResponse CreateAutomationRuleImport(bool? activate = default(bool?))
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = CreateAutomationRuleImportWithHttpInfo(activate);
@@ -936,11 +1025,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Import one or more rules from recipe JSON (single or bundle). 
+        /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(bool? activate = default(bool?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -992,12 +1082,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Import one or more rules from recipe JSON (single or bundle). 
+        /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleImportResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = await CreateAutomationRuleImportWithHttpInfoAsync(activate, cancellationToken).ConfigureAwait(false);
@@ -1005,12 +1096,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Import one or more rules from recipe JSON (single or bundle). 
+        /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleImportResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -1064,11 +1156,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire an automation rule immediately. 
+        /// Fire an automation rule immediately. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         public CreateAutomationRuleRunNowResponse CreateAutomationRuleRunNow(Guid id)
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleRunNowResponse> localVarResponse = CreateAutomationRuleRunNowWithHttpInfo(id);
@@ -1076,11 +1169,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire an automation rule immediately. 
+        /// Fire an automation rule immediately. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateAutomationRuleRunNowResponse> CreateAutomationRuleRunNowWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1129,12 +1223,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire an automation rule immediately. 
+        /// Fire an automation rule immediately. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleRunNowResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateAutomationRuleRunNowResponse> CreateAutomationRuleRunNowAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleRunNowResponse> localVarResponse = await CreateAutomationRuleRunNowWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -1142,12 +1237,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire an automation rule immediately. 
+        /// Fire an automation rule immediately. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleRunNowResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleRunNowResponse>> CreateAutomationRuleRunNowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -1198,24 +1294,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip an automation rule between active and inactive. 
+        /// Flip an automation rule between active and inactive. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UpdateAutomationRuleResponse</returns>
-        public UpdateAutomationRuleResponse CreateAutomationRuleToggle(Guid id)
+        /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public GetAutomationRuleResponse CreateAutomationRuleToggle(Guid id)
         {
-            net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> localVarResponse = CreateAutomationRuleToggleWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = CreateAutomationRuleToggleWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Flip an automation rule between active and inactive. 
+        /// Flip an automation rule between active and inactive. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UpdateAutomationRuleResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> CreateAutomationRuleToggleWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<GetAutomationRuleResponse> CreateAutomationRuleToggleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1249,7 +1347,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<UpdateAutomationRuleResponse>("/v1/automation/rules/{id}/toggle", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<GetAutomationRuleResponse>("/v1/automation/rules/{id}/toggle", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAutomationRuleToggle", localVarResponse);
@@ -1263,26 +1361,28 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Flip an automation rule between active and inactive. 
+        /// Flip an automation rule between active and inactive. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateAutomationRuleResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateAutomationRuleResponse> CreateAutomationRuleToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<GetAutomationRuleResponse> CreateAutomationRuleToggleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> localVarResponse = await CreateAutomationRuleToggleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = await CreateAutomationRuleToggleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Flip an automation rule between active and inactive. 
+        /// Flip an automation rule between active and inactive. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateAutomationRuleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse>> CreateAutomationRuleToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAutomationRuleResponse>> CreateAutomationRuleToggleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1317,7 +1417,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateAutomationRuleResponse>("/v1/automation/rules/{id}/toggle", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetAutomationRuleResponse>("/v1/automation/rules/{id}/toggle", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1332,10 +1432,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Dry-run validate one or more recipes against the live catalog. 
+        /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         public CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe()
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = CreateAutomationRuleValidateRecipeWithHttpInfo();
@@ -1343,10 +1444,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Dry-run validate one or more recipes against the live catalog. 
+        /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1394,11 +1496,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Dry-run validate one or more recipes against the live catalog. 
+        /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleValidateRecipeResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = await CreateAutomationRuleValidateRecipeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -1406,11 +1509,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Dry-run validate one or more recipes against the live catalog. 
+        /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleValidateRecipeResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -1752,11 +1856,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete an automation rule. 
+        /// Delete an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>OkResponse</returns>
+        [Obsolete]
         public OkResponse DeleteAutomationRule(Guid id)
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = DeleteAutomationRuleWithHttpInfo(id);
@@ -1764,11 +1869,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete an automation rule. 
+        /// Delete an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of OkResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<OkResponse> DeleteAutomationRuleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1817,12 +1923,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete an automation rule. 
+        /// Delete an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<OkResponse> DeleteAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await DeleteAutomationRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -1830,12 +1937,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete an automation rule. 
+        /// Delete an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> DeleteAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2014,11 +2122,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get a single automation rule. 
+        /// Get a single automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
         public GetAutomationRuleResponse GetAutomationRule(Guid id)
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = GetAutomationRuleWithHttpInfo(id);
@@ -2026,11 +2135,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get a single automation rule. 
+        /// Get a single automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetAutomationRuleResponse> GetAutomationRuleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2079,12 +2189,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get a single automation rule. 
+        /// Get a single automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetAutomationRuleResponse> GetAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = await GetAutomationRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -2092,12 +2203,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get a single automation rule. 
+        /// Get a single automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAutomationRuleResponse>> GetAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2148,10 +2260,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export the user&#39;s full rule library as a portable recipe bundle. 
+        /// Export the user&#39;s full rule library as a portable recipe bundle. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         public GetAutomationRuleExportResponse GetAutomationRuleExport()
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleExportResponse> localVarResponse = GetAutomationRuleExportWithHttpInfo();
@@ -2159,10 +2272,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export the user&#39;s full rule library as a portable recipe bundle. 
+        /// Export the user&#39;s full rule library as a portable recipe bundle. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetAutomationRuleExportResponse> GetAutomationRuleExportWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2210,11 +2324,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export the user&#39;s full rule library as a portable recipe bundle. 
+        /// Export the user&#39;s full rule library as a portable recipe bundle. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleExportResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetAutomationRuleExportResponse> GetAutomationRuleExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleExportResponse> localVarResponse = await GetAutomationRuleExportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -2222,11 +2337,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export the user&#39;s full rule library as a portable recipe bundle. 
+        /// Export the user&#39;s full rule library as a portable recipe bundle. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleExportResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAutomationRuleExportResponse>> GetAutomationRuleExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2276,11 +2392,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export a single automation rule as a portable recipe. 
+        /// Export a single automation rule as a portable recipe. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         public GetAutomationRuleExportByIdResponse GetAutomationRuleExportById(Guid id)
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleExportByIdResponse> localVarResponse = GetAutomationRuleExportByIdWithHttpInfo(id);
@@ -2288,11 +2405,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export a single automation rule as a portable recipe. 
+        /// Export a single automation rule as a portable recipe. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetAutomationRuleExportByIdResponse> GetAutomationRuleExportByIdWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2341,12 +2459,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export a single automation rule as a portable recipe. 
+        /// Export a single automation rule as a portable recipe. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationRuleExportByIdResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetAutomationRuleExportByIdResponse> GetAutomationRuleExportByIdAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetAutomationRuleExportByIdResponse> localVarResponse = await GetAutomationRuleExportByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -2354,12 +2473,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Export a single automation rule as a portable recipe. 
+        /// Export a single automation rule as a portable recipe. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationRuleExportByIdResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAutomationRuleExportByIdResponse>> GetAutomationRuleExportByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2410,10 +2530,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List automation rules. 
+        /// List automation rules. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListAutomationRulesResponse</returns>
+        [Obsolete]
         public ListAutomationRulesResponse ListAutomationRules()
         {
             net.crossly.Client.ApiResponse<ListAutomationRulesResponse> localVarResponse = ListAutomationRulesWithHttpInfo();
@@ -2421,10 +2542,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List automation rules. 
+        /// List automation rules. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListAutomationRulesResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListAutomationRulesResponse> ListAutomationRulesWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2472,11 +2594,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List automation rules. 
+        /// List automation rules. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRulesResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListAutomationRulesResponse> ListAutomationRulesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListAutomationRulesResponse> localVarResponse = await ListAutomationRulesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -2484,11 +2607,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List automation rules. 
+        /// List automation rules. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRulesResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListAutomationRulesResponse>> ListAutomationRulesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2538,13 +2662,14 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Per-fire history for automation rules and workflow chain runs. 
+        /// Per-fire history for automation rules and workflow chain runs. Deprecated: use /v1/workflow-runs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
         /// <param name="chainId"> (optional)</param>
         /// <param name="limit"> (optional, default to 100)</param>
         /// <returns>ListAutomationRunsResponse</returns>
+        [Obsolete]
         public ListAutomationRunsResponse ListAutomationRuns(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?))
         {
             net.crossly.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = ListAutomationRunsWithHttpInfo(ruleId, chainId, limit);
@@ -2552,13 +2677,14 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Per-fire history for automation rules and workflow chain runs. 
+        /// Per-fire history for automation rules and workflow chain runs. Deprecated: use /v1/workflow-runs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
         /// <param name="chainId"> (optional)</param>
         /// <param name="limit"> (optional, default to 100)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2618,7 +2744,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Per-fire history for automation rules and workflow chain runs. 
+        /// Per-fire history for automation rules and workflow chain runs. Deprecated: use /v1/workflow-runs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
@@ -2626,6 +2752,7 @@ namespace net.crossly.Api
         /// <param name="limit"> (optional, default to 100)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = await ListAutomationRunsWithHttpInfoAsync(ruleId, chainId, limit, cancellationToken).ConfigureAwait(false);
@@ -2633,7 +2760,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Per-fire history for automation rules and workflow chain runs. 
+        /// Per-fire history for automation rules and workflow chain runs. Deprecated: use /v1/workflow-runs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ruleId"> (optional)</param>
@@ -2641,6 +2768,7 @@ namespace net.crossly.Api
         /// <param name="limit"> (optional, default to 100)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid? ruleId = default(Guid?), Guid? chainId = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -2830,24 +2958,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Update an automation rule (full replace). 
+        /// Update an automation rule (full replace). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UpdateAutomationRuleResponse</returns>
-        public UpdateAutomationRuleResponse UpdateAutomationRule(Guid id)
+        /// <returns>GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public GetAutomationRuleResponse UpdateAutomationRule(Guid id)
         {
-            net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> localVarResponse = UpdateAutomationRuleWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = UpdateAutomationRuleWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update an automation rule (full replace). 
+        /// Update an automation rule (full replace). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UpdateAutomationRuleResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> UpdateAutomationRuleWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<GetAutomationRuleResponse> UpdateAutomationRuleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2881,7 +3011,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<UpdateAutomationRuleResponse>("/v1/automation/rules/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<GetAutomationRuleResponse>("/v1/automation/rules/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateAutomationRule", localVarResponse);
@@ -2895,26 +3025,28 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Update an automation rule (full replace). 
+        /// Update an automation rule (full replace). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateAutomationRuleResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateAutomationRuleResponse> UpdateAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetAutomationRuleResponse</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<GetAutomationRuleResponse> UpdateAutomationRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse> localVarResponse = await UpdateAutomationRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAutomationRuleResponse> localVarResponse = await UpdateAutomationRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update an automation rule (full replace). 
+        /// Update an automation rule (full replace). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateAutomationRuleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAutomationRuleResponse>> UpdateAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAutomationRuleResponse>> UpdateAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2949,7 +3081,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateAutomationRuleResponse>("/v1/automation/rules/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetAutomationRuleResponse>("/v1/automation/rules/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

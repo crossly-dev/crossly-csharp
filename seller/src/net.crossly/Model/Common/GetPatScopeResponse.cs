@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetPatScopeResponse" /> class.
         /// </summary>
         /// <param name="scopes">scopes (required).</param>
-        public GetPatScopeResponse(List<GetPatScopeResponseScopes> scopes = default(List<GetPatScopeResponseScopes>))
+        public GetPatScopeResponse(List<ListAppsItemCapabilities> scopes = default(List<ListAppsItemCapabilities>))
         {
             // to ensure "scopes" is required (not null)
             if (scopes == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Scopes
         /// </summary>
         [DataMember(Name = "scopes", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetPatScopeResponseScopes> Scopes { get; set; }
+        public List<ListAppsItemCapabilities> Scopes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

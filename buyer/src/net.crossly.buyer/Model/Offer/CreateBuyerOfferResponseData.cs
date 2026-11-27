@@ -39,29 +39,29 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerOfferResponseData" /> class.
         /// </summary>
-        /// <param name="offer">offer (required).</param>
         /// <param name="ok">ok (required).</param>
-        public CreateBuyerOfferResponseData(CreateBuyerOfferResponseDataOffer offer = default(CreateBuyerOfferResponseDataOffer), bool ok = default(bool))
+        /// <param name="offer">offer (required).</param>
+        public CreateBuyerOfferResponseData(bool ok = default(bool), CreateBuyerOfferResponseDataOffer offer = default(CreateBuyerOfferResponseDataOffer))
         {
+            this.Ok = ok;
             // to ensure "offer" is required (not null)
             if (offer == null) {
                 throw new ArgumentNullException("offer is a required property for CreateBuyerOfferResponseData and cannot be null");
             }
             this.Offer = offer;
-            this.Ok = ok;
         }
-
-        /// <summary>
-        /// Gets or Sets Offer
-        /// </summary>
-        [DataMember(Name = "offer", IsRequired = true, EmitDefaultValue = false)]
-        public CreateBuyerOfferResponseDataOffer Offer { get; set; }
 
         /// <summary>
         /// Gets or Sets Ok
         /// </summary>
         [DataMember(Name = "ok", IsRequired = true, EmitDefaultValue = true)]
         public bool Ok { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Offer
+        /// </summary>
+        [DataMember(Name = "offer", IsRequired = true, EmitDefaultValue = false)]
+        public CreateBuyerOfferResponseDataOffer Offer { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +71,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerOfferResponseData {\n");
-            sb.Append("  Offer: ").Append(Offer).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
+            sb.Append("  Offer: ").Append(Offer).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,13 +109,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Ok == input.Ok ||
+                    this.Ok.Equals(input.Ok)
+                ) && 
+                (
                     this.Offer == input.Offer ||
                     (this.Offer != null &&
                     this.Offer.Equals(input.Offer))
-                ) && 
-                (
-                    this.Ok == input.Ok ||
-                    this.Ok.Equals(input.Ok)
                 );
         }
 
@@ -128,11 +128,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 if (this.Offer != null)
                 {
                     hashCode = (hashCode * 59) + this.Offer.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 return hashCode;
             }
         }

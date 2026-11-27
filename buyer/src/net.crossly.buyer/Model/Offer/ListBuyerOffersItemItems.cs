@@ -41,11 +41,11 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="priceCents">Listing price now, in cents. (required).</param>
-        /// <param name="status">status.</param>
-        /// <param name="title">title.</param>
         /// <param name="slug">slug.</param>
+        /// <param name="title">title.</param>
         /// <param name="thumbnail">thumbnail.</param>
-        public ListBuyerOffersItemItems(string id = default(string), decimal priceCents = default(decimal), string status = default(string), string title = default(string), string slug = default(string), string thumbnail = default(string))
+        /// <param name="status">status.</param>
+        public ListBuyerOffersItemItems(string id = default(string), decimal priceCents = default(decimal), string slug = default(string), string title = default(string), string thumbnail = default(string), string status = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -53,10 +53,10 @@ namespace net.crossly.buyer.Model
             }
             this.Id = id;
             this.PriceCents = priceCents;
-            this.Status = status;
-            this.Title = title;
             this.Slug = slug;
+            this.Title = title;
             this.Thumbnail = thumbnail;
+            this.Status = status;
         }
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace net.crossly.buyer.Model
         public decimal PriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Slug
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -85,16 +85,16 @@ namespace net.crossly.buyer.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", EmitDefaultValue = true)]
-        public string Slug { get; set; }
-
-        /// <summary>
         /// Gets or Sets Thumbnail
         /// </summary>
         [DataMember(Name = "thumbnail", EmitDefaultValue = true)]
         public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,10 +106,10 @@ namespace net.crossly.buyer.Model
             sb.Append("class ListBuyerOffersItemItems {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,9 +155,9 @@ namespace net.crossly.buyer.Model
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -165,14 +165,14 @@ namespace net.crossly.buyer.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
-                ) && 
-                (
                     this.Thumbnail == input.Thumbnail ||
                     (this.Thumbnail != null &&
                     this.Thumbnail.Equals(input.Thumbnail))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -190,21 +190,21 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.Status != null)
+                if (this.Slug != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                if (this.Slug != null)
-                {
-                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
-                }
                 if (this.Thumbnail != null)
                 {
                     hashCode = (hashCode * 59) + this.Thumbnail.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 return hashCode;
             }

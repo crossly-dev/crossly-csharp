@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum PurposeEnum
         {
             /// <summary>
-            /// Enum Insurance for value: insurance
-            /// </summary>
-            [EnumMember(Value = "insurance")]
-            Insurance = 1,
-
-            /// <summary>
             /// Enum Appraisal for value: appraisal
             /// </summary>
             [EnumMember(Value = "appraisal")]
-            Appraisal = 2
+            Appraisal = 1,
+
+            /// <summary>
+            /// Enum Insurance for value: insurance
+            /// </summary>
+            [EnumMember(Value = "insurance")]
+            Insurance = 2
 
         }
 

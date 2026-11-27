@@ -44,7 +44,8 @@ namespace net.crossly.Model
         /// <param name="endsAt">endsAt (required).</param>
         /// <param name="cents">cents (required).</param>
         /// <param name="externalId">CBX only: the spend&#39;s external id for this unit (one spend per unit)..</param>
-        public CreateStallBookResponseBookingUnits(string key = default(string), string startsAt = default(string), string endsAt = default(string), decimal cents = default(decimal), string externalId = default(string))
+        /// <param name="paymentId">CBX only, booked since gap 6: this unit&#39;s world_payments row (refunds go through refundWorld)..</param>
+        public CreateStallBookResponseBookingUnits(string key = default(string), string startsAt = default(string), string endsAt = default(string), decimal cents = default(decimal), string externalId = default(string), string paymentId = default(string))
         {
             // to ensure "key" is required (not null)
             if (key == null) {
@@ -63,6 +64,7 @@ namespace net.crossly.Model
             this.EndsAt = endsAt;
             this.Cents = cents;
             this.ExternalId = externalId;
+            this.PaymentId = paymentId;
         }
 
         /// <summary>
@@ -97,6 +99,13 @@ namespace net.crossly.Model
         public string ExternalId { get; set; }
 
         /// <summary>
+        /// CBX only, booked since gap 6: this unit&#39;s world_payments row (refunds go through refundWorld).
+        /// </summary>
+        /// <value>CBX only, booked since gap 6: this unit&#39;s world_payments row (refunds go through refundWorld).</value>
+        [DataMember(Name = "paymentId", EmitDefaultValue = true)]
+        public string PaymentId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,6 +118,7 @@ namespace net.crossly.Model
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  PaymentId: ").Append(PaymentId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +177,11 @@ namespace net.crossly.Model
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
+                    this.PaymentId == input.PaymentId ||
+                    (this.PaymentId != null &&
+                    this.PaymentId.Equals(input.PaymentId))
                 );
         }
 
@@ -195,6 +210,10 @@ namespace net.crossly.Model
                 if (this.ExternalId != null)
                 {
                     hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
+                }
+                if (this.PaymentId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentId.GetHashCode();
                 }
                 return hashCode;
             }

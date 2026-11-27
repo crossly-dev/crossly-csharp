@@ -40,13 +40,19 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetVaultMarketKeyStatResponse" /> class.
         /// </summary>
         /// <param name="bookKey">bookKey (required).</param>
-        public GetVaultMarketKeyStatResponse(string bookKey = default(string))
+        /// <param name="gemRate">gemRate (required).</param>
+        public GetVaultMarketKeyStatResponse(string bookKey = default(string), GetVaultMarketKeyStatResponseGemRate gemRate = default(GetVaultMarketKeyStatResponseGemRate))
         {
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
                 throw new ArgumentNullException("bookKey is a required property for GetVaultMarketKeyStatResponse and cannot be null");
             }
             this.BookKey = bookKey;
+            // to ensure "gemRate" is required (not null)
+            if (gemRate == null) {
+                throw new ArgumentNullException("gemRate is a required property for GetVaultMarketKeyStatResponse and cannot be null");
+            }
+            this.GemRate = gemRate;
         }
 
         /// <summary>
@@ -54,6 +60,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bookKey", IsRequired = true, EmitDefaultValue = false)]
         public string BookKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GemRate
+        /// </summary>
+        [DataMember(Name = "gemRate", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketKeyStatResponseGemRate GemRate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,6 +76,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketKeyStatResponse {\n");
             sb.Append("  BookKey: ").Append(BookKey).Append("\n");
+            sb.Append("  GemRate: ").Append(GemRate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,6 +116,11 @@ namespace net.crossly.Model
                     this.BookKey == input.BookKey ||
                     (this.BookKey != null &&
                     this.BookKey.Equals(input.BookKey))
+                ) && 
+                (
+                    this.GemRate == input.GemRate ||
+                    (this.GemRate != null &&
+                    this.GemRate.Equals(input.GemRate))
                 );
         }
 
@@ -118,6 +136,10 @@ namespace net.crossly.Model
                 if (this.BookKey != null)
                 {
                     hashCode = (hashCode * 59) + this.BookKey.GetHashCode();
+                }
+                if (this.GemRate != null)
+                {
+                    hashCode = (hashCode * 59) + this.GemRate.GetHashCode();
                 }
                 return hashCode;
             }

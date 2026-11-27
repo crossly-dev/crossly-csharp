@@ -45,11 +45,11 @@ namespace net.crossly.Model
         /// <param name="status">status (required).</param>
         /// <param name="carrier">carrier (required).</param>
         /// <param name="orderIds">orderIds (required).</param>
-        /// <param name="documentUrl">documentUrl.</param>
-        /// <param name="shippoManifestId">shippoManifestId (required).</param>
-        /// <param name="shipDate">shipDate (required).</param>
         /// <param name="warnings">warnings (required).</param>
-        public ListOrderScanFormsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string carrier = default(string), List<string> orderIds = default(List<string>), string documentUrl = default(string), string shippoManifestId = default(string), string shipDate = default(string), List<string> warnings = default(List<string>))
+        /// <param name="shipDate">shipDate (required).</param>
+        /// <param name="shippoManifestId">shippoManifestId (required).</param>
+        /// <param name="documentUrl">documentUrl.</param>
+        public ListOrderScanFormsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string carrier = default(string), List<string> orderIds = default(List<string>), List<string> warnings = default(List<string>), string shipDate = default(string), string shippoManifestId = default(string), string documentUrl = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -77,21 +77,21 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("orderIds is a required property for ListOrderScanFormsItem and cannot be null");
             }
             this.OrderIds = orderIds;
-            // to ensure "shippoManifestId" is required (not null)
-            if (shippoManifestId == null) {
-                throw new ArgumentNullException("shippoManifestId is a required property for ListOrderScanFormsItem and cannot be null");
-            }
-            this.ShippoManifestId = shippoManifestId;
-            // to ensure "shipDate" is required (not null)
-            if (shipDate == null) {
-                throw new ArgumentNullException("shipDate is a required property for ListOrderScanFormsItem and cannot be null");
-            }
-            this.ShipDate = shipDate;
             // to ensure "warnings" is required (not null)
             if (warnings == null) {
                 throw new ArgumentNullException("warnings is a required property for ListOrderScanFormsItem and cannot be null");
             }
             this.Warnings = warnings;
+            // to ensure "shipDate" is required (not null)
+            if (shipDate == null) {
+                throw new ArgumentNullException("shipDate is a required property for ListOrderScanFormsItem and cannot be null");
+            }
+            this.ShipDate = shipDate;
+            // to ensure "shippoManifestId" is required (not null)
+            if (shippoManifestId == null) {
+                throw new ArgumentNullException("shippoManifestId is a required property for ListOrderScanFormsItem and cannot be null");
+            }
+            this.ShippoManifestId = shippoManifestId;
             this.DocumentUrl = documentUrl;
         }
 
@@ -132,16 +132,10 @@ namespace net.crossly.Model
         public List<string> OrderIds { get; set; }
 
         /// <summary>
-        /// Gets or Sets DocumentUrl
+        /// Gets or Sets Warnings
         /// </summary>
-        [DataMember(Name = "documentUrl", EmitDefaultValue = true)]
-        public string DocumentUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShippoManifestId
-        /// </summary>
-        [DataMember(Name = "shippoManifestId", IsRequired = true, EmitDefaultValue = false)]
-        public string ShippoManifestId { get; set; }
+        [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipDate
@@ -150,10 +144,16 @@ namespace net.crossly.Model
         public string ShipDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Warnings
+        /// Gets or Sets ShippoManifestId
         /// </summary>
-        [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> Warnings { get; set; }
+        [DataMember(Name = "shippoManifestId", IsRequired = true, EmitDefaultValue = false)]
+        public string ShippoManifestId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DocumentUrl
+        /// </summary>
+        [DataMember(Name = "documentUrl", EmitDefaultValue = true)]
+        public string DocumentUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -169,10 +169,10 @@ namespace net.crossly.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  OrderIds: ").Append(OrderIds).Append("\n");
-            sb.Append("  DocumentUrl: ").Append(DocumentUrl).Append("\n");
-            sb.Append("  ShippoManifestId: ").Append(ShippoManifestId).Append("\n");
-            sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
+            sb.Append("  ShipDate: ").Append(ShipDate).Append("\n");
+            sb.Append("  ShippoManifestId: ").Append(ShippoManifestId).Append("\n");
+            sb.Append("  DocumentUrl: ").Append(DocumentUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -240,14 +240,10 @@ namespace net.crossly.Model
                     this.OrderIds.SequenceEqual(input.OrderIds)
                 ) && 
                 (
-                    this.DocumentUrl == input.DocumentUrl ||
-                    (this.DocumentUrl != null &&
-                    this.DocumentUrl.Equals(input.DocumentUrl))
-                ) && 
-                (
-                    this.ShippoManifestId == input.ShippoManifestId ||
-                    (this.ShippoManifestId != null &&
-                    this.ShippoManifestId.Equals(input.ShippoManifestId))
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
                 ) && 
                 (
                     this.ShipDate == input.ShipDate ||
@@ -255,10 +251,14 @@ namespace net.crossly.Model
                     this.ShipDate.Equals(input.ShipDate))
                 ) && 
                 (
-                    this.Warnings == input.Warnings ||
-                    this.Warnings != null &&
-                    input.Warnings != null &&
-                    this.Warnings.SequenceEqual(input.Warnings)
+                    this.ShippoManifestId == input.ShippoManifestId ||
+                    (this.ShippoManifestId != null &&
+                    this.ShippoManifestId.Equals(input.ShippoManifestId))
+                ) && 
+                (
+                    this.DocumentUrl == input.DocumentUrl ||
+                    (this.DocumentUrl != null &&
+                    this.DocumentUrl.Equals(input.DocumentUrl))
                 );
         }
 
@@ -295,21 +295,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.OrderIds.GetHashCode();
                 }
-                if (this.DocumentUrl != null)
+                if (this.Warnings != null)
                 {
-                    hashCode = (hashCode * 59) + this.DocumentUrl.GetHashCode();
-                }
-                if (this.ShippoManifestId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShippoManifestId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Warnings.GetHashCode();
                 }
                 if (this.ShipDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ShipDate.GetHashCode();
                 }
-                if (this.Warnings != null)
+                if (this.ShippoManifestId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Warnings.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShippoManifestId.GetHashCode();
+                }
+                if (this.DocumentUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.DocumentUrl.GetHashCode();
                 }
                 return hashCode;
             }

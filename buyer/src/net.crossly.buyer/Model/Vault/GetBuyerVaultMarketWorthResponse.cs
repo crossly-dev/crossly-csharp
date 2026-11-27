@@ -49,9 +49,10 @@ namespace net.crossly.buyer.Model
         /// <param name="marks">marks (required).</param>
         /// <param name="costCents">costCents (required).</param>
         /// <param name="pnlCents">pnlCents (required).</param>
+        /// <param name="today">today (required).</param>
         /// <param name="sellNow">sellNow (required).</param>
         /// <param name="note">note (required).</param>
-        public GetBuyerVaultMarketWorthResponse(string asOf = default(string), decimal valueCents = default(decimal), decimal vaultCents = default(decimal), decimal onLoanCents = default(decimal), decimal positionsCents = default(decimal), decimal units = default(decimal), decimal unitsOnLoan = default(decimal), GetBuyerVaultMarketHistoryResponseNowMarks marks = default(GetBuyerVaultMarketHistoryResponseNowMarks), decimal costCents = default(decimal), decimal pnlCents = default(decimal), GetBuyerVaultMarketWorthResponseSellNow sellNow = default(GetBuyerVaultMarketWorthResponseSellNow), string note = default(string))
+        public GetBuyerVaultMarketWorthResponse(string asOf = default(string), decimal valueCents = default(decimal), decimal vaultCents = default(decimal), decimal onLoanCents = default(decimal), decimal positionsCents = default(decimal), decimal units = default(decimal), decimal unitsOnLoan = default(decimal), GetBuyerVaultMarketHistoryResponseNowMarks marks = default(GetBuyerVaultMarketHistoryResponseNowMarks), decimal costCents = default(decimal), decimal pnlCents = default(decimal), GetBuyerVaultMarketWorthResponseToday today = default(GetBuyerVaultMarketWorthResponseToday), GetBuyerVaultMarketWorthResponseSellNow sellNow = default(GetBuyerVaultMarketWorthResponseSellNow), string note = default(string))
         {
             // to ensure "asOf" is required (not null)
             if (asOf == null) {
@@ -71,6 +72,11 @@ namespace net.crossly.buyer.Model
             this.Marks = marks;
             this.CostCents = costCents;
             this.PnlCents = pnlCents;
+            // to ensure "today" is required (not null)
+            if (today == null) {
+                throw new ArgumentNullException("today is a required property for GetBuyerVaultMarketWorthResponse and cannot be null");
+            }
+            this.Today = today;
             // to ensure "sellNow" is required (not null)
             if (sellNow == null) {
                 throw new ArgumentNullException("sellNow is a required property for GetBuyerVaultMarketWorthResponse and cannot be null");
@@ -144,6 +150,12 @@ namespace net.crossly.buyer.Model
         public decimal PnlCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets Today
+        /// </summary>
+        [DataMember(Name = "today", IsRequired = true, EmitDefaultValue = false)]
+        public GetBuyerVaultMarketWorthResponseToday Today { get; set; }
+
+        /// <summary>
         /// Gets or Sets SellNow
         /// </summary>
         [DataMember(Name = "sellNow", IsRequired = true, EmitDefaultValue = false)]
@@ -173,6 +185,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  Marks: ").Append(Marks).Append("\n");
             sb.Append("  CostCents: ").Append(CostCents).Append("\n");
             sb.Append("  PnlCents: ").Append(PnlCents).Append("\n");
+            sb.Append("  Today: ").Append(Today).Append("\n");
             sb.Append("  SellNow: ").Append(SellNow).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
@@ -253,6 +266,11 @@ namespace net.crossly.buyer.Model
                     this.PnlCents.Equals(input.PnlCents)
                 ) && 
                 (
+                    this.Today == input.Today ||
+                    (this.Today != null &&
+                    this.Today.Equals(input.Today))
+                ) && 
+                (
                     this.SellNow == input.SellNow ||
                     (this.SellNow != null &&
                     this.SellNow.Equals(input.SellNow))
@@ -289,6 +307,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.CostCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.PnlCents.GetHashCode();
+                if (this.Today != null)
+                {
+                    hashCode = (hashCode * 59) + this.Today.GetHashCode();
+                }
                 if (this.SellNow != null)
                 {
                     hashCode = (hashCode * 59) + this.SellNow.GetHashCode();

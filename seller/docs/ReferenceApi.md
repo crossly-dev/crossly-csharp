@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**GetDepartment**](ReferenceApi.md#getdepartment) | **GET** /v1/departments | Search the eBay-sourced \&quot;Department\&quot; item-specific values.
 [**GetGender**](ReferenceApi.md#getgender) | **GET** /v1/genders | Search the eBay-sourced \&quot;Gender\&quot; item-specific values.
 [**GetPattern**](ReferenceApi.md#getpattern) | **GET** /v1/patterns | Search the eBay-sourced \&quot;Pattern\&quot; item-specific values.
+[**GetReferencePostal**](ReferenceApi.md#getreferencepostal) | **GET** /v1/reference/postal/{country}/{code} | Look up a postal code: canonical shape, state and US metro areas.
 [**GetSizeSystem**](ReferenceApi.md#getsizesystem) | **GET** /v1/size-systems | Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
 [**GetStyle**](ReferenceApi.md#getstyle) | **GET** /v1/styles | Search the eBay-sourced \&quot;Style\&quot; item-specific values.
 [**GetType**](ReferenceApi.md#gettype) | **GET** /v1/types | Search the eBay-sourced \&quot;Type\&quot; item-specific values.
 [**ListReferenceCountries**](ReferenceApi.md#listreferencecountries) | **GET** /v1/reference/countries | Every country with its delivery-address rules.
+[**ListReferenceMetros**](ReferenceApi.md#listreferencemetros) | **GET** /v1/reference/metros | Search US metro areas (CSA / CBSA) for location rules.
 
 
 <a name="getbrand"></a>
@@ -385,6 +387,88 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getreferencepostal"></a>
+# **GetReferencePostal**
+> GetReferencePostalResponse GetReferencePostal (string country, string code)
+
+Look up a postal code: canonical shape, state and US metro areas.
+
+Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetReferencePostalExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ReferenceApi(config);
+            var country = "country_example";  // string | 
+            var code = "code_example";  // string | 
+
+            try
+            {
+                // Look up a postal code: canonical shape, state and US metro areas.
+                GetReferencePostalResponse result = apiInstance.GetReferencePostal(country, code);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReferenceApi.GetReferencePostal: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country** | **string**|  | 
+ **code** | **string**|  | 
+
+### Return type
+
+**GetReferencePostalResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getsizesystem"></a>
 # **GetSizeSystem**
 > GetSizeSystemResponse GetSizeSystem ()
@@ -659,6 +743,88 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListReferenceCountriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listreferencemetros"></a>
+# **ListReferenceMetros**
+> ListReferenceMetrosResponse ListReferenceMetros (string q, int? limit = null)
+
+Search US metro areas (CSA / CBSA) for location rules.
+
+Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListReferenceMetrosExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ReferenceApi(config);
+            var q = "q_example";  // string | 
+            var limit = 20;  // int? |  (optional)  (default to 20)
+
+            try
+            {
+                // Search US metro areas (CSA / CBSA) for location rules.
+                ListReferenceMetrosResponse result = apiInstance.ListReferenceMetros(q, limit);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReferenceApi.ListReferenceMetros: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | 
+ **limit** | **int?**|  | [optional] [default to 20]
+
+### Return type
+
+**ListReferenceMetrosResponse**
 
 ### Authorization
 

@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
-            /// Enum Foreclosed for value: foreclosed
-            /// </summary>
-            [EnumMember(Value = "foreclosed")]
-            Foreclosed = 2,
-
-            /// <summary>
             /// Enum Grace for value: grace
             /// </summary>
             [EnumMember(Value = "grace")]
-            Grace = 3,
+            Grace = 2,
 
             /// <summary>
             /// Enum Delinquent for value: delinquent
             /// </summary>
             [EnumMember(Value = "delinquent")]
-            Delinquent = 4
+            Delinquent = 3,
+
+            /// <summary>
+            /// Enum Foreclosed for value: foreclosed
+            /// </summary>
+            [EnumMember(Value = "foreclosed")]
+            Foreclosed = 4
 
         }
 

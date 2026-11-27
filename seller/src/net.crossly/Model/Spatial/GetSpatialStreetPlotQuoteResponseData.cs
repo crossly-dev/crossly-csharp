@@ -48,7 +48,8 @@ namespace net.crossly.Model
         /// <param name="vacant">vacant (required).</param>
         /// <param name="buyable">buyable (required).</param>
         /// <param name="enabled">enabled (required).</param>
-        public GetSpatialStreetPlotQuoteResponseData(string address = default(string), string label = default(string), decimal priceCents = default(decimal), decimal maintenanceWeeklyCents = default(decimal), decimal includedWeeks = default(decimal), bool owned = default(bool), bool vacant = default(bool), bool buyable = default(bool), bool enabled = default(bool))
+        /// <param name="claim">claim.</param>
+        public GetSpatialStreetPlotQuoteResponseData(string address = default(string), string label = default(string), decimal priceCents = default(decimal), decimal maintenanceWeeklyCents = default(decimal), decimal includedWeeks = default(decimal), bool owned = default(bool), bool vacant = default(bool), bool buyable = default(bool), bool enabled = default(bool), GetSpatialStreetPlotQuoteResponseDataClaim claim = default(GetSpatialStreetPlotQuoteResponseDataClaim))
         {
             // to ensure "address" is required (not null)
             if (address == null) {
@@ -67,6 +68,7 @@ namespace net.crossly.Model
             this.Vacant = vacant;
             this.Buyable = buyable;
             this.Enabled = enabled;
+            this.Claim = claim;
         }
 
         /// <summary>
@@ -124,6 +126,12 @@ namespace net.crossly.Model
         public bool Enabled { get; set; }
 
         /// <summary>
+        /// Gets or Sets Claim
+        /// </summary>
+        [DataMember(Name = "claim", EmitDefaultValue = true)]
+        public GetSpatialStreetPlotQuoteResponseDataClaim Claim { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -140,6 +148,7 @@ namespace net.crossly.Model
             sb.Append("  Vacant: ").Append(Vacant).Append("\n");
             sb.Append("  Buyable: ").Append(Buyable).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
+            sb.Append("  Claim: ").Append(Claim).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -212,6 +221,11 @@ namespace net.crossly.Model
                 (
                     this.Enabled == input.Enabled ||
                     this.Enabled.Equals(input.Enabled)
+                ) && 
+                (
+                    this.Claim == input.Claim ||
+                    (this.Claim != null &&
+                    this.Claim.Equals(input.Claim))
                 );
         }
 
@@ -239,6 +253,10 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Vacant.GetHashCode();
                 hashCode = (hashCode * 59) + this.Buyable.GetHashCode();
                 hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
+                if (this.Claim != null)
+                {
+                    hashCode = (hashCode * 59) + this.Claim.GetHashCode();
+                }
                 return hashCode;
             }
         }

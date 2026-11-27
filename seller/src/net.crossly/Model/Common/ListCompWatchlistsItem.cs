@@ -44,14 +44,14 @@ namespace net.crossly.Model
         /// <param name="name">name (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="platform">platform.</param>
         /// <param name="condition">condition.</param>
         /// <param name="categoryMain">categoryMain.</param>
-        /// <param name="platform">platform.</param>
         /// <param name="minPrice">minPrice.</param>
         /// <param name="maxPrice">maxPrice.</param>
         /// <param name="lastMatchedAt">lastMatchedAt.</param>
         /// <param name="lastScrapedAt">lastScrapedAt.</param>
-        public ListCompWatchlistsItem(string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string condition = default(string), string categoryMain = default(string), string platform = default(string), string minPrice = default(string), string maxPrice = default(string), DateTime? lastMatchedAt = default(DateTime?), DateTime? lastScrapedAt = default(DateTime?))
+        public ListCompWatchlistsItem(string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string condition = default(string), string categoryMain = default(string), string minPrice = default(string), string maxPrice = default(string), DateTime? lastMatchedAt = default(DateTime?), DateTime? lastScrapedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -70,9 +70,9 @@ namespace net.crossly.Model
             }
             this.UserId = userId;
             this.Brand = brand;
+            this.Platform = platform;
             this.Condition = condition;
             this.CategoryMain = categoryMain;
-            this.Platform = platform;
             this.MinPrice = minPrice;
             this.MaxPrice = maxPrice;
             this.LastMatchedAt = lastMatchedAt;
@@ -110,6 +110,12 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Platform
+        /// </summary>
+        [DataMember(Name = "platform", EmitDefaultValue = true)]
+        public string Platform { get; set; }
+
+        /// <summary>
         /// Gets or Sets Condition
         /// </summary>
         [DataMember(Name = "condition", EmitDefaultValue = true)]
@@ -120,12 +126,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "categoryMain", EmitDefaultValue = true)]
         public string CategoryMain { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Platform
-        /// </summary>
-        [DataMember(Name = "platform", EmitDefaultValue = true)]
-        public string Platform { get; set; }
 
         /// <summary>
         /// Gets or Sets MinPrice
@@ -164,9 +164,9 @@ namespace net.crossly.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  CategoryMain: ").Append(CategoryMain).Append("\n");
-            sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  MinPrice: ").Append(MinPrice).Append("\n");
             sb.Append("  MaxPrice: ").Append(MaxPrice).Append("\n");
             sb.Append("  LastMatchedAt: ").Append(LastMatchedAt).Append("\n");
@@ -232,6 +232,11 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.Platform == input.Platform ||
+                    (this.Platform != null &&
+                    this.Platform.Equals(input.Platform))
+                ) && 
+                (
                     this.Condition == input.Condition ||
                     (this.Condition != null &&
                     this.Condition.Equals(input.Condition))
@@ -240,11 +245,6 @@ namespace net.crossly.Model
                     this.CategoryMain == input.CategoryMain ||
                     (this.CategoryMain != null &&
                     this.CategoryMain.Equals(input.CategoryMain))
-                ) && 
-                (
-                    this.Platform == input.Platform ||
-                    (this.Platform != null &&
-                    this.Platform.Equals(input.Platform))
                 ) && 
                 (
                     this.MinPrice == input.MinPrice ||
@@ -297,6 +297,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                if (this.Platform != null)
+                {
+                    hashCode = (hashCode * 59) + this.Platform.GetHashCode();
+                }
                 if (this.Condition != null)
                 {
                     hashCode = (hashCode * 59) + this.Condition.GetHashCode();
@@ -304,10 +308,6 @@ namespace net.crossly.Model
                 if (this.CategoryMain != null)
                 {
                     hashCode = (hashCode * 59) + this.CategoryMain.GetHashCode();
-                }
-                if (this.Platform != null)
-                {
-                    hashCode = (hashCode * 59) + this.Platform.GetHashCode();
                 }
                 if (this.MinPrice != null)
                 {

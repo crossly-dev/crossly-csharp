@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum GradeModeEnum
         {
             /// <summary>
+            /// Enum Any for value: any
+            /// </summary>
+            [EnumMember(Value = "any")]
+            Any = 1,
+
+            /// <summary>
             /// Enum Exact for value: exact
             /// </summary>
             [EnumMember(Value = "exact")]
-            Exact = 1,
+            Exact = 2,
 
             /// <summary>
             /// Enum Ungraded for value: ungraded
             /// </summary>
             [EnumMember(Value = "ungraded")]
-            Ungraded = 2,
-
-            /// <summary>
-            /// Enum Any for value: any
-            /// </summary>
-            [EnumMember(Value = "any")]
-            Any = 3
+            Ungraded = 3
 
         }
 

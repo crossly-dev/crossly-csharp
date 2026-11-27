@@ -40,15 +40,21 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetVaultMarketPortfolioResponse" /> class.
         /// </summary>
         /// <param name="holdings">holdings (required).</param>
+        /// <param name="shares">shares (required).</param>
         /// <param name="onLoan">onLoan (required).</param>
         /// <param name="totals">totals (required).</param>
-        public GetVaultMarketPortfolioResponse(List<GetVaultMarketPortfolioResponseHoldings> holdings = default(List<GetVaultMarketPortfolioResponseHoldings>), List<GetVaultMarketPortfolioResponseOnLoan> onLoan = default(List<GetVaultMarketPortfolioResponseOnLoan>), GetVaultMarketPortfolioResponseTotals totals = default(GetVaultMarketPortfolioResponseTotals))
+        public GetVaultMarketPortfolioResponse(List<GetVaultMarketPortfolioResponseHoldings> holdings = default(List<GetVaultMarketPortfolioResponseHoldings>), GetVaultMarketPortfolioResponseShares shares = default(GetVaultMarketPortfolioResponseShares), List<GetVaultMarketPortfolioResponseOnLoan> onLoan = default(List<GetVaultMarketPortfolioResponseOnLoan>), GetVaultMarketPortfolioResponseTotals totals = default(GetVaultMarketPortfolioResponseTotals))
         {
             // to ensure "holdings" is required (not null)
             if (holdings == null) {
                 throw new ArgumentNullException("holdings is a required property for GetVaultMarketPortfolioResponse and cannot be null");
             }
             this.Holdings = holdings;
+            // to ensure "shares" is required (not null)
+            if (shares == null) {
+                throw new ArgumentNullException("shares is a required property for GetVaultMarketPortfolioResponse and cannot be null");
+            }
+            this.Shares = shares;
             // to ensure "onLoan" is required (not null)
             if (onLoan == null) {
                 throw new ArgumentNullException("onLoan is a required property for GetVaultMarketPortfolioResponse and cannot be null");
@@ -66,6 +72,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "holdings", IsRequired = true, EmitDefaultValue = false)]
         public List<GetVaultMarketPortfolioResponseHoldings> Holdings { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Shares
+        /// </summary>
+        [DataMember(Name = "shares", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketPortfolioResponseShares Shares { get; set; }
 
         /// <summary>
         /// Gets or Sets OnLoan
@@ -88,6 +100,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketPortfolioResponse {\n");
             sb.Append("  Holdings: ").Append(Holdings).Append("\n");
+            sb.Append("  Shares: ").Append(Shares).Append("\n");
             sb.Append("  OnLoan: ").Append(OnLoan).Append("\n");
             sb.Append("  Totals: ").Append(Totals).Append("\n");
             sb.Append("}\n");
@@ -132,6 +145,11 @@ namespace net.crossly.Model
                     this.Holdings.SequenceEqual(input.Holdings)
                 ) && 
                 (
+                    this.Shares == input.Shares ||
+                    (this.Shares != null &&
+                    this.Shares.Equals(input.Shares))
+                ) && 
+                (
                     this.OnLoan == input.OnLoan ||
                     this.OnLoan != null &&
                     input.OnLoan != null &&
@@ -156,6 +174,10 @@ namespace net.crossly.Model
                 if (this.Holdings != null)
                 {
                     hashCode = (hashCode * 59) + this.Holdings.GetHashCode();
+                }
+                if (this.Shares != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shares.GetHashCode();
                 }
                 if (this.OnLoan != null)
                 {

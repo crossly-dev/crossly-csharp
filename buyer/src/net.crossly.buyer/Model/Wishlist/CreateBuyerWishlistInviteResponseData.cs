@@ -39,21 +39,21 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerWishlistInviteResponseData" /> class.
         /// </summary>
-        /// <param name="url">url (required).</param>
         /// <param name="token">token (required).</param>
+        /// <param name="url">url (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
-        public CreateBuyerWishlistInviteResponseData(string url = default(string), string token = default(string), string expiresAt = default(string))
+        public CreateBuyerWishlistInviteResponseData(string token = default(string), string url = default(string), string expiresAt = default(string))
         {
-            // to ensure "url" is required (not null)
-            if (url == null) {
-                throw new ArgumentNullException("url is a required property for CreateBuyerWishlistInviteResponseData and cannot be null");
-            }
-            this.Url = url;
             // to ensure "token" is required (not null)
             if (token == null) {
                 throw new ArgumentNullException("token is a required property for CreateBuyerWishlistInviteResponseData and cannot be null");
             }
             this.Token = token;
+            // to ensure "url" is required (not null)
+            if (url == null) {
+                throw new ArgumentNullException("url is a required property for CreateBuyerWishlistInviteResponseData and cannot be null");
+            }
+            this.Url = url;
             // to ensure "expiresAt" is required (not null)
             if (expiresAt == null) {
                 throw new ArgumentNullException("expiresAt is a required property for CreateBuyerWishlistInviteResponseData and cannot be null");
@@ -62,16 +62,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Url
-        /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
-
-        /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Url
+        /// </summary>
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
+        public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiresAt
@@ -87,8 +87,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerWishlistInviteResponseData {\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,14 +126,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.Url == input.Url ||
+                    (this.Url != null &&
+                    this.Url.Equals(input.Url))
                 ) && 
                 (
                     this.ExpiresAt == input.ExpiresAt ||
@@ -151,13 +151,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Url != null)
-                {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
-                }
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
+                }
+                if (this.Url != null)
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
                 if (this.ExpiresAt != null)
                 {

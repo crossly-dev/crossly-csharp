@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Open = 1,
 
             /// <summary>
-            /// Enum Locked for value: locked
-            /// </summary>
-            [EnumMember(Value = "locked")]
-            Locked = 2,
-
-            /// <summary>
             /// Enum Friends for value: friends
             /// </summary>
             [EnumMember(Value = "friends")]
-            Friends = 3
+            Friends = 2,
+
+            /// <summary>
+            /// Enum Locked for value: locked
+            /// </summary>
+            [EnumMember(Value = "locked")]
+            Locked = 3
 
         }
 
@@ -70,34 +70,34 @@ namespace net.crossly.Model
         public enum ThemeEnum
         {
             /// <summary>
-            /// Enum Storybook for value: storybook
-            /// </summary>
-            [EnumMember(Value = "storybook")]
-            Storybook = 1,
-
-            /// <summary>
             /// Enum Studio for value: studio
             /// </summary>
             [EnumMember(Value = "studio")]
-            Studio = 2,
+            Studio = 1,
 
             /// <summary>
             /// Enum Noir for value: noir
             /// </summary>
             [EnumMember(Value = "noir")]
-            Noir = 3,
+            Noir = 2,
 
             /// <summary>
             /// Enum Daylight for value: daylight
             /// </summary>
             [EnumMember(Value = "daylight")]
-            Daylight = 4,
+            Daylight = 3,
 
             /// <summary>
             /// Enum Vitrine for value: vitrine
             /// </summary>
             [EnumMember(Value = "vitrine")]
-            Vitrine = 5
+            Vitrine = 4,
+
+            /// <summary>
+            /// Enum Storybook for value: storybook
+            /// </summary>
+            [EnumMember(Value = "storybook")]
+            Storybook = 5
 
         }
 
@@ -127,12 +127,13 @@ namespace net.crossly.Model
         /// <param name="layout">layout (required).</param>
         /// <param name="guestbook">guestbook (required).</param>
         /// <param name="giftShelf">giftShelf.</param>
+        /// <param name="pullsShelf">pullsShelf.</param>
         /// <param name="pinCase">The owner&#39;s earned pins, rarest first, when a pin case stands here (pin-case.ts)..</param>
         /// <param name="vaultWall">vaultWall.</param>
         /// <param name="setWall">setWall.</param>
         /// <param name="here">People in the home right now, every copy together. (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public GetHomeResponse(string slug = default(string), string presenceSlug = default(string), UserIdName owner = default(UserIdName), PrivacyEnum privacy = default(PrivacyEnum), ThemeEnum theme = default(ThemeEnum), GetHomeResponseDecor decor = default(GetHomeResponseDecor), bool isOwner = default(bool), bool canBuild = default(bool), GetHomeResponseRoom room = default(GetHomeResponseRoom), List<GetHomeResponseLayout> layout = default(List<GetHomeResponseLayout>), List<GetHomeResponseGuestbook> guestbook = default(List<GetHomeResponseGuestbook>), GetHomeResponseGiftShelf giftShelf = default(GetHomeResponseGiftShelf), List<GetHomeResponsePinCase> pinCase = default(List<GetHomeResponsePinCase>), GetHomeResponseVaultWall vaultWall = default(GetHomeResponseVaultWall), GetHomeResponseSetWall setWall = default(GetHomeResponseSetWall), decimal here = default(decimal), string updatedAt = default(string))
+        public GetHomeResponse(string slug = default(string), string presenceSlug = default(string), UserIdName owner = default(UserIdName), PrivacyEnum privacy = default(PrivacyEnum), ThemeEnum theme = default(ThemeEnum), GetHomeResponseDecor decor = default(GetHomeResponseDecor), bool isOwner = default(bool), bool canBuild = default(bool), GetHomeResponseRoom room = default(GetHomeResponseRoom), List<GetHomeResponseLayout> layout = default(List<GetHomeResponseLayout>), List<GetHomeResponseGuestbook> guestbook = default(List<GetHomeResponseGuestbook>), GetHomeResponseGiftShelf giftShelf = default(GetHomeResponseGiftShelf), GetHomeResponsePullsShelf pullsShelf = default(GetHomeResponsePullsShelf), List<GetHomeResponsePinCase> pinCase = default(List<GetHomeResponsePinCase>), GetHomeResponseVaultWall vaultWall = default(GetHomeResponseVaultWall), GetHomeResponseSetWall setWall = default(GetHomeResponseSetWall), decimal here = default(decimal), string updatedAt = default(string))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -180,6 +181,7 @@ namespace net.crossly.Model
             }
             this.UpdatedAt = updatedAt;
             this.GiftShelf = giftShelf;
+            this.PullsShelf = pullsShelf;
             this.PinCase = pinCase;
             this.VaultWall = vaultWall;
             this.SetWall = setWall;
@@ -247,6 +249,12 @@ namespace net.crossly.Model
         public GetHomeResponseGiftShelf GiftShelf { get; set; }
 
         /// <summary>
+        /// Gets or Sets PullsShelf
+        /// </summary>
+        [DataMember(Name = "pullsShelf", EmitDefaultValue = true)]
+        public GetHomeResponsePullsShelf PullsShelf { get; set; }
+
+        /// <summary>
         /// The owner&#39;s earned pins, rarest first, when a pin case stands here (pin-case.ts).
         /// </summary>
         /// <value>The owner&#39;s earned pins, rarest first, when a pin case stands here (pin-case.ts).</value>
@@ -298,6 +306,7 @@ namespace net.crossly.Model
             sb.Append("  Layout: ").Append(Layout).Append("\n");
             sb.Append("  Guestbook: ").Append(Guestbook).Append("\n");
             sb.Append("  GiftShelf: ").Append(GiftShelf).Append("\n");
+            sb.Append("  PullsShelf: ").Append(PullsShelf).Append("\n");
             sb.Append("  PinCase: ").Append(PinCase).Append("\n");
             sb.Append("  VaultWall: ").Append(VaultWall).Append("\n");
             sb.Append("  SetWall: ").Append(SetWall).Append("\n");
@@ -397,6 +406,11 @@ namespace net.crossly.Model
                     this.GiftShelf.Equals(input.GiftShelf))
                 ) && 
                 (
+                    this.PullsShelf == input.PullsShelf ||
+                    (this.PullsShelf != null &&
+                    this.PullsShelf.Equals(input.PullsShelf))
+                ) && 
+                (
                     this.PinCase == input.PinCase ||
                     this.PinCase != null &&
                     input.PinCase != null &&
@@ -467,6 +481,10 @@ namespace net.crossly.Model
                 if (this.GiftShelf != null)
                 {
                     hashCode = (hashCode * 59) + this.GiftShelf.GetHashCode();
+                }
+                if (this.PullsShelf != null)
+                {
+                    hashCode = (hashCode * 59) + this.PullsShelf.GetHashCode();
                 }
                 if (this.PinCase != null)
                 {

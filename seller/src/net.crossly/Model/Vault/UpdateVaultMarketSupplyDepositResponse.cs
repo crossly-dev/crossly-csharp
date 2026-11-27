@@ -44,40 +44,40 @@ namespace net.crossly.Model
             Stored = 1,
 
             /// <summary>
-            /// Enum Listed for value: listed
-            /// </summary>
-            [EnumMember(Value = "listed")]
-            Listed = 2,
-
-            /// <summary>
-            /// Enum Inbound for value: inbound
-            /// </summary>
-            [EnumMember(Value = "inbound")]
-            Inbound = 3,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 4,
+            Cancelled = 2,
 
             /// <summary>
-            /// Enum SoldOnBook for value: sold_on_book
+            /// Enum Listed for value: listed
             /// </summary>
-            [EnumMember(Value = "sold_on_book")]
-            SoldOnBook = 5,
-
-            /// <summary>
-            /// Enum ChannelSold for value: channel_sold
-            /// </summary>
-            [EnumMember(Value = "channel_sold")]
-            ChannelSold = 6,
+            [EnumMember(Value = "listed")]
+            Listed = 3,
 
             /// <summary>
             /// Enum Shipped for value: shipped
             /// </summary>
             [EnumMember(Value = "shipped")]
-            Shipped = 7
+            Shipped = 4,
+
+            /// <summary>
+            /// Enum Inbound for value: inbound
+            /// </summary>
+            [EnumMember(Value = "inbound")]
+            Inbound = 5,
+
+            /// <summary>
+            /// Enum SoldOnBook for value: sold_on_book
+            /// </summary>
+            [EnumMember(Value = "sold_on_book")]
+            SoldOnBook = 6,
+
+            /// <summary>
+            /// Enum ChannelSold for value: channel_sold
+            /// </summary>
+            [EnumMember(Value = "channel_sold")]
+            ChannelSold = 7
 
         }
 

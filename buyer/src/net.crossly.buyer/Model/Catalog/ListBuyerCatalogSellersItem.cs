@@ -39,35 +39,29 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuyerCatalogSellersItem" /> class.
         /// </summary>
-        /// <param name="displayName">displayName (required).</param>
         /// <param name="username">username (required).</param>
-        /// <param name="totalItemsSold">totalItemsSold (required).</param>
+        /// <param name="displayName">displayName (required).</param>
         /// <param name="isVerified">isVerified (required).</param>
         /// <param name="activeListings">activeListings (required).</param>
+        /// <param name="totalItemsSold">totalItemsSold (required).</param>
         /// <param name="avatarUrl">avatarUrl.</param>
-        public ListBuyerCatalogSellersItem(string displayName = default(string), string username = default(string), decimal totalItemsSold = default(decimal), bool isVerified = default(bool), decimal activeListings = default(decimal), string avatarUrl = default(string))
+        public ListBuyerCatalogSellersItem(string username = default(string), string displayName = default(string), bool isVerified = default(bool), decimal activeListings = default(decimal), decimal totalItemsSold = default(decimal), string avatarUrl = default(string))
         {
-            // to ensure "displayName" is required (not null)
-            if (displayName == null) {
-                throw new ArgumentNullException("displayName is a required property for ListBuyerCatalogSellersItem and cannot be null");
-            }
-            this.DisplayName = displayName;
             // to ensure "username" is required (not null)
             if (username == null) {
                 throw new ArgumentNullException("username is a required property for ListBuyerCatalogSellersItem and cannot be null");
             }
             this.Username = username;
-            this.TotalItemsSold = totalItemsSold;
+            // to ensure "displayName" is required (not null)
+            if (displayName == null) {
+                throw new ArgumentNullException("displayName is a required property for ListBuyerCatalogSellersItem and cannot be null");
+            }
+            this.DisplayName = displayName;
             this.IsVerified = isVerified;
             this.ActiveListings = activeListings;
+            this.TotalItemsSold = totalItemsSold;
             this.AvatarUrl = avatarUrl;
         }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets Username
@@ -76,10 +70,10 @@ namespace net.crossly.buyer.Model
         public string Username { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalItemsSold
+        /// Gets or Sets DisplayName
         /// </summary>
-        [DataMember(Name = "totalItemsSold", IsRequired = true, EmitDefaultValue = false)]
-        public decimal TotalItemsSold { get; set; }
+        [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = false)]
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets IsVerified
@@ -92,6 +86,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "activeListings", IsRequired = true, EmitDefaultValue = false)]
         public decimal ActiveListings { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalItemsSold
+        /// </summary>
+        [DataMember(Name = "totalItemsSold", IsRequired = true, EmitDefaultValue = false)]
+        public decimal TotalItemsSold { get; set; }
 
         /// <summary>
         /// Gets or Sets AvatarUrl
@@ -107,11 +107,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerCatalogSellersItem {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  TotalItemsSold: ").Append(TotalItemsSold).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  IsVerified: ").Append(IsVerified).Append("\n");
             sb.Append("  ActiveListings: ").Append(ActiveListings).Append("\n");
+            sb.Append("  TotalItemsSold: ").Append(TotalItemsSold).Append("\n");
             sb.Append("  AvatarUrl: ").Append(AvatarUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -149,18 +149,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
-                ) && 
-                (
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this.TotalItemsSold == input.TotalItemsSold ||
-                    this.TotalItemsSold.Equals(input.TotalItemsSold)
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
                     this.IsVerified == input.IsVerified ||
@@ -169,6 +165,10 @@ namespace net.crossly.buyer.Model
                 (
                     this.ActiveListings == input.ActiveListings ||
                     this.ActiveListings.Equals(input.ActiveListings)
+                ) && 
+                (
+                    this.TotalItemsSold == input.TotalItemsSold ||
+                    this.TotalItemsSold.Equals(input.TotalItemsSold)
                 ) && 
                 (
                     this.AvatarUrl == input.AvatarUrl ||
@@ -186,17 +186,17 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DisplayName != null)
-                {
-                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
-                }
                 if (this.Username != null)
                 {
                     hashCode = (hashCode * 59) + this.Username.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TotalItemsSold.GetHashCode();
+                if (this.DisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.IsVerified.GetHashCode();
                 hashCode = (hashCode * 59) + this.ActiveListings.GetHashCode();
+                hashCode = (hashCode * 59) + this.TotalItemsSold.GetHashCode();
                 if (this.AvatarUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.AvatarUrl.GetHashCode();

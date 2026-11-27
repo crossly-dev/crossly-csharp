@@ -39,33 +39,33 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCollectionOfferResponseData" /> class.
         /// </summary>
-        /// <param name="pending">pending.</param>
+        /// <param name="portfolioId">portfolioId (required).</param>
         /// <param name="title">title.</param>
         /// <param name="lastSaleCents">lastSaleCents.</param>
-        /// <param name="skuId">skuId.</param>
-        /// <param name="portfolioId">portfolioId (required).</param>
-        /// <param name="offer">offer.</param>
         /// <param name="topBidCents">topBidCents.</param>
-        public GetBuyerCollectionOfferResponseData(GetBuyerCollectionOfferResponseDataPending pending = default(GetBuyerCollectionOfferResponseDataPending), string title = default(string), decimal? lastSaleCents = default(decimal?), string skuId = default(string), string portfolioId = default(string), GetBuyerCollectionOfferResponseDataOffer offer = default(GetBuyerCollectionOfferResponseDataOffer), decimal? topBidCents = default(decimal?))
+        /// <param name="skuId">skuId.</param>
+        /// <param name="offer">offer.</param>
+        /// <param name="pending">pending.</param>
+        public GetBuyerCollectionOfferResponseData(string portfolioId = default(string), string title = default(string), decimal? lastSaleCents = default(decimal?), decimal? topBidCents = default(decimal?), string skuId = default(string), GetBuyerCollectionOfferResponseDataOffer offer = default(GetBuyerCollectionOfferResponseDataOffer), GetBuyerCollectionOfferResponseDataPending pending = default(GetBuyerCollectionOfferResponseDataPending))
         {
             // to ensure "portfolioId" is required (not null)
             if (portfolioId == null) {
                 throw new ArgumentNullException("portfolioId is a required property for GetBuyerCollectionOfferResponseData and cannot be null");
             }
             this.PortfolioId = portfolioId;
-            this.Pending = pending;
             this.Title = title;
             this.LastSaleCents = lastSaleCents;
+            this.TopBidCents = topBidCents;
             this.SkuId = skuId;
             this.Offer = offer;
-            this.TopBidCents = topBidCents;
+            this.Pending = pending;
         }
 
         /// <summary>
-        /// Gets or Sets Pending
+        /// Gets or Sets PortfolioId
         /// </summary>
-        [DataMember(Name = "pending", EmitDefaultValue = true)]
-        public GetBuyerCollectionOfferResponseDataPending Pending { get; set; }
+        [DataMember(Name = "portfolioId", IsRequired = true, EmitDefaultValue = false)]
+        public string PortfolioId { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -80,16 +80,16 @@ namespace net.crossly.buyer.Model
         public decimal? LastSaleCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets TopBidCents
+        /// </summary>
+        [DataMember(Name = "topBidCents", EmitDefaultValue = true)]
+        public decimal? TopBidCents { get; set; }
+
+        /// <summary>
         /// Gets or Sets SkuId
         /// </summary>
         [DataMember(Name = "skuId", EmitDefaultValue = true)]
         public string SkuId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PortfolioId
-        /// </summary>
-        [DataMember(Name = "portfolioId", IsRequired = true, EmitDefaultValue = false)]
-        public string PortfolioId { get; set; }
 
         /// <summary>
         /// Gets or Sets Offer
@@ -98,10 +98,10 @@ namespace net.crossly.buyer.Model
         public GetBuyerCollectionOfferResponseDataOffer Offer { get; set; }
 
         /// <summary>
-        /// Gets or Sets TopBidCents
+        /// Gets or Sets Pending
         /// </summary>
-        [DataMember(Name = "topBidCents", EmitDefaultValue = true)]
-        public decimal? TopBidCents { get; set; }
+        [DataMember(Name = "pending", EmitDefaultValue = true)]
+        public GetBuyerCollectionOfferResponseDataPending Pending { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,13 +111,13 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionOfferResponseData {\n");
-            sb.Append("  Pending: ").Append(Pending).Append("\n");
+            sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  LastSaleCents: ").Append(LastSaleCents).Append("\n");
-            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
-            sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
-            sb.Append("  Offer: ").Append(Offer).Append("\n");
             sb.Append("  TopBidCents: ").Append(TopBidCents).Append("\n");
+            sb.Append("  SkuId: ").Append(SkuId).Append("\n");
+            sb.Append("  Offer: ").Append(Offer).Append("\n");
+            sb.Append("  Pending: ").Append(Pending).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,9 +154,9 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Pending == input.Pending ||
-                    (this.Pending != null &&
-                    this.Pending.Equals(input.Pending))
+                    this.PortfolioId == input.PortfolioId ||
+                    (this.PortfolioId != null &&
+                    this.PortfolioId.Equals(input.PortfolioId))
                 ) && 
                 (
                     this.Title == input.Title ||
@@ -169,14 +169,14 @@ namespace net.crossly.buyer.Model
                     this.LastSaleCents.Equals(input.LastSaleCents))
                 ) && 
                 (
+                    this.TopBidCents == input.TopBidCents ||
+                    (this.TopBidCents != null &&
+                    this.TopBidCents.Equals(input.TopBidCents))
+                ) && 
+                (
                     this.SkuId == input.SkuId ||
                     (this.SkuId != null &&
                     this.SkuId.Equals(input.SkuId))
-                ) && 
-                (
-                    this.PortfolioId == input.PortfolioId ||
-                    (this.PortfolioId != null &&
-                    this.PortfolioId.Equals(input.PortfolioId))
                 ) && 
                 (
                     this.Offer == input.Offer ||
@@ -184,9 +184,9 @@ namespace net.crossly.buyer.Model
                     this.Offer.Equals(input.Offer))
                 ) && 
                 (
-                    this.TopBidCents == input.TopBidCents ||
-                    (this.TopBidCents != null &&
-                    this.TopBidCents.Equals(input.TopBidCents))
+                    this.Pending == input.Pending ||
+                    (this.Pending != null &&
+                    this.Pending.Equals(input.Pending))
                 );
         }
 
@@ -199,9 +199,9 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Pending != null)
+                if (this.PortfolioId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Pending.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PortfolioId.GetHashCode();
                 }
                 if (this.Title != null)
                 {
@@ -211,21 +211,21 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.LastSaleCents.GetHashCode();
                 }
+                if (this.TopBidCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.TopBidCents.GetHashCode();
+                }
                 if (this.SkuId != null)
                 {
                     hashCode = (hashCode * 59) + this.SkuId.GetHashCode();
-                }
-                if (this.PortfolioId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PortfolioId.GetHashCode();
                 }
                 if (this.Offer != null)
                 {
                     hashCode = (hashCode * 59) + this.Offer.GetHashCode();
                 }
-                if (this.TopBidCents != null)
+                if (this.Pending != null)
                 {
-                    hashCode = (hashCode * 59) + this.TopBidCents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Pending.GetHashCode();
                 }
                 return hashCode;
             }

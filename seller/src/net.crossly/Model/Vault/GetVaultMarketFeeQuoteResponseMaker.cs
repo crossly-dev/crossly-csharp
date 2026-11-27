@@ -64,28 +64,28 @@ namespace net.crossly.Model
         public enum ProgramEnum
         {
             /// <summary>
+            /// Enum Retail for value: retail
+            /// </summary>
+            [EnumMember(Value = "retail")]
+            Retail = 1,
+
+            /// <summary>
             /// Enum Volume for value: volume
             /// </summary>
             [EnumMember(Value = "volume")]
-            Volume = 1,
+            Volume = 2,
 
             /// <summary>
             /// Enum Lp for value: lp
             /// </summary>
             [EnumMember(Value = "lp")]
-            Lp = 2,
+            Lp = 3,
 
             /// <summary>
             /// Enum Dmm for value: dmm
             /// </summary>
             [EnumMember(Value = "dmm")]
-            Dmm = 3,
-
-            /// <summary>
-            /// Enum Retail for value: retail
-            /// </summary>
-            [EnumMember(Value = "retail")]
-            Retail = 4
+            Dmm = 4
 
         }
 

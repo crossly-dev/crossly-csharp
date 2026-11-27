@@ -38,16 +38,16 @@ namespace net.crossly.buyer.Model
         public enum OutcomeEnum
         {
             /// <summary>
-            /// Enum Won for value: won
-            /// </summary>
-            [EnumMember(Value = "won")]
-            Won = 1,
-
-            /// <summary>
             /// Enum Expired for value: expired
             /// </summary>
             [EnumMember(Value = "expired")]
-            Expired = 2,
+            Expired = 1,
+
+            /// <summary>
+            /// Enum Won for value: won
+            /// </summary>
+            [EnumMember(Value = "won")]
+            Won = 2,
 
             /// <summary>
             /// Enum Waitlist for value: waitlist

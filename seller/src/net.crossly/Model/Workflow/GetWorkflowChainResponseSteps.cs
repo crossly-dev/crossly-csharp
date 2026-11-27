@@ -40,29 +40,35 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetWorkflowChainResponseSteps" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="position">position (required).</param>
         /// <param name="chainId">chainId (required).</param>
+        /// <param name="position">position (required).</param>
         /// <param name="stepType">stepType (required).</param>
         /// <param name="actionId">actionId.</param>
+        /// <param name="actionConfig">actionConfig (required).</param>
         /// <param name="waitMs">waitMs.</param>
-        public GetWorkflowChainResponseSteps(string id = default(string), decimal position = default(decimal), string chainId = default(string), string stepType = default(string), string actionId = default(string), decimal? waitMs = default(decimal?))
+        public GetWorkflowChainResponseSteps(string id = default(string), string chainId = default(string), decimal position = default(decimal), string stepType = default(string), string actionId = default(string), Dictionary<string, Object> actionConfig = default(Dictionary<string, Object>), decimal? waitMs = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetWorkflowChainResponseSteps and cannot be null");
             }
             this.Id = id;
-            this.Position = position;
             // to ensure "chainId" is required (not null)
             if (chainId == null) {
                 throw new ArgumentNullException("chainId is a required property for GetWorkflowChainResponseSteps and cannot be null");
             }
             this.ChainId = chainId;
+            this.Position = position;
             // to ensure "stepType" is required (not null)
             if (stepType == null) {
                 throw new ArgumentNullException("stepType is a required property for GetWorkflowChainResponseSteps and cannot be null");
             }
             this.StepType = stepType;
+            // to ensure "actionConfig" is required (not null)
+            if (actionConfig == null) {
+                throw new ArgumentNullException("actionConfig is a required property for GetWorkflowChainResponseSteps and cannot be null");
+            }
+            this.ActionConfig = actionConfig;
             this.ActionId = actionId;
             this.WaitMs = waitMs;
         }
@@ -74,16 +80,16 @@ namespace net.crossly.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Position
-        /// </summary>
-        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Position { get; set; }
-
-        /// <summary>
         /// Gets or Sets ChainId
         /// </summary>
         [DataMember(Name = "chainId", IsRequired = true, EmitDefaultValue = false)]
         public string ChainId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Position
+        /// </summary>
+        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Position { get; set; }
 
         /// <summary>
         /// Gets or Sets StepType
@@ -96,6 +102,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "actionId", EmitDefaultValue = true)]
         public string ActionId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ActionConfig
+        /// </summary>
+        [DataMember(Name = "actionConfig", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> ActionConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets WaitMs
@@ -112,10 +124,11 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetWorkflowChainResponseSteps {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
+            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  StepType: ").Append(StepType).Append("\n");
             sb.Append("  ActionId: ").Append(ActionId).Append("\n");
+            sb.Append("  ActionConfig: ").Append(ActionConfig).Append("\n");
             sb.Append("  WaitMs: ").Append(WaitMs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -158,13 +171,13 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Position == input.Position ||
-                    this.Position.Equals(input.Position)
-                ) && 
-                (
                     this.ChainId == input.ChainId ||
                     (this.ChainId != null &&
                     this.ChainId.Equals(input.ChainId))
+                ) && 
+                (
+                    this.Position == input.Position ||
+                    this.Position.Equals(input.Position)
                 ) && 
                 (
                     this.StepType == input.StepType ||
@@ -175,6 +188,12 @@ namespace net.crossly.Model
                     this.ActionId == input.ActionId ||
                     (this.ActionId != null &&
                     this.ActionId.Equals(input.ActionId))
+                ) && 
+                (
+                    this.ActionConfig == input.ActionConfig ||
+                    this.ActionConfig != null &&
+                    input.ActionConfig != null &&
+                    this.ActionConfig.SequenceEqual(input.ActionConfig)
                 ) && 
                 (
                     this.WaitMs == input.WaitMs ||
@@ -196,11 +215,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.ChainId != null)
                 {
                     hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.StepType != null)
                 {
                     hashCode = (hashCode * 59) + this.StepType.GetHashCode();
@@ -208,6 +227,10 @@ namespace net.crossly.Model
                 if (this.ActionId != null)
                 {
                     hashCode = (hashCode * 59) + this.ActionId.GetHashCode();
+                }
+                if (this.ActionConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionConfig.GetHashCode();
                 }
                 if (this.WaitMs != null)
                 {

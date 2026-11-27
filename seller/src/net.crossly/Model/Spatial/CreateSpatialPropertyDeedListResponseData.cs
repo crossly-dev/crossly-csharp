@@ -42,12 +42,13 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="buyerUserId">buyerUserId.</param>
         /// <param name="priceCents">priceCents (required).</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="closedAt">closedAt.</param>
         /// <param name="deedId">deedId (required).</param>
-        public CreateSpatialPropertyDeedListResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string sellerUserId = default(string), string buyerUserId = default(string), decimal priceCents = default(decimal), DateTime? closedAt = default(DateTime?), string deedId = default(string))
+        public CreateSpatialPropertyDeedListResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string storefrontId = default(string), string buyerUserId = default(string), decimal priceCents = default(decimal), string sellerUserId = default(string), DateTime? closedAt = default(DateTime?), string deedId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -60,17 +61,18 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for CreateSpatialPropertyDeedListResponseData and cannot be null");
             }
             this.Status = status;
+            this.PriceCents = priceCents;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
                 throw new ArgumentNullException("sellerUserId is a required property for CreateSpatialPropertyDeedListResponseData and cannot be null");
             }
             this.SellerUserId = sellerUserId;
-            this.PriceCents = priceCents;
             // to ensure "deedId" is required (not null)
             if (deedId == null) {
                 throw new ArgumentNullException("deedId is a required property for CreateSpatialPropertyDeedListResponseData and cannot be null");
             }
             this.DeedId = deedId;
+            this.StorefrontId = storefrontId;
             this.BuyerUserId = buyerUserId;
             this.ClosedAt = closedAt;
         }
@@ -94,10 +96,10 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerUserId
+        /// Gets or Sets StorefrontId
         /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerUserId
@@ -110,6 +112,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal PriceCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets ClosedAt
@@ -134,9 +142,10 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  ClosedAt: ").Append(ClosedAt).Append("\n");
             sb.Append("  DeedId: ").Append(DeedId).Append("\n");
             sb.Append("}\n");
@@ -190,9 +199,9 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.BuyerUserId == input.BuyerUserId ||
@@ -202,6 +211,11 @@ namespace net.crossly.Model
                 (
                     this.PriceCents == input.PriceCents ||
                     this.PriceCents.Equals(input.PriceCents)
+                ) && 
+                (
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.ClosedAt == input.ClosedAt ||
@@ -236,15 +250,19 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.SellerUserId != null)
+                if (this.StorefrontId != null)
                 {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
+                if (this.SellerUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
                 if (this.ClosedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ClosedAt.GetHashCode();

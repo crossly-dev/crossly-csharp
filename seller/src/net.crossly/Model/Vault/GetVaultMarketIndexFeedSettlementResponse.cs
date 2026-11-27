@@ -42,7 +42,7 @@ namespace net.crossly.Model
         /// <param name="index">index (required).</param>
         /// <param name="method">method (required).</param>
         /// <param name="series">series (required).</param>
-        public GetVaultMarketIndexFeedSettlementResponse(SlugName index = default(SlugName), string method = default(string), List<GetVaultMarketIndexFeedSettlementResponseSeries> series = default(List<GetVaultMarketIndexFeedSettlementResponseSeries>))
+        public GetVaultMarketIndexFeedSettlementResponse(NameSlug index = default(NameSlug), string method = default(string), List<GetVaultMarketIndexFeedSettlementResponseSeries> series = default(List<GetVaultMarketIndexFeedSettlementResponseSeries>))
         {
             // to ensure "index" is required (not null)
             if (index == null) {
@@ -65,7 +65,7 @@ namespace net.crossly.Model
         /// Gets or Sets Index
         /// </summary>
         [DataMember(Name = "index", IsRequired = true, EmitDefaultValue = false)]
-        public SlugName Index { get; set; }
+        public NameSlug Index { get; set; }
 
         /// <summary>
         /// Gets or Sets Method

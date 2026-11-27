@@ -42,7 +42,7 @@ namespace net.crossly.Model
         /// <param name="name">name (required).</param>
         /// <param name="shop">shop.</param>
         /// <param name="level">level (required).</param>
-        public ListStreetStallsItemSeller(string name = default(string), NameSlug shop = default(NameSlug), decimal level = default(decimal))
+        public ListStreetStallsItemSeller(string name = default(string), NameSlug2 shop = default(NameSlug2), decimal level = default(decimal))
         {
             // to ensure "name" is required (not null)
             if (name == null) {
@@ -63,7 +63,7 @@ namespace net.crossly.Model
         /// Gets or Sets Shop
         /// </summary>
         [DataMember(Name = "shop", EmitDefaultValue = true)]
-        public NameSlug Shop { get; set; }
+        public NameSlug2 Shop { get; set; }
 
         /// <summary>
         /// Gets or Sets Level

@@ -38,16 +38,16 @@ namespace net.crossly.buyer.Model
         public enum RailEnum
         {
             /// <summary>
-            /// Enum Bucks for value: bucks
-            /// </summary>
-            [EnumMember(Value = "bucks")]
-            Bucks = 1,
-
-            /// <summary>
             /// Enum Cbx for value: cbx
             /// </summary>
             [EnumMember(Value = "cbx")]
-            Cbx = 2
+            Cbx = 1,
+
+            /// <summary>
+            /// Enum Bucks for value: bucks
+            /// </summary>
+            [EnumMember(Value = "bucks")]
+            Bucks = 2
 
         }
 

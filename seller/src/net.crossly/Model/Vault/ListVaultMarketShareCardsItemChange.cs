@@ -39,22 +39,22 @@ namespace net.crossly.Model
         public enum SinceEnum
         {
             /// <summary>
-            /// Enum Fill for value: fill
-            /// </summary>
-            [EnumMember(Value = "fill")]
-            Fill = 1,
-
-            /// <summary>
             /// Enum Entry for value: entry
             /// </summary>
             [EnumMember(Value = "entry")]
-            Entry = 2,
+            Entry = 1,
 
             /// <summary>
             /// Enum Cost for value: cost
             /// </summary>
             [EnumMember(Value = "cost")]
-            Cost = 3,
+            Cost = 2,
+
+            /// <summary>
+            /// Enum Fill for value: fill
+            /// </summary>
+            [EnumMember(Value = "fill")]
+            Fill = 3,
 
             /// <summary>
             /// Enum Inception for value: inception
@@ -96,16 +96,16 @@ namespace net.crossly.Model
             Closed = 3,
 
             /// <summary>
-            /// Enum Held for value: held
-            /// </summary>
-            [EnumMember(Value = "held")]
-            Held = 4,
-
-            /// <summary>
             /// Enum Sold for value: sold
             /// </summary>
             [EnumMember(Value = "sold")]
-            Sold = 5,
+            Sold = 4,
+
+            /// <summary>
+            /// Enum Held for value: held
+            /// </summary>
+            [EnumMember(Value = "held")]
+            Held = 5,
 
             /// <summary>
             /// Enum Gone for value: gone
@@ -128,16 +128,16 @@ namespace net.crossly.Model
         public enum SideEnum
         {
             /// <summary>
-            /// Enum Long for value: long
-            /// </summary>
-            [EnumMember(Value = "long")]
-            Long = 1,
-
-            /// <summary>
             /// Enum Short for value: short
             /// </summary>
             [EnumMember(Value = "short")]
-            Short = 2,
+            Short = 1,
+
+            /// <summary>
+            /// Enum Long for value: long
+            /// </summary>
+            [EnumMember(Value = "long")]
+            Long = 2,
 
             /// <summary>
             /// Enum Own for value: own

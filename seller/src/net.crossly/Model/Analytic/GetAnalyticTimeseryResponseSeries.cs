@@ -42,7 +42,9 @@ namespace net.crossly.Model
         /// <param name="day">day (required).</param>
         /// <param name="sales">sales (required).</param>
         /// <param name="revenue">revenue (required).</param>
-        public GetAnalyticTimeseryResponseSeries(string day = default(string), decimal sales = default(decimal), decimal revenue = default(decimal))
+        /// <param name="netSalesCents">netSalesCents (required).</param>
+        /// <param name="netProfitCents">netProfitCents (required).</param>
+        public GetAnalyticTimeseryResponseSeries(string day = default(string), decimal sales = default(decimal), decimal revenue = default(decimal), decimal netSalesCents = default(decimal), decimal netProfitCents = default(decimal))
         {
             // to ensure "day" is required (not null)
             if (day == null) {
@@ -51,6 +53,8 @@ namespace net.crossly.Model
             this.Day = day;
             this.Sales = sales;
             this.Revenue = revenue;
+            this.NetSalesCents = netSalesCents;
+            this.NetProfitCents = netProfitCents;
         }
 
         /// <summary>
@@ -72,6 +76,18 @@ namespace net.crossly.Model
         public decimal Revenue { get; set; }
 
         /// <summary>
+        /// Gets or Sets NetSalesCents
+        /// </summary>
+        [DataMember(Name = "netSalesCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal NetSalesCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NetProfitCents
+        /// </summary>
+        [DataMember(Name = "netProfitCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal NetProfitCents { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +98,8 @@ namespace net.crossly.Model
             sb.Append("  Day: ").Append(Day).Append("\n");
             sb.Append("  Sales: ").Append(Sales).Append("\n");
             sb.Append("  Revenue: ").Append(Revenue).Append("\n");
+            sb.Append("  NetSalesCents: ").Append(NetSalesCents).Append("\n");
+            sb.Append("  NetProfitCents: ").Append(NetProfitCents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,6 +147,14 @@ namespace net.crossly.Model
                 (
                     this.Revenue == input.Revenue ||
                     this.Revenue.Equals(input.Revenue)
+                ) && 
+                (
+                    this.NetSalesCents == input.NetSalesCents ||
+                    this.NetSalesCents.Equals(input.NetSalesCents)
+                ) && 
+                (
+                    this.NetProfitCents == input.NetProfitCents ||
+                    this.NetProfitCents.Equals(input.NetProfitCents)
                 );
         }
 
@@ -147,6 +173,8 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.Sales.GetHashCode();
                 hashCode = (hashCode * 59) + this.Revenue.GetHashCode();
+                hashCode = (hashCode * 59) + this.NetSalesCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.NetProfitCents.GetHashCode();
                 return hashCode;
             }
         }

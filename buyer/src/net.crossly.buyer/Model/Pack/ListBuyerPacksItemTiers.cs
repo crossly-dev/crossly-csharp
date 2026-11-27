@@ -41,13 +41,13 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="available">available (required).</param>
-        /// <param name="minValueCents">minValueCents.</param>
         /// <param name="weight">weight (required).</param>
         /// <param name="oddsPct">oddsPct (required).</param>
+        /// <param name="available">available (required).</param>
+        /// <param name="minValueCents">minValueCents.</param>
         /// <param name="maxValueCents">maxValueCents.</param>
         /// <param name="avgValueCents">avgValueCents (required).</param>
-        public ListBuyerPacksItemTiers(string id = default(string), string name = default(string), decimal available = default(decimal), decimal? minValueCents = default(decimal?), decimal weight = default(decimal), decimal oddsPct = default(decimal), decimal? maxValueCents = default(decimal?), decimal avgValueCents = default(decimal))
+        public ListBuyerPacksItemTiers(string id = default(string), string name = default(string), decimal weight = default(decimal), decimal oddsPct = default(decimal), decimal available = default(decimal), decimal? minValueCents = default(decimal?), decimal? maxValueCents = default(decimal?), decimal avgValueCents = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -59,9 +59,9 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("name is a required property for ListBuyerPacksItemTiers and cannot be null");
             }
             this.Name = name;
-            this.Available = available;
             this.Weight = weight;
             this.OddsPct = oddsPct;
+            this.Available = available;
             this.AvgValueCents = avgValueCents;
             this.MinValueCents = minValueCents;
             this.MaxValueCents = maxValueCents;
@@ -80,18 +80,6 @@ namespace net.crossly.buyer.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Available
-        /// </summary>
-        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Available { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MinValueCents
-        /// </summary>
-        [DataMember(Name = "minValueCents", EmitDefaultValue = true)]
-        public decimal? MinValueCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", IsRequired = true, EmitDefaultValue = false)]
@@ -102,6 +90,18 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "oddsPct", IsRequired = true, EmitDefaultValue = false)]
         public decimal OddsPct { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Available
+        /// </summary>
+        [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Available { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MinValueCents
+        /// </summary>
+        [DataMember(Name = "minValueCents", EmitDefaultValue = true)]
+        public decimal? MinValueCents { get; set; }
 
         /// <summary>
         /// Gets or Sets MaxValueCents
@@ -125,10 +125,10 @@ namespace net.crossly.buyer.Model
             sb.Append("class ListBuyerPacksItemTiers {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Available: ").Append(Available).Append("\n");
-            sb.Append("  MinValueCents: ").Append(MinValueCents).Append("\n");
             sb.Append("  Weight: ").Append(Weight).Append("\n");
             sb.Append("  OddsPct: ").Append(OddsPct).Append("\n");
+            sb.Append("  Available: ").Append(Available).Append("\n");
+            sb.Append("  MinValueCents: ").Append(MinValueCents).Append("\n");
             sb.Append("  MaxValueCents: ").Append(MaxValueCents).Append("\n");
             sb.Append("  AvgValueCents: ").Append(AvgValueCents).Append("\n");
             sb.Append("}\n");
@@ -177,6 +177,14 @@ namespace net.crossly.buyer.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Weight == input.Weight ||
+                    this.Weight.Equals(input.Weight)
+                ) && 
+                (
+                    this.OddsPct == input.OddsPct ||
+                    this.OddsPct.Equals(input.OddsPct)
+                ) && 
+                (
                     this.Available == input.Available ||
                     this.Available.Equals(input.Available)
                 ) && 
@@ -184,14 +192,6 @@ namespace net.crossly.buyer.Model
                     this.MinValueCents == input.MinValueCents ||
                     (this.MinValueCents != null &&
                     this.MinValueCents.Equals(input.MinValueCents))
-                ) && 
-                (
-                    this.Weight == input.Weight ||
-                    this.Weight.Equals(input.Weight)
-                ) && 
-                (
-                    this.OddsPct == input.OddsPct ||
-                    this.OddsPct.Equals(input.OddsPct)
                 ) && 
                 (
                     this.MaxValueCents == input.MaxValueCents ||
@@ -221,13 +221,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Weight.GetHashCode();
+                hashCode = (hashCode * 59) + this.OddsPct.GetHashCode();
                 hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 if (this.MinValueCents != null)
                 {
                     hashCode = (hashCode * 59) + this.MinValueCents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Weight.GetHashCode();
-                hashCode = (hashCode * 59) + this.OddsPct.GetHashCode();
                 if (this.MaxValueCents != null)
                 {
                     hashCode = (hashCode * 59) + this.MaxValueCents.GetHashCode();

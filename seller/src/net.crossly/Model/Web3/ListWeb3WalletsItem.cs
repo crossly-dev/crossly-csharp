@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum FamilyEnum
         {
             /// <summary>
-            /// Enum Evm for value: evm
-            /// </summary>
-            [EnumMember(Value = "evm")]
-            Evm = 1,
-
-            /// <summary>
             /// Enum Solana for value: solana
             /// </summary>
             [EnumMember(Value = "solana")]
-            Solana = 2
+            Solana = 1,
+
+            /// <summary>
+            /// Enum Evm for value: evm
+            /// </summary>
+            [EnumMember(Value = "evm")]
+            Evm = 2
 
         }
 
@@ -71,8 +71,9 @@ namespace net.crossly.Model
         /// <param name="label">label.</param>
         /// <param name="verifiedAt">verifiedAt.</param>
         /// <param name="lastSyncedAt">lastSyncedAt.</param>
+        /// <param name="autoImport">A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there. (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListWeb3WalletsItem(string id = default(string), FamilyEnum family = default(FamilyEnum), string address = default(string), string label = default(string), DateTime? verifiedAt = default(DateTime?), DateTime? lastSyncedAt = default(DateTime?), DateTime createdAt = default(DateTime))
+        public ListWeb3WalletsItem(string id = default(string), FamilyEnum family = default(FamilyEnum), string address = default(string), string label = default(string), DateTime? verifiedAt = default(DateTime?), DateTime? lastSyncedAt = default(DateTime?), bool autoImport = default(bool), DateTime createdAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -85,6 +86,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("address is a required property for ListWeb3WalletsItem and cannot be null");
             }
             this.Address = address;
+            this.AutoImport = autoImport;
             this.CreatedAt = createdAt;
             this.Label = label;
             this.VerifiedAt = verifiedAt;
@@ -122,6 +124,13 @@ namespace net.crossly.Model
         public DateTime? LastSyncedAt { get; set; }
 
         /// <summary>
+        /// A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
+        /// </summary>
+        /// <value>A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.</value>
+        [DataMember(Name = "autoImport", IsRequired = true, EmitDefaultValue = true)]
+        public bool AutoImport { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -141,6 +150,7 @@ namespace net.crossly.Model
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  VerifiedAt: ").Append(VerifiedAt).Append("\n");
             sb.Append("  LastSyncedAt: ").Append(LastSyncedAt).Append("\n");
+            sb.Append("  AutoImport: ").Append(AutoImport).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -207,6 +217,10 @@ namespace net.crossly.Model
                     this.LastSyncedAt.Equals(input.LastSyncedAt))
                 ) && 
                 (
+                    this.AutoImport == input.AutoImport ||
+                    this.AutoImport.Equals(input.AutoImport)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -243,6 +257,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LastSyncedAt.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AutoImport.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();

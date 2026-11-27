@@ -65,20 +65,15 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultMarketReportResponsePrintable" /> class.
         /// </summary>
-        /// <param name="notes">Closing paragraphs, small and grey. (required).</param>
         /// <param name="title">title (required).</param>
         /// <param name="meta">Small grey lines under the title (order id, date, seller…). (required).</param>
         /// <param name="sections">Labelled blocks: \&quot;Shipped to\&quot; + its lines. (required).</param>
+        /// <param name="notes">Closing paragraphs, small and grey. (required).</param>
         /// <param name="paper">paper (required).</param>
         /// <param name="table">table.</param>
         /// <param name="qr">qr.</param>
-        public GetVaultMarketReportResponsePrintable(List<string> notes = default(List<string>), string title = default(string), List<string> meta = default(List<string>), List<GetVaultMarketOrderHandlingResponseSections> sections = default(List<GetVaultMarketOrderHandlingResponseSections>), PaperEnum paper = default(PaperEnum), GetVaultMarketReportResponsePrintableTable table = default(GetVaultMarketReportResponsePrintableTable), GetVaultMarketReportResponsePrintableQr qr = default(GetVaultMarketReportResponsePrintableQr))
+        public GetVaultMarketReportResponsePrintable(string title = default(string), List<string> meta = default(List<string>), List<GetVaultMarketOrderHandlingResponseSections> sections = default(List<GetVaultMarketOrderHandlingResponseSections>), List<string> notes = default(List<string>), PaperEnum paper = default(PaperEnum), GetVaultMarketReportResponsePrintableTable table = default(GetVaultMarketReportResponsePrintableTable), GetVaultMarketReportResponsePrintableQr qr = default(GetVaultMarketReportResponsePrintableQr))
         {
-            // to ensure "notes" is required (not null)
-            if (notes == null) {
-                throw new ArgumentNullException("notes is a required property for GetVaultMarketReportResponsePrintable and cannot be null");
-            }
-            this.Notes = notes;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for GetVaultMarketReportResponsePrintable and cannot be null");
@@ -94,17 +89,15 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("sections is a required property for GetVaultMarketReportResponsePrintable and cannot be null");
             }
             this.Sections = sections;
+            // to ensure "notes" is required (not null)
+            if (notes == null) {
+                throw new ArgumentNullException("notes is a required property for GetVaultMarketReportResponsePrintable and cannot be null");
+            }
+            this.Notes = notes;
             this.Paper = paper;
             this.Table = table;
             this.Qr = qr;
         }
-
-        /// <summary>
-        /// Closing paragraphs, small and grey.
-        /// </summary>
-        /// <value>Closing paragraphs, small and grey.</value>
-        [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> Notes { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
@@ -127,6 +120,13 @@ namespace net.crossly.Model
         public List<GetVaultMarketOrderHandlingResponseSections> Sections { get; set; }
 
         /// <summary>
+        /// Closing paragraphs, small and grey.
+        /// </summary>
+        /// <value>Closing paragraphs, small and grey.</value>
+        [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Notes { get; set; }
+
+        /// <summary>
         /// Gets or Sets Table
         /// </summary>
         [DataMember(Name = "table", EmitDefaultValue = true)]
@@ -146,10 +146,10 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketReportResponsePrintable {\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Meta: ").Append(Meta).Append("\n");
             sb.Append("  Sections: ").Append(Sections).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Paper: ").Append(Paper).Append("\n");
             sb.Append("  Table: ").Append(Table).Append("\n");
             sb.Append("  Qr: ").Append(Qr).Append("\n");
@@ -189,12 +189,6 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Notes == input.Notes ||
-                    this.Notes != null &&
-                    input.Notes != null &&
-                    this.Notes.SequenceEqual(input.Notes)
-                ) && 
-                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -210,6 +204,12 @@ namespace net.crossly.Model
                     this.Sections != null &&
                     input.Sections != null &&
                     this.Sections.SequenceEqual(input.Sections)
+                ) && 
+                (
+                    this.Notes == input.Notes ||
+                    this.Notes != null &&
+                    input.Notes != null &&
+                    this.Notes.SequenceEqual(input.Notes)
                 ) && 
                 (
                     this.Paper == input.Paper ||
@@ -236,10 +236,6 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Notes != null)
-                {
-                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
-                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -251,6 +247,10 @@ namespace net.crossly.Model
                 if (this.Sections != null)
                 {
                     hashCode = (hashCode * 59) + this.Sections.GetHashCode();
+                }
+                if (this.Notes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Paper.GetHashCode();
                 if (this.Table != null)

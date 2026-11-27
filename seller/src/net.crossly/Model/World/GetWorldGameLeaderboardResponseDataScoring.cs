@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Wins for value: wins
-            /// </summary>
-            [EnumMember(Value = "wins")]
-            Wins = 1,
-
-            /// <summary>
             /// Enum Points for value: points
             /// </summary>
             [EnumMember(Value = "points")]
-            Points = 2,
+            Points = 1,
+
+            /// <summary>
+            /// Enum Wins for value: wins
+            /// </summary>
+            [EnumMember(Value = "wins")]
+            Wins = 2,
 
             /// <summary>
             /// Enum Time for value: time

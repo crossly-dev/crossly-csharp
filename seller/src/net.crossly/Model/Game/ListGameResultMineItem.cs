@@ -65,7 +65,13 @@ namespace net.crossly.Model
             /// Enum BreakHost for value: break_host
             /// </summary>
             [EnumMember(Value = "break_host")]
-            BreakHost = 5
+            BreakHost = 5,
+
+            /// <summary>
+            /// Enum PackBreak for value: pack_break
+            /// </summary>
+            [EnumMember(Value = "pack_break")]
+            PackBreak = 6
 
         }
 

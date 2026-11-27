@@ -39,35 +39,35 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerPurchaseReturnResponseData" /> class.
         /// </summary>
-        /// <param name="reasons">reasons (required).</param>
         /// <param name="terms">terms (required).</param>
+        /// <param name="reasons">reasons (required).</param>
         /// <param name="existing">existing.</param>
-        public GetBuyerPurchaseReturnResponseData(List<GetBuyerPurchaseReturnResponseDataReasons> reasons = default(List<GetBuyerPurchaseReturnResponseDataReasons>), Dictionary<string, Object> terms = default(Dictionary<string, Object>), Dictionary<string, Object> existing = default(Dictionary<string, Object>))
+        public GetBuyerPurchaseReturnResponseData(Dictionary<string, Object> terms = default(Dictionary<string, Object>), List<GetBuyerPurchaseReturnResponseDataReasons> reasons = default(List<GetBuyerPurchaseReturnResponseDataReasons>), Dictionary<string, Object> existing = default(Dictionary<string, Object>))
         {
-            // to ensure "reasons" is required (not null)
-            if (reasons == null) {
-                throw new ArgumentNullException("reasons is a required property for GetBuyerPurchaseReturnResponseData and cannot be null");
-            }
-            this.Reasons = reasons;
             // to ensure "terms" is required (not null)
             if (terms == null) {
                 throw new ArgumentNullException("terms is a required property for GetBuyerPurchaseReturnResponseData and cannot be null");
             }
             this.Terms = terms;
+            // to ensure "reasons" is required (not null)
+            if (reasons == null) {
+                throw new ArgumentNullException("reasons is a required property for GetBuyerPurchaseReturnResponseData and cannot be null");
+            }
+            this.Reasons = reasons;
             this.Existing = existing;
         }
-
-        /// <summary>
-        /// Gets or Sets Reasons
-        /// </summary>
-        [DataMember(Name = "reasons", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetBuyerPurchaseReturnResponseDataReasons> Reasons { get; set; }
 
         /// <summary>
         /// Gets or Sets Terms
         /// </summary>
         [DataMember(Name = "terms", IsRequired = true, EmitDefaultValue = false)]
         public Dictionary<string, Object> Terms { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Reasons
+        /// </summary>
+        [DataMember(Name = "reasons", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetBuyerPurchaseReturnResponseDataReasons> Reasons { get; set; }
 
         /// <summary>
         /// Gets or Sets Existing
@@ -83,8 +83,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerPurchaseReturnResponseData {\n");
-            sb.Append("  Reasons: ").Append(Reasons).Append("\n");
             sb.Append("  Terms: ").Append(Terms).Append("\n");
+            sb.Append("  Reasons: ").Append(Reasons).Append("\n");
             sb.Append("  Existing: ").Append(Existing).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -122,16 +122,16 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Reasons == input.Reasons ||
-                    this.Reasons != null &&
-                    input.Reasons != null &&
-                    this.Reasons.SequenceEqual(input.Reasons)
-                ) && 
-                (
                     this.Terms == input.Terms ||
                     this.Terms != null &&
                     input.Terms != null &&
                     this.Terms.SequenceEqual(input.Terms)
+                ) && 
+                (
+                    this.Reasons == input.Reasons ||
+                    this.Reasons != null &&
+                    input.Reasons != null &&
+                    this.Reasons.SequenceEqual(input.Reasons)
                 ) && 
                 (
                     this.Existing == input.Existing ||
@@ -150,13 +150,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Reasons != null)
-                {
-                    hashCode = (hashCode * 59) + this.Reasons.GetHashCode();
-                }
                 if (this.Terms != null)
                 {
                     hashCode = (hashCode * 59) + this.Terms.GetHashCode();
+                }
+                if (this.Reasons != null)
+                {
+                    hashCode = (hashCode * 59) + this.Reasons.GetHashCode();
                 }
                 if (this.Existing != null)
                 {

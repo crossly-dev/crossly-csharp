@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ViaEnum
         {
             /// <summary>
-            /// Enum Run for value: run
-            /// </summary>
-            [EnumMember(Value = "run")]
-            Run = 1,
-
-            /// <summary>
             /// Enum Single for value: single
             /// </summary>
             [EnumMember(Value = "single")]
-            Single = 2
+            Single = 1,
+
+            /// <summary>
+            /// Enum Run for value: run
+            /// </summary>
+            [EnumMember(Value = "run")]
+            Run = 2
 
         }
 

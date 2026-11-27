@@ -40,11 +40,11 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerLiveShipmentsItemOrders" /> class.
         /// </summary>
         /// <param name="orderId">orderId (required).</param>
-        /// <param name="title">title.</param>
         /// <param name="purchaseId">purchaseId (required).</param>
+        /// <param name="title">title.</param>
         /// <param name="shippingCents">shippingCents (required).</param>
         /// <param name="orderStatus">orderStatus.</param>
-        public ListBuyerLiveShipmentsItemOrders(string orderId = default(string), string title = default(string), string purchaseId = default(string), decimal shippingCents = default(decimal), string orderStatus = default(string))
+        public ListBuyerLiveShipmentsItemOrders(string orderId = default(string), string purchaseId = default(string), string title = default(string), decimal shippingCents = default(decimal), string orderStatus = default(string))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null) {
@@ -68,16 +68,16 @@ namespace net.crossly.buyer.Model
         public string OrderId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", EmitDefaultValue = true)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets PurchaseId
         /// </summary>
         [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
         public string PurchaseId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", EmitDefaultValue = true)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingCents
@@ -100,8 +100,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerLiveShipmentsItemOrders {\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
             sb.Append("  OrderStatus: ").Append(OrderStatus).Append("\n");
             sb.Append("}\n");
@@ -145,14 +145,14 @@ namespace net.crossly.buyer.Model
                     this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.PurchaseId == input.PurchaseId ||
                     (this.PurchaseId != null &&
                     this.PurchaseId.Equals(input.PurchaseId))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.ShippingCents == input.ShippingCents ||
@@ -178,13 +178,13 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.PurchaseId != null)
                 {
                     hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
                 if (this.OrderStatus != null)

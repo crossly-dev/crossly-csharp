@@ -50,7 +50,7 @@ namespace net.crossly.Model
         /// <param name="recent">recent (required).</param>
         /// <param name="holders">holders.</param>
         /// <param name="mint">mint.</param>
-        public GetWeb3CreatorResponse(string chain = default(string), string contract = default(string), string name = default(string), string currency = default(string), decimal? royaltyBps = default(decimal?), string royaltyEstimateWei = default(string), GetWeb3CreatorResponseSales sales = default(GetWeb3CreatorResponseSales), List<GetWeb3CreatorResponseDaily> daily = default(List<GetWeb3CreatorResponseDaily>), List<GetWeb3CreatorResponseRecent> recent = default(List<GetWeb3CreatorResponseRecent>), GetWeb3CreatorResponseHolders holders = default(GetWeb3CreatorResponseHolders), GetWeb3CreatorResponseMint mint = default(GetWeb3CreatorResponseMint))
+        public GetWeb3CreatorResponse(string chain = default(string), string contract = default(string), string name = default(string), string currency = default(string), decimal? royaltyBps = default(decimal?), string royaltyEstimateWei = default(string), GetWeb3CreatorResponseSales sales = default(GetWeb3CreatorResponseSales), List<GetCreatorCollectionResponseDataDashboardDaily> daily = default(List<GetCreatorCollectionResponseDataDashboardDaily>), List<GetCreatorCollectionResponseDataDashboardRecent> recent = default(List<GetCreatorCollectionResponseDataDashboardRecent>), GetWeb3CreatorResponseHolders holders = default(GetWeb3CreatorResponseHolders), GetCreatorCollectionResponseDataDashboardMint mint = default(GetCreatorCollectionResponseDataDashboardMint))
         {
             // to ensure "chain" is required (not null)
             if (chain == null) {
@@ -139,13 +139,13 @@ namespace net.crossly.Model
         /// Gets or Sets Daily
         /// </summary>
         [DataMember(Name = "daily", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetWeb3CreatorResponseDaily> Daily { get; set; }
+        public List<GetCreatorCollectionResponseDataDashboardDaily> Daily { get; set; }
 
         /// <summary>
         /// Gets or Sets Recent
         /// </summary>
         [DataMember(Name = "recent", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetWeb3CreatorResponseRecent> Recent { get; set; }
+        public List<GetCreatorCollectionResponseDataDashboardRecent> Recent { get; set; }
 
         /// <summary>
         /// Gets or Sets Holders
@@ -157,7 +157,7 @@ namespace net.crossly.Model
         /// Gets or Sets Mint
         /// </summary>
         [DataMember(Name = "mint", EmitDefaultValue = true)]
-        public GetWeb3CreatorResponseMint Mint { get; set; }
+        public GetCreatorCollectionResponseDataDashboardMint Mint { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

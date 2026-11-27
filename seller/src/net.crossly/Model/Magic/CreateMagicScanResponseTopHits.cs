@@ -60,6 +60,34 @@ namespace net.crossly.Model
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
         public StateEnum State { get; set; }
         /// <summary>
+        /// Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).
+        /// </summary>
+        /// <value>Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum FormatEnum
+        {
+            /// <summary>
+            /// Enum Auction for value: auction
+            /// </summary>
+            [EnumMember(Value = "auction")]
+            Auction = 1,
+
+            /// <summary>
+            /// Enum FixedPrice for value: fixed_price
+            /// </summary>
+            [EnumMember(Value = "fixed_price")]
+            FixedPrice = 2
+
+        }
+
+
+        /// <summary>
+        /// Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).
+        /// </summary>
+        /// <value>Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid).</value>
+        [DataMember(Name = "format", EmitDefaultValue = true)]
+        public FormatEnum? Format { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateMagicScanResponseTopHits" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -72,10 +100,17 @@ namespace net.crossly.Model
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="imageUrl">imageUrl.</param>
         /// <param name="listingUrl">listingUrl.</param>
-        /// <param name="origin">Origin marker for the UI badge. (required).</param>
-        /// <param name="visualSim">CLIP cosine [0,1]; populated after the visual-rank pass..</param>
+        /// <param name="origin">Origin marker for the UI badge. Every eBay hit is an image-search hit (&#39;ebay-image&#39;); &#39;ebay-text&#39; is kept in the union only for rows cached before that was fixed. (required).</param>
+        /// <param name="visualSim">CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT &#x3D; unscored (no image, CLIP down) — never filled in with a made-up value..</param>
+        /// <param name="agreement">Title agreement with the match reference after the hard gates (rank.ts)..</param>
+        /// <param name="carriesIdentifier">True when the comp states the photo&#39;s own identifier (GTIN / style code)..</param>
+        /// <param name="priceOutlier">Price outlier within its condition / grade bucket: shown, but not used for pricing..</param>
+        /// <param name="condition">Condition text the platform reported, for the pricing buckets..</param>
+        /// <param name="brand">Brand the platform reported, for the brand gate at verdict time..</param>
         /// <param name="state">&#39;active&#39; &#x3D; currently for sale; &#39;sold&#39; &#x3D; historical comp. UI renders distinct badges so the seller can see both at a glance. (required).</param>
-        public CreateMagicScanResponseTopHits(string platform = default(string), string title = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), string listingUrl = default(string), string origin = default(string), decimal? visualSim = default(decimal?), StateEnum state = default(StateEnum))
+        /// <param name="shippingCents">Shipping in cents (0 &#x3D; free), where the platform reports it (ExternalSoldComp.shippingCents)..</param>
+        /// <param name="format">Auction vs fixed price, where the platform says; an active auction&#39;s price is a bid (compPriceIsBid)..</param>
+        public CreateMagicScanResponseTopHits(string platform = default(string), string title = default(string), decimal priceCents = default(decimal), string imageUrl = default(string), string listingUrl = default(string), string origin = default(string), decimal? visualSim = default(decimal?), decimal? agreement = default(decimal?), bool? carriesIdentifier = default(bool?), bool? priceOutlier = default(bool?), string condition = default(string), string brand = default(string), StateEnum state = default(StateEnum), decimal? shippingCents = default(decimal?), FormatEnum? format = default(FormatEnum?))
         {
             // to ensure "platform" is required (not null)
             if (platform == null) {
@@ -97,6 +132,13 @@ namespace net.crossly.Model
             this.ImageUrl = imageUrl;
             this.ListingUrl = listingUrl;
             this.VisualSim = visualSim;
+            this.Agreement = agreement;
+            this.CarriesIdentifier = carriesIdentifier;
+            this.PriceOutlier = priceOutlier;
+            this.Condition = condition;
+            this.Brand = brand;
+            this.ShippingCents = shippingCents;
+            this.Format = format;
         }
 
         /// <summary>
@@ -130,18 +172,60 @@ namespace net.crossly.Model
         public string ListingUrl { get; set; }
 
         /// <summary>
-        /// Origin marker for the UI badge.
+        /// Origin marker for the UI badge. Every eBay hit is an image-search hit (&#39;ebay-image&#39;); &#39;ebay-text&#39; is kept in the union only for rows cached before that was fixed.
         /// </summary>
-        /// <value>Origin marker for the UI badge.</value>
+        /// <value>Origin marker for the UI badge. Every eBay hit is an image-search hit (&#39;ebay-image&#39;); &#39;ebay-text&#39; is kept in the union only for rows cached before that was fixed.</value>
         [DataMember(Name = "origin", IsRequired = true, EmitDefaultValue = false)]
         public string Origin { get; set; }
 
         /// <summary>
-        /// CLIP cosine [0,1]; populated after the visual-rank pass.
+        /// CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT &#x3D; unscored (no image, CLIP down) — never filled in with a made-up value.
         /// </summary>
-        /// <value>CLIP cosine [0,1]; populated after the visual-rank pass.</value>
+        /// <value>CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT &#x3D; unscored (no image, CLIP down) — never filled in with a made-up value.</value>
         [DataMember(Name = "visualSim", EmitDefaultValue = true)]
         public decimal? VisualSim { get; set; }
+
+        /// <summary>
+        /// Title agreement with the match reference after the hard gates (rank.ts).
+        /// </summary>
+        /// <value>Title agreement with the match reference after the hard gates (rank.ts).</value>
+        [DataMember(Name = "agreement", EmitDefaultValue = true)]
+        public decimal? Agreement { get; set; }
+
+        /// <summary>
+        /// True when the comp states the photo&#39;s own identifier (GTIN / style code).
+        /// </summary>
+        /// <value>True when the comp states the photo&#39;s own identifier (GTIN / style code).</value>
+        [DataMember(Name = "carriesIdentifier", EmitDefaultValue = true)]
+        public bool? CarriesIdentifier { get; set; }
+
+        /// <summary>
+        /// Price outlier within its condition / grade bucket: shown, but not used for pricing.
+        /// </summary>
+        /// <value>Price outlier within its condition / grade bucket: shown, but not used for pricing.</value>
+        [DataMember(Name = "priceOutlier", EmitDefaultValue = true)]
+        public bool? PriceOutlier { get; set; }
+
+        /// <summary>
+        /// Condition text the platform reported, for the pricing buckets.
+        /// </summary>
+        /// <value>Condition text the platform reported, for the pricing buckets.</value>
+        [DataMember(Name = "condition", EmitDefaultValue = true)]
+        public string Condition { get; set; }
+
+        /// <summary>
+        /// Brand the platform reported, for the brand gate at verdict time.
+        /// </summary>
+        /// <value>Brand the platform reported, for the brand gate at verdict time.</value>
+        [DataMember(Name = "brand", EmitDefaultValue = true)]
+        public string Brand { get; set; }
+
+        /// <summary>
+        /// Shipping in cents (0 &#x3D; free), where the platform reports it (ExternalSoldComp.shippingCents).
+        /// </summary>
+        /// <value>Shipping in cents (0 &#x3D; free), where the platform reports it (ExternalSoldComp.shippingCents).</value>
+        [DataMember(Name = "shippingCents", EmitDefaultValue = true)]
+        public decimal? ShippingCents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -158,7 +242,14 @@ namespace net.crossly.Model
             sb.Append("  ListingUrl: ").Append(ListingUrl).Append("\n");
             sb.Append("  Origin: ").Append(Origin).Append("\n");
             sb.Append("  VisualSim: ").Append(VisualSim).Append("\n");
+            sb.Append("  Agreement: ").Append(Agreement).Append("\n");
+            sb.Append("  CarriesIdentifier: ").Append(CarriesIdentifier).Append("\n");
+            sb.Append("  PriceOutlier: ").Append(PriceOutlier).Append("\n");
+            sb.Append("  Condition: ").Append(Condition).Append("\n");
+            sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,8 +320,42 @@ namespace net.crossly.Model
                     this.VisualSim.Equals(input.VisualSim))
                 ) && 
                 (
+                    this.Agreement == input.Agreement ||
+                    (this.Agreement != null &&
+                    this.Agreement.Equals(input.Agreement))
+                ) && 
+                (
+                    this.CarriesIdentifier == input.CarriesIdentifier ||
+                    (this.CarriesIdentifier != null &&
+                    this.CarriesIdentifier.Equals(input.CarriesIdentifier))
+                ) && 
+                (
+                    this.PriceOutlier == input.PriceOutlier ||
+                    (this.PriceOutlier != null &&
+                    this.PriceOutlier.Equals(input.PriceOutlier))
+                ) && 
+                (
+                    this.Condition == input.Condition ||
+                    (this.Condition != null &&
+                    this.Condition.Equals(input.Condition))
+                ) && 
+                (
+                    this.Brand == input.Brand ||
+                    (this.Brand != null &&
+                    this.Brand.Equals(input.Brand))
+                ) && 
+                (
                     this.State == input.State ||
                     this.State.Equals(input.State)
+                ) && 
+                (
+                    this.ShippingCents == input.ShippingCents ||
+                    (this.ShippingCents != null &&
+                    this.ShippingCents.Equals(input.ShippingCents))
+                ) && 
+                (
+                    this.Format == input.Format ||
+                    this.Format.Equals(input.Format)
                 );
         }
 
@@ -268,7 +393,32 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.VisualSim.GetHashCode();
                 }
+                if (this.Agreement != null)
+                {
+                    hashCode = (hashCode * 59) + this.Agreement.GetHashCode();
+                }
+                if (this.CarriesIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.CarriesIdentifier.GetHashCode();
+                }
+                if (this.PriceOutlier != null)
+                {
+                    hashCode = (hashCode * 59) + this.PriceOutlier.GetHashCode();
+                }
+                if (this.Condition != null)
+                {
+                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
+                }
+                if (this.Brand != null)
+                {
+                    hashCode = (hashCode * 59) + this.Brand.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.State.GetHashCode();
+                if (this.ShippingCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 return hashCode;
             }
         }

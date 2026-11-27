@@ -46,16 +46,16 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="retailCents">retailCents.</param>
-        /// <param name="categorySlug">categorySlug (required).</param>
-        /// <param name="externalId">externalId.</param>
         /// <param name="imageUrl">imageUrl.</param>
+        /// <param name="categorySlug">categorySlug (required).</param>
+        /// <param name="approvedByUserId">approvedByUserId.</param>
+        /// <param name="approvedAt">approvedAt.</param>
+        /// <param name="externalId">externalId.</param>
         /// <param name="model">model.</param>
         /// <param name="colorway">colorway.</param>
         /// <param name="styleCode">styleCode.</param>
         /// <param name="releaseDate">releaseDate.</param>
         /// <param name="submittedByUserId">submittedByUserId.</param>
-        /// <param name="approvedByUserId">approvedByUserId.</param>
-        /// <param name="approvedAt">approvedAt.</param>
         /// <param name="rejectionReason">rejectionReason.</param>
         /// <param name="proposedVariants">proposedVariants (required).</param>
         /// <param name="verification">verification (required).</param>
@@ -79,7 +79,7 @@ namespace net.crossly.Model
         /// <param name="grossWeightMg">grossWeightMg.</param>
         /// <param name="finenessPpm">finenessPpm.</param>
         /// <param name="metalForm">metalForm.</param>
-        public GetMarketProductResponseDataProduct(GetMarketProductResponseDataProductImages images = default(GetMarketProductResponseDataProductImages), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), string status = default(string), decimal? retailCents = default(decimal?), string categorySlug = default(string), string externalId = default(string), string imageUrl = default(string), string model = default(string), string colorway = default(string), string styleCode = default(string), string releaseDate = default(string), string submittedByUserId = default(string), string approvedByUserId = default(string), DateTime? approvedAt = default(DateTime?), string rejectionReason = default(string), List<GetMarketProductResponseDataProductProposedVariants> proposedVariants = default(List<GetMarketProductResponseDataProductProposedVariants>), Dictionary<string, Object> verification = default(Dictionary<string, Object>), Dictionary<string, Object> aiVerdict = default(Dictionary<string, Object>), string submissionSource = default(string), string duplicateOfSkuId = default(string), string preferredProviderSlug = default(string), bool allowPreBid = default(bool), DateTime? preBidOpensAt = default(DateTime?), bool featured = default(bool), string externalSource = default(string), DateTime? externalSyncedAt = default(DateTime?), List<string> gradedGradeKeys = default(List<string>), decimal? lowestAskCents = default(decimal?), decimal? highestBidCents = default(decimal?), decimal? lastSaleCents = default(decimal?), decimal tradesCount = default(decimal), decimal popularity = default(decimal), List<string> colorFamily = default(List<string>), string metal = default(string), decimal? grossWeightMg = default(decimal?), decimal? finenessPpm = default(decimal?), string metalForm = default(string))
+        public GetMarketProductResponseDataProduct(GetMarketProductResponseDataProductImages images = default(GetMarketProductResponseDataProductImages), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), string status = default(string), decimal? retailCents = default(decimal?), string imageUrl = default(string), string categorySlug = default(string), string approvedByUserId = default(string), DateTime? approvedAt = default(DateTime?), string externalId = default(string), string model = default(string), string colorway = default(string), string styleCode = default(string), string releaseDate = default(string), string submittedByUserId = default(string), string rejectionReason = default(string), List<GetMarketProductResponseDataProductProposedVariants> proposedVariants = default(List<GetMarketProductResponseDataProductProposedVariants>), Dictionary<string, Object> verification = default(Dictionary<string, Object>), Dictionary<string, Object> aiVerdict = default(Dictionary<string, Object>), string submissionSource = default(string), string duplicateOfSkuId = default(string), string preferredProviderSlug = default(string), bool allowPreBid = default(bool), DateTime? preBidOpensAt = default(DateTime?), bool featured = default(bool), string externalSource = default(string), DateTime? externalSyncedAt = default(DateTime?), List<string> gradedGradeKeys = default(List<string>), decimal? lowestAskCents = default(decimal?), decimal? highestBidCents = default(decimal?), decimal? lastSaleCents = default(decimal?), decimal tradesCount = default(decimal), decimal popularity = default(decimal), List<string> colorFamily = default(List<string>), string metal = default(string), decimal? grossWeightMg = default(decimal?), decimal? finenessPpm = default(decimal?), string metalForm = default(string))
         {
             // to ensure "images" is required (not null)
             if (images == null) {
@@ -133,15 +133,15 @@ namespace net.crossly.Model
             this.ColorFamily = colorFamily;
             this.Brand = brand;
             this.RetailCents = retailCents;
-            this.ExternalId = externalId;
             this.ImageUrl = imageUrl;
+            this.ApprovedByUserId = approvedByUserId;
+            this.ApprovedAt = approvedAt;
+            this.ExternalId = externalId;
             this.Model = model;
             this.Colorway = colorway;
             this.StyleCode = styleCode;
             this.ReleaseDate = releaseDate;
             this.SubmittedByUserId = submittedByUserId;
-            this.ApprovedByUserId = approvedByUserId;
-            this.ApprovedAt = approvedAt;
             this.RejectionReason = rejectionReason;
             this.AiVerdict = aiVerdict;
             this.SubmissionSource = submissionSource;
@@ -202,22 +202,34 @@ namespace net.crossly.Model
         public decimal? RetailCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets ImageUrl
+        /// </summary>
+        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets CategorySlug
         /// </summary>
         [DataMember(Name = "categorySlug", IsRequired = true, EmitDefaultValue = false)]
         public string CategorySlug { get; set; }
 
         /// <summary>
+        /// Gets or Sets ApprovedByUserId
+        /// </summary>
+        [DataMember(Name = "approvedByUserId", EmitDefaultValue = true)]
+        public string ApprovedByUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ApprovedAt
+        /// </summary>
+        [DataMember(Name = "approvedAt", EmitDefaultValue = true)]
+        public DateTime? ApprovedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets ExternalId
         /// </summary>
         [DataMember(Name = "externalId", EmitDefaultValue = true)]
         public string ExternalId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImageUrl
-        /// </summary>
-        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
-        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Model
@@ -248,18 +260,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "submittedByUserId", EmitDefaultValue = true)]
         public string SubmittedByUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ApprovedByUserId
-        /// </summary>
-        [DataMember(Name = "approvedByUserId", EmitDefaultValue = true)]
-        public string ApprovedByUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ApprovedAt
-        /// </summary>
-        [DataMember(Name = "approvedAt", EmitDefaultValue = true)]
-        public DateTime? ApprovedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets RejectionReason
@@ -414,16 +414,16 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  RetailCents: ").Append(RetailCents).Append("\n");
-            sb.Append("  CategorySlug: ").Append(CategorySlug).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  CategorySlug: ").Append(CategorySlug).Append("\n");
+            sb.Append("  ApprovedByUserId: ").Append(ApprovedByUserId).Append("\n");
+            sb.Append("  ApprovedAt: ").Append(ApprovedAt).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Colorway: ").Append(Colorway).Append("\n");
             sb.Append("  StyleCode: ").Append(StyleCode).Append("\n");
             sb.Append("  ReleaseDate: ").Append(ReleaseDate).Append("\n");
             sb.Append("  SubmittedByUserId: ").Append(SubmittedByUserId).Append("\n");
-            sb.Append("  ApprovedByUserId: ").Append(ApprovedByUserId).Append("\n");
-            sb.Append("  ApprovedAt: ").Append(ApprovedAt).Append("\n");
             sb.Append("  RejectionReason: ").Append(RejectionReason).Append("\n");
             sb.Append("  ProposedVariants: ").Append(ProposedVariants).Append("\n");
             sb.Append("  Verification: ").Append(Verification).Append("\n");
@@ -518,19 +518,29 @@ namespace net.crossly.Model
                     this.RetailCents.Equals(input.RetailCents))
                 ) && 
                 (
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
                     this.CategorySlug == input.CategorySlug ||
                     (this.CategorySlug != null &&
                     this.CategorySlug.Equals(input.CategorySlug))
                 ) && 
                 (
+                    this.ApprovedByUserId == input.ApprovedByUserId ||
+                    (this.ApprovedByUserId != null &&
+                    this.ApprovedByUserId.Equals(input.ApprovedByUserId))
+                ) && 
+                (
+                    this.ApprovedAt == input.ApprovedAt ||
+                    (this.ApprovedAt != null &&
+                    this.ApprovedAt.Equals(input.ApprovedAt))
+                ) && 
+                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
-                ) && 
-                (
-                    this.ImageUrl == input.ImageUrl ||
-                    (this.ImageUrl != null &&
-                    this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
                     this.Model == input.Model ||
@@ -556,16 +566,6 @@ namespace net.crossly.Model
                     this.SubmittedByUserId == input.SubmittedByUserId ||
                     (this.SubmittedByUserId != null &&
                     this.SubmittedByUserId.Equals(input.SubmittedByUserId))
-                ) && 
-                (
-                    this.ApprovedByUserId == input.ApprovedByUserId ||
-                    (this.ApprovedByUserId != null &&
-                    this.ApprovedByUserId.Equals(input.ApprovedByUserId))
-                ) && 
-                (
-                    this.ApprovedAt == input.ApprovedAt ||
-                    (this.ApprovedAt != null &&
-                    this.ApprovedAt.Equals(input.ApprovedAt))
                 ) && 
                 (
                     this.RejectionReason == input.RejectionReason ||
@@ -722,17 +722,25 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.RetailCents.GetHashCode();
                 }
+                if (this.ImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
+                }
                 if (this.CategorySlug != null)
                 {
                     hashCode = (hashCode * 59) + this.CategorySlug.GetHashCode();
                 }
+                if (this.ApprovedByUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApprovedByUserId.GetHashCode();
+                }
+                if (this.ApprovedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApprovedAt.GetHashCode();
+                }
                 if (this.ExternalId != null)
                 {
                     hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
-                }
-                if (this.ImageUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
                 if (this.Model != null)
                 {
@@ -753,14 +761,6 @@ namespace net.crossly.Model
                 if (this.SubmittedByUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SubmittedByUserId.GetHashCode();
-                }
-                if (this.ApprovedByUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ApprovedByUserId.GetHashCode();
-                }
-                if (this.ApprovedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ApprovedAt.GetHashCode();
                 }
                 if (this.RejectionReason != null)
                 {

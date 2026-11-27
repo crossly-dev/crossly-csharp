@@ -67,6 +67,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="status">status (required).</param>
         /// <param name="defaultCountry">defaultCountry.</param>
+        /// <param name="accountSource">accountSource (required).</param>
         /// <param name="payoutsEnabled">payoutsEnabled.</param>
         /// <param name="chargesEnabled">chargesEnabled.</param>
         /// <param name="transfersActive">&#x60;capabilities.transfers &#x3D;&#x3D;&#x3D; &#39;active&#39;&#x60; — the capability every Crossly payout uses..</param>
@@ -78,13 +79,18 @@ namespace net.crossly.Model
         /// <param name="accountId">accountId.</param>
         /// <param name="payoutsSupported">payoutsSupported.</param>
         /// <param name="message">message.</param>
-        public GetPayoutConnectResponseData(string status = default(string), string defaultCountry = default(string), bool payoutsEnabled = default(bool), bool chargesEnabled = default(bool), bool transfersActive = default(bool), bool detailsSubmitted = default(bool), bool taxReporting1099kReady = default(bool), string country = default(string), AgreementEnum? agreement = default(AgreementEnum?), string defaultCurrency = default(string), string accountId = default(string), bool payoutsSupported = default(bool), string message = default(string))
+        public GetPayoutConnectResponseData(string status = default(string), string defaultCountry = default(string), string accountSource = default(string), bool payoutsEnabled = default(bool), bool chargesEnabled = default(bool), bool transfersActive = default(bool), bool detailsSubmitted = default(bool), bool taxReporting1099kReady = default(bool), string country = default(string), AgreementEnum? agreement = default(AgreementEnum?), string defaultCurrency = default(string), string accountId = default(string), bool payoutsSupported = default(bool), string message = default(string))
         {
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for GetPayoutConnectResponseData and cannot be null");
             }
             this.Status = status;
+            // to ensure "accountSource" is required (not null)
+            if (accountSource == null) {
+                throw new ArgumentNullException("accountSource is a required property for GetPayoutConnectResponseData and cannot be null");
+            }
+            this.AccountSource = accountSource;
             this.DefaultCountry = defaultCountry;
             this.PayoutsEnabled = payoutsEnabled;
             this.ChargesEnabled = chargesEnabled;
@@ -110,6 +116,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "defaultCountry", EmitDefaultValue = false)]
         public string DefaultCountry { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccountSource
+        /// </summary>
+        [DataMember(Name = "accountSource", IsRequired = true, EmitDefaultValue = false)]
+        public string AccountSource { get; set; }
 
         /// <summary>
         /// Gets or Sets PayoutsEnabled
@@ -184,6 +196,7 @@ namespace net.crossly.Model
             sb.Append("class GetPayoutConnectResponseData {\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  DefaultCountry: ").Append(DefaultCountry).Append("\n");
+            sb.Append("  AccountSource: ").Append(AccountSource).Append("\n");
             sb.Append("  PayoutsEnabled: ").Append(PayoutsEnabled).Append("\n");
             sb.Append("  ChargesEnabled: ").Append(ChargesEnabled).Append("\n");
             sb.Append("  TransfersActive: ").Append(TransfersActive).Append("\n");
@@ -239,6 +252,11 @@ namespace net.crossly.Model
                     this.DefaultCountry == input.DefaultCountry ||
                     (this.DefaultCountry != null &&
                     this.DefaultCountry.Equals(input.DefaultCountry))
+                ) && 
+                (
+                    this.AccountSource == input.AccountSource ||
+                    (this.AccountSource != null &&
+                    this.AccountSource.Equals(input.AccountSource))
                 ) && 
                 (
                     this.PayoutsEnabled == input.PayoutsEnabled ||
@@ -306,6 +324,10 @@ namespace net.crossly.Model
                 if (this.DefaultCountry != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultCountry.GetHashCode();
+                }
+                if (this.AccountSource != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountSource.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PayoutsEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.ChargesEnabled.GetHashCode();

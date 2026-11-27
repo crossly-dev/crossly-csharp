@@ -41,7 +41,8 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="series">series (required).</param>
         /// <param name="now">now (required).</param>
-        public GetVaultMarketPortfolioHistoryResponse(List<GetVaultMarketPortfolioHistoryResponseSeries> series = default(List<GetVaultMarketPortfolioHistoryResponseSeries>), GetVaultMarketPortfolioHistoryResponseNow now = default(GetVaultMarketPortfolioHistoryResponseNow))
+        /// <param name="today">today (required).</param>
+        public GetVaultMarketPortfolioHistoryResponse(List<GetVaultMarketPortfolioHistoryResponseSeries> series = default(List<GetVaultMarketPortfolioHistoryResponseSeries>), GetVaultMarketPortfolioHistoryResponseNow now = default(GetVaultMarketPortfolioHistoryResponseNow), GetVaultMarketPortfolioHistoryResponseToday today = default(GetVaultMarketPortfolioHistoryResponseToday))
         {
             // to ensure "series" is required (not null)
             if (series == null) {
@@ -53,6 +54,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("now is a required property for GetVaultMarketPortfolioHistoryResponse and cannot be null");
             }
             this.Now = now;
+            // to ensure "today" is required (not null)
+            if (today == null) {
+                throw new ArgumentNullException("today is a required property for GetVaultMarketPortfolioHistoryResponse and cannot be null");
+            }
+            this.Today = today;
         }
 
         /// <summary>
@@ -68,6 +74,12 @@ namespace net.crossly.Model
         public GetVaultMarketPortfolioHistoryResponseNow Now { get; set; }
 
         /// <summary>
+        /// Gets or Sets Today
+        /// </summary>
+        [DataMember(Name = "today", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketPortfolioHistoryResponseToday Today { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +89,7 @@ namespace net.crossly.Model
             sb.Append("class GetVaultMarketPortfolioHistoryResponse {\n");
             sb.Append("  Series: ").Append(Series).Append("\n");
             sb.Append("  Now: ").Append(Now).Append("\n");
+            sb.Append("  Today: ").Append(Today).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +135,11 @@ namespace net.crossly.Model
                     this.Now == input.Now ||
                     (this.Now != null &&
                     this.Now.Equals(input.Now))
+                ) && 
+                (
+                    this.Today == input.Today ||
+                    (this.Today != null &&
+                    this.Today.Equals(input.Today))
                 );
         }
 
@@ -141,6 +159,10 @@ namespace net.crossly.Model
                 if (this.Now != null)
                 {
                     hashCode = (hashCode * 59) + this.Now.GetHashCode();
+                }
+                if (this.Today != null)
+                {
+                    hashCode = (hashCode * 59) + this.Today.GetHashCode();
                 }
                 return hashCode;
             }

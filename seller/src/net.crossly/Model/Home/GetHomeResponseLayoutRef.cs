@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Token for value: token
+            /// Enum Inventory for value: inventory
             /// </summary>
-            [EnumMember(Value = "token")]
-            Token = 1,
+            [EnumMember(Value = "inventory")]
+            Inventory = 1,
+
+            /// <summary>
+            /// Enum Vault for value: vault
+            /// </summary>
+            [EnumMember(Value = "vault")]
+            Vault = 2,
 
             /// <summary>
             /// Enum Portal for value: portal
             /// </summary>
             [EnumMember(Value = "portal")]
-            Portal = 2,
+            Portal = 3,
 
             /// <summary>
-            /// Enum Portfolio for value: portfolio
+            /// Enum Token for value: token
             /// </summary>
-            [EnumMember(Value = "portfolio")]
-            Portfolio = 3,
-
-            /// <summary>
-            /// Enum Inventory for value: inventory
-            /// </summary>
-            [EnumMember(Value = "inventory")]
-            Inventory = 4,
+            [EnumMember(Value = "token")]
+            Token = 4,
 
             /// <summary>
             /// Enum Purchase for value: purchase
@@ -74,10 +74,10 @@ namespace net.crossly.Model
             Nft = 6,
 
             /// <summary>
-            /// Enum Vault for value: vault
+            /// Enum Portfolio for value: portfolio
             /// </summary>
-            [EnumMember(Value = "vault")]
-            Vault = 7
+            [EnumMember(Value = "portfolio")]
+            Portfolio = 7
 
         }
 

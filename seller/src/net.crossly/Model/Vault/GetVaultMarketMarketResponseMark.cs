@@ -44,10 +44,10 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
-            /// Enum Twap for value: twap
+            /// Enum Ask for value: ask
             /// </summary>
-            [EnumMember(Value = "twap")]
-            Twap = 2,
+            [EnumMember(Value = "ask")]
+            Ask = 2,
 
             /// <summary>
             /// Enum Mid for value: mid
@@ -56,10 +56,10 @@ namespace net.crossly.Model
             Mid = 3,
 
             /// <summary>
-            /// Enum Ask for value: ask
+            /// Enum Last for value: last
             /// </summary>
-            [EnumMember(Value = "ask")]
-            Ask = 4,
+            [EnumMember(Value = "last")]
+            Last = 4,
 
             /// <summary>
             /// Enum Bid for value: bid
@@ -68,10 +68,10 @@ namespace net.crossly.Model
             Bid = 5,
 
             /// <summary>
-            /// Enum Last for value: last
+            /// Enum Twap for value: twap
             /// </summary>
-            [EnumMember(Value = "last")]
-            Last = 6,
+            [EnumMember(Value = "twap")]
+            Twap = 6,
 
             /// <summary>
             /// Enum Implied for value: implied
@@ -100,22 +100,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 

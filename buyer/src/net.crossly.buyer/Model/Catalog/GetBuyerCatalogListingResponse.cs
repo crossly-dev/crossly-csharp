@@ -42,12 +42,14 @@ namespace net.crossly.buyer.Model
         /// <param name="slug">slug (required).</param>
         /// <param name="title">title (required).</param>
         /// <param name="description">description.</param>
+        /// <param name="descriptionBlocks">descriptionBlocks (required).</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="compareAtCents">compareAtCents.</param>
         /// <param name="currency">currency (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="available">available (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
+        /// <param name="variants">variants.</param>
         /// <param name="condition">condition.</param>
         /// <param name="brand">brand.</param>
         /// <param name="size">size.</param>
@@ -58,7 +60,8 @@ namespace net.crossly.buyer.Model
         /// <param name="sellerUsername">sellerUsername.</param>
         /// <param name="sellerDisplayName">sellerDisplayName.</param>
         /// <param name="listedAt">listedAt.</param>
-        public GetBuyerCatalogListingResponse(string slug = default(string), string title = default(string), string description = default(string), decimal priceCents = default(decimal), decimal? compareAtCents = default(decimal?), string currency = default(string), string status = default(string), bool available = default(bool), decimal quantityAvailable = default(decimal), string condition = default(string), string brand = default(string), string size = default(string), List<string> color = default(List<string>), string categoryMain = default(string), string categorySub = default(string), List<string> images = default(List<string>), string sellerUsername = default(string), string sellerDisplayName = default(string), string listedAt = default(string))
+        /// <param name="tokenGate">tokenGate.</param>
+        public GetBuyerCatalogListingResponse(string slug = default(string), string title = default(string), string description = default(string), List<GetBuyerCatalogListingResponseDescriptionBlocksItem> descriptionBlocks = default(List<GetBuyerCatalogListingResponseDescriptionBlocksItem>), decimal priceCents = default(decimal), decimal? compareAtCents = default(decimal?), string currency = default(string), string status = default(string), bool available = default(bool), decimal quantityAvailable = default(decimal), List<GetBuyerCatalogListingResponseVariants> variants = default(List<GetBuyerCatalogListingResponseVariants>), string condition = default(string), string brand = default(string), string size = default(string), List<string> color = default(List<string>), string categoryMain = default(string), string categorySub = default(string), List<string> images = default(List<string>), string sellerUsername = default(string), string sellerDisplayName = default(string), string listedAt = default(string), GetBuyerCatalogListingResponseTokenGate tokenGate = default(GetBuyerCatalogListingResponseTokenGate))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -70,6 +73,11 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("title is a required property for GetBuyerCatalogListingResponse and cannot be null");
             }
             this.Title = title;
+            // to ensure "descriptionBlocks" is required (not null)
+            if (descriptionBlocks == null) {
+                throw new ArgumentNullException("descriptionBlocks is a required property for GetBuyerCatalogListingResponse and cannot be null");
+            }
+            this.DescriptionBlocks = descriptionBlocks;
             this.PriceCents = priceCents;
             // to ensure "currency" is required (not null)
             if (currency == null) {
@@ -90,6 +98,7 @@ namespace net.crossly.buyer.Model
             this.Images = images;
             this.Description = description;
             this.CompareAtCents = compareAtCents;
+            this.Variants = variants;
             this.Condition = condition;
             this.Brand = brand;
             this.Size = size;
@@ -99,6 +108,7 @@ namespace net.crossly.buyer.Model
             this.SellerUsername = sellerUsername;
             this.SellerDisplayName = sellerDisplayName;
             this.ListedAt = listedAt;
+            this.TokenGate = tokenGate;
         }
 
         /// <summary>
@@ -118,6 +128,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DescriptionBlocks
+        /// </summary>
+        [DataMember(Name = "descriptionBlocks", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetBuyerCatalogListingResponseDescriptionBlocksItem> DescriptionBlocks { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceCents
@@ -154,6 +170,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "quantityAvailable", IsRequired = true, EmitDefaultValue = false)]
         public decimal QuantityAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Variants
+        /// </summary>
+        [DataMember(Name = "variants", EmitDefaultValue = true)]
+        public List<GetBuyerCatalogListingResponseVariants> Variants { get; set; }
 
         /// <summary>
         /// Gets or Sets Condition
@@ -216,6 +238,12 @@ namespace net.crossly.buyer.Model
         public string ListedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets TokenGate
+        /// </summary>
+        [DataMember(Name = "tokenGate", EmitDefaultValue = true)]
+        public GetBuyerCatalogListingResponseTokenGate TokenGate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -226,12 +254,14 @@ namespace net.crossly.buyer.Model
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  DescriptionBlocks: ").Append(DescriptionBlocks).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  CompareAtCents: ").Append(CompareAtCents).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
+            sb.Append("  Variants: ").Append(Variants).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
@@ -242,6 +272,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  SellerUsername: ").Append(SellerUsername).Append("\n");
             sb.Append("  SellerDisplayName: ").Append(SellerDisplayName).Append("\n");
             sb.Append("  ListedAt: ").Append(ListedAt).Append("\n");
+            sb.Append("  TokenGate: ").Append(TokenGate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -293,6 +324,12 @@ namespace net.crossly.buyer.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.DescriptionBlocks == input.DescriptionBlocks ||
+                    this.DescriptionBlocks != null &&
+                    input.DescriptionBlocks != null &&
+                    this.DescriptionBlocks.SequenceEqual(input.DescriptionBlocks)
+                ) && 
+                (
                     this.PriceCents == input.PriceCents ||
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
@@ -318,6 +355,12 @@ namespace net.crossly.buyer.Model
                 (
                     this.QuantityAvailable == input.QuantityAvailable ||
                     this.QuantityAvailable.Equals(input.QuantityAvailable)
+                ) && 
+                (
+                    this.Variants == input.Variants ||
+                    this.Variants != null &&
+                    input.Variants != null &&
+                    this.Variants.SequenceEqual(input.Variants)
                 ) && 
                 (
                     this.Condition == input.Condition ||
@@ -370,6 +413,11 @@ namespace net.crossly.buyer.Model
                     this.ListedAt == input.ListedAt ||
                     (this.ListedAt != null &&
                     this.ListedAt.Equals(input.ListedAt))
+                ) && 
+                (
+                    this.TokenGate == input.TokenGate ||
+                    (this.TokenGate != null &&
+                    this.TokenGate.Equals(input.TokenGate))
                 );
         }
 
@@ -394,6 +442,10 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
+                if (this.DescriptionBlocks != null)
+                {
+                    hashCode = (hashCode * 59) + this.DescriptionBlocks.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.CompareAtCents != null)
                 {
@@ -409,6 +461,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 hashCode = (hashCode * 59) + this.QuantityAvailable.GetHashCode();
+                if (this.Variants != null)
+                {
+                    hashCode = (hashCode * 59) + this.Variants.GetHashCode();
+                }
                 if (this.Condition != null)
                 {
                     hashCode = (hashCode * 59) + this.Condition.GetHashCode();
@@ -448,6 +504,10 @@ namespace net.crossly.buyer.Model
                 if (this.ListedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ListedAt.GetHashCode();
+                }
+                if (this.TokenGate != null)
+                {
+                    hashCode = (hashCode * 59) + this.TokenGate.GetHashCode();
                 }
                 return hashCode;
             }

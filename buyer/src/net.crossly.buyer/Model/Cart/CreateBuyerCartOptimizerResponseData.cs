@@ -39,29 +39,41 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerCartOptimizerResponseData" /> class.
         /// </summary>
+        /// <param name="lines">lines (required).</param>
+        /// <param name="itemsCents">itemsCents (required).</param>
         /// <param name="shippingCents">shippingCents (required).</param>
         /// <param name="totalCents">totalCents (required).</param>
-        /// <param name="lines">lines (required).</param>
         /// <param name="sellers">sellers (required).</param>
-        /// <param name="itemsCents">itemsCents (required).</param>
         /// <param name="unmatched">unmatched (required).</param>
-        public CreateBuyerCartOptimizerResponseData(decimal shippingCents = default(decimal), decimal totalCents = default(decimal), List<CreateBuyerCartOptimizerResponseDataLines> lines = default(List<CreateBuyerCartOptimizerResponseDataLines>), decimal sellers = default(decimal), decimal itemsCents = default(decimal), List<string> unmatched = default(List<string>))
+        public CreateBuyerCartOptimizerResponseData(List<CreateBuyerCartOptimizerResponseDataLines> lines = default(List<CreateBuyerCartOptimizerResponseDataLines>), decimal itemsCents = default(decimal), decimal shippingCents = default(decimal), decimal totalCents = default(decimal), decimal sellers = default(decimal), List<string> unmatched = default(List<string>))
         {
-            this.ShippingCents = shippingCents;
-            this.TotalCents = totalCents;
             // to ensure "lines" is required (not null)
             if (lines == null) {
                 throw new ArgumentNullException("lines is a required property for CreateBuyerCartOptimizerResponseData and cannot be null");
             }
             this.Lines = lines;
-            this.Sellers = sellers;
             this.ItemsCents = itemsCents;
+            this.ShippingCents = shippingCents;
+            this.TotalCents = totalCents;
+            this.Sellers = sellers;
             // to ensure "unmatched" is required (not null)
             if (unmatched == null) {
                 throw new ArgumentNullException("unmatched is a required property for CreateBuyerCartOptimizerResponseData and cannot be null");
             }
             this.Unmatched = unmatched;
         }
+
+        /// <summary>
+        /// Gets or Sets Lines
+        /// </summary>
+        [DataMember(Name = "lines", IsRequired = true, EmitDefaultValue = false)]
+        public List<CreateBuyerCartOptimizerResponseDataLines> Lines { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemsCents
+        /// </summary>
+        [DataMember(Name = "itemsCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ItemsCents { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingCents
@@ -76,22 +88,10 @@ namespace net.crossly.buyer.Model
         public decimal TotalCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets Lines
-        /// </summary>
-        [DataMember(Name = "lines", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateBuyerCartOptimizerResponseDataLines> Lines { get; set; }
-
-        /// <summary>
         /// Gets or Sets Sellers
         /// </summary>
         [DataMember(Name = "sellers", IsRequired = true, EmitDefaultValue = false)]
         public decimal Sellers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ItemsCents
-        /// </summary>
-        [DataMember(Name = "itemsCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal ItemsCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Unmatched
@@ -107,11 +107,11 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerCartOptimizerResponseData {\n");
+            sb.Append("  Lines: ").Append(Lines).Append("\n");
+            sb.Append("  ItemsCents: ").Append(ItemsCents).Append("\n");
             sb.Append("  ShippingCents: ").Append(ShippingCents).Append("\n");
             sb.Append("  TotalCents: ").Append(TotalCents).Append("\n");
-            sb.Append("  Lines: ").Append(Lines).Append("\n");
             sb.Append("  Sellers: ").Append(Sellers).Append("\n");
-            sb.Append("  ItemsCents: ").Append(ItemsCents).Append("\n");
             sb.Append("  Unmatched: ").Append(Unmatched).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -149,6 +149,16 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Lines == input.Lines ||
+                    this.Lines != null &&
+                    input.Lines != null &&
+                    this.Lines.SequenceEqual(input.Lines)
+                ) && 
+                (
+                    this.ItemsCents == input.ItemsCents ||
+                    this.ItemsCents.Equals(input.ItemsCents)
+                ) && 
+                (
                     this.ShippingCents == input.ShippingCents ||
                     this.ShippingCents.Equals(input.ShippingCents)
                 ) && 
@@ -157,18 +167,8 @@ namespace net.crossly.buyer.Model
                     this.TotalCents.Equals(input.TotalCents)
                 ) && 
                 (
-                    this.Lines == input.Lines ||
-                    this.Lines != null &&
-                    input.Lines != null &&
-                    this.Lines.SequenceEqual(input.Lines)
-                ) && 
-                (
                     this.Sellers == input.Sellers ||
                     this.Sellers.Equals(input.Sellers)
-                ) && 
-                (
-                    this.ItemsCents == input.ItemsCents ||
-                    this.ItemsCents.Equals(input.ItemsCents)
                 ) && 
                 (
                     this.Unmatched == input.Unmatched ||
@@ -187,14 +187,14 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
                 if (this.Lines != null)
                 {
                     hashCode = (hashCode * 59) + this.Lines.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Sellers.GetHashCode();
                 hashCode = (hashCode * 59) + this.ItemsCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.ShippingCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.TotalCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sellers.GetHashCode();
                 if (this.Unmatched != null)
                 {
                     hashCode = (hashCode * 59) + this.Unmatched.GetHashCode();

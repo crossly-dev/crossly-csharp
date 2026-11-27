@@ -39,25 +39,33 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateInventoryBulkDeleteResponse" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
         /// <param name="deleted">deleted (required).</param>
+        /// <param name="deletedIds">deletedIds (required).</param>
+        /// <param name="refused">Items NOT deleted: a live listing Crossly may not end (action authority). (required).</param>
+        /// <param name="relayed">Live rows handed to their managing app as delist commands. (required).</param>
         /// <param name="bulkJobId">bulkJobId (required).</param>
-        public CreateInventoryBulkDeleteResponse(bool success = default(bool), decimal deleted = default(decimal), string bulkJobId = default(string))
+        /// <param name="success">success (required).</param>
+        public CreateInventoryBulkDeleteResponse(decimal deleted = default(decimal), List<string> deletedIds = default(List<string>), List<CreateInventoryBulkDeleteResponseRefused> refused = default(List<CreateInventoryBulkDeleteResponseRefused>), decimal relayed = default(decimal), string bulkJobId = default(string), bool success = default(bool))
         {
-            this.Success = success;
             this.Deleted = deleted;
+            // to ensure "deletedIds" is required (not null)
+            if (deletedIds == null) {
+                throw new ArgumentNullException("deletedIds is a required property for CreateInventoryBulkDeleteResponse and cannot be null");
+            }
+            this.DeletedIds = deletedIds;
+            // to ensure "refused" is required (not null)
+            if (refused == null) {
+                throw new ArgumentNullException("refused is a required property for CreateInventoryBulkDeleteResponse and cannot be null");
+            }
+            this.Refused = refused;
+            this.Relayed = relayed;
             // to ensure "bulkJobId" is required (not null)
             if (bulkJobId == null) {
                 throw new ArgumentNullException("bulkJobId is a required property for CreateInventoryBulkDeleteResponse and cannot be null");
             }
             this.BulkJobId = bulkJobId;
+            this.Success = success;
         }
-
-        /// <summary>
-        /// Gets or Sets Success
-        /// </summary>
-        [DataMember(Name = "success", IsRequired = true, EmitDefaultValue = true)]
-        public bool Success { get; set; }
 
         /// <summary>
         /// Gets or Sets Deleted
@@ -66,10 +74,36 @@ namespace net.crossly.Model
         public decimal Deleted { get; set; }
 
         /// <summary>
+        /// Gets or Sets DeletedIds
+        /// </summary>
+        [DataMember(Name = "deletedIds", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> DeletedIds { get; set; }
+
+        /// <summary>
+        /// Items NOT deleted: a live listing Crossly may not end (action authority).
+        /// </summary>
+        /// <value>Items NOT deleted: a live listing Crossly may not end (action authority).</value>
+        [DataMember(Name = "refused", IsRequired = true, EmitDefaultValue = false)]
+        public List<CreateInventoryBulkDeleteResponseRefused> Refused { get; set; }
+
+        /// <summary>
+        /// Live rows handed to their managing app as delist commands.
+        /// </summary>
+        /// <value>Live rows handed to their managing app as delist commands.</value>
+        [DataMember(Name = "relayed", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Relayed { get; set; }
+
+        /// <summary>
         /// Gets or Sets BulkJobId
         /// </summary>
         [DataMember(Name = "bulkJobId", IsRequired = true, EmitDefaultValue = false)]
         public string BulkJobId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Success
+        /// </summary>
+        [DataMember(Name = "success", IsRequired = true, EmitDefaultValue = true)]
+        public bool Success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,9 +113,12 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateInventoryBulkDeleteResponse {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Deleted: ").Append(Deleted).Append("\n");
+            sb.Append("  DeletedIds: ").Append(DeletedIds).Append("\n");
+            sb.Append("  Refused: ").Append(Refused).Append("\n");
+            sb.Append("  Relayed: ").Append(Relayed).Append("\n");
             sb.Append("  BulkJobId: ").Append(BulkJobId).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -118,17 +155,33 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Success == input.Success ||
-                    this.Success.Equals(input.Success)
-                ) && 
-                (
                     this.Deleted == input.Deleted ||
                     this.Deleted.Equals(input.Deleted)
+                ) && 
+                (
+                    this.DeletedIds == input.DeletedIds ||
+                    this.DeletedIds != null &&
+                    input.DeletedIds != null &&
+                    this.DeletedIds.SequenceEqual(input.DeletedIds)
+                ) && 
+                (
+                    this.Refused == input.Refused ||
+                    this.Refused != null &&
+                    input.Refused != null &&
+                    this.Refused.SequenceEqual(input.Refused)
+                ) && 
+                (
+                    this.Relayed == input.Relayed ||
+                    this.Relayed.Equals(input.Relayed)
                 ) && 
                 (
                     this.BulkJobId == input.BulkJobId ||
                     (this.BulkJobId != null &&
                     this.BulkJobId.Equals(input.BulkJobId))
+                ) && 
+                (
+                    this.Success == input.Success ||
+                    this.Success.Equals(input.Success)
                 );
         }
 
@@ -141,12 +194,21 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Success.GetHashCode();
                 hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
+                if (this.DeletedIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeletedIds.GetHashCode();
+                }
+                if (this.Refused != null)
+                {
+                    hashCode = (hashCode * 59) + this.Refused.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Relayed.GetHashCode();
                 if (this.BulkJobId != null)
                 {
                     hashCode = (hashCode * 59) + this.BulkJobId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Success.GetHashCode();
                 return hashCode;
             }
         }

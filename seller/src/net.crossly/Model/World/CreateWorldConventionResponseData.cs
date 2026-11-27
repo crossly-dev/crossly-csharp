@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Live for value: live
-            /// </summary>
-            [EnumMember(Value = "live")]
-            Live = 1,
-
-            /// <summary>
             /// Enum Draft for value: draft
             /// </summary>
             [EnumMember(Value = "draft")]
-            Draft = 2,
+            Draft = 1,
 
             /// <summary>
-            /// Enum Open for value: open
+            /// Enum Live for value: live
             /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 3,
+            [EnumMember(Value = "live")]
+            Live = 2,
 
             /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 4,
+            Cancelled = 3,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 4,
 
             /// <summary>
             /// Enum Ended for value: ended
@@ -88,16 +88,16 @@ namespace net.crossly.Model
             Free = 1,
 
             /// <summary>
-            /// Enum Invite for value: invite
-            /// </summary>
-            [EnumMember(Value = "invite")]
-            Invite = 2,
-
-            /// <summary>
             /// Enum Fee for value: fee
             /// </summary>
             [EnumMember(Value = "fee")]
-            Fee = 3,
+            Fee = 2,
+
+            /// <summary>
+            /// Enum Invite for value: invite
+            /// </summary>
+            [EnumMember(Value = "invite")]
+            Invite = 3,
 
             /// <summary>
             /// Enum RevenueShare for value: revenue_share
@@ -124,18 +124,29 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="description">description.</param>
         /// <param name="status">status (required).</param>
         /// <param name="title">title (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="endsAt">endsAt (required).</param>
-        /// <param name="categorySlug">categorySlug.</param>
-        /// <param name="hostUserId">hostUserId (required).</param>
         /// <param name="startsAt">startsAt (required).</param>
+        /// <param name="timezone">timezone (required).</param>
+        /// <param name="categorySlug">categorySlug.</param>
+        /// <param name="theme">theme (required).</param>
+        /// <param name="sellerEventId">sellerEventId.</param>
         /// <param name="sceneId">sceneId (required).</param>
+        /// <param name="hostUserId">hostUserId (required).</param>
         /// <param name="entryModel">entryModel (required).</param>
         /// <param name="entryFeeCents">entryFeeCents.</param>
         /// <param name="revenueShareBps">revenueShareBps.</param>
         /// <param name="tableCount">tableCount (required).</param>
-        public CreateWorldConventionResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StatusEnum status = default(StatusEnum), string title = default(string), DateTime endsAt = default(DateTime), string categorySlug = default(string), string hostUserId = default(string), DateTime startsAt = default(DateTime), string sceneId = default(string), EntryModelEnum entryModel = default(EntryModelEnum), decimal? entryFeeCents = default(decimal?), decimal? revenueShareBps = default(decimal?), decimal tableCount = default(decimal))
+        /// <param name="venueBookingId">venueBookingId.</param>
+        /// <param name="opensHour">opensHour (required).</param>
+        /// <param name="closesHour">closesHour (required).</param>
+        /// <param name="floorPlanVersion">floorPlanVersion (required).</param>
+        /// <param name="bookingMode">bookingMode (required).</param>
+        /// <param name="walkIns">walkIns (required).</param>
+        public CreateWorldConventionResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), StatusEnum status = default(StatusEnum), string title = default(string), string storefrontId = default(string), DateTime endsAt = default(DateTime), DateTime startsAt = default(DateTime), string timezone = default(string), string categorySlug = default(string), string theme = default(string), string sellerEventId = default(string), string sceneId = default(string), string hostUserId = default(string), EntryModelEnum entryModel = default(EntryModelEnum), decimal? entryFeeCents = default(decimal?), decimal? revenueShareBps = default(decimal?), decimal tableCount = default(decimal), string venueBookingId = default(string), decimal opensHour = default(decimal), decimal closesHour = default(decimal), decimal floorPlanVersion = default(decimal), string bookingMode = default(string), decimal walkIns = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -151,22 +162,45 @@ namespace net.crossly.Model
             }
             this.Title = title;
             this.EndsAt = endsAt;
-            // to ensure "hostUserId" is required (not null)
-            if (hostUserId == null) {
-                throw new ArgumentNullException("hostUserId is a required property for CreateWorldConventionResponseData and cannot be null");
-            }
-            this.HostUserId = hostUserId;
             this.StartsAt = startsAt;
+            // to ensure "timezone" is required (not null)
+            if (timezone == null) {
+                throw new ArgumentNullException("timezone is a required property for CreateWorldConventionResponseData and cannot be null");
+            }
+            this.Timezone = timezone;
+            // to ensure "theme" is required (not null)
+            if (theme == null) {
+                throw new ArgumentNullException("theme is a required property for CreateWorldConventionResponseData and cannot be null");
+            }
+            this.Theme = theme;
             // to ensure "sceneId" is required (not null)
             if (sceneId == null) {
                 throw new ArgumentNullException("sceneId is a required property for CreateWorldConventionResponseData and cannot be null");
             }
             this.SceneId = sceneId;
+            // to ensure "hostUserId" is required (not null)
+            if (hostUserId == null) {
+                throw new ArgumentNullException("hostUserId is a required property for CreateWorldConventionResponseData and cannot be null");
+            }
+            this.HostUserId = hostUserId;
             this.EntryModel = entryModel;
             this.TableCount = tableCount;
+            this.OpensHour = opensHour;
+            this.ClosesHour = closesHour;
+            this.FloorPlanVersion = floorPlanVersion;
+            // to ensure "bookingMode" is required (not null)
+            if (bookingMode == null) {
+                throw new ArgumentNullException("bookingMode is a required property for CreateWorldConventionResponseData and cannot be null");
+            }
+            this.BookingMode = bookingMode;
+            this.WalkIns = walkIns;
+            this.Description = description;
+            this.StorefrontId = storefrontId;
             this.CategorySlug = categorySlug;
+            this.SellerEventId = sellerEventId;
             this.EntryFeeCents = entryFeeCents;
             this.RevenueShareBps = revenueShareBps;
+            this.VenueBookingId = venueBookingId;
         }
 
         /// <summary>
@@ -188,10 +222,22 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "description", EmitDefaultValue = true)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
         public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets EndsAt
@@ -200,28 +246,46 @@ namespace net.crossly.Model
         public DateTime EndsAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets CategorySlug
-        /// </summary>
-        [DataMember(Name = "categorySlug", EmitDefaultValue = true)]
-        public string CategorySlug { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HostUserId
-        /// </summary>
-        [DataMember(Name = "hostUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string HostUserId { get; set; }
-
-        /// <summary>
         /// Gets or Sets StartsAt
         /// </summary>
         [DataMember(Name = "startsAt", IsRequired = true, EmitDefaultValue = false)]
         public DateTime StartsAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Timezone
+        /// </summary>
+        [DataMember(Name = "timezone", IsRequired = true, EmitDefaultValue = false)]
+        public string Timezone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CategorySlug
+        /// </summary>
+        [DataMember(Name = "categorySlug", EmitDefaultValue = true)]
+        public string CategorySlug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Theme
+        /// </summary>
+        [DataMember(Name = "theme", IsRequired = true, EmitDefaultValue = false)]
+        public string Theme { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerEventId
+        /// </summary>
+        [DataMember(Name = "sellerEventId", EmitDefaultValue = true)]
+        public string SellerEventId { get; set; }
+
+        /// <summary>
         /// Gets or Sets SceneId
         /// </summary>
         [DataMember(Name = "sceneId", IsRequired = true, EmitDefaultValue = false)]
         public string SceneId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HostUserId
+        /// </summary>
+        [DataMember(Name = "hostUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string HostUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets EntryFeeCents
@@ -242,6 +306,42 @@ namespace net.crossly.Model
         public decimal TableCount { get; set; }
 
         /// <summary>
+        /// Gets or Sets VenueBookingId
+        /// </summary>
+        [DataMember(Name = "venueBookingId", EmitDefaultValue = true)]
+        public string VenueBookingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OpensHour
+        /// </summary>
+        [DataMember(Name = "opensHour", IsRequired = true, EmitDefaultValue = false)]
+        public decimal OpensHour { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClosesHour
+        /// </summary>
+        [DataMember(Name = "closesHour", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ClosesHour { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FloorPlanVersion
+        /// </summary>
+        [DataMember(Name = "floorPlanVersion", IsRequired = true, EmitDefaultValue = false)]
+        public decimal FloorPlanVersion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BookingMode
+        /// </summary>
+        [DataMember(Name = "bookingMode", IsRequired = true, EmitDefaultValue = false)]
+        public string BookingMode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WalkIns
+        /// </summary>
+        [DataMember(Name = "walkIns", IsRequired = true, EmitDefaultValue = false)]
+        public decimal WalkIns { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -252,17 +352,28 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
-            sb.Append("  CategorySlug: ").Append(CategorySlug).Append("\n");
-            sb.Append("  HostUserId: ").Append(HostUserId).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
+            sb.Append("  Timezone: ").Append(Timezone).Append("\n");
+            sb.Append("  CategorySlug: ").Append(CategorySlug).Append("\n");
+            sb.Append("  Theme: ").Append(Theme).Append("\n");
+            sb.Append("  SellerEventId: ").Append(SellerEventId).Append("\n");
             sb.Append("  SceneId: ").Append(SceneId).Append("\n");
+            sb.Append("  HostUserId: ").Append(HostUserId).Append("\n");
             sb.Append("  EntryModel: ").Append(EntryModel).Append("\n");
             sb.Append("  EntryFeeCents: ").Append(EntryFeeCents).Append("\n");
             sb.Append("  RevenueShareBps: ").Append(RevenueShareBps).Append("\n");
             sb.Append("  TableCount: ").Append(TableCount).Append("\n");
+            sb.Append("  VenueBookingId: ").Append(VenueBookingId).Append("\n");
+            sb.Append("  OpensHour: ").Append(OpensHour).Append("\n");
+            sb.Append("  ClosesHour: ").Append(ClosesHour).Append("\n");
+            sb.Append("  FloorPlanVersion: ").Append(FloorPlanVersion).Append("\n");
+            sb.Append("  BookingMode: ").Append(BookingMode).Append("\n");
+            sb.Append("  WalkIns: ").Append(WalkIns).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -314,6 +425,11 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
                 ) && 
@@ -323,19 +439,14 @@ namespace net.crossly.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
-                    this.CategorySlug == input.CategorySlug ||
-                    (this.CategorySlug != null &&
-                    this.CategorySlug.Equals(input.CategorySlug))
-                ) && 
-                (
-                    this.HostUserId == input.HostUserId ||
-                    (this.HostUserId != null &&
-                    this.HostUserId.Equals(input.HostUserId))
                 ) && 
                 (
                     this.StartsAt == input.StartsAt ||
@@ -343,9 +454,34 @@ namespace net.crossly.Model
                     this.StartsAt.Equals(input.StartsAt))
                 ) && 
                 (
+                    this.Timezone == input.Timezone ||
+                    (this.Timezone != null &&
+                    this.Timezone.Equals(input.Timezone))
+                ) && 
+                (
+                    this.CategorySlug == input.CategorySlug ||
+                    (this.CategorySlug != null &&
+                    this.CategorySlug.Equals(input.CategorySlug))
+                ) && 
+                (
+                    this.Theme == input.Theme ||
+                    (this.Theme != null &&
+                    this.Theme.Equals(input.Theme))
+                ) && 
+                (
+                    this.SellerEventId == input.SellerEventId ||
+                    (this.SellerEventId != null &&
+                    this.SellerEventId.Equals(input.SellerEventId))
+                ) && 
+                (
                     this.SceneId == input.SceneId ||
                     (this.SceneId != null &&
                     this.SceneId.Equals(input.SceneId))
+                ) && 
+                (
+                    this.HostUserId == input.HostUserId ||
+                    (this.HostUserId != null &&
+                    this.HostUserId.Equals(input.HostUserId))
                 ) && 
                 (
                     this.EntryModel == input.EntryModel ||
@@ -364,6 +500,32 @@ namespace net.crossly.Model
                 (
                     this.TableCount == input.TableCount ||
                     this.TableCount.Equals(input.TableCount)
+                ) && 
+                (
+                    this.VenueBookingId == input.VenueBookingId ||
+                    (this.VenueBookingId != null &&
+                    this.VenueBookingId.Equals(input.VenueBookingId))
+                ) && 
+                (
+                    this.OpensHour == input.OpensHour ||
+                    this.OpensHour.Equals(input.OpensHour)
+                ) && 
+                (
+                    this.ClosesHour == input.ClosesHour ||
+                    this.ClosesHour.Equals(input.ClosesHour)
+                ) && 
+                (
+                    this.FloorPlanVersion == input.FloorPlanVersion ||
+                    this.FloorPlanVersion.Equals(input.FloorPlanVersion)
+                ) && 
+                (
+                    this.BookingMode == input.BookingMode ||
+                    (this.BookingMode != null &&
+                    this.BookingMode.Equals(input.BookingMode))
+                ) && 
+                (
+                    this.WalkIns == input.WalkIns ||
+                    this.WalkIns.Equals(input.WalkIns)
                 );
         }
 
@@ -388,30 +550,50 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
+                if (this.Description != null)
+                {
+                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
-                }
-                if (this.CategorySlug != null)
-                {
-                    hashCode = (hashCode * 59) + this.CategorySlug.GetHashCode();
-                }
-                if (this.HostUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.HostUserId.GetHashCode();
                 }
                 if (this.StartsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartsAt.GetHashCode();
                 }
+                if (this.Timezone != null)
+                {
+                    hashCode = (hashCode * 59) + this.Timezone.GetHashCode();
+                }
+                if (this.CategorySlug != null)
+                {
+                    hashCode = (hashCode * 59) + this.CategorySlug.GetHashCode();
+                }
+                if (this.Theme != null)
+                {
+                    hashCode = (hashCode * 59) + this.Theme.GetHashCode();
+                }
+                if (this.SellerEventId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerEventId.GetHashCode();
+                }
                 if (this.SceneId != null)
                 {
                     hashCode = (hashCode * 59) + this.SceneId.GetHashCode();
+                }
+                if (this.HostUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.HostUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.EntryModel.GetHashCode();
                 if (this.EntryFeeCents != null)
@@ -423,6 +605,18 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.RevenueShareBps.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.TableCount.GetHashCode();
+                if (this.VenueBookingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VenueBookingId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.OpensHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.ClosesHour.GetHashCode();
+                hashCode = (hashCode * 59) + this.FloorPlanVersion.GetHashCode();
+                if (this.BookingMode != null)
+                {
+                    hashCode = (hashCode * 59) + this.BookingMode.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WalkIns.GetHashCode();
                 return hashCode;
             }
         }

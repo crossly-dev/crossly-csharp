@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateWeb3WalletSyncResponse" /> class.
         /// </summary>
         /// <param name="summary">summary (required).</param>
-        public CreateWeb3WalletSyncResponse(CreateWeb3WalletSyncResponseSummary summary = default(CreateWeb3WalletSyncResponseSummary))
+        public CreateWeb3WalletSyncResponse(CreateWeb3StoreWalletSyncResponseData summary = default(CreateWeb3StoreWalletSyncResponseData))
         {
             // to ensure "summary" is required (not null)
             if (summary == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Summary
         /// </summary>
         [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
-        public CreateWeb3WalletSyncResponseSummary Summary { get; set; }
+        public CreateWeb3StoreWalletSyncResponseData Summary { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

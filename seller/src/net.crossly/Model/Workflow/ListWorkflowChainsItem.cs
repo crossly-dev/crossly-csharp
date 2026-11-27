@@ -39,49 +39,55 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListWorkflowChainsItem" /> class.
         /// </summary>
-        /// <param name="steps">steps (required).</param>
         /// <param name="id">id (required).</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="isActive">isActive (required).</param>
+        /// <param name="name">name (required).</param>
         /// <param name="triggerId">triggerId (required).</param>
-        public ListWorkflowChainsItem(List<GetWorkflowChainResponseSteps> steps = default(List<GetWorkflowChainResponseSteps>), string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), string userId = default(string), bool isActive = default(bool), string triggerId = default(string))
+        /// <param name="triggerConfig">triggerConfig (required).</param>
+        /// <param name="isActive">isActive (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="workflowId">workflowId (required).</param>
+        /// <param name="steps">steps (required).</param>
+        public ListWorkflowChainsItem(string id = default(string), string userId = default(string), string name = default(string), string triggerId = default(string), Dictionary<string, Object> triggerConfig = default(Dictionary<string, Object>), bool isActive = default(bool), DateTime createdAt = default(DateTime), string workflowId = default(string), List<GetWorkflowChainResponseSteps> steps = default(List<GetWorkflowChainResponseSteps>))
         {
-            // to ensure "steps" is required (not null)
-            if (steps == null) {
-                throw new ArgumentNullException("steps is a required property for ListWorkflowChainsItem and cannot be null");
-            }
-            this.Steps = steps;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListWorkflowChainsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "name" is required (not null)
-            if (name == null) {
-                throw new ArgumentNullException("name is a required property for ListWorkflowChainsItem and cannot be null");
-            }
-            this.Name = name;
-            this.CreatedAt = createdAt;
             // to ensure "userId" is required (not null)
             if (userId == null) {
                 throw new ArgumentNullException("userId is a required property for ListWorkflowChainsItem and cannot be null");
             }
             this.UserId = userId;
-            this.IsActive = isActive;
+            // to ensure "name" is required (not null)
+            if (name == null) {
+                throw new ArgumentNullException("name is a required property for ListWorkflowChainsItem and cannot be null");
+            }
+            this.Name = name;
             // to ensure "triggerId" is required (not null)
             if (triggerId == null) {
                 throw new ArgumentNullException("triggerId is a required property for ListWorkflowChainsItem and cannot be null");
             }
             this.TriggerId = triggerId;
+            // to ensure "triggerConfig" is required (not null)
+            if (triggerConfig == null) {
+                throw new ArgumentNullException("triggerConfig is a required property for ListWorkflowChainsItem and cannot be null");
+            }
+            this.TriggerConfig = triggerConfig;
+            this.IsActive = isActive;
+            this.CreatedAt = createdAt;
+            // to ensure "workflowId" is required (not null)
+            if (workflowId == null) {
+                throw new ArgumentNullException("workflowId is a required property for ListWorkflowChainsItem and cannot be null");
+            }
+            this.WorkflowId = workflowId;
+            // to ensure "steps" is required (not null)
+            if (steps == null) {
+                throw new ArgumentNullException("steps is a required property for ListWorkflowChainsItem and cannot be null");
+            }
+            this.Steps = steps;
         }
-
-        /// <summary>
-        /// Gets or Sets Steps
-        /// </summary>
-        [DataMember(Name = "steps", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetWorkflowChainResponseSteps> Steps { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -90,22 +96,28 @@ namespace net.crossly.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
+        public string UserId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets TriggerId
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
+        [DataMember(Name = "triggerId", IsRequired = true, EmitDefaultValue = false)]
+        public string TriggerId { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets TriggerConfig
         /// </summary>
-        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = false)]
-        public string UserId { get; set; }
+        [DataMember(Name = "triggerConfig", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> TriggerConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets IsActive
@@ -114,10 +126,22 @@ namespace net.crossly.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Gets or Sets TriggerId
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "triggerId", IsRequired = true, EmitDefaultValue = false)]
-        public string TriggerId { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowId
+        /// </summary>
+        [DataMember(Name = "workflowId", IsRequired = true, EmitDefaultValue = false)]
+        public string WorkflowId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Steps
+        /// </summary>
+        [DataMember(Name = "steps", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetWorkflowChainResponseSteps> Steps { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,13 +151,15 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListWorkflowChainsItem {\n");
-            sb.Append("  Steps: ").Append(Steps).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  TriggerId: ").Append(TriggerId).Append("\n");
+            sb.Append("  TriggerConfig: ").Append(TriggerConfig).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
+            sb.Append("  Steps: ").Append(Steps).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,25 +196,9 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Steps == input.Steps ||
-                    this.Steps != null &&
-                    input.Steps != null &&
-                    this.Steps.SequenceEqual(input.Steps)
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
                     this.UserId == input.UserId ||
@@ -196,13 +206,40 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.IsActive == input.IsActive ||
-                    this.IsActive.Equals(input.IsActive)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.TriggerId == input.TriggerId ||
                     (this.TriggerId != null &&
                     this.TriggerId.Equals(input.TriggerId))
+                ) && 
+                (
+                    this.TriggerConfig == input.TriggerConfig ||
+                    this.TriggerConfig != null &&
+                    input.TriggerConfig != null &&
+                    this.TriggerConfig.SequenceEqual(input.TriggerConfig)
+                ) && 
+                (
+                    this.IsActive == input.IsActive ||
+                    this.IsActive.Equals(input.IsActive)
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
+                ) && 
+                (
+                    this.Steps == input.Steps ||
+                    this.Steps != null &&
+                    input.Steps != null &&
+                    this.Steps.SequenceEqual(input.Steps)
                 );
         }
 
@@ -215,30 +252,38 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Steps != null)
-                {
-                    hashCode = (hashCode * 59) + this.Steps.GetHashCode();
-                }
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.Name != null)
-                {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                }
-                if (this.CreatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 if (this.UserId != null)
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.TriggerId != null)
                 {
                     hashCode = (hashCode * 59) + this.TriggerId.GetHashCode();
+                }
+                if (this.TriggerConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.TriggerConfig.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.WorkflowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
+                }
+                if (this.Steps != null)
+                {
+                    hashCode = (hashCode * 59) + this.Steps.GetHashCode();
                 }
                 return hashCode;
             }

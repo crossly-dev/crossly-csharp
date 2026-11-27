@@ -40,18 +40,24 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetCbxSubjectBalanceBySubjectIdResponseData" /> class.
         /// </summary>
         /// <param name="grantedBaseUnits">grantedBaseUnits (required).</param>
+        /// <param name="fundingRestrictedBaseUnits">fundingRestrictedBaseUnits (required).</param>
         /// <param name="earnedBaseUnits">earnedBaseUnits (required).</param>
         /// <param name="stakedBaseUnits">stakedBaseUnits (required).</param>
         /// <param name="earnedAvailableBaseUnits">earnedAvailableBaseUnits (required).</param>
         /// <param name="connectedAvailableBaseUnits">connectedAvailableBaseUnits (required).</param>
         /// <param name="totalSpendableBaseUnits">totalSpendableBaseUnits (required).</param>
-        public GetCbxSubjectBalanceBySubjectIdResponseData(string grantedBaseUnits = default(string), string earnedBaseUnits = default(string), string stakedBaseUnits = default(string), string earnedAvailableBaseUnits = default(string), string connectedAvailableBaseUnits = default(string), string totalSpendableBaseUnits = default(string))
+        public GetCbxSubjectBalanceBySubjectIdResponseData(string grantedBaseUnits = default(string), string fundingRestrictedBaseUnits = default(string), string earnedBaseUnits = default(string), string stakedBaseUnits = default(string), string earnedAvailableBaseUnits = default(string), string connectedAvailableBaseUnits = default(string), string totalSpendableBaseUnits = default(string))
         {
             // to ensure "grantedBaseUnits" is required (not null)
             if (grantedBaseUnits == null) {
                 throw new ArgumentNullException("grantedBaseUnits is a required property for GetCbxSubjectBalanceBySubjectIdResponseData and cannot be null");
             }
             this.GrantedBaseUnits = grantedBaseUnits;
+            // to ensure "fundingRestrictedBaseUnits" is required (not null)
+            if (fundingRestrictedBaseUnits == null) {
+                throw new ArgumentNullException("fundingRestrictedBaseUnits is a required property for GetCbxSubjectBalanceBySubjectIdResponseData and cannot be null");
+            }
+            this.FundingRestrictedBaseUnits = fundingRestrictedBaseUnits;
             // to ensure "earnedBaseUnits" is required (not null)
             if (earnedBaseUnits == null) {
                 throw new ArgumentNullException("earnedBaseUnits is a required property for GetCbxSubjectBalanceBySubjectIdResponseData and cannot be null");
@@ -84,6 +90,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "grantedBaseUnits", IsRequired = true, EmitDefaultValue = false)]
         public string GrantedBaseUnits { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FundingRestrictedBaseUnits
+        /// </summary>
+        [DataMember(Name = "fundingRestrictedBaseUnits", IsRequired = true, EmitDefaultValue = false)]
+        public string FundingRestrictedBaseUnits { get; set; }
 
         /// <summary>
         /// Gets or Sets EarnedBaseUnits
@@ -124,6 +136,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetCbxSubjectBalanceBySubjectIdResponseData {\n");
             sb.Append("  GrantedBaseUnits: ").Append(GrantedBaseUnits).Append("\n");
+            sb.Append("  FundingRestrictedBaseUnits: ").Append(FundingRestrictedBaseUnits).Append("\n");
             sb.Append("  EarnedBaseUnits: ").Append(EarnedBaseUnits).Append("\n");
             sb.Append("  StakedBaseUnits: ").Append(StakedBaseUnits).Append("\n");
             sb.Append("  EarnedAvailableBaseUnits: ").Append(EarnedAvailableBaseUnits).Append("\n");
@@ -170,6 +183,11 @@ namespace net.crossly.Model
                     this.GrantedBaseUnits.Equals(input.GrantedBaseUnits))
                 ) && 
                 (
+                    this.FundingRestrictedBaseUnits == input.FundingRestrictedBaseUnits ||
+                    (this.FundingRestrictedBaseUnits != null &&
+                    this.FundingRestrictedBaseUnits.Equals(input.FundingRestrictedBaseUnits))
+                ) && 
+                (
                     this.EarnedBaseUnits == input.EarnedBaseUnits ||
                     (this.EarnedBaseUnits != null &&
                     this.EarnedBaseUnits.Equals(input.EarnedBaseUnits))
@@ -208,6 +226,10 @@ namespace net.crossly.Model
                 if (this.GrantedBaseUnits != null)
                 {
                     hashCode = (hashCode * 59) + this.GrantedBaseUnits.GetHashCode();
+                }
+                if (this.FundingRestrictedBaseUnits != null)
+                {
+                    hashCode = (hashCode * 59) + this.FundingRestrictedBaseUnits.GetHashCode();
                 }
                 if (this.EarnedBaseUnits != null)
                 {

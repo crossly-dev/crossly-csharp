@@ -38,46 +38,46 @@ namespace net.crossly.Model
         public enum ChainEnum
         {
             /// <summary>
-            /// Enum Solana for value: solana
-            /// </summary>
-            [EnumMember(Value = "solana")]
-            Solana = 1,
-
-            /// <summary>
-            /// Enum Cosm for value: cosm
-            /// </summary>
-            [EnumMember(Value = "cosm")]
-            Cosm = 2,
-
-            /// <summary>
             /// Enum Ethereum for value: ethereum
             /// </summary>
             [EnumMember(Value = "ethereum")]
-            Ethereum = 3,
+            Ethereum = 1,
 
             /// <summary>
             /// Enum Base for value: base
             /// </summary>
             [EnumMember(Value = "base")]
-            Base = 4,
+            Base = 2,
 
             /// <summary>
             /// Enum Polygon for value: polygon
             /// </summary>
             [EnumMember(Value = "polygon")]
-            Polygon = 5,
+            Polygon = 3,
 
             /// <summary>
             /// Enum Arbitrum for value: arbitrum
             /// </summary>
             [EnumMember(Value = "arbitrum")]
-            Arbitrum = 6,
+            Arbitrum = 4,
 
             /// <summary>
             /// Enum Optimism for value: optimism
             /// </summary>
             [EnumMember(Value = "optimism")]
-            Optimism = 7
+            Optimism = 5,
+
+            /// <summary>
+            /// Enum Solana for value: solana
+            /// </summary>
+            [EnumMember(Value = "solana")]
+            Solana = 6,
+
+            /// <summary>
+            /// Enum Cosm for value: cosm
+            /// </summary>
+            [EnumMember(Value = "cosm")]
+            Cosm = 7
 
         }
 

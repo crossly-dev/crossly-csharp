@@ -45,16 +45,16 @@ namespace net.crossly.Model
             New = 1,
 
             /// <summary>
-            /// Enum Fair for value: fair
-            /// </summary>
-            [EnumMember(Value = "fair")]
-            Fair = 2,
-
-            /// <summary>
             /// Enum Good for value: good
             /// </summary>
             [EnumMember(Value = "good")]
-            Good = 3,
+            Good = 2,
+
+            /// <summary>
+            /// Enum Fair for value: fair
+            /// </summary>
+            [EnumMember(Value = "fair")]
+            Fair = 3,
 
             /// <summary>
             /// Enum LikeNew for value: like_new
@@ -118,16 +118,16 @@ namespace net.crossly.Model
         public enum ReturnsAcceptedEnum
         {
             /// <summary>
-            /// Enum Yes for value: yes
-            /// </summary>
-            [EnumMember(Value = "yes")]
-            Yes = 1,
-
-            /// <summary>
             /// Enum No for value: no
             /// </summary>
             [EnumMember(Value = "no")]
-            No = 2
+            No = 1,
+
+            /// <summary>
+            /// Enum Yes for value: yes
+            /// </summary>
+            [EnumMember(Value = "yes")]
+            Yes = 2
 
         }
 
@@ -185,7 +185,7 @@ namespace net.crossly.Model
         /// <param name="confidence">AI&#39;s confidence in the synthesis (0-1). Surfaced to the seller so they can decide whether to skim or trust + click. (required).</param>
         /// <param name="notes">AI&#39;s free-text rationale for the merge — what it pulled from where. Helps the seller spot a bad merge before listing..</param>
         /// <param name="sectionApplicability">sectionApplicability.</param>
-        public CreateMagicScanSynthesizeResponsePayload(string title = default(string), string description = default(string), string brand = default(string), ConditionEnum? condition = default(ConditionEnum?), ListGradingSubmissionsItemGrading grading = default(ListGradingSubmissionsItemGrading), string color = default(string), string material = default(string), string size = default(string), string sizeSystem = default(string), decimal? weightOz = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions dimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), decimal? priceCents = default(decimal?), string sellerNote = default(string), decimal? priceLowCents = default(decimal?), decimal? priceMedianCents = default(decimal?), decimal? priceHighCents = default(decimal?), decimal? quantity = default(decimal?), bool? createInventoryItem = default(bool?), decimal? inventoryQuantity = default(decimal?), decimal? unitsPerListing = default(decimal?), decimal? costBasisCents = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions chosenDimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), List<string> imageUrls = default(List<string>), CreateMagicScanSynthesizeResponsePayloadCategory category = default(CreateMagicScanSynthesizeResponsePayloadCategory), string department = default(string), string gender = default(string), string style = default(string), string pattern = default(string), string itemType = default(string), string upc = default(string), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), string handlingTimeDays = default(string), ReturnsAcceptedEnum? returnsAccepted = default(ReturnsAcceptedEnum?), string returnWindowDays = default(string), List<string> tags = default(List<string>), string itemSpecifics = default(string), Dictionary<string, Object> perPlatformOverrides = default(Dictionary<string, Object>), decimal confidence = default(decimal), string notes = default(string), CreateMagicScanSynthesizeResponsePayloadSectionApplicability sectionApplicability = default(CreateMagicScanSynthesizeResponsePayloadSectionApplicability))
+        public CreateMagicScanSynthesizeResponsePayload(string title = default(string), string description = default(string), string brand = default(string), ConditionEnum? condition = default(ConditionEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string color = default(string), string material = default(string), string size = default(string), string sizeSystem = default(string), decimal? weightOz = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions dimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), decimal? priceCents = default(decimal?), string sellerNote = default(string), decimal? priceLowCents = default(decimal?), decimal? priceMedianCents = default(decimal?), decimal? priceHighCents = default(decimal?), decimal? quantity = default(decimal?), bool? createInventoryItem = default(bool?), decimal? inventoryQuantity = default(decimal?), decimal? unitsPerListing = default(decimal?), decimal? costBasisCents = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions chosenDimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), List<string> imageUrls = default(List<string>), CreateMagicScanSynthesizeResponsePayloadCategory category = default(CreateMagicScanSynthesizeResponsePayloadCategory), string department = default(string), string gender = default(string), string style = default(string), string pattern = default(string), string itemType = default(string), string upc = default(string), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), string handlingTimeDays = default(string), ReturnsAcceptedEnum? returnsAccepted = default(ReturnsAcceptedEnum?), string returnWindowDays = default(string), List<string> tags = default(List<string>), string itemSpecifics = default(string), Dictionary<string, Object> perPlatformOverrides = default(Dictionary<string, Object>), decimal confidence = default(decimal), string notes = default(string), CreateMagicScanSynthesizeResponsePayloadSectionApplicability sectionApplicability = default(CreateMagicScanSynthesizeResponsePayloadSectionApplicability))
         {
             // to ensure "title" is required (not null)
             if (title == null) {
@@ -263,7 +263,7 @@ namespace net.crossly.Model
         /// Gets or Sets Grading
         /// </summary>
         [DataMember(Name = "grading", EmitDefaultValue = true)]
-        public ListGradingSubmissionsItemGrading Grading { get; set; }
+        public CreateBulkBatchItemResponseGrading Grading { get; set; }
 
         /// <summary>
         /// Gets or Sets Color

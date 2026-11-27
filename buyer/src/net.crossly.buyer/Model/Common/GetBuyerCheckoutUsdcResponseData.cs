@@ -39,11 +39,11 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCheckoutUsdcResponseData" /> class.
         /// </summary>
-        /// <param name="reason">reason.</param>
         /// <param name="available">available (required).</param>
+        /// <param name="reason">reason.</param>
         /// <param name="maxCents">maxCents (required).</param>
         /// <param name="networks">networks (required).</param>
-        public GetBuyerCheckoutUsdcResponseData(string reason = default(string), bool available = default(bool), decimal maxCents = default(decimal), List<string> networks = default(List<string>))
+        public GetBuyerCheckoutUsdcResponseData(bool available = default(bool), string reason = default(string), decimal maxCents = default(decimal), List<string> networks = default(List<string>))
         {
             this.Available = available;
             this.MaxCents = maxCents;
@@ -56,16 +56,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Reason
-        /// </summary>
-        [DataMember(Name = "reason", EmitDefaultValue = true)]
-        public string Reason { get; set; }
-
-        /// <summary>
         /// Gets or Sets Available
         /// </summary>
         [DataMember(Name = "available", IsRequired = true, EmitDefaultValue = true)]
         public bool Available { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Reason
+        /// </summary>
+        [DataMember(Name = "reason", EmitDefaultValue = true)]
+        public string Reason { get; set; }
 
         /// <summary>
         /// Gets or Sets MaxCents
@@ -87,8 +87,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCheckoutUsdcResponseData {\n");
-            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  Available: ").Append(Available).Append("\n");
+            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  MaxCents: ").Append(MaxCents).Append("\n");
             sb.Append("  Networks: ").Append(Networks).Append("\n");
             sb.Append("}\n");
@@ -127,13 +127,13 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.Available == input.Available ||
+                    this.Available.Equals(input.Available)
+                ) && 
+                (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&
                     this.Reason.Equals(input.Reason))
-                ) && 
-                (
-                    this.Available == input.Available ||
-                    this.Available.Equals(input.Available)
                 ) && 
                 (
                     this.MaxCents == input.MaxCents ||
@@ -156,11 +156,11 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 if (this.Reason != null)
                 {
                     hashCode = (hashCode * 59) + this.Reason.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Available.GetHashCode();
                 hashCode = (hashCode * 59) + this.MaxCents.GetHashCode();
                 if (this.Networks != null)
                 {

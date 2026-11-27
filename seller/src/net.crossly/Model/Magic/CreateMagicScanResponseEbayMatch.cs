@@ -43,14 +43,14 @@ namespace net.crossly.Model
         /// <param name="legacyItemId">legacyItemId.</param>
         /// <param name="title">title (required).</param>
         /// <param name="brand">brand.</param>
-        /// <param name="priceCents">Normalized cents. eBay returns string + currency on &#x60;price.value&#x60;..</param>
+        /// <param name="priceCents">Integer cents..</param>
         /// <param name="currency">currency.</param>
         /// <param name="condition">condition.</param>
-        /// <param name="categoryId">Top-level category eBay assigned to the match (id + path)..</param>
+        /// <param name="categoryId">The category the marketplace filed the match under (id + path), when the provider returns it..</param>
         /// <param name="categoryPath">categoryPath.</param>
         /// <param name="itemUrl">itemUrl (required).</param>
         /// <param name="thumbnailUrl">thumbnailUrl.</param>
-        /// <param name="aspects">Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer..</param>
+        /// <param name="aspects">Item specifics, when the provider returns them. Always read defensively..</param>
         public CreateMagicScanResponseEbayMatch(string itemId = default(string), string legacyItemId = default(string), string title = default(string), string brand = default(string), decimal? priceCents = default(decimal?), string currency = default(string), string condition = default(string), string categoryId = default(string), string categoryPath = default(string), string itemUrl = default(string), string thumbnailUrl = default(string), Dictionary<string, Object> aspects = default(Dictionary<string, Object>))
         {
             // to ensure "itemId" is required (not null)
@@ -104,9 +104,9 @@ namespace net.crossly.Model
         public string Brand { get; set; }
 
         /// <summary>
-        /// Normalized cents. eBay returns string + currency on &#x60;price.value&#x60;.
+        /// Integer cents.
         /// </summary>
-        /// <value>Normalized cents. eBay returns string + currency on &#x60;price.value&#x60;.</value>
+        /// <value>Integer cents.</value>
         [DataMember(Name = "priceCents", EmitDefaultValue = true)]
         public decimal? PriceCents { get; set; }
 
@@ -123,9 +123,9 @@ namespace net.crossly.Model
         public string Condition { get; set; }
 
         /// <summary>
-        /// Top-level category eBay assigned to the match (id + path).
+        /// The category the marketplace filed the match under (id + path), when the provider returns it.
         /// </summary>
-        /// <value>Top-level category eBay assigned to the match (id + path).</value>
+        /// <value>The category the marketplace filed the match under (id + path), when the provider returns it.</value>
         [DataMember(Name = "categoryId", EmitDefaultValue = true)]
         public string CategoryId { get; set; }
 
@@ -148,9 +148,9 @@ namespace net.crossly.Model
         public string ThumbnailUrl { get; set; }
 
         /// <summary>
-        /// Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.
+        /// Item specifics, when the provider returns them. Always read defensively.
         /// </summary>
-        /// <value>Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.</value>
+        /// <value>Item specifics, when the provider returns them. Always read defensively.</value>
         [DataMember(Name = "aspects", EmitDefaultValue = true)]
         public Dictionary<string, Object> Aspects { get; set; }
 

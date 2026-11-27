@@ -42,10 +42,10 @@ namespace net.crossly.buyer.Model
         /// <param name="shareUrl">shareUrl.</param>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="isPublic">isPublic (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="shareToken">shareToken.</param>
-        public UpdateBuyerWishlistResponseData(string shareUrl = default(string), string id = default(string), string name = default(string), string createdAt = default(string), bool isPublic = default(bool), string shareToken = default(string))
+        public UpdateBuyerWishlistResponseData(string shareUrl = default(string), string id = default(string), string name = default(string), bool isPublic = default(bool), string createdAt = default(string), string shareToken = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -57,12 +57,12 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("name is a required property for UpdateBuyerWishlistResponseData and cannot be null");
             }
             this.Name = name;
+            this.IsPublic = isPublic;
             // to ensure "createdAt" is required (not null)
             if (createdAt == null) {
                 throw new ArgumentNullException("createdAt is a required property for UpdateBuyerWishlistResponseData and cannot be null");
             }
             this.CreatedAt = createdAt;
-            this.IsPublic = isPublic;
             this.ShareUrl = shareUrl;
             this.ShareToken = shareToken;
         }
@@ -86,16 +86,16 @@ namespace net.crossly.buyer.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
-        /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets IsPublic
         /// </summary>
         [DataMember(Name = "isPublic", IsRequired = true, EmitDefaultValue = true)]
         public bool IsPublic { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareToken
@@ -114,8 +114,8 @@ namespace net.crossly.buyer.Model
             sb.Append("  ShareUrl: ").Append(ShareUrl).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  IsPublic: ").Append(IsPublic).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ShareToken: ").Append(ShareToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -168,13 +168,13 @@ namespace net.crossly.buyer.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.IsPublic == input.IsPublic ||
+                    this.IsPublic.Equals(input.IsPublic)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.IsPublic == input.IsPublic ||
-                    this.IsPublic.Equals(input.IsPublic)
                 ) && 
                 (
                     this.ShareToken == input.ShareToken ||
@@ -204,11 +204,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsPublic.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.IsPublic.GetHashCode();
                 if (this.ShareToken != null)
                 {
                     hashCode = (hashCode * 59) + this.ShareToken.GetHashCode();

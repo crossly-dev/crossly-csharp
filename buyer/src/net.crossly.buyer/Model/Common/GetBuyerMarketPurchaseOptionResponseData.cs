@@ -39,19 +39,25 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerMarketPurchaseOptionResponseData" /> class.
         /// </summary>
+        /// <param name="vaultStock">vaultStock (required).</param>
         /// <param name="fastShipCents">fastShipCents (required).</param>
         /// <param name="gradingRuns">gradingRuns (required).</param>
-        /// <param name="vaultStock">vaultStock (required).</param>
-        public GetBuyerMarketPurchaseOptionResponseData(decimal fastShipCents = default(decimal), List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns> gradingRuns = default(List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns>), bool vaultStock = default(bool))
+        public GetBuyerMarketPurchaseOptionResponseData(bool vaultStock = default(bool), decimal fastShipCents = default(decimal), List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns> gradingRuns = default(List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns>))
         {
+            this.VaultStock = vaultStock;
             this.FastShipCents = fastShipCents;
             // to ensure "gradingRuns" is required (not null)
             if (gradingRuns == null) {
                 throw new ArgumentNullException("gradingRuns is a required property for GetBuyerMarketPurchaseOptionResponseData and cannot be null");
             }
             this.GradingRuns = gradingRuns;
-            this.VaultStock = vaultStock;
         }
+
+        /// <summary>
+        /// Gets or Sets VaultStock
+        /// </summary>
+        [DataMember(Name = "vaultStock", IsRequired = true, EmitDefaultValue = true)]
+        public bool VaultStock { get; set; }
 
         /// <summary>
         /// Gets or Sets FastShipCents
@@ -66,12 +72,6 @@ namespace net.crossly.buyer.Model
         public List<GetBuyerMarketPurchaseOptionResponseDataGradingRuns> GradingRuns { get; set; }
 
         /// <summary>
-        /// Gets or Sets VaultStock
-        /// </summary>
-        [DataMember(Name = "vaultStock", IsRequired = true, EmitDefaultValue = true)]
-        public bool VaultStock { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -79,9 +79,9 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerMarketPurchaseOptionResponseData {\n");
+            sb.Append("  VaultStock: ").Append(VaultStock).Append("\n");
             sb.Append("  FastShipCents: ").Append(FastShipCents).Append("\n");
             sb.Append("  GradingRuns: ").Append(GradingRuns).Append("\n");
-            sb.Append("  VaultStock: ").Append(VaultStock).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -118,6 +118,10 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
+                    this.VaultStock == input.VaultStock ||
+                    this.VaultStock.Equals(input.VaultStock)
+                ) && 
+                (
                     this.FastShipCents == input.FastShipCents ||
                     this.FastShipCents.Equals(input.FastShipCents)
                 ) && 
@@ -126,10 +130,6 @@ namespace net.crossly.buyer.Model
                     this.GradingRuns != null &&
                     input.GradingRuns != null &&
                     this.GradingRuns.SequenceEqual(input.GradingRuns)
-                ) && 
-                (
-                    this.VaultStock == input.VaultStock ||
-                    this.VaultStock.Equals(input.VaultStock)
                 );
         }
 
@@ -142,12 +142,12 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.VaultStock.GetHashCode();
                 hashCode = (hashCode * 59) + this.FastShipCents.GetHashCode();
                 if (this.GradingRuns != null)
                 {
                     hashCode = (hashCode * 59) + this.GradingRuns.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.VaultStock.GetHashCode();
                 return hashCode;
             }
         }

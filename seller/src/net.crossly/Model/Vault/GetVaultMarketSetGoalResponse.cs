@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
-            /// Enum Complete for value: complete
-            /// </summary>
-            [EnumMember(Value = "complete")]
-            Complete = 2,
-
-            /// <summary>
             /// Enum Archived for value: archived
             /// </summary>
             [EnumMember(Value = "archived")]
-            Archived = 3
+            Archived = 2,
+
+            /// <summary>
+            /// Enum Complete for value: complete
+            /// </summary>
+            [EnumMember(Value = "complete")]
+            Complete = 3
 
         }
 
@@ -74,27 +74,27 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="category">category (required).</param>
+        /// <param name="title">title (required).</param>
         /// <param name="options">options (required).</param>
         /// <param name="completedAt">completedAt.</param>
-        /// <param name="progress">progress (required).</param>
-        /// <param name="brandSlug">brandSlug (required).</param>
-        /// <param name="modelSlug">modelSlug (required).</param>
         /// <param name="target">target (required).</param>
-        /// <param name="held">held (required).</param>
-        /// <param name="complete">complete (required).</param>
-        /// <param name="href">href (required).</param>
         /// <param name="total">total (required).</param>
-        /// <param name="setFound">setFound (required).</param>
-        /// <param name="basket">basket.</param>
+        /// <param name="href">href (required).</param>
+        /// <param name="brandSlug">brandSlug (required).</param>
+        /// <param name="progress">progress (required).</param>
         /// <param name="missing">missing (required).</param>
+        /// <param name="held">held (required).</param>
+        /// <param name="modelSlug">modelSlug (required).</param>
+        /// <param name="basket">basket.</param>
+        /// <param name="pieces">pieces (required).</param>
+        /// <param name="complete">complete (required).</param>
+        /// <param name="setFound">setFound (required).</param>
         /// <param name="priced">priced (required).</param>
         /// <param name="missingMarkCents">missingMarkCents (required).</param>
         /// <param name="tooBig">tooBig (required).</param>
-        /// <param name="pieces">pieces (required).</param>
         /// <param name="cardSetHref">cardSetHref (required).</param>
-        public GetVaultMarketSetGoalResponse(string id = default(string), string createdAt = default(string), StatusEnum status = default(StatusEnum), string title = default(string), string category = default(string), GetVaultMarketSetGoalResponseOptions options = default(GetVaultMarketSetGoalResponseOptions), string completedAt = default(string), string progress = default(string), string brandSlug = default(string), string modelSlug = default(string), GetVaultMarketSetGoalResponseTarget target = default(GetVaultMarketSetGoalResponseTarget), decimal held = default(decimal), bool complete = default(bool), string href = default(string), decimal total = default(decimal), bool setFound = default(bool), GetVaultMarketSetGoalResponseBasket basket = default(GetVaultMarketSetGoalResponseBasket), decimal missing = default(decimal), decimal priced = default(decimal), decimal missingMarkCents = default(decimal), bool tooBig = default(bool), List<GetVaultMarketSetGoalResponsePieces> pieces = default(List<GetVaultMarketSetGoalResponsePieces>), string cardSetHref = default(string))
+        public GetVaultMarketSetGoalResponse(string id = default(string), string createdAt = default(string), StatusEnum status = default(StatusEnum), string category = default(string), string title = default(string), GetVaultMarketSetGoalResponseOptions options = default(GetVaultMarketSetGoalResponseOptions), string completedAt = default(string), GetVaultMarketSetGoalResponseTarget target = default(GetVaultMarketSetGoalResponseTarget), decimal total = default(decimal), string href = default(string), string brandSlug = default(string), string progress = default(string), decimal missing = default(decimal), decimal held = default(decimal), string modelSlug = default(string), GetVaultMarketSetGoalResponseBasket basket = default(GetVaultMarketSetGoalResponseBasket), List<GetVaultMarketSetGoalResponsePieces> pieces = default(List<GetVaultMarketSetGoalResponsePieces>), bool complete = default(bool), bool setFound = default(bool), decimal priced = default(decimal), decimal missingMarkCents = default(decimal), bool tooBig = default(bool), string cardSetHref = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -107,59 +107,59 @@ namespace net.crossly.Model
             }
             this.CreatedAt = createdAt;
             this.Status = status;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for GetVaultMarketSetGoalResponse and cannot be null");
-            }
-            this.Title = title;
             // to ensure "category" is required (not null)
             if (category == null) {
                 throw new ArgumentNullException("category is a required property for GetVaultMarketSetGoalResponse and cannot be null");
             }
             this.Category = category;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for GetVaultMarketSetGoalResponse and cannot be null");
+            }
+            this.Title = title;
             // to ensure "options" is required (not null)
             if (options == null) {
                 throw new ArgumentNullException("options is a required property for GetVaultMarketSetGoalResponse and cannot be null");
             }
             this.Options = options;
-            // to ensure "progress" is required (not null)
-            if (progress == null) {
-                throw new ArgumentNullException("progress is a required property for GetVaultMarketSetGoalResponse and cannot be null");
-            }
-            this.Progress = progress;
-            // to ensure "brandSlug" is required (not null)
-            if (brandSlug == null) {
-                throw new ArgumentNullException("brandSlug is a required property for GetVaultMarketSetGoalResponse and cannot be null");
-            }
-            this.BrandSlug = brandSlug;
-            // to ensure "modelSlug" is required (not null)
-            if (modelSlug == null) {
-                throw new ArgumentNullException("modelSlug is a required property for GetVaultMarketSetGoalResponse and cannot be null");
-            }
-            this.ModelSlug = modelSlug;
             // to ensure "target" is required (not null)
             if (target == null) {
                 throw new ArgumentNullException("target is a required property for GetVaultMarketSetGoalResponse and cannot be null");
             }
             this.Target = target;
-            this.Held = held;
-            this.Complete = complete;
+            this.Total = total;
             // to ensure "href" is required (not null)
             if (href == null) {
                 throw new ArgumentNullException("href is a required property for GetVaultMarketSetGoalResponse and cannot be null");
             }
             this.Href = href;
-            this.Total = total;
-            this.SetFound = setFound;
+            // to ensure "brandSlug" is required (not null)
+            if (brandSlug == null) {
+                throw new ArgumentNullException("brandSlug is a required property for GetVaultMarketSetGoalResponse and cannot be null");
+            }
+            this.BrandSlug = brandSlug;
+            // to ensure "progress" is required (not null)
+            if (progress == null) {
+                throw new ArgumentNullException("progress is a required property for GetVaultMarketSetGoalResponse and cannot be null");
+            }
+            this.Progress = progress;
             this.Missing = missing;
-            this.Priced = priced;
-            this.MissingMarkCents = missingMarkCents;
-            this.TooBig = tooBig;
+            this.Held = held;
+            // to ensure "modelSlug" is required (not null)
+            if (modelSlug == null) {
+                throw new ArgumentNullException("modelSlug is a required property for GetVaultMarketSetGoalResponse and cannot be null");
+            }
+            this.ModelSlug = modelSlug;
             // to ensure "pieces" is required (not null)
             if (pieces == null) {
                 throw new ArgumentNullException("pieces is a required property for GetVaultMarketSetGoalResponse and cannot be null");
             }
             this.Pieces = pieces;
+            this.Complete = complete;
+            this.SetFound = setFound;
+            this.Priced = priced;
+            this.MissingMarkCents = missingMarkCents;
+            this.TooBig = tooBig;
             // to ensure "cardSetHref" is required (not null)
             if (cardSetHref == null) {
                 throw new ArgumentNullException("cardSetHref is a required property for GetVaultMarketSetGoalResponse and cannot be null");
@@ -182,16 +182,16 @@ namespace net.crossly.Model
         public string CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets Category
         /// </summary>
         [DataMember(Name = "category", IsRequired = true, EmitDefaultValue = false)]
         public string Category { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
@@ -206,46 +206,10 @@ namespace net.crossly.Model
         public string CompletedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Progress
-        /// </summary>
-        [DataMember(Name = "progress", IsRequired = true, EmitDefaultValue = false)]
-        public string Progress { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BrandSlug
-        /// </summary>
-        [DataMember(Name = "brandSlug", IsRequired = true, EmitDefaultValue = false)]
-        public string BrandSlug { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ModelSlug
-        /// </summary>
-        [DataMember(Name = "modelSlug", IsRequired = true, EmitDefaultValue = false)]
-        public string ModelSlug { get; set; }
-
-        /// <summary>
         /// Gets or Sets Target
         /// </summary>
         [DataMember(Name = "target", IsRequired = true, EmitDefaultValue = false)]
         public GetVaultMarketSetGoalResponseTarget Target { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Held
-        /// </summary>
-        [DataMember(Name = "held", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Held { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Complete
-        /// </summary>
-        [DataMember(Name = "complete", IsRequired = true, EmitDefaultValue = true)]
-        public bool Complete { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Href
-        /// </summary>
-        [DataMember(Name = "href", IsRequired = true, EmitDefaultValue = false)]
-        public string Href { get; set; }
 
         /// <summary>
         /// Gets or Sets Total
@@ -254,10 +218,40 @@ namespace net.crossly.Model
         public decimal Total { get; set; }
 
         /// <summary>
-        /// Gets or Sets SetFound
+        /// Gets or Sets Href
         /// </summary>
-        [DataMember(Name = "setFound", IsRequired = true, EmitDefaultValue = true)]
-        public bool SetFound { get; set; }
+        [DataMember(Name = "href", IsRequired = true, EmitDefaultValue = false)]
+        public string Href { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BrandSlug
+        /// </summary>
+        [DataMember(Name = "brandSlug", IsRequired = true, EmitDefaultValue = false)]
+        public string BrandSlug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Progress
+        /// </summary>
+        [DataMember(Name = "progress", IsRequired = true, EmitDefaultValue = false)]
+        public string Progress { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Missing
+        /// </summary>
+        [DataMember(Name = "missing", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Missing { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Held
+        /// </summary>
+        [DataMember(Name = "held", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Held { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ModelSlug
+        /// </summary>
+        [DataMember(Name = "modelSlug", IsRequired = true, EmitDefaultValue = false)]
+        public string ModelSlug { get; set; }
 
         /// <summary>
         /// Gets or Sets Basket
@@ -266,10 +260,22 @@ namespace net.crossly.Model
         public GetVaultMarketSetGoalResponseBasket Basket { get; set; }
 
         /// <summary>
-        /// Gets or Sets Missing
+        /// Gets or Sets Pieces
         /// </summary>
-        [DataMember(Name = "missing", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Missing { get; set; }
+        [DataMember(Name = "pieces", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetVaultMarketSetGoalResponsePieces> Pieces { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Complete
+        /// </summary>
+        [DataMember(Name = "complete", IsRequired = true, EmitDefaultValue = true)]
+        public bool Complete { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SetFound
+        /// </summary>
+        [DataMember(Name = "setFound", IsRequired = true, EmitDefaultValue = true)]
+        public bool SetFound { get; set; }
 
         /// <summary>
         /// Gets or Sets Priced
@@ -290,12 +296,6 @@ namespace net.crossly.Model
         public bool TooBig { get; set; }
 
         /// <summary>
-        /// Gets or Sets Pieces
-        /// </summary>
-        [DataMember(Name = "pieces", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetVaultMarketSetGoalResponsePieces> Pieces { get; set; }
-
-        /// <summary>
         /// Gets or Sets CardSetHref
         /// </summary>
         [DataMember(Name = "cardSetHref", IsRequired = true, EmitDefaultValue = false)]
@@ -312,25 +312,25 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  CompletedAt: ").Append(CompletedAt).Append("\n");
-            sb.Append("  Progress: ").Append(Progress).Append("\n");
-            sb.Append("  BrandSlug: ").Append(BrandSlug).Append("\n");
-            sb.Append("  ModelSlug: ").Append(ModelSlug).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
-            sb.Append("  Held: ").Append(Held).Append("\n");
-            sb.Append("  Complete: ").Append(Complete).Append("\n");
-            sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
-            sb.Append("  SetFound: ").Append(SetFound).Append("\n");
-            sb.Append("  Basket: ").Append(Basket).Append("\n");
+            sb.Append("  Href: ").Append(Href).Append("\n");
+            sb.Append("  BrandSlug: ").Append(BrandSlug).Append("\n");
+            sb.Append("  Progress: ").Append(Progress).Append("\n");
             sb.Append("  Missing: ").Append(Missing).Append("\n");
+            sb.Append("  Held: ").Append(Held).Append("\n");
+            sb.Append("  ModelSlug: ").Append(ModelSlug).Append("\n");
+            sb.Append("  Basket: ").Append(Basket).Append("\n");
+            sb.Append("  Pieces: ").Append(Pieces).Append("\n");
+            sb.Append("  Complete: ").Append(Complete).Append("\n");
+            sb.Append("  SetFound: ").Append(SetFound).Append("\n");
             sb.Append("  Priced: ").Append(Priced).Append("\n");
             sb.Append("  MissingMarkCents: ").Append(MissingMarkCents).Append("\n");
             sb.Append("  TooBig: ").Append(TooBig).Append("\n");
-            sb.Append("  Pieces: ").Append(Pieces).Append("\n");
             sb.Append("  CardSetHref: ").Append(CardSetHref).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -382,14 +382,14 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.Category == input.Category ||
                     (this.Category != null &&
                     this.Category.Equals(input.Category))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.Options == input.Options ||
@@ -402,32 +402,13 @@ namespace net.crossly.Model
                     this.CompletedAt.Equals(input.CompletedAt))
                 ) && 
                 (
-                    this.Progress == input.Progress ||
-                    (this.Progress != null &&
-                    this.Progress.Equals(input.Progress))
-                ) && 
-                (
-                    this.BrandSlug == input.BrandSlug ||
-                    (this.BrandSlug != null &&
-                    this.BrandSlug.Equals(input.BrandSlug))
-                ) && 
-                (
-                    this.ModelSlug == input.ModelSlug ||
-                    (this.ModelSlug != null &&
-                    this.ModelSlug.Equals(input.ModelSlug))
-                ) && 
-                (
                     this.Target == input.Target ||
                     (this.Target != null &&
                     this.Target.Equals(input.Target))
                 ) && 
                 (
-                    this.Held == input.Held ||
-                    this.Held.Equals(input.Held)
-                ) && 
-                (
-                    this.Complete == input.Complete ||
-                    this.Complete.Equals(input.Complete)
+                    this.Total == input.Total ||
+                    this.Total.Equals(input.Total)
                 ) && 
                 (
                     this.Href == input.Href ||
@@ -435,12 +416,27 @@ namespace net.crossly.Model
                     this.Href.Equals(input.Href))
                 ) && 
                 (
-                    this.Total == input.Total ||
-                    this.Total.Equals(input.Total)
+                    this.BrandSlug == input.BrandSlug ||
+                    (this.BrandSlug != null &&
+                    this.BrandSlug.Equals(input.BrandSlug))
                 ) && 
                 (
-                    this.SetFound == input.SetFound ||
-                    this.SetFound.Equals(input.SetFound)
+                    this.Progress == input.Progress ||
+                    (this.Progress != null &&
+                    this.Progress.Equals(input.Progress))
+                ) && 
+                (
+                    this.Missing == input.Missing ||
+                    this.Missing.Equals(input.Missing)
+                ) && 
+                (
+                    this.Held == input.Held ||
+                    this.Held.Equals(input.Held)
+                ) && 
+                (
+                    this.ModelSlug == input.ModelSlug ||
+                    (this.ModelSlug != null &&
+                    this.ModelSlug.Equals(input.ModelSlug))
                 ) && 
                 (
                     this.Basket == input.Basket ||
@@ -448,8 +444,18 @@ namespace net.crossly.Model
                     this.Basket.Equals(input.Basket))
                 ) && 
                 (
-                    this.Missing == input.Missing ||
-                    this.Missing.Equals(input.Missing)
+                    this.Pieces == input.Pieces ||
+                    this.Pieces != null &&
+                    input.Pieces != null &&
+                    this.Pieces.SequenceEqual(input.Pieces)
+                ) && 
+                (
+                    this.Complete == input.Complete ||
+                    this.Complete.Equals(input.Complete)
+                ) && 
+                (
+                    this.SetFound == input.SetFound ||
+                    this.SetFound.Equals(input.SetFound)
                 ) && 
                 (
                     this.Priced == input.Priced ||
@@ -462,12 +468,6 @@ namespace net.crossly.Model
                 (
                     this.TooBig == input.TooBig ||
                     this.TooBig.Equals(input.TooBig)
-                ) && 
-                (
-                    this.Pieces == input.Pieces ||
-                    this.Pieces != null &&
-                    input.Pieces != null &&
-                    this.Pieces.SequenceEqual(input.Pieces)
                 ) && 
                 (
                     this.CardSetHref == input.CardSetHref ||
@@ -494,13 +494,13 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.Category != null)
                 {
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
                 if (this.Options != null)
                 {
@@ -510,42 +510,42 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CompletedAt.GetHashCode();
                 }
-                if (this.Progress != null)
+                if (this.Target != null)
                 {
-                    hashCode = (hashCode * 59) + this.Progress.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Total.GetHashCode();
+                if (this.Href != null)
+                {
+                    hashCode = (hashCode * 59) + this.Href.GetHashCode();
                 }
                 if (this.BrandSlug != null)
                 {
                     hashCode = (hashCode * 59) + this.BrandSlug.GetHashCode();
                 }
+                if (this.Progress != null)
+                {
+                    hashCode = (hashCode * 59) + this.Progress.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Missing.GetHashCode();
+                hashCode = (hashCode * 59) + this.Held.GetHashCode();
                 if (this.ModelSlug != null)
                 {
                     hashCode = (hashCode * 59) + this.ModelSlug.GetHashCode();
                 }
-                if (this.Target != null)
-                {
-                    hashCode = (hashCode * 59) + this.Target.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Held.GetHashCode();
-                hashCode = (hashCode * 59) + this.Complete.GetHashCode();
-                if (this.Href != null)
-                {
-                    hashCode = (hashCode * 59) + this.Href.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Total.GetHashCode();
-                hashCode = (hashCode * 59) + this.SetFound.GetHashCode();
                 if (this.Basket != null)
                 {
                     hashCode = (hashCode * 59) + this.Basket.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Missing.GetHashCode();
-                hashCode = (hashCode * 59) + this.Priced.GetHashCode();
-                hashCode = (hashCode * 59) + this.MissingMarkCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.TooBig.GetHashCode();
                 if (this.Pieces != null)
                 {
                     hashCode = (hashCode * 59) + this.Pieces.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Complete.GetHashCode();
+                hashCode = (hashCode * 59) + this.SetFound.GetHashCode();
+                hashCode = (hashCode * 59) + this.Priced.GetHashCode();
+                hashCode = (hashCode * 59) + this.MissingMarkCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.TooBig.GetHashCode();
                 if (this.CardSetHref != null)
                 {
                     hashCode = (hashCode * 59) + this.CardSetHref.GetHashCode();

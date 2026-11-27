@@ -49,7 +49,10 @@ namespace net.crossly.Model
         /// <param name="retailCents">retailCents (required).</param>
         /// <param name="marketCents">marketCents.</param>
         /// <param name="stuckCostCents">stuckCostCents (required).</param>
-        public GetInventoryValueHistoryResponseDataPoints(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string snapshotDate = default(string), decimal itemCount = default(decimal), decimal unitCount = default(decimal), decimal costCents = default(decimal), decimal retailCents = default(decimal), decimal? marketCents = default(decimal?), decimal stuckCostCents = default(decimal))
+        /// <param name="over90CostCents">over90CostCents.</param>
+        /// <param name="costKnownItems">costKnownItems.</param>
+        /// <param name="reconstructed">reconstructed (required).</param>
+        public GetInventoryValueHistoryResponseDataPoints(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string snapshotDate = default(string), decimal itemCount = default(decimal), decimal unitCount = default(decimal), decimal costCents = default(decimal), decimal retailCents = default(decimal), decimal? marketCents = default(decimal?), decimal stuckCostCents = default(decimal), decimal? over90CostCents = default(decimal?), decimal? costKnownItems = default(decimal?), bool reconstructed = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -72,7 +75,10 @@ namespace net.crossly.Model
             this.CostCents = costCents;
             this.RetailCents = retailCents;
             this.StuckCostCents = stuckCostCents;
+            this.Reconstructed = reconstructed;
             this.MarketCents = marketCents;
+            this.Over90CostCents = over90CostCents;
+            this.CostKnownItems = costKnownItems;
         }
 
         /// <summary>
@@ -136,6 +142,24 @@ namespace net.crossly.Model
         public decimal StuckCostCents { get; set; }
 
         /// <summary>
+        /// Gets or Sets Over90CostCents
+        /// </summary>
+        [DataMember(Name = "over90CostCents", EmitDefaultValue = true)]
+        public decimal? Over90CostCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CostKnownItems
+        /// </summary>
+        [DataMember(Name = "costKnownItems", EmitDefaultValue = true)]
+        public decimal? CostKnownItems { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Reconstructed
+        /// </summary>
+        [DataMember(Name = "reconstructed", IsRequired = true, EmitDefaultValue = true)]
+        public bool Reconstructed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -153,6 +177,9 @@ namespace net.crossly.Model
             sb.Append("  RetailCents: ").Append(RetailCents).Append("\n");
             sb.Append("  MarketCents: ").Append(MarketCents).Append("\n");
             sb.Append("  StuckCostCents: ").Append(StuckCostCents).Append("\n");
+            sb.Append("  Over90CostCents: ").Append(Over90CostCents).Append("\n");
+            sb.Append("  CostKnownItems: ").Append(CostKnownItems).Append("\n");
+            sb.Append("  Reconstructed: ").Append(Reconstructed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -232,6 +259,20 @@ namespace net.crossly.Model
                 (
                     this.StuckCostCents == input.StuckCostCents ||
                     this.StuckCostCents.Equals(input.StuckCostCents)
+                ) && 
+                (
+                    this.Over90CostCents == input.Over90CostCents ||
+                    (this.Over90CostCents != null &&
+                    this.Over90CostCents.Equals(input.Over90CostCents))
+                ) && 
+                (
+                    this.CostKnownItems == input.CostKnownItems ||
+                    (this.CostKnownItems != null &&
+                    this.CostKnownItems.Equals(input.CostKnownItems))
+                ) && 
+                (
+                    this.Reconstructed == input.Reconstructed ||
+                    this.Reconstructed.Equals(input.Reconstructed)
                 );
         }
 
@@ -269,6 +310,15 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.MarketCents.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.StuckCostCents.GetHashCode();
+                if (this.Over90CostCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.Over90CostCents.GetHashCode();
+                }
+                if (this.CostKnownItems != null)
+                {
+                    hashCode = (hashCode * 59) + this.CostKnownItems.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Reconstructed.GetHashCode();
                 return hashCode;
             }
         }

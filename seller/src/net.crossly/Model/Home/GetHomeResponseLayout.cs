@@ -58,6 +58,70 @@ namespace net.crossly.Model
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
         public KindEnum Kind { get; set; }
         /// <summary>
+        /// A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+        /// </summary>
+        /// <value>A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TintEnum
+        {
+            /// <summary>
+            /// Enum Oat for value: oat
+            /// </summary>
+            [EnumMember(Value = "oat")]
+            Oat = 1,
+
+            /// <summary>
+            /// Enum Sage for value: sage
+            /// </summary>
+            [EnumMember(Value = "sage")]
+            Sage = 2,
+
+            /// <summary>
+            /// Enum Forest for value: forest
+            /// </summary>
+            [EnumMember(Value = "forest")]
+            Forest = 3,
+
+            /// <summary>
+            /// Enum Navy for value: navy
+            /// </summary>
+            [EnumMember(Value = "navy")]
+            Navy = 4,
+
+            /// <summary>
+            /// Enum Clay for value: clay
+            /// </summary>
+            [EnumMember(Value = "clay")]
+            Clay = 5,
+
+            /// <summary>
+            /// Enum Mustard for value: mustard
+            /// </summary>
+            [EnumMember(Value = "mustard")]
+            Mustard = 6,
+
+            /// <summary>
+            /// Enum Blush for value: blush
+            /// </summary>
+            [EnumMember(Value = "blush")]
+            Blush = 7,
+
+            /// <summary>
+            /// Enum Charcoal for value: charcoal
+            /// </summary>
+            [EnumMember(Value = "charcoal")]
+            Charcoal = 8
+
+        }
+
+
+        /// <summary>
+        /// A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+        /// </summary>
+        /// <value>A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.</value>
+        [DataMember(Name = "tint", EmitDefaultValue = true)]
+        public TintEnum? Tint { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetHomeResponseLayout" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -72,8 +136,9 @@ namespace net.crossly.Model
         /// <param name="rotationY">Radians, a multiple of PI/2. (required).</param>
         /// <param name="slot">Shelf displays: which slot on the shelf..</param>
         /// <param name="set">A set wall: which set it shows, \&quot;category/brand/model\&quot; (HOME_SET_KEY). Absent: the owner&#39;s most complete..</param>
+        /// <param name="tint">A furniture piece&#39;s colour (HOME_TINTS key): its fabric and finish take it. Absent: as made..</param>
         /// <param name="item">item.</param>
-        public GetHomeResponseLayout(KindEnum kind = default(KindEnum), string model = default(string), GetHomeResponseLayoutRef _ref = default(GetHomeResponseLayoutRef), List<decimal> position = default(List<decimal>), decimal rotationY = default(decimal), decimal? slot = default(decimal?), string set = default(string), GetHomeResponseLayoutItem item = default(GetHomeResponseLayoutItem))
+        public GetHomeResponseLayout(KindEnum kind = default(KindEnum), string model = default(string), GetHomeResponseLayoutRef _ref = default(GetHomeResponseLayoutRef), List<decimal> position = default(List<decimal>), decimal rotationY = default(decimal), decimal? slot = default(decimal?), string set = default(string), TintEnum? tint = default(TintEnum?), GetHomeResponseLayoutItem item = default(GetHomeResponseLayoutItem))
         {
             this.Kind = kind;
             // to ensure "model" is required (not null)
@@ -90,6 +155,7 @@ namespace net.crossly.Model
             this.Ref = _ref;
             this.Slot = slot;
             this.Set = set;
+            this.Tint = tint;
             this.Item = item;
         }
 
@@ -153,6 +219,7 @@ namespace net.crossly.Model
             sb.Append("  RotationY: ").Append(RotationY).Append("\n");
             sb.Append("  Slot: ").Append(Slot).Append("\n");
             sb.Append("  Set: ").Append(Set).Append("\n");
+            sb.Append("  Tint: ").Append(Tint).Append("\n");
             sb.Append("  Item: ").Append(Item).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -224,6 +291,10 @@ namespace net.crossly.Model
                     this.Set.Equals(input.Set))
                 ) && 
                 (
+                    this.Tint == input.Tint ||
+                    this.Tint.Equals(input.Tint)
+                ) && 
+                (
                     this.Item == input.Item ||
                     (this.Item != null &&
                     this.Item.Equals(input.Item))
@@ -261,6 +332,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Set.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Tint.GetHashCode();
                 if (this.Item != null)
                 {
                     hashCode = (hashCode * 59) + this.Item.GetHashCode();

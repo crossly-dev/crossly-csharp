@@ -42,11 +42,11 @@ namespace net.crossly.buyer.Model
         /// <param name="brand">brand (required).</param>
         /// <param name="category">category (required).</param>
         /// <param name="medianCents">medianCents (required).</param>
-        /// <param name="buybackDays">buybackDays (required).</param>
-        /// <param name="buybackCents">buybackCents.</param>
         /// <param name="comps">comps (required).</param>
         /// <param name="keepsPct">keepsPct.</param>
-        public GetBuyerListingResaleValueResponseData(string brand = default(string), string category = default(string), decimal medianCents = default(decimal), decimal buybackDays = default(decimal), decimal? buybackCents = default(decimal?), decimal comps = default(decimal), decimal? keepsPct = default(decimal?))
+        /// <param name="buybackCents">buybackCents.</param>
+        /// <param name="buybackDays">buybackDays (required).</param>
+        public GetBuyerListingResaleValueResponseData(string brand = default(string), string category = default(string), decimal medianCents = default(decimal), decimal comps = default(decimal), decimal? keepsPct = default(decimal?), decimal? buybackCents = default(decimal?), decimal buybackDays = default(decimal))
         {
             // to ensure "brand" is required (not null)
             if (brand == null) {
@@ -59,10 +59,10 @@ namespace net.crossly.buyer.Model
             }
             this.Category = category;
             this.MedianCents = medianCents;
-            this.BuybackDays = buybackDays;
             this.Comps = comps;
-            this.BuybackCents = buybackCents;
+            this.BuybackDays = buybackDays;
             this.KeepsPct = keepsPct;
+            this.BuybackCents = buybackCents;
         }
 
         /// <summary>
@@ -84,18 +84,6 @@ namespace net.crossly.buyer.Model
         public decimal MedianCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets BuybackDays
-        /// </summary>
-        [DataMember(Name = "buybackDays", IsRequired = true, EmitDefaultValue = false)]
-        public decimal BuybackDays { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BuybackCents
-        /// </summary>
-        [DataMember(Name = "buybackCents", EmitDefaultValue = true)]
-        public decimal? BuybackCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets Comps
         /// </summary>
         [DataMember(Name = "comps", IsRequired = true, EmitDefaultValue = false)]
@@ -108,6 +96,18 @@ namespace net.crossly.buyer.Model
         public decimal? KeepsPct { get; set; }
 
         /// <summary>
+        /// Gets or Sets BuybackCents
+        /// </summary>
+        [DataMember(Name = "buybackCents", EmitDefaultValue = true)]
+        public decimal? BuybackCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BuybackDays
+        /// </summary>
+        [DataMember(Name = "buybackDays", IsRequired = true, EmitDefaultValue = false)]
+        public decimal BuybackDays { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,10 +118,10 @@ namespace net.crossly.buyer.Model
             sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  MedianCents: ").Append(MedianCents).Append("\n");
-            sb.Append("  BuybackDays: ").Append(BuybackDays).Append("\n");
-            sb.Append("  BuybackCents: ").Append(BuybackCents).Append("\n");
             sb.Append("  Comps: ").Append(Comps).Append("\n");
             sb.Append("  KeepsPct: ").Append(KeepsPct).Append("\n");
+            sb.Append("  BuybackCents: ").Append(BuybackCents).Append("\n");
+            sb.Append("  BuybackDays: ").Append(BuybackDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -172,15 +172,6 @@ namespace net.crossly.buyer.Model
                     this.MedianCents.Equals(input.MedianCents)
                 ) && 
                 (
-                    this.BuybackDays == input.BuybackDays ||
-                    this.BuybackDays.Equals(input.BuybackDays)
-                ) && 
-                (
-                    this.BuybackCents == input.BuybackCents ||
-                    (this.BuybackCents != null &&
-                    this.BuybackCents.Equals(input.BuybackCents))
-                ) && 
-                (
                     this.Comps == input.Comps ||
                     this.Comps.Equals(input.Comps)
                 ) && 
@@ -188,6 +179,15 @@ namespace net.crossly.buyer.Model
                     this.KeepsPct == input.KeepsPct ||
                     (this.KeepsPct != null &&
                     this.KeepsPct.Equals(input.KeepsPct))
+                ) && 
+                (
+                    this.BuybackCents == input.BuybackCents ||
+                    (this.BuybackCents != null &&
+                    this.BuybackCents.Equals(input.BuybackCents))
+                ) && 
+                (
+                    this.BuybackDays == input.BuybackDays ||
+                    this.BuybackDays.Equals(input.BuybackDays)
                 );
         }
 
@@ -209,16 +209,16 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MedianCents.GetHashCode();
-                hashCode = (hashCode * 59) + this.BuybackDays.GetHashCode();
-                if (this.BuybackCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.BuybackCents.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.Comps.GetHashCode();
                 if (this.KeepsPct != null)
                 {
                     hashCode = (hashCode * 59) + this.KeepsPct.GetHashCode();
                 }
+                if (this.BuybackCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.BuybackCents.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.BuybackDays.GetHashCode();
                 return hashCode;
             }
         }

@@ -262,29 +262,31 @@ namespace net.crossly.buyer.Api
         /// Shipping services and prices to a destination.
         /// </summary>
         /// <remarks>
-        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <returns>GetBuyerCatalogListingShippingResponse</returns>
-        GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?));
+        GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?));
 
         /// <summary>
         /// Shipping services and prices to a destination.
         /// </summary>
         /// <remarks>
-        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerCatalogListingShippingResponse</returns>
-        ApiResponse<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingWithHttpInfo(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?));
+        ApiResponse<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingWithHttpInfo(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?));
         /// <summary>
         /// Import duties, taxes and fees to a country (landed cost).
         /// </summary>
@@ -730,31 +732,33 @@ namespace net.crossly.buyer.Api
         /// Shipping services and prices to a destination.
         /// </summary>
         /// <remarks>
-        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerCatalogListingShippingResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingAsync(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingAsync(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Shipping services and prices to a destination.
         /// </summary>
         /// <remarks>
-        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerCatalogListingShippingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerCatalogListingShippingResponse>> GetBuyerCatalogListingShippingWithHttpInfoAsync(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerCatalogListingShippingResponse>> GetBuyerCatalogListingShippingWithHttpInfoAsync(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Import duties, taxes and fees to a country (landed cost).
         /// </summary>
@@ -2653,30 +2657,32 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <returns>GetBuyerCatalogListingShippingResponse</returns>
-        public GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?))
+        public GetBuyerCatalogListingShippingResponse GetBuyerCatalogListingShipping(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResponse = GetBuyerCatalogListingShippingWithHttpInfo(slug, zip, country, quantity);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResponse = GetBuyerCatalogListingShippingWithHttpInfo(slug, zip, state, country, quantity);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerCatalogListingShippingResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingWithHttpInfo(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?))
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingWithHttpInfo(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -2710,6 +2716,10 @@ namespace net.crossly.buyer.Api
             if (zip != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "zip", zip));
+            }
+            if (state != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "state", state));
             }
             if (country != null)
             {
@@ -2742,32 +2752,34 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerCatalogListingShippingResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingAsync(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerCatalogListingShippingResponse> GetBuyerCatalogListingShippingAsync(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResponse = await GetBuyerCatalogListingShippingWithHttpInfoAsync(slug, zip, country, quantity, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse> localVarResponse = await GetBuyerCatalogListingShippingWithHttpInfoAsync(slug, zip, state, country, quantity, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote. &#x60;shipsToCountry: false&#x60; means the seller does not ship there. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote.
+        /// Shipping services and prices to a destination. Lists every shipping service the seller offers to &#x60;country&#x60; (default: the seller’s own country) with its price for &#x60;quantity&#x60; units and its delivery window in business days (handling included). &#x60;zip&#x60; is required for a domestic quote; &#x60;state&#x60; is optional. &#x60;shipsToCountry: false&#x60; means the seller does not ship there (&#x60;noShipMessage&#x60; says why); &#x60;partial: true&#x60; means a ZIP or postcode could change the answer. Pass a service &#x60;id&#x60; as &#x60;shippingServiceId&#x60; to POST /api/v1/buyer/checkout, or in &#x60;shippingServiceBySeller&#x60; to POST /api/v1/buyer/cart/quote. A seller on \&quot;buyer pays: calculated\&quot; prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry &#x60;carrier&#x60; and &#x60;carrierService&#x60;, and &#x60;calculatedAtCheckout: true&#x60; means a ZIP is needed first.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
         /// <param name="zip"> (optional)</param>
+        /// <param name="state"> (optional)</param>
         /// <param name="country"> (optional)</param>
         /// <param name="quantity"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerCatalogListingShippingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse>> GetBuyerCatalogListingShippingWithHttpInfoAsync(string slug, string zip = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerCatalogListingShippingResponse>> GetBuyerCatalogListingShippingWithHttpInfoAsync(string slug, string zip = default(string), string state = default(string), string country = default(string), int? quantity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -2802,6 +2814,10 @@ namespace net.crossly.buyer.Api
             if (zip != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "zip", zip));
+            }
+            if (state != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "state", state));
             }
             if (country != null)
             {

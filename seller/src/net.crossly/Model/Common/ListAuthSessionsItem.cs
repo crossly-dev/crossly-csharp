@@ -44,10 +44,10 @@ namespace net.crossly.Model
         /// <param name="userAgent">userAgent.</param>
         /// <param name="ipAddress">ipAddress.</param>
         /// <param name="ipCountry">ipCountry.</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="lastUsedAt">lastUsedAt (required).</param>
-        /// <param name="expiresAt">expiresAt (required).</param>
-        public ListAuthSessionsItem(bool isCurrent = default(bool), string id = default(string), string userAgent = default(string), string ipAddress = default(string), string ipCountry = default(string), DateTime createdAt = default(DateTime), DateTime lastUsedAt = default(DateTime), DateTime expiresAt = default(DateTime))
+        /// <param name="createdAt">createdAt.</param>
+        /// <param name="lastUsedAt">lastUsedAt.</param>
+        /// <param name="expiresAt">expiresAt.</param>
+        public ListAuthSessionsItem(bool isCurrent = default(bool), string id = default(string), string userAgent = default(string), string ipAddress = default(string), string ipCountry = default(string), string createdAt = default(string), string lastUsedAt = default(string), string expiresAt = default(string))
         {
             this.IsCurrent = isCurrent;
             // to ensure "id" is required (not null)
@@ -55,12 +55,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("id is a required property for ListAuthSessionsItem and cannot be null");
             }
             this.Id = id;
-            this.CreatedAt = createdAt;
-            this.LastUsedAt = lastUsedAt;
-            this.ExpiresAt = expiresAt;
             this.UserAgent = userAgent;
             this.IpAddress = ipAddress;
             this.IpCountry = ipCountry;
+            this.CreatedAt = createdAt;
+            this.LastUsedAt = lastUsedAt;
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>
@@ -96,20 +96,20 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
+        [DataMember(Name = "createdAt", EmitDefaultValue = true)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets LastUsedAt
         /// </summary>
-        [DataMember(Name = "lastUsedAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime LastUsedAt { get; set; }
+        [DataMember(Name = "lastUsedAt", EmitDefaultValue = true)]
+        public string LastUsedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiresAt
         /// </summary>
-        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime ExpiresAt { get; set; }
+        [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
+        public string ExpiresAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

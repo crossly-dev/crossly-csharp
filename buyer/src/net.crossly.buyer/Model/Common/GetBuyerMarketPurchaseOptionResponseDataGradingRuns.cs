@@ -40,33 +40,33 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="GetBuyerMarketPurchaseOptionResponseDataGradingRuns" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="tierName">tierName (required).</param>
-        /// <param name="cutoffAt">cutoffAt (required).</param>
         /// <param name="graderName">graderName (required).</param>
-        public GetBuyerMarketPurchaseOptionResponseDataGradingRuns(string id = default(string), decimal priceCents = default(decimal), string tierName = default(string), string cutoffAt = default(string), string graderName = default(string))
+        /// <param name="tierName">tierName (required).</param>
+        /// <param name="priceCents">priceCents (required).</param>
+        /// <param name="cutoffAt">cutoffAt (required).</param>
+        public GetBuyerMarketPurchaseOptionResponseDataGradingRuns(string id = default(string), string graderName = default(string), string tierName = default(string), decimal priceCents = default(decimal), string cutoffAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
             }
             this.Id = id;
-            this.PriceCents = priceCents;
-            // to ensure "tierName" is required (not null)
-            if (tierName == null) {
-                throw new ArgumentNullException("tierName is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
-            }
-            this.TierName = tierName;
-            // to ensure "cutoffAt" is required (not null)
-            if (cutoffAt == null) {
-                throw new ArgumentNullException("cutoffAt is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
-            }
-            this.CutoffAt = cutoffAt;
             // to ensure "graderName" is required (not null)
             if (graderName == null) {
                 throw new ArgumentNullException("graderName is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
             }
             this.GraderName = graderName;
+            // to ensure "tierName" is required (not null)
+            if (tierName == null) {
+                throw new ArgumentNullException("tierName is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
+            }
+            this.TierName = tierName;
+            this.PriceCents = priceCents;
+            // to ensure "cutoffAt" is required (not null)
+            if (cutoffAt == null) {
+                throw new ArgumentNullException("cutoffAt is a required property for GetBuyerMarketPurchaseOptionResponseDataGradingRuns and cannot be null");
+            }
+            this.CutoffAt = cutoffAt;
         }
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets PriceCents
+        /// Gets or Sets GraderName
         /// </summary>
-        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal PriceCents { get; set; }
+        [DataMember(Name = "graderName", IsRequired = true, EmitDefaultValue = false)]
+        public string GraderName { get; set; }
 
         /// <summary>
         /// Gets or Sets TierName
@@ -88,16 +88,16 @@ namespace net.crossly.buyer.Model
         public string TierName { get; set; }
 
         /// <summary>
+        /// Gets or Sets PriceCents
+        /// </summary>
+        [DataMember(Name = "priceCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal PriceCents { get; set; }
+
+        /// <summary>
         /// Gets or Sets CutoffAt
         /// </summary>
         [DataMember(Name = "cutoffAt", IsRequired = true, EmitDefaultValue = false)]
         public string CutoffAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GraderName
-        /// </summary>
-        [DataMember(Name = "graderName", IsRequired = true, EmitDefaultValue = false)]
-        public string GraderName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,10 +108,10 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerMarketPurchaseOptionResponseDataGradingRuns {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  TierName: ").Append(TierName).Append("\n");
-            sb.Append("  CutoffAt: ").Append(CutoffAt).Append("\n");
             sb.Append("  GraderName: ").Append(GraderName).Append("\n");
+            sb.Append("  TierName: ").Append(TierName).Append("\n");
+            sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
+            sb.Append("  CutoffAt: ").Append(CutoffAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -153,8 +153,9 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.PriceCents == input.PriceCents ||
-                    this.PriceCents.Equals(input.PriceCents)
+                    this.GraderName == input.GraderName ||
+                    (this.GraderName != null &&
+                    this.GraderName.Equals(input.GraderName))
                 ) && 
                 (
                     this.TierName == input.TierName ||
@@ -162,14 +163,13 @@ namespace net.crossly.buyer.Model
                     this.TierName.Equals(input.TierName))
                 ) && 
                 (
+                    this.PriceCents == input.PriceCents ||
+                    this.PriceCents.Equals(input.PriceCents)
+                ) && 
+                (
                     this.CutoffAt == input.CutoffAt ||
                     (this.CutoffAt != null &&
                     this.CutoffAt.Equals(input.CutoffAt))
-                ) && 
-                (
-                    this.GraderName == input.GraderName ||
-                    (this.GraderName != null &&
-                    this.GraderName.Equals(input.GraderName))
                 );
         }
 
@@ -186,18 +186,18 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
+                if (this.GraderName != null)
+                {
+                    hashCode = (hashCode * 59) + this.GraderName.GetHashCode();
+                }
                 if (this.TierName != null)
                 {
                     hashCode = (hashCode * 59) + this.TierName.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
                 if (this.CutoffAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CutoffAt.GetHashCode();
-                }
-                if (this.GraderName != null)
-                {
-                    hashCode = (hashCode * 59) + this.GraderName.GetHashCode();
                 }
                 return hashCode;
             }

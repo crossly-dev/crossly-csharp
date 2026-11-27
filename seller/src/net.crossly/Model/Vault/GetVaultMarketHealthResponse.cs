@@ -48,7 +48,8 @@ namespace net.crossly.Model
         /// <param name="marks">marks (required).</param>
         /// <param name="notes">notes (required).</param>
         /// <param name="items">The items a what-if can be run on, largest first. (required).</param>
-        public GetVaultMarketHealthResponse(string asOf = default(string), string disclosure = default(string), GetVaultMarketHealthResponseTotals totals = default(GetVaultMarketHealthResponseTotals), GetVaultMarketHealthResponseConcentration concentration = default(GetVaultMarketHealthResponseConcentration), GetVaultMarketHealthResponseLiquidity liquidity = default(GetVaultMarketHealthResponseLiquidity), GetVaultMarketHealthResponseStress stress = default(GetVaultMarketHealthResponseStress), GetVaultMarketHealthResponseMarks marks = default(GetVaultMarketHealthResponseMarks), List<string> notes = default(List<string>), List<GetVaultMarketHealthResponseItems> items = default(List<GetVaultMarketHealthResponseItems>))
+        /// <param name="hedges">hedges (required).</param>
+        public GetVaultMarketHealthResponse(string asOf = default(string), string disclosure = default(string), GetVaultMarketHealthResponseTotals totals = default(GetVaultMarketHealthResponseTotals), GetVaultMarketHealthResponseConcentration concentration = default(GetVaultMarketHealthResponseConcentration), GetVaultMarketHealthResponseLiquidity liquidity = default(GetVaultMarketHealthResponseLiquidity), GetVaultMarketHealthResponseStress stress = default(GetVaultMarketHealthResponseStress), GetVaultMarketHealthResponseMarks marks = default(GetVaultMarketHealthResponseMarks), List<string> notes = default(List<string>), List<GetVaultMarketHealthResponseItems> items = default(List<GetVaultMarketHealthResponseItems>), GetVaultMarketHealthResponseHedges hedges = default(GetVaultMarketHealthResponseHedges))
         {
             // to ensure "asOf" is required (not null)
             if (asOf == null) {
@@ -95,6 +96,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("items is a required property for GetVaultMarketHealthResponse and cannot be null");
             }
             this.Items = items;
+            // to ensure "hedges" is required (not null)
+            if (hedges == null) {
+                throw new ArgumentNullException("hedges is a required property for GetVaultMarketHealthResponse and cannot be null");
+            }
+            this.Hedges = hedges;
         }
 
         /// <summary>
@@ -153,6 +159,12 @@ namespace net.crossly.Model
         public List<GetVaultMarketHealthResponseItems> Items { get; set; }
 
         /// <summary>
+        /// Gets or Sets Hedges
+        /// </summary>
+        [DataMember(Name = "hedges", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketHealthResponseHedges Hedges { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,6 +181,7 @@ namespace net.crossly.Model
             sb.Append("  Marks: ").Append(Marks).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Hedges: ").Append(Hedges).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -250,6 +263,11 @@ namespace net.crossly.Model
                     this.Items != null &&
                     input.Items != null &&
                     this.Items.SequenceEqual(input.Items)
+                ) && 
+                (
+                    this.Hedges == input.Hedges ||
+                    (this.Hedges != null &&
+                    this.Hedges.Equals(input.Hedges))
                 );
         }
 
@@ -297,6 +315,10 @@ namespace net.crossly.Model
                 if (this.Items != null)
                 {
                     hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                }
+                if (this.Hedges != null)
+                {
+                    hashCode = (hashCode * 59) + this.Hedges.GetHashCode();
                 }
                 return hashCode;
             }

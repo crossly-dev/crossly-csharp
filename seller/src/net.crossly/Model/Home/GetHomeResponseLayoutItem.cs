@@ -48,9 +48,10 @@ namespace net.crossly.Model
         /// <param name="space">A &#x60;portal&#x60; ref: the Space slug a click takes the visitor to..</param>
         /// <param name="found">A purchase found in the world (Wave 8.6, provenance.ts): \&quot;Found at Amber&#39;s stall, Night Market, Oct 2026\&quot;..</param>
         /// <param name="_object">The thing ITSELF as a 3D object in a case or on a shelf (shared listing-space.ts): never a flat photo. Not for NFTs..</param>
-        /// <param name="market">A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /shop/vault/markets/&lt;market&gt;..</param>
+        /// <param name="market">A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /trading/&lt;market&gt;..</param>
         /// <param name="visitors">A &#x60;vault&#x60; ref, to its OWNER only: visitors may see it (vm_home_display.visitors)..</param>
-        public GetHomeResponseLayoutItem(string title = default(string), string imageUrl = default(string), string grade = default(string), string listingSlug = default(string), string model = default(string), bool? crossly = default(bool?), string space = default(string), string found = default(string), string _object = default(string), string market = default(string), bool? visitors = default(bool?))
+        /// <param name="tradePostId">The owner&#39;s open Trade Block post for this same product (trade-posts.ts): \&quot;Offer a trade\&quot; opens it..</param>
+        public GetHomeResponseLayoutItem(string title = default(string), string imageUrl = default(string), string grade = default(string), string listingSlug = default(string), string model = default(string), bool? crossly = default(bool?), string space = default(string), string found = default(string), string _object = default(string), string market = default(string), bool? visitors = default(bool?), string tradePostId = default(string))
         {
             // to ensure "title" is required (not null)
             if (title == null) {
@@ -67,6 +68,7 @@ namespace net.crossly.Model
             this.Object = _object;
             this.Market = market;
             this.Visitors = visitors;
+            this.TradePostId = tradePostId;
         }
 
         /// <summary>
@@ -131,9 +133,9 @@ namespace net.crossly.Model
         public string Object { get; set; }
 
         /// <summary>
-        /// A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /shop/vault/markets/&lt;market&gt;.
+        /// A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /trading/&lt;market&gt;.
         /// </summary>
-        /// <value>A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /shop/vault/markets/&lt;market&gt;.</value>
+        /// <value>A &#x60;vault&#x60; ref: the unit&#39;s market (a book key), so a click opens /trading/&lt;market&gt;.</value>
         [DataMember(Name = "market", EmitDefaultValue = true)]
         public string Market { get; set; }
 
@@ -143,6 +145,13 @@ namespace net.crossly.Model
         /// <value>A &#x60;vault&#x60; ref, to its OWNER only: visitors may see it (vm_home_display.visitors).</value>
         [DataMember(Name = "visitors", EmitDefaultValue = true)]
         public bool? Visitors { get; set; }
+
+        /// <summary>
+        /// The owner&#39;s open Trade Block post for this same product (trade-posts.ts): \&quot;Offer a trade\&quot; opens it.
+        /// </summary>
+        /// <value>The owner&#39;s open Trade Block post for this same product (trade-posts.ts): \&quot;Offer a trade\&quot; opens it.</value>
+        [DataMember(Name = "tradePostId", EmitDefaultValue = true)]
+        public string TradePostId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,6 +172,7 @@ namespace net.crossly.Model
             sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("  Market: ").Append(Market).Append("\n");
             sb.Append("  Visitors: ").Append(Visitors).Append("\n");
+            sb.Append("  TradePostId: ").Append(TradePostId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -252,6 +262,11 @@ namespace net.crossly.Model
                     this.Visitors == input.Visitors ||
                     (this.Visitors != null &&
                     this.Visitors.Equals(input.Visitors))
+                ) && 
+                (
+                    this.TradePostId == input.TradePostId ||
+                    (this.TradePostId != null &&
+                    this.TradePostId.Equals(input.TradePostId))
                 );
         }
 
@@ -307,6 +322,10 @@ namespace net.crossly.Model
                 if (this.Visitors != null)
                 {
                     hashCode = (hashCode * 59) + this.Visitors.GetHashCode();
+                }
+                if (this.TradePostId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TradePostId.GetHashCode();
                 }
                 return hashCode;
             }

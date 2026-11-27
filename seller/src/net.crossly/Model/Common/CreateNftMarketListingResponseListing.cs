@@ -44,15 +44,15 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="soldAt">soldAt.</param>
-        /// <param name="sellerUserId">sellerUserId.</param>
         /// <param name="buyerUserId">buyerUserId.</param>
         /// <param name="priceCents">priceCents (required).</param>
-        /// <param name="merchantId">merchantId (required).</param>
+        /// <param name="sellerUserId">sellerUserId.</param>
         /// <param name="cosmeticId">cosmeticId (required).</param>
+        /// <param name="merchantId">merchantId (required).</param>
         /// <param name="ownershipId">ownershipId (required).</param>
         /// <param name="sellerSubjectId">sellerSubjectId (required).</param>
         /// <param name="txSig">txSig.</param>
-        public CreateNftMarketListingResponseListing(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), DateTime? soldAt = default(DateTime?), string sellerUserId = default(string), string buyerUserId = default(string), decimal priceCents = default(decimal), string merchantId = default(string), string cosmeticId = default(string), string ownershipId = default(string), string sellerSubjectId = default(string), string txSig = default(string))
+        public CreateNftMarketListingResponseListing(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), DateTime? soldAt = default(DateTime?), string buyerUserId = default(string), decimal priceCents = default(decimal), string sellerUserId = default(string), string cosmeticId = default(string), string merchantId = default(string), string ownershipId = default(string), string sellerSubjectId = default(string), string txSig = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -67,16 +67,16 @@ namespace net.crossly.Model
             }
             this.Status = status;
             this.PriceCents = priceCents;
-            // to ensure "merchantId" is required (not null)
-            if (merchantId == null) {
-                throw new ArgumentNullException("merchantId is a required property for CreateNftMarketListingResponseListing and cannot be null");
-            }
-            this.MerchantId = merchantId;
             // to ensure "cosmeticId" is required (not null)
             if (cosmeticId == null) {
                 throw new ArgumentNullException("cosmeticId is a required property for CreateNftMarketListingResponseListing and cannot be null");
             }
             this.CosmeticId = cosmeticId;
+            // to ensure "merchantId" is required (not null)
+            if (merchantId == null) {
+                throw new ArgumentNullException("merchantId is a required property for CreateNftMarketListingResponseListing and cannot be null");
+            }
+            this.MerchantId = merchantId;
             // to ensure "ownershipId" is required (not null)
             if (ownershipId == null) {
                 throw new ArgumentNullException("ownershipId is a required property for CreateNftMarketListingResponseListing and cannot be null");
@@ -88,8 +88,8 @@ namespace net.crossly.Model
             }
             this.SellerSubjectId = sellerSubjectId;
             this.SoldAt = soldAt;
-            this.SellerUserId = sellerUserId;
             this.BuyerUserId = buyerUserId;
+            this.SellerUserId = sellerUserId;
             this.TxSig = txSig;
         }
 
@@ -124,12 +124,6 @@ namespace net.crossly.Model
         public DateTime? SoldAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", EmitDefaultValue = true)]
-        public string SellerUserId { get; set; }
-
-        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", EmitDefaultValue = true)]
@@ -142,16 +136,22 @@ namespace net.crossly.Model
         public decimal PriceCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets MerchantId
+        /// Gets or Sets SellerUserId
         /// </summary>
-        [DataMember(Name = "merchantId", IsRequired = true, EmitDefaultValue = false)]
-        public string MerchantId { get; set; }
+        [DataMember(Name = "sellerUserId", EmitDefaultValue = true)]
+        public string SellerUserId { get; set; }
 
         /// <summary>
         /// Gets or Sets CosmeticId
         /// </summary>
         [DataMember(Name = "cosmeticId", IsRequired = true, EmitDefaultValue = false)]
         public string CosmeticId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MerchantId
+        /// </summary>
+        [DataMember(Name = "merchantId", IsRequired = true, EmitDefaultValue = false)]
+        public string MerchantId { get; set; }
 
         /// <summary>
         /// Gets or Sets OwnershipId
@@ -184,11 +184,11 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
-            sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  CosmeticId: ").Append(CosmeticId).Append("\n");
+            sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  OwnershipId: ").Append(OwnershipId).Append("\n");
             sb.Append("  SellerSubjectId: ").Append(SellerSubjectId).Append("\n");
             sb.Append("  TxSig: ").Append(TxSig).Append("\n");
@@ -253,11 +253,6 @@ namespace net.crossly.Model
                     this.SoldAt.Equals(input.SoldAt))
                 ) && 
                 (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
@@ -267,14 +262,19 @@ namespace net.crossly.Model
                     this.PriceCents.Equals(input.PriceCents)
                 ) && 
                 (
-                    this.MerchantId == input.MerchantId ||
-                    (this.MerchantId != null &&
-                    this.MerchantId.Equals(input.MerchantId))
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.CosmeticId == input.CosmeticId ||
                     (this.CosmeticId != null &&
                     this.CosmeticId.Equals(input.CosmeticId))
+                ) && 
+                (
+                    this.MerchantId == input.MerchantId ||
+                    (this.MerchantId != null &&
+                    this.MerchantId.Equals(input.MerchantId))
                 ) && 
                 (
                     this.OwnershipId == input.OwnershipId ||
@@ -322,22 +322,22 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.SoldAt.GetHashCode();
                 }
-                if (this.SellerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();
-                if (this.MerchantId != null)
+                if (this.SellerUserId != null)
                 {
-                    hashCode = (hashCode * 59) + this.MerchantId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 if (this.CosmeticId != null)
                 {
                     hashCode = (hashCode * 59) + this.CosmeticId.GetHashCode();
+                }
+                if (this.MerchantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.MerchantId.GetHashCode();
                 }
                 if (this.OwnershipId != null)
                 {

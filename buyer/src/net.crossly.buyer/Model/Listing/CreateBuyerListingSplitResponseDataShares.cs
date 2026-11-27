@@ -40,17 +40,17 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="CreateBuyerListingSplitResponseDataShares" /> class.
         /// </summary>
         /// <param name="token">token (required).</param>
-        /// <param name="position">position (required).</param>
         /// <param name="shareCents">shareCents (required).</param>
-        public CreateBuyerListingSplitResponseDataShares(string token = default(string), decimal position = default(decimal), decimal shareCents = default(decimal))
+        /// <param name="position">position (required).</param>
+        public CreateBuyerListingSplitResponseDataShares(string token = default(string), decimal shareCents = default(decimal), decimal position = default(decimal))
         {
             // to ensure "token" is required (not null)
             if (token == null) {
                 throw new ArgumentNullException("token is a required property for CreateBuyerListingSplitResponseDataShares and cannot be null");
             }
             this.Token = token;
-            this.Position = position;
             this.ShareCents = shareCents;
+            this.Position = position;
         }
 
         /// <summary>
@@ -60,16 +60,16 @@ namespace net.crossly.buyer.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or Sets Position
-        /// </summary>
-        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Position { get; set; }
-
-        /// <summary>
         /// Gets or Sets ShareCents
         /// </summary>
         [DataMember(Name = "shareCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal ShareCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Position
+        /// </summary>
+        [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Position { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,8 +80,8 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerListingSplitResponseDataShares {\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
-            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  ShareCents: ").Append(ShareCents).Append("\n");
+            sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,12 +123,12 @@ namespace net.crossly.buyer.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
-                    this.Position == input.Position ||
-                    this.Position.Equals(input.Position)
-                ) && 
-                (
                     this.ShareCents == input.ShareCents ||
                     this.ShareCents.Equals(input.ShareCents)
+                ) && 
+                (
+                    this.Position == input.Position ||
+                    this.Position.Equals(input.Position)
                 );
         }
 
@@ -145,8 +145,8 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShareCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 return hashCode;
             }
         }

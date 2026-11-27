@@ -56,22 +56,22 @@ namespace net.crossly.Model
             Category = 3,
 
             /// <summary>
+            /// Enum Segment for value: segment
+            /// </summary>
+            [EnumMember(Value = "segment")]
+            Segment = 4,
+
+            /// <summary>
             /// Enum Curated for value: curated
             /// </summary>
             [EnumMember(Value = "curated")]
-            Curated = 4,
+            Curated = 5,
 
             /// <summary>
             /// Enum Composite for value: composite
             /// </summary>
             [EnumMember(Value = "composite")]
-            Composite = 5,
-
-            /// <summary>
-            /// Enum Segment for value: segment
-            /// </summary>
-            [EnumMember(Value = "segment")]
-            Segment = 6
+            Composite = 6
 
         }
 

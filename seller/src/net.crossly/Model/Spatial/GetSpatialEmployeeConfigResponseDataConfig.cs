@@ -38,22 +38,28 @@ namespace net.crossly.Model
         public enum BrainKindEnum
         {
             /// <summary>
-            /// Enum Idle for value: idle
-            /// </summary>
-            [EnumMember(Value = "idle")]
-            Idle = 1,
-
-            /// <summary>
             /// Enum Rules for value: rules
             /// </summary>
             [EnumMember(Value = "rules")]
-            Rules = 2,
+            Rules = 1,
+
+            /// <summary>
+            /// Enum Idle for value: idle
+            /// </summary>
+            [EnumMember(Value = "idle")]
+            Idle = 2,
 
             /// <summary>
             /// Enum Agent for value: agent
             /// </summary>
             [EnumMember(Value = "agent")]
-            Agent = 3
+            Agent = 3,
+
+            /// <summary>
+            /// Enum Byok for value: byok
+            /// </summary>
+            [EnumMember(Value = "byok")]
+            Byok = 4
 
         }
 

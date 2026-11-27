@@ -38,10 +38,10 @@ namespace net.crossly.buyer.Model
         public enum VerdictEnum
         {
             /// <summary>
-            /// Enum High for value: high
+            /// Enum Good for value: good
             /// </summary>
-            [EnumMember(Value = "high")]
-            High = 1,
+            [EnumMember(Value = "good")]
+            Good = 1,
 
             /// <summary>
             /// Enum Fair for value: fair
@@ -50,10 +50,10 @@ namespace net.crossly.buyer.Model
             Fair = 2,
 
             /// <summary>
-            /// Enum Good for value: good
+            /// Enum High for value: high
             /// </summary>
-            [EnumMember(Value = "good")]
-            Good = 3,
+            [EnumMember(Value = "high")]
+            High = 3,
 
             /// <summary>
             /// Enum Great for value: great

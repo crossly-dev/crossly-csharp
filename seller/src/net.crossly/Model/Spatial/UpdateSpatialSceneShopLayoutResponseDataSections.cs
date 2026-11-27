@@ -45,7 +45,9 @@ namespace net.crossly.Model
         /// <param name="rotationY">rotationY.</param>
         /// <param name="sign">A sign over it, ≤ 40 chars. Absent &#x3D; the profile&#39;s label..</param>
         /// <param name="hidden">Shown to visitors? A hidden section keeps its stock off the floor..</param>
-        public UpdateSpatialSceneShopLayoutResponseDataSections(string id = default(string), string profile = default(string), List<decimal> position = default(List<decimal>), decimal? rotationY = default(decimal?), string sign = default(string), bool? hidden = default(bool?))
+        /// <param name="units">How many units (cases, bays, pages) it stands with, at least; absent &#x3D; as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/)..</param>
+        /// <param name="holder">The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent &#x3D; its type&#39;s free holder..</param>
+        public UpdateSpatialSceneShopLayoutResponseDataSections(string id = default(string), string profile = default(string), List<decimal> position = default(List<decimal>), decimal? rotationY = default(decimal?), string sign = default(string), bool? hidden = default(bool?), decimal? units = default(decimal?), string holder = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -61,6 +63,8 @@ namespace net.crossly.Model
             this.RotationY = rotationY;
             this.Sign = sign;
             this.Hidden = hidden;
+            this.Units = units;
+            this.Holder = holder;
         }
 
         /// <summary>
@@ -105,6 +109,20 @@ namespace net.crossly.Model
         public bool? Hidden { get; set; }
 
         /// <summary>
+        /// How many units (cases, bays, pages) it stands with, at least; absent &#x3D; as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).
+        /// </summary>
+        /// <value>How many units (cases, bays, pages) it stands with, at least; absent &#x3D; as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).</value>
+        [DataMember(Name = "units", EmitDefaultValue = true)]
+        public decimal? Units { get; set; }
+
+        /// <summary>
+        /// The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent &#x3D; its type&#39;s free holder.
+        /// </summary>
+        /// <value>The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent &#x3D; its type&#39;s free holder.</value>
+        [DataMember(Name = "holder", EmitDefaultValue = true)]
+        public string Holder { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,6 +136,8 @@ namespace net.crossly.Model
             sb.Append("  RotationY: ").Append(RotationY).Append("\n");
             sb.Append("  Sign: ").Append(Sign).Append("\n");
             sb.Append("  Hidden: ").Append(Hidden).Append("\n");
+            sb.Append("  Units: ").Append(Units).Append("\n");
+            sb.Append("  Holder: ").Append(Holder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -183,6 +203,16 @@ namespace net.crossly.Model
                     this.Hidden == input.Hidden ||
                     (this.Hidden != null &&
                     this.Hidden.Equals(input.Hidden))
+                ) && 
+                (
+                    this.Units == input.Units ||
+                    (this.Units != null &&
+                    this.Units.Equals(input.Units))
+                ) && 
+                (
+                    this.Holder == input.Holder ||
+                    (this.Holder != null &&
+                    this.Holder.Equals(input.Holder))
                 );
         }
 
@@ -218,6 +248,14 @@ namespace net.crossly.Model
                 if (this.Hidden != null)
                 {
                     hashCode = (hashCode * 59) + this.Hidden.GetHashCode();
+                }
+                if (this.Units != null)
+                {
+                    hashCode = (hashCode * 59) + this.Units.GetHashCode();
+                }
+                if (this.Holder != null)
+                {
+                    hashCode = (hashCode * 59) + this.Holder.GetHashCode();
                 }
                 return hashCode;
             }

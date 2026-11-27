@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ReasonEnum
         {
             /// <summary>
-            /// Enum Auction for value: auction
-            /// </summary>
-            [EnumMember(Value = "auction")]
-            Auction = 1,
-
-            /// <summary>
             /// Enum Close for value: close
             /// </summary>
             [EnumMember(Value = "close")]
-            Close = 2,
+            Close = 1,
+
+            /// <summary>
+            /// Enum Auction for value: auction
+            /// </summary>
+            [EnumMember(Value = "auction")]
+            Auction = 2,
 
             /// <summary>
             /// Enum Recall for value: recall
@@ -108,16 +108,16 @@ namespace net.crossly.Model
         public enum ActionEnum
         {
             /// <summary>
-            /// Enum Auction for value: auction
-            /// </summary>
-            [EnumMember(Value = "auction")]
-            Auction = 1,
-
-            /// <summary>
             /// Enum Close for value: close
             /// </summary>
             [EnumMember(Value = "close")]
-            Close = 2
+            Close = 1,
+
+            /// <summary>
+            /// Enum Auction for value: auction
+            /// </summary>
+            [EnumMember(Value = "auction")]
+            Auction = 2
 
         }
 

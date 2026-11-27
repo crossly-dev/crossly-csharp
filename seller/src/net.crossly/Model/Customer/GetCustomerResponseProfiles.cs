@@ -76,16 +76,16 @@ namespace net.crossly.Model
             Error = 1,
 
             /// <summary>
-            /// Enum Unsupported for value: unsupported
-            /// </summary>
-            [EnumMember(Value = "unsupported")]
-            Unsupported = 2,
-
-            /// <summary>
             /// Enum Ok for value: ok
             /// </summary>
             [EnumMember(Value = "ok")]
-            Ok = 3,
+            Ok = 2,
+
+            /// <summary>
+            /// Enum Unsupported for value: unsupported
+            /// </summary>
+            [EnumMember(Value = "unsupported")]
+            Unsupported = 3,
 
             /// <summary>
             /// Enum NotFound for value: not_found

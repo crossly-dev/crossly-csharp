@@ -41,6 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="runId">runId (required).</param>
         /// <param name="photoIdentifier">photoIdentifier.</param>
+        /// <param name="matchReference">matchReference.</param>
         /// <param name="ebayMatch">ebayMatch.</param>
         /// <param name="topHits">Unified top-10-globally list, ranked by CLIP visual similarity to the seller&#39;s source photo. Each hit carries its origin platform. (required).</param>
         /// <param name="ebayHits">Legacy compat — UI&#39;s existing render. ebayHits now &#x3D;&#x3D; visually- validated eBay subset; otherMatches is re-grouped from topHits. (required).</param>
@@ -49,7 +50,8 @@ namespace net.crossly.Model
         /// <param name="visionAspects">Vision-LLM aspects extracted across all photos. Populated only when the seller has magic-list-vision-aspects enabled + a vision provider configured. Empty otherwise. (required).</param>
         /// <param name="possibleDuplicates">The seller&#39;s OWN listings/inventory that this scan probably duplicates (image + fuzzy-title self-dedup). Empty when nothing matched. Drives the \&quot;you may already have this\&quot; prompt. (required).</param>
         /// <param name="cached">cached (required).</param>
-        public CreateMagicScanResponse(string runId = default(string), CreateMagicScanResponsePhotoIdentifier photoIdentifier = default(CreateMagicScanResponsePhotoIdentifier), CreateMagicScanResponseEbayMatch ebayMatch = default(CreateMagicScanResponseEbayMatch), List<CreateMagicScanResponseTopHits> topHits = default(List<CreateMagicScanResponseTopHits>), List<CreateMagicScanResponseEbayHits> ebayHits = default(List<CreateMagicScanResponseEbayHits>), Dictionary<string, Object> otherMatches = default(Dictionary<string, Object>), List<string> imageUrls = default(List<string>), Dictionary<string, Object> visionAspects = default(Dictionary<string, Object>), List<CreateMagicScanResponsePossibleDuplicates> possibleDuplicates = default(List<CreateMagicScanResponsePossibleDuplicates>), bool cached = default(bool))
+        /// <param name="visionCallsUsed">Monthly vision calls (vision-quota.ts) this scan spent: the seller&#39;s Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos..</param>
+        public CreateMagicScanResponse(string runId = default(string), CreateMagicScanResponsePhotoIdentifier photoIdentifier = default(CreateMagicScanResponsePhotoIdentifier), CreateMagicScanResponseMatchReference matchReference = default(CreateMagicScanResponseMatchReference), CreateMagicScanResponseEbayMatch ebayMatch = default(CreateMagicScanResponseEbayMatch), List<CreateMagicScanResponseTopHits> topHits = default(List<CreateMagicScanResponseTopHits>), List<CreateMagicScanResponseEbayHits> ebayHits = default(List<CreateMagicScanResponseEbayHits>), Dictionary<string, Object> otherMatches = default(Dictionary<string, Object>), List<string> imageUrls = default(List<string>), Dictionary<string, Object> visionAspects = default(Dictionary<string, Object>), List<CreateMagicScanResponsePossibleDuplicates> possibleDuplicates = default(List<CreateMagicScanResponsePossibleDuplicates>), bool cached = default(bool), decimal? visionCallsUsed = default(decimal?))
         {
             // to ensure "runId" is required (not null)
             if (runId == null) {
@@ -88,7 +90,9 @@ namespace net.crossly.Model
             this.PossibleDuplicates = possibleDuplicates;
             this.Cached = cached;
             this.PhotoIdentifier = photoIdentifier;
+            this.MatchReference = matchReference;
             this.EbayMatch = ebayMatch;
+            this.VisionCallsUsed = visionCallsUsed;
         }
 
         /// <summary>
@@ -102,6 +106,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "photoIdentifier", EmitDefaultValue = true)]
         public CreateMagicScanResponsePhotoIdentifier PhotoIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MatchReference
+        /// </summary>
+        [DataMember(Name = "matchReference", EmitDefaultValue = true)]
+        public CreateMagicScanResponseMatchReference MatchReference { get; set; }
 
         /// <summary>
         /// Gets or Sets EbayMatch
@@ -157,6 +167,13 @@ namespace net.crossly.Model
         public bool Cached { get; set; }
 
         /// <summary>
+        /// Monthly vision calls (vision-quota.ts) this scan spent: the seller&#39;s Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.
+        /// </summary>
+        /// <value>Monthly vision calls (vision-quota.ts) this scan spent: the seller&#39;s Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.</value>
+        [DataMember(Name = "visionCallsUsed", EmitDefaultValue = true)]
+        public decimal? VisionCallsUsed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -166,6 +183,7 @@ namespace net.crossly.Model
             sb.Append("class CreateMagicScanResponse {\n");
             sb.Append("  RunId: ").Append(RunId).Append("\n");
             sb.Append("  PhotoIdentifier: ").Append(PhotoIdentifier).Append("\n");
+            sb.Append("  MatchReference: ").Append(MatchReference).Append("\n");
             sb.Append("  EbayMatch: ").Append(EbayMatch).Append("\n");
             sb.Append("  TopHits: ").Append(TopHits).Append("\n");
             sb.Append("  EbayHits: ").Append(EbayHits).Append("\n");
@@ -174,6 +192,7 @@ namespace net.crossly.Model
             sb.Append("  VisionAspects: ").Append(VisionAspects).Append("\n");
             sb.Append("  PossibleDuplicates: ").Append(PossibleDuplicates).Append("\n");
             sb.Append("  Cached: ").Append(Cached).Append("\n");
+            sb.Append("  VisionCallsUsed: ").Append(VisionCallsUsed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -220,6 +239,11 @@ namespace net.crossly.Model
                     this.PhotoIdentifier.Equals(input.PhotoIdentifier))
                 ) && 
                 (
+                    this.MatchReference == input.MatchReference ||
+                    (this.MatchReference != null &&
+                    this.MatchReference.Equals(input.MatchReference))
+                ) && 
+                (
                     this.EbayMatch == input.EbayMatch ||
                     (this.EbayMatch != null &&
                     this.EbayMatch.Equals(input.EbayMatch))
@@ -263,6 +287,11 @@ namespace net.crossly.Model
                 (
                     this.Cached == input.Cached ||
                     this.Cached.Equals(input.Cached)
+                ) && 
+                (
+                    this.VisionCallsUsed == input.VisionCallsUsed ||
+                    (this.VisionCallsUsed != null &&
+                    this.VisionCallsUsed.Equals(input.VisionCallsUsed))
                 );
         }
 
@@ -282,6 +311,10 @@ namespace net.crossly.Model
                 if (this.PhotoIdentifier != null)
                 {
                     hashCode = (hashCode * 59) + this.PhotoIdentifier.GetHashCode();
+                }
+                if (this.MatchReference != null)
+                {
+                    hashCode = (hashCode * 59) + this.MatchReference.GetHashCode();
                 }
                 if (this.EbayMatch != null)
                 {
@@ -312,6 +345,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.PossibleDuplicates.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Cached.GetHashCode();
+                if (this.VisionCallsUsed != null)
+                {
+                    hashCode = (hashCode * 59) + this.VisionCallsUsed.GetHashCode();
+                }
                 return hashCode;
             }
         }

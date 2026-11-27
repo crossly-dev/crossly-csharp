@@ -39,13 +39,19 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerOrderCancelResponseData" /> class.
         /// </summary>
-        /// <param name="refunded">false only for an order paid entirely with credit, which has no card charge to refund. (required).</param>
         /// <param name="ok">ok (required).</param>
-        public CreateBuyerOrderCancelResponseData(bool refunded = default(bool), bool ok = default(bool))
+        /// <param name="refunded">false only for an order paid entirely with credit, which has no card charge to refund. (required).</param>
+        public CreateBuyerOrderCancelResponseData(bool ok = default(bool), bool refunded = default(bool))
         {
-            this.Refunded = refunded;
             this.Ok = ok;
+            this.Refunded = refunded;
         }
+
+        /// <summary>
+        /// Gets or Sets Ok
+        /// </summary>
+        [DataMember(Name = "ok", IsRequired = true, EmitDefaultValue = true)]
+        public bool Ok { get; set; }
 
         /// <summary>
         /// false only for an order paid entirely with credit, which has no card charge to refund.
@@ -55,12 +61,6 @@ namespace net.crossly.buyer.Model
         public bool Refunded { get; set; }
 
         /// <summary>
-        /// Gets or Sets Ok
-        /// </summary>
-        [DataMember(Name = "ok", IsRequired = true, EmitDefaultValue = true)]
-        public bool Ok { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -68,8 +68,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerOrderCancelResponseData {\n");
-            sb.Append("  Refunded: ").Append(Refunded).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
+            sb.Append("  Refunded: ").Append(Refunded).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,12 +106,12 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Refunded == input.Refunded ||
-                    this.Refunded.Equals(input.Refunded)
-                ) && 
-                (
                     this.Ok == input.Ok ||
                     this.Ok.Equals(input.Ok)
+                ) && 
+                (
+                    this.Refunded == input.Refunded ||
+                    this.Refunded.Equals(input.Refunded)
                 );
         }
 
@@ -124,8 +124,8 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Refunded.GetHashCode();
                 hashCode = (hashCode * 59) + this.Ok.GetHashCode();
+                hashCode = (hashCode * 59) + this.Refunded.GetHashCode();
                 return hashCode;
             }
         }

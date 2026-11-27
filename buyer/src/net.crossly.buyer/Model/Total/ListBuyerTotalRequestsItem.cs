@@ -40,47 +40,47 @@ namespace net.crossly.buyer.Model
         /// Initializes a new instance of the <see cref="ListBuyerTotalRequestsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="status">requested | quoted | declined | expired. (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="status">requested | quoted | declined | expired. (required).</param>
         /// <param name="lines">The cart lines the request covers. (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
         /// <param name="matchesCart">Your cart still holds exactly the quoted items, so checkout applies the quote. (required).</param>
-        /// <param name="expiresAt">expiresAt.</param>
+        /// <param name="sellerDisplayName">sellerDisplayName.</param>
         /// <param name="quotedShippingCents">The seller&#39;s combined shipping for these items, in cents, once quoted..</param>
         /// <param name="sellerMessage">sellerMessage.</param>
-        /// <param name="sellerDisplayName">sellerDisplayName.</param>
-        public ListBuyerTotalRequestsItem(string id = default(string), string createdAt = default(string), string status = default(string), string sellerUserId = default(string), List<ListBuyerTotalRequestsItemLines> lines = default(List<ListBuyerTotalRequestsItemLines>), bool matchesCart = default(bool), string expiresAt = default(string), decimal? quotedShippingCents = default(decimal?), string sellerMessage = default(string), string sellerDisplayName = default(string))
+        /// <param name="expiresAt">expiresAt.</param>
+        public ListBuyerTotalRequestsItem(string id = default(string), string sellerUserId = default(string), string status = default(string), List<ListBuyerTotalRequestsItemLines> lines = default(List<ListBuyerTotalRequestsItemLines>), string createdAt = default(string), bool matchesCart = default(bool), string sellerDisplayName = default(string), decimal? quotedShippingCents = default(decimal?), string sellerMessage = default(string), string expiresAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListBuyerTotalRequestsItem and cannot be null");
             }
             this.Id = id;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null) {
-                throw new ArgumentNullException("createdAt is a required property for ListBuyerTotalRequestsItem and cannot be null");
-            }
-            this.CreatedAt = createdAt;
-            // to ensure "status" is required (not null)
-            if (status == null) {
-                throw new ArgumentNullException("status is a required property for ListBuyerTotalRequestsItem and cannot be null");
-            }
-            this.Status = status;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
                 throw new ArgumentNullException("sellerUserId is a required property for ListBuyerTotalRequestsItem and cannot be null");
             }
             this.SellerUserId = sellerUserId;
+            // to ensure "status" is required (not null)
+            if (status == null) {
+                throw new ArgumentNullException("status is a required property for ListBuyerTotalRequestsItem and cannot be null");
+            }
+            this.Status = status;
             // to ensure "lines" is required (not null)
             if (lines == null) {
                 throw new ArgumentNullException("lines is a required property for ListBuyerTotalRequestsItem and cannot be null");
             }
             this.Lines = lines;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null) {
+                throw new ArgumentNullException("createdAt is a required property for ListBuyerTotalRequestsItem and cannot be null");
+            }
+            this.CreatedAt = createdAt;
             this.MatchesCart = matchesCart;
-            this.ExpiresAt = expiresAt;
+            this.SellerDisplayName = sellerDisplayName;
             this.QuotedShippingCents = quotedShippingCents;
             this.SellerMessage = sellerMessage;
-            this.SellerDisplayName = sellerDisplayName;
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>
@@ -90,10 +90,10 @@ namespace net.crossly.buyer.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Gets or Sets SellerUserId
         /// </summary>
-        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
 
         /// <summary>
         /// requested | quoted | declined | expired.
@@ -103,17 +103,17 @@ namespace net.crossly.buyer.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
-
-        /// <summary>
         /// The cart lines the request covers.
         /// </summary>
         /// <value>The cart lines the request covers.</value>
         [DataMember(Name = "lines", IsRequired = true, EmitDefaultValue = false)]
         public List<ListBuyerTotalRequestsItemLines> Lines { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
+        public string CreatedAt { get; set; }
 
         /// <summary>
         /// Your cart still holds exactly the quoted items, so checkout applies the quote.
@@ -123,10 +123,10 @@ namespace net.crossly.buyer.Model
         public bool MatchesCart { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpiresAt
+        /// Gets or Sets SellerDisplayName
         /// </summary>
-        [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
-        public string ExpiresAt { get; set; }
+        [DataMember(Name = "sellerDisplayName", EmitDefaultValue = true)]
+        public string SellerDisplayName { get; set; }
 
         /// <summary>
         /// The seller&#39;s combined shipping for these items, in cents, once quoted.
@@ -142,10 +142,10 @@ namespace net.crossly.buyer.Model
         public string SellerMessage { get; set; }
 
         /// <summary>
-        /// Gets or Sets SellerDisplayName
+        /// Gets or Sets ExpiresAt
         /// </summary>
-        [DataMember(Name = "sellerDisplayName", EmitDefaultValue = true)]
-        public string SellerDisplayName { get; set; }
+        [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
+        public string ExpiresAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -156,15 +156,15 @@ namespace net.crossly.buyer.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListBuyerTotalRequestsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Lines: ").Append(Lines).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  MatchesCart: ").Append(MatchesCart).Append("\n");
-            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("  SellerDisplayName: ").Append(SellerDisplayName).Append("\n");
             sb.Append("  QuotedShippingCents: ").Append(QuotedShippingCents).Append("\n");
             sb.Append("  SellerMessage: ").Append(SellerMessage).Append("\n");
-            sb.Append("  SellerDisplayName: ").Append(SellerDisplayName).Append("\n");
+            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -206,19 +206,14 @@ namespace net.crossly.buyer.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.SellerUserId == input.SellerUserId ||
+                    (this.SellerUserId != null &&
+                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.SellerUserId == input.SellerUserId ||
-                    (this.SellerUserId != null &&
-                    this.SellerUserId.Equals(input.SellerUserId))
                 ) && 
                 (
                     this.Lines == input.Lines ||
@@ -227,13 +222,18 @@ namespace net.crossly.buyer.Model
                     this.Lines.SequenceEqual(input.Lines)
                 ) && 
                 (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
                     this.MatchesCart == input.MatchesCart ||
                     this.MatchesCart.Equals(input.MatchesCart)
                 ) && 
                 (
-                    this.ExpiresAt == input.ExpiresAt ||
-                    (this.ExpiresAt != null &&
-                    this.ExpiresAt.Equals(input.ExpiresAt))
+                    this.SellerDisplayName == input.SellerDisplayName ||
+                    (this.SellerDisplayName != null &&
+                    this.SellerDisplayName.Equals(input.SellerDisplayName))
                 ) && 
                 (
                     this.QuotedShippingCents == input.QuotedShippingCents ||
@@ -246,9 +246,9 @@ namespace net.crossly.buyer.Model
                     this.SellerMessage.Equals(input.SellerMessage))
                 ) && 
                 (
-                    this.SellerDisplayName == input.SellerDisplayName ||
-                    (this.SellerDisplayName != null &&
-                    this.SellerDisplayName.Equals(input.SellerDisplayName))
+                    this.ExpiresAt == input.ExpiresAt ||
+                    (this.ExpiresAt != null &&
+                    this.ExpiresAt.Equals(input.ExpiresAt))
                 );
         }
 
@@ -265,26 +265,26 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.CreatedAt != null)
+                if (this.SellerUserId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.SellerUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
                 if (this.Lines != null)
                 {
                     hashCode = (hashCode * 59) + this.Lines.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.MatchesCart.GetHashCode();
-                if (this.ExpiresAt != null)
+                if (this.CreatedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.MatchesCart.GetHashCode();
+                if (this.SellerDisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerDisplayName.GetHashCode();
                 }
                 if (this.QuotedShippingCents != null)
                 {
@@ -294,9 +294,9 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.SellerMessage.GetHashCode();
                 }
-                if (this.SellerDisplayName != null)
+                if (this.ExpiresAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.SellerDisplayName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
                 }
                 return hashCode;
             }

@@ -42,17 +42,17 @@ namespace net.crossly.Model
         /// <param name="custom">custom (required).</param>
         /// <param name="brand">brand (required).</param>
         /// <param name="category">category (required).</param>
+        /// <param name="segment">segment (required).</param>
         /// <param name="curated">curated (required).</param>
         /// <param name="composite">composite (required).</param>
-        /// <param name="segment">segment (required).</param>
-        public GetVaultMarketIndexMethodologyResponseDailyMinPriced(decimal custom = default(decimal), decimal brand = default(decimal), decimal category = default(decimal), decimal curated = default(decimal), decimal composite = default(decimal), decimal segment = default(decimal))
+        public GetVaultMarketIndexMethodologyResponseDailyMinPriced(decimal custom = default(decimal), decimal brand = default(decimal), decimal category = default(decimal), decimal segment = default(decimal), decimal curated = default(decimal), decimal composite = default(decimal))
         {
             this.Custom = custom;
             this.Brand = brand;
             this.Category = category;
+            this.Segment = segment;
             this.Curated = curated;
             this.Composite = composite;
-            this.Segment = segment;
         }
 
         /// <summary>
@@ -74,6 +74,12 @@ namespace net.crossly.Model
         public decimal Category { get; set; }
 
         /// <summary>
+        /// Gets or Sets Segment
+        /// </summary>
+        [DataMember(Name = "segment", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Segment { get; set; }
+
+        /// <summary>
         /// Gets or Sets Curated
         /// </summary>
         [DataMember(Name = "curated", IsRequired = true, EmitDefaultValue = false)]
@@ -86,12 +92,6 @@ namespace net.crossly.Model
         public decimal Composite { get; set; }
 
         /// <summary>
-        /// Gets or Sets Segment
-        /// </summary>
-        [DataMember(Name = "segment", IsRequired = true, EmitDefaultValue = false)]
-        public decimal Segment { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,9 +102,9 @@ namespace net.crossly.Model
             sb.Append("  Custom: ").Append(Custom).Append("\n");
             sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
+            sb.Append("  Segment: ").Append(Segment).Append("\n");
             sb.Append("  Curated: ").Append(Curated).Append("\n");
             sb.Append("  Composite: ").Append(Composite).Append("\n");
-            sb.Append("  Segment: ").Append(Segment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -153,16 +153,16 @@ namespace net.crossly.Model
                     this.Category.Equals(input.Category)
                 ) && 
                 (
+                    this.Segment == input.Segment ||
+                    this.Segment.Equals(input.Segment)
+                ) && 
+                (
                     this.Curated == input.Curated ||
                     this.Curated.Equals(input.Curated)
                 ) && 
                 (
                     this.Composite == input.Composite ||
                     this.Composite.Equals(input.Composite)
-                ) && 
-                (
-                    this.Segment == input.Segment ||
-                    this.Segment.Equals(input.Segment)
                 );
         }
 
@@ -178,9 +178,9 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.Custom.GetHashCode();
                 hashCode = (hashCode * 59) + this.Brand.GetHashCode();
                 hashCode = (hashCode * 59) + this.Category.GetHashCode();
+                hashCode = (hashCode * 59) + this.Segment.GetHashCode();
                 hashCode = (hashCode * 59) + this.Curated.GetHashCode();
                 hashCode = (hashCode * 59) + this.Composite.GetHashCode();
-                hashCode = (hashCode * 59) + this.Segment.GetHashCode();
                 return hashCode;
             }
         }

@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum RoleEnum
         {
             /// <summary>
-            /// Enum Member for value: member
-            /// </summary>
-            [EnumMember(Value = "member")]
-            Member = 1,
-
-            /// <summary>
             /// Enum Leader for value: leader
             /// </summary>
             [EnumMember(Value = "leader")]
-            Leader = 2
+            Leader = 1,
+
+            /// <summary>
+            /// Enum Member for value: member
+            /// </summary>
+            [EnumMember(Value = "member")]
+            Member = 2
 
         }
 

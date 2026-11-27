@@ -32,16 +32,16 @@ namespace net.crossly.Model
     public enum ListWorldDecorCatalogueItemBuyWithItem
     {
         /// <summary>
-        /// Enum Cbx for value: cbx
-        /// </summary>
-        [EnumMember(Value = "cbx")]
-        Cbx = 1,
-
-        /// <summary>
         /// Enum Cosm for value: cosm
         /// </summary>
         [EnumMember(Value = "cosm")]
-        Cosm = 2
+        Cosm = 1,
+
+        /// <summary>
+        /// Enum Cbx for value: cbx
+        /// </summary>
+        [EnumMember(Value = "cbx")]
+        Cbx = 2
 
     }
 

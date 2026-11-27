@@ -38,10 +38,10 @@ namespace net.crossly.buyer.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Dispute for value: dispute
+            /// Enum Return for value: return
             /// </summary>
-            [EnumMember(Value = "dispute")]
-            Dispute = 1,
+            [EnumMember(Value = "return")]
+            Return = 1,
 
             /// <summary>
             /// Enum Cancel for value: cancel
@@ -50,10 +50,10 @@ namespace net.crossly.buyer.Model
             Cancel = 2,
 
             /// <summary>
-            /// Enum Return for value: return
+            /// Enum Dispute for value: dispute
             /// </summary>
-            [EnumMember(Value = "return")]
-            Return = 3
+            [EnumMember(Value = "dispute")]
+            Dispute = 3
 
         }
 

@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Scheduled for value: scheduled
-            /// </summary>
-            [EnumMember(Value = "scheduled")]
-            Scheduled = 1,
-
-            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 2,
+            Cancelled = 1,
+
+            /// <summary>
+            /// Enum Scheduled for value: scheduled
+            /// </summary>
+            [EnumMember(Value = "scheduled")]
+            Scheduled = 2,
 
             /// <summary>
             /// Enum Closed for value: closed
@@ -56,16 +56,16 @@ namespace net.crossly.Model
             Closed = 3,
 
             /// <summary>
-            /// Enum Released for value: released
-            /// </summary>
-            [EnumMember(Value = "released")]
-            Released = 4,
-
-            /// <summary>
             /// Enum LineOpen for value: line_open
             /// </summary>
             [EnumMember(Value = "line_open")]
-            LineOpen = 5
+            LineOpen = 4,
+
+            /// <summary>
+            /// Enum Released for value: released
+            /// </summary>
+            [EnumMember(Value = "released")]
+            Released = 5
 
         }
 

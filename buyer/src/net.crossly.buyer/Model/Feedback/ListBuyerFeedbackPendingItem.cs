@@ -41,12 +41,12 @@ namespace net.crossly.buyer.Model
         /// </summary>
         /// <param name="purchaseId">purchaseId (required).</param>
         /// <param name="itemTitle">itemTitle (required).</param>
-        /// <param name="shippedAt">shippedAt.</param>
-        /// <param name="deliveredAt">deliveredAt.</param>
         /// <param name="imageUrl">imageUrl.</param>
-        /// <param name="sellerName">sellerName.</param>
+        /// <param name="deliveredAt">deliveredAt.</param>
+        /// <param name="shippedAt">shippedAt.</param>
         /// <param name="orderedAt">orderedAt.</param>
-        public ListBuyerFeedbackPendingItem(string purchaseId = default(string), string itemTitle = default(string), string shippedAt = default(string), string deliveredAt = default(string), string imageUrl = default(string), string sellerName = default(string), string orderedAt = default(string))
+        /// <param name="sellerName">sellerName.</param>
+        public ListBuyerFeedbackPendingItem(string purchaseId = default(string), string itemTitle = default(string), string imageUrl = default(string), string deliveredAt = default(string), string shippedAt = default(string), string orderedAt = default(string), string sellerName = default(string))
         {
             // to ensure "purchaseId" is required (not null)
             if (purchaseId == null) {
@@ -58,11 +58,11 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("itemTitle is a required property for ListBuyerFeedbackPendingItem and cannot be null");
             }
             this.ItemTitle = itemTitle;
-            this.ShippedAt = shippedAt;
-            this.DeliveredAt = deliveredAt;
             this.ImageUrl = imageUrl;
-            this.SellerName = sellerName;
+            this.DeliveredAt = deliveredAt;
+            this.ShippedAt = shippedAt;
             this.OrderedAt = orderedAt;
+            this.SellerName = sellerName;
         }
 
         /// <summary>
@@ -78,10 +78,10 @@ namespace net.crossly.buyer.Model
         public string ItemTitle { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippedAt
+        /// Gets or Sets ImageUrl
         /// </summary>
-        [DataMember(Name = "shippedAt", EmitDefaultValue = true)]
-        public string ShippedAt { get; set; }
+        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
+        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets DeliveredAt
@@ -90,22 +90,22 @@ namespace net.crossly.buyer.Model
         public string DeliveredAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets ImageUrl
+        /// Gets or Sets ShippedAt
         /// </summary>
-        [DataMember(Name = "imageUrl", EmitDefaultValue = true)]
-        public string ImageUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerName
-        /// </summary>
-        [DataMember(Name = "sellerName", EmitDefaultValue = true)]
-        public string SellerName { get; set; }
+        [DataMember(Name = "shippedAt", EmitDefaultValue = true)]
+        public string ShippedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedAt
         /// </summary>
         [DataMember(Name = "orderedAt", EmitDefaultValue = true)]
         public string OrderedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerName
+        /// </summary>
+        [DataMember(Name = "sellerName", EmitDefaultValue = true)]
+        public string SellerName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,11 +117,11 @@ namespace net.crossly.buyer.Model
             sb.Append("class ListBuyerFeedbackPendingItem {\n");
             sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
             sb.Append("  ItemTitle: ").Append(ItemTitle).Append("\n");
-            sb.Append("  ShippedAt: ").Append(ShippedAt).Append("\n");
-            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
-            sb.Append("  SellerName: ").Append(SellerName).Append("\n");
+            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
+            sb.Append("  ShippedAt: ").Append(ShippedAt).Append("\n");
             sb.Append("  OrderedAt: ").Append(OrderedAt).Append("\n");
+            sb.Append("  SellerName: ").Append(SellerName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,9 +168,9 @@ namespace net.crossly.buyer.Model
                     this.ItemTitle.Equals(input.ItemTitle))
                 ) && 
                 (
-                    this.ShippedAt == input.ShippedAt ||
-                    (this.ShippedAt != null &&
-                    this.ShippedAt.Equals(input.ShippedAt))
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
                     this.DeliveredAt == input.DeliveredAt ||
@@ -178,19 +178,19 @@ namespace net.crossly.buyer.Model
                     this.DeliveredAt.Equals(input.DeliveredAt))
                 ) && 
                 (
-                    this.ImageUrl == input.ImageUrl ||
-                    (this.ImageUrl != null &&
-                    this.ImageUrl.Equals(input.ImageUrl))
-                ) && 
-                (
-                    this.SellerName == input.SellerName ||
-                    (this.SellerName != null &&
-                    this.SellerName.Equals(input.SellerName))
+                    this.ShippedAt == input.ShippedAt ||
+                    (this.ShippedAt != null &&
+                    this.ShippedAt.Equals(input.ShippedAt))
                 ) && 
                 (
                     this.OrderedAt == input.OrderedAt ||
                     (this.OrderedAt != null &&
                     this.OrderedAt.Equals(input.OrderedAt))
+                ) && 
+                (
+                    this.SellerName == input.SellerName ||
+                    (this.SellerName != null &&
+                    this.SellerName.Equals(input.SellerName))
                 );
         }
 
@@ -211,25 +211,25 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ItemTitle.GetHashCode();
                 }
-                if (this.ShippedAt != null)
+                if (this.ImageUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.ShippedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
                 }
                 if (this.DeliveredAt != null)
                 {
                     hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
                 }
-                if (this.ImageUrl != null)
+                if (this.ShippedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.ImageUrl.GetHashCode();
-                }
-                if (this.SellerName != null)
-                {
-                    hashCode = (hashCode * 59) + this.SellerName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShippedAt.GetHashCode();
                 }
                 if (this.OrderedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.OrderedAt.GetHashCode();
+                }
+                if (this.SellerName != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerName.GetHashCode();
                 }
                 return hashCode;
             }

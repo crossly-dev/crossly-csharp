@@ -174,6 +174,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetMeTemplateSuggestResponse</returns>
         ApiResponse<GetMeTemplateSuggestResponse> GetMeTemplateSuggestWithHttpInfo();
         /// <summary>
+        /// A shared template by its share token (public, no auth).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <returns>GetPublicTemplateResponse</returns>
+        GetPublicTemplateResponse GetPublicTemplate(string token);
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <returns>ApiResponse of GetPublicTemplateResponse</returns>
+        ApiResponse<GetPublicTemplateResponse> GetPublicTemplateWithHttpInfo(string token);
+        /// <summary>
         /// List the seller&#39;s templates.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -394,6 +412,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetMeTemplateSuggestResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetMeTemplateSuggestResponse>> GetMeTemplateSuggestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A shared template by its share token (public, no auth).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPublicTemplateResponse</returns>
+        System.Threading.Tasks.Task<GetPublicTemplateResponse> GetPublicTemplateAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPublicTemplateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPublicTemplateResponse>> GetPublicTemplateWithHttpInfoAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List the seller&#39;s templates.
         /// </summary>
@@ -1603,6 +1644,140 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetMeTemplateSuggest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <returns>GetPublicTemplateResponse</returns>
+        public GetPublicTemplateResponse GetPublicTemplate(string token)
+        {
+            net.crossly.Client.ApiResponse<GetPublicTemplateResponse> localVarResponse = GetPublicTemplateWithHttpInfo(token);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <returns>ApiResponse of GetPublicTemplateResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPublicTemplateResponse> GetPublicTemplateWithHttpInfo(string token)
+        {
+            // verify the required parameter 'token' is set
+            if (token == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'token' when calling TemplatesApi->GetPublicTemplate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("token", net.crossly.Client.ClientUtils.ParameterToString(token)); // path parameter
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPublicTemplateResponse>("/v1/public/templates/{token}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPublicTemplate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPublicTemplateResponse</returns>
+        public async System.Threading.Tasks.Task<GetPublicTemplateResponse> GetPublicTemplateAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPublicTemplateResponse> localVarResponse = await GetPublicTemplateWithHttpInfoAsync(token, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A shared template by its share token (public, no auth). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPublicTemplateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPublicTemplateResponse>> GetPublicTemplateWithHttpInfoAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'token' is set
+            if (token == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'token' when calling TemplatesApi->GetPublicTemplate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("token", net.crossly.Client.ClientUtils.ParameterToString(token)); // path parameter
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPublicTemplateResponse>("/v1/public/templates/{token}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPublicTemplate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

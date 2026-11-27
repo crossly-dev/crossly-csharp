@@ -56,22 +56,22 @@ namespace net.crossly.Model
             Category = 3,
 
             /// <summary>
+            /// Enum Segment for value: segment
+            /// </summary>
+            [EnumMember(Value = "segment")]
+            Segment = 4,
+
+            /// <summary>
             /// Enum Curated for value: curated
             /// </summary>
             [EnumMember(Value = "curated")]
-            Curated = 4,
+            Curated = 5,
 
             /// <summary>
             /// Enum Composite for value: composite
             /// </summary>
             [EnumMember(Value = "composite")]
-            Composite = 5,
-
-            /// <summary>
-            /// Enum Segment for value: segment
-            /// </summary>
-            [EnumMember(Value = "segment")]
-            Segment = 6
+            Composite = 6
 
         }
 
@@ -132,22 +132,22 @@ namespace net.crossly.Model
             None = 1,
 
             /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 2,
+
+            /// <summary>
             /// Enum A for value: A
             /// </summary>
             [EnumMember(Value = "A")]
-            A = 2,
+            A = 3,
 
             /// <summary>
             /// Enum B for value: B
             /// </summary>
             [EnumMember(Value = "B")]
-            B = 3,
-
-            /// <summary>
-            /// Enum C for value: C
-            /// </summary>
-            [EnumMember(Value = "C")]
-            C = 4
+            B = 4
 
         }
 
@@ -182,7 +182,7 @@ namespace net.crossly.Model
         /// <param name="asOf">asOf.</param>
         /// <param name="insufficient">insufficient (required).</param>
         /// <param name="href">href (required).</param>
-        public GetVaultMarketWidgetIndexResponse(string slug = default(string), string name = default(string), string description = default(string), KindEnum kind = default(KindEnum), WeightingEnum weighting = default(WeightingEnum), decimal baseValue = default(decimal), string inceptionDay = default(string), decimal? level = default(decimal?), decimal? changeBps = default(decimal?), decimal? sinceInceptionBps = default(decimal?), List<GetVaultMarketWidgetIndexResponsePoints> points = default(List<GetVaultMarketWidgetIndexResponsePoints>), QualityEnum quality = default(QualityEnum), decimal n = default(decimal), decimal members = default(decimal), string asOf = default(string), bool insufficient = default(bool), string href = default(string))
+        public GetVaultMarketWidgetIndexResponse(string slug = default(string), string name = default(string), string description = default(string), KindEnum kind = default(KindEnum), WeightingEnum weighting = default(WeightingEnum), decimal baseValue = default(decimal), string inceptionDay = default(string), decimal? level = default(decimal?), decimal? changeBps = default(decimal?), decimal? sinceInceptionBps = default(decimal?), List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> points = default(List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries>), QualityEnum quality = default(QualityEnum), decimal n = default(decimal), decimal members = default(decimal), string asOf = default(string), bool insufficient = default(bool), string href = default(string))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -271,7 +271,7 @@ namespace net.crossly.Model
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "points", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetVaultMarketWidgetIndexResponsePoints> Points { get; set; }
+        public List<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries> Points { get; set; }
 
         /// <summary>
         /// Gets or Sets N

@@ -127,21 +127,40 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateListingBulkUpdateResponse</returns>
         ApiResponse<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelWithHttpInfo();
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings.
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
         /// </summary>
+        /// <remarks>
+        /// Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
+        /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateInventoryBulkQuantityResponse</returns>
         CreateInventoryBulkQuantityResponse CreateInventoryBulkQuantity();
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings.
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+        /// </summary>
+        /// <remarks>
+        /// Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateInventoryBulkQuantityResponse</returns>
+        ApiResponse<CreateInventoryBulkQuantityResponse> CreateInventoryBulkQuantityWithHttpInfo();
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateInventoryBulkRestoreResponse</returns>
+        CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore();
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateInventoryBulkQuantityResponse</returns>
-        ApiResponse<CreateInventoryBulkQuantityResponse> CreateInventoryBulkQuantityWithHttpInfo();
+        /// <returns>ApiResponse of CreateInventoryBulkRestoreResponse</returns>
+        ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo();
         /// <summary>
         /// Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
         /// </summary>
@@ -196,8 +215,8 @@ namespace net.crossly.Api
         /// Rename a label across every inventory item.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateInventoryLabelRenameResponse</returns>
-        CreateInventoryLabelRenameResponse CreateInventoryLabelRename();
+        /// <returns>UpdatedResponse</returns>
+        UpdatedResponse CreateInventoryLabelRename();
 
         /// <summary>
         /// Rename a label across every inventory item.
@@ -206,8 +225,8 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateInventoryLabelRenameResponse</returns>
-        ApiResponse<CreateInventoryLabelRenameResponse> CreateInventoryLabelRenameWithHttpInfo();
+        /// <returns>ApiResponse of UpdatedResponse</returns>
+        ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo();
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
         /// </summary>
@@ -335,8 +354,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateSpatialPropertyLeaseAcceptResponse</returns>
-        CreateSpatialPropertyLeaseAcceptResponse CreateSpatialPropertyLeaseAccept(string id);
+        /// <returns>CreateWorldMarketPlotRentResponse</returns>
+        CreateWorldMarketPlotRentResponse CreateSpatialPropertyLeaseAccept(string id);
 
         /// <summary>
         /// Take a plot on lease.
@@ -346,13 +365,13 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateSpatialPropertyLeaseAcceptResponse</returns>
-        ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> CreateSpatialPropertyLeaseAcceptWithHttpInfo(string id);
+        /// <returns>ApiResponse of CreateWorldMarketPlotRentResponse</returns>
+        ApiResponse<CreateWorldMarketPlotRentResponse> CreateSpatialPropertyLeaseAcceptWithHttpInfo(string id);
         /// <summary>
         /// End a lease (owner or tenant).
         /// </summary>
         /// <remarks>
-        /// The tenant&#39;s shop gets a free Main Street address again.
+        /// The tenant&#39;s showroom leaves the plot.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -363,7 +382,7 @@ namespace net.crossly.Api
         /// End a lease (owner or tenant).
         /// </summary>
         /// <remarks>
-        /// The tenant&#39;s shop gets a free Main Street address again.
+        /// The tenant&#39;s showroom leaves the plot.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -598,6 +617,82 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWorldCrewLeaveResponse</returns>
         ApiResponse<CreateWorldCrewLeaveResponse> DeleteSpatialStreetPlotWithHttpInfo(string slug);
         /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>GetAnalyticInventoryResponse</returns>
+        GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
+        ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <returns>GetGameEventSummaryResponse</returns>
+        GetGameEventSummaryResponse GetGameEventSummary(Guid eventId);
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <returns>ApiResponse of GetGameEventSummaryResponse</returns>
+        ApiResponse<GetGameEventSummaryResponse> GetGameEventSummaryWithHttpInfo(Guid eventId);
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetGameHuntBuildResponse</returns>
+        GetGameHuntBuildResponse GetGameHuntBuild(Guid id);
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetGameHuntBuildResponse</returns>
+        ApiResponse<GetGameHuntBuildResponse> GetGameHuntBuildWithHttpInfo(Guid id);
+        /// <summary>
         /// Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all - - rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -666,14 +761,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetInventoryResponse</returns>
         ApiResponse<GetInventoryResponse> GetInventoryWithHttpInfo(Guid id);
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventoryAgingResponse</returns>
         GetInventoryAgingResponse GetInventoryAging();
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
         /// </summary>
         /// <remarks>
         /// 
@@ -748,14 +843,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetInventoryLabelStatResponse</returns>
         ApiResponse<GetInventoryLabelStatResponse> GetInventoryLabelStatWithHttpInfo();
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventorySellThroughResponse</returns>
         GetInventorySellThroughResponse GetInventorySellThrough();
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         /// </summary>
         /// <remarks>
         /// 
@@ -782,14 +877,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetListingSkuExistResponse</returns>
         ApiResponse<GetListingSkuExistResponse> GetInventorySkuExistWithHttpInfo(string sku);
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventoryValueHistoryResponse</returns>
         GetInventoryValueHistoryResponse GetInventoryValueHistory();
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         /// </summary>
         /// <remarks>
         /// 
@@ -1146,6 +1241,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetSpatialStreetPlotQuoteResponse</returns>
         ApiResponse<GetSpatialStreetPlotQuoteResponse> GetSpatialStreetPlotQuoteWithHttpInfo(string slug, string number);
         /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWorldPulseResponse</returns>
+        GetWorldPulseResponse GetWorldPulse();
+
+        /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWorldPulseResponse</returns>
+        ApiResponse<GetWorldPulseResponse> GetWorldPulseWithHttpInfo();
+        /// <summary>
         /// Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1254,6 +1365,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListGameBreakUpcomingResponse</returns>
         ApiResponse<ListGameBreakUpcomingResponse> ListGameBreakUpcomingWithHttpInfo();
         /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListGameHuntMineResponse</returns>
+        ListGameHuntMineResponse ListGameHuntMine();
+
+        /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListGameHuntMineResponse</returns>
+        ApiResponse<ListGameHuntMineResponse> ListGameHuntMineWithHttpInfo();
+        /// <summary>
         /// Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug - - for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; - - never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1330,8 +1457,10 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ListInventoryResponse</returns>
-        ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string));
+        ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
 
         /// <summary>
         /// List inventory items.
@@ -1347,8 +1476,10 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ApiResponse of ListInventoryResponse</returns>
-        ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string));
+        ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
         /// <summary>
         /// Activity log for an inventory item (created/sold/edited/etc.).
         /// </summary>
@@ -2017,10 +2148,10 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateListingBulkUpdateResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateListingBulkUpdateResponse>> CreateInventoryBulkLabelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings.
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2028,15 +2159,36 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateInventoryBulkQuantityResponse> CreateInventoryBulkQuantityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings.
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+        /// </summary>
+        /// <remarks>
+        /// Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInventoryBulkQuantityResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkQuantityResponse>> CreateInventoryBulkQuantityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInventoryBulkQuantityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkQuantityResponse>> CreateInventoryBulkQuantityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateInventoryBulkRestoreResponse</returns>
+        System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInventoryBulkRestoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
         /// </summary>
@@ -2110,8 +2262,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInventoryLabelRenameResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryLabelRenameResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdatedResponse</returns>
+        System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rename a label across every inventory item.
@@ -2121,8 +2273,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInventoryLabelRenameResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryLabelRenameResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
         /// </summary>
@@ -2266,8 +2418,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateSpatialPropertyLeaseAcceptResponse</returns>
-        System.Threading.Tasks.Task<CreateSpatialPropertyLeaseAcceptResponse> CreateSpatialPropertyLeaseAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateWorldMarketPlotRentResponse</returns>
+        System.Threading.Tasks.Task<CreateWorldMarketPlotRentResponse> CreateSpatialPropertyLeaseAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Take a plot on lease.
@@ -2278,13 +2430,13 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateSpatialPropertyLeaseAcceptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSpatialPropertyLeaseAcceptResponse>> CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateWorldMarketPlotRentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldMarketPlotRentResponse>> CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// End a lease (owner or tenant).
         /// </summary>
         /// <remarks>
-        /// The tenant&#39;s shop gets a free Main Street address again.
+        /// The tenant&#39;s showroom leaves the plot.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2296,7 +2448,7 @@ namespace net.crossly.Api
         /// End a lease (owner or tenant).
         /// </summary>
         /// <remarks>
-        /// The tenant&#39;s shop gets a free Main Street address again.
+        /// The tenant&#39;s showroom leaves the plot.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -2557,6 +2709,97 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWorldCrewLeaveResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWorldCrewLeaveResponse>> DeleteSpatialStreetPlotWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticInventoryResponse</returns>
+        System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGameEventSummaryResponse</returns>
+        System.Threading.Tasks.Task<GetGameEventSummaryResponse> GetGameEventSummaryAsync(Guid eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGameEventSummaryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetGameEventSummaryResponse>> GetGameEventSummaryWithHttpInfoAsync(Guid eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGameHuntBuildResponse</returns>
+        System.Threading.Tasks.Task<GetGameHuntBuildResponse> GetGameHuntBuildAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGameHuntBuildResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetGameHuntBuildResponse>> GetGameHuntBuildWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all - - rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
         /// </summary>
         /// <remarks>
@@ -2645,7 +2888,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetInventoryResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetInventoryResponse>> GetInventoryWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
         /// </summary>
         /// <remarks>
         /// 
@@ -2656,7 +2899,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetInventoryAgingResponse> GetInventoryAgingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
         /// </summary>
         /// <remarks>
         /// 
@@ -2752,7 +2995,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetInventoryLabelStatResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetInventoryLabelStatResponse>> GetInventoryLabelStatWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         /// </summary>
         /// <remarks>
         /// 
@@ -2763,7 +3006,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetInventorySellThroughResponse> GetInventorySellThroughAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         /// </summary>
         /// <remarks>
         /// 
@@ -2796,7 +3039,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetListingSkuExistResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetListingSkuExistResponse>> GetInventorySkuExistWithHttpInfoAsync(string sku, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         /// </summary>
         /// <remarks>
         /// 
@@ -2807,7 +3050,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetInventoryValueHistoryResponse> GetInventoryValueHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         /// </summary>
         /// <remarks>
         /// 
@@ -3219,6 +3462,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetSpatialStreetPlotQuoteResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSpatialStreetPlotQuoteResponse>> GetSpatialStreetPlotQuoteWithHttpInfoAsync(string slug, string number, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorldPulseResponse</returns>
+        System.Threading.Tasks.Task<GetWorldPulseResponse> GetWorldPulseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorldPulseResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorldPulseResponse>> GetWorldPulseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
         /// </summary>
         /// <remarks>
@@ -3357,6 +3621,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListGameBreakUpcomingResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListGameBreakUpcomingResponse>> ListGameBreakUpcomingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListGameHuntMineResponse</returns>
+        System.Threading.Tasks.Task<ListGameHuntMineResponse> ListGameHuntMineAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListGameHuntMineResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListGameHuntMineResponse>> ListGameHuntMineWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug - - for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; - - never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
         /// </summary>
         /// <remarks>
@@ -3456,9 +3741,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInventoryResponse</returns>
-        System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List inventory items.
@@ -3474,9 +3761,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Activity log for an inventory item (created/sold/edited/etc.).
         /// </summary>
@@ -4993,7 +5282,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings. 
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings. Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>CreateInventoryBulkQuantityResponse</returns>
@@ -5004,7 +5293,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings. 
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings. Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateInventoryBulkQuantityResponse</returns>
@@ -5055,7 +5344,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings. 
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings. Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -5067,7 +5356,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set / add / subtract stock across many items, syncing live listings. 
+        /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings. Two bodies. {ids, mode: \&quot;set\&quot;|\&quot;increase\&quot;|\&quot;decrease\&quot;, value, syncMarketplaces?} applies one value to every id. {mode: \&quot;set\&quot;, items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped &#x3D; ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -5111,6 +5400,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateInventoryBulkQuantity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateInventoryBulkRestoreResponse</returns>
+        public CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore()
+        {
+            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = CreateInventoryBulkRestoreWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateInventoryBulkRestoreResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateInventoryBulkRestoreResponse>("/v1/inventory/bulk-restore", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInventoryBulkRestore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateInventoryBulkRestoreResponse</returns>
+        public async System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = await CreateInventoryBulkRestoreWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInventoryBulkRestoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInventoryBulkRestoreResponse>("/v1/inventory/bulk-restore", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInventoryBulkRestore", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -5514,10 +5931,10 @@ namespace net.crossly.Api
         /// Rename a label across every inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateInventoryLabelRenameResponse</returns>
-        public CreateInventoryLabelRenameResponse CreateInventoryLabelRename()
+        /// <returns>UpdatedResponse</returns>
+        public UpdatedResponse CreateInventoryLabelRename()
         {
-            net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> localVarResponse = CreateInventoryLabelRenameWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateInventoryLabelRenameWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -5525,8 +5942,8 @@ namespace net.crossly.Api
         /// Rename a label across every inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateInventoryLabelRenameResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> CreateInventoryLabelRenameWithHttpInfo()
+        /// <returns>ApiResponse of UpdatedResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5559,7 +5976,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateInventoryLabelRenameResponse>("/v1/inventory/labels/rename", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpdatedResponse>("/v1/inventory/labels/rename", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateInventoryLabelRename", localVarResponse);
@@ -5577,10 +5994,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateInventoryLabelRenameResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryLabelRenameResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdatedResponse</returns>
+        public async System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse> localVarResponse = await CreateInventoryLabelRenameWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateInventoryLabelRenameWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5589,8 +6006,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateInventoryLabelRenameResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryLabelRenameResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5624,7 +6041,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInventoryLabelRenameResponse>("/v1/inventory/labels/rename", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdatedResponse>("/v1/inventory/labels/rename", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -6483,10 +6900,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateSpatialPropertyLeaseAcceptResponse</returns>
-        public CreateSpatialPropertyLeaseAcceptResponse CreateSpatialPropertyLeaseAccept(string id)
+        /// <returns>CreateWorldMarketPlotRentResponse</returns>
+        public CreateWorldMarketPlotRentResponse CreateSpatialPropertyLeaseAccept(string id)
         {
-            net.crossly.Client.ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> localVarResponse = CreateSpatialPropertyLeaseAcceptWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateWorldMarketPlotRentResponse> localVarResponse = CreateSpatialPropertyLeaseAcceptWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -6495,8 +6912,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateSpatialPropertyLeaseAcceptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> CreateSpatialPropertyLeaseAcceptWithHttpInfo(string id)
+        /// <returns>ApiResponse of CreateWorldMarketPlotRentResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWorldMarketPlotRentResponse> CreateSpatialPropertyLeaseAcceptWithHttpInfo(string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6536,7 +6953,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateSpatialPropertyLeaseAcceptResponse>("/v1/spatial/property/leases/{id}/accept", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateWorldMarketPlotRentResponse>("/v1/spatial/property/leases/{id}/accept", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateSpatialPropertyLeaseAccept", localVarResponse);
@@ -6555,10 +6972,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateSpatialPropertyLeaseAcceptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSpatialPropertyLeaseAcceptResponse> CreateSpatialPropertyLeaseAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateWorldMarketPlotRentResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWorldMarketPlotRentResponse> CreateSpatialPropertyLeaseAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSpatialPropertyLeaseAcceptResponse> localVarResponse = await CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldMarketPlotRentResponse> localVarResponse = await CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6568,8 +6985,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateSpatialPropertyLeaseAcceptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSpatialPropertyLeaseAcceptResponse>> CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateWorldMarketPlotRentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldMarketPlotRentResponse>> CreateSpatialPropertyLeaseAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6610,7 +7027,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateSpatialPropertyLeaseAcceptResponse>("/v1/spatial/property/leases/{id}/accept", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWorldMarketPlotRentResponse>("/v1/spatial/property/leases/{id}/accept", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -6625,7 +7042,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// End a lease (owner or tenant). The tenant&#39;s shop gets a free Main Street address again.
+        /// End a lease (owner or tenant). The tenant&#39;s showroom leaves the plot.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -6637,7 +7054,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// End a lease (owner or tenant). The tenant&#39;s shop gets a free Main Street address again.
+        /// End a lease (owner or tenant). The tenant&#39;s showroom leaves the plot.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -6696,7 +7113,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// End a lease (owner or tenant). The tenant&#39;s shop gets a free Main Street address again.
+        /// End a lease (owner or tenant). The tenant&#39;s showroom leaves the plot.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -6709,7 +7126,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// End a lease (owner or tenant). The tenant&#39;s shop gets a free Main Street address again.
+        /// End a lease (owner or tenant). The tenant&#39;s showroom leaves the plot.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -8341,6 +8758,546 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>GetAnalyticInventoryResponse</returns>
+        public GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = GetAnalyticInventoryWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (maturity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAnalyticInventoryResponse</returns>
+        public async System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = await GetAnalyticInventoryWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
+        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
+        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
+        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
+        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
+        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
+        /// <param name="category">Canonical main-category key. (optional)</param>
+        /// <param name="brand">Brand name. (optional)</param>
+        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
+        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (compare != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
+            }
+            if (cmpFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
+            }
+            if (cmpTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (platforms != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
+            if (maturity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <returns>GetGameEventSummaryResponse</returns>
+        public GetGameEventSummaryResponse GetGameEventSummary(Guid eventId)
+        {
+            net.crossly.Client.ApiResponse<GetGameEventSummaryResponse> localVarResponse = GetGameEventSummaryWithHttpInfo(eventId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <returns>ApiResponse of GetGameEventSummaryResponse</returns>
+        public net.crossly.Client.ApiResponse<GetGameEventSummaryResponse> GetGameEventSummaryWithHttpInfo(Guid eventId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetGameEventSummaryResponse>("/v1/games/events/{eventId}/summary", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGameEventSummary", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGameEventSummaryResponse</returns>
+        public async System.Threading.Tasks.Task<GetGameEventSummaryResponse> GetGameEventSummaryAsync(Guid eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetGameEventSummaryResponse> localVarResponse = await GetGameEventSummaryWithHttpInfoAsync(eventId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="eventId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGameEventSummaryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetGameEventSummaryResponse>> GetGameEventSummaryWithHttpInfoAsync(Guid eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetGameEventSummaryResponse>("/v1/games/events/{eventId}/summary", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGameEventSummary", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetGameHuntBuildResponse</returns>
+        public GetGameHuntBuildResponse GetGameHuntBuild(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetGameHuntBuildResponse> localVarResponse = GetGameHuntBuildWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetGameHuntBuildResponse</returns>
+        public net.crossly.Client.ApiResponse<GetGameHuntBuildResponse> GetGameHuntBuildWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetGameHuntBuildResponse>("/v1/games/hunts/{id}/build", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGameHuntBuild", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGameHuntBuildResponse</returns>
+        public async System.Threading.Tasks.Task<GetGameHuntBuildResponse> GetGameHuntBuildAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetGameHuntBuildResponse> localVarResponse = await GetGameHuntBuildWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGameHuntBuildResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetGameHuntBuildResponse>> GetGameHuntBuildWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetGameHuntBuildResponse>("/v1/games/hunts/{id}/build", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGameHuntBuild", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all - - rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -8877,7 +9834,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation. 
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventoryAgingResponse</returns>
@@ -8888,7 +9845,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation. 
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetInventoryAgingResponse</returns>
@@ -8939,7 +9896,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation. 
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -8951,7 +9908,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation. 
+        /// Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -9523,7 +10480,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length. 
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventorySellThroughResponse</returns>
@@ -9534,7 +10491,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length. 
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetInventorySellThroughResponse</returns>
@@ -9585,7 +10542,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length. 
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -9597,7 +10554,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length. 
+        /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -9797,7 +10754,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot). 
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetInventoryValueHistoryResponse</returns>
@@ -9808,7 +10765,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot). 
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetInventoryValueHistoryResponse</returns>
@@ -9859,7 +10816,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot). 
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -9871,7 +10828,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot). 
+        /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -12421,6 +13378,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetWorldPulseResponse</returns>
+        public GetWorldPulseResponse GetWorldPulse()
+        {
+            net.crossly.Client.ApiResponse<GetWorldPulseResponse> localVarResponse = GetWorldPulseWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetWorldPulseResponse</returns>
+        public net.crossly.Client.ApiResponse<GetWorldPulseResponse> GetWorldPulseWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorldPulseResponse>("/v1/world/pulse", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorldPulse", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorldPulseResponse</returns>
+        public async System.Threading.Tasks.Task<GetWorldPulseResponse> GetWorldPulseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetWorldPulseResponse> localVarResponse = await GetWorldPulseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only - - never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorldPulseResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorldPulseResponse>> GetWorldPulseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorldPulseResponse>("/v1/world/pulse", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorldPulse", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -13255,6 +14340,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListGameHuntMineResponse</returns>
+        public ListGameHuntMineResponse ListGameHuntMine()
+        {
+            net.crossly.Client.ApiResponse<ListGameHuntMineResponse> localVarResponse = ListGameHuntMineWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListGameHuntMineResponse</returns>
+        public net.crossly.Client.ApiResponse<ListGameHuntMineResponse> ListGameHuntMineWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListGameHuntMineResponse>("/v1/games/hunts/mine", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListGameHuntMine", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListGameHuntMineResponse</returns>
+        public async System.Threading.Tasks.Task<ListGameHuntMineResponse> ListGameHuntMineAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListGameHuntMineResponse> localVarResponse = await ListGameHuntMineWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListGameHuntMineResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListGameHuntMineResponse>> ListGameHuntMineWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListGameHuntMineResponse>("/v1/games/hunts/mine", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListGameHuntMine", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug - - for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; - - never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -13789,10 +15002,12 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ListInventoryResponse</returns>
-        public ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string))
+        public ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
         {
-            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = ListInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode);
+            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = ListInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince);
             return localVarResponse.Data;
         }
 
@@ -13807,8 +15022,10 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ApiResponse of ListInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string))
+        public net.crossly.Client.ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -13859,6 +15076,14 @@ namespace net.crossly.Api
             if (platformMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platformMode", platformMode));
+            }
+            if (sku != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sku", sku));
+            }
+            if (updatedSince != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "updatedSince", updatedSince));
             }
 
             // authentication (PersonalAccessToken) required
@@ -13893,11 +15118,13 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = await ListInventoryWithHttpInfoAsync(page, limit, search, status, kind, platforms, platformMode, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = await ListInventoryWithHttpInfoAsync(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -13912,9 +15139,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
+        /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -13966,6 +15195,14 @@ namespace net.crossly.Api
             if (platformMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platformMode", platformMode));
+            }
+            if (sku != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sku", sku));
+            }
+            if (updatedSince != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "updatedSince", updatedSince));
             }
 
             // authentication (PersonalAccessToken) required

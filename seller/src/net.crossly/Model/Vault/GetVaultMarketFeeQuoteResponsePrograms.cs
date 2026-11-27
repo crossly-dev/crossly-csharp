@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum MemberTierEnum
         {
             /// <summary>
-            /// Enum Classic for value: classic
-            /// </summary>
-            [EnumMember(Value = "classic")]
-            Classic = 1,
-
-            /// <summary>
             /// Enum Pro for value: pro
             /// </summary>
             [EnumMember(Value = "pro")]
-            Pro = 2
+            Pro = 1,
+
+            /// <summary>
+            /// Enum Classic for value: classic
+            /// </summary>
+            [EnumMember(Value = "classic")]
+            Classic = 2
 
         }
 

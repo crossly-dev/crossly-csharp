@@ -46,17 +46,22 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="active">active (required).</param>
+        /// <param name="quantity">quantity (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="options">options (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="depositCents">depositCents (required).</param>
-        /// <param name="dailyCents">dailyCents (required).</param>
-        /// <param name="weeklyCents">weeklyCents.</param>
         /// <param name="minDays">minDays (required).</param>
         /// <param name="maxDays">maxDays (required).</param>
+        /// <param name="dailyCents">dailyCents (required).</param>
+        /// <param name="weeklyCents">weeklyCents.</param>
         /// <param name="bufferDays">bufferDays (required).</param>
         /// <param name="rentOnly">rentOnly (required).</param>
         /// <param name="requireApproval">requireApproval (required).</param>
-        public ListRentalOffersItem(string slug = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), string createdAt = default(string), string updatedAt = default(string), bool active = default(bool), string platformListingId = default(string), string sellerUserId = default(string), decimal depositCents = default(decimal), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool))
+        /// <param name="blackoutRanges">blackoutRanges (required).</param>
+        /// <param name="returnPolicy">returnPolicy.</param>
+        public ListRentalOffersItem(string slug = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), string createdAt = default(string), string updatedAt = default(string), bool active = default(bool), decimal quantity = default(decimal), string platformListingId = default(string), string storefrontId = default(string), Dictionary<string, Object> options = default(Dictionary<string, Object>), string sellerUserId = default(string), decimal depositCents = default(decimal), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), List<StartEnd> blackoutRanges = default(List<StartEnd>), string returnPolicy = default(string))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -89,24 +94,37 @@ namespace net.crossly.Model
             }
             this.UpdatedAt = updatedAt;
             this.Active = active;
+            this.Quantity = quantity;
             // to ensure "platformListingId" is required (not null)
             if (platformListingId == null) {
                 throw new ArgumentNullException("platformListingId is a required property for ListRentalOffersItem and cannot be null");
             }
             this.PlatformListingId = platformListingId;
+            // to ensure "options" is required (not null)
+            if (options == null) {
+                throw new ArgumentNullException("options is a required property for ListRentalOffersItem and cannot be null");
+            }
+            this.Options = options;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
                 throw new ArgumentNullException("sellerUserId is a required property for ListRentalOffersItem and cannot be null");
             }
             this.SellerUserId = sellerUserId;
             this.DepositCents = depositCents;
-            this.DailyCents = dailyCents;
             this.MinDays = minDays;
             this.MaxDays = maxDays;
+            this.DailyCents = dailyCents;
             this.BufferDays = bufferDays;
             this.RentOnly = rentOnly;
             this.RequireApproval = requireApproval;
+            // to ensure "blackoutRanges" is required (not null)
+            if (blackoutRanges == null) {
+                throw new ArgumentNullException("blackoutRanges is a required property for ListRentalOffersItem and cannot be null");
+            }
+            this.BlackoutRanges = blackoutRanges;
+            this.StorefrontId = storefrontId;
             this.WeeklyCents = weeklyCents;
+            this.ReturnPolicy = returnPolicy;
         }
 
         /// <summary>
@@ -152,10 +170,28 @@ namespace net.crossly.Model
         public bool Active { get; set; }
 
         /// <summary>
+        /// Gets or Sets Quantity
+        /// </summary>
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
+
+        /// <summary>
         /// Gets or Sets PlatformListingId
         /// </summary>
         [DataMember(Name = "platformListingId", IsRequired = true, EmitDefaultValue = false)]
         public string PlatformListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Options
+        /// </summary>
+        [DataMember(Name = "options", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Options { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerUserId
@@ -170,18 +206,6 @@ namespace net.crossly.Model
         public decimal DepositCents { get; set; }
 
         /// <summary>
-        /// Gets or Sets DailyCents
-        /// </summary>
-        [DataMember(Name = "dailyCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal DailyCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WeeklyCents
-        /// </summary>
-        [DataMember(Name = "weeklyCents", EmitDefaultValue = true)]
-        public decimal? WeeklyCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets MinDays
         /// </summary>
         [DataMember(Name = "minDays", IsRequired = true, EmitDefaultValue = false)]
@@ -192,6 +216,18 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "maxDays", IsRequired = true, EmitDefaultValue = false)]
         public decimal MaxDays { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DailyCents
+        /// </summary>
+        [DataMember(Name = "dailyCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal DailyCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WeeklyCents
+        /// </summary>
+        [DataMember(Name = "weeklyCents", EmitDefaultValue = true)]
+        public decimal? WeeklyCents { get; set; }
 
         /// <summary>
         /// Gets or Sets BufferDays
@@ -212,6 +248,18 @@ namespace net.crossly.Model
         public bool RequireApproval { get; set; }
 
         /// <summary>
+        /// Gets or Sets BlackoutRanges
+        /// </summary>
+        [DataMember(Name = "blackoutRanges", IsRequired = true, EmitDefaultValue = false)]
+        public List<StartEnd> BlackoutRanges { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReturnPolicy
+        /// </summary>
+        [DataMember(Name = "returnPolicy", EmitDefaultValue = true)]
+        public string ReturnPolicy { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -226,16 +274,21 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  DepositCents: ").Append(DepositCents).Append("\n");
-            sb.Append("  DailyCents: ").Append(DailyCents).Append("\n");
-            sb.Append("  WeeklyCents: ").Append(WeeklyCents).Append("\n");
             sb.Append("  MinDays: ").Append(MinDays).Append("\n");
             sb.Append("  MaxDays: ").Append(MaxDays).Append("\n");
+            sb.Append("  DailyCents: ").Append(DailyCents).Append("\n");
+            sb.Append("  WeeklyCents: ").Append(WeeklyCents).Append("\n");
             sb.Append("  BufferDays: ").Append(BufferDays).Append("\n");
             sb.Append("  RentOnly: ").Append(RentOnly).Append("\n");
             sb.Append("  RequireApproval: ").Append(RequireApproval).Append("\n");
+            sb.Append("  BlackoutRanges: ").Append(BlackoutRanges).Append("\n");
+            sb.Append("  ReturnPolicy: ").Append(ReturnPolicy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -306,9 +359,24 @@ namespace net.crossly.Model
                     this.Active.Equals(input.Active)
                 ) && 
                 (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
+                ) && 
+                (
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Options == input.Options ||
+                    this.Options != null &&
+                    input.Options != null &&
+                    this.Options.SequenceEqual(input.Options)
                 ) && 
                 (
                     this.SellerUserId == input.SellerUserId ||
@@ -320,6 +388,14 @@ namespace net.crossly.Model
                     this.DepositCents.Equals(input.DepositCents)
                 ) && 
                 (
+                    this.MinDays == input.MinDays ||
+                    this.MinDays.Equals(input.MinDays)
+                ) && 
+                (
+                    this.MaxDays == input.MaxDays ||
+                    this.MaxDays.Equals(input.MaxDays)
+                ) && 
+                (
                     this.DailyCents == input.DailyCents ||
                     this.DailyCents.Equals(input.DailyCents)
                 ) && 
@@ -327,14 +403,6 @@ namespace net.crossly.Model
                     this.WeeklyCents == input.WeeklyCents ||
                     (this.WeeklyCents != null &&
                     this.WeeklyCents.Equals(input.WeeklyCents))
-                ) && 
-                (
-                    this.MinDays == input.MinDays ||
-                    this.MinDays.Equals(input.MinDays)
-                ) && 
-                (
-                    this.MaxDays == input.MaxDays ||
-                    this.MaxDays.Equals(input.MaxDays)
                 ) && 
                 (
                     this.BufferDays == input.BufferDays ||
@@ -347,6 +415,17 @@ namespace net.crossly.Model
                 (
                     this.RequireApproval == input.RequireApproval ||
                     this.RequireApproval.Equals(input.RequireApproval)
+                ) && 
+                (
+                    this.BlackoutRanges == input.BlackoutRanges ||
+                    this.BlackoutRanges != null &&
+                    input.BlackoutRanges != null &&
+                    this.BlackoutRanges.SequenceEqual(input.BlackoutRanges)
+                ) && 
+                (
+                    this.ReturnPolicy == input.ReturnPolicy ||
+                    (this.ReturnPolicy != null &&
+                    this.ReturnPolicy.Equals(input.ReturnPolicy))
                 );
         }
 
@@ -384,25 +463,42 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Active.GetHashCode();
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                if (this.Options != null)
+                {
+                    hashCode = (hashCode * 59) + this.Options.GetHashCode();
                 }
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.DepositCents.GetHashCode();
+                hashCode = (hashCode * 59) + this.MinDays.GetHashCode();
+                hashCode = (hashCode * 59) + this.MaxDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.DailyCents.GetHashCode();
                 if (this.WeeklyCents != null)
                 {
                     hashCode = (hashCode * 59) + this.WeeklyCents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.MinDays.GetHashCode();
-                hashCode = (hashCode * 59) + this.MaxDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.BufferDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.RentOnly.GetHashCode();
                 hashCode = (hashCode * 59) + this.RequireApproval.GetHashCode();
+                if (this.BlackoutRanges != null)
+                {
+                    hashCode = (hashCode * 59) + this.BlackoutRanges.GetHashCode();
+                }
+                if (this.ReturnPolicy != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnPolicy.GetHashCode();
+                }
                 return hashCode;
             }
         }

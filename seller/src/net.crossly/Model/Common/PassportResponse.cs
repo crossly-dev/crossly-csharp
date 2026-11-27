@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="PassportResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public PassportResponse(ListPassportsItem data = default(ListPassportsItem))
+        public PassportResponse(PassportResponseData data = default(PassportResponseData))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public ListPassportsItem Data { get; set; }
+        public PassportResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

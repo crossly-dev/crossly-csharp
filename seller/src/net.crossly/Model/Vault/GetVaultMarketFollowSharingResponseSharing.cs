@@ -41,16 +41,16 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="orders">orders (required).</param>
         /// <param name="sales">sales (required).</param>
-        /// <param name="hallLoans">hallLoans (required).</param>
         /// <param name="leaderboard">leaderboard (required).</param>
         /// <param name="deposits">deposits (required).</param>
-        public GetVaultMarketFollowSharingResponseSharing(bool orders = default(bool), bool sales = default(bool), bool hallLoans = default(bool), bool leaderboard = default(bool), bool deposits = default(bool))
+        /// <param name="hallLoans">hallLoans (required).</param>
+        public GetVaultMarketFollowSharingResponseSharing(bool orders = default(bool), bool sales = default(bool), bool leaderboard = default(bool), bool deposits = default(bool), bool hallLoans = default(bool))
         {
             this.Orders = orders;
             this.Sales = sales;
-            this.HallLoans = hallLoans;
             this.Leaderboard = leaderboard;
             this.Deposits = deposits;
+            this.HallLoans = hallLoans;
         }
 
         /// <summary>
@@ -66,12 +66,6 @@ namespace net.crossly.Model
         public bool Sales { get; set; }
 
         /// <summary>
-        /// Gets or Sets HallLoans
-        /// </summary>
-        [DataMember(Name = "hallLoans", IsRequired = true, EmitDefaultValue = true)]
-        public bool HallLoans { get; set; }
-
-        /// <summary>
         /// Gets or Sets Leaderboard
         /// </summary>
         [DataMember(Name = "leaderboard", IsRequired = true, EmitDefaultValue = true)]
@@ -84,6 +78,12 @@ namespace net.crossly.Model
         public bool Deposits { get; set; }
 
         /// <summary>
+        /// Gets or Sets HallLoans
+        /// </summary>
+        [DataMember(Name = "hallLoans", IsRequired = true, EmitDefaultValue = true)]
+        public bool HallLoans { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -93,9 +93,9 @@ namespace net.crossly.Model
             sb.Append("class GetVaultMarketFollowSharingResponseSharing {\n");
             sb.Append("  Orders: ").Append(Orders).Append("\n");
             sb.Append("  Sales: ").Append(Sales).Append("\n");
-            sb.Append("  HallLoans: ").Append(HallLoans).Append("\n");
             sb.Append("  Leaderboard: ").Append(Leaderboard).Append("\n");
             sb.Append("  Deposits: ").Append(Deposits).Append("\n");
+            sb.Append("  HallLoans: ").Append(HallLoans).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,16 +140,16 @@ namespace net.crossly.Model
                     this.Sales.Equals(input.Sales)
                 ) && 
                 (
-                    this.HallLoans == input.HallLoans ||
-                    this.HallLoans.Equals(input.HallLoans)
-                ) && 
-                (
                     this.Leaderboard == input.Leaderboard ||
                     this.Leaderboard.Equals(input.Leaderboard)
                 ) && 
                 (
                     this.Deposits == input.Deposits ||
                     this.Deposits.Equals(input.Deposits)
+                ) && 
+                (
+                    this.HallLoans == input.HallLoans ||
+                    this.HallLoans.Equals(input.HallLoans)
                 );
         }
 
@@ -164,9 +164,9 @@ namespace net.crossly.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Orders.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sales.GetHashCode();
-                hashCode = (hashCode * 59) + this.HallLoans.GetHashCode();
                 hashCode = (hashCode * 59) + this.Leaderboard.GetHashCode();
                 hashCode = (hashCode * 59) + this.Deposits.GetHashCode();
+                hashCode = (hashCode * 59) + this.HallLoans.GetHashCode();
                 return hashCode;
             }
         }

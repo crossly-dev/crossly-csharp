@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Applied for value: applied
+            /// Enum Paused for value: paused
             /// </summary>
-            [EnumMember(Value = "applied")]
-            Applied = 1,
+            [EnumMember(Value = "paused")]
+            Paused = 1,
 
             /// <summary>
             /// Enum Verified for value: verified
@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Verified = 2,
 
             /// <summary>
+            /// Enum Applied for value: applied
+            /// </summary>
+            [EnumMember(Value = "applied")]
+            Applied = 3,
+
+            /// <summary>
             /// Enum Rejected for value: rejected
             /// </summary>
             [EnumMember(Value = "rejected")]
-            Rejected = 3,
-
-            /// <summary>
-            /// Enum Paused for value: paused
-            /// </summary>
-            [EnumMember(Value = "paused")]
-            Paused = 4
+            Rejected = 4
 
         }
 

@@ -39,9 +39,9 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuyerBreakSpotHoldResponseData" /> class.
         /// </summary>
-        /// <param name="slug">slug.</param>
         /// <param name="heldUntil">heldUntil (required).</param>
-        public CreateBuyerBreakSpotHoldResponseData(string slug = default(string), string heldUntil = default(string))
+        /// <param name="slug">slug.</param>
+        public CreateBuyerBreakSpotHoldResponseData(string heldUntil = default(string), string slug = default(string))
         {
             // to ensure "heldUntil" is required (not null)
             if (heldUntil == null) {
@@ -52,16 +52,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Slug
-        /// </summary>
-        [DataMember(Name = "slug", EmitDefaultValue = true)]
-        public string Slug { get; set; }
-
-        /// <summary>
         /// Gets or Sets HeldUntil
         /// </summary>
         [DataMember(Name = "heldUntil", IsRequired = true, EmitDefaultValue = false)]
         public string HeldUntil { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Slug
+        /// </summary>
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +71,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateBuyerBreakSpotHoldResponseData {\n");
-            sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  HeldUntil: ").Append(HeldUntil).Append("\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,14 +109,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Slug == input.Slug ||
-                    (this.Slug != null &&
-                    this.Slug.Equals(input.Slug))
-                ) && 
-                (
                     this.HeldUntil == input.HeldUntil ||
                     (this.HeldUntil != null &&
                     this.HeldUntil.Equals(input.HeldUntil))
+                ) && 
+                (
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
                 );
         }
 
@@ -129,13 +129,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Slug != null)
-                {
-                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
-                }
                 if (this.HeldUntil != null)
                 {
                     hashCode = (hashCode * 59) + this.HeldUntil.GetHashCode();
+                }
+                if (this.Slug != null)
+                {
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
                 }
                 return hashCode;
             }

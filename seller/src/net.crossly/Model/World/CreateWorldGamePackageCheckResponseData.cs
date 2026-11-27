@@ -44,7 +44,7 @@ namespace net.crossly.Model
         /// <param name="fits">fits (required).</param>
         /// <param name="totalBytes">totalBytes (required).</param>
         /// <param name="manifest">manifest.</param>
-        public CreateWorldGamePackageCheckResponseData(bool ok = default(bool), List<CreateWorldGamePackageCheckResponseDataIssues> issues = default(List<CreateWorldGamePackageCheckResponseDataIssues>), CreateWorldGamePackageCheckResponseDataFits fits = default(CreateWorldGamePackageCheckResponseDataFits), decimal totalBytes = default(decimal), CreateWorldGamePackageCheckResponseDataManifest manifest = default(CreateWorldGamePackageCheckResponseDataManifest))
+        public CreateWorldGamePackageCheckResponseData(bool ok = default(bool), List<PathMessage> issues = default(List<PathMessage>), CreateWorldGamePackageCheckResponseDataFits fits = default(CreateWorldGamePackageCheckResponseDataFits), decimal totalBytes = default(decimal), CreateWorldGamePackageCheckResponseDataManifest manifest = default(CreateWorldGamePackageCheckResponseDataManifest))
         {
             this.Ok = ok;
             // to ensure "issues" is required (not null)
@@ -71,7 +71,7 @@ namespace net.crossly.Model
         /// Gets or Sets Issues
         /// </summary>
         [DataMember(Name = "issues", IsRequired = true, EmitDefaultValue = false)]
-        public List<CreateWorldGamePackageCheckResponseDataIssues> Issues { get; set; }
+        public List<PathMessage> Issues { get; set; }
 
         /// <summary>
         /// Gets or Sets Fits

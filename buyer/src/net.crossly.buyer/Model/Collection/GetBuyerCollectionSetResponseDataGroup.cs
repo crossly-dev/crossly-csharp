@@ -39,25 +39,25 @@ namespace net.crossly.buyer.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetBuyerCollectionSetResponseDataGroup" /> class.
         /// </summary>
-        /// <param name="brand">brand (required).</param>
         /// <param name="category">category (required).</param>
+        /// <param name="brand">brand (required).</param>
         /// <param name="model">model (required).</param>
         /// <param name="brandSlug">brandSlug (required).</param>
         /// <param name="modelSlug">modelSlug (required).</param>
         /// <param name="total">total (required).</param>
         /// <param name="owned">owned (required).</param>
-        public GetBuyerCollectionSetResponseDataGroup(string brand = default(string), string category = default(string), string model = default(string), string brandSlug = default(string), string modelSlug = default(string), decimal total = default(decimal), decimal owned = default(decimal))
+        public GetBuyerCollectionSetResponseDataGroup(string category = default(string), string brand = default(string), string model = default(string), string brandSlug = default(string), string modelSlug = default(string), decimal total = default(decimal), decimal owned = default(decimal))
         {
-            // to ensure "brand" is required (not null)
-            if (brand == null) {
-                throw new ArgumentNullException("brand is a required property for GetBuyerCollectionSetResponseDataGroup and cannot be null");
-            }
-            this.Brand = brand;
             // to ensure "category" is required (not null)
             if (category == null) {
                 throw new ArgumentNullException("category is a required property for GetBuyerCollectionSetResponseDataGroup and cannot be null");
             }
             this.Category = category;
+            // to ensure "brand" is required (not null)
+            if (brand == null) {
+                throw new ArgumentNullException("brand is a required property for GetBuyerCollectionSetResponseDataGroup and cannot be null");
+            }
+            this.Brand = brand;
             // to ensure "model" is required (not null)
             if (model == null) {
                 throw new ArgumentNullException("model is a required property for GetBuyerCollectionSetResponseDataGroup and cannot be null");
@@ -78,16 +78,16 @@ namespace net.crossly.buyer.Model
         }
 
         /// <summary>
-        /// Gets or Sets Brand
-        /// </summary>
-        [DataMember(Name = "brand", IsRequired = true, EmitDefaultValue = false)]
-        public string Brand { get; set; }
-
-        /// <summary>
         /// Gets or Sets Category
         /// </summary>
         [DataMember(Name = "category", IsRequired = true, EmitDefaultValue = false)]
         public string Category { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Brand
+        /// </summary>
+        [DataMember(Name = "brand", IsRequired = true, EmitDefaultValue = false)]
+        public string Brand { get; set; }
 
         /// <summary>
         /// Gets or Sets Model
@@ -127,8 +127,8 @@ namespace net.crossly.buyer.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetBuyerCollectionSetResponseDataGroup {\n");
-            sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
+            sb.Append("  Brand: ").Append(Brand).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  BrandSlug: ").Append(BrandSlug).Append("\n");
             sb.Append("  ModelSlug: ").Append(ModelSlug).Append("\n");
@@ -170,14 +170,14 @@ namespace net.crossly.buyer.Model
             }
             return 
                 (
-                    this.Brand == input.Brand ||
-                    (this.Brand != null &&
-                    this.Brand.Equals(input.Brand))
-                ) && 
-                (
                     this.Category == input.Category ||
                     (this.Category != null &&
                     this.Category.Equals(input.Category))
+                ) && 
+                (
+                    this.Brand == input.Brand ||
+                    (this.Brand != null &&
+                    this.Brand.Equals(input.Brand))
                 ) && 
                 (
                     this.Model == input.Model ||
@@ -213,13 +213,13 @@ namespace net.crossly.buyer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Brand != null)
-                {
-                    hashCode = (hashCode * 59) + this.Brand.GetHashCode();
-                }
                 if (this.Category != null)
                 {
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();
+                }
+                if (this.Brand != null)
+                {
+                    hashCode = (hashCode * 59) + this.Brand.GetHashCode();
                 }
                 if (this.Model != null)
                 {

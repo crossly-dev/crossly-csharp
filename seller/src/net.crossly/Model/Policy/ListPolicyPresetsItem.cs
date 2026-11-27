@@ -39,6 +39,9 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListPolicyPresetsItem" /> class.
         /// </summary>
+        /// <param name="summary">summary (required).</param>
+        /// <param name="incomplete">incomplete (required).</param>
+        /// <param name="listingCount">listingCount (required).</param>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
@@ -46,8 +49,17 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="isDefault">isDefault (required).</param>
         /// <param name="kind">kind (required).</param>
-        public ListPolicyPresetsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), bool isDefault = default(bool), string kind = default(string))
+        /// <param name="revision">revision (required).</param>
+        /// <param name="hasDomesticRules">hasDomesticRules (required).</param>
+        public ListPolicyPresetsItem(string summary = default(string), bool incomplete = default(bool), decimal listingCount = default(decimal), string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), bool isDefault = default(bool), string kind = default(string), decimal revision = default(decimal), bool hasDomesticRules = default(bool))
         {
+            // to ensure "summary" is required (not null)
+            if (summary == null) {
+                throw new ArgumentNullException("summary is a required property for ListPolicyPresetsItem and cannot be null");
+            }
+            this.Summary = summary;
+            this.Incomplete = incomplete;
+            this.ListingCount = listingCount;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListPolicyPresetsItem and cannot be null");
@@ -71,7 +83,27 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("kind is a required property for ListPolicyPresetsItem and cannot be null");
             }
             this.Kind = kind;
+            this.Revision = revision;
+            this.HasDomesticRules = hasDomesticRules;
         }
+
+        /// <summary>
+        /// Gets or Sets Summary
+        /// </summary>
+        [DataMember(Name = "summary", IsRequired = true, EmitDefaultValue = false)]
+        public string Summary { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Incomplete
+        /// </summary>
+        [DataMember(Name = "incomplete", IsRequired = true, EmitDefaultValue = true)]
+        public bool Incomplete { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ListingCount
+        /// </summary>
+        [DataMember(Name = "listingCount", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ListingCount { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -116,6 +148,18 @@ namespace net.crossly.Model
         public string Kind { get; set; }
 
         /// <summary>
+        /// Gets or Sets Revision
+        /// </summary>
+        [DataMember(Name = "revision", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Revision { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HasDomesticRules
+        /// </summary>
+        [DataMember(Name = "hasDomesticRules", IsRequired = true, EmitDefaultValue = true)]
+        public bool HasDomesticRules { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -123,6 +167,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListPolicyPresetsItem {\n");
+            sb.Append("  Summary: ").Append(Summary).Append("\n");
+            sb.Append("  Incomplete: ").Append(Incomplete).Append("\n");
+            sb.Append("  ListingCount: ").Append(ListingCount).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -130,6 +177,8 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Revision: ").Append(Revision).Append("\n");
+            sb.Append("  HasDomesticRules: ").Append(HasDomesticRules).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -166,6 +215,19 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Summary == input.Summary ||
+                    (this.Summary != null &&
+                    this.Summary.Equals(input.Summary))
+                ) && 
+                (
+                    this.Incomplete == input.Incomplete ||
+                    this.Incomplete.Equals(input.Incomplete)
+                ) && 
+                (
+                    this.ListingCount == input.ListingCount ||
+                    this.ListingCount.Equals(input.ListingCount)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -198,6 +260,14 @@ namespace net.crossly.Model
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.Revision == input.Revision ||
+                    this.Revision.Equals(input.Revision)
+                ) && 
+                (
+                    this.HasDomesticRules == input.HasDomesticRules ||
+                    this.HasDomesticRules.Equals(input.HasDomesticRules)
                 );
         }
 
@@ -210,6 +280,12 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Summary != null)
+                {
+                    hashCode = (hashCode * 59) + this.Summary.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Incomplete.GetHashCode();
+                hashCode = (hashCode * 59) + this.ListingCount.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -235,6 +311,8 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Revision.GetHashCode();
+                hashCode = (hashCode * 59) + this.HasDomesticRules.GetHashCode();
                 return hashCode;
             }
         }
